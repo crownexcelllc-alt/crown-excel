@@ -1,0 +1,17 @@
+.banner {
+  background-image: url('../../Components/Images/banner.png'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: cover; /* This fills the div properly */
+  margin-top: -50px;
+  /* position: absolute;
+  top: 0; */
+  width: auto;
+  height: 110vh;  
+  overflow: hidden; 
+  position: relative;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+

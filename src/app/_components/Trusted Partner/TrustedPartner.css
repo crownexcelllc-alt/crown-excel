@@ -1,0 +1,116 @@
+.trusted-partner{
+    display: flex;
+    align-items: center;
+    background: #cac5a9;
+    flex-direction: row;
+}
+.container{
+    display: flex;
+    gap: 20px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    /* margin: 30px 0; */
+}
+.trusted-partner .left-part{
+    flex-basis: 40%;
+}
+.trusted-partner .right-part{
+    flex-basis: 60%;
+}
+.trusted-partner h1{
+    font-size: 58px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    line-height: 58px;
+}
+.trusted-partner p{
+    font-size: 16px;
+    line-height: 27.2px;
+    margin-top: 10px;
+}
+.arrow-icon{
+    position: absolute;
+    background: #084032;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 780px;
+    top: 430px;
+    color: white;
+    font-size: 41px;
+    cursor: pointer;
+    transition: left 0.3s, top 0.3s, width 0.3s, height 0.3s, font-size 0.3s;
+}
+
+@media (max-width: 1200px) {
+  .arrow-icon {
+    left: 200px;
+    top: 350px;
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+}
+@media (max-width: 900px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+  .trusted-partner {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: center;
+  }
+  .trusted-partner .left-part,
+  .trusted-partner .right-part {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+  .trusted-partner .right-part img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* margin: 20px 0 0 0; */
+    object-fit: contain;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .arrow-icon {
+    /* display: none !important; */
+  }
+}
+@media (max-width: 600px) {
+  .trusted-partner {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+  }
+  .trusted-partner .left-part,
+  .trusted-partner .right-part {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+  .trusted-partner .right-part img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 20px 0 0 0;
+    object-fit: contain;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .arrow-icon {
+    display: none !important;
+  }
+}
