@@ -226,7 +226,7 @@ function Navbar() {
                 <li key={i} className="text-black font-semibold">
                   <div className="flex items-center justify-between w-full">
                     <a
-                      className={`block w-full px-2 py-1 text-sm rounded transition-colors duration-200 text-black hover:bg-[#084032] hover:text-white ${pathname === item.href ? 'text-green-700 border-b-2 border-green-700' : ''}`}
+                      className={`block w-full px-2 py-1 text-sm rounded transition-colors duration-200 text-black hover:bg-[#084032] hover:text-white ${pathname === item.href ? 'text-white bg-green-900 border-green-700' : ''}`}
                       href={item.href}
                       onClick={() => {
                         if (item.hasDropdown) {
@@ -260,12 +260,12 @@ function Navbar() {
                         : 'max-h-0 opacity-0 -translate-y-2'
                         }`}
                     >
-                      <ul className="ml-1 mt-1 flex flex-col gap-1 bg-white w-full py-2 rounded ">
+                      <ul className="ml-0 mt-1 flex flex-col gap-0 bg-white w-full py-2 ">
                         {item.dropdown.map((subItem, j) => (
                           <li key={j}>
                             <a
                               href={subItem.href}
-                              className={`block px-2 py-1 text-sm rounded transition-colors duration-200 w-full dropdown-ach ${pathname === subItem.href ? 'bg-[#084032] text-white w-full' : 'text-black'}`}
+                              className={`block px-2 py-1 text-sm  transition-colors duration-200 w-full dropdown-ach ${pathname === subItem.href ? 'bg-[#084032] text-white w-full' : 'text-black'}`}
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {subItem.label}
