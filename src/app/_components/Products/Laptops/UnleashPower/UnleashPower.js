@@ -12,7 +12,7 @@ const UnleashPower = () => {
         <div className="heading text-center">
             <h1 className='text-[24px] leading-[40px] lg:text-[48px] font-[700] font-montserrat lg:leading-[60px] text-black'>UNLEASE POWER, PORTABILITY AND PERORMANCE IN ONE LAPTOP</h1>
         </div>
-        <div className="image">
+        <div className="image mt-5 lg:mt-0">
             <Image alt='' height={513} width={912} src={Laptop} className='lg:w-[912px] lg:h-[513px] w-[300px]'/>
         </div>
       </div>

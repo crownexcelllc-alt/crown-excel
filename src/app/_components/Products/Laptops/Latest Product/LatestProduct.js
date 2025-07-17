@@ -20,7 +20,7 @@ const products = [
 
 const LatestProduct = () => (
     <div className="mt-10 flex flex-col items-center">
-        <h1 className="text-[#147d61] text-center text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
+        <h1 className="text-[#147d61] text-center text-[24px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
         <div className="relative flex items-center justify-center mt-8 w-full">
             <Swiper
                 modules={[Navigation]}
@@ -50,7 +50,7 @@ const LatestProduct = () => (
                                 height={400}
                                 className="rounded-lg object-contain mb-4 w-full"
                             />
-                            <h2 className="text-[60px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
+                            <h2 className="text-[30px] lg:text-[60px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
                             <p className="text-gray-600 text-base text-center mt-2 text-[16px] leading-[27px]">{product.desc}</p>
                         </div>
                     </SwiperSlide>

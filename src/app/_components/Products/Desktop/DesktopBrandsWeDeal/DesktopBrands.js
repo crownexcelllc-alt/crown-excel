@@ -18,9 +18,9 @@ const DesktopBrands = () => {
         {Image: Dell, alt: 'Dell', width: 135, height: 42}  
       ]
   return (
-    <div className="w-full hidden bg-white mt-20">
+    <div className="w-full  bg-white mt-20">
       {/* Heading */}
-      <h1 className="text-center text-[40px] md:text-[3rem] font-[700] leading-[40px] text-[#16806b] uppercase  mb-8 font-montserrat">
+      <h1 className="text-center text-[30px] lg:text-[40px] md:text-[3rem] font-[700] leading-[40px] text-[#16806b] uppercase  mb-8 font-montserrat">
         BRANDS WE DEAL
       </h1>
       <div
@@ -30,7 +30,7 @@ const DesktopBrands = () => {
         }}
       >
         {/* Yellow Eclipse on the left */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-[130px] h-[470px] pointer-events-none select-none">
+        <div className="absolute hidden lg:block left-0 top-1/2 -translate-y-1/2 z-10 w-[130px] h-[470px] pointer-events-none select-none">
           <Image src={Eclipse} alt="Eclipse" fill style={{objectFit: 'contain'}} />
         </div>
         {/* Overlay background image with blend for dots/stars */}
@@ -39,14 +39,14 @@ const DesktopBrands = () => {
         </div>
         {/* Brand Icons Grid */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full max-w-[1200px] px-4 py-8">
-          <div className="flex items-center justify-center gap-70  w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-70  w-full">
             {BrandIconsTop.map((brand, index) => (
               <div key={index} className="flex items-center justify-center">
                 <Image src={brand.Image} alt={brand.alt} width={brand.width} height={brand.height} className="object-contain" />
               </div>
             ))}
           </div>
-          <div className="flex items-center mt-10 justify-center gap-90 w-full">
+          <div className="flex items-center mt-10 justify-center gap-5 lg:gap-90 w-full">
             {BrandIconsBottom.map((brand, index) => (
               <div key={index} className="flex items-center justify-center">
                 <Image src={brand.Image} alt={brand.alt} width={brand.width} height={brand.height} className="object-contain" />

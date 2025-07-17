@@ -10,6 +10,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 // Custom hook for responsive slides per view
 const useVisibleCount = () => {
+    // Always return 3 on the server to avoid hydration mismatch
     const [visibleCount, setVisibleCount] = useState(3);
 
     useEffect(() => {
@@ -23,7 +24,6 @@ const useVisibleCount = () => {
                 setVisibleCount(3); // Large screens
             }
         };
-
         updateCount(); // initial
         window.addEventListener('resize', updateCount);
         return () => window.removeEventListener('resize', updateCount);
@@ -46,6 +46,7 @@ const Testimonials = () => {
     const [isTransitioning, setIsTransitioning] = useState(true);
     const transitionTime = 700;
     const intervalRef = useRef(null);
+    const [hasMounted, setHasMounted] = useState(false);
 
     // Cloning for infinite loop
     const extended = [
@@ -59,6 +60,7 @@ const Testimonials = () => {
     const stopAutoSlide = () => clearInterval(intervalRef.current);
 
     useEffect(() => {
+        setHasMounted(true);
         intervalRef.current = setInterval(() => {
             next();
         }, 4000);
@@ -108,6 +110,7 @@ const Testimonials = () => {
 
                     {/* Slider */}
                     <div className="w-full ml-[40px] lg:ml-[50px] overflow-hidden">
+                        {hasMounted && (
                         <div
                             className="flex transition-transform ease-in-out"
                             style={{
@@ -133,6 +136,7 @@ const Testimonials = () => {
                                 </div>
                             ))}
                         </div>
+                        )}
                     </div>
 
                     {/* Right Button */}

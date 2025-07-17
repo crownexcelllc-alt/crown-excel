@@ -256,11 +256,11 @@ function Navbar() {
                   {item.hasDropdown && (
                     <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out transform ${openDropdownIndex === i
-                        ? 'max-h-96 opacity-100 translate-y-0'
+                        ? 'max-h-auto opacity-100 translate-y-0'
                         : 'max-h-0 opacity-0 -translate-y-2'
                         }`}
                     >
-                      <ul className="ml-4 mt-1 flex flex-col gap-1 bg-white w-full py-2 rounded shadow-md">
+                      <ul className="ml-1 mt-1 flex flex-col gap-1 bg-white w-full py-2 rounded ">
                         {item.dropdown.map((subItem, j) => (
                           <li key={j}>
                             <a
