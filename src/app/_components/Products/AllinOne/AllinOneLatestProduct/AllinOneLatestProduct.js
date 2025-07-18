@@ -9,23 +9,27 @@ import 'swiper/css/navigation'
 
 // Assets
 import ButtonBackground from '../../../../../Components/Images/ButtonBackground.png'
-import DesktopBestProduct1 from '../../../../../Components/Images/DesktopBestProduct1.png'
-import DesktopBestProduct2 from '../../../../../Components/Images/DesktopBestProduct2.png'
+import DesktopBestProduct1 from '../../../../../Components/Images/AllinoneLatestProduct2.png'
+import DesktopBestProduct2 from '../../../../../Components/Images/AllinoneLatestProduct1.png'
 
 const carouselData = [
   {
-    title: 'Dell Alienware',
-    description: 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.',
+    title: 'Apple iMac M3',
+    description: 'The latest Apple M3 chip features an 8-core CPU and 8-core GPU, delivering outstanding performance for both everyday tasks and creative workflows.',
     image: DesktopBestProduct1,
+    width: 300,
+    height: 300,
   },
   {
-    title: 'Asus Expert',
-    description: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.',
+    title: 'Acer Aspire C24',
+    description: 'The Acer Aspire C24-1700 All-in-One (AIO) Desktop PC is a stylish and efficient computing solution tailored for both home and office environments.',
     image: DesktopBestProduct2,
+    width: 330,
+    height: 330,
   },
 ]
 
-const DesktopBestSelling = () => {
+const AllinOneLatestProduct = () => {
   // Desktop Swiper refs
   const prevRef = useRef(null)
   const nextRef = useRef(null)
@@ -219,4 +223,4 @@ const DesktopBestSelling = () => {
 
 }
 
-export default DesktopBestSelling
+export default AllinOneLatestProduct

@@ -1,21 +1,21 @@
 import React from 'react'
-import Allinone1 from '../../../../../Components/Images/allinonedesktop1.png'
-import Allinone2 from '../../../../../Components/Images/allinonedesktop2.png'
-import Allinone3 from '../../../../../Components/Images/allinonedesktop3.png'
-import Allinone4 from '../../../../../Components/Images/allinonedesktop4.png'
-import Allinone5 from '../../../../../Components/Images/allinonedesktop5.png'
-import Allinone6 from '../../../../../Components/Images/allinonedesktop6.png'
+import Allinone1 from '../../../../../Components/Images/oneinall1.png'
+import Allinone2 from '../../../../../Components/Images/oneinall2.png'
+import Allinone3 from '../../../../../Components/Images/oneinall3.png'
+import Allinone4 from '../../../../../Components/Images/oneinall4.png'
+import Allinone5 from '../../../../../Components/Images/oneinall5.png'
+import Allinone6 from '../../../../../Components/Images/oneinall6.png'
 import Image from 'next/image'
-const AllinOneDesktops = () => {
+const OneinAllProducts = () => {
     const Business = [
         { Image: Allinone1, title: 'ASUS EXPERT CENTER D700 SC', desc: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed .' },
-        { Image: Allinone2, title: 'Lenovo M70q G4 Tiny', desc: 'The Lenovo M70q G4 Tiny is a compact yet powerful desktop computer designed for optimal performance and space-saving efficiency.' },
-        { Image: Allinone3, title: 'Acer Veriton VS', desc: 'The Acer Veriton VS2690G Desktop Tower is the perfect choice for anyone in need of a reliable and efficient computer.' },
+        { Image: Allinone2, title: 'Envy 34-C1098Nh', desc: 'The HP Envy 34-C1098Nh All-in-One (AIO) PC is a premium computing solution that elevates your digital experience.' },
+        { Image: Allinone3, title: 'HP All-in-One', desc: 'The HP All-in-One 22-dd2267nh Bundle PC offers a compact and efficient computing solution suitable for various tasks.' },
     ]
     const Individuals = [
-        { Image: Allinone4,title: 'DELL OPTIPLEX 3000', desc: 'Introducing the Dell OptiPlex 3000 MT (DTDELLOPT3000I54256GBD), a dependable desktop solution.'},
-        { Image: Allinone5,title: 'HP 290 G3 Small', desc: 'Introducing the HP 290 G3 Small Form Factor PC Bundle, the perfect choice for all your computing needs.'},
-        { Image: Allinone6,title: 'Dell Alienware Aurora', desc: 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.'},
+        { Image: Allinone4,title: 'HP All-in-One', desc: 'Experience enhanced computing with the HP All-in-One 24-cr0122nh, powered by the latest 13th Generation Intel Core i5-1335U processor.'},
+        { Image: Allinone5,title: 'HP Pavilion', desc: 'Introducing the HP Pavilion 27-CA2151NH – a powerhouse desktop that combines high-performance with sleek design.'},
+        { Image: Allinone6,title: 'Lenovo AIO 3 27IAP7', desc: 'The Lenovo AIO 3 27IAP7 Desktop PC is a powerful all-in-one computing solution designed to meet the demands'},
     ]
     return (
         <div className='mt-20 lg:mt-0 '>
@@ -29,7 +29,7 @@ const AllinOneDesktops = () => {
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Business.map((item, i) => (
                             <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto lg:h-[475px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
-                                <Image alt='' className='-mt-20' src={item.Image} width={251} height={251} />
+                                <Image alt='' className='-mt-25' src={item.Image} width={251} height={251} />
                                 <h2 className="text-[20px] lg:text-[26px] mt-10 text-center font-[800] leading-[34px]   font-montserrat text-black uppercase mb-3">
                                     {item.title}
                                 </h2>
@@ -48,7 +48,7 @@ const AllinOneDesktops = () => {
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Individuals.map((item, i) => (
                             <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto lg:h-[475px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
-                                <Image alt='' className='-mt-20' src={item.Image} width={251} height={251} />
+                                <Image alt='' className='-mt-25' src={item.Image} width={251} height={251} />
                                 <h2 className="text-[20px] lg:text-[26px] mt-10 text-center font-[800] leading-[34px]   font-montserrat text-black uppercase mb-3">
                                     {item.title}
                                 </h2>
@@ -64,4 +64,4 @@ const AllinOneDesktops = () => {
     )
 }
 
-export default AllinOneDesktops
+export default OneinAllProducts

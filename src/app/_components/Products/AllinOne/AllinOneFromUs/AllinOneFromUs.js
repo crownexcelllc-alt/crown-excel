@@ -1,14 +1,14 @@
 import React from 'react'
 import YelloBckground from '../../../../../Components/Images/yellowbackground.png'
 import Image from 'next/image'
-const WhyBuyFromUs = () => {
+const AllinOneFromUs = () => {
   return (
     <div className='why-buy-from-us flex flex-col md:flex-row lg:flex-row lg:flex items-center gap-5 lg:gap-40 w-full h-auto lg:h-[700px] mt-20'>
       <div className="left-part w-full h-auto  md:h-[782px] md:w-[436px] lg:w-[518px] lg:h-[700px] bg-[#ffd900]">
         <Image alt='' src={YelloBckground} width={518} height={300}/>
         <div className="text-part w-full h-full  -mt-5 lg:mt-0 px-10 pt-0 pb-8 md:pt-[120px] md:pr-[82px] md:pb-[82px] md:pl-[82px] lg:pt-[120px] lg:pr-[82px] lg:pb-[82px] lg:pl-[82px] ">
-            <h1 className='text-[30px] md:text-[50px] md:leading-[60px] leading-[30px] lg:text-[50px] w-[250px] lg:w-[354px] font-[600] lg:leading-[60px] text-black font-montserrat'>Why Buy <span className='text-[#118264]'>Desktops</span> From <br /> Us?</h1>
-            <p className='text-black mt-5 text-[16px] leading-[27px]'>Our desktop PCs are built to provide good performance for work, gaming, or personal purposes. Here’s why Crown Excel is your best bet for desktops:</p>
+            <h1 className='text-[30px] md:text-[50px] md:leading-[60px] leading-[30px] lg:text-[50px] w-[250px] lg:w-[354px] font-[600] lg:leading-[60px] text-black font-montserrat'>Why Buy <br /> <span className='text-[#118264]'>All-in-One</span> <br /> Devices From Us?</h1>
+            <p className='text-[#687799] mt-5 text-[16px] leading-[27px]'>Our all-in-one devices are built to provide excellent performance for work, creative tasks, or personal use. Here’s why Crown Excel is your best bet for all-in-one systems:</p>
         </div>
       </div>
       <div className="right-part flex flex-col items-center gap-5 px-3 lg:px-0">
@@ -33,4 +33,4 @@ const WhyBuyFromUs = () => {
   )
 }
 
-export default WhyBuyFromUs
+export default AllinOneFromUs

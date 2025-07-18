@@ -7,7 +7,7 @@ import Asus from '../../../../../Components/Images/Asus2.png'
 import Dell from '../../../../../Components/Images/Dell2.png'
 import Accer from '../../../../../Components/Images/Acer2.png'
 import Eclipse from '../../../../../Components/Images/Eclipse4.png'
-const DesktopBrands = () => {
+const AllinOneBrandsWeDeal = () => {
     const BrandIconsTop = [
         {Image: Lenovo, alt: 'Lenovo', width: 149, height: 31},
         {Image: Hp, alt: 'HP', width: 81, height: 80},
@@ -59,4 +59,4 @@ const DesktopBrands = () => {
   )
 }
 
-export default DesktopBrands
+export default AllinOneBrandsWeDeal

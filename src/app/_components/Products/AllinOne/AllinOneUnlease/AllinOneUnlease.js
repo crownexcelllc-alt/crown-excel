@@ -1,10 +1,10 @@
 import React from 'react'
 import BackgroundImage from '../../../../../Components/Images/ButtonBackground.png'
-import Computers from '../../../../../Components/Images/UnleaseDesktop1.png'
+import Computers from '../../../../../Components/Images/allinoneunlease.png'
 import Image from 'next/image'
-const UnleasePowerDesktop = () => {
+const AllinOneUnlease = () => {
   return (
-    <div className='flex flex-col items-center justify-center w-full h-auto md:px-3  px-5'>
+    <div className='flex flex-col items-center justify-center w-full h-auto  px-5'>
       <div className="heading w-[full] h-auto lg:w-[1140px] lg:h-[150px] px-2 md:px-5 lg:px-10 flex items-center lg:justify-center" style={{backgroundImage: 'linear-gradient(126deg, #54595f 0%, #000000 100%)', borderRadius: '30px 0px 30px 0px', padding:'15px'}}>
         <h1 className='text-[14px] leading-[20px] md:text-[30px] lg:text-[48px] md:leading-[40px] lg:leading-[60px] font-[700] font-montserrat px-5 lg:px-10 text-center'>UNLEASE POWER AND PERFORMANCE IN ONE DESKTOP SOLUTIONS</h1>
       </div>
@@ -28,4 +28,4 @@ const UnleasePowerDesktop = () => {
   )
 }
 
-export default UnleasePowerDesktop
+export default AllinOneUnlease
