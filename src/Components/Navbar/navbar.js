@@ -36,7 +36,7 @@ function Navbar() {
         { label: 'Desktop', href: '/products/pc' },
         { label: 'All in One', href: '/products/all-in-one' },
         { label: 'Printers', href: '/products/printers' },
-        { label: 'Routers', href: '/products/routers' },
+        { label: 'Routers', href: '/products/routers-access-points' },
         { label: 'Switching', href: '/products/switching' },
         { label: 'Scanners and Copier', href: '/products/scanners-copier' },
         { label: 'Keyboard & Mouse', href: '/products/keyboard-mouse' },

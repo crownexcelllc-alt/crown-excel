@@ -2,6 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Partner from '../Images/footerpartner.png'
+import Coorporate from '../Images/footercoorporates.png'
+import Wholesale from '../Images/footerwholesale.png'
+import FooterLogo from '../Images/footerlogo.png'
 import {
   FacebookLogo,
   TwitterLogo,
@@ -13,17 +17,17 @@ const Footer = () => {
   const topButtons = [
     {
       title: 'Become Our Partner',
-      imgSrc: '/imges/footer-fst.png',
+      imgSrc: Partner,
       href: '/partner',
     },
     {
       title: 'For Corporates Content',
-      imgSrc: '/imges/footer-scd.png',
+      imgSrc: Coorporate,
       href: '/corporates',
     },
     {
       title: 'Wholesale Inquiries',
-      imgSrc: '/imges/footer-trd.png',
+      imgSrc: Wholesale,
       href: '/wholesale',
     },
   ];
@@ -106,7 +110,7 @@ const Footer = () => {
             <div>
               <div className="flex items-center mb-4">
                 <div>
-                  <Image src="/imges/logo.png" alt="Logo" width={150} height={80} />
+                  <Image src={FooterLogo} alt="Logo" width={150} height={80} />
                 </div>
               </div>
               <p className="mb-6 text-gray-300 text-lg">Your desire is our Expertise</p>
@@ -203,7 +207,7 @@ const Footer = () => {
             {/* Logo and Tagline */}
             <div className="text-center">
               <div className="mb-4">
-                <Image src="/imges/logo.png" alt="Logo" width={120} height={60} className="mx-auto" />
+                <Image src={FooterLogo} alt="Logo" width={120} height={60} className="mx-auto" />
               </div>
               <p className="text-gray-300 text-base">Your desire is our Expertise</p>
             </div>

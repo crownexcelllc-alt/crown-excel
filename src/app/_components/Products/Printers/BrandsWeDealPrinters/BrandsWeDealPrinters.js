@@ -13,7 +13,7 @@ import Intel from '../../../../../Components/Images/Intel2.png'
 import Amd from '../../../../../Components/Images/Amd2.png'
 import Microsft from '../../../../../Components/Images/Microsoft.png'
 import Msi from '../../../../../Components/Images/Msi.png'
-const ProductsBrands = () => {
+const BrandsWeDealPrinters = () => {
   const BrandIcons = [
     {Image: Lenovo, alt: 'Lenovo'},
     {Image: Hp, alt: 'HP'},
@@ -30,7 +30,7 @@ const ProductsBrands = () => {
   ]
   return (
     <div
-      className="w-full min-h-[320px] md:min-h-[279px] relative mt-10 flex items-center justify-center overflow-hidden"
+      className="w-full min-h-[320px] md:min-h-[279px] relative mt-0 flex items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(90deg, #54595f 0%, #232426 70%, #18191b 100%)',
       }}
@@ -61,4 +61,4 @@ const ProductsBrands = () => {
   )
 }
 
-export default ProductsBrands
+export default BrandsWeDealPrinters
