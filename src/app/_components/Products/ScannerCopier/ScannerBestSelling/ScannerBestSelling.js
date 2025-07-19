@@ -6,34 +6,34 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import BestProduct1 from '../../../../../Components/Images/bestsellingprinter1.png';
-import BestProduct2 from '../../../../../Components/Images/bestsellingprinter2.png';
-import BestProduct3 from '../../../../../Components/Images/bestsellingprinter3.png';
+import BestProduct1 from '../../../../../Components/Images/scannerbestselling1.png';
+import BestProduct2 from '../../../../../Components/Images/scannerbestselling2.png';
+import BestProduct3 from '../../../../../Components/Images/scannerbestselling3.png';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const carouselData = [
     {
-        title: 'Epson LQ-350 Dot Matrix',
-        description: `The Epson LQ-350 Dot Matrix Printer is a high-quality, reliable printer perfect for any office setting.`,
+        title: 'HP Laserjet Pro',
+        description: `The HP LaserJet Pro MFP 4103fdw is a high-performance multifunction monochrome laser printer designed for medium to large-sized offices.`,
         image: BestProduct1,
     },
     {
-        title: 'HP Color LaserJet M652n',
-        description: 'Introducing the HP Color LaserJet M652n Printer, the perfect printing solution for your business needs.',
+        title: 'Epson Ecotank L8050',
+        description: 'The Epson EcoTank L8050 is a top choice for anyone who loves photography but hates high printing costs.',
         image: BestProduct2,
     },
     {
-        title: 'HP DeskJet 6475 Printer',
-        description: 'The HP DeskJet 6475 Printer is the perfect solution for all your printing needs. This all-in-one printer offers high-quality printing, scanning, and copying capabilities in one compact device.',
+        title: 'HP ScanJet Flow N9120',
+        description: 'Introducing the HP ScanJet Flow N9120 FN2 A3 Scanner – the ultimate scanner for your document management needs.',
         image: BestProduct3,
     },
 ];
 
-const BestSellingPrinters = () => {
+const ScannerBestSelling = () => {
     return (
         <div className="w-full py-8 relative">
             <h1 className="text-center text-3xl lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
-                OUR BEST-SELLING PRINTERS
+                OUR BEST-SELLING SCANNERS
             </h1>
 
             {/* Desktop Swiper */}
@@ -73,7 +73,7 @@ const BestSellingPrinters = () => {
 
                     {carouselData.map((item, index) => (
                         <SwiperSlide key={index}>
-                            <div className="flex flex-col md:flex-row items-center justify-between min-w-full px-6 py-6 md:py-12">
+                            <div className="flex flex-col md:flex-row items-center md:justify-center lg:justify-between min-w-full px-6 py-6 md:py-12">
                                 <div className="text-center basis-[40%] ml-10 md:text-left space-y-4">
                                     <h2 className="text-[48px] leading-[48px] font-montserrat font-bold text-black">
                                         {item.title}
@@ -82,13 +82,13 @@ const BestSellingPrinters = () => {
                                         {item.description}
                                     </p>
                                 </div>
-                                <div className="flex basis-[60%] justify-center mt-6 ml-2 pl-10 md:mt-0 md:-mr-15">
+                                <div className="flex basis-[60%] justify-center  mt-6 ml-2 pl-10 md:mt-0 md:-mr-15">
                                     <Image
                                         src={item.image}
                                         alt={item.title}
                                         width={454}
                                         height={550}
-                                        className="rounded-lg object-contain"
+                                        className="rounded-lg object-contain lg:w-[454px] lg:h-[550px] md:w-[350px] md:h-[450px]"
                                     />
                                 </div>
                             </div>
@@ -110,25 +110,25 @@ const BestSellingPrinters = () => {
                 <div className="absolute bg-[#ffd900] w-[350px] h-[250px] right-0 top-30 -z-10" style={{ borderRadius: '160px 0px 0px 160px' }}></div>
 
                 <Swiper
-  modules={[Navigation, Autoplay]}
-  navigation={{
-    nextEl: '.swiper-button-next-mobile',
-    prevEl: '.swiper-button-prev-mobile',
-  }}
-  loop={true}
-  autoplay={{
-    delay: 4000,
-    disableOnInteraction: false,
-  }}
-  spaceBetween={20}
-  breakpoints={{
-    320: { slidesPerView: 1 },
-    640: { slidesPerView: 1 },
-    768: { slidesPerView: 1 },
-    1024: { slidesPerView: 1 },
-  }}
-  className="w-full"
->
+                    modules={[Navigation, Autoplay]}
+                    navigation={{
+                        nextEl: '.swiper-button-next-mobile',
+                        prevEl: '.swiper-button-prev-mobile',
+                    }}
+                    loop={true}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    }}
+                    spaceBetween={20}
+                    breakpoints={{
+                        320: { slidesPerView: 1 },
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 1 },
+                        1024: { slidesPerView: 1 },
+                    }}
+                    className="w-full"
+                >
 
                     {carouselData.map((item, index) => (
                         <SwiperSlide key={index}>
@@ -160,4 +160,4 @@ const BestSellingPrinters = () => {
     );
 };
 
-export default BestSellingPrinters;
+export default ScannerBestSelling;
