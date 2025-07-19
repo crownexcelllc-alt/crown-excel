@@ -39,8 +39,8 @@ const TrustedPartner = () => {
                     <p className='text-[12px] md:text-[16px] font-extralight leading-[20px]'>With over 15 years of excellence and 17,000 satisfied customers, Crown Excel delivers top-tier technology solutions for both businesses and individuals.</p>
                 </div>
                 <div className="sm-top-right gap-3 flex flex-col columns-1 w-[50%]">
-                    <Image className='w-[150px] h-[100px] md:w-full md:h-[300px] md:rounded-none rounded-[10px]' width={100} alt='' height={100} src={ImgOne}/>
-                    <Image className='w-[150px] h-[100px] md:w-full md:h-[300px] md:rounded-none rounded-[10px]' width={100} alt='' height={100} src={ImgTwo}/>
+                    <Image className='w-[185px] h-[123px] md:w-full md:h-[300px] md:rounded-none rounded-[10px]' width={185} alt='' height={123} src={ImgOne}/>
+                    <Image className='w-[185px] h-[123px] md:w-full md:h-[300px] md:rounded-none rounded-[10px]' width={185} alt='' height={123} src={ImgTwo}/>
                 </div>
             </div>
             <div className="small-bottom" style={{padding: '0px 20px 20px 20px'}}>

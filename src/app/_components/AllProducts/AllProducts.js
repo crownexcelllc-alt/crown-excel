@@ -131,7 +131,7 @@ const AllProducts = () => {
                         <button className='flex items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
                     </div>
                     <div className="all-products-right  mt-[150px]">
-                        <Image width={520} height={615} alt='img' src={productDetails[active].Image} />
+                        <Image width={539} height={224} className='md:w-[294.6px] md:h-[122.3px] lg:w-[539px] lg:h-[224px]' alt='img' src={productDetails[active].Image} />
                     </div>
                 </div>
             </div>

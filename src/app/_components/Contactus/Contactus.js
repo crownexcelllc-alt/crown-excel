@@ -22,7 +22,7 @@ const Contactus = () => {
         <h1 className='text-[32px] lg:text-[47px] font-roboto font-bold'>Get In Touch</h1>
         <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p>
       </div>
-      <div className="contact-details flex flex-col lg:flex-row  items-center justify-between w-full px-[50px]">
+      <div className="contact-details flex flex-col md:flex-row lg:flex-row  items-center justify-between w-full px-[50px]">
         <div className="contact-details-left bg-[#f8f8f8] rounded shadow-2xl" style={{ padding: '20px 20px 20px 20px' }}>
           <form action="" className='flex flex-col items-center'>
             <div className="name-email flex items-center gap-5">
