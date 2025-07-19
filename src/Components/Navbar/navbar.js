@@ -118,7 +118,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar px-20 py-2 overflow-x-hidden lg:overflow-x-visible absolute w-full flex items-center justify-between">
+    <div className="navbar px-20 py-2 overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full flex items-center justify-between z-50">
       <div className="logo hidden lg:flex">
         <Link href="/">
           <Image
@@ -140,15 +140,71 @@ function Navbar() {
         />
       </div>
       {/* Desktop NavLinks & Button */}
-      <button
-        className="hidden md:flex lg:hidden text-green-900  items-center text-2xl focus:outline-none"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label="Open mobile menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <div className="hidden md:flex lg:hidden justify-center flex-1">
+  <button
+    className="text-green-900 text-2xl focus:outline-none transition-all ease-in-out"
+    onClick={() => setMedNav(!medNav)}
+    aria-label="Toggle medium navbar"
+  >
+    <FiMenu className="w-8 h-8" />
+  </button>
+</div>
+{/* Medium Screen NavLinks (Dropdown) */}
+{/* Medium Screen NavLinks (Dropdown) */}
+{medNav && (
+  <ul className="absolute top-20 left-0 w-full h-auto bg-white text-black shadow-md md:flex lg:hidden flex-col transition-all duration-500 ease-in-out z-50">
+    {navLinks.map((item, i) => (
+      <li key={i} className="border-b border-gray-200">
+        <div className="flex items-center justify-between px-6 py-3 hover:bg-gray-100">
+          <a
+            href={item.href}
+            className={`flex-1 ${pathname === item.href ? 'bg-green-900 text-white' : 'text-black'} transition-colors duration-300`}
+            onClick={() => {
+              if (item.hasDropdown) {
+                setOpenDropdownIndex(openDropdownIndex === i ? null : i);
+              } else {
+                setMedNav(false);
+              }
+            }}
+          >
+            {item.label}
+          </a>
+          {item.hasDropdown && (
+            <button
+              className="ml-2 text-lg focus:outline-none"
+              onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
+              aria-label={`Toggle ${item.label} dropdown`}
+              type="button"
+            >
+              <FaSortDown
+                className={`transition-transform duration-300 ${openDropdownIndex === i ? 'rotate-180' : ''}`}
+              />
+            </button>
+          )}
+        </div>
+        {/* Sublinks Dropdown */}
+        {item.hasDropdown && (
+          <ul
+            className={`overflow-hidden transition-all duration-500 ease-in-out bg-white px-6 ${openDropdownIndex === i ? 'max-h-96 opacity-100 py-2' : 'max-h-0 opacity-0 py-0'}`}
+          >
+            {item.dropdown.map((subItem, j) => (
+              <li key={j}>
+                <a
+                  href={subItem.href}
+                  className={`block px-2 py-2 text-sm rounded transition-colors duration-200 w-full ${pathname === subItem.href ? 'bg-[#084032] text-white' : 'text-black hover:bg-gray-100'}`}
+                  onClick={() => setMedNav(false)}
+                >
+                  {subItem.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+)}
+
       <ul className="nav-links flex gap-6 items-center hidden md:flex">
 
         {navLinks.map((item, i) => (
