@@ -32,7 +32,7 @@ const Career = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header Section */}
-      <CareerHeader/>
+      <CareerHeader />
       {/* Main Section */}
       <div className="flex flex-col lg:flex-row gap-5 lg:px-8 lg:py-12 w-full max-w-7xl mx-auto">
         {/* Positions Available */}
@@ -51,16 +51,18 @@ const Career = () => {
                 <div
                   className={`overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  {activeIndex === idx && (
-                    <div className="border border-[#084032] rounded-b-lg p-4 bg-white">
-                      <p className="mb-2 text-black font-montserrat">{pos.description}</p>
-                      <ul className="list-disc ml-6 text-black font-montserrat">
-                        {pos.requirements.map((req, i) => (
-                          <li key={i}>{req}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out border border-[#084032] bg-white rounded-b-lg 
+  ${activeIndex === idx ? 'max-h-[500px] opacity-100 py-4 px-4' : 'max-h-0 opacity-0 py-0 px-4'}`}
+                  >
+                    <p className="mb-2 text-black font-montserrat">{pos.description}</p>
+                    <ul className="list-disc ml-6 text-black font-montserrat">
+                      {pos.requirements.map((req, i) => (
+                        <li key={i}>{req}</li>
+                      ))}
+                    </ul>
+                  </div>
+
                 </div>
               </div>
             ))}

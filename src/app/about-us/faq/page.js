@@ -74,16 +74,19 @@ const page = () => {
                         {activeIndex === idx ? <FaMinus /> : <FaPlus />}
                         {pos.title}
                       </button>
-                      <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                      >
-                        {activeIndex === idx && (
-                          <div className="border border-[#084032]  p-4 bg-white">
-                            <p className="mb-2 text-[12px] lg:text-[16px] text-black font-montserrat">{pos.description}</p>
-                            
-                          </div>
-                        )}
-                      </div>
+                     <div
+  className={`overflow-hidden transition-all duration-500 ease-in-out border border-[#084032] bg-white ${
+    activeIndex === idx ? 'max-h-[200px] opacity-100 p-4' : 'max-h-0 opacity-0 p-0'
+  }`}
+  style={{ transitionProperty: 'max-height, opacity, padding' }}
+>
+  <div className="transition-opacity duration-500 ease-in-out">
+    <p className="text-[12px] lg:text-[16px] text-black font-montserrat">
+      {pos.description}
+    </p>
+  </div>
+</div>
+
                     </div>
                   ))}
                 </div>

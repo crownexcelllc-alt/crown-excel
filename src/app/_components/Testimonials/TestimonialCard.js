@@ -27,7 +27,7 @@ const TestimonialCard = (props) => {
 
     return (
         <div
-            className={`card flex flex-col justify-around w-[300px] h-[330px] md:w-[300px] md:h-[321px] lg:w-[333px] lg:h-[321px] bg-white rounded lg:rounded-[30px] pt-[30px] pl-[20px] pr-[20px] transition-all duration-300 ${popped ? ' -translate-y-3' : ''} ${showShadow ? ' shadow-2xl' : ''}`}
+            className={`card mx-10 flex flex-col justify-around w-full h-[330px] md:w-[400px] md:h-[321px] lg:w-[400px] lg:h-[321px] bg-white rounded lg:rounded-[30px] pt-[30px] pl-[20px] pr-[20px] transition-all duration-300 ${popped ? ' -translate-y-3' : ''} ${showShadow ? ' shadow-2xl' : ''}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >

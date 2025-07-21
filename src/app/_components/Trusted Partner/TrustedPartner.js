@@ -36,7 +36,7 @@ const TrustedPartner = () => {
             <div className="small-top flex items-end justify-between w-full gap-2" style={{padding: '20px'}}>
                 <div className="sm-top-left flex flex-col gap-3 columns-1 w-[50%] md:mb-0">
                     <h1 className='text-[22px] md:text-[58px] font-bold leading-[22px] md:leading-[58px]'>Your Trusted Partner for Premium Tech Solutions</h1>
-                    <p className='text-[12px] md:text-[16px] font-extralight leading-[20px]'>With over 15 years of excellence and 17,000 satisfied customers, Crown Excel delivers top-tier technology solutions for both businesses and individuals.</p>
+                    <p className='text-[12px] md:text-[16px]  leading-[20px]'>With over 15 years of excellence and 17,000 satisfied customers, Crown Excel delivers top-tier technology solutions for both businesses and individuals.</p>
                 </div>
                 <div className="sm-top-right gap-3 flex flex-col columns-1 w-[50%]">
                     <Image className='w-[185px] h-[123px] md:w-full md:h-[300px] md:rounded-none rounded-[10px]' width={185} alt='' height={123} src={ImgOne}/>
@@ -44,7 +44,7 @@ const TrustedPartner = () => {
                 </div>
             </div>
             <div className="small-bottom" style={{padding: '0px 20px 20px 20px'}}>
-                <p className='text-[12px] md:text-[16px] font-extralight leading-[20px]'>From premium laptops and gaming systems to cutting-edge hardware, we offer reliable, innovative products backed by exceptional service. Our mission is to provide the latest technology at unbeatable rates, ensuring top performance and value with every purchase.
+                <p className='text-[12px] md:text-[16px]  leading-[20px]'>From premium laptops and gaming systems to cutting-edge hardware, we offer reliable, innovative products backed by exceptional service. Our mission is to provide the latest technology at unbeatable rates, ensuring top performance and value with every purchase.
                     <br />
                     <br />
                     Whether you’re upgrading office equipment or building a custom gaming rig, Crown Excel is your trusted partner for quality, performance, and satisfaction.

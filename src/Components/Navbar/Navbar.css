@@ -1,3 +1,15 @@
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+ul.hide-scrollbar {
+  scroll-behavior: smooth;
+}
+
 .navbar{
     display: flex;
     align-items: center;
@@ -97,7 +109,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: start;
-    padding: 10px 30px;
+    padding: 10px 15px;
     /* width: 100%; */
     border-bottom: none !important;
     transform: none !important;
