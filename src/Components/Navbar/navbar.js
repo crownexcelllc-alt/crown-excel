@@ -49,19 +49,19 @@ function Navbar() {
 
     {
       label: 'Services',
-      href: '/services',
+      href: '/our-services',
       icon: <FaSortDown className='icon' />,
       hasDropdown: true,
       dropdown: [
 
-        { label: 'Networking', href: '/services/networking' },
-        { label: 'RMA Facility', href: '/services/rma' },
-        { label: 'Managed IT', href: '/services/managed-it' },
-        { label: 'IT Consultancy', href: '/services/it-consultancy' },
-        { label: 'Hardware AMC', href: '/services/hardware-amc' },
-        { label: 'Software AMC', href: '/services/software-amc' },
-        { label: 'Hardware Repair', href: '/services/hardware-repair' },
-        { label: 'Server Support', href: '/services/server-support' },
+        { label: 'Networking', href: '/our-services/networking' },
+        { label: 'RMA Facility', href: '/our-services/rma' },
+        { label: 'Managed IT', href: '/our-services/managed-it' },
+        { label: 'IT Consultancy', href: '/our-services/it-consultancy' },
+        { label: 'Hardware AMC', href: '/our-services/hardware-amc' },
+        { label: 'Software AMC', href: '/our-services/software-amc' },
+        { label: 'Hardware Repair', href: '/our-services/hardware-repair' },
+        { label: 'Server Support', href: '/our-services/server-support' },
       ],
     },
 
