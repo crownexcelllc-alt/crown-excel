@@ -55,7 +55,7 @@ function Navbar() {
       dropdown: [
 
         { label: 'Networking', href: '/our-services/networking' },
-        { label: 'RMA Facility', href: '/our-services/rma' },
+        { label: 'RMA Facility', href: '/our-services/rma-facility' },
         { label: 'Managed IT', href: '/our-services/managed-it' },
         { label: 'IT Consultancy', href: '/our-services/it-consultancy' },
         { label: 'Hardware AMC', href: '/our-services/hardware-amc' },
