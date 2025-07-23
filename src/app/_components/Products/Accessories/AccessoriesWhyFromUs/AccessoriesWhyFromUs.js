@@ -8,7 +8,9 @@ const AccessoriesWhyFromUs = () => {
       }}>
       <div className="fromus-left w-full lg:w-[607px]">
         <h1 className='text-[30px] lg:text-[45px] font-[600] leading-[35px] lg:leading-[60px] font-montserrat'>Why Buy <br /> <span className='text-[#0f7459] font-[900]'>Accessories</span> From Us?</h1>
-        <p className='text-[16px] mt-5 w-full lg:w-[425px] leading-[27px]'>Our accessories are specifically curated to enhance <br/> your devices, ensuring seamless integration for <br/> users like professionals, students, or gamers. Here’s <br/> why choosing accessories from Crown Excel is your <br/> best decision:</p>
+        <p className='text-[16px] mt-5 w-full lg:w-[425px] leading-[27px]'>Purchasing accessories can be a challenging task—finding the right, compatible products with reliable customer support is not always easy.
+
+That’s why Crown Excel is the ideal destination for all your hardware and accessory needs. We understand the value of your time, productivity, and the importance of dependable after-sales support. Our goal is to ensure you have everything you need to stay focused, efficient, and exactly where you want to be.</p>
       </div>
       <div className="fromus flex flex-col gap-5 mt-5 lg:mt-0">
         <div className="fromus-right-text text-black w-full h-auto lg:w-[607px] lg:h-[173px] bg-[#f1f1f1] rounded-[20px] flex flex-col  text-left justify-center gap-3 hover:bg-yellow-300 transition px-3 py-5  lg:pt-6 lg:px-10 lg:pb-5" >
