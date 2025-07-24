@@ -8,7 +8,7 @@ const OurManagementProcess = () => {
       <h1 className='text-black text-[30px] md:text-[40px] lg:text-[50px] leading-[30px] lg:leading-[65px] text-center tracking-[0.1px] font-[700] mt-10 lg:mt-0'>
         What Sets Us Apart from <span className='text-[#0d5c47]'>Process</span>
       </h1>
-      <div className="cards-divs flex flex-col md:grid md:grid-cols-2 lg:flex-row justify-center gap-5 mt-10">
+      <div className="cards-divs flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 justify-center gap-5 mt-10">
         {/* Card 1 */}
         <motion.div
           initial={{ scale: 0 }}
