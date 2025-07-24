@@ -65,8 +65,8 @@ function Navbar() {
       ],
     },
 
-    { label: 'Our Management', href: '/management' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Our Management', href: '/our-management' },
+    { label: 'Contact Us', href: '/contact-us' },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState(null);

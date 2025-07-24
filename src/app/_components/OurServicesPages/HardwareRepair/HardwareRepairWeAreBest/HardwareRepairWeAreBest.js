@@ -4,7 +4,7 @@ import Background from '../../../../../Components/Images/ProductsBrandBackground
 import Semitop from '../../../../../Components/Images/semicirlcetop.png' 
 import Semibottom from '../../../../../Components/Images/semicirlcebottom.png' 
 
-const SoftwareWeAreBest = () => {
+const HardwareRepairWeAreBest = () => {
     return (
         <div className='flex flex-col items-center mt-20 lg:mt-0'>
             <div className="heading-text relative my-5 mb-20 mx-5 md:mx-0">
@@ -26,7 +26,7 @@ const SoftwareWeAreBest = () => {
 
 
                     <div className="text-area-firwall  p-[20px] md:p-[50px]  text-center  ">
-                        Crown Excel’s Software AMC services combine technical expertise with proactive care to ensure your business applications perform flawlessly. Our team of certified professionals goes above and beyond to maintain, secure, and optimize your software systems. From bug fixes to version upgrades, we deliver consistent quality, helping your business stay ahead in a fast-changing digital landscape. With Crown Excel, your software is in trusted hands.
+                       Crown Excel’s Hardware Repair Services are backed by a team of experienced technicians dedicated to delivering exceptional results. Our comprehensive diagnostic process ensures accurate identification of issues, while our commitment to quality guarantees reliable repairs. With quick turnaround times, on-site support, and genuine spare parts, we provide hassle-free solutions to keep your business hardware functioning at its best.
                     </div>
 
                 </div>
@@ -36,4 +36,4 @@ const SoftwareWeAreBest = () => {
     )
 }
 
-export default SoftwareWeAreBest
+export default HardwareRepairWeAreBest

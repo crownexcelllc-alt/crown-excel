@@ -6,7 +6,7 @@ import Semibottom from '../../../../../Components/Images/semicirlcebottom.png'
 
 const HardwareWeAreBest = () => {
     return (
-        <div className='flex flex-col items-center mt-0'>
+        <div className='flex flex-col items-center mt-20 lg:mt-0'>
             <div className="heading-text relative my-5 mb-20 mx-5 md:mx-0">
                 <Image alt='' src={Semitop} width={122} height={61} className='absolute -top-15.25 -right-10 lg:-top-15.25 lg:-right-10'/>
                 <h1 className='bg-[#119472] rounded text-white text-[20px] md:text-[44px] lg:text-[44px] font-[700] font-montserrat px-10 py-2 md:px-[50px] md:py-[15px] lg:px-[50px] lg:py-[15px] h-[50px] md:h-[74px] lg:h-[74px] flex items-center justify-center'>How We Are Best</h1>

@@ -4,7 +4,7 @@ import Background from '../../../../../Components/Images/ProductsBrandBackground
 import Semitop from '../../../../../Components/Images/semicirlcetop.png' 
 import Semibottom from '../../../../../Components/Images/semicirlcebottom.png' 
 
-const SoftwareWeAreBest = () => {
+const ServerWeAreBest = () => {
     return (
         <div className='flex flex-col items-center mt-20 lg:mt-0'>
             <div className="heading-text relative my-5 mb-20 mx-5 md:mx-0">
@@ -26,7 +26,7 @@ const SoftwareWeAreBest = () => {
 
 
                     <div className="text-area-firwall  p-[20px] md:p-[50px]  text-center  ">
-                        Crown Excel’s Software AMC services combine technical expertise with proactive care to ensure your business applications perform flawlessly. Our team of certified professionals goes above and beyond to maintain, secure, and optimize your software systems. From bug fixes to version upgrades, we deliver consistent quality, helping your business stay ahead in a fast-changing digital landscape. With Crown Excel, your software is in trusted hands.
+                       Crown Excel’s Server Support Services stand out for their reliability, expertise, and customer-first approach. We combine cutting-edge tools with proven strategies to deliver seamless server management and support. Whether you need proactive monitoring, fast issue resolution, or scalable solutions, our team is here to ensure your servers operate at their best. With Crown Excel, your server infrastructure is in safe hands, so you can focus on driving your business forward
                     </div>
 
                 </div>
@@ -36,4 +36,4 @@ const SoftwareWeAreBest = () => {
     )
 }
 
-export default SoftwareWeAreBest
+export default ServerWeAreBest
