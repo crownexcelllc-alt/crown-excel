@@ -48,7 +48,7 @@ const KeyboardMouseBanner = () => {
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-3 top-75  absolute" />
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 top-50 absolute" />
             </div> */}
-            <div className="text relative flex flex-col items-center mb-4 leading-tight">
+            <div className="text text-center relative flex flex-col items-center mb-4 leading-tight">
               <Image src={Stars} width={20} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
               <h1 className="text-white font-montserrat  font-[700] text-[40px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
               <h1 className='text-[40px] font-montserrat text-center font-[700] text-[#147d61]'>KEYBOARD AND MOUSE BRANDS</h1>

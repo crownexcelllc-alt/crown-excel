@@ -46,7 +46,7 @@ const PhonesBanner = () => {
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-3 top-75  absolute" />
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 top-50 absolute" />
             </div> */}
-            <div className="text relative flex flex-col items-center mb-4 leading-tight">
+            <div className="text text-center relative flex flex-col items-center mb-4 leading-tight">
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
               <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
               <h1 className='text-[30px] font-montserrat font-[900] text-[#147d61]'>PHONE AND CCTV BRANDS</h1>

@@ -20,7 +20,7 @@ const products = [
 
 const LatestProduct = () => (
     <div className="mt-10 flex flex-col items-center">
-        <h1 className="text-[#147d61] text-center text-[24px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
+        <h1 className="text-[#147d61] text-center text-[24px] md:text-[60px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
         <div className="relative flex items-center justify-center mt-8 w-full">
             <Swiper
                 modules={[Navigation]}
@@ -34,7 +34,7 @@ const LatestProduct = () => (
                 allowTouchMove={true}
                 breakpoints={{
                     0: { slidesPerView: 1 },
-                    640: { slidesPerView: 1 },
+                    640: { slidesPerView: 2 },
                     900: { slidesPerView: 2 },
                     1200: { slidesPerView: 3 },
                 }}
@@ -42,7 +42,7 @@ const LatestProduct = () => (
             >
                 {products.map((product, idx) => (
                     <SwiperSlide key={idx}>
-                        <div className="min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
+                        <div className=" md:w-[400px] lg:min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
                             <Image
                                 src={product.Image}
                                 alt={product.title}
@@ -50,7 +50,7 @@ const LatestProduct = () => (
                                 height={400}
                                 className="rounded-lg object-contain mb-4 w-full"
                             />
-                            <h2 className="text-[30px] lg:text-[60px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
+                            <h2 className="text-[30px] md:text-[60px] lg:text-[60px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
                             <p className="text-gray-600 text-base text-center mt-2 text-[16px] leading-[27px]">{product.desc}</p>
                         </div>
                     </SwiperSlide>

@@ -55,7 +55,7 @@ const SwitchingLatestProduct = () => {
   return (
   <div className="w-full  overflow-x-hidden bg-white py-12">
     {/* Heading */}
-    <h1 className="text-center text-4xl md:text-[60px] leading-[60px] font-[800] text-[#16806b] uppercase font-montserrat mb-14">
+    <h1 className="text-center text-[24px] md:text-[60px] leading-[60px] font-[800] text-[#16806b] uppercase font-montserrat mb-14">
       Our Latest Product
     </h1>
 

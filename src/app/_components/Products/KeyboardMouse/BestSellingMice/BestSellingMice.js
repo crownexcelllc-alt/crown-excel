@@ -32,7 +32,7 @@ const carouselData = [
 const BestSellingMice = () => {
     return (
         <div className="w-full py-8 relative lg:mt-10">
-            <h1 className="text-center text-3xl md:text-[40px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-[800] text-[#16795e] mb-8">
+            <h1 className="text-center text-[24px] md:text-[40px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-[800] text-[#16795e] mb-8">
                 OUR BEST-SELLING MICE
             </h1>
 

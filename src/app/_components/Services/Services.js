@@ -35,9 +35,9 @@ const Services = () => {
             <p className="bg-[#e6eeff] text-green-900 px-4 py-1 rounded-full text-xs font-semibold tracking-wider mb-3 w-max shadow-sm">
               WHAT WE DO FOR YOU
             </p>
-            <div className="heading text-2xl md:text-4xl font-extrabold leading-tight text-white">
+            <div className="flex flex-col items-center md:items-start heading text-2xl md:text-4xl font-extrabold leading-tight text-white text-center md:text-start">
               <AnimatedText text="We can inspire and Offer" />
-              <AnimatedText text="Different Services"/>
+              <AnimatedText text="Different Services" />
             </div>
           </div>
           <button className="flex items-center justify-center gap-2 w-[150px] bg-white text-[#084032] font-semibold rounded-full px-6 py-3 shadow-lg hover:bg-[#e6eeff] transition">

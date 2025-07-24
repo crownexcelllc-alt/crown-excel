@@ -16,7 +16,7 @@ const AllinOneHeavyComputing = () => {
                             <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Experience stunning visuals and superior rendering with state-of-the-art graphics technology. Ideal for gamers, creators, and professionals seeking immersive and detailed displays.</p>
                         </div>
                     </div>
-                    <div className="heavycomputing-bottom-divs my-0 md:my-10 lg:my-0">
+                    <div className="heavycomputing-bottom-divs my-10 md:my-10 lg:my-0">
                         <Image alt='' src={ComputingImage} width={622} height={448} className='lg:w-[622px] lg:h-[448px] md:w-[599px] md:h-[432px]'/>
                     </div>
                     <div className="heavycomputing-bottom-divs flex flex-col md:flex-row lg:flex-row items-center justify-between w-full h-auto lg:h-[400px] px-2 lg:px-5 gap-30 lg:gap-50 mt-0 md:mt-10 lg:mt-0">

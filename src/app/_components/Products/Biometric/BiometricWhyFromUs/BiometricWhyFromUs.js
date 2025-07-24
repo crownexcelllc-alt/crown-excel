@@ -7,8 +7,8 @@ const BiometricWhyFromUs = () => {
         padding: '60px 15px 60px 15px'
       }}>
       <div className="fromus-left w-full lg:w-[607px]">
-        <h1 className='text-[30px] lg:text-[45px] font-[600] leading-[35px] lg:leading-[60px] font-montserrat'>Why Buy <br /> <span className='text-[#0f7459] font-[900]'>Biometrics Solutions</span> From Us?</h1>
-        <p className='text-[16px] mt-5 w-full lg:w-[425px] leading-[27px]'>Our biometric solutions are meticulously crafted to <br /> enhance security and streamline access control <br /> across diverse environments. Whether for <br /> businesses, educational institutions, or government <br /> facilities, our biometric devices ensure seamless <br /> integration and robust functionality. Here’s why <br /> choosing Crown Excel for your biometric needs is a <br /> smart decision:</p>
+        <h1 className='text-[30px] lg:text-[45px] font-[600] leading-[35px] lg:leading-[60px] font-montserrat'>Why Buy <br className='hidden md:block'/> <span className='text-[#0f7459] font-[900]'>Biometrics Solutions</span> From Us?</h1>
+        <p className='text-[16px] mt-5 w-full lg:w-[425px] leading-[27px]'>Our biometric solutions are meticulously crafted to <br className='hidden md:block'/> enhance security and streamline access control <br className='hidden md:block'/> across diverse environments. Whether for <br className='hidden md:block'/> businesses, educational institutions, or government <br className='hidden md:block'/> facilities, our biometric devices ensure seamless <br className='hidden md:block'/> integration and robust functionality. Here’s why <br className='hidden md:block'/> choosing Crown Excel for your biometric needs is a <br className='hidden md:block'/> smart decision:</p>
       </div>
       <div className="fromus flex flex-col gap-5 mt-5 lg:mt-0">
         <div className="fromus-right-text text-black w-full h-auto lg:w-[607px] lg:h-[173px] bg-[#f1f1f1] rounded-[20px] flex flex-col  text-left justify-center gap-3 hover:bg-yellow-300 transition px-3 py-5  lg:pt-6 lg:px-10 lg:pb-5" >

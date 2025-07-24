@@ -20,7 +20,7 @@ const products = [
 
 const KeyboardLatest = () => (
     <div className="mt-10 flex flex-col items-center">
-        <h1 className="text-[#147d61] text-center text-[50px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
+        <h1 className="text-[#147d61] text-center text-[26px] md:text-[50px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
         <div className="relative flex items-center justify-center mt-8 w-full">
             <Swiper
                 modules={[Navigation]}
@@ -42,7 +42,7 @@ const KeyboardLatest = () => (
             >
                 {products.map((product, idx) => (
                     <SwiperSlide key={idx}>
-                        <div className="min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
+                        <div className="w-full md:min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
                             <Image
                                 src={product.Image}
                                 alt={product.title}

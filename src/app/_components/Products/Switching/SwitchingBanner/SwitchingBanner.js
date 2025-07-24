@@ -60,8 +60,8 @@ const SwitchingBanner = () => {
           </div>
         </div>
         <div className="bottom flex mt-10 justify-between w-full px-10">
-          <Image alt='' src={LaptopImage1} width={100} height={100}/>
-          <Image alt='' src={LaptopImage2} width={100} height={100}/>
+          <Image alt='' src={LaptopImage1} width={125} height={100}/>
+          <Image alt='' src={LaptopImage2} width={125} height={100}/>
         </div>
       </div>
     </div>

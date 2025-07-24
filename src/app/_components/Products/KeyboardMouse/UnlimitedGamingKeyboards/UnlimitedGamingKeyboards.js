@@ -20,8 +20,8 @@ const UnlimitedGamingKeyboards = () => {
         </div>
       </div>
       <div className="gaming-right flex flex-row md:flex-col md:items-center md:justify-center md:gap-20 lg:flex-col gap-0 lg:gap-10">
-        <Image src={GamingLaptop1} alt="Gaming Laptop 1" width={400} height={300} className="object-cover rounded-[30px] w-[180px] md:w-[467px] lg:w-[467px] h-full" />
-        <Image src={GamingLaptop2} alt="Gaming Laptop 2" width={400} height={300} className="object-cover rounded-[30px] w-[180px] md:w-[467px] lg:w-[467px] h-full mt-0 lg:mt-4" />
+        <Image src={GamingLaptop1} alt="Gaming Laptop 1" width={400} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[467px] lg:w-[467px] h-full" />
+        <Image src={GamingLaptop2} alt="Gaming Laptop 2" width={400} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[467px] lg:w-[467px] h-full mt-0 lg:mt-4" />
       </div>
     </div>
   )
