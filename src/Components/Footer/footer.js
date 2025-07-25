@@ -33,9 +33,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#1a4d42] text-white">
+    <footer className="bg-[#084032] text-white">
       {/* Top Buttons Section */}
-      <div className="px-4 md:px-6 py-8 md:py-12">
+      <div className="px-4 md:px-6 py-4 md:py-12">
         <div className="max-w-6xl mx-auto">
           {/* Desktop View */}
           <div className="hidden lg:grid lg:grid-cols-3 gap-8 items-center relative">
@@ -45,26 +45,21 @@ const Footer = () => {
                 {index < 2 && (
                   <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 w-0.5 h-55 bg-[#4ade80]"></div>
                 )}
-                
-                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+
+                <div className="w-[103px] h-[103px] mx-auto mb-4 flex items-center justify-center">
                   <Image
                     src={item.imgSrc}
                     alt={item.title}
-                    width={80}
-                    height={80}
+                    width={103}
+                    height={103}
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-white leading-tight">
-                  {item.title.split(' ').map((word, i) => (
-                    <React.Fragment key={i}>
-                      {word}
-                      {i < item.title.split(' ').length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
+                <h3 className="text-[19px] font-[600] mb-4 text-white leading-[19px] mt-10">
+                  {item.title}
                 </h3>
                 <Link href={item.href}>
-                  <button className="px-6 py-2 text-white text-sm font-medium rounded-full transition duration-300 border border-green-400 bg-gradient-to-b from-[#6ee7b7] to-[#22c55e] hover:brightness-110 shadow-md">
+                  <button className="px-6 py-2 w-[132px] h-[40px] text-white text-[15px] font-montserrat rounded-full transition duration-300 border border-[#61ce70] hover:brightness-110 shadow-md" style={{backgroundImage: 'linear-gradient(180deg, #084032 0%, #61ce70 100%)'}}>
                     Apply Now
                   </button>
                 </Link>
@@ -73,31 +68,36 @@ const Footer = () => {
           </div>
 
           {/* Mobile & Tablet View */}
-          <div className="lg:hidden space-y-6">
+          <div className="w-full bg-[#084032]  py-0 flex lg:hidden justify-center gap-0">
             {topButtons.map((item, index) => (
-              <div key={index} className="flex items-center bg-[#003b2f] rounded-lg p-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 mr-4">
+              <div
+                key={index}
+                className={`flex flex-col px-5 items-center justify-center  bg-transparent  py-4 w-full h-[330px] ${index !== topButtons.length - 1 ? 'border-r border-[#61ce70]' : ''
+                  }`}
+              >
+                <div className="w-20 h-20 mb-4 flex items-center justify-center">
                   <Image
                     src={item.imgSrc}
                     alt={item.title}
                     width={64}
                     height={64}
-                    className="object-contain w-full h-full"
+                    className="object-contain"
                   />
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-base md:text-lg font-semibold text-white mb-2">
-                    {item.title}
-                  </h3>
-                </div>
+
+                <h3 className="text-white text-[14px] md:text-[18px] text-center font-semibold leading-snug mb-6">
+                  {item.title}
+                </h3>
+
                 <Link href={item.href}>
-                  <button className="px-4 py-2 text-white text-sm font-medium rounded-full transition duration-300 border border-green-400 bg-gradient-to-b from-[#6ee7b7] to-[#22c55e] hover:brightness-110 shadow-md flex-shrink-0">
+                  <button className="w-[80px] h-[30px] md:w-[100px] border border-[#61ce70] text-white text-[12px] font-medium rounded-md transition duration-300 hover:brightness-110 shadow-md" style={{backgroundImage: 'linear-gradient(180deg, #084032 0%, #61ce70 100%)'}}>
                     Apply Now
                   </button>
                 </Link>
               </div>
             ))}
           </div>
+
         </div>
       </div>
 
@@ -276,7 +276,7 @@ const Footer = () => {
                 Address: Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai
               </p>
               <p className="mb-4 text-gray-300 text-sm">Phone: +971 4-354 0566</p>
-              
+
               {/* Email Subscription */}
               <div className="relative mb-4">
                 <input
