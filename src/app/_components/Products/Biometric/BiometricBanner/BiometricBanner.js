@@ -55,11 +55,11 @@ const BiometricBanner = () => {
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
-              Crown Excel offers a comprehensive selection of premium biometric systems from industry-leading brands. Our range includes advanced fingerprint scanners, facial recognition devices, and smart access control solutions.
+              Crown Excel offers a comprehensive selection of premium biometric systems <br className='hidden md:block'/> from industry-leading brands. Our range includes advanced fingerprint scanners,  <br className='hidden md:block'/> facial recognition devices,  and smart access control solutions.
             </p>
           </div>
         </div>
-        <div className="bottom flex mt-10 justify-between w-full px-10">
+        <div className="bottom flex mt-10 justify-center gap-10 w-full px-10">
           <Image alt='' src={LaptopImage1} width={150} height={100}/>
           <Image alt='' src={LaptopImage2} width={150} height={100}/>
         </div>

@@ -17,7 +17,7 @@ const RoutersSeamlessConnectivity = () => {
                         </div>
                     </div>
                     <div className="heavycomputing-bottom-divs my-10 md:my-0 lg:my-0">
-                        <Image alt='' src={ComputingImage} width={622} height={448} className='lg:w-[622px] lg:h-[448px] md:w-[599px] md:h-[432px]'/>
+                        <Image alt='' src={ComputingImage} width={622} height={448} className='lg:w-[622px] lg:h-[448px] md:w-[500px] md:h-[350px]'/>
                     </div>
                     <div className="heavycomputing-bottom-divs flex flex-col md:flex-row lg:flex-row items-center justify-between w-full h-auto lg:h-[400px] px-2 lg:px-5 gap-20 lg:gap-50 mt-0 md:mt-10 lg:mt-0">
                         <div className="right-part text-black bg-[#e9e9e9]  rounded-[20px] p-[20px] lg:p-[32px]" >

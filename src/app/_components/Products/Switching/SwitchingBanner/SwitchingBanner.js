@@ -55,13 +55,13 @@ const SwitchingBanner = () => {
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
-              Crown Excel offers a wide range of network switches designed to provide seamless connectivity. From small businesses to large enterprises, our switches ensure high performance, reliability, and scalability for every networking need.
+              Crown Excel offers a wide range of network switches designed to provide seamless connectivity. <br className='hidden md:block'/> From small businesses to large enterprises, our switches ensure high performance, reliability,<br className='hidden md:block'/> and scalability for every networking need.
             </p>
           </div>
         </div>
-        <div className="bottom flex mt-10 justify-between w-full px-10">
-          <Image alt='' src={LaptopImage1} width={125} height={100}/>
-          <Image alt='' src={LaptopImage2} width={125} height={100}/>
+        <div className="bottom flex mt-10 justify-center gap-10 w-full px-10">
+          <Image alt='' src={LaptopImage1} width={125} height={100} className='md:w-[200px]'/>
+          <Image alt='' src={LaptopImage2} width={125} height={100} className='md:w-[200px]'/>
         </div>
       </div>
     </div>

@@ -55,11 +55,11 @@ const AccessoriesBanner = () => {
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
-              Crown Excel brings you a wide selection of premium accessories from top brands like Logitech, HP, Lenovo, and more. Our range includes everything you need: ergonomic designs for comfort, high-performance options for professionals, and stylish gadgets for everyday use.
+              Crown Excel brings you a wide selection of premium accessories from <br className='hidden md:block'/> top brands like Logitech, HP, Lenovo, and more. Our range includes everything you need: ergonomic designs <br className='hidden md:block'/> for comfort, high-performance options for professionals, and stylish gadgets for everyday use.
             </p>
           </div>
         </div>
-        <div className="bottom flex mt-10 justify-between w-full px-10">
+        <div className="bottom flex mt-10 justify-center gap-10 w-full px-10">
           <Image alt='' src={LaptopImage1} width={150} height={100}/>
           <Image alt='' src={LaptopImage2} width={150} height={100}/>
         </div>

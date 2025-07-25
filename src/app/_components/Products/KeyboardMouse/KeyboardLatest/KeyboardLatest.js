@@ -34,7 +34,7 @@ const KeyboardLatest = () => (
                 allowTouchMove={true}
                 breakpoints={{
                     0: { slidesPerView: 1 },
-                    640: { slidesPerView: 1 },
+                    640: { slidesPerView: 2 },
                     900: { slidesPerView: 2 },
                     1200: { slidesPerView: 3 },
                 }}
@@ -42,7 +42,7 @@ const KeyboardLatest = () => (
             >
                 {products.map((product, idx) => (
                     <SwiperSlide key={idx}>
-                        <div className="w-full md:min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
+                        <div className="w-full md:w-[300px] lg:min-w-[400px] max-w-full bg-white rounded-xl  flex-shrink-0 flex flex-col items-center p-4 transition-transform duration-300 mx-auto">
                             <Image
                                 src={product.Image}
                                 alt={product.title}

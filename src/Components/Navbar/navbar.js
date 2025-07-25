@@ -17,13 +17,18 @@ function Navbar() {
     { label: 'Home', href: '/' },
 
     {
-      label: 'About Us',
-      href: '/about-us',
+      label: 'Company Us',
+      href: '/company-us',
       icon: <FaSortDown className='icon' />,
       hasDropdown: true,
       dropdown: [
-        { label: 'Career', href: '/about-us/career' },
-        { label: 'FAQ', href: '/about-us/faq' },
+        { label: 'About Us', href: '/company-us/about-us' },
+        { label: 'Career', href: '/company-us/career' },
+        { label: 'FAQ', href: '/company-us/faq' },
+        { label: 'Company History', href: '/company-us/company-history' },
+        { label: 'Leader Team', href: '/company-us/leader-team' },
+        { label: 'Director Message', href: '/company-us/director-message' },
+        { label: 'Events', href: '/company-us/events' },
       ],
     },
 

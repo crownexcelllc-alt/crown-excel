@@ -42,7 +42,7 @@ const PhonesBrand = () => {
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] px-4 md:px-20 py-8 md:py-0 gap-8 md:gap-20">
         {/* Heading */}
         <div className="flex-1 flex items-center md:items-start justify-center md:justify-start w-full">
-          <h1 className="text-[2.2rem] md:text-[2.5rem] text-[#ffd900] font-bold uppercase tracking-wide text-center md:text-left leading-tight drop-shadow-lg">
+          <h1 className="text-[2.2rem] md:text-[2rem] text-[#ffd900] font-bold uppercase tracking-wide text-center md:text-left leading-tight drop-shadow-lg">
             BRANDS WE DEAL
           </h1>
         </div>

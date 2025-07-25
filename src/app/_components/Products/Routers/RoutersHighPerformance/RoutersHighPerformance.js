@@ -4,7 +4,7 @@ import Comma from '../../../../../Components/Images/comma.png'
 import Image from 'next/image'
 const RoutersHighPerformance = () => {
   return (
-      <div className='flex md:flex-row lg:flex-row flex-col items-center  w-full h-auto px-5 mt-20'>
+      <div className='flex md:flex-row lg:flex-row flex-col items-center gap-5  w-full h-auto px-5 mt-20'>
         <div className="highperformance-left basis-[65%]">
           <Image alt='' src={HighPerformanceImage} width={727} height={416}/>
         </div>

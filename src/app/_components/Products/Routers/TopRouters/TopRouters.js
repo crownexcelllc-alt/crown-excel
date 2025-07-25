@@ -28,7 +28,7 @@ const TopRouters = () => {
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Business.map((item, i) => (
-                            <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto lg:h-[582px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
+                            <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto md:h-[550px] lg:h-[582px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
                                 <Image alt='' className='-mt-25' src={item.Image} width={251} height={251} />
                                 <h2 className="text-[20px] lg:text-[26px] mt-10 text-center font-[800] leading-[34px]   font-montserrat text-black uppercase mb-3">
                                     {item.title}
@@ -47,7 +47,7 @@ const TopRouters = () => {
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Individuals.map((item, i) => (
-                            <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto lg:h-[582px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
+                            <div className="card-1 bg-[#ececec] flex flex-col items-center w-full lg:w-[311px] h-auto md:h-[550px] lg:h-[582px] rounded-[30px]" style={{ padding: '30px' }} key={i}>
                                 <Image alt='' className='-mt-25' src={item.Image} width={251} height={251} />
                                 <h2 className="text-[20px] lg:text-[26px] mt-10 text-center font-[800] leading-[34px]   font-montserrat text-black uppercase mb-3">
                                     {item.title}

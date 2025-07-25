@@ -55,11 +55,11 @@ const PhonesBanner = () => {
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
-              Crown Excel offers a comprehensive selection of cutting-edge phones and CCTV systems from leading brands like Samsung, Hikvision, Apple, and Dahua. Our collection features the latest in communication technology and surveillance solutions tailored to suit your personal, professional, or business requirements.
+              Crown Excel offers a comprehensive selection of cutting-edge phones <br className='md:block hidden'/> and CCTV systems from leading brands like Samsung, Hikvision, Apple, and Dahua. <br className='md:block hidden'/> Our collection features the latest in communication technology and surveillance solutions <br className='md:block hidden'/> tailored to suit your personal, professional, or business requirements.
             </p>
           </div>
         </div>
-        <div className="bottom flex mt-10 justify-between w-full px-10">
+        <div className="bottom flex mt-10 justify-center gap-10 w-full px-10">
           <Image alt='' src={LaptopImage1} width={150} height={100}/>
           <Image alt='' src={LaptopImage2} width={150} height={100}/>
         </div>

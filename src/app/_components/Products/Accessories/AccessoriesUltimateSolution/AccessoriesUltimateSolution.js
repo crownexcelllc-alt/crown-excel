@@ -17,7 +17,7 @@ const AccessoriesUltimateSolution = () => {
                     </div>
                 </div>
                 <div className="heavycomputing-bottom-divs my-1">
-                    <Image alt='' src={ComputingImage} width={248} height={248} className='lg:w-[248px] lg:h-[248px] md:w-[406px] md:h-[137px]'/>
+                    <Image alt='' src={ComputingImage} width={248} height={248} className='lg:w-[248px] lg:h-[248px] md:w-[406px] md:h-[200px]'/>
                 </div>
                 <div className="heavycomputing-bottom-divs flex flex-col md:flex-row lg:flex-row items-center justify-between w-full h-auto lg:h-[400px] px-2 lg:px-5 gap-30 lg:gap-50 mt-0 md:mt-10 lg:mt-0">
                     <div className="right-part text-black bg-[#e9e9e9]  rounded-[20px] p-[20px] lg:p-[32px]" >

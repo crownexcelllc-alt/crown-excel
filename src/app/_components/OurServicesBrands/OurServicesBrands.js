@@ -12,7 +12,7 @@ import Image from 'next/image'
 import ServicesBrandImage from '../../../Components/Images/servicesbrands.png'
 const OurServicesBrands = () => {
   return (
-    <div className='flex flex-col pt-20 lg:pt-0 lg:flex-row items-center justify-center bg-[#cac5a9]'>
+    <div className='flex flex-col pt-20 lg:pt-0 md:flex-row md:gap-20 lg:gap-0 lg:flex-row items-center justify-center bg-[#cac5a9]'>
       <div className="image-container">
         <Image alt='' src={ServicesBrandImage} width={245} height={428} className='w-[150px] lg:w-[245px] lg:h-[428px]'/>
       </div>

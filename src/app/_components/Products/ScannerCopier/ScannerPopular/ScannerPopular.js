@@ -23,11 +23,11 @@ const ScannerPopular = () => {
         <div className='mt-5 lg:mt-10'>
             <h1 className='bg-[#ffd900] font-[700] flex items-center justify-center w-full h-[90px] text-center text-black text-[24px] lg:text-[50px] font-montserrat uppercase'>Popular all-in-one solutions</h1>
             <div className="for- mt-5 lg:mt-10">
-                <div className="text-button flex lg:flex-row flex-col items-center justify-between px-20 py-7">
+                <div className="text-button flex md:flex-row lg:flex-row flex-col items-center justify-between px-20 py-7">
                     <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Businesses:</h1>
                     <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
                 </div>
-                <div className="products flex flex-col lg:flex-row items-center justify-between px-20 py-7" style={{
+                <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between lg:px-20 py-7" style={{
                     background: 'linear-gradient(to left, #000000 0%, #1a1a1a 50%, #2b2b2b 100%)'
                 }}
                 >
@@ -45,7 +45,7 @@ const ScannerPopular = () => {
                     <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Individuals:</h1>
                     <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
                 </div>
-                <div className="products flex flex-col lg:flex-row items-center justify-between px-20 py-7" style={{
+                <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between lg:px-20 py-7" style={{
                     background: 'linear-gradient(to left, #000000 0%, #1a1a1a 50%, #2b2b2b 100%)'
                 }}
                 >

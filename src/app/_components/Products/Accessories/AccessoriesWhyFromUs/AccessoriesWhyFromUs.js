@@ -2,7 +2,7 @@ import React from 'react'
 
 const AccessoriesWhyFromUs = () => {
   return (
-    <div className='flex lg:flex-row flex-col items-center justify-between mt-10 px-20 py-10 bg-[#f1f1f1] ' style={{
+    <div className='flex lg:flex-row md:flex-row flex-col items-center md:gap-10 lg:gap-0 justify-between mt-10 px-20 py-10 bg-[#f1f1f1] ' style={{
       background: 'linear-gradient(135deg, #3d3f3f 30%, #232323 100%)',
       padding: '60px 15px 60px 15px'
     }}>

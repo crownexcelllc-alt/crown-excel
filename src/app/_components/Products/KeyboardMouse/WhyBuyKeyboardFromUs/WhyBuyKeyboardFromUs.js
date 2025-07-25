@@ -2,12 +2,12 @@ import React from 'react'
 
 const WhyBuyKeyboardFromUs = () => {
   return (
-    <div className='flex lg:flex-row flex-col items-center justify-between mt-10 px-20 py-10 bg-[#f1f1f1] ' style={{
+    <div className='flex md:flex-row lg:flex-row flex-col items-center justify-between mt-10 px-20 py-10 bg-[#f1f1f1] ' style={{
         background: 'linear-gradient(135deg, #3d3f3f 30%, #232323 100%)',
         padding: '60px 15px 60px 15px'
       }}>
       <div className="fromus-left w-full lg:w-[607px]">
-        <h1 className='text-[30px] lg:text-[45px] font-[600] leading-[35px] lg:leading-[60px] font-montserrat'>Why Buy <br className='hidden md:block'/> <span className='text-[#0f7459] font-[900]'>Keyboards and Mice</span> From <br className='hidden md:block'/> Us?</h1>
+        <h1 className='text-[30px] lg:text-[45px] font-[600] leading-[35px] lg:leading-[60px] font-montserrat'>Why Buy <br className='hidden md:block'/> <span className='text-[#0f7459] font-[900]'>Keyboards and Mice</span> From <br className='hidden lg:block'/> Us?</h1>
         <p className='text-[16px] mt-5 w-full lg:w-[425px] leading-[27px]'>Our keyboards and mice are carefully selected to <br className='hidden md:block'/> cater to a variety of users, whether for professional <br className='hidden md:block'/> productivity, gaming, or everyday tasks. Here’s why <br className='hidden md:block'/> choosing keyboards and mice from Crown Excel is <br className='hidden md:block'/> your best option:</p>
       </div>
       <div className="fromus flex flex-col gap-5 mt-5 lg:mt-0">

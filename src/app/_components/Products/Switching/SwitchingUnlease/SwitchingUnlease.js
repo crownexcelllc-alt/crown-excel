@@ -11,13 +11,13 @@ const SwitchingUnlease = () => {
       <div className="info flex md:flex-row lg:flex-row flex-col items-center  just-between w-full h-auto lg:h-[400px] mt-20" style={{borderRadius: '40px 0px 40px 0px'}}>
         <div className="info-left">
           <div className="heading px-5 py-2 rounded-[20px]" style={{background: 'linear-gradient(90deg, #ffd900 0%, #FFFFFF 31%)'}}>
-            <h1 className='text-black text-[20px] leading-[25px] md:text-[50px] lg:text-[50px] font-[800] md:leading-[65px] lg:leading-[65px] tracking-[2px]'>GET MORE WITH <br /> EFFICIENT SWITCHING SOLUTIONS</h1>
+            <h1 className='text-black text-[20px] leading-[25px] md:text-[40px] lg:text-[50px] font-[800] md:leading-[44px] lg:leading-[65px] tracking-[2px]'>GET MORE WITH <br className='block md:hidden lg:block'/> EFFICIENT SWITCHING SOLUTIONS</h1>
           </div>
-          <p className='font-montserrat text-[#687799] mt-5 text-[16px] lg:text-[16px] leading-[27px]'>Network switches from top brands like Cisco, Netgear, and TP-Link deliver unparalleled efficiency <br /> and scalability. Whether for home networking or enterprise-grade solutions, these switches <br /> ensure seamless data transfer, optimized connectivity, and reliable performance to meet all your <br /> networking needs.</p>
+          <p className='font-montserrat text-[#687799] mt-5 text-[16px] lg:text-[16px] leading-[27px]'>Network switches from top brands like Cisco, Netgear, and TP-Link deliver unparalleled efficiency <br className='block md:hidden lg:block'/> and scalability. Whether for home networking or enterprise-grade solutions, these switches <br className='block md:hidden lg:block'/> ensure seamless data transfer, optimized connectivity, and reliable performance to meet all your <br className='block md:hidden lg:block'/> networking needs.</p>
         </div>
         <div className="info-right relative mt-5 lg:mt-0 flex items-center justify-center">
           <div className="Background z-0">
-            <Image alt='' src={BackgroundImage} width={550} height={600}/>
+            <Image alt='' src={BackgroundImage} width={550} height={600} className=' md:w-[800px] lg:w-[550px]'/>
           </div>
           <div className="computer absolute lg:absolute z-10">
             <Image alt='' src={Computers} width={415} height={300} className='z-10' />

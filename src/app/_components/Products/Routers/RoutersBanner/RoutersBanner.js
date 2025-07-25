@@ -55,13 +55,13 @@ const RoutersBanner = () => {
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
-              Crown Excel has the newest models of laptops from Dell, HP, Lenovo, and others. We have specifically what you need: business-grade performance, sleek designs for everyone, or high-powered machines for gaming and creative tasks.
+              Crown Excel has the newest models of laptops from Dell, HP, Lenovo, and others. <br className='hidden md:block'/> We have specifically what you need: business-grade performance, sleek designs for everyone,  <br className='hidden md:block'/> or high-powered machines for gaming and creative tasks.
             </p>
           </div>
         </div>
-        <div className="bottom flex mt-10 justify-between w-full px-10">
-          <Image alt='' src={LaptopImage1} width={100} height={100}/>
-          <Image alt='' src={LaptopImage2} width={100} height={100}/>
+        <div className="bottom flex mt-5 justify-center gap-10 w-full px-10">
+          <Image alt='' src={LaptopImage1} width={150} height={100}/>
+          <Image alt='' src={LaptopImage2} width={150} height={100}/>
         </div>
       </div>
     </div>

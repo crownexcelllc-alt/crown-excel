@@ -32,7 +32,7 @@ const carouselData = [
 const BestSellingPrinters = () => {
     return (
         <div className="w-full py-8 relative">
-            <h1 className="text-center text-3xl lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
+            <h1 className="text-center text-3xl md:text-[50px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
                 OUR BEST-SELLING PRINTERS
             </h1>
 
@@ -88,7 +88,7 @@ const BestSellingPrinters = () => {
                                         alt={item.title}
                                         width={454}
                                         height={550}
-                                        className="rounded-lg object-contain"
+                                        className="rounded-lg object-contain md:w-[300px] lg:w-[454px]"
                                     />
                                 </div>
                             </div>

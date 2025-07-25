@@ -16,8 +16,8 @@ const UltimatePhones = () => {
                         <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Experience effortless integration with our phones and CCTV systems, engineered for universal compatibility. Whether for professional environments or personal use, these devices ensure outstanding performance and flexibility, adapting to your unique needs.</p>
                     </div>
                 </div>
-                <div className="heavycomputing-bottom-divs my-20 md:my-1">
-                    <Image alt='' src={ComputingImage} width={622} height={326} className='lg:w-[622px] rounded-[30px] lg:h-[326px] md:w-[406px] md:h-[137px]'/>
+                <div className="heavycomputing-bottom-divs my-20 md:my-10">
+                    <Image alt='' src={ComputingImage} width={622} height={326} className='lg:w-[622px] rounded-[30px] lg:h-[326px] md:w-[406px] md:h-[250px]'/>
                 </div>
                 <div className="heavycomputing-bottom-divs flex flex-col md:flex-row lg:flex-row items-center justify-between w-full h-auto lg:h-[400px] px-2 lg:px-5 gap-30 lg:gap-50 mt-0 md:mt-10 lg:mt-0">
                     <div className="right-part text-black bg-[#e9e9e9]  rounded-[20px] p-[20px] lg:p-[32px]" >
