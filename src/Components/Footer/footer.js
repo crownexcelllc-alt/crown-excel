@@ -219,22 +219,22 @@ const Footer = () => {
                 <h3 className="text-lg font-semibold mb-4 text-white">Our Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/services/hardware" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/our-services/hardware-amc" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Hardware
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/software" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/our-services/software-amc" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Software
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/managed-it" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/our-services/managed-it" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Managed It
                     </Link>
                   </li>
                   <li>
-                    <Link href="/services/server" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/our-services/server-support" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Server Services
                     </Link>
                   </li>
@@ -246,22 +246,22 @@ const Footer = () => {
                 <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/about" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/company-us/about-us" className="text-gray-300 hover:text-white transition-colors text-sm">
                       About Us
                     </Link>
                   </li>
                   <li>
-                    <Link href="/management" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/our-management" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Our Management
                     </Link>
                   </li>
                   <li>
-                    <Link href="/events" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/company-us/events" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Events
                     </Link>
                   </li>
                   <li>
-                    <Link href="/career" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    <Link href="/company-us/career" className="text-gray-300 hover:text-white transition-colors text-sm">
                       Career
                     </Link>
                   </li>
