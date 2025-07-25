@@ -31,8 +31,8 @@ const carouselData = [
 
 const ScannerBestSelling = () => {
     return (
-        <div className="w-full py-8 relative">
-            <h1 className="text-center text-3xl lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
+        <div className="w-full py-8 relative font-montserrat">
+            <h1 className="text-center font-montserrat text-3xl lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
                 OUR BEST-SELLING LAPTOPS
             </h1>
 
@@ -75,7 +75,7 @@ const ScannerBestSelling = () => {
                         <SwiperSlide key={index}>
                             <div className="flex flex-col md:flex-row items-center justify-between min-w-full px-6 py-6 md:py-12">
                                 <div className="text-center basis-[40%] ml-10 md:text-left space-y-4">
-                                    <h2 className="text-[48px] leading-[48px] font-montserrat font-bold text-black">
+                                    <h2 className="text-[48px] leading-[48px] font-montserrat font-[500] text-black">
                                         {item.title}
                                     </h2>
                                     <p className="text-[#7885a4] text-[16px] md:text-lg font-medium mt-10">
@@ -106,7 +106,7 @@ const ScannerBestSelling = () => {
             </div>
 
             {/* Mobile Swiper */}
-            <div className="md:hidden relative overflow-hidden  h-[400px]">
+            <div className="md:hidden relative overflow-hidden  h-[400px] font-montserrat">
                 <div className="absolute bg-[#ffd900] w-[350px] h-[250px] right-0 top-30 -z-10" style={{ borderRadius: '160px 0px 0px 160px' }}></div>
 
                 <Swiper

@@ -69,8 +69,8 @@ const Career = () => {
           </div>
         </div>
         {/* Apply Now Form */}
-        <div className="flex-1 basis-[65%] bg-white  p-6">
-          <h2 className="text-[32px] font-[600] text-center font.montserrat text-black mb-6 font-urbanist">Apply Now</h2>
+        <div className="flex-1 basis-[65%] bg-white font-montserrat p-6">
+          <h2 className="text-[32px] font-[600] text-center font-montserrat text-black mb-6">Apply Now</h2>
           <form className="space-y-4 rounded-lg  p-6 border-[1px] border-black">
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Name <span className="text-red-500">*</span></label>
@@ -92,7 +92,7 @@ const Career = () => {
               <label className="block text-[16px]  font-[700] text-black mb-1">Your short info</label>
               <textarea className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" rows={4}></textarea>
             </div>
-            <button type="submit" className="bg-[#084032] cursor-pointer text-white px-6 py-2 rounded font-semibold font-urbanist">Submit</button>
+            <button type="submit" className="bg-[#084032] cursor-pointer text-white px-6 py-2 rounded font-semibold ">Submit</button>
           </form>
         </div>
       </div>

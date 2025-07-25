@@ -10,7 +10,7 @@ const AboutTrusted = () => {
           <Image className='w-[100%] h-auto rounded-[20px]' alt='' width={3000} height={362} src={TrustedImage} />
         </div>
         <div className="info basis-[50%]">
-          <h1 className='text-[40px] md:text-[30px] md:leading-[35px] leading-[48px] text-[#084032] font-[800] font-urbanist'>Your Trusted Technology Partner</h1>
+          <h2 className='text-[40px] md:text-[40px] md:leading-[48px] leading-[48px] text-[#084032] font-[800] font-urbanist'>Your Trusted Technology Partner</h2>
           <p className='text-[16px] leading-[27.2px] text-black font-montserrat mt-5'>At Crown Excel, we are passionate about delivering high-quality IT solutions. With over 15 years of expertise, we specialize in providing premium hardware, software, and managed IT services to both businesses and individuals. Our comprehensive offerings include IT consultancy, hardware and software maintenance, server support, and repair services. We take pride in offering personalized, reliable solutions that enhance productivity and efficiency. Join our community of over 17,000 satisfied clients, and let us help you stay ahead in the ever-evolving tech landscape.</p>
         </div>
       </div>

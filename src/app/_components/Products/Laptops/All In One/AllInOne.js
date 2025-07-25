@@ -20,7 +20,7 @@ const Individuals = [
 
 const AllInOne = () => {
     return (
-        <div className='mt-5 lg:mt-10'>
+        <div className='mt-5 lg:mt-10 font-montserrat'>
             <h1 className='bg-[#ffd900] font-[700] flex items-center justify-center w-full h-[90px] text-center text-black text-[24px] lg:text-[50px] font-montserrat uppercase'>Popular all-in-one solutions</h1>
             <div className="for- mt-5 lg:mt-10">
                 <div className="text-button flex md:flex-row lg:flex-row flex-col items-center justify-between px-20 py-7">

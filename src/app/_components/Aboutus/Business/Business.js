@@ -17,13 +17,13 @@ const Business = () => {
         <div>
             <div className='bg-[#1d8b6e] relative h-[600px] px-8 py-12 hidden lg:flex'>
                 <div className="left-part  z-10">
-                    <h2 className='text-3xl font-bold text-white mb-4'>Keep Your Business Safe & Ensure High Availability.</h2>
-                    <p className='text-lg text-white mb-8'>Ever find yourself staring at your computer&apos;s good consulting slogan to come to mind? Frequently.</p>
-                    <div className='max-w-2xl mx-auto'>
+                    <h2 className='text-3xl lg:text-[40px] leading-[48px] font-montserrat text-shadow-2xs font-[600] text-white mb-4'>Keep Your Business Safe & Ensure High Availability.</h2>
+                    <p className='text-lg text-white mb-8 font-jakarta'>Ever find yourself staring at your computer&apos;s good consulting slogan to come to mind? Frequently.</p>
+                    <div className='max-w-2xl mx-auto font-montserrat'>
                         {faq.map((item, idx) => (
                             <div key={idx} className=''>
                                 <button
-                                    className={`w-full flex items-center gap-5 border-[1px] border-white bg-[#0d5c47] text-white px-1 py-1 font-semibold text-lg shadow rounded transition-colors duration-200 focus:outline-none`}
+                                    className={`w-full flex items-center gap-5 border-[1px] border-white bg-[#0d5c47] text-white px-1 py-1 font-[500] text-[16px] shadow rounded transition-colors duration-200 focus:outline-none`}
                                     onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                                 >
                                     <span className='ml-4 transition-transform duration-300'>

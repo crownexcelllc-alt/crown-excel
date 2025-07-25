@@ -11,7 +11,7 @@ import Globe from './Globe/Globe'
 
 function Page() {
   return (
-    <div>
+    <div >
       <SmartSolutions/>
       <TrustedPartner/>
       <Services/>

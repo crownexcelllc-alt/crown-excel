@@ -3,7 +3,7 @@ import Background from '../../../../../Components/Images/PerformanceBackground.p
 const Performance = () => {
   return (
     <div
-      className="w-full h-[800px] md:h-[450px] lg:h-[600px] mt-10 "
+      className="w-full h-[800px] md:h-[450px] lg:h-[600px] mt-10 font-montserrat"
       style={{
         backgroundImage: `url(${Background.src})`,
         backgroundSize: 'cover',

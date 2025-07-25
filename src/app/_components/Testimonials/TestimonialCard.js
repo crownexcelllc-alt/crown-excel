@@ -37,15 +37,15 @@ const TestimonialCard = (props) => {
             </div>
             <div className="author">
                 <div className="stars flex items-center gap-2 text-yellow-500">
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
+                    <FaStar className='text-[16px] font-[900]'/>
+                    <FaStar className='text-[16px] font-[900]'/>
+                    <FaStar className='text-[16px] font-[900]'/>
+                    <FaStar className='text-[16px] font-[900]'/>
+                    <FaStar className='text-[16px] font-[900]'/>
                 </div>
-                <div className="author-info flex items-center gap-1 text-black">
-                    <h2 className='text-[16px]'>{props.name}</h2>
-                    <p className='text-gray-400 text-[14px]'>{props.position}</p>
+                <div className="author-info flex items-center gap-1 text-black mt-1">
+                    <h2 className='text-[18px] font-[500] leading-[27px] font-inter'>{props.name}</h2>
+                    <p className='text-gray-400 text-[14px] font-montserrat'>{props.position}</p>
                 </div>
             </div>
         </div>

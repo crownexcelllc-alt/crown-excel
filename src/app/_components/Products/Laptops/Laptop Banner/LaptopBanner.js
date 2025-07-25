@@ -22,13 +22,13 @@ const LaptopBanner = () => {
             <Image src={Stars} width={94} height={100} alt="Stars" className="md:left-2 md:-top-4 lg:left-20 lg:top-2  absolute" />
             <Image src={Stars} width={51} height={50} alt="Stars" className="md:right-9 md:top-2 lg:right-35 lg:top-2 absolute" />
           </div>
-          <div className="text flex flex-col items-center mb-4">
+          <div className="text flex flex-col items-center  mb-4">
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[60px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='md:text-[40px] lg:text-[60px] font-montserrat font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
+            <h1 className='md:text-[40px] font-montserrat lg:text-[60px]  font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[60px] leading-tight tracking-tight ">FOR EVERY NEED
             </h1>
           </div>
-          <p className="text-gray-200 text-sm md:text-lg font-medium max-w-xl mx-auto mb-2 md:mb-4">
+          <p className="text-gray-200 text-sm md:text-lg font-montserrat font-[300] max-w-xl mx-auto mb-2 md:mb-4">
             Crown Excel has the newest models of laptops from Dell, HP, Lenovo, and others. We have specifically what you need: business-grade performance, sleek designs for everyone, or high-powered machines for gaming and creative tasks.
           </p>
         </div>
@@ -48,9 +48,9 @@ const LaptopBanner = () => {
             </div> */}
             <div className="text relative flex flex-col items-center mb-4 leading-tight">
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-              <h1 className='text-[30px] font-montserrat font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED
+              <h1 className="text-white   font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
+              <h1 className='text-[30px]  font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
+              <h1 className="text-white   font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED
               </h1>
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-13 -top-5 absolute" />
             </div>

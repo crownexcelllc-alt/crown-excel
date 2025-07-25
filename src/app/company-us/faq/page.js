@@ -14,7 +14,7 @@ const page = () => {
       sign: <FaPlus />,
       title: ' Do you offer support for both hardware and software? ',
       description: 'Yes, we provide comprehensive support for both hardware and software, including installation, maintenance, troubleshooting, and ongoing technical assistance.',
-     
+
     },
     {
       sign: <FaPlus />,
@@ -60,37 +60,36 @@ const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    
-    <div>
-      <FaqHeader/>
-      <div className="flex-1 basis-[35%] bg-white rounded-lg py-6 px-6 lg:py-6 lg:px-11">
-                <div className="flex flex-col gap-0">
-                  {positions.map((pos, idx) => (
-                    <div key={idx} className="mb-2">
-                      <button
-                        className={`w-full text-[12px] lg:text-[16px] flex gap-2 items-center text-left  px-4 py-2 font-semibold font-urbanist border border-[#084032] focus:outline-none transition-colors duration-200 rounded-none ${activeIndex === idx ? 'bg-[#084032] text-white' : 'bg-[#084032] text-white'}`}
-                        onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
-                      >
-                        {activeIndex === idx ? <FaMinus /> : <FaPlus />}
-                        {pos.title}
-                      </button>
-                     <div
-  className={`overflow-hidden transition-all duration-500 ease-in-out border border-[#084032] bg-white ${
-    activeIndex === idx ? 'max-h-[200px] opacity-100 p-4' : 'max-h-0 opacity-0 p-0'
-  }`}
-  style={{ transitionProperty: 'max-height, opacity, padding' }}
->
-  <div className="transition-opacity duration-500 ease-in-out">
-    <p className="text-[12px] lg:text-[16px] text-black font-montserrat">
-      {pos.description}
-    </p>
-  </div>
-</div>
 
-                    </div>
-                  ))}
+    <div>
+      <FaqHeader />
+      <div className="flex-1 basis-[35%] bg-white rounded-lg py-6 px-6 lg:py-6 lg:px-11">
+        <div className="flex flex-col gap-0">
+          {positions.map((pos, idx) => (
+            <div key={idx} className="mb-2">
+              <button
+                className={`w-full text-[12px] lg:text-[16px] flex gap-2 items-center text-left  px-4 py-2 font-semibold font-montserrat border border-[#084032] focus:outline-none transition-colors duration-200 rounded-none ${activeIndex === idx ? 'bg-[#084032] text-white' : 'bg-[#084032] text-white'}`}
+                onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
+              >
+                {activeIndex === idx ? <FaMinus /> : <FaPlus />}
+                {pos.title}
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out border border-[#084032] bg-white ${activeIndex === idx ? 'max-h-[200px] opacity-100 p-4' : 'max-h-0 opacity-0 p-0'
+                  }`}
+                style={{ transitionProperty: 'max-height, opacity, padding' }}
+              >
+                <div className="transition-opacity duration-500 ease-in-out">
+                  <p className="text-[12px] lg:text-[16px] text-black font-montserrat">
+                    {pos.description}
+                  </p>
                 </div>
               </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

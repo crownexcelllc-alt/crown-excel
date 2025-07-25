@@ -19,7 +19,7 @@ const products = [
 ];
 
 const LatestProduct = () => (
-    <div className="mt-10 flex flex-col items-center">
+    <div className="mt-10 flex flex-col items-center font-montserrat">
         <h1 className="text-[#147d61] text-center text-[24px] md:text-[60px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
         <div className="relative flex items-center justify-center mt-8 w-full">
             <Swiper
