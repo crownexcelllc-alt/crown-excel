@@ -24,7 +24,7 @@ const CompanyHistoryYears = () => {
       {/* Cards */}
       <div className="relative z-10">
         {cards.map((card, index) => (
-          <div key={index} className="min-h-[50vh] flex  py-20 ml-20">
+          <div key={index} className="min-h-[50vh] flex py-20 ml-20">
             <CompnayHistoryCards
               index={index}
               year={card.year}

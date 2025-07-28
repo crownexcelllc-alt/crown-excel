@@ -30,7 +30,7 @@ function Navbar() {
         { label: 'Events', href: '/company/events' },
         { label: 'Career', href: '/company/career' },
         { label: 'FAQ', href: '/company/faq' },
-        
+
         // { label: 'Leader Team', href: '/company/leader-team' },
       ],
     },
@@ -206,7 +206,7 @@ function Navbar() {
                     <li key={j}>
                       <a
                         href={subItem.href}
-                        className={`block py-2 text-sm pl-2 pr-4 transition-colors duration-200 rounded-md ${pathname === subItem.href ? 'bg-[#084032] text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+                        className={`block py-2 text-sm pl-2 pr-4 transition-colors duration-200 rounded-md ${pathname === subItem.href ? 'bg-[#084032] text-[#fffff]' : 'text-black hover:bg-gray-100'}`}
                         onClick={() => setMedNav(false)}
                       >
                         {subItem.label}
@@ -250,12 +250,12 @@ function Navbar() {
                   style={{ transition: 'opacity 0.5s' }}
                 >
                   {item.dropdown.map((subItem, j) => (
-                    <li key={j} className="whitespace-nowrap">
+                    <li key={j} className="whitespace-nowrap m-0 p-0">
                       <a
                         href={subItem.href}
-                        className={`block w-full px-3 py-2 text-sm  dropdown-ach ${pathname === subItem.href ? 'bg-[#084032] text-white' : 'text-black hover:bg-gray-100'
-                          }`}
+                        className={`block w-full px-3 py-0 text-sm dropdown-ach ${pathname === subItem.href ? 'bg-[#084032] text-white' : 'text-black hover:bg-gray-100'}`}
                       >
+
                         {subItem.label}
                       </a>
                     </li>
@@ -288,7 +288,7 @@ function Navbar() {
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Open mobile menu"
       >
-        <FaBarsStaggered className='font-extrabold text-[30px] text-green-950'/>
+        <FaBarsStaggered className='font-extrabold text-[30px] text-green-950' />
       </button>
       {/* Mobile NavLinks Drawer */}
       {/* Mobile NavLinks Drawer */}

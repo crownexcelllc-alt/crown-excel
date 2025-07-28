@@ -113,8 +113,16 @@ ul.hide-scrollbar {
     /* width: 100%; */
     border-bottom: none !important;
     transform: none !important;
-    transition: none !important;
+    transition: 0.1s;
+      /* padding-top: 0 !important;
+  padding-bottom: 0 !important; */
+  margin: 0 !important;
+  line-height: 1.6;
  }
+ .nav-linkss ul li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
   .dropdown-ach:hover{
     background-color: #084032;
     color: white;
