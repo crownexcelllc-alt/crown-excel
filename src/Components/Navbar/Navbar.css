@@ -109,7 +109,7 @@ ul.hide-scrollbar {
     display: flex;
     align-items: flex-start;
     justify-content: start;
-    padding: 10px 15px;
+    padding: 15px 15px;
     /* width: 100%; */
     border-bottom: none !important;
     transform: none !important;

@@ -7,14 +7,14 @@ const LaptopBanner = () => {
   return (
     <div >
       <div
-        className="hidden md:flex lg:flex items-center justify-between w-full h-[180px] lg:h-[500px] md:h-[500px] px-3 md:px-1 relative"
+        className="hidden md:flex lg:flex items-center justify-center  w-full h-[180px] lg:h-[500px] md:h-[500px] px-3 md:px-5 relative"
         style={{
           background: 'linear-gradient(87deg, #2D2D2D 35%, #147D61 100%)',
         }}
       >
         {/* Left Laptop Image */}
         <div className="laptop-banner-left flex-1 flex justify-start items-end">
-          <Image src={LaptopImage1} width={350} height={420} alt="Laptop 1" className="object-contain drop-shadow-2xl md:-mb-8 md:w-[250px] lg:w-[380px] lg:h-[450px]" />
+          <Image src={LaptopImage1} width={300} height={420} alt="Laptop 1" className="object-contain drop-shadow-2xl md:-mb-8 md:w-[250px] lg:w-[300px] lg:h-[450px]" />
         </div>
         {/* Center Content */}
         <div className="laptop-banner-center z-10 absolute left-50 right-50 flex-1 flex flex-col items-center justify-center text-center px-2 md:px-8">
@@ -23,18 +23,18 @@ const LaptopBanner = () => {
             <Image src={Stars} width={51} height={50} alt="Stars" className="md:right-9 md:top-2 lg:right-35 lg:top-2 absolute" />
           </div>
           <div className="text flex flex-col items-center  mb-4">
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[60px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='md:text-[40px] font-montserrat lg:text-[60px]  font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[60px] leading-tight tracking-tight ">FOR EVERY NEED
+            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[50px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
+            <h1 className='md:text-[40px] font-montserrat lg:text-[50px]  font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
+            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[50px] leading-tight tracking-tight ">FOR EVERY NEED
             </h1>
           </div>
-          <p className="text-gray-200 text-sm md:text-lg font-montserrat font-[300] max-w-xl mx-auto mb-2 md:mb-4">
+          <p className="text-gray-200 text-sm md:text-[16px] font-montserrat font-[300] max-w-xl mx-auto mb-2 md:mb-4">
             Crown Excel has the newest models of laptops from Dell, HP, Lenovo, and others. We have specifically what you need: business-grade performance, sleek designs for everyone, or high-powered machines for gaming and creative tasks.
           </p>
         </div>
         {/* Right Laptop Image */}
         <div className="laptop-banner-right flex-1 flex justify-end items-end">
-          <Image src={LaptopImage2} width={380} height={450} alt="Laptop 2" className="object-contain drop-shadow-2xl -mb-4 md:-mb-8 md:w-[250px] lg:w-[380px] lg:h-[450px]" />
+          <Image src={LaptopImage2} width={300} height={450} alt="Laptop 2" className="object-contain drop-shadow-2xl -mb-4 md:-mb-8 md:w-[250px] lg:w-[300px] lg:h-[450px]" />
         </div>
       </div>
       <div className="small-screen flex flex-col items-center justify-center md:hidden lg:hidden h-[600px] w-full" style={{

@@ -6,7 +6,7 @@ import Stars from '../../../../../Components/Images/stars.png'
 import Image from 'next/image'
 const UnlimitedGamingLaptops = () => {
   return (
-    <div className='flex flex-col md:flex-row gap-5 lg:gap-0 lg:flex-row items-center justify-between px-5 lg:px-0'>
+    <div className='flex flex-col md:flex-row gap-5 lg:gap-20 lg:flex-row items-center justify-center px-5 lg:px-0'>
       <div className="gaming-left relative w-full h-auto lg:w-[797px] lg:h-[590px] rounded-[30px] px-5 pt-5 pb-20 lg:pt-[60px] lg:px-[40px] lg:pb-[200px]
 " style={{
         background: 'linear-gradient(135deg, #3d3f3f 30%, #232323 100%)'
@@ -19,9 +19,9 @@ const UnlimitedGamingLaptops = () => {
             <Image alt='' width={50} height={50} src={Stars} className='absolute top-0 right-0 w-[30px] lg:w-[50px]'/>
         </div>
       </div>
-      <div className="gaming-right flex flex-row md:flex-col lg:flex-col gap-0 lg:gap-10">
-        <Image src={GamingLaptop1} alt="Gaming Laptop 1" width={400} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[400px] lg:w-[467px] h-full" />
-        <Image src={GamingLaptop2} alt="Gaming Laptop 2" width={400} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[400px] lg:w-[467px] h-full mt-0 lg:mt-4" />
+      <div className="gaming-right flex flex-row md:flex-col lg:flex-col gap-0 lg:gap-5">
+        <Image src={GamingLaptop1} alt="Gaming Laptop 1" width={300} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[300px] lg:w-[300px] h-full" />
+        <Image src={GamingLaptop2} alt="Gaming Laptop 2" width={300} height={300} className="object-cover rounded-[30px] w-[150px] md:w-[300px] lg:w-[300px] h-full mt-0 lg:mt-4" />
       </div>
     </div>
   )

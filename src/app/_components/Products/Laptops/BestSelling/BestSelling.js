@@ -32,7 +32,7 @@ const carouselData = [
 const ScannerBestSelling = () => {
     return (
         <div className="w-full py-8 relative font-montserrat">
-            <h1 className="text-center font-montserrat text-3xl lg:text-[60px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
+            <h1 className="text-center font-montserrat text-3xl lg:text-[50px] lg:leading-[60px] lg:font-[800] font-bold text-[#16795e] mb-8">
                 OUR BEST-SELLING LAPTOPS
             </h1>
 
@@ -86,7 +86,7 @@ const ScannerBestSelling = () => {
                                     <Image
                                         src={item.image}
                                         alt={item.title}
-                                        width={454}
+                                        width={350}
                                         height={550}
                                         className="rounded-lg object-contain"
                                     />
@@ -102,7 +102,7 @@ const ScannerBestSelling = () => {
                         <FaAngleRight />
                     </div>
                 </Swiper>
-                <div className="yellow-div absolute bg-[#ffd900] -z-10 h-[550px] w-[650px] top-0 right-0 hidden md:block" style={{ borderRadius: '360px 0 0 360px' }}></div>
+                <div className="yellow-div absolute bg-[#ffd900] -z-10 h-[450px] w-[600px] top-0 right-0 hidden md:block" style={{ borderRadius: '360px 0 0 360px' }}></div>
             </div>
 
             {/* Mobile Swiper */}

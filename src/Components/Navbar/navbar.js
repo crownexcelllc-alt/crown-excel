@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
-import Logo from '../Images/logo.png';
+import Logo from '../Images/cleaned_file.svg';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import './Navbar.css';
@@ -137,7 +137,7 @@ function Navbar() {
             alt="Logo"
             height={50}
             width={150}
-            className="h-auto w-36 sm:w-40 md:w-44 lg:w-48 xl:w-52"
+            className="h-auto w-36 sm:w-40 md:w-44 lg:w-48 xl:w-52 fill-current"
           />
         </Link>
       </div>
@@ -240,13 +240,14 @@ function Navbar() {
             </a>
             {Array.isArray(item.dropdown) && hoveredIndex === i && (
               <div
-                className="absolute top-full left-0 mt-4 w-[200px] bg-white text-black rounded shadow-lg z-50"
+                className="absolute top-full left-0 mt-4 w-[200px] bg-white text-black  shadow-lg z-50"
                 onMouseEnter={() => handleMouseEnter(i)}
                 onMouseLeave={handleMouseLeave}
+                style={{borderRadius: '0px 0px 5px 5px'}}
               >
                 <ul
                   ref={item.label === 'Products' ? productsDropdownRef : null}
-                  className={`max-h-[460px] overflow-y-auto hide-scrollbar ${item.label === 'Products' ? 'pr-1' : ''}`}
+                  className={`max-h-[460px] overflow-y-auto hide-scrollbar ${item.label === 'Products' ? 'pr-0' : ''}`}
                   style={{ transition: 'opacity 0.5s' }}
                 >
                   {item.dropdown.map((subItem, j) => (

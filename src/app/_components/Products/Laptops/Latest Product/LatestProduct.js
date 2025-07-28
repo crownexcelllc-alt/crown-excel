@@ -50,7 +50,7 @@ const LatestProduct = () => (
                                 height={400}
                                 className="rounded-lg object-contain mb-4 w-full"
                             />
-                            <h2 className="text-[30px] md:text-[60px] lg:text-[60px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
+                            <h2 className="text-[30px] md:text-[60px] lg:text-[50px] leading-[60px] font-bold text-black text-center font-montserrat mb-2 uppercase">{product.title}</h2>
                             <p className="text-gray-600 text-base text-center mt-2 text-[16px] leading-[27px]">{product.desc}</p>
                         </div>
                     </SwiperSlide>
