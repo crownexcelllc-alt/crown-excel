@@ -37,7 +37,7 @@ function Navbar() {
 
     {
       label: 'Products',
-      href: '',
+      // href: '',
       icon: <FaSortDown className='icon' />,
       hasDropdown: true,
       dropdown: [
