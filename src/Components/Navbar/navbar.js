@@ -129,7 +129,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar px-20 py-2 overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full flex items-center justify-between z-50">
+    <div className="navbar font-muli px-20 py-2 overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full flex items-center justify-between z-50">
       <div className="logo hidden md:flex">
         <Link href="/">
           <Image
@@ -277,7 +277,7 @@ function Navbar() {
       <div className="nav-button hidden md:block">
         <button
           onClick={() => window.location.href = "https://grabatoz.ae"}
-          className="bg-gray-200 text-black w-36 h-11 text-base rounded-full shadow-md font-montserrat"
+          className="bg-gray-200 text-black w-36 h-11 text-base rounded-full shadow-md font-muli"
         >
           Our Retail Store
         </button>
