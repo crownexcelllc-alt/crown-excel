@@ -18,18 +18,20 @@ function Navbar() {
     { label: 'Home', href: '/' },
 
     {
-      label: 'Company Us',
-      href: '/company-us',
+      label: 'Company',
+      // href: '',
       icon: <FaSortDown className='icon' />,
       hasDropdown: true,
       dropdown: [
-        { label: 'About Us', href: '/company-us/about-us' },
-        { label: 'Career', href: '/company-us/career' },
-        { label: 'FAQ', href: '/company-us/faq' },
-        { label: 'Company History', href: '/company-us/company-history' },
-        { label: 'Leader Team', href: '/company-us/leader-team' },
-        { label: 'Director Message', href: '/company-us/director-message' },
-        { label: 'Events', href: '/company-us/events' },
+        { label: 'About Us', href: '/company/about-us' },
+        { label: 'Company History', href: '/company/company-history' },
+        { label: 'Crown Excel Family', href: '/company/crown-excel-family' },
+        { label: 'Director Message', href: '/company/director-message' },
+        { label: 'Events', href: '/company/events' },
+        { label: 'Career', href: '/company/career' },
+        { label: 'FAQ', href: '/company/faq' },
+        
+        // { label: 'Leader Team', href: '/company/leader-team' },
       ],
     },
 
