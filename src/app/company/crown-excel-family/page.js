@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 function CrownExcelFamily() {
   // Sample family members data - you can replace with real data

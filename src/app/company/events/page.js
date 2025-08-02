@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 function Events() {
   // Sample events data - you can replace with real data
