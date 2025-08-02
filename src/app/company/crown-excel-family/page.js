@@ -230,7 +230,7 @@ function CrownExcelFamily() {
                       {member.position}
                     </p>
                     <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-                      "{member.quote}"
+                      {`"${member.quote}"`}
                     </blockquote>
                   </div>
                 </div>
