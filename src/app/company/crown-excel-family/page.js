@@ -267,18 +267,18 @@ function CrownExcelFamily() {
           {/* Call to Action */}
           <div className="text-center mb-10">
             <div className="bg-gradient-to-r from-[#084032] to-[#16806b] rounded-2xl p-12 text-white">
-              <Link href="/company/career">
               <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
                 Join Our Family
               </h2>
-              </Link>
               <p className="text-xl font-muli mb-8 opacity-90">
                 Be part of a family that values excellence, integrity, and community service
               </p>
               <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <Link href="/company/career">
                 <button className="bg-[#61ce70] text-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-[#4ade80] transition-colors">
                   Join Our Team
                 </button>
+              </Link>
                 <button className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
                   Contact Us
                 </button>
