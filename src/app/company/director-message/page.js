@@ -97,7 +97,7 @@ function DirectorMessage() {
             <div className="max-w-4xl mx-auto">
               <div className="mb-8">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#16806b] font-montserrat mb-4">
-                  Our Journey & Vision
+                  Director's Message
                 </h3>
                 <div className="w-16 h-1 bg-[#61ce70]"></div>
               </div>
@@ -105,7 +105,7 @@ function DirectorMessage() {
               <div className="space-y-8 text-gray-700 font-muli leading-8">
                 <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#16806b]">
                   <p className="text-lg">
-                  {`  In the 1970s, the seeds of what would become "LM Exchange" were planted in the vibrant landscape of the UAE.
+                  {`  In the 2009s, the seeds of what would become "LM Exchange" were planted in the vibrant landscape of the UAE.
                     What began as a modest venture has evolved into a trusted financial service provider, serving the diverse needs
                     of our community with unwavering dedication. Our journey has been marked by a steadfast commitment to customer
                     satisfaction, particularly in the realms of remittances and foreign exchange, supported by a team of committed
@@ -136,7 +136,7 @@ function DirectorMessage() {
                 <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#61ce70]">
                   <p className="text-lg">
                     {`My personal journey has been one of transforming challenges into triumphs, a path that ultimately led to the
-                    birth of "Leela Megh Exchange" in 1970. This institution was created with a clear purpose: to meet the diverse
+                    birth of "Leela Megh Exchange" in 2009. This institution was created with a clear purpose: to meet the diverse
                     financial needs of traders in Dubai, providing them with reliable, efficient, and innovative solutions. Our
                     story embodies the values of resilience, innovation, and the relentless pursuit of excellence – principles
                     that continue to guide us as we serve our community and contribute to the growth of our beloved UAE.`}

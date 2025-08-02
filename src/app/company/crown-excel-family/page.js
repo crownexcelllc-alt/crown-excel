@@ -276,13 +276,13 @@ function CrownExcelFamily() {
               <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Link href="/company/career">
                 <button className="bg-[#61ce70] text-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-[#4ade80] transition-colors">
-                  Join Our Team
+                  Join Our Family
                 </button>
               </Link>
               <Link href="/company/career">
 
                 <button className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
-                  Contact Us
+                  Apply Job
                 </button>
                 </Link>
               </div>
