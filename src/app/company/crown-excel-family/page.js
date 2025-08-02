@@ -279,9 +279,12 @@ function CrownExcelFamily() {
                   Join Our Team
                 </button>
               </Link>
+              <Link href="/company/career">
+
                 <button className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
                   Contact Us
                 </button>
+                </Link>
               </div>
             </div>
           </div>
