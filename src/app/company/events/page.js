@@ -1,7 +1,11 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+
 // import Image from 'next/image'
 
 function Events() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   // Sample events data - you can replace with real data
   const events = [
     {
@@ -74,6 +78,11 @@ function Events() {
 
   const categories = ["All", "Business Summit", "Customer Event", "Workshop", "Community", "Internal Event", "Conference"];
 
+  // Filter events based on selected category
+  const filteredEvents = selectedCategory === "All" 
+    ? events 
+    : events.filter(event => event.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Professional Header */}
@@ -120,8 +129,9 @@ function Events() {
               {categories.map((category, index) => (
                 <button
                   key={index}
+                  onClick={() => setSelectedCategory(category)}
                   className={`px-6 py-3 rounded-full font-montserrat font-medium transition-all duration-300 ${
-                    index === 0 
+                    selectedCategory === category
                       ? 'bg-[#16806b] text-white shadow-lg' 
                       : 'bg-white text-[#16806b] border-2 border-[#16806b] hover:bg-[#16806b] hover:text-white'
                   }`}
@@ -134,7 +144,7 @@ function Events() {
 
           {/* Events Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
+            {filteredEvents.map((event) => (
               <div key={event.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 {/* Event Image */}
                 <div className="relative h-48 bg-gradient-to-br from-[#16806b] to-[#084032] overflow-hidden">
