@@ -3,6 +3,7 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from 'framer-motion'; // ✅ Correct client-side motion import
+import Link from 'next/link';
 
 const AnimatedText = ({ text, delayStart = 0 }) => {
   return (
@@ -40,10 +41,12 @@ const Services = () => {
               <AnimatedText text="Different Services" />
             </div>
           </div>
-          <button className="flex items-center justify-center gap-2 w-[150px] bg-white text-[#084032] font-semibold rounded-full px-6 py-3 shadow-lg hover:bg-[#e6eeff] transition">
-            View All
-            <FaArrowRight className="w-6 h-6 border-2 rounded-full p-1" />
-          </button>
+          <Link href="/our-services">
+            <button className="flex items-center justify-center gap-2 w-[150px] bg-white text-[#084032] font-semibold rounded-full px-6 py-3 shadow-lg hover:bg-[#e6eeff] transition">
+              View All
+              <FaArrowRight className="w-6 h-6 border-2 rounded-full p-1" />
+            </button>
+          </Link>
         </div>
 
         {/* Cards Section */}

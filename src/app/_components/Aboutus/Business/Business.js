@@ -33,11 +33,9 @@ const Business = () => {
 
                                 </button>
                                 <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                    {openIndex === idx && (
-                                        <div className='bg-[#1d8b6e] text-white px-6 py-4 border-t border rounded-b shadow'>
-                                            {item.desc}
-                                        </div>
-                                    )}
+                                    <div className='bg-[#1d8b6e] text-white px-6 py-4 border-t border rounded-b shadow'>
+                                        {item.desc}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -76,11 +74,9 @@ const Business = () => {
                                 <span className="text-left">{item.title}</span>
                             </button>
                             <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                {openIndex === idx && (
-                                    <div className="bg-[#0d5c47] text-white px-4 py-3 border border-white  shadow">
-                                        {item.desc}
-                                    </div>
-                                )}
+                                <div className="bg-[#0d5c47] text-white px-4 py-3 border border-white  shadow">
+                                    {item.desc}
+                                </div>
                             </div>
                         </div>
                     ))}

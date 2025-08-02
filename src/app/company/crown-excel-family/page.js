@@ -95,11 +95,11 @@ function CrownExcelFamily() {
   ];
 
   const milestones = [
-    { year: "1970", title: "Foundation", description: "Crown Excel Family established with a vision of excellence" },
-    { year: "1985", title: "Expansion", description: "First major expansion across UAE regions" },
-    { year: "2000", title: "Innovation", description: "Introduction of modern financial services" },
-    { year: "2010", title: "Recognition", description: "Awarded Best Family Business in UAE" },
-    { year: "2020", title: "Digital Transformation", description: "Complete digital transformation journey" },
+    { year: "2009", title: "Foundation", description: "Crown Excel Family established with a vision of excellence" },
+    { year: "2012", title: "Expansion", description: "First major expansion across UAE regions" },
+    { year: "2015", title: "Innovation", description: "Introduction of modern financial services" },
+    { year: "2018", title: "Recognition", description: "Awarded Best Family Business in UAE" },
+    { year: "2022", title: "Digital Transformation", description: "Complete digital transformation journey" },
     { year: "2024", title: "Future Ready", description: "Leading the future of financial services" }
   ];
 
@@ -280,8 +280,7 @@ function CrownExcelFamily() {
                 </button>
               </Link>
               <Link href="/company/career">
-
-                <button className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
+                <button className="bg-transparent text-white border-2 border-white px-8 py-2 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
                   Apply Job
                 </button>
                 </Link>

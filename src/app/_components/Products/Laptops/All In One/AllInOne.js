@@ -6,6 +6,7 @@ import Popular4 from '../../../../../Components/Images/Popular4.png'
 import Popular5 from '../../../../../Components/Images/Popular5.png'
 import Popular6 from '../../../../../Components/Images/Popular6.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Business = [
     { Image: Popular1, Title: 'ACER ASPIRE 3 A315' },
@@ -25,7 +26,9 @@ const AllInOne = () => {
             <div className="for- mt-5 lg:mt-10">
                 <div className="text-button flex md:flex-row lg:flex-row flex-col items-center justify-between px-20 py-7">
                     <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Businesses:</h1>
-                    <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
+                    <Link href={'https://grabatoz.ae'}>
+                    <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px] hover:cursor-pointer'>Visit Our Store</button>
+                    </Link>
                 </div>
                 <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between md:px-10 lg:px-20 py-7 md:gap-10 lg:gap-0" style={{
                     background: 'linear-gradient(to left, #000000 0%, #1a1a1a 50%, #2b2b2b 100%)'
@@ -43,7 +46,9 @@ const AllInOne = () => {
             <div className="for- mt-10">
                 <div className="text-button flex md:flex-row lg:flex-row flex-col items-center justify-between px-20 py-7">
                     <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Individuals:</h1>
-                    <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
+                    <Link href={'https://grabatoz.ae'}>
+                    <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px] hover:cursor-pointer'>Visit Our Store</button>
+                    </Link>
                 </div>
                 <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between md:px-10 lg:px-20 py-7" style={{
                     background: 'linear-gradient(to left, #000000 0%, #1a1a1a 50%, #2b2b2b 100%)'
