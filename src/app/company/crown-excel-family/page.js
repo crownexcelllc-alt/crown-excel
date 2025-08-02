@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 // import Image from 'next/image'
 
@@ -266,9 +267,11 @@ function CrownExcelFamily() {
           {/* Call to Action */}
           <div className="text-center mb-10">
             <div className="bg-gradient-to-r from-[#084032] to-[#16806b] rounded-2xl p-12 text-white">
+              <Link href="/company/career">
               <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">
                 Join Our Family
               </h2>
+              </Link>
               <p className="text-xl font-muli mb-8 opacity-90">
                 Be part of a family that values excellence, integrity, and community service
               </p>
