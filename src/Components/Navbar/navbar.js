@@ -276,7 +276,7 @@ function Navbar() {
       </ul>
       <div className="nav-button hidden md:block">
         <button
-          onClick={() => window.location.href = "https://grabatoz.ae"}
+          onClick={() => window.open("https://grabatoz.ae", "_blank")}
           className="bg-gray-200 text-black w-36 h-11 text-base rounded-full shadow-md font-muli"
         >
           Our Retail Store
