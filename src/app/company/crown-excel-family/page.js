@@ -132,13 +132,13 @@ function CrownExcelFamily() {
                 <div className="w-16 h-1 bg-[#61ce70] mb-6"></div>
                 <div className="space-y-6 text-gray-700 font-muli leading-8">
                   <p className="text-lg">
-                    Founded in 1970, Crown Excel Family began as a small family business with big dreams. What started as a modest venture has grown into one of the UAE's most trusted financial service providers, all while maintaining our core family values.
+                    {`Founded in 1970, Crown Excel Family began as a small family business with big dreams. What started as a modest venture has grown into one of the UAE's most trusted financial service providers, all while maintaining our core family values.`}
                   </p>
                   <p className="text-lg">
-                    Today, our family extends beyond blood relations to include every team member, customer, and partner who shares our vision of excellence, integrity, and community service. We believe that success is not just measured in profits, but in the positive impact we create in people's lives.
+                  {`  Today, our family extends beyond blood relations to include every team member, customer, and partner who shares our vision of excellence, integrity, and community service. We believe that success is not just measured in profits, but in the positive impact we create in people's lives.`}
                   </p>
                   <p className="text-lg">
-                    As we continue to grow, we remain committed to our founding principles: treating everyone like family, maintaining the highest standards of integrity, and giving back to the community that has supported us for over five decades.
+                   {` As we continue to grow, we remain committed to our founding principles: treating everyone like family, maintaining the highest standards of integrity, and giving back to the community that has supported us for over five decades.`}
                   </p>
                 </div>
               </div>

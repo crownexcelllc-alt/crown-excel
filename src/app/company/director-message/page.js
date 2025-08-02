@@ -19,7 +19,7 @@ function DirectorMessage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight">
-              Director's Message
+              {`Director's Message`}
             </h1>
             <div className="w-24 h-1 bg-[#61ce70] mx-auto"></div>
           </div>
@@ -48,12 +48,12 @@ function DirectorMessage() {
               <div className="p-8 md:p-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="mb-8">
                   <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-6">
-                    Director's Message
+                   {` Director's Message`}
                   </h2>
                   
                   {/* Quote */}
                   <blockquote className="text-xl md:text-2xl text-[#084032] italic font-muli font-medium leading-relaxed mb-8 p-6 bg-white rounded-xl border-l-4 border-[#16806b] shadow-sm">
-                    "Embrace challenges, envision opportunities, and build legacies"
+                   {` "Embrace challenges, envision opportunities, and build legacies"`}
                   </blockquote>
 
                   {/* Director Info */}
@@ -105,11 +105,11 @@ function DirectorMessage() {
               <div className="space-y-8 text-gray-700 font-muli leading-8">
                 <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#16806b]">
                   <p className="text-lg">
-                    In the 1970s, the seeds of what would become "LM Exchange" were planted in the vibrant landscape of the UAE.
+                  {`  In the 1970s, the seeds of what would become "LM Exchange" were planted in the vibrant landscape of the UAE.
                     What began as a modest venture has evolved into a trusted financial service provider, serving the diverse needs
                     of our community with unwavering dedication. Our journey has been marked by a steadfast commitment to customer
                     satisfaction, particularly in the realms of remittances and foreign exchange, supported by a team of committed
-                    and experienced professionals who understand the pulse of our market.
+                    and experienced professionals who understand the pulse of our market.`}
                   </p>
                 </div>
 
@@ -125,21 +125,21 @@ function DirectorMessage() {
 
                 <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#16806b]">
                   <p className="text-lg">
-                    Our success is built on the foundation of robust partnerships with world-class organizations and local bodies,
+                    {`Our success is built on the foundation of robust partnerships with world-class organizations and local bodies,
                     enabling us to provide value-added products and services that truly serve our customers' needs. At LM Exchange,
                     we understand that trust is earned through consistent delivery on our promises. We are committed to providing
                     a seamless, ethical experience for every customer who chooses to partner with us, ensuring that their financial
-                    journey is not just secure, but also empowering.
+                    journey is not just secure, but also empowering.`}
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-l-4 border-[#61ce70]">
                   <p className="text-lg">
-                    My personal journey has been one of transforming challenges into triumphs, a path that ultimately led to the
+                    {`My personal journey has been one of transforming challenges into triumphs, a path that ultimately led to the
                     birth of "Leela Megh Exchange" in 1970. This institution was created with a clear purpose: to meet the diverse
                     financial needs of traders in Dubai, providing them with reliable, efficient, and innovative solutions. Our
                     story embodies the values of resilience, innovation, and the relentless pursuit of excellence – principles
-                    that continue to guide us as we serve our community and contribute to the growth of our beloved UAE.
+                    that continue to guide us as we serve our community and contribute to the growth of our beloved UAE.`}
                   </p>
                 </div>
               </div>
