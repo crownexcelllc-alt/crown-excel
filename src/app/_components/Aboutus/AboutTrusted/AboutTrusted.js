@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import TrustedImage from '../../../../Components/Images/abouttrusted.jpg'
 import Image from 'next/image'

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import ContactUs from '../../../../Components/Images/contactus.jpg'
 import Image from 'next/image'

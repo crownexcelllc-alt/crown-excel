@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Background from '../../../../Components/Images/meeting2.png'
 
