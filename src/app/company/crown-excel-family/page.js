@@ -209,7 +209,7 @@ function CrownExcelFamily() {
           <div className="mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
-                Meet Our Family
+                Our Family
               </h2>
               <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">

@@ -9,10 +9,10 @@ import Link from 'next/link'
 const TrustedPartner = () => {
     return (
         <div>
-            <div className="trusted-partner-large-screen hidden lg:flex  bg-[#cdc8ac] w-full  flex-col lg:flex-row items-center lg:items-start justify-center ">
+            <div className="trusted-partner-large-screen hidden lg:flex w-full  flex-col lg:flex-row items-center lg:items-start justify-center ">
             <div className="container  w-full flex flex-col lg:flex-row items-center  justify-center gap-8 " style={{ paddingBottom: '10px'}}>
                 <div className="left-part text-black w-full lg:w-2/5 mb-8 lg:mb-0">
-                    <h1 className="font-semibold font-roboto  text-[58px] sm:text-5xl lg:text-6xl leading-[58px] text-center lg:text-left">Your Trusted Partner for Premium Tech Solutions</h1>
+                    <h1 className="font-semibold font-roboto  text-[58px] sm:text-5xl lg:text-6xl leading-[58px] text-center lg:text-left">Trusted Partner for Tech Solutions</h1>
                     <p className=" text-[16] font-montserrat leading-[27px] text-center lg:text-left" style={{marginTop: '20px'}}>Crown Excel delivers top-tier technology solutions for businesses and individuals, providing reliable hardware and IT services backed by over 15 years of excellence and 17,000 satisfied customers. From cutting-edge hardware to comprehensive IT solutions, we ensure top performance, innovation, and exceptional service. Our mission is to offer the latest technology at unbeatable rates, catering to all your business and personal needs. Whether you’re upgrading office systems or seeking expert IT services, Crown Excel is your trusted partner for quality, performance, and satisfaction.</p>
                 </div>
                 <div className="right-part relative w-full lg:w-3/5 flex flex-col gap-8">

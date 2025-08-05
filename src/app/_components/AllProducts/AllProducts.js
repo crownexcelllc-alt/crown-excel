@@ -104,15 +104,14 @@ const AllProducts = () => {
     return (
         <div>
             <div className="lg:flex lg:flex-col hidden md:flex md:flex-col">
-                <div className="links-tab bg-yellow-400 py-6 text-center">
+                <div className="links-tab py-6 text-center">
                     <h2 className="text-2xl font-bold text-green-900 mb-4">All Products</h2>
                     <div className="flex flex-wrap justify-center gap-2 px-1">
                         {categories.map((item, index) => (
                             <button
                                 key={index}
                                 onClick={() => setActive(item.slug)}
-                                className={`px-4 py-2 border border-green-900 rounded-lg text-sm font-medium transition
-                ${active === item.slug ? 'bg-green-900 text-white' : 'bg-yellow-300 text-green-900 hover:bg-yellow-200'}`}
+                                className={`px-4 py-2 border border-green-900 rounded-lg text-sm font-medium transition text-black hover:text-white                ${active === item.slug ? 'bg-green-900 text-white' : 'bg-[#defaca] text-black hover:bg-green-900 '}`}
                             >
                                 {item.name}
                             </button>
@@ -120,14 +119,14 @@ const AllProducts = () => {
                     </div>
                 </div>
                 <div className=" h-[500px] w-full   flex  items-center justify-around " style={{
-                    backgroundImage: `url(${Background.src})`,
+                    // backgroundImage: `url(${Background.src})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
                     minHeight: '250px'
                 }}>
                     <div className="all-products-left flex mt-[60px] flex-col items-center justify-center">
-                        <h1 className='text-[56px] font-[600]'>{productDetails[active].title}</h1>
+                        <h1 className='text-[56px] font-[600] text-black '>{productDetails[active].title}</h1>
                         <button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
                     </div>
                     <div className="all-products-right  mt-[150px]">

@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import director from '@/Components/Images/director.png'
+// import director from '@/Components/Images/director.png'
+import director from '@/Components/Images/director.jpeg'
 
 function DirectorMessage() {
   return (
@@ -15,13 +16,13 @@ function DirectorMessage() {
       </div> */}
 
       {/* Professional Header */}
-      <div className="bg-gradient-to-r from-[#084032] to-[#16806b] py-16">
+      <div className="py-16" style={{background: 'linear-gradient(265deg,rgba(20, 121, 101, 1) 35%, rgba(9, 69, 54, 1) 82%)'}}>
         <div className="container mx-auto px-4">
-          <div className="text-center">
+          <div className="">
             <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight">
               {`Director's Message`}
             </h1>
-            <div className="w-24 h-1 bg-[#61ce70] mx-auto"></div>
+            {/* <div className="w-24 h-1 bg-[#61ce70] "></div> */}
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@ function DirectorMessage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-[#16806b] font-montserrat">Director</h3>
-                      <p className="text-[#084032] font-muli">Leela Megh Exchange</p>
+                      <p className="text-[#084032] font-muli">Muhammad Qais</p>
                     </div>
                   </div>
                 </div>
