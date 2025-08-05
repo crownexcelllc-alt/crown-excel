@@ -115,7 +115,7 @@ function CrownExcelFamily() {
             </h1>
             <div className="w-24 h-1 bg-[#61ce70] mx-auto mb-6"></div>
             <p className="text-xl text-white/90 font-muli max-w-3xl mx-auto">
-              More than just a company, we are a family united by values, driven by excellence, and committed to serving our community with integrity and care
+              More than just a company, we are a family united by values, driven by excellence, and committed to serving our customers with integrity and care
             </p>
           </div>
         </div>

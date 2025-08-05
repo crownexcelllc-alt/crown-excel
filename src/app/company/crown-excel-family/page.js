@@ -94,14 +94,14 @@ function CrownExcelFamily() {
     }
   ];
 
-  const milestones = [
-    { year: "2009", title: "Foundation", description: "Crown Excel Family established with a vision of excellence" },
-    { year: "2012", title: "Expansion", description: "First major expansion across UAE regions" },
-    { year: "2015", title: "Innovation", description: "Introduction of modern financial services" },
-    { year: "2018", title: "Recognition", description: "Awarded Best Family Business in UAE" },
-    { year: "2022", title: "Digital Transformation", description: "Complete digital transformation journey" },
-    { year: "2024", title: "Future Ready", description: "Leading the future of financial services" }
-  ];
+  // const milestones = [
+  //   { year: "2009", title: "Foundation", description: "Crown Excel Family established with a vision of excellence" },
+  //   { year: "2012", title: "Expansion", description: "First major expansion across UAE regions" },
+  //   { year: "2015", title: "Innovation", description: "Introduction of modern financial services" },
+  //   { year: "2018", title: "Recognition", description: "Awarded Best Family Business in UAE" },
+  //   { year: "2022", title: "Digital Transformation", description: "Complete digital transformation journey" },
+  //   { year: "2024", title: "Future Ready", description: "Leading the future of financial services" }
+  // ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
@@ -114,7 +114,7 @@ function CrownExcelFamily() {
             </h1>
             <div className="w-24 h-1 bg-[#61ce70] mx-auto mb-6"></div>
             <p className="text-xl text-white/90 font-muli max-w-3xl mx-auto">
-              More than just a company, we are a family united by values, driven by excellence, and committed to serving our community with integrity and care
+              More than just a company, we are a family united by values, driven by excellence, and committed to serving our customers with integrity and care
             </p>
           </div>
         </div>
@@ -128,18 +128,30 @@ function CrownExcelFamily() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-6">
-                  Our Family Story
+                Our Story – Crown Excel
                 </h2>
                 <div className="w-16 h-1 bg-[#61ce70] mb-6"></div>
                 <div className="space-y-6 text-gray-700 font-muli leading-8">
                   <p className="text-lg">
-                    {`Founded in 1970, Crown Excel Family began as a small family business with big dreams. What started as a modest venture has grown into one of the UAE's most trusted financial service providers, all while maintaining our core family values.`}
+                    {`Founded in 2009, Crown Excel began as a small family-run business with big dreams. What started as a modest venture has grown into one of the UAE’s most trusted wholesale and retail providers of tech products and services, all while staying true to our founding values.`}
                   </p>
                   <p className="text-lg">
-                  {`  Today, our family extends beyond blood relations to include every team member, customer, and partner who shares our vision of excellence, integrity, and community service. We believe that success is not just measured in profits, but in the positive impact we create in people's lives.`}
+                  {`Today, Crown Excel has expanded far beyond family ties to embrace a diverse team of dedicated individuals from various social, cultural, and linguistic backgrounds. Each team member plays a vital role, making phenomenal contributions toward our growth, customer relationships, and ongoing success. Alongside our partners who share our vision of excellence, integrity, and service, we continue to build a brand that makes a meaningful impact.`}
                   </p>
                   <p className="text-lg">
-                   {` As we continue to grow, we remain committed to our founding principles: treating everyone like family, maintaining the highest standards of integrity, and giving back to the community that has supported us for over five decades.`}
+                   {` We believe that true success is not measured by profit alone, but by the positive influence we create in people’s lives—customers, employees, and communities alike.`}
+                  </p>
+                  <p className="text-lg">
+                   {`As we continue to grow, we remain deeply committed to our core principles:`}
+                  </p>
+                  <p className="text-lg">
+                   {`Treating everyone like family`}
+                  </p>
+                  <p className="text-lg">
+                   {`Upholding the highest standards of integrity`}
+                  </p>
+                  <p className="text-lg">
+                   {`Giving back to the community that has supported us for over a decade`}
                   </p>
                 </div>
               </div>
@@ -174,7 +186,7 @@ function CrownExcelFamily() {
           <div className="mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
-                Our Family Values
+                Our Values
               </h2>
               <div className="w-16 h-1 bg-[#61ce70] mx-auto"></div>
             </div>
@@ -240,7 +252,7 @@ function CrownExcelFamily() {
           </div>
 
           {/* Family Milestones */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+          {/* <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
                 Our Family Journey
@@ -262,7 +274,7 @@ function CrownExcelFamily() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Call to Action */}
           <div className="text-center mb-10">

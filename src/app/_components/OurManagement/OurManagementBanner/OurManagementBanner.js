@@ -15,7 +15,7 @@ const OurManagementBanner = () => {
           Our Management
         </button>
         <h1 className='text-[26px] md:text-[32px] lg:text-[48px] font-[700] leading-[30px] text-center md:text-start lg:leading-[57.6px] text-black font-monserrat'>
-          Delivering Global Solutions with Expertise and Precision
+        Delivering world-class hardware and software solutions with expertise and precision.
         </h1>
         <p className='text-[16px] text-center md:text-start font-[600] italic text-black'>
           Leadership Excellence at <br className='block lg:hidden'/> Crown Excel
