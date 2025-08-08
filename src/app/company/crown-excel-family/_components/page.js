@@ -1,6 +1,10 @@
 'use client'
 import Link from 'next/link';
 import React from 'react'
+import Nabiha from '@/Components/Images/nabiha.jpeg'
+import Farooq from '@/Components/Images/farooq.jpeg'
+import Shammry from '@/Components/Images/shammry.jpeg'
+import Abdullah from '@/Components/Images/abdullah sallar.jpeg'
 // import Image from 'next/image'
 
 function CrownExcelFamily() {
@@ -8,38 +12,38 @@ function CrownExcelFamily() {
   const familyMembers = [
     {
       id: 1,
-      name: "Ahmed Al Mansouri",
+      name: "Nabiha",
       position: "Chief Executive Officer",
       department: "Leadership",
       experience: "15+ Years",
-      image: "/api/placeholder/300/300",
+      image: Nabiha,
       quote: "Our success is built on the foundation of trust, integrity, and family values."
     },
     {
       id: 2,
-      name: "Fatima Hassan",
+      name: "Farooq",
       position: "Chief Financial Officer",
       department: "Finance",
       experience: "12+ Years",
-      image: "/api/placeholder/300/300",
+      image: Farooq,
       quote: "Every decision we make reflects our commitment to our family and community."
     },
     {
       id: 3,
-      name: "Mohammed Khalil",
+      name: "Shammry",
       position: "Head of Operations",
       department: "Operations",
       experience: "10+ Years",
-      image: "/api/placeholder/300/300",
+      image: Shammry,
       quote: "We treat every customer like family, ensuring their success is our success."
     },
     {
       id: 4,
-      name: "Aisha Rahman",
+      name: "Abdullah Salar",
       position: "Customer Relations Manager",
       department: "Customer Service",
       experience: "8+ Years",
-      image: "/api/placeholder/300/300",
+      image: Abdullah,
       quote: "Building lasting relationships is at the heart of everything we do."
     },
     {

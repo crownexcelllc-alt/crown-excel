@@ -1,94 +1,179 @@
 import Link from 'next/link';
 import React from 'react'
-// import Image from 'next/image'
+import Nabiha from '@/Components/Images/Nabiha.jpg'
+import Farooq from '@/Components/Images/farooq.jpg'
+import Shammry from '@/Components/Images/Shammry.jpg'
+import Abdullah from '@/Components/Images/abdullah sallar.jpg'
+import Image from 'next/image'
+import Director from '@/Components/Images/director.jpeg'
+import etc1 from '@/Components/Images/etc1.jpg'
+import etc2 from '@/Components/Images/etc2.jpg'
+import etc3 from '@/Components/Images/etc3.jpg'
+import etc4 from '@/Components/Images/etc4.png'
+import Tarun from '@/Components/Images/Tarun.jpg'
+import Ibad from '@/Components/Images/ibad.jpg'
+import Saqib from '@/Components/Images/Saqib.jpg'
+import Sajan from '@/Components/Images/Sajan.jpg'
+import trustImg from '@/Components/Images/trusted3.png'
+import familyImg from '@/Components/Images/trusted3.png'
+import excellenceImg from '@/Components/Images/trusted3.png'
+import communityImg from '@/Components/Images/trusted3.png'
+import growthImg from '@/Components/Images/trusted3.png'
+import sustainabilityImg from '@/Components/Images/trusted3.png'
+import FamilyPhoto from '@/Components/Images/familyphoto.png'
+// import etc4 from '@/Components/Images/etc4.jpg'
 
 function CrownExcelFamily() {
   // Sample family members data - you can replace with real data
   const familyMembers = [
     {
       id: 1,
-      name: "Ahmed Al Mansouri",
-      position: "Chief Executive Officer",
+      name: "Muhammad Qais",
+      position: "Director",
       department: "Leadership",
       experience: "15+ Years",
-      image: "/api/placeholder/300/300",
+      image: Director,
       quote: "Our success is built on the foundation of trust, integrity, and family values."
     },
     {
       id: 2,
-      name: "Fatima Hassan",
-      position: "Chief Financial Officer",
-      department: "Finance",
-      experience: "12+ Years",
-      image: "/api/placeholder/300/300",
+      name: "Abdullah Salar",
+      position: "Customer Relations Manager",
+      department: "Customer Service",
+      experience: "8+ Years",
+      image: Abdullah,
+
       quote: "Every decision we make reflects our commitment to our family and community."
     },
     {
       id: 3,
-      name: "Mohammed Khalil",
+      name: "Shammry",
       position: "Head of Operations",
       department: "Operations",
       experience: "10+ Years",
-      image: "/api/placeholder/300/300",
+      image: Shammry,
       quote: "We treat every customer like family, ensuring their success is our success."
     },
     {
       id: 4,
-      name: "Aisha Rahman",
-      position: "Customer Relations Manager",
-      department: "Customer Service",
-      experience: "8+ Years",
-      image: "/api/placeholder/300/300",
+      name: "Farooq",
+      position: "Chief Financial Officer",
+      department: "Finance",
+      experience: "12+ Years",
+      image: Farooq,
       quote: "Building lasting relationships is at the heart of everything we do."
     },
     {
       id: 5,
-      name: "Omar Al Zaabi",
-      position: "Technology Director",
-      department: "IT",
-      experience: "9+ Years",
-      image: "/api/placeholder/300/300",
+      name: "Nabiha",
+      position: "Chief Executive Officer",
+      department: "Leadership",
+      experience: "15+ Years",
+      image: Nabiha,
       quote: "Innovation and tradition go hand in hand in our family business."
     },
     {
       id: 6,
-      name: "Layla Al Suwaidi",
+      name: "ETC",
       position: "Human Resources Manager",
       department: "HR",
       experience: "7+ Years",
-      image: "/api/placeholder/300/300",
+      image: etc1,
       quote: "Our team is our extended family, and we grow together."
-    }
+    },
+    {
+      id: 7,
+      name: "ETC",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc2,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 8,
+      name: "ETC",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc3,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 9,
+      name: "ETC",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc4,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 10,
+      name: "Tarun",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: Tarun,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 11,
+      name: "Ibad",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: Ibad,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 12,
+      name: "Saqib",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: Saqib,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 13,
+      name: "Sajan",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: Sajan,
+      quote: "Our team is our extended family, and we grow together."
+    },
   ];
 
   const familyValues = [
     {
-      icon: "🤝",
+      img: trustImg,
       title: "Trust & Integrity",
       description: "Building lasting relationships based on mutual trust and unwavering integrity."
     },
     {
-      icon: "👨‍👩‍👧‍👦",
+      img: familyImg,
       title: "Family First",
       description: "Treating every team member and customer as part of our extended family."
     },
     {
-      icon: "🌟",
+      img: excellenceImg,
       title: "Excellence",
       description: "Striving for excellence in everything we do, from service to innovation."
     },
     {
-      icon: "🤲",
+      img: communityImg,
       title: "Community Service",
       description: "Giving back to our community and supporting those in need."
     },
     {
-      icon: "🔄",
+      img: growthImg,
       title: "Continuous Growth",
       description: "Embracing change and fostering continuous learning and development."
     },
     {
-      icon: "💚",
+      img: sustainabilityImg,
       title: "Sustainability",
       description: "Building a sustainable future for our family and the next generation."
     }
@@ -125,10 +210,11 @@ function CrownExcelFamily() {
         <div className="max-w-7xl mx-auto">
           {/* Family Story Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <Image src={FamilyPhoto} alt='familyphoto'/>
+            {/* <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-6">
-                Our Story – Crown Excel
+                  Our Story – Crown Excel
                 </h2>
                 <div className="w-16 h-1 bg-[#61ce70] mb-6"></div>
                 <div className="space-y-6 text-gray-700 font-muli leading-8">
@@ -136,22 +222,22 @@ function CrownExcelFamily() {
                     {`Founded in 2009, Crown Excel began as a small family-run business with big dreams. What started as a modest venture has grown into one of the UAE’s most trusted wholesale and retail providers of tech products and services, all while staying true to our founding values.`}
                   </p>
                   <p className="text-lg">
-                  {`Today, Crown Excel has expanded far beyond family ties to embrace a diverse team of dedicated individuals from various social, cultural, and linguistic backgrounds. Each team member plays a vital role, making phenomenal contributions toward our growth, customer relationships, and ongoing success. Alongside our partners who share our vision of excellence, integrity, and service, we continue to build a brand that makes a meaningful impact.`}
+                    {`Today, Crown Excel has expanded far beyond family ties to embrace a diverse team of dedicated individuals from various social, cultural, and linguistic backgrounds. Each team member plays a vital role, making phenomenal contributions toward our growth, customer relationships, and ongoing success. Alongside our partners who share our vision of excellence, integrity, and service, we continue to build a brand that makes a meaningful impact.`}
                   </p>
                   <p className="text-lg">
-                   {` We believe that true success is not measured by profit alone, but by the positive influence we create in people’s lives—customers, employees, and communities alike.`}
+                    {` We believe that true success is not measured by profit alone, but by the positive influence we create in people’s lives—customers, employees, and communities alike.`}
                   </p>
                   <p className="text-lg">
-                   {`As we continue to grow, we remain deeply committed to our core principles:`}
+                    {`As we continue to grow, we remain deeply committed to our core principles:`}
                   </p>
                   <p className="text-lg">
-                   {`Treating everyone like family`}
+                    {`Treating everyone like family`}
                   </p>
                   <p className="text-lg">
-                   {`Upholding the highest standards of integrity`}
+                    {`Upholding the highest standards of integrity`}
                   </p>
                   <p className="text-lg">
-                   {`Giving back to the community that has supported us for over a decade`}
+                    {`Giving back to the community that has supported us for over a decade`}
                   </p>
                 </div>
               </div>
@@ -179,10 +265,8 @@ function CrownExcelFamily() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
-
-          {/* Family Values Grid */}
           <div className="mb-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
@@ -192,64 +276,95 @@ function CrownExcelFamily() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {familyValues.map((value, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 group">
-                  <div className="text-4xl mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-3 group-hover:text-[#084032] transition-colors">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600 font-muli leading-relaxed">
-                    {value.description}
-                  </p>
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col"
+                  style={{ border: '1px solid #e5e7eb' }}
+                >
+                  {/* Card Image/Top Section */}
+                  <div className="h-40 w-full flex items-center justify-center bg-gradient-to-br from-[#e0f7ef] to-[#f3f4f6] relative">
+                    <Image
+                      src={value.img}
+                      alt={value.title}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      className="object-contain"
+                    />
+                  </div>
+                  {/* Card Content */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 font-muli leading-relaxed flex-1">
+                      {value.description}
+                    </p>
+                  </div>
+                  {/* Card Footer */}
+                  <div className="px-6 pb-4">
+                    <span className="inline-block bg-[#61ce70] text-white text-xs font-semibold px-3 py-1 rounded-full font-montserrat">
+                      Value
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Family Members Section */}
-          <div className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
-                Our Family
-              </h2>
-              <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
-              <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">
-                Our leadership team represents the heart and soul of our family business
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {familyMembers.map((member) => (
-                <div key={member.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                  {/* Member Image */}
-                  <div className="relative h-64 bg-gradient-to-br from-[#16806b] to-[#084032] overflow-hidden">
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">
-                        {member.experience}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="text-white">
-                        <div className="text-sm opacity-90">{member.department}</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Member Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">
-                      {member.name}
-                    </h3>
-                    <p className="text-[#084032] font-muli font-medium mb-4">
-                      {member.position}
-                    </p>
-                    <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-                      {`"${member.quote}"`}
-                    </blockquote>
-                  </div>
-                </div>
-              ))}
-            </div>
+         <div className="mb-16">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
+      Our Family
+    </h2>
+    <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
+    <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">
+      Our leadership team represents the heart and soul of our family business
+    </p>
+  </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {familyMembers.map((member) => (
+      <div key={member.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+        {/* Member Image */}
+        <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
+          <Image
+            src={member?.image}
+            alt={member?.name}
+            fill
+            style={{ objectFit: 'contain', objectPosition: 'center top' }}
+            className="rounded-t-2xl"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="absolute top-4 right-4">
+            <span className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">
+              {member.experience}
+            </span>
           </div>
+          {/* Department Badge - Make it more readable */}
+          <div className="absolute bottom-4 left-4">
+            <span className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">
+              {member.department}
+            </span>
+          </div>
+        </div>
+
+        {/* Member Content */}
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">
+            {member.name}
+          </h3>
+          <p className="text-[#084032] font-muli font-medium mb-4">
+            {member.position}
+          </p>
+          <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
+            {`"${member.quote}"`}
+          </blockquote>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
           {/* Family Milestones */}
           {/* <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
@@ -286,15 +401,15 @@ function CrownExcelFamily() {
                 Be part of a family that values excellence, integrity, and community service
               </p>
               <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Link href="/company/career">
-                <button className="bg-[#61ce70] text-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-[#4ade80] transition-colors">
-                  Join Our Family
-                </button>
-              </Link>
-              <Link href="/company/career">
-                <button className="bg-transparent text-white border-2 border-white px-8 py-2 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
-                  Apply Job
-                </button>
+                <Link href="/company/career">
+                  <button className="bg-[#61ce70] text-white px-8 py-3 rounded-lg font-montserrat font-medium hover:bg-[#4ade80] transition-colors">
+                    Join Our Family
+                  </button>
+                </Link>
+                <Link href="/company/career">
+                  <button className="bg-transparent text-white border-2 border-white px-8 py-2 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
+                    Apply Job
+                  </button>
                 </Link>
               </div>
             </div>
