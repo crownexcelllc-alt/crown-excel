@@ -10,6 +10,7 @@ import etc1 from '@/Components/Images/etc1.jpg'
 import etc2 from '@/Components/Images/etc2.jpg'
 import etc3 from '@/Components/Images/etc3.jpg'
 import etc4 from '@/Components/Images/etc4.png'
+import etc5 from '@/Components/Images/etc5.png'
 import Tarun from '@/Components/Images/Tarun.jpg'
 import Ibad from '@/Components/Images/ibad.jpg'
 import Saqib from '@/Components/Images/Saqib.jpg'
@@ -47,27 +48,27 @@ function CrownExcelFamily() {
     },
     {
       id: 3,
-      name: "Shammry",
-      position: "Head of Operations",
-      department: "Operations",
+      name: "Shamry Salam",
+      position: "Receptionist - Student Visa",
+      department: "Reception",
       experience: "10+ Years",
       image: Shammry,
       quote: "We treat every customer like family, ensuring their success is our success."
     },
     {
       id: 4,
-      name: "Farooq",
-      position: "Chief Financial Officer",
-      department: "Finance",
+      name: "Mohamed Farook",
+      position: "Sales Officer",
+      department: "Sales",
       experience: "12+ Years",
       image: Farooq,
       quote: "Building lasting relationships is at the heart of everything we do."
     },
     {
       id: 5,
-      name: "Nabiha",
-      position: "Chief Executive Officer",
-      department: "Leadership",
+      name: "Nabiha Momin",
+      position: "Sales Officer",
+      department: "Sales",
       experience: "15+ Years",
       image: Nabiha,
       quote: "Innovation and tradition go hand in hand in our family business."
@@ -110,8 +111,8 @@ function CrownExcelFamily() {
     },
     {
       id: 10,
-      name: "Tarun",
-      position: "Human Resources Manager",
+      name: "Tarun Rameshchand Sahu",
+      position: "Team Leader - Employment Visa (Ict Bluezone Trading Llc)",
       department: "HR",
       experience: "7+ Years",
       image: Tarun,
@@ -142,6 +143,177 @@ function CrownExcelFamily() {
       department: "HR",
       experience: "7+ Years",
       image: Sajan,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 14,
+      name: "ETC",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 15,
+      name: "Ilyas Khan Gul Khan",
+      position: "Sales Supervisor",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 16,
+      name: "Jahubar Sathik.H",
+      position: "Messenger",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 17,
+      name: "Vishal Prabhakar Pawar",
+      position: "Business Manager",
+      department: "Business Development",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 18,
+      name: "Fasaludeheen ",
+      position: "Telecommunication Assistant",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 19,
+      name: "Saeed Khan Husain Khan",
+      position: "Sales Officer",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 20,
+      name: "Abdur Rauf Abdul Zahoor",
+      position: "Stock Filler",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 21,
+      name: "Mohammed Ashik Rehaman",
+      position: "Shop Assistant",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id:22,
+      name: "Muhamamd Wais Khan",
+      position: "Commercial Sales Representative",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 23,
+      name: "Lavina Santlalani",
+      position: "Businees Development Manager",
+      department: "Business Development",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 24,
+      name: "ETC",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 25,
+      name: "Khurram Razzaq",
+      position: "Marketing Manager",
+      department: "Marketing",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 26,
+      name: "Muhammad Aslam",
+      position: "Telecommunication Assistant",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 27,
+      name: "Nadeem",
+      position: "Marketing Specialist",
+      department: "Marketing",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 28,
+      name: "Abdullah Sartaj Khan",
+      position: "Shop Assistant",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 29,
+      name: "Ibathur Rahman Abdul Nasar Abdul Nasar",
+      position: "Sales Supervisor",
+      department: "Sales",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 30,
+      name: "Junaid Ali",
+      position: "Stock Filler",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 31,
+      name: "Brian Mwenda",
+      position: "Stock Filler",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 32,
+      name: "Gemuh Fidelis Mashim",
+      position: "store supervisor",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
   ];
