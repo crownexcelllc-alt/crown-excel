@@ -22,6 +22,9 @@ import communityImg from '@/Components/Images/trusted3.png'
 import growthImg from '@/Components/Images/trusted3.png'
 import sustainabilityImg from '@/Components/Images/trusted3.png'
 import FamilyPhoto from '@/Components/Images/familyphoto.png'
+import sirKhurram from '@/Components/Images/sir profile pic.png'
+import Saeed from '@/Components/Images/saeed.png'
+import Ashiq from '@/Components/Images/ashiq.jpg'
 // import etc4 from '@/Components/Images/etc4.jpg'
 
 function CrownExcelFamily() {
@@ -38,11 +41,11 @@ function CrownExcelFamily() {
     },
     {
       id: 2,
-      name: "Abdullah Salar",
-      position: "Customer Relations Manager",
-      department: "Customer Service",
-      experience: "8+ Years",
-      image: Abdullah,
+        name: "Khurram Razzaq",
+      position: "Marketing Manager",
+      department: "Marketing",
+      experience: "7+ Years",
+      image: sirKhurram,
 
       quote: "Every decision we make reflects our commitment to our family and community."
     },
@@ -218,7 +221,7 @@ function CrownExcelFamily() {
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id:22,
+      id: 22,
       name: "Muhamamd Wais Khan",
       position: "Commercial Sales Representative",
       department: "Sales",
@@ -246,11 +249,11 @@ function CrownExcelFamily() {
     },
     {
       id: 25,
-      name: "Khurram Razzaq",
-      position: "Marketing Manager",
-      department: "Marketing",
-      experience: "7+ Years",
-      image: etc5,
+       name: "Abdullah Salar",
+      position: "Customer Relations Manager",
+      department: "Customer Service",
+      experience: "8+ Years",
+      image: Abdullah,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -291,7 +294,8 @@ function CrownExcelFamily() {
     },
     {
       id: 30,
-      name: "Junaid Ali",
+      name:
+        "Junaid Ali",
       position: "Stock Filler",
       department: "Inventory",
       experience: "7+ Years",
@@ -314,6 +318,24 @@ function CrownExcelFamily() {
       department: "Inventory",
       experience: "7+ Years",
       image: etc5,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 33,
+      name: "Ashiq",
+      position: "store supervisor",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: Ashiq,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 34,
+      name: "Saeed",
+      position: "store supervisor",
+      department: "Inventory",
+      experience: "7+ Years",
+      image: Saeed,
       quote: "Our team is our extended family, and we grow together."
     },
   ];
@@ -382,7 +404,7 @@ function CrownExcelFamily() {
         <div className="max-w-7xl mx-auto">
           {/* Family Story Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-            <Image src={FamilyPhoto} alt='familyphoto'/>
+            <Image src={FamilyPhoto} alt='familyphoto' />
             {/* <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-6">
@@ -484,59 +506,59 @@ function CrownExcelFamily() {
           </div>
 
           {/* Family Members Section */}
-         <div className="mb-16">
-  <div className="text-center mb-12">
-    <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
-      Our Family
-    </h2>
-    <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
-    <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">
-      Our leadership team represents the heart and soul of our family business
-    </p>
-  </div>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {familyMembers.map((member) => (
-      <div key={member.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-        {/* Member Image */}
-        <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
-          <Image
-            src={member?.image}
-            alt={member?.name}
-            fill
-            style={{ objectFit: 'contain', objectPosition: 'center top' }}
-            className="rounded-t-2xl"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/10"></div>
-          <div className="absolute top-4 right-4">
-            <span className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">
-              {member.experience}
-            </span>
-          </div>
-          {/* Department Badge - Make it more readable */}
-          <div className="absolute bottom-4 left-4">
-            <span className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">
-              {member.department}
-            </span>
-          </div>
-        </div>
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
+                Our Family
+              </h2>
+              <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
+              <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">
+                Our leadership team represents the heart and soul of our family business
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {familyMembers.map((member) => (
+                <div key={member.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                  {/* Member Image */}
+                  <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
+                    <Image
+                      src={member?.image}
+                      alt={member?.name}
+                      fill
+                      style={{ objectFit: 'contain', objectPosition: 'center top' }}
+                      className="rounded-t-2xl"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">
+                        {member.experience}
+                      </span>
+                    </div>
+                    {/* Department Badge - Make it more readable */}
+                    <div className="absolute bottom-4 left-4">
+                      <span className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">
+                        {member.department}
+                      </span>
+                    </div>
+                  </div>
 
-        {/* Member Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">
-            {member.name}
-          </h3>
-          <p className="text-[#084032] font-muli font-medium mb-4">
-            {member.position}
-          </p>
-          <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-            {`"${member.quote}"`}
-          </blockquote>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+                  {/* Member Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-[#084032] font-muli font-medium mb-4">
+                      {member.position}
+                    </p>
+                    <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
+                      {`"${member.quote}"`}
+                    </blockquote>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Family Milestones */}
           {/* <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
