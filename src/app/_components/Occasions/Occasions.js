@@ -52,7 +52,7 @@ const Occasions = () => {
             }}
           >
             {/* Dots background */}
-            <div className="absolute left-0 right-0 top-0 h-[20px] z-0 pointer-events-none">
+            <div className="absolute left-0 right-0 top-0 h-[217px] z-0 pointer-events-none">
               <Image
                 src={DotsBg}
                 alt="dots background"
