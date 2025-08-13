@@ -51,7 +51,7 @@ const Brands = () => {
       <div className="relative w-full overflow-hidden">
         <div className="marquee flex">
           {/* First sequence */}
-            <div className="flex items-center gap-1 px-10 shrink-0">
+            <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
               {brands.map((brand, i) => (
                 <div
                   key={i}
@@ -69,7 +69,7 @@ const Brands = () => {
               ))}
             </div>
           {/* Duplicate sequence (for seamless loop) */}
-            <div className="flex items-center gap-1 px-10 shrink-0" aria-hidden="true">
+             <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
               {brands.map((brand, i) => (
                 <div
                   key={i}
@@ -96,7 +96,7 @@ const Brands = () => {
       <style jsx>{`
         .marquee {
           width: max-content;
-          animation: marquee var(--speed,60s) linear infinite;
+          animation: marquee var(--speed,20s) linear infinite;
         }
         @keyframes marquee {
           0% { transform: translateX(0); }

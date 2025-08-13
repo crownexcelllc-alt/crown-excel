@@ -14,6 +14,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 
 function Navbar() {
+  const [logoUrl, setLogoUrl] = useState(Logo);
   const navLinks = [
     { label: 'Home', href: '/' },
 
@@ -88,6 +89,21 @@ function Navbar() {
   const [medNav, setMedNav] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    async function fetchLogo() {
+      try {
+        const res = await fetch('/api/logo');
+        const data = await res.json();
+        console.log('Fetched logo data:', data);
+
+        if (data.logo) setLogoUrl(data.logo);
+      } catch {
+        setLogoUrl('/file.svg');
+      }
+    }
+    fetchLogo();
+  }, []);
+
 
 
   useEffect(() => {
@@ -132,8 +148,8 @@ function Navbar() {
     <div className="navbar font-muli px-20 py-2 overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full flex items-center justify-between z-50">
       <div className="logo hidden md:flex">
         <Link href="/">
-          <Image
-            src={Logo}
+          <img
+            src={logoUrl}
             alt="Logo"
             height={50}
             width={150}

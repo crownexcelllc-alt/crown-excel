@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import React from 'react'
 import Nabiha from '@/Components/Images/Nabiha.jpg'
@@ -25,6 +26,7 @@ import FamilyPhoto from '@/Components/Images/familyphoto.png'
 import sirKhurram from '@/Components/Images/sir profile pic.png'
 import Saeed from '@/Components/Images/saeed.png'
 import Ashiq from '@/Components/Images/ashiq.jpg'
+import waiskhan from '@/Components/Images/waiskhan.png'
 // import etc4 from '@/Components/Images/etc4.jpg'
 
 function CrownExcelFamily() {
@@ -41,7 +43,7 @@ function CrownExcelFamily() {
     },
     {
       id: 2,
-        name: "Khurram Razzaq",
+      name: "Khurram Razzaq",
       position: "Marketing Manager",
       department: "Marketing",
       experience: "7+ Years",
@@ -52,7 +54,7 @@ function CrownExcelFamily() {
     {
       id: 3,
       name: "Shamry Salam",
-      position: "Receptionist - Student Visa",
+      position: "Receptionist",
       department: "Reception",
       experience: "10+ Years",
       image: Shammry,
@@ -78,7 +80,7 @@ function CrownExcelFamily() {
     },
     {
       id: 6,
-      name: "ETC",
+      name: "Brian Mwenda",
       position: "Human Resources Manager",
       department: "HR",
       experience: "7+ Years",
@@ -87,81 +89,82 @@ function CrownExcelFamily() {
     },
     {
       id: 7,
-      name: "ETC",
-      position: "Human Resources Manager",
-      department: "HR",
+      name:
+        "Junaid Ali",
+      position: "Store Operations",
+      department: "Wharehouse",
       experience: "7+ Years",
       image: etc2,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 8,
-      name: "ETC",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Abdur Rauf Abdul Zahoor",
+      position: "Store Keeper",
+      department: "Warehouse",
       experience: "7+ Years",
       image: etc3,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 9,
-      name: "ETC",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Nadeem",
+      position: "Salesman",
+      department: "Sales",
       experience: "7+ Years",
       image: etc4,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 10,
-      name: "Tarun Rameshchand Sahu",
-      position: "Team Leader - Employment Visa (Ict Bluezone Trading Llc)",
-      department: "HR",
+      name: "Tarun Sahu",
+      position: "Team Leader - Corporate Sales",
+      department: "Sales",
       experience: "7+ Years",
       image: Tarun,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 11,
-      name: "Ibad",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Ibathur Rahman",
+      position: "Sales Supervisor",
+      department: "Sales",
       experience: "7+ Years",
       image: Ibad,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 12,
-      name: "Saqib",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Saqib Afzal Khan",
+      position: "Chief Operating Officer",
+      department: "Operations",
       experience: "7+ Years",
       image: Saqib,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 13,
-      name: "Sajan",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Sajin Vijay",
+      position: "Sales Executive",
+      department: "Sales",
       experience: "7+ Years",
       image: Sajan,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 14,
-      name: "ETC",
-      position: "Human Resources Manager",
-      department: "HR",
+      name: "Junaid Shafique",
+      position: "Accounts Manager",
+      department: "Accounts",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 15,
-      name: "Ilyas Khan Gul Khan",
-      position: "Sales Supervisor",
-      department: "Sales",
+      name: "Ilyas Khan",
+      position: "Managing Director",
+      department: "Management",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
@@ -169,16 +172,16 @@ function CrownExcelFamily() {
     {
       id: 16,
       name: "Jahubar Sathik.H",
-      position: "Messenger",
-      department: "Sales",
+      position: "Logistics Coordinator",
+      department: "Admin",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 17,
-      name: "Vishal Prabhakar Pawar",
-      position: "Business Manager",
+      name: "Vishal Pawar",
+      position: "Business Development Manager",
       department: "Business Development",
       experience: "7+ Years",
       image: etc5,
@@ -187,8 +190,8 @@ function CrownExcelFamily() {
     {
       id: 18,
       name: "Fasaludeheen ",
-      position: "Telecommunication Assistant",
-      department: "HR",
+      position: "Accountant",
+      department: "Accounts",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
@@ -196,37 +199,28 @@ function CrownExcelFamily() {
     {
       id: 19,
       name: "Saeed Khan Husain Khan",
-      position: "Sales Officer",
+      position: "Sales Executive",
       department: "Sales",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 20,
-      name: "Abdur Rauf Abdul Zahoor",
-      position: "Stock Filler",
-      department: "Inventory",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 21,
-      name: "Mohammed Ashik Rehaman",
+      name: "Mohammad Ashik Rehaman",
       position: "Shop Assistant",
       department: "Sales",
       experience: "7+ Years",
-      image: etc5,
+      image: Ashiq,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 22,
-      name: "Muhamamd Wais Khan",
-      position: "Commercial Sales Representative",
+      name: "Muhammad Wais Khan",
+      position: "Sales Manager",
       department: "Sales",
       experience: "7+ Years",
-      image: etc5,
+      image: waiskhan,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -240,18 +234,18 @@ function CrownExcelFamily() {
     },
     {
       id: 24,
-      name: "ETC",
-      position: "Human Resources Manager",
-      department: "HR",
+        name: "Saeed",
+      position: "store supervisor",
+      department: "Inventory",
       experience: "7+ Years",
-      image: etc5,
+      image: Saeed,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 25,
-       name: "Abdullah Salar",
-      position: "Customer Relations Manager",
-      department: "Customer Service",
+      name: "Abdullah Salar",
+      position: "Sales Executive",
+      department: "Sales",
       experience: "8+ Years",
       image: Abdullah,
       quote: "Our team is our extended family, and we grow together."
@@ -259,23 +253,14 @@ function CrownExcelFamily() {
     {
       id: 26,
       name: "Muhammad Aslam",
-      position: "Telecommunication Assistant",
-      department: "HR",
+      position: "Accountant",
+      department: "Accounts",
       experience: "7+ Years",
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 27,
-      name: "Nadeem",
-      position: "Marketing Specialist",
-      department: "Marketing",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 28,
       name: "Abdullah Sartaj Khan",
       position: "Shop Assistant",
       department: "Sales",
@@ -284,7 +269,7 @@ function CrownExcelFamily() {
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id: 29,
+      id: 28,
       name: "Ibathur Rahman Abdul Nasar Abdul Nasar",
       position: "Sales Supervisor",
       department: "Sales",
@@ -293,49 +278,12 @@ function CrownExcelFamily() {
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id: 30,
-      name:
-        "Junaid Ali",
-      position: "Stock Filler",
-      department: "Inventory",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 31,
-      name: "Brian Mwenda",
-      position: "Stock Filler",
-      department: "Inventory",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 32,
+      id: 29,
       name: "Gemuh Fidelis Mashim",
       position: "store supervisor",
       department: "Inventory",
       experience: "7+ Years",
       image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 33,
-      name: "Ashiq",
-      position: "store supervisor",
-      department: "Inventory",
-      experience: "7+ Years",
-      image: Ashiq,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 34,
-      name: "Saeed",
-      position: "store supervisor",
-      department: "Inventory",
-      experience: "7+ Years",
-      image: Saeed,
       quote: "Our team is our extended family, and we grow together."
     },
   ];
@@ -383,9 +331,9 @@ function CrownExcelFamily() {
   // ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <div className="min-h-screen">
       {/* Professional Header */}
-      <div className="bg-gradient-to-r from-[#084032] to-[#16806b] py-16">
+      {/* <div className="bg-gradient-to-r from-[#084032] to-[#16806b] py-16">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight">
@@ -397,14 +345,69 @@ function CrownExcelFamily() {
             </p>
           </div>
         </div>
+      </div> */}
+  <section className="relative w-full h-[280px] sm:h-[180px] md:h-[260px] lg:h-[540px] overflow-hidden ">
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: `url(${FamilyPhoto.src})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right'
+      }}
+    />
+    <div className="absolute " />
+    <div className="pointer-events-none absolute -left-24 w-[340px] h-[340px]" />
+    <div className="relative h-full flex items-center justify-start">
+      <div className="w-full max-w-5xl px-6 sm:px-8 md:px-12">
+        <div className="max-w-2xl ml-0 text-left">
+          <h1 className="font-montserrat text-white text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-tight mb-4 drop-shadow-lg tracking-tight text-left">
+            CROWN EXCEL <span className="block text-[#61ce70]">FAMILY</span>
+          </h1>
+          <p className="font-muli text-white/90 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed max-w-xl mb-2 text-left">
+            More than just a company, we are a family united by values,<br className="hidden sm:block" /> driven by excellence, and committed to serving our customers with integrity and care.
+          </p>
+        </div>
       </div>
-
+    </div>
+    {/* <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-[#147D61] via-[#32a987] to-transparent opacity-70" /> */}
+    {/* <style jsx>{`
+      .banner-gradient {
+        background: linear-gradient(
+          to right,
+          rgba(17,24,20,1) 0%,
+          rgba(17,24,20,1) 12%,
+          rgba(17,24,20,0.98) 22%,
+          rgba(20,125,97,0.80) 34%,
+          rgba(20,125,97,0.65) 44%,
+          rgba(20,125,97,0.45) 52%,
+          rgba(20,125,97,0.25) 58%,
+          rgba(20,125,97,0.10) 62%,
+          rgba(20,125,97,0) 100%
+        );
+      }
+      @media (max-width:640px) {
+        .banner-gradient {
+          background: linear-gradient(
+            to right,
+            rgba(17,24,20,1) 0%,
+            rgba(17,24,20,1) 22%,
+            rgba(17,24,20,0.98) 36%,
+            rgba(24,90,72,0.80) 48%,
+            rgba(24,110,85,0.52) 58%,
+            rgba(24,110,85,0.30) 66%,
+            rgba(24,110,85,0.12) 72%,
+            rgba(24,110,85,0) 82%
+          );
+        }
+      }
+    `}</style> */}
+  </section>
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           {/* Family Story Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-            <Image src={FamilyPhoto} alt='familyphoto' />
+          <div className="">
+            {/* <Image src={FamilyPhoto} alt='familyphoto' /> */}
             {/* <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-6">
