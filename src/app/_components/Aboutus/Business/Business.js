@@ -1,10 +1,10 @@
-
 "use client"
 import React, { useState } from 'react'
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import BusinessImage from '../../../../Components/Images/aboutbusiness.jpg'
 import Image from 'next/image';
+import Link from 'next/link';
 const Business = () => {
     const faq = [
         { title: 'What services does Crown Excel provide?', desc: 'We offer IT consultancy, managed IT services, hardware/software maintenance, server support, and hardware repair.' },
@@ -36,6 +36,8 @@ const Business = () => {
                                 <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                                     <div className='bg-[#1d8b6e] text-white px-6 py-4 border-t border rounded-b shadow'>
                                         {item.desc}
+
+                                        <Link href="/contact-us" className="text-sm ml-2 underline text-white">Inquire Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +79,7 @@ const Business = () => {
                             <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === idx ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="bg-[#0d5c47] text-white px-4 py-3 border border-white  shadow">
                                     {item.desc}
+                                    <Link href="/contact-us" className="text-sm ml-2 underline text-white">Inquire Now</Link>
                                 </div>
                             </div>
                         </div>
