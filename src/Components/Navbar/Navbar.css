@@ -149,7 +149,7 @@ ul.hide-scrollbar {
     /* position: absolute; */
   }
   .nav-linkss a:hover{
-    border-bottom: 2px solid white;
+    /* border-bottom: 2px solid white; */
     color: white;
     transform: none;
     /* transition: 0.5s; */
@@ -172,9 +172,7 @@ ul.hide-scrollbar {
   /* Prevents text shift */
 }
 
-.nav-link-active {
-  border-bottom: 2px solid #fff; /* or your preferred color */
-}
+/*  */
 .products-dropdown-scroll {
   background: #fff;
   position: absolute;
