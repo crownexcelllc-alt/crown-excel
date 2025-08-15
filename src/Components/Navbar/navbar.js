@@ -2,16 +2,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Logo from '../Images/cleaned_file.svg';
 import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+// import { ChevronDown } from 'lucide-react';
 import './Navbar.css';
 import { FaSortDown, FaChevronDown } from "react-icons/fa";
-import { RiMenu3Fill } from "react-icons/ri";
+// import { RiMenu3Fill } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import mobileLogo from '../Images/Mobile-logo.png'
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaAngleDown } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { FaLaptop, FaDesktop, FaPrint, FaNetworkWired, FaMouse, FaTools, FaMobileAlt, FaServer, FaUserTie, FaCogs, FaUsers, FaHistory, FaCommentDots, FaQuestionCircle } from "react-icons/fa";
+import { MdDevicesOther, MdRouter, MdSecurity } from "react-icons/md";
 
 function Navbar() {
   const [logoUrl, setLogoUrl] = useState(Logo);
@@ -189,7 +191,7 @@ function Navbar() {
         <ul className="flex flex-col ">
           {navLinks.map((item, i) => (
             <li key={i}>
-              <div className="flex items-center justify-between px-6 py-4 hover:bg-gray-50">
+              <div className="flex items-center justify-between px-0 py-0 hover:bg-gray-50">
                 <a
                   href={item.href}
                   className={`text-base font-medium flex-1 transition-colors duration-300 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800'}`}
@@ -256,34 +258,165 @@ function Navbar() {
             </a>
             {Array.isArray(item.dropdown) && hoveredIndex === i && (
               <div
-                className="absolute top-full left-0 mt-4 w-[200px] bg-white text-black  shadow-lg z-50"
+                className="fixed left-0 right-0 mt-4 bg-white text-black shadow-lg z-50 border-t border-gray-100"
                 onMouseEnter={() => handleMouseEnter(i)}
                 onMouseLeave={handleMouseLeave}
-                style={{borderRadius: '0px 0px 5px 5px'}}
+                style={{ borderBottom: '1px solid #e5e7eb', top: '76px' , width: '57%' , margin: 'auto' }}
               >
-                <ul
-                  ref={item.label === 'Products' ? productsDropdownRef : null}
-                  className={`max-h-[460px] overflow-y-auto hide-scrollbar ${item.label === 'Products' ? 'pr-0' : ''}`}
-                  style={{ transition: 'opacity 0.5s' }}
-                >
-                  {item.dropdown.map((subItem, j) => (
-                    <li key={j} className="whitespace-nowrap m-0 p-0">
-                      <a
-                        href={subItem.href}
-                        className={`block w-full px-3 py-0 text-sm dropdown-ach ${pathname === subItem.href ? 'bg-[#084032] text-white' : 'text-black hover:bg-gray-100'}`}
-                      >
+                <div className="container mx-auto p-4 max-w-6xl">
+                  <ul
+                    ref={item.label === 'Products' ? productsDropdownRef : null}
+                    className={`max-h-[460px] overflow-y-auto hide-scrollbar grid grid-cols-3 gap-6`}
+                    style={{ transition: 'opacity 0.5s' }}
+                  >
+                    {item.dropdown.map((subItem, j) => {
+                      // Icon mapping by label with descriptions
+                      const menuItems = {
+                        'Laptop': {
+                          icon: <FaLaptop size={24} className="text-green-900" />,
+                          desc: "Portable computing solutions"
+                        },
+                        'Desktop': {
+                          icon: <FaDesktop size={24} className="text-green-900" />,
+                          desc: "Powerful desktop systems"
+                        },
+                        'All in One': {
+                          icon: <MdDevicesOther size={24} className="text-green-900" />,
+                          desc: "Integrated computer solutions"
+                        },
+                        'Printers': {
+                          icon: <FaPrint size={24} className="text-green-900" />,
+                          desc: "Professional printing devices"
+                        },
+                        'Routers': {
+                          icon: <MdRouter size={24} className="text-green-900" />,
+                          desc: "Network connectivity devices"
+                        },
+                        'Switching': {
+                          icon: <FaNetworkWired size={24} className="text-green-900" />,
+                          desc: "Network switching solutions"
+                        },
+                        'Scanners and Copier': {
+                          icon: <FaPrint size={24} className="text-green-900" />,
+                          desc: "Document processing systems"
+                        },
+                        'Keyboard & Mouse': {
+                          icon: <FaMouse size={24} className="text-green-900" />,
+                          desc: "Input peripherals"
+                        },
+                        'Accessories': {
+                          icon: <FaTools size={24} className="text-green-900" />,
+                          desc: "Computer peripherals & add-ons"
+                        },
+                        'Biometric': {
+                          icon: <MdSecurity size={24} className="text-green-900" />,
+                          desc: "Security authentication systems"
+                        },
+                        'Phones and CCTV': {
+                          icon: <FaMobileAlt size={24} className="text-green-900" />,
+                          desc: "Communication & surveillance"
+                        },
+                        'Networking': {
+                          icon: <FaNetworkWired size={24} className="text-green-900" />,
+                          desc: "Complete networking solutions"
+                        },
+                        'RMA Facility': {
+                          icon: <FaTools size={24} className="text-green-900" />,
+                          desc: "Return merchandise services"
+                        },
+                        'Managed IT': {
+                          icon: <FaServer size={24} className="text-green-900" />,
+                          desc: "Comprehensive IT management"
+                        },
+                        'IT Consultancy': {
+                          icon: <FaUserTie size={24} className="text-green-900" />,
+                          desc: "Expert technology guidance"
+                        },
+                        'Hardware AMC': {
+                          icon: <FaCogs size={24} className="text-green-900" />,
+                          desc: "Hardware maintenance contracts"
+                        },
+                        'Software AMC': {
+                          icon: <FaCogs size={24} className="text-green-900" />,
+                          desc: "Software support agreements"
+                        },
+                        'Hardware Repair': {
+                          icon: <FaTools size={24} className="text-green-900" />,
+                          desc: "Device repair & maintenance"
+                        },
+                        'Server Support': {
+                          icon: <FaServer size={24} className="text-green-900" />,
+                          desc: "Server maintenance solutions"
+                        },
+                        'About Us': {
+                          icon: <FaUsers size={24} className="text-green-900" />,
+                          desc: "Learn about our company"
+                        },
+                        'Company History': {
+                          icon: <FaHistory size={24} className="text-green-900" />,
+                          desc: "Our journey through time"
+                        },
+                        'Crown Excel Family': {
+                          icon: <FaUsers size={24} className="text-green-900" />,
+                          desc: "Meet our team members"
+                        },
+                        'Director Message': {
+                          icon: <FaCommentDots size={24} className="text-green-900" />,
+                          desc: "A message from leadership"
+                        },
+                        'Events': {
+                          icon: <FaCommentDots size={24} className="text-green-900" />,
+                          desc: "Recent company activities"
+                        },
+                        'Career': {
+                          icon: <FaUserTie size={24} className="text-green-900" />,
+                          desc: "Join our growing team"
+                        },
+                        'FAQ': {
+                          icon: <FaQuestionCircle size={24} className="text-green-900" />,
+                          desc: "Frequently asked questions"
+                        },
+                        'Our Management': {
+                          icon: <FaUserTie size={24} className="text-green-900" />,
+                          desc: "Leadership team profiles"
+                        },
+                        'Contact Us': {
+                          icon: <FaCommentDots size={24} className="text-green-900" />,
+                          desc: "Get in touch with us"
+                        },
+                      };
 
-                        {subItem.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                      const menuItem = menuItems[subItem.label] || {
+                        icon: <FaChevronDown size={24} className="text-green-900" />,
+                        desc: "More information"
+                      };
+
+                      return (
+                        <li key={j} className="rounded-lg transition-colors hover:bg-gray-50">
+                          <a
+                            href={subItem.href}
+                            className={`flex items-start p-4 ${pathname === subItem.href ? 'bg-gray-50' : ''}`}
+                          >
+                            <div className="flex-shrink-0">
+                              <div className="w-12 h-12 flex items-center justify-center bg-[#f1f5f9] text-green-800 rounded-lg">
+                                {menuItem.icon}
+                              </div>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="font-medium text-gray-900">{subItem.label}</span>
+                              <span className="text-xs text-gray-500 mt-1">{menuItem.desc}</span>
+                            </div>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
                 {item.label === 'Products' && !atBottom && (
-                  <div className={`flex justify-center py-1 text-black font-[700] text-[20px] transition-opacity duration-300 ${showProductsScroll && !atBottom ? 'opacity-100' : 'opacity-100'}`}>
+                  <div className={`flex justify-center py-1 text-black font-[700] text-[20px] transition-opacity duration-300 ${showProductsScroll && !atBottom ? 'opacity-100' : 'opacity-0'}`}>
                     <FaAngleDown className={`${showProductsScroll && !atBottom ? '' : ''}`} />
                   </div>
                 )}
-
               </div>
             )}
 
