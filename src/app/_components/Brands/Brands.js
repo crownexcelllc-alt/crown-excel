@@ -69,7 +69,7 @@ const Brands = () => {
               ))}
             </div>
           {/* Duplicate sequence (for seamless loop) */}
-             <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
+             {/* <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
               {brands.map((brand, i) => (
                 <div
                   key={i}
@@ -85,7 +85,7 @@ const Brands = () => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
         </div>
 
         {/* Edge fade */}
@@ -93,7 +93,7 @@ const Brands = () => {
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#e6f0ee] to-transparent" />
       </div>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .marquee {
           width: max-content;
           animation: marquee var(--speed,20s) linear infinite;
@@ -105,7 +105,7 @@ const Brands = () => {
         @media (prefers-reduced-motion: reduce) {
           .marquee { animation: none; }
         }
-      `}</style>
+      `}</style> */}
     </div>
   )
 }
