@@ -71,26 +71,46 @@ const Career = () => {
         {/* Apply Now Form */}
         <div className="flex-1 basis-[65%] bg-white font-montserrat p-6">
           <h2 className="text-[32px] font-[600] text-center font-montserrat text-black mb-6">Apply Now</h2>
-          <form className="space-y-4 rounded-lg  p-6 border-[1px] border-black">
+          <form id="applyForm" className="space-y-4 rounded-lg  p-6 border-[1px] border-black" onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                position: formData.get('position'),
+                info: formData.get('info'),
+              };
+              try {
+                const res = await fetch('/api/applications', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!res.ok) throw new Error('Failed');
+                const data = await res.json();
+                alert('Application submitted');
+                form.reset();
+              } catch (err) {
+                alert('Failed to submit application');
+              }
+            }}>
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Name <span className="text-red-500">*</span></label>
-              <input type="text" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
+              <input name="name" type="text" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
             </div>
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Email <span className="text-red-500">*</span></label>
-              <input type="email" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
+              <input name="email" type="email" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
             </div>
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Phone Number <span className="text-red-500">*</span></label>
-              <input type="tel" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
+              <input name="phone" type="tel" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
             </div>
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Applying for which position <span className="text-red-500">*</span></label>
-              <input type="text" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
+              <input name="position" type="text" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" required />
             </div>
             <div>
               <label className="block text-[16px]  font-[700] text-black mb-1">Your short info</label>
-              <textarea className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" rows={4}></textarea>
+              <textarea name="info" className="w-full border text-black border-gray-300 rounded px-3 py-2 focus:outline focus:border-[#084032]" rows={4}></textarea>
             </div>
             <button type="submit" className="bg-[#084032] cursor-pointer text-white px-6 py-2 rounded font-semibold ">Submit</button>
           </form>
