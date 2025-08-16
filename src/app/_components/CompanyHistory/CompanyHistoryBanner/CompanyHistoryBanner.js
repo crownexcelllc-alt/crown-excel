@@ -22,7 +22,7 @@ const CompanyHistoryBanner = () => {
               Company History
             </h1>
             <p className="font-montserrat text-white/85 text-[13.5px] sm:text-[15px] md:text-[16px] leading-[1.55] max-w-[520px]">
-              Founded in 2009, Crown Excel began as a small family-run business with big dreams. What started as a modest venture has grown into one of the UAE's most trusted wholesale and retail providers of tech products and services, all while staying true to our founding values.
+{`              Founded in 2009, Crown Excel began as a small family-run business with big dreams. What started as a modest venture has grown into one of the UAE's most trusted wholesale and retail providers of tech products and services, all while staying true to our founding values.`}
             </p>
           </div>
         </div>

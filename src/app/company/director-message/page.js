@@ -10,7 +10,7 @@ function DirectorMessage() {
       <div className="py-8" style={{background: 'linear-gradient(265deg,rgba(20, 121, 101, 1) 35%, rgba(9, 69, 54, 1) 82%)'}}>
         <div className="container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight text-center md:text-left">
-            Director's Message
+       {`     Director's Message`}
           </h1>
         </div>
       </div>
@@ -36,7 +36,7 @@ function DirectorMessage() {
               {/* Director's Message */}
               <div className="p-8 md:p-12 flex-1 flex flex-col justify-center">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#16806b] font-montserrat mb-4">
-                  Director's Message
+                 {` Director's Message`}
                 </h3>
                 <div className="w-16 h-1 bg-[#61ce70] mb-6"></div>
                 <div className="space-y-6 text-gray-700 font-muli leading-8">
