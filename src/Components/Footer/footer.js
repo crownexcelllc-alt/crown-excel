@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Partner from '../Images/footerpartner.png'
@@ -14,6 +14,10 @@ import {
 } from 'phosphor-react';
 
 const Footer = () => {
+  const [emailInput, setEmailInput] = useState('');
+  const [loadingEmail, setLoadingEmail] = useState(false);
+  const [emailMessage, setEmailMessage] = useState('');
+
   const topButtons = [
     {
       title: 'Become Our Partner',
@@ -31,6 +35,43 @@ const Footer = () => {
       href: '/contact-us',
     },
   ];
+
+  async function submitSubscription(e) {
+    e?.preventDefault?.();
+    if (!emailInput || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
+      setEmailMessage('Please enter a valid email');
+      return;
+    }
+    setLoadingEmail(true);
+    setEmailMessage('');
+    try {
+      const payload = {
+        name: 'Website Subscriber',
+        email: emailInput,
+        phone: '',
+        subject: 'Footer Subscription',
+        service: 'subscription',
+        comments: 'Subscribed via footer email input',
+      };
+      const res = await fetch('/api/contact-submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json?.error || 'Failed to submit');
+      }
+      setEmailMessage('Thanks — we saved your email and notified the team.');
+      setEmailInput('');
+    } catch (err) {
+      console.error(err);
+      setEmailMessage('Failed to submit — please try again later.');
+    } finally {
+      setLoadingEmail(false);
+      setTimeout(() => setEmailMessage(''), 6000);
+    }
+  }
 
   return (
     <footer className="bg-[#084032] text-white">
@@ -191,14 +232,16 @@ const Footer = () => {
               <div className="relative">
                 <input
                   type="email"
+                  value={emailInput}
+                  onChange={e => setEmailInput(e.target.value)}
                   placeholder="E-mail Address"
                   className="w-full bg-white rounded-full px-4 py-3 pr-12 text-gray-800 placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#4ade80]"
                 />
-                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-[#003b2f] rounded-full flex items-center justify-center hover:bg-[#004d3f] transition-colors">
+                <button onClick={submitSubscription} className={`absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-[#003b2f] rounded-full flex items-center justify-center hover:bg-[#004d3f] transition-colors ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}>
                   <PaperPlaneRight size={16} className="text-white" />
                 </button>
               </div>
-              <p className="text-lg mt-3 text-gray-400">{"We don't send you any spam"}</p>
+              {emailMessage && <p className="text-lg mt-3 text-gray-400">{emailMessage}</p>}
             </div>
           </div>
 
@@ -281,14 +324,16 @@ const Footer = () => {
               <div className="relative mb-4">
                 <input
                   type="email"
+                  value={emailInput}
+                  onChange={e => setEmailInput(e.target.value)}
                   placeholder="E-mail Address"
                   className="w-full bg-white rounded-full px-4 py-3 pr-12 text-gray-800 placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#4ade80] text-sm"
                 />
-                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-[#003b2f] rounded-full flex items-center justify-center hover:bg-[#004d3f] transition-colors">
+                <button onClick={submitSubscription} className={`absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-[#003b2f] rounded-full flex items-center justify-center hover:bg-[#004d3f] transition-colors ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}>
                   <PaperPlaneRight size={14} className="text-white" />
                 </button>
               </div>
-              <p className="text-sm text-gray-400 mb-6">{"We don't send you any spam"}</p>
+              {emailMessage && <p className="text-sm text-gray-400 mb-6">{emailMessage}</p>}
 
               {/* Social Media Icons */}
               <div className="flex justify-center gap-3">

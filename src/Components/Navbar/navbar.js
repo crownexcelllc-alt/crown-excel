@@ -66,13 +66,13 @@ function Navbar() {
       dropdown: [
 
         { label: 'Networking', href: '/our-services/networking' },
-        { label: 'RMA Facility', href: '/our-services/rma-facility' },
-        { label: 'Managed IT', href: '/our-services/managed-it' },
+        { label: 'Cloud Computing', href: '/our-services/cloud-computing' },
+        { label: 'IT Infrastructure', href: '/our-services/it-infrastructure' },
         { label: 'IT Consultancy', href: '/our-services/it-consultancy' },
-        { label: 'Hardware AMC', href: '/our-services/hardware-amc' },
-        { label: 'Software AMC', href: '/our-services/software-amc' },
-        { label: 'Hardware Repair', href: '/our-services/hardware-repair' },
-        { label: 'Server Support', href: '/our-services/server-support' },
+        { label: 'Long/Short Term AMC', href: '/our-services/long/short-term-amc' },
+        { label: 'Software Solutions', href: '/our-services/software-solutions' },
+        { label: 'Security Solutions', href: '/our-services/security-solutions' },
+        { label: 'Storage & Virtualization', href: '/our-services/storage&virtualization' },
       ],
     },
 
@@ -278,13 +278,13 @@ function Navbar() {
                             'Biometric': { icon: <MdSecurity size={20} className="text-green-900" />, desc: 'Security authentication systems' },
                             'Phones and CCTV': { icon: <FaMobileAlt size={20} className="text-green-900" />, desc: 'Communication & surveillance' },
                             'Networking': { icon: <FaNetworkWired size={20} className="text-green-900" />, desc: 'Complete networking solutions' },
-                            'RMA Facility': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Return merchandise services' },
-                            'Managed IT': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Comprehensive IT management' },
+                            'Cloud Computing': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Return merchandise services' },
+                            'IT Infrastructure': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Comprehensive IT management' },
                             'IT Consultancy': { icon: <FaUserTie size={20} className="text-green-900" />, desc: 'Expert technology guidance' },
-                            'Hardware AMC': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
-                            'Software AMC': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Software support agreements' },
-                            'Hardware Repair': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Device repair & maintenance' },
-                            'Server Support': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Server maintenance solutions' },
+                            'Long/Short Term AMC': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
+                            'Software Solutions': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Software support agreements' },
+                            'Security Solutions': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Device repair & maintenance' },
+                            'Storage & Virtualization': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Server maintenance solutions' },
                             'About Us': { icon: <FaUsers size={20} className="text-green-900" />, desc: 'Learn about our company' },
                             'Company History': { icon: <FaHistory size={20} className="text-green-900" />, desc: 'Our journey through time' },
                             'Crown Excel Family': { icon: <FaUsers size={20} className="text-green-900" />, desc: 'Meet our team members' },
@@ -409,11 +409,11 @@ function Navbar() {
                           icon: <FaNetworkWired size={24} className="text-green-900" />,
                           desc: "Complete networking solutions"
                         },
-                        'RMA Facility': {
+                        'Cloud Computing': {
                           icon: <FaTools size={24} className="text-green-900" />,
                           desc: "Return merchandise services"
                         },
-                        'Managed IT': {
+                        'IT Infrastructure': {
                           icon: <FaServer size={24} className="text-green-900" />,
                           desc: "Comprehensive IT management"
                         },
@@ -421,19 +421,19 @@ function Navbar() {
                           icon: <FaUserTie size={24} className="text-green-900" />,
                           desc: "Expert technology guidance"
                         },
-                        'Hardware AMC': {
+                        'Long/Short Term AMC': {
                           icon: <FaCogs size={24} className="text-green-900" />,
                           desc: "Hardware maintenance contracts"
                         },
-                        'Software AMC': {
+                        'Software Solutions': {
                           icon: <FaCogs size={24} className="text-green-900" />,
                           desc: "Software support agreements"
                         },
-                        'Hardware Repair': {
+                        'Security Solutions': {
                           icon: <FaTools size={24} className="text-green-900" />,
                           desc: "Device repair & maintenance"
                         },
-                        'Server Support': {
+                        'Storage & Virtualization': {
                           icon: <FaServer size={24} className="text-green-900" />,
                           desc: "Server maintenance solutions"
                         },
@@ -603,13 +603,13 @@ function Navbar() {
                                 'Biometric': { icon: <MdSecurity size={18} className="text-green-900" />, desc: 'Security authentication systems' },
                                 'Phones and CCTV': { icon: <FaMobileAlt size={18} className="text-green-900" />, desc: 'Communication & surveillance' },
                                 'Networking': { icon: <FaNetworkWired size={18} className="text-green-900" />, desc: 'Complete networking solutions' },
-                                'RMA Facility': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Return merchandise services' },
-                                'Managed IT': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Comprehensive IT management' },
+                                'Cloud Computing': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Return merchandise services' },
+                                'IT Infrastructure': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Comprehensive IT management' },
                                 'IT Consultancy': { icon: <FaUserTie size={18} className="text-green-900" />, desc: 'Expert technology guidance' },
-                                'Hardware AMC': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
-                                'Software AMC': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Software support agreements' },
-                                'Hardware Repair': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Device repair & maintenance' },
-                                'Server Support': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Server maintenance solutions' },
+                                'Long/Short Term AMC': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
+                                'Software Solutions': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Software support agreements' },
+                                'Security Solutions': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Device repair & maintenance' },
+                                'Storage & Virtualization': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Server maintenance solutions' },
                                 'About Us': { icon: <FaUsers size={18} className="text-green-900" />, desc: 'Learn about our company' },
                                 'Company History': { icon: <FaHistory size={18} className="text-green-900" />, desc: 'Our journey through time' },
                                 'Crown Excel Family': { icon: <FaUsers size={18} className="text-green-900" />, desc: 'Meet our team members' },

@@ -13,13 +13,23 @@ async function saveSubmission({ name, email, phone, subject, service, comments }
   return { id: res.insertedId.toString(), ...doc };
 }
 
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_ADMIN_ORIGIN || '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+}
+
 export async function GET() {
   try {
     const subs = await getSubmissions();
-    return NextResponse.json(subs.map(s => ({ id: s._id?.toString?.() || s.id, name: s.name, email: s.email, phone: s.phone, subject: s.subject, service: s.service, comments: s.comments, createdAt: s.createdAt })));
+    return NextResponse.json(subs.map(s => ({ id: s._id?.toString?.() || s.id, name: s.name, email: s.email, phone: s.phone, subject: s.subject, service: s.service, comments: s.comments, createdAt: s.createdAt })), { headers: CORS_HEADERS });
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ error: 'Failed to read contact submissions' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to read contact submissions' }, { status: 500, headers: CORS_HEADERS });
   }
 }
 
@@ -27,13 +37,14 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { name, email, phone, subject, service, comments } = body || {};
-    if (!name || !email || !phone) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    // Make phone optional (only require name and email)
+    if (!name || !email) {
+      return NextResponse.json({ error: 'Missing required fields: name and email are required' }, { status: 400, headers: CORS_HEADERS });
     }
     const entry = await saveSubmission({ name, email, phone, subject, service, comments });
-    return NextResponse.json({ ok: true, entry }, { status: 201 });
+    return NextResponse.json({ ok: true, entry }, { status: 201, headers: CORS_HEADERS });
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ error: 'Failed to save contact submission' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to save contact submission' }, { status: 500, headers: CORS_HEADERS });
   }
 }

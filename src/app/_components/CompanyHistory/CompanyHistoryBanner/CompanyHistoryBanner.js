@@ -1,10 +1,11 @@
 'use client'
 import React from 'react'
-import Background from '@/Components/Images/company-history.jpg'
+// import Background from '@/Components/Images/company-history.jpg'
+import Background from '@/Components/Images/company-history.png'
 
 const CompanyHistoryBanner = () => {
   return (
-    <section className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[430px] overflow-hidden rounded-b-[70px]">
+    <section className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[430px] overflow-hidden ">
       <div
         className="absolute inset-0"
         style={{
@@ -27,8 +28,8 @@ const CompanyHistoryBanner = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-[#147D61] via-[#32a987] to-transparent opacity-70" />
-      <style jsx>{`
+      {/* <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-[#147D61] via-[#32a987] to-transparent opacity-70" /> */}
+      {/* <style jsx>{`
         .banner-gradient {
           background: linear-gradient(
             to right,
@@ -58,7 +59,7 @@ const CompanyHistoryBanner = () => {
             );
           }
         }
-      `}</style>
+      `}</style> */}
     </section>
   )
 }

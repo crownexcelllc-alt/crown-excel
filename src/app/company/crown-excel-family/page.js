@@ -32,6 +32,7 @@ import Aslam from '@/Components/Images/aslam.jpg'
 import Fazal from '@/Components/Images/fazal.jpg'
 import Fidelis from '@/Components/Images/Fidelis.jpg'
 import Vishal from '@/Components/Images/vishal.png'
+import Lavina from '@/Components/Images/Lavina.jpg'
 // import etc4 from '@/Components/Images/etc4.jpg'
 
 function CrownExcelFamily() {
@@ -39,67 +40,70 @@ function CrownExcelFamily() {
   const familyMembers = [
     {
       id: 1,
-       name: "Abdullah Salar",
-      position: "Sales Executive",
-      department: "Sales",
-      experience: "8+ Years",
-      image: Abdullah,
+        name: "Ilyas Khan",
+      position: "Managing Director",
+      department: "Management",
+      experience: "7+ Years",
+      image: etc5,
+      
       quote: "Our success is built on the foundation of trust, integrity, and family values."
     },
     {
       id: 2,
-      name: "Khurram Razzaq",
-      position: "Marketing Manager",
-      department: "Marketing",
+         name: "Muhammad Wais Khan",
+      position: "Sales Manager",
+      department: "Sales",
       experience: "7+ Years",
-      image: sirKhurram,
-
+      image: waiskhan,
       quote: "Every decision we make reflects our commitment to our family and community."
     },
     {
       id: 3,
-      name: "Shamry Salam",
-      position: "Receptionist",
-      department: "Reception",
-      experience: "10+ Years",
-      image: Shammry,
+       name: "Saqib Afzal Khan",
+      position: "Chief Operating Officer",
+      department: "Operations",
+      experience: "7+ Years",
+      image: Saqib,
       quote: "We treat every customer like family, ensuring their success is our success."
     },
     {
       id: 4,
-      name: "Mohamed Farook",
-      position: "Sales Officer",
-      department: "Sales",
-      experience: "12+ Years",
-      image: Farooq,
+         name: "Vishal Pawar",
+      position: "Business Development Manager",
+      department: "Business Development",
+      experience: "7+ Years",
+      image: Vishal,
+      
       quote: "Building lasting relationships is at the heart of everything we do."
     },
     {
       id: 5,
-      name: "Nabiha Momin",
-      position: "Sales Officer",
-      department: "Sales",
-      experience: "15+ Years",
-      image: Nabiha,
+        name: "Khurram Razzaq",
+      position: "Marketing Manager",
+      department: "Marketing",
+      experience: "7+ Years",
+      image: sirKhurram,
+     
       quote: "Innovation and tradition go hand in hand in our family business."
     },
     {
       id: 6,
-      name: "Brian Mwenda",
-      position: "Human Resources Manager",
-      department: "HR",
-      experience: "7+ Years",
-      image: etc1,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 7,
-      name:
+       name:
         "Junaid Ali",
       position: "Store Operations",
       department: "Wharehouse",
       experience: "7+ Years",
       image: etc2,
+    
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 7,
+      name: "Brian Mwenda",
+      position: "Human Resources Manager",
+      department: "HR",
+      experience: "7+ Years",
+      image: etc1,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -140,11 +144,11 @@ function CrownExcelFamily() {
     },
     {
       id: 12,
-      name: "Saqib Afzal Khan",
-      position: "Chief Operating Officer",
-      department: "Operations",
-      experience: "7+ Years",
-      image: Saqib,
+       name: "Abdullah Salar",
+      position: "Sales Executive",
+      department: "Sales",
+      experience: "8+ Years",
+      image: Abdullah,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -165,17 +169,17 @@ function CrownExcelFamily() {
       image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
-    // {
-    //   id: 15,
-    //   name: "Ilyas Khan",
-    //   position: "Managing Director",
-    //   department: "Management",
-    //   experience: "7+ Years",
-    //   image: etc5,
-    //   quote: "Our team is our extended family, and we grow together."
-    // },
-    {
+     {
       id: 15,
+         name: "Shamry Salam",
+      position: "Receptionist",
+      department: "Reception",
+      experience: "10+ Years",
+      image: Shammry,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 16,
       // name: "Jahubar Sathik.H",
       name: "Jubair sathik",
       position: "Logistics Coordinator",
@@ -185,16 +189,16 @@ function CrownExcelFamily() {
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id: 16,
-      name: "Vishal Pawar",
-      position: "Business Development Manager",
-      department: "Business Development",
-      experience: "7+ Years",
-      image: Vishal,
+      id: 17,
+    name: "Mohamed Farook",
+      position: "Sales Officer",
+      department: "Sales",
+      experience: "12+ Years",
+      image: Farooq,
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id: 17,
+      id: 18,
       name: "Fasaludeheen ",
       position: "Accountant",
       department: "Accounts",
@@ -202,15 +206,15 @@ function CrownExcelFamily() {
       image: Fazal,
       quote: "Our team is our extended family, and we grow together."
     },
-    {
-      id: 18,
-      name: "Saeed Khan Husain Khan",
-      position: "Sales Executive",
-      department: "Sales",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
+    // {
+    //   id: 19,
+    //   name: "Saeed Khan Husain Khan",
+    //   position: "Sales Executive",
+    //   department: "Sales",
+    //   experience: "7+ Years",
+    //   image: etc5,
+    //   quote: "Our team is our extended family, and we grow together."
+    // },
     {
       id: 19,
       name: "Mohammad Ashik Rehaman",
@@ -222,11 +226,11 @@ function CrownExcelFamily() {
     },
     {
       id: 20,
-      name: "Muhammad Wais Khan",
-      position: "Sales Manager",
+       name: "Nabiha Momin",
+      position: "Sales Officer",
       department: "Sales",
-      experience: "7+ Years",
-      image: waiskhan,
+      experience: "15+ Years",
+      image: Nabiha,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -235,12 +239,12 @@ function CrownExcelFamily() {
       position: "Businees Development Manager",
       department: "Business Development",
       experience: "7+ Years",
-      image: etc5,
+      image: Lavina,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 22,
-        name: "Saeed",
+        name: "Saeed Khan",
       position: "store supervisor",
       department: "Inventory",
       experience: "7+ Years",
@@ -256,26 +260,26 @@ function CrownExcelFamily() {
       image: Aslam,
       quote: "Our team is our extended family, and we grow together."
     },
+    // {
+    //   id: 24,
+    //  name: "Abdullah Sartaj Khan",
+    //   position: "Shop Assistant",
+    //   department: "Sales",
+    //   experience: "7+ Years",
+    //   image: etc5,
+    //   quote: "Our team is our extended family, and we grow together."
+    // },
+    // {
+    //   id: 24,
+    //   name: "Ibathur Rahman Abdul Nasar Abdul Nasar",
+    //   position: "Sales Supervisor",
+    //   department: "Sales",
+    //   experience: "7+ Years",
+    //   image: etc5,
+    //   quote: "Our team is our extended family, and we grow together."
+    // },
     {
       id: 24,
-     name: "Abdullah Sartaj Khan",
-      position: "Shop Assistant",
-      department: "Sales",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 25,
-      name: "Ibathur Rahman Abdul Nasar Abdul Nasar",
-      position: "Sales Supervisor",
-      department: "Sales",
-      experience: "7+ Years",
-      image: etc5,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 26,
       name: "Gemuh Fidelis Mashim",
       position: "store supervisor",
       department: "Inventory",
@@ -303,7 +307,7 @@ function CrownExcelFamily() {
     },
     {
       img: communityImg,
-      title: "Community Service",
+      title: "Internals Matters",
       description: "Giving back to our community and supporting those in need."
     },
     {
@@ -486,7 +490,7 @@ function CrownExcelFamily() {
                     {value.title === 'Excellence' && (
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2"/><path d="M8 12L11 15L16 10" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     )}
-                    {(value.title === 'Crown Excel' || value.title === 'Community Service') && (
+                    {(value.title === 'Crown Excel' || value.title === 'Internals Matters') && (
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M2 8L6 16H18L22 8L12 2L2 8Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/><path d="M6 16V20H18V16" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/></svg>
                     )}
                     {value.title === 'Continuous Growth' && (
