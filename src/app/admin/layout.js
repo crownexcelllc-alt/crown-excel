@@ -7,6 +7,8 @@ export const metadata = {
   description: 'Admin panel for Crown Excel website management',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function Layout({ children }) {
   return <AdminLayout>{children}</AdminLayout>;
 }

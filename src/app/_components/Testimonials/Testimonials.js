@@ -11,6 +11,7 @@ import User4 from '../../../Components/Images/user4.png'
 import User5 from '../../../Components/Images/user5.png'
 import TestimonialCard from './TestimonialCard';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { X, Star } from 'phosphor-react';
 
 const Testimonials = () => {
     // start empty; we'll load approved reviews from backend
@@ -20,7 +21,18 @@ const Testimonials = () => {
     const swiperRef = useRef(null);
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [form, setForm] = useState({ name: '', position: '', company: '', rating: 5, message: '' });
+    const [form, setForm] = useState({ 
+        name: '', 
+        position: '', 
+        company: '', 
+        rating: 0, 
+        message: '',
+        reviewTitle: '',
+        email: ''
+    });
+    const [hoveredRating, setHoveredRating] = useState(0);
+    const [agreeToTerms, setAgreeToTerms] = useState(false);
+    const [message, setMessage] = useState('');
     const defaultImage = User5;
 
     useEffect(() => {
@@ -76,28 +88,57 @@ const Testimonials = () => {
 
     async function submitReview(e) {
         e.preventDefault();
-        if (!form.name.trim() || !form.message.trim()) {
-            alert('Please provide your name and review message.');
+        
+        if (!form.rating || !form.message || !form.name || !form.email || !agreeToTerms) {
+            setMessage('Please fill in all required fields and agree to terms.');
             return;
         }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+            setMessage('Please enter a valid email address.');
+            return;
+        }
+
+        setLoading(true);
+        setMessage('');
+
         try {
-            setLoading(true);
             const res = await fetch('/api/reviews', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
+                body: JSON.stringify({
+                    name: form.name,
+                    position: form.position,
+                    company: form.company,
+                    rating: form.rating,
+                    message: form.message
+                }),
             });
             if (!res.ok) {
                 const json = await res.json().catch(() => ({}));
                 throw new Error(json?.error || 'Failed to submit');
             }
-            // don't append unapproved review to UI; inform user it's pending approval
-            setForm({ name: '', position: '', company: '', rating: 5, message: '' });
-            setShowForm(false);
-            alert('Thank you — your review was submitted and is pending admin approval. It will appear here once approved.');
+            
+            setMessage('Thank you! Your review has been submitted and is pending approval.');
+            setForm({ 
+                name: '', 
+                position: '', 
+                company: '', 
+                rating: 0, 
+                message: '',
+                reviewTitle: '',
+                email: ''
+            });
+            setAgreeToTerms(false);
+            
+            setTimeout(() => {
+                setShowForm(false);
+                setMessage('');
+            }, 2000);
+
         } catch (err) {
             console.error(err);
-            alert('Failed to submit review');
+            setMessage('Failed to submit review. Please try again later.');
         } finally {
             setLoading(false);
         }
@@ -164,40 +205,217 @@ const Testimonials = () => {
 
             </div>
                 <div className="max-w-6xl mx-auto mt-6 flex justify-center">
-                    <button onClick={() => setShowForm(true)} className="bg-[#084032] text-white px-4 py-2 rounded">Add Review</button>
+                    <button 
+                        onClick={() => setShowForm(true)} 
+                        className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg transform hover:scale-105"
+                    >
+                        <Star size={20} weight="fill" />
+                        Leave a Review
+                    </button>
                 </div>
 
-            {/* Modal / Popup for review form */}
+            {/* Professional Review Modal */}
             {showForm && (
-                <div className="fixed inset-0 z-50 text-black flex items-center justify-center">
-                    <div className="absolute inset-0 bg-black/50" onClick={() => setShowForm(false)}></div>
-                    <div className="relative w-full max-w-3xl mx-4">
-                        <div className="bg-white rounded shadow p-6">
-                            <h2 className="text-lg font-semibold mb-3">Add Your Review</h2>
-                            <form onSubmit={submitReview} onClick={e => e.stopPropagation()}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    <input value={form.name} onChange={e => setForm({...form, name: e.target.value})} placeholder="Your name" className="border p-2 rounded" />
-                                    <input value={form.position} onChange={e => setForm({...form, position: e.target.value})} placeholder="Position / Title" className="border p-2 rounded" />
-                                    <input value={form.company} onChange={e => setForm({...form, company: e.target.value})} placeholder="Company (optional)" className="border p-2 rounded" />
-                                    <select value={form.rating} onChange={e => setForm({...form, rating: Number(e.target.value)})} className="border p-2 rounded">
-                                        <option value={5}>5 — Excellent</option>
-                                        <option value={4}>4 — Very good</option>
-                                        <option value={3}>3 — Good</option>
-                                        <option value={2}>2 — Fair</option>
-                                        <option value={1}>1 — Poor</option>
-                                    </select>
-                                </div>
-
-                                <div className="mt-3">
-                                    <textarea value={form.message} onChange={e => setForm({...form, message: e.target.value})} placeholder="Write your review..." className="border p-2 rounded w-full min-h-[120px]" />
-                                </div>
-
-                                <div className="flex items-center gap-2 mt-3">
-                                    <button type="submit" disabled={loading} className="px-4 py-2 bg-[#084032] text-white rounded">{loading ? 'Saving...' : 'Submit Review'}</button>
-                                    <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 border rounded">Cancel</button>
-                                </div>
-                            </form>
+                <div className="fixed inset-0 bg-opacity-30 z-[50] flex items-center justify-center p-4" onClick={() => setShowForm(false)}>
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto relative z-[10000] border-2 border-gray-200" onClick={(e) => e.stopPropagation()}>
+                        
+                        {/* Header */}
+                        <div className="bg-[#084032] text-white p-6 rounded-t-2xl relative">
+                            <button
+                                onClick={() => setShowForm(false)}
+                                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10001] bg-white/10 rounded-full p-1"
+                            >
+                                <X size={20} />
+                            </button>
+                            <div className="flex items-center gap-2 mb-2">
+                                <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                                <span className="text-sm font-medium text-orange-400">Your reviews</span>
+                                <span className="bg-orange-400 text-[#084032] text-xs px-2 py-1 rounded-full font-medium">
+                                    In progress
+                                </span>
+                            </div>
+                            <h2 className="text-xl font-bold">Leave a Review</h2>
                         </div>
+
+                        {/* Form Content */}
+                        <form onSubmit={submitReview} className="p-6 space-y-6">
+                            
+                            {/* Overall Rating */}
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-3">
+                                    Overall Rating<span className="text-red-500">*</span>
+                                </label>
+                                <div className="flex gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map((star) => (
+                                        <button
+                                            key={star}
+                                            type="button"
+                                            onClick={() => setForm({...form, rating: star})}
+                                            onMouseEnter={() => setHoveredRating(star)}
+                                            onMouseLeave={() => setHoveredRating(0)}
+                                            className="transition-transform hover:scale-110"
+                                        >
+                                            <Star
+                                                size={32}
+                                                weight={star <= (hoveredRating || form.rating) ? 'fill' : 'regular'}
+                                                className={
+                                                    star <= (hoveredRating || form.rating)
+                                                        ? 'text-orange-400'
+                                                        : 'text-gray-300'
+                                                }
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                                <p className="text-sm text-gray-600">
+                                    {form.rating > 0 && `${form.rating} out of 5 stars selected. Product is ${
+                                        form.rating >= 4 ? 'Excellent' : 
+                                        form.rating >= 3 ? 'Good' : 
+                                        form.rating >= 2 ? 'Fair' : 'Poor'
+                                    }.`}
+                                </p>
+                            </div>
+
+                            {/* Review Text */}
+                            <div>
+                                <label className="block text-black font-semibold mb-2">
+                                    Review<span className="text-red-500">*</span>
+                                </label>
+                                <textarea
+                                    value={form.message}
+                                    onChange={(e) => setForm({...form, message: e.target.value})}
+                                    placeholder="Example: I bought this a month ago and am so happy that I did..."
+                                    className="w-full border border-gray-300 rounded-lg p-3 text-black h-24 resize-none focus:outline-none focus:border-[#4ade80] transition-colors"
+                                    maxLength={500}
+                                />
+                                <p className="text-sm text-gray-500 text-right text-black mt-1">
+                                    {form.message.length}/500 minimum
+                                </p>
+                            </div>
+
+                            {/* Review Title */}
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Review Title
+                                </label>
+                                <input
+                                    type="text"
+                                    value={form.reviewTitle}
+                                    onChange={(e) => setForm({...form, reviewTitle: e.target.value})}
+                                    placeholder="Example: Great features!"
+                                    className="w-full border border-gray-300 text-black rounded-lg p-3 focus:outline-none focus:border-[#4ade80] transition-colors"
+                                    maxLength={60}
+                                />
+                                <p className="text-sm text-gray-500 text-right mt-1">
+                                    {form.reviewTitle.length}/60 maximum
+                                </p>
+                            </div>
+
+                            {/* Name */}
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Name<span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    value={form.name}
+                                    onChange={(e) => setForm({...form, name: e.target.value})}
+                                    placeholder="Example: John Doe"
+                                    className="w-full border text-black border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#4ade80] transition-colors"
+                                    minLength={2}
+                                />
+                                <p className="text-sm text-gray-500 text-right mt-1">
+                                    {form.name.length}/2 minimum
+                                </p>
+                            </div>
+
+                            {/* Position/Company */}
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">
+                                        Position
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={form.position}
+                                        onChange={(e) => setForm({...form, position: e.target.value})}
+                                        placeholder="Manager"
+                                        className="w-full border text-black border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#4ade80] transition-colors"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-gray-700 font-semibold mb-2">
+                                        Company
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={form.company}
+                                        onChange={(e) => setForm({...form, company: e.target.value})}
+                                        placeholder="Company Ltd"
+                                        className="w-full border text-black border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#4ade80] transition-colors"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">
+                                    Email<span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                    type="email"
+                                    value={form.email}
+                                    onChange={(e) => setForm({...form, email: e.target.value})}
+                                    placeholder="Example: yourname@example.com"
+                                    className="w-full border text-black border-gray-300 rounded-lg p-3 focus:outline-none focus:border-[#4ade80] transition-colors"
+                                />
+                            </div>
+
+                            {/* Terms & Conditions */}
+                            <div className="flex items-start gap-3">
+                                <input
+                                    type="checkbox"
+                                    id="terms"
+                                    checked={agreeToTerms}
+                                    onChange={(e) => setAgreeToTerms(e.target.checked)}
+                                    className="mt-1 w-4 h-4 text-[#4ade80] border-gray-300 rounded focus:ring-[#4ade80]"
+                                />
+                                <label htmlFor="terms" className="text-sm text-gray-600">
+                                    I agree to the{' '}
+                                    <span className="text-[#4ade80] hover:underline cursor-pointer">
+                                        terms & conditions
+                                    </span>
+                                </label>
+                            </div>
+
+                            {/* Disclaimer */}
+                            <p className="text-xs text-gray-500">
+                                You may receive emails regarding this submission. Any emails will include the ability to opt-out of future communications.
+                            </p>
+
+                            {/* Message */}
+                            {message && (
+                                <div className={`p-3 rounded-lg text-sm ${
+                                    message.includes('Thank you') 
+                                        ? 'bg-green-100 text-green-700 border border-green-200' 
+                                        : 'bg-red-100 text-red-700 border border-red-200'
+                                }`}>
+                                    {message}
+                                </div>
+                            )}
+
+                            {/* Submit Button */}
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className={`w-full bg-[#084032] hover:bg-[#003b2f] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 ${
+                                    loading ? 'opacity-60 cursor-not-allowed' : ''
+                                }`}
+                            >
+                                {loading ? 'Submitting...' : 'Submit'}
+                            </button>
+
+                        </form>
                     </div>
                 </div>
             )}

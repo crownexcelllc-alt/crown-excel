@@ -2,6 +2,8 @@ import React from 'react';
 import ReviewsTableClient from './ReviewsTableClient';
 
 export const metadata = { title: 'Reviews - Admin' };
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ReviewsPage() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';

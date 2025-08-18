@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContactForm>
+  <metadata>
+    <title>Contact Us Form</title>
+    <description>Schema and endpoint info for the Contactus component form.</description>
+    <version>1.0</version>
+  </metadata>
+
+  <endpoint method="POST">/api/contact-submissions</endpoint>
+
+  <fields>
+    <field name="name" type="text" required="true" placeholder="Name" />
+    <field name="email" type="email" required="true" placeholder="Email" />
+    <field name="phone" type="tel" required="true" placeholder="Phone" />
+    <field name="subject" type="text" required="false" placeholder="Subject" />
+    <field name="service" type="select" required="false">
+      <option>Select Service</option>
+      <option>RMA Facility</option>
+      <option>IT Consultancy</option>
+      <option>Managed IT</option>
+      <option>Software AMC</option>
+      <option>Hardware AMC</option>
+      <option>Server Support</option>
+      <option>Hardware Repair</option>
+    </field>
+    <field name="comments" type="textarea" required="false" placeholder="Comments" />
+  </fields>
+
+  <validation>
+    <rule field="name">required</rule>
+    <rule field="email">required|email</rule>
+    <rule field="phone">required</rule>
+  </validation>
+
+  <example>
+    <submission>
+      <name>Jane Doe</name>
+      <email>jane@example.com</email>
+      <phone>+1234567890</phone>
+      <subject>Inquiry about Managed IT</subject>
+      <service>Managed IT</service>
+      <comments>I would like to know more about your Managed IT plans.</comments>
+    </submission>
+  </example>
+</ContactForm>

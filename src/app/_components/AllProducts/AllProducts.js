@@ -135,13 +135,13 @@ const AllProducts = () => {
                 </div>
             </div>
             <div className="small-screen lg:hidden w-full md:hidden">
-                <div className="header bg-[#ffd900] w-full h-[80px] flex flex-col items-center justify-center">
-                    <h1 className='text-green-950 font-semibold text-[30px]'>All Products</h1>
+                <div className="header w-full h-[80px] flex flex-col items-center justify-center">
+                    <h1 className='font-semibold text-green-900 text-[30px]'>All Products</h1>
                 </div>
                 <div
                     className="all-products flex flex-col"
                     style={{
-                        backgroundImage: `url(${Background.src})`,
+                        // backgroundImage: `url(${Background.src})`,
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
@@ -149,23 +149,23 @@ const AllProducts = () => {
                     }}
                 >
                     {categories.map((item, index) => (
-                        <div key={index} className="flex flex-col w-full">
+                        <div key={index} className="flex flex-col w-full px-4">
                             <button
                                 onClick={() => setActive(item.slug)}
-                                className={`flex flex-col px-4 py-2 mt-2 rounded-lg text-sm font-medium transition
-            ${active === item.slug ? 'bg-green-900 text-white' : 'bg-yellow-300 text-green-900 hover:bg-yellow-200'}`}
+                                className={`px-4 py-2 mt-2 border border-green-900 rounded-lg text-sm font-medium transition
+            ${active === item.slug ? 'bg-green-900 text-white' : 'bg-[#defaca] text-black hover:bg-green-900 hover:text-white'}`}
                             >
                                 {item.name}
                             </button>
                             {active === item.slug && (
                                 <div className="flex flex-col justify-between items-center  rounded-lg mt-2 p-4 shadow-md" style={{
-                                    backgroundImage: `url(${Background.src})`,
+                                    // backgroundImage: `url(${Background.src})`,
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
                                     backgroundSize: 'cover',
                                     minHeight: '250px'
                                 }}>
-                                    <h2 className="text-lg text-white font-bold text-[30px]   ">{productDetails[item.slug].title}</h2>
+                                    <h2 className="text-lg text-black font-bold text-[30px]   ">{productDetails[item.slug].title}</h2>
                                     <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
                                     <div className="w-full flex justify-center">
                                         <Image

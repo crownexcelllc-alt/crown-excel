@@ -27,17 +27,15 @@ import alienware from '@/Components/Images/alienware.png'
 import adhua from '@/Components/Images/adhua.png'
 import tplink from '@/Components/Images/tp link.png'
 import samsung from '@/Components/Images/samsung (1).png'
-import msi from '@/Components/Images/msi (1).png'
 import razor from '@/Components/Images/razor.png'
 import microsof from '@/Components/Images/microsof.png'
 import lg from '@/Components/Images/lg.png'
-import intell from '@/Components/Images/intell.png'
 import lenovo from '@/Components/Images/lenovo (1).png'
 import Asus from '@/Components/Images/asus (1).png'
 import apple from '@/Components/Images/apple (1).png'
 
 const brands = [
-  Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Noc, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, msi, razor, microsof, lg, intell, lenovo, apple
+  Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Noc, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, razor, microsof, lg, lenovo, apple
 ]
 
 const Brands = () => {
@@ -49,9 +47,9 @@ const Brands = () => {
 
       {/* Infinite marquee */}
       <div className="relative w-full overflow-hidden">
-        <div className="marquee flex">
+        <div className="marquee w-full">
           {/* First sequence */}
-            <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
+            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 px-4">
               {brands.map((brand, i) => (
                 <div
                   key={i}
@@ -60,32 +58,14 @@ const Brands = () => {
                   <Image
                     src={brand}
                     alt="Brand Logo"
-                    width={110}
-                    height={110}
-                    className="object-contain w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] lg:w-[100px] lg:h-[100px] transition-transform duration-500 hover:scale-110"
+                    width={160}
+                    height={160}
+                    className="object-contain w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] transition-transform duration-500 hover:scale-110"
                     loading="lazy"
                   />
                 </div>
               ))}
             </div>
-          {/* Duplicate sequence (for seamless loop) */}
-             {/* <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-11">
-              {brands.map((brand, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center transition-all duration-300 p-4"
-                >
-                  <Image
-                    src={brand}
-                    alt=""
-                    width={110}
-                    height={110}
-                    className="object-contain w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] lg:w-[100px] lg:h-[100px]"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div> */}
         </div>
 
         {/* Edge fade */}

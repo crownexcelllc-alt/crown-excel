@@ -18,13 +18,13 @@ import Samsung from '../../Components/Images/samsung.png'
 import OurServicesBrands from '../_components/OurServicesBrands/OurServicesBrands';
 
 const Cards = [
-    { title: "RMA Facility", desc: "RMA (Return Merchandise Authorization) is the process of managing and authorizing product returns for repair, replacement, or refunds." },
+    { title: "Cloud Computing", desc: "Scalable cloud solutions for storage, computing, and infrastructure management to enhance business efficiency and reduce costs." },
     { title: "IT Consultancy", desc: "We provide tailored IT consulting services to optimize infrastructure, boost efficiency, and align technology with your goals." },
-    { title: "Managed IT", desc: "End-to-end and relaible IT management with proactive monitoring, ensuring smooth operations and prompt support for your business." },
-    { title: "Hardware AMC", desc: "Annual maintenance contracts to keep your hardware running efficiently and prevent downtime with timely support." },
-    { title: "Software AMC", desc: "Scheduled software maintenance ensures security, regular updates, and improved functionality, keeping systems running." },
-    { title: "Server Support", desc: "Expert server management, providing maintenance and troubleshooting to ensure maximum uptime and reliability." },
-    { title: "Hardware Repair", desc: "Efficient repair services to quickly restore hardware functionality, minimizing disruption and downtime." },
+    { title: "IT Infrastructure", desc: "End-to-end and reliable IT management with proactive monitoring, ensuring smooth operations and prompt support for your business." },
+    { title: "Long/Short Term AMC", desc: "Annual maintenance contracts to keep your hardware running efficiently and prevent downtime with timely support." },
+    { title: "Software Solutions", desc: "Scheduled software maintenance ensures security, regular updates, and improved functionality, keeping systems running." },
+    { title: "Storage & Virtualization", desc: "Advanced storage solutions and virtualization services to optimize data management and server efficiency." },
+    { title: "Security Solutions", desc: "Comprehensive cybersecurity services including firewalls, antivirus, data protection, and threat monitoring systems." },
 ]
 
 

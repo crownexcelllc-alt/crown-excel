@@ -4,6 +4,8 @@ import SettingsClient from './SettingsClient';
 export const metadata = {
   title: 'Website Settings - Admin',
 };
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function SettingsPage() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -11,7 +13,6 @@ export default async function SettingsPage() {
     phone: '',
     email: '',
     address: '',
-    logo: '',
     facebook: '',
     twitter: '',
     instagram: '',

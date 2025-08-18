@@ -60,7 +60,7 @@ function Navbar() {
 
     {
       label: 'Services',
-      href: '/our-services',
+      // href: '/our-services',
       icon: <FaSortDown className='icon' />,
       hasDropdown: true,
       dropdown: [
