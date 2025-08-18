@@ -20,7 +20,6 @@ export async function GET() {
       phone: '+971 4-354 0566',
       email: 'contact@crownexcel.com',
       address: 'Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai',
-      logo: '/Images/footerlogo.png',
       facebook: '',
       twitter: '',
       instagram: '',

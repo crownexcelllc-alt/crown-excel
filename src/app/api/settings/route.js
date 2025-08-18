@@ -24,7 +24,6 @@ async function saveSettings(data) {
     phone: data.phone || '',
     email: data.email || '',
     address: data.address || '',
-    logo: data.logo || '',
     facebook: data.facebook || '',
     twitter: data.twitter || '',
     instagram: data.instagram || '',

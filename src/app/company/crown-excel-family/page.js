@@ -521,7 +521,7 @@ function CrownExcelFamily() {
               </h2>
               <div className="w-16 h-1 bg-[#61ce70] mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 font-muli max-w-2xl mx-auto">
-                Our leadership team represents the heart and soul of our family business
+                Our team represents the heart and soul of our family business
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
