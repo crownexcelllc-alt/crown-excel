@@ -18,16 +18,17 @@ const Footer = () => {
   const [emailInput, setEmailInput] = useState('');
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [emailMessage, setEmailMessage] = useState('');
+  const [logoUrl, setLogoUrl] = useState(FooterLogo);
   const [settings, setSettings] = useState({
     phone: '+971 4-354 0566',
     email: 'contact@crownexcel.com',
     address: 'Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai',
-    logo:FooterLogo,
     facebook: '',
     twitter: '',
     instagram: '',
     linkedin: ''
   });
+  console.log('logo',settings?.logo)
 
   useEffect(() => {
     // Fetch settings from API
@@ -37,12 +38,26 @@ const Footer = () => {
         if (data && typeof data === 'object') {
           setSettings(prev => ({ ...prev, ...data }));
         }
-        console.log('Settings loaded:', data);
       })
       .catch(err => {
         console.warn('Could not load settings:', err);
       });
   }, []);
+
+    useEffect(() => {
+      async function fetchLogo() {
+        try {
+          const res = await fetch('/api/logo');
+          const data = await res.json();
+          console.log('Fetched logo data:', data);
+  
+          if (data.logo) setLogoUrl(data.logo);
+        } catch {
+          setLogoUrl('/file.svg');
+        }
+      }
+      fetchLogo();
+    }, []);
 
   const topButtons = [
     {
@@ -177,7 +192,7 @@ const Footer = () => {
             <div>
               <div className="flex items-center mb-4">
                 <div>
-                  <Image src={settings.logo || FooterLogo} alt="Logo" width={150} height={80} />
+                  <Image src={logoUrl || FooterLogo} alt="Logo" width={150} height={80} />
                 </div>
               </div>
               <p className="mb-6 text-gray-300 text-lg">Your desire is our Expertise</p>
@@ -304,7 +319,7 @@ const Footer = () => {
             {/* Logo and Tagline */}
             <div className="text-center">
               <div className="mb-4">
-                <Image src={settings.logo || FooterLogo} alt="Logo" width={120} height={60} className="mx-auto" />
+                <Image src={logoUrl || FooterLogo} alt="Logo" width={120} height={60} className="mx-auto" />
               </div>
               <p className="text-gray-300 text-base">Your desire is our Expertise</p>
             </div>
