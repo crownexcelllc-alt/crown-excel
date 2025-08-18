@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Partner from '../Images/footerpartner.png'
@@ -10,6 +10,7 @@ import {
   FacebookLogo,
   TwitterLogo,
   InstagramLogo,
+  LinkedinLogo,
   PaperPlaneRight,
 } from 'phosphor-react';
 
@@ -17,6 +18,31 @@ const Footer = () => {
   const [emailInput, setEmailInput] = useState('');
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [emailMessage, setEmailMessage] = useState('');
+  const [settings, setSettings] = useState({
+    phone: '+971 4-354 0566',
+    email: 'contact@crownexcel.com',
+    address: 'Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai',
+    logo:FooterLogo,
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    linkedin: ''
+  });
+
+  useEffect(() => {
+    // Fetch settings from API
+    fetch('/api/settings/public')
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data === 'object') {
+          setSettings(prev => ({ ...prev, ...data }));
+        }
+        console.log('Settings loaded:', data);
+      })
+      .catch(err => {
+        console.warn('Could not load settings:', err);
+      });
+  }, []);
 
   const topButtons = [
     {
@@ -151,22 +177,50 @@ const Footer = () => {
             <div>
               <div className="flex items-center mb-4">
                 <div>
-                  <Image src={FooterLogo} alt="Logo" width={150} height={80} />
+                  <Image src={settings.logo || FooterLogo} alt="Logo" width={150} height={80} />
                 </div>
               </div>
               <p className="mb-6 text-gray-300 text-lg">Your desire is our Expertise</p>
               <div className="flex gap-3 mb-6">
-                <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <FacebookLogo size={40} className="text-white" />
-                </div>
-                <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <TwitterLogo size={40} className="text-white" />
-                </div>
-                <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <InstagramLogo size={40} className="text-white" />
-                </div>
+                {settings.facebook && (
+                  <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <FacebookLogo size={40} className="text-white" />
+                  </a>
+                )}
+                {settings.twitter && (
+                  <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <TwitterLogo size={40} className="text-white" />
+                  </a>
+                )}
+                {settings.instagram && (
+                  <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <InstagramLogo size={40} className="text-white" />
+                  </a>
+                )}
+                {settings.linkedin && (
+                  <a href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <LinkedinLogo size={40} className="text-white" />
+                  </a>
+                )}
+                {/* Show default icons if no settings are available */}
+                {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (
+                  <>
+                    <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <FacebookLogo size={40} className="text-white" />
+                    </div>
+                    <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <TwitterLogo size={40} className="text-white" />
+                    </div>
+                    <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <InstagramLogo size={40} className="text-white" />
+                    </div>
+                    <div className="w-15 h-15 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <LinkedinLogo size={40} className="text-white" />
+                    </div>
+                  </>
+                )}
               </div>
-              <p className="text-gray-300 text-lg">Phone: +971 4-354 0566</p>
+              <p className="text-gray-300 text-lg">Phone: {settings.phone}</p>
             </div>
 
             {/* Our Services */}
@@ -174,18 +228,18 @@ const Footer = () => {
               <h3 className="text-xl font-semibold mb-6 text-white">Our Services</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/our-services/hardware-amc" className="text-gray-300 hover:text-white transition-colors text-lg">
-                    Hardware
+                  <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-white transition-colors text-lg">
+                    Long/Short Term Amc
                   </Link>
                 </li>
                 <li>
-                  <Link href="/our-services/software-amc" className="text-gray-300 hover:text-white transition-colors text-lg">
-                    Software
+                  <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-white transition-colors text-lg">
+                    Software Solutions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/our-services/managed-it" className="text-gray-300 hover:text-white transition-colors text-lg">
-                    Managed It
+                  <Link href="/our-services/it-infrastructure" className="text-gray-300 hover:text-white transition-colors text-lg">
+                   IT Infrastructure
                   </Link>
                 </li>
                 <li>
@@ -227,7 +281,7 @@ const Footer = () => {
             <div>
               <h3 className="text-xl font-semibold mb-6 text-white">Contact Us</h3>
               <p className="mb-6 text-gray-300 leading-relaxed text-sm font-bold">
-                Address: Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai
+                Address: {settings.address}
               </p>
               <div className="relative">
                 <input
@@ -250,7 +304,7 @@ const Footer = () => {
             {/* Logo and Tagline */}
             <div className="text-center">
               <div className="mb-4">
-                <Image src={FooterLogo} alt="Logo" width={120} height={60} className="mx-auto" />
+                <Image src={settings.logo || FooterLogo} alt="Logo" width={120} height={60} className="mx-auto" />
               </div>
               <p className="text-gray-300 text-base">Your desire is our Expertise</p>
             </div>
@@ -262,18 +316,18 @@ const Footer = () => {
                 <h3 className="text-lg font-semibold mb-4 text-white">Our Services</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/our-services/hardware-amc" className="text-gray-300 hover:text-white transition-colors text-sm">
-                      Hardware
+                    <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-white transition-colors text-sm">
+                      Long/Short Term Amc
                     </Link>
                   </li>
                   <li>
-                    <Link href="/our-services/software-amc" className="text-gray-300 hover:text-white transition-colors text-sm">
-                      Software
+                    <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-white transition-colors text-sm">
+                      Software Solutions
                     </Link>
                   </li>
                   <li>
-                    <Link href="/our-services/managed-it" className="text-gray-300 hover:text-white transition-colors text-sm">
-                      Managed It
+                    <Link href="/our-services/it-infrastructure" className="text-gray-300 hover:text-white transition-colors text-sm">
+                      IT Infrastructure
                     </Link>
                   </li>
                   <li>
@@ -316,9 +370,9 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
               <p className="mb-4 text-gray-300 leading-relaxed text-sm">
-                Address: Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai
+                Address: {settings.address}
               </p>
-              <p className="mb-4 text-gray-300 text-sm">Phone: +971 4-354 0566</p>
+              <p className="mb-4 text-gray-300 text-sm">Phone: {settings.phone}</p>
 
               {/* Email Subscription */}
               <div className="relative mb-4">
@@ -337,15 +391,43 @@ const Footer = () => {
 
               {/* Social Media Icons */}
               <div className="flex justify-center gap-3">
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <FacebookLogo size={20} className="text-white" />
-                </div>
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <TwitterLogo size={20} className="text-white" />
-                </div>
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
-                  <InstagramLogo size={20} className="text-white" />
-                </div>
+                {settings.facebook && (
+                  <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <FacebookLogo size={20} className="text-white" />
+                  </a>
+                )}
+                {settings.twitter && (
+                  <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <TwitterLogo size={20} className="text-white" />
+                  </a>
+                )}
+                {settings.instagram && (
+                  <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <InstagramLogo size={20} className="text-white" />
+                  </a>
+                )}
+                {settings.linkedin && (
+                  <a href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                    <LinkedinLogo size={20} className="text-white" />
+                  </a>
+                )}
+                {/* Show default icons if no settings are available */}
+                {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (
+                  <>
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <FacebookLogo size={20} className="text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <TwitterLogo size={20} className="text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <InstagramLogo size={20} className="text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/20 transition-colors">
+                      <LinkedinLogo size={20} className="text-white" />
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
