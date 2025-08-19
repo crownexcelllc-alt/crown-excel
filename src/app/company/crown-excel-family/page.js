@@ -89,13 +89,11 @@ function CrownExcelFamily() {
     },
     {
       id: 6,
-       name:
-        "Junaid Ali",
-      position: "Store Operations",
-      department: "Wharehouse",
+        name: "Junaid Shafique",
+      position: "Accounts Manager",
+      department: "Accounts",
       experience: "7+ Years",
-      image: etc2,
-    
+      image: etc5,    
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -163,11 +161,12 @@ function CrownExcelFamily() {
     },
     {
       id: 14,
-      name: "Junaid Shafique",
-      position: "Accounts Manager",
-      department: "Accounts",
+      name:
+        "Junaid Ali",
+      position: "Store Operations",
+      department: "Wharehouse",
       experience: "7+ Years",
-      image: etc5,
+      image: etc2,
       quote: "Our team is our extended family, and we grow together."
     },
      {

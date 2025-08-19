@@ -8,11 +8,11 @@ import Wholesale from '../Images/footerwholesale.png'
 import FooterLogo from '../Images/footerlogo.png'
 import {
   FacebookLogo,
-  TwitterLogo,
   InstagramLogo,
   LinkedinLogo,
   PaperPlaneRight,
 } from 'phosphor-react';
+import { XLogoIcon } from '@phosphor-icons/react';
 
 const Footer = () => {
   const [emailInput, setEmailInput] = useState('');
@@ -28,7 +28,7 @@ const Footer = () => {
     instagram: '',
     linkedin: ''
   });
-  console.log('logo',settings?.logo)
+  console.log('logo', settings?.logo)
 
   useEffect(() => {
     // Fetch settings from API
@@ -44,20 +44,20 @@ const Footer = () => {
       });
   }, []);
 
-    useEffect(() => {
-      async function fetchLogo() {
-        try {
-          const res = await fetch('/api/logo');
-          const data = await res.json();
-          console.log('Fetched logo data:', data);
-  
-          if (data.logo) setLogoUrl(data.logo);
-        } catch {
-          setLogoUrl('/file.svg');
-        }
+  useEffect(() => {
+    async function fetchLogo() {
+      try {
+        const res = await fetch('/api/logo');
+        const data = await res.json();
+        console.log('Fetched logo data:', data);
+
+        if (data.logo) setLogoUrl(data.logo);
+      } catch {
+        setLogoUrl('/file.svg');
       }
-      fetchLogo();
-    }, []);
+    }
+    fetchLogo();
+  }, []);
 
   const topButtons = [
     {
@@ -127,7 +127,7 @@ const Footer = () => {
                 {index < topButtons.length - 1 && (
                   <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-32 bg-[#4ade80]/30"></div>
                 )}
-                
+
                 <div className="px-8 py-6">
                   <div className="w-24 h-24 mx-auto mb-6 p-3 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
                     <Image
@@ -138,11 +138,11 @@ const Footer = () => {
                       className="object-contain"
                     />
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold mb-6 text-white leading-tight">
                     {item.title}
                   </h3>
-                  
+
                   <Link href={item.href}>
                     <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                       Get Started
@@ -167,11 +167,11 @@ const Footer = () => {
                       className="object-contain"
                     />
                   </div>
-                  
+
                   <h3 className="text-lg font-semibold mb-4 text-white leading-tight">
                     {item.title}
                   </h3>
-                  
+
                   <Link href={item.href}>
                     <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 text-sm">
                       Get Started
@@ -187,26 +187,26 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="bg-[#003b2f]">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          
+
           {/* Desktop Layout */}
           <div className="hidden md:block">
             <div className="grid grid-cols-12 gap-8">
-              
+
               {/* Company Info - Takes 4 columns */}
               <div className="col-span-4">
                 <div className="mb-8">
-                  <Image 
-                    src={logoUrl || FooterLogo} 
-                    alt="Crown Excel Logo" 
-                    width={180} 
-                    height={90} 
-                    className="object-contain mb-6" 
+                  <Image
+                    src={logoUrl || FooterLogo}
+                    alt="Crown Excel Logo"
+                    width={180}
+                    height={90}
+                    className="object-contain mb-6"
                   />
                   <p className="text-gray-300 text-lg leading-relaxed mb-8">
                     Your desire is our Expertise
                   </p>
                 </div>
-                
+
                 {/* Social Media */}
                 <div>
                   <h4 className="text-white font-semibold mb-4">Follow Us</h4>
@@ -218,7 +218,7 @@ const Footer = () => {
                     )}
                     {settings.twitter && (
                       <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
-                        <TwitterLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
+                        <XLogoIcon size={24} className="text-white group-hover:scale-110 transition-transform" />
                       </Link>
                     )}
                     {settings.instagram && (
@@ -238,7 +238,7 @@ const Footer = () => {
                           <FacebookLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
                         <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
-                          <TwitterLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
+                          <XLogoIcon size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
                         <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
                           <InstagramLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
@@ -283,7 +283,7 @@ const Footer = () => {
                   <li>
                     <Link href="/our-services/storage&virtualization" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                       <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                    Storage & Virtualization
+                      Storage & Virtualization
                     </Link>
                   </li>
                 </ul>
@@ -329,7 +329,7 @@ const Footer = () => {
               {/* Contact & Newsletter - Takes 3 columns */}
               <div className="col-span-3">
                 <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Get In Touch</h3>
-                
+
                 <div className="mb-8">
                   <div className="mb-4">
                     <p className="text-gray-300 mb-2">
@@ -339,9 +339,8 @@ const Footer = () => {
                       <span className="font-semibold text-white">Email:</span> {settings.email}
                     </p>
                   </div>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
-                    <span className="font-semibold text-white block mb-2">Address:</span>
-                    {settings.address}
+                  <p className="text-gray-300 leading-relaxed">
+                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> {settings.address}</span>
                   </p>
                 </div>
 
@@ -357,8 +356,8 @@ const Footer = () => {
                       placeholder="Enter your email"
                       className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
                     />
-                    <button 
-                      onClick={submitSubscription} 
+                    <button
+                      onClick={submitSubscription}
                       className={`bg-[#4ade80] hover:bg-[#22c55e] px-6 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
                     >
                       <PaperPlaneRight size={20} className="text-white" />
@@ -377,12 +376,12 @@ const Footer = () => {
           <div className="md:hidden">
             {/* Logo and Company Info */}
             <div className="text-center mb-12">
-              <Image 
-                src={logoUrl || FooterLogo} 
-                alt="Crown Excel Logo" 
-                width={140} 
-                height={70} 
-                className="mx-auto object-contain mb-4" 
+              <Image
+                src={logoUrl || FooterLogo}
+                alt="Crown Excel Logo"
+                width={140}
+                height={70}
+                className="mx-auto object-contain mb-4"
               />
               <p className="text-gray-300 text-base mb-6">Your desire is our Expertise</p>
               <div className="space-y-2 text-sm text-gray-300">
@@ -393,7 +392,7 @@ const Footer = () => {
 
             {/* Services and Company Links */}
             <div className="grid grid-cols-2 gap-8 mb-12">
-              
+
               {/* Our Services */}
               <div>
                 <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
@@ -477,8 +476,8 @@ const Footer = () => {
                   placeholder="Enter your email"
                   className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors text-sm"
                 />
-                <button 
-                  onClick={submitSubscription} 
+                <button
+                  onClick={submitSubscription}
                   className={`bg-[#4ade80] hover:bg-[#22c55e] px-4 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
                 >
                   <PaperPlaneRight size={18} className="text-white" />
@@ -500,7 +499,7 @@ const Footer = () => {
                 )}
                 {settings.twitter && (
                   <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
-                    <TwitterLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
+                    <XLogoIcon size={20} className="text-white group-hover:scale-110 transition-transform" />
                   </Link>
                 )}
                 {settings.instagram && (
@@ -520,7 +519,7 @@ const Footer = () => {
                       <FacebookLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
                     <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
-                      <TwitterLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
+                      <XLogoIcon size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
                     <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
                       <InstagramLogo size={20} className="text-white group-hover:scale-110 transition-transform" />

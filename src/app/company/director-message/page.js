@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 // import director from '@/Components/Images/director.png'
-import director from '@/Components/Images/director.jpeg'
+import director from '@/Components/Images/director.jpg'
 
 function DirectorMessage() {
   return (
@@ -14,27 +14,23 @@ function DirectorMessage() {
           </h1>
         </div>
       </div> */}
-      <div className='flex'>
-        <div className="lg:w-1/2 flex-shrink-0 relative">
+      <div className='flex flex-col items-center'>
+        <div className="lg:w-1/2 flex-shrink-0 relative mb-6">
           <Image
             src={director}
             alt="Director's Photo"
-            width={500}
-            height={600}
-            className="w-full h-full object-cover "
+            width={320}
+            height={220}
+            className="w-full h-auto object-cover max-h-[620px] rounded-xl mx-auto"
           />
           {/* lg:rounded-l-2xl */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+          <div className="absolute inset-0 rounded-xl"></div>
         </div>
-
-        {/* Main Content - Professional Layout */}
-        <div className="container mx-auto px-4 py-16">
+        {/* Director's Message below the image */}
+        <div className="container mx-auto px-4 py-8">
           <div className="max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-16">
-              <div className="flex flex-col lg:flex-row">
-                {/* Director's Image */}
-
-                {/* Director's Message */}
+              <div className="flex flex-col">
                 <div className="p-8 md:p-12 flex-1 flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl font-bold text-[#16806b] font-montserrat mb-4">
                     {` Director's Message`}

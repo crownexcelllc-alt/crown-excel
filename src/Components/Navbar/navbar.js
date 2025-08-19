@@ -683,7 +683,7 @@ function Navbar() {
                 <img
                   src="/animation.gif"
                   alt="Blinking Retail Store GIF"
-                  className="h-[80px] w-full animate-blink"
+                  className="h-[80px] w-full"
                   style={{ filter: 'drop-shadow(0 0 8px #4ade80)' }}
                 />
               </div>

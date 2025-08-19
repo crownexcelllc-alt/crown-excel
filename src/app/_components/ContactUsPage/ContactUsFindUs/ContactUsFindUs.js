@@ -9,6 +9,9 @@ import { IoLogoFacebook } from "react-icons/io5";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import Link from 'next/link';
+import { FaX } from 'react-icons/fa6';
+import { XLogoIcon } from '@phosphor-icons/react';
+import { InstagramLogo, LinkedinLogo } from 'phosphor-react';
 const ContactUsFindUs = () => {
     const [settings, setSettings] = useState({
         phone: '+971 4-354 0566',
@@ -69,21 +72,21 @@ const ContactUsFindUs = () => {
                     <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
                         {settings.twitter && (
                             <Link href={settings.twitter}>
-                                <FaTwitter className="text-[#084032]" />
+                                <XLogoIcon className="text-[#084032]" />
                             </Link>
                         )}
                     </div>
                     <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
-                        {settings.twitter && (
-                            <Link href={settings.twitter}>
-                                <FaInstagram className="text-[#084032]" />
+                        {settings.instagram && (
+                            <Link href={settings.instagram}>
+                                <InstagramLogo className="text-[#084032]" />
                             </Link>
                         )}
                     </div>
                     <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
                         {settings.linkedin && (
                             <Link href={settings.linkedin}>
-                                <FaLinkedin className="text-[#084032]" />
+                                <LinkedinLogo className="text-[#084032]" />
                             </Link>
                         )}
                     </div>

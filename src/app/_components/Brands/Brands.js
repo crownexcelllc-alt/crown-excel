@@ -3,7 +3,6 @@ import React from 'react'
 import Image from 'next/image'
 
 import Dragon from '../../../Components/Images/dragon.png'
-import Noc from '../../../Components/Images/noc.png'
 import Intel from '@/Components/Images/intell.png'
 import Dell from '@/Components/Images/dell (1).png'
 import Acer from '@/Components/Images/acer (2).png'
@@ -32,10 +31,10 @@ import microsof from '@/Components/Images/microsof.png'
 import lg from '@/Components/Images/lg.png'
 import lenovo from '@/Components/Images/lenovo (1).png'
 import Asus from '@/Components/Images/asus (1).png'
-import apple from '@/Components/Images/apple (1).png'
+import apple from '@/Components/Images/apple (3).png'
 
 const brands = [
-  Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Noc, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, razor, microsof, lg, lenovo, apple
+  Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, razor, microsof, lg, lenovo, apple
 ]
 
 const Brands = () => {
@@ -49,7 +48,7 @@ const Brands = () => {
       <div className="relative w-full overflow-hidden">
         <div className="marquee w-full">
           {/* First sequence */}
-            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 px-4">
+            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-4">
               {brands.map((brand, i) => (
                 <div
                   key={i}
