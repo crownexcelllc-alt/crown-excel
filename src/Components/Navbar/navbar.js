@@ -230,23 +230,32 @@ function Navbar() {
         style={{ transitionDelay: medNav ? '0.2s' : '0s' }}
       >
         <div className="mx-auto w-11/12 sm:w-10/12 md:w-8/12">
-          <ul className="flex flex-col ">
-            {navLinks.map((item, i) => (
-              <li key={i} className="border-b border-gray-100">
-                <div className="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
-                  <a
-                    href={item.href}
-                    className={`text-base font-semibold flex-1 transition-colors duration-150 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800 hover:text-[#084032]'}`}
-                    onClick={() => {
-                      if (item.hasDropdown) {
-                        setOpenDropdownIndex(openDropdownIndex === i ? null : i);
-                      } else {
-                        setMedNav(false);
-                      }
-                    }}
-                  >
-                    {item.label}
-                  </a>
+            <ul className="flex flex-col ">
+              {navLinks.map((item, i) => (
+                <li key={i} className="border-b border-gray-100">
+                  <div className="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className={`text-base font-semibold flex-1 transition-colors duration-150 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800 hover:text-[#084032]'}`}
+                        onClick={() => {
+                          if (item.hasDropdown) {
+                            setOpenDropdownIndex(openDropdownIndex === i ? null : i);
+                          } else {
+                            setMedNav(false);
+                          }
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span
+                        className="text-base font-semibold flex-1 text-gray-800 cursor-pointer"
+                        onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
+                      >
+                        {item.label}
+                      </span>
+                    )}
                   {item.hasDropdown && (
                     <button
                       className="ml-3 text-gray-600 focus:outline-none p-2 rounded hover:bg-gray-100"
@@ -299,7 +308,7 @@ function Navbar() {
 
                           return (
                             <li key={j} className="rounded-lg group hover:bg-[#084032]">
-                              <a
+                              <Link
                                 href={subItem.href}
                                 onClick={() => setMedNav(false)}
                                 className={`flex items-start p-2 gap-3 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
@@ -313,7 +322,7 @@ function Navbar() {
                                   <span className="font-medium text-gray-900 group-hover:text-white">{subItem.label}</span>
                                   <span className="text-xs text-gray-500 mt-1 group-hover:text-white">{menuItem.desc}</span>
                                 </div>
-                              </a>
+                              </Link>
                             </li>
                           );
                         })}
@@ -338,13 +347,23 @@ function Navbar() {
             onMouseEnter={() => handleMouseEnter(i)}
             onMouseLeave={handleMouseLeave}
           >
-            <a
-              href={item.href}
-              className={`flex items-center gap-1 `}
-            >
-              {item.label}
-              {item.hasDropdown && <FaSortDown className="text-sm -mt-1" />}
-            </a>
+            {item.href ? (
+              <Link
+                href={item.href}
+                className={`flex items-center gap-1 `}
+              >
+                {item.label}
+                {item.hasDropdown && <FaSortDown className="text-sm -mt-1" />}
+              </Link>
+            ) : (
+              <span
+                className="flex items-center gap-1 cursor-pointer"
+                onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
+              >
+                {item.label}
+                {item.hasDropdown && <FaSortDown className="text-sm -mt-1" />}
+              </span>
+            )}
             {Array.isArray(item.dropdown) && hoveredIndex === i && (
               <div
                 className="fixed left-0 right-0 mt-0 bg-white p-2 text-black shadow-lg z-50 border-t border-gray-100"
@@ -483,7 +502,7 @@ function Navbar() {
                       // Dropdown item with hover color hsl(165deg 77.78% 14.12%) at 10% opacity
                       return (
                         <li key={j} className="rounded-lg hover:bg-[#084032] group">
-                          <a
+                          <Link
                             href={subItem.href}
                             className={`flex items-start p-2 gap-2 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
                           >
@@ -491,14 +510,14 @@ function Navbar() {
                               {/* Icon container with the specified color */}
                               <div className="w-10 h-10 flex items-center justify-center bg-[#f1f5f9] text-[hsl(165deg_77.78%_14.12%)] rounded-lg">
                                 {menuItem.icon}
-                              </div>
-                            </div>
-                            <div className="flex flex-col">
+                                  </div>
+                                </div>
+                                <div className="flex flex-col">
                               {/* Title with hover effect using the specified color */}
                                   <span className="font-medium text-gray-900 group-hover:text-white">{subItem.label}</span>
                               <span className="text-xs text-gray-500 mt-1 group-hover:text-white">{menuItem.desc}</span>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                       );
                     })}
@@ -565,15 +584,24 @@ function Navbar() {
                 {navLinks.map((item, i) => (
                   <li key={i} className="border-b border-gray-100">
                     <div className="flex items-center justify-between px-3 py-3">
-                      <a
-                        href={item.href}
-                        className={`text-base font-semibold flex-1 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800'}`}
-                        onClick={() => {
-                          if (!item.hasDropdown) setMobileMenuOpen(false);
-                        }}
-                      >
-                        {item.label}
-                      </a>
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className={`text-base font-semibold flex-1 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800'}`}
+                          onClick={() => {
+                            if (!item.hasDropdown) setMobileMenuOpen(false);
+                          }}
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <span
+                          className="text-base font-semibold flex-1 text-gray-800 cursor-pointer"
+                          onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
+                        >
+                          {item.label}
+                        </span>
+                      )}
                       {item.hasDropdown && (
                         <button
                           className="ml-3 text-gray-600 focus:outline-none p-2 rounded hover:bg-gray-100"
@@ -624,7 +652,7 @@ function Navbar() {
 
                               return (
                                 <li key={j} className="rounded-lg group">
-                                  <a
+                                  <Link
                                     href={subItem.href}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={`flex items-center gap-3 p-2 rounded ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : 'hover:bg-gray-50'}`}
@@ -636,7 +664,7 @@ function Navbar() {
                                       <span className="font-medium text-gray-900">{subItem.label}</span>
                                       <span className="text-xs text-gray-500">{menuItem.desc}</span>
                                     </div>
-                                  </a>
+                                  </Link>
                                 </li>
                               );
                             })}
