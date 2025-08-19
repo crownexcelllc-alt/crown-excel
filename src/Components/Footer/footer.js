@@ -212,24 +212,24 @@ const Footer = () => {
                   <h4 className="text-white font-semibold mb-4">Follow Us</h4>
                   <div className="flex gap-4">
                     {settings.facebook && (
-                      <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <FacebookLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
-                      </a>
+                      </Link>
                     )}
                     {settings.twitter && (
-                      <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <TwitterLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
-                      </a>
+                      </Link>
                     )}
                     {settings.instagram && (
-                      <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <InstagramLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
-                      </a>
+                      </Link>
                     )}
                     {settings.linkedin && (
-                      <a href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <LinkedinLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
-                      </a>
+                      </Link>
                     )}
                     {/* Default icons if no settings */}
                     {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (
@@ -257,15 +257,15 @@ const Footer = () => {
                 <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
                 <ul className="space-y-4">
                   <li>
-                    <Link href="/our-services/software-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                    <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                       <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Software AMC
+                      Software Solutions
                     </Link>
                   </li>
                   <li>
-                    <Link href="/our-services/hardware-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                    <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                       <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Hardware AMC
+                      Long/Short Term AMC
                     </Link>
                   </li>
                   <li>
@@ -281,9 +281,9 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/our-services/server-support" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                    <Link href="/our-services/storage&virtualization" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                       <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Server Support
+                    Storage & Virtualization
                     </Link>
                   </li>
                 </ul>
@@ -399,15 +399,15 @@ const Footer = () => {
                 <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/our-services/software-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                    <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
                       <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Software AMC
+                      Software Solutions
                     </Link>
                   </li>
                   <li>
-                    <Link href="/our-services/hardware-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                    <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
                       <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Hardware AMC
+                      Long/Short Term AMC
                     </Link>
                   </li>
                   <li>
@@ -494,24 +494,24 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Follow Us</h4>
               <div className="flex justify-center gap-4">
                 {settings.facebook && (
-                  <a href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <FacebookLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
-                  </a>
+                  </Link>
                 )}
                 {settings.twitter && (
-                  <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <TwitterLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
-                  </a>
+                  </Link>
                 )}
                 {settings.instagram && (
-                  <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <InstagramLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
-                  </a>
+                  </Link>
                 )}
                 {settings.linkedin && (
-                  <a href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <LinkedinLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
-                  </a>
+                  </Link>
                 )}
                 {/* Default icons if no settings */}
                 {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (

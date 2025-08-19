@@ -33,6 +33,7 @@ import Fazal from '@/Components/Images/fazal.jpg'
 import Fidelis from '@/Components/Images/Fidelis.jpg'
 import Vishal from '@/Components/Images/vishal.png'
 import Lavina from '@/Components/Images/Lavina.jpg'
+import ilyaskhan from '@/Components/Images/ilyaskhan.jpg'
 // import etc4 from '@/Components/Images/etc4.jpg'
 
 function CrownExcelFamily() {
@@ -44,7 +45,7 @@ function CrownExcelFamily() {
       position: "Managing Director",
       department: "Management",
       experience: "7+ Years",
-      image: etc5,
+      image: ilyaskhan,
       
       quote: "Our success is built on the foundation of trust, integrity, and family values."
     },

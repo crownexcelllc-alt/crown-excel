@@ -678,6 +678,15 @@ function Navbar() {
             </div>
 
             <div>
+              {/* Blinking GIF above the button */}
+              <div className="flex justify-center mb-2">
+                <img
+                  src="/animation.gif"
+                  alt="Blinking Retail Store GIF"
+                  className="h-10 w-full animate-blink"
+                  style={{ filter: 'drop-shadow(0 0 8px #4ade80)' }}
+                />
+              </div>
               <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900 text-white w-full h-11 text-base rounded-full shadow-md font-montserrat">Our Retail Store</button>
             </div>
           </div>
