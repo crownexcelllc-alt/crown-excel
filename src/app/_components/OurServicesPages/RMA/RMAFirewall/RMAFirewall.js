@@ -9,7 +9,7 @@ const RMAFirewall = () => {
         <div className='flex flex-col items-center mt-10'>
             <div className="heading-text relative my-10 mx-5 md:mx-0">
                 <Image alt='' src={Semitop} width={122} height={61} className='absolute -top-15.25 -right-10 lg:-top-15.25 lg:-right-10'/>
-                <h1 className='bg-[#119472] rounded text-white text-[20px] md:text-[44px] lg:text-[44px] font-[700] font-montserrat px-10 py-2 md:px-[50px] md:py-[15px] lg:px-[50px] lg:py-[15px] h-[50px] md:h-[74px] lg:h-[74px] flex items-center justify-center'>FIREWALL SETUP</h1>
+                <h1 className='bg-[#119472] rounded text-white text-[20px] md:text-[44px] lg:text-[44px] font-[700] font-montserrat px-10 py-2 md:px-[50px] md:py-[15px] lg:px-[50px] lg:py-[15px] h-[50px] md:h-[74px] lg:h-[74px] flex items-center justify-center'>CLOUD SECURITY & FIREWALLS</h1>
                 <Image alt='' src={Semibottom} width={122} height={61} className='absolute -bottom-15.25 -left-10  lg:-bottom-15.25 lg:-left-10'/>
             </div>
             <div
@@ -26,9 +26,9 @@ const RMAFirewall = () => {
 
 
                     <div className="text-area-firwall  p-[20px] md:p-[50px]  text-center  ">
-                        <p>Firewall setup is a critical part of network security, acting as a barrier between your internal network and potential external threats. It monitors and controls incoming and outgoing network traffic based on predetermined security rules. By doing so, it helps prevent unauthorized access, cyberattacks, and malware from infiltrating your network.</p>
+                        <p>Cloud firewall and network security configurations extend traditional perimeter protections into the cloud. We implement cloud-native firewall rules, WAF, and secure routing to protect applications and data.</p>
                         <br />
-                        <p>Our team specializes in configuring firewalls to meet the specific needs of your business. We analyze your security requirements and implement tailored solutions to ensure that your data, resources, and sensitive information are always protected. This involves setting up proper access control, threat detection, and blocking malicious traffic, so your network remains secure and operational at all times.</p>
+                        <p>Our configurations include automated policy enforcement, threat detection integrations, and logging for forensic and compliance purposes—to keep your cloud environment secure and auditable.</p>
                     </div>
 
                 </div>

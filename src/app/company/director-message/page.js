@@ -5,7 +5,7 @@ import director from '@/Components/Images/director.jpg'
 
 function DirectorMessage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <div className="min-h-screen ">
       {/* Professional Header */}
       {/* <div className="py-8" style={{ background: 'linear-gradient(265deg,rgba(20, 121, 101, 1) 35%, rgba(9, 69, 54, 1) 82%)' }}>
         <div className="container mx-auto px-4">

@@ -41,17 +41,17 @@ function CrownExcelFamily() {
   const familyMembers = [
     {
       id: 1,
-        name: "Ilyas Khan",
+      name: "Ilyas Khan",
       position: "Managing Director",
       department: "Management",
       experience: "7+ Years",
       image: ilyaskhan,
-      
+
       quote: "Our success is built on the foundation of trust, integrity, and family values."
     },
     {
       id: 2,
-         name: "Muhammad Wais Khan",
+      name: "Muhammad Wais Khan",
       position: "Sales Manager",
       department: "Sales",
       experience: "7+ Years",
@@ -60,7 +60,7 @@ function CrownExcelFamily() {
     },
     {
       id: 3,
-       name: "Saqib Afzal Khan",
+      name: "Saqib Afzal Khan",
       position: "Chief Operating Officer",
       department: "Operations",
       experience: "7+ Years",
@@ -69,85 +69,91 @@ function CrownExcelFamily() {
     },
     {
       id: 4,
-         name: "Vishal Pawar",
+      name: "Vishal Pawar",
       position: "Business Development Manager",
       department: "Business Development",
       experience: "7+ Years",
       image: Vishal,
-      
+
       quote: "Building lasting relationships is at the heart of everything we do."
     },
     {
       id: 5,
-        name: "Khurram Razzaq",
+      name: "Khurram Razzaq",
       position: "Marketing Manager",
       department: "Marketing",
       experience: "7+ Years",
       image: sirKhurram,
-     
+
       quote: "Innovation and tradition go hand in hand in our family business."
     },
     {
       id: 6,
-        name: "Junaid Shafique",
+      name: "Junaid Shafique",
       position: "Accounts Manager",
       department: "Accounts",
       experience: "7+ Years",
-      image: etc5,    
+      image: etc5,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 7,
-      name: "Brian Mwenda",
-      position: "Human Resources Manager",
-      department: "HR",
-      experience: "7+ Years",
-      image: etc1,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 8,
-      name: "Abdur Rauf Abdul Zahoor",
-      position: "Store Keeper",
-      department: "Warehouse",
-      experience: "7+ Years",
-      image: etc3,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 9,
-      name: "Nadeem",
-      position: "Salesman",
-      department: "Sales",
-      experience: "7+ Years",
-      image: etc4,
-      quote: "Our team is our extended family, and we grow together."
-    },
-    {
-      id: 10,
       name: "Tarun Sahu",
       position: "Team Leader - Corporate Sales",
       department: "Sales",
       experience: "7+ Years",
       image: Tarun,
+
       quote: "Our team is our extended family, and we grow together."
     },
     {
-      id: 11,
+      id: 8,
       name: "Ibathur Rahman",
       position: "Sales Supervisor",
       department: "Sales",
       experience: "7+ Years",
       image: Ibad,
+
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 9,
+      name: "Lavina Santlalani",
+      position: "Businees Development Manager",
+      department: "Business Development",
+      experience: "7+ Years",
+      image: Lavina,
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 10,
+      // name: "Jahubar Sathik.H",
+      name: "Jubair sathik",
+      position: "Logistics Coordinator",
+      department: "Admin",
+      experience: "7+ Years",
+      image: jhubar,
+
+      quote: "Our team is our extended family, and we grow together."
+    },
+    {
+      id: 11,
+      name: "Fasaludeheen ",
+      position: "Accountant",
+      department: "Accounts",
+      experience: "7+ Years",
+      image: Fazal,
+
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 12,
-       name: "Abdullah Salar",
-      position: "Sales Executive",
-      department: "Sales",
-      experience: "8+ Years",
-      image: Abdullah,
+      name: "Muhammad Aslam",
+      position: "Accountant",
+      department: "Accounts",
+      experience: "7+ Years",
+      image: Aslam,
+
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -161,36 +167,35 @@ function CrownExcelFamily() {
     },
     {
       id: 14,
-      name:
-        "Junaid Ali",
-      position: "Store Operations",
-      department: "Wharehouse",
+      name: "Saeed Khan",
+      position: "Sales Executive",
+      department: "Sales",
       experience: "7+ Years",
-      image: etc2,
+      image: Saeed,
       quote: "Our team is our extended family, and we grow together."
     },
-     {
+    {
       id: 15,
-         name: "Shamry Salam",
-      position: "Receptionist",
-      department: "Reception",
-      experience: "10+ Years",
-      image: Shammry,
+      name: "Abdullah Salar",
+      position: "Sales Executive",
+      department: "Sales",
+      experience: "8+ Years",
+      image: Abdullah,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 16,
-      // name: "Jahubar Sathik.H",
-      name: "Jubair sathik",
-      position: "Logistics Coordinator",
-      department: "Admin",
-      experience: "7+ Years",
-      image: jhubar,
+      name: "Nabiha Momin",
+      position: "Sales Officer",
+      department: "Sales",
+      experience: "15+ Years",
+      image: Nabiha,
+
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 17,
-    name: "Mohamed Farook",
+      name: "Mohamed Farook",
       position: "Sales Officer",
       department: "Sales",
       experience: "12+ Years",
@@ -199,11 +204,11 @@ function CrownExcelFamily() {
     },
     {
       id: 18,
-      name: "Fasaludeheen ",
-      position: "Accountant",
-      department: "Accounts",
+      name: "Nadeem",
+      position: "Salesman",
+      department: "Sales",
       experience: "7+ Years",
-      image: Fazal,
+      image: etc4,
       quote: "Our team is our extended family, and we grow together."
     },
     // {
@@ -226,38 +231,39 @@ function CrownExcelFamily() {
     },
     {
       id: 20,
-       name: "Nabiha Momin",
-      position: "Sales Officer",
-      department: "Sales",
-      experience: "15+ Years",
-      image: Nabiha,
+      name: "Brian Mwenda",
+      position: "Store Keeper",
+      department: "Warehouse",
+      experience: "7+ Years",
+      image: etc1,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 21,
-      name: "Lavina Santlalani",
-      position: "Businees Development Manager",
-      department: "Business Development",
+      name: "Abdur Rauf Abdul Zahoor",
+      position: "Store Keeper",
+      department: "Warehouse",
       experience: "7+ Years",
-      image: Lavina,
+      image: etc3,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 22,
-        name: "Saeed Khan",
-      position: "store supervisor",
-      department: "Inventory",
+      name:
+        "Junaid Ali",
+      position: "Store Operations",
+      department: "Wharehouse",
       experience: "7+ Years",
-      image: Saeed,
+      image: etc2,
       quote: "Our team is our extended family, and we grow together."
     },
     {
       id: 23,
-      name: "Muhammad Aslam",
-      position: "Accountant",
-      department: "Accounts",
-      experience: "7+ Years",
-      image: Aslam,
+      name: "Shamry Salam",
+      position: "Receptionist",
+      department: "Reception",
+      experience: "10+ Years",
+      image: Shammry,
       quote: "Our team is our extended family, and we grow together."
     },
     // {
@@ -347,31 +353,31 @@ function CrownExcelFamily() {
           </div>
         </div>
       </div> */}
-  <section className="relative w-full h-[280px] sm:h-[180px] md:h-[260px] lg:h-[540px] overflow-hidden ">
-    <div
-      className="absolute inset-0"
-      style={{
-        backgroundImage: `url(${FamilyPhoto.src})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center right'
-      }}
-    />
-    <div className="absolute " />
-    <div className="pointer-events-none absolute -left-24 w-[340px] h-[340px]" />
-    <div className="relative h-full flex items-center justify-start">
-      <div className="w-full max-w-5xl px-6 sm:px-8 md:px-12">
-        <div className="max-w-2xl ml-0 text-left">
-          <h1 className="font-montserrat text-white text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-tight mb-4 drop-shadow-lg tracking-tight text-left">
-            CROWN EXCEL <span className="block text-[#61ce70]">FAMILY</span>
-          </h1>
-          <p className="font-muli text-white/90 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed max-w-xl mb-2 text-left">
-            More than just a company, we are a family united by values,<br className="hidden sm:block" /> driven by excellence, and committed to serving our customers with integrity and care.
-          </p>
+      <section className="relative w-full h-[280px] sm:h-[180px] md:h-[260px] lg:h-[540px] overflow-hidden ">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${FamilyPhoto.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center right'
+          }}
+        />
+        <div className="absolute " />
+        <div className="pointer-events-none absolute -left-24 w-[340px] h-[340px]" />
+        <div className="relative h-full flex items-center justify-start">
+          <div className="w-full max-w-5xl px-6 sm:px-8 md:px-12">
+            <div className="max-w-2xl ml-0 text-left">
+              <h1 className="font-montserrat text-white text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-tight mb-4 drop-shadow-lg tracking-tight text-left">
+                CROWN EXCEL <span className="block text-[#61ce70]">FAMILY</span>
+              </h1>
+              <p className="font-muli text-white/90 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed max-w-xl mb-2 text-left">
+                More than just a company, we are a family united by values,<br className="hidden sm:block" /> driven by excellence, and committed to serving our customers with integrity and care.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    {/* <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-[#147D61] via-[#32a987] to-transparent opacity-70" /> */}
-    {/* <style jsx>{`
+        {/* <div className="absolute bottom-0 left-0 w-full h-[6px] bg-gradient-to-r from-[#147D61] via-[#32a987] to-transparent opacity-70" /> */}
+        {/* <style jsx>{`
       .banner-gradient {
         background: linear-gradient(
           to right,
@@ -402,7 +408,7 @@ function CrownExcelFamily() {
         }
       }
     `}</style> */}
-  </section>
+      </section>
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
@@ -464,8 +470,8 @@ function CrownExcelFamily() {
                 </div>
               </div>
             </div> */}
-          </div> 
-          <div className="mb-16 mt-3">    
+          </div>
+          <div className="mb-16 mt-3">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
                 Our Values
@@ -482,22 +488,22 @@ function CrownExcelFamily() {
                   {/* Icon Top Section (custom per title) */}
                   <div className="w-14 h-14 flex items-center justify-center bg-[#16806b] rounded-xl mb-6">
                     {value.title === 'Trust & Integrity' && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 3.81 13.25 5.09C14 3.81 15.46 3 17 3C20 3 22.5 5.5 22.5 8.5C22.5 13.5 15 21 15 21H12Z" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 3.81 13.25 5.09C14 3.81 15.46 3 17 3C20 3 22.5 5.5 22.5 8.5C22.5 13.5 15 21 15 21H12Z" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     )}
                     {value.title === 'Company First' && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#fff" strokeWidth="2"/><path d="M16 3H8V7H16V3Z" stroke="#fff" strokeWidth="2"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#fff" strokeWidth="2" /><path d="M16 3H8V7H16V3Z" stroke="#fff" strokeWidth="2" /></svg>
                     )}
                     {value.title === 'Excellence' && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2"/><path d="M8 12L11 15L16 10" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2" /><path d="M8 12L11 15L16 10" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     )}
                     {(value.title === 'Crown Excel' || value.title === 'Internals Matters') && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M2 8L6 16H18L22 8L12 2L2 8Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/><path d="M6 16V20H18V16" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M2 8L6 16H18L22 8L12 2L2 8Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="M6 16V20H18V16" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /></svg>
                     )}
                     {value.title === 'Continuous Growth' && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 17V21H21V17" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/><path d="M7 13L12 8L17 13" stroke="#fff" strokeWidth="2" strokeLinejoin="round"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 17V21H21V17" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="M7 13L12 8L17 13" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /></svg>
                     )}
                     {value.title === 'Sustainability' && (
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2"/><path d="M12 6V12L16 14" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2" /><path d="M12 6V12L16 14" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     )}
                   </div>
                   <div className="flex flex-col items-center text-center">

@@ -86,6 +86,16 @@ const Testimonials = () => {
         swiper.navigation.update();
     }, [reviews]);
 
+    useEffect(() => {
+        // Lock page scroll while modal is open
+        if (showForm) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [showForm]);
+
     async function submitReview(e) {
         e.preventDefault();
         
@@ -145,100 +155,110 @@ const Testimonials = () => {
     }
 
     return (
-        <div>
-            <div className="header bg-[#084032] w-full h-[110px] flex items-center justify-center">
-                <div className="w-full max-w-6xl px-4 flex items-center justify-center">
-                    <h1 className='text-center font-bold font-montserrat text-[24px] lg:text-[30px] leading-[30px] font-sans text-white'>
-                        What Our Clients Say About <br /> Our Services?
-                    </h1>
+        <>
+            {/* Main content: becomes non-interactive while modal is open */}
+            <div className={showForm ? 'pointer-events-none select-none' : ''} aria-hidden={showForm}>
+                <div className="header bg-[#084032] w-full h-[110px] flex items-center justify-center">
+                    <div className="w-full max-w-6xl px-4 flex items-center justify-center">
+                        <h1 className='text-center font-bold font-montserrat text-[24px] lg:text-[30px] leading-[30px] font-sans text-white'>
+                            What Our Clients Say About <br /> Our Services?
+                        </h1>
+                    </div>
                 </div>
+
+                <div className="relative w-full py-8 px-4 bg-[#fffdd0] mt-0">
+                    <div className="relative">
+                        <Swiper
+                            modules={[Navigation, Autoplay]}
+                            slidesPerView={3}
+                            spaceBetween={-30}
+                            onSwiper={(s) => { swiperRef.current = s; }}
+                            navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+                            autoplay={{
+                                delay: 4000,
+                                disableOnInteraction: false
+                            }}
+                            loop={true}
+                            breakpoints={{
+                                0: { slidesPerView: 1 },
+                                640: { slidesPerView: 1 },
+                                760: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 }
+                            }}
+                            className="!flex justify-center"
+                        >
+                            {reviews.map((item, i) => (
+                                <SwiperSlide
+                                    key={item._id ?? i}
+                                    className="!flex justify-center"
+                                >
+                                    <TestimonialCard
+                                        name={item.name}
+                                        message={item.message}
+                                        position={item.position}
+                                        image={item.image || defaultImage}
+                                        rating={item.rating}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+
+
+                        {/* Navigation Buttons (use refs so Swiper receives the DOM elements) */}
+                        <button ref={prevRef} className="absolute left-2 top-[45%] z-10 text-green-900 bg-white/70 hover:bg-white p-2 rounded-full shadow-md" aria-label="Previous">
+                            <FaChevronLeft size={20} />
+                        </button>
+                        <button ref={nextRef} className="absolute right-2 top-[45%] z-10 text-green-900 bg-white/70 hover:bg-white p-2 rounded-full shadow-md" aria-label="Next">
+                            <FaChevronRight size={20} />
+                        </button>
+                    </div>
+
+                    {/* Add Review button moved below the carousel */}
+
+                </div>
+                    <div className="max-w-6xl mx-auto mt-6 flex justify-center">
+                        <button 
+                            onClick={() => setShowForm(true)} 
+                            className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg transform hover:scale-105"
+                        >
+                            <Star size={20} weight="fill" />
+                            Leave a Review
+                        </button>
+                    </div>
+
             </div>
 
-            <div className="relative w-full py-8 px-4 bg-[#fffdd0] mt-0">
-                <div className="relative">
-                    <Swiper
-                        modules={[Navigation, Autoplay]}
-                        slidesPerView={3}
-                        spaceBetween={-30}
-                        onSwiper={(s) => { swiperRef.current = s; }}
-                        navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-                        autoplay={{
-                            delay: 4000,
-                            disableOnInteraction: false
-                        }}
-                        loop={true}
-                        breakpoints={{
-                            0: { slidesPerView: 1 },
-                            640: { slidesPerView: 1 },
-                            760: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 }
-                        }}
-                        className="!flex justify-center"
-                    >
-                        {reviews.map((item, i) => (
-                            <SwiperSlide
-                                key={item._id ?? i}
-                                className="!flex justify-center"
-                            >
-                                <TestimonialCard
-                                    name={item.name}
-                                    message={item.message}
-                                    position={item.position}
-                                    image={item.image || defaultImage}
-                                    rating={item.rating}
-                                />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-
-
-                    {/* Navigation Buttons (use refs so Swiper receives the DOM elements) */}
-                    <button ref={prevRef} className="absolute left-2 top-[45%] z-10 text-green-900 bg-white/70 hover:bg-white p-2 rounded-full shadow-md" aria-label="Previous">
-                        <FaChevronLeft size={20} />
-                    </button>
-                    <button ref={nextRef} className="absolute right-2 top-[45%] z-10 text-green-900 bg-white/70 hover:bg-white p-2 rounded-full shadow-md" aria-label="Next">
-                        <FaChevronRight size={20} />
-                    </button>
-                </div>
-
-                {/* Add Review button moved below the carousel */}
-
-            </div>
-                <div className="max-w-6xl mx-auto mt-6 flex justify-center">
-                    <button 
-                        onClick={() => setShowForm(true)} 
-                        className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg transform hover:scale-105"
-                    >
-                        <Star size={20} weight="fill" />
-                        Leave a Review
-                    </button>
-                </div>
-
-            {/* Professional Review Modal */}
+            {/* Professional Review Modal (rendered outside the interactive wrapper) */}
             {showForm && (
-                <div className="fixed inset-0 bg-opacity-30 z-[50] flex items-center justify-center p-4" onClick={() => setShowForm(false)}>
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto relative z-[10000] border-2 border-gray-200" onClick={(e) => e.stopPropagation()}>
+                <>
+                    <style>{`
+                        /* hide scrollbar in modal while keeping scrolling usable */
+                        .no-scrollbar::-webkit-scrollbar { display: none; }
+                        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                    `}</style>
+                    <div className="fixed inset-0 bg-opacity-30 z-[50] flex items-center justify-center p-4" onClick={() => setShowForm(false)}>
+                        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto no-scrollbar relative z-[10000] border-2 border-gray-200" onClick={(e) => e.stopPropagation()}>
                         
-                        {/* Header */}
-                        <div className="bg-[#084032] text-white p-6 rounded-t-2xl relative">
-                            <button
-                                onClick={() => setShowForm(false)}
-                                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10001] bg-white/10 rounded-full p-1"
-                            >
-                                <X size={20} />
-                            </button>
-                            <div className="flex items-center gap-2 mb-2">
-                                <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                                <span className="text-sm font-medium text-orange-400">Your reviews</span>
-                                <span className="bg-orange-400 text-[#084032] text-xs px-2 py-1 rounded-full font-medium">
-                                    In progress
-                                </span>
+                            {/* Header */}
+                            <div className="bg-[#084032] text-white p-6 rounded-t-2xl relative">
+                                <button
+                                    onClick={() => setShowForm(false)}
+                                    className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10001] bg-white/10 rounded-full p-1"
+                                >
+                                    <X size={20} />
+                                </button>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                                    <span className="text-sm font-medium text-orange-400">Your reviews</span>
+                                    <span className="bg-orange-400 text-[#084032] text-xs px-2 py-1 rounded-full font-medium">
+                                        In progress
+                                    </span>
+                                </div>
+                                <h2 className="text-xl font-bold">Leave a Review</h2>
                             </div>
-                            <h2 className="text-xl font-bold">Leave a Review</h2>
-                        </div>
 
-                        {/* Form Content */}
-                        <form onSubmit={submitReview} className="p-6 space-y-6">
+                            {/* Form Content */}
+                            <form onSubmit={submitReview} className="p-6 space-y-6">
                             
                             {/* Overall Rating */}
                             <div>
@@ -415,12 +435,12 @@ const Testimonials = () => {
                                 {loading ? 'Submitting...' : 'Submit'}
                             </button>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </>
             )}
-
-        </div>
+        </>
     );
 };
 

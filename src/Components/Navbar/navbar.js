@@ -310,8 +310,8 @@ function Navbar() {
                             <li key={j} className="rounded-lg group hover:bg-[#084032]">
                               <Link
                                 href={subItem.href}
-                                onClick={() => setMedNav(false)}
-                                className={`flex items-start p-2 gap-3 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
+                                onClick={() => { setHoveredIndex(null); setOpenDropdownIndex(null); }}
+                                className={`flex items-start p-2 gap-2 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
                               >
                                 <div className="flex-shrink-0">
                                   <div className="w-10 h-10 flex items-center justify-center bg-[#f1f5f9] rounded-lg group-hover:bg-[#084032]">
@@ -351,6 +351,10 @@ function Navbar() {
               <Link
                 href={item.href}
                 className={`flex items-center gap-1 `}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onFocus={() => handleMouseEnter(i)}
+                onBlur={handleMouseLeave}
+                onClick={() => { setHoveredIndex(null); setOpenDropdownIndex(null); }}
               >
                 {item.label}
                 {item.hasDropdown && <FaSortDown className="text-sm -mt-1" />}
@@ -358,7 +362,13 @@ function Navbar() {
             ) : (
               <span
                 className="flex items-center gap-1 cursor-pointer"
-                onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
+                onClick={() => {
+                  setOpenDropdownIndex(openDropdownIndex === i ? null : i);
+                  setHoveredIndex(openDropdownIndex === i ? null : i);
+                }}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onFocus={() => handleMouseEnter(i)}
+                onBlur={handleMouseLeave}
               >
                 {item.label}
                 {item.hasDropdown && <FaSortDown className="text-sm -mt-1" />}
@@ -504,6 +514,7 @@ function Navbar() {
                         <li key={j} className="rounded-lg hover:bg-[#084032] group">
                           <Link
                             href={subItem.href}
+                            onClick={() => { setHoveredIndex(null); setOpenDropdownIndex(null); }}
                             className={`flex items-start p-2 gap-2 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
                           >
                             <div className="flex-shrink-0">

@@ -21,14 +21,15 @@ const RMABanner = () => {
       <div className="relative z-10 w-full full text-white font-montserrat">
         <Image
           src={icon2}
-          alt="icon2"
+          alt="cloud icon"
           width={40}
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          RMA <br className="block md:block" /> Facility
+          Cloud Computing<br className="block md:block" /> Solutions
         </h1>
+        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Modernize your infrastructure, secure your data, and scale on demand with Crown Excel’s cloud expertise.</p>
         <Image
           src={icon1}
           alt="icon1"
@@ -37,17 +38,6 @@ const RMABanner = () => {
           className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
         />
       </div>
-
-      {/* Right Side Background */}
-      {/* <div
-        className="absolute right-0 bottom-0 top-0 w-full md:w-1/2 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url(${BannerImage.src})`,
-        }}
-      ></div> */}
-
-      {/* Overlay Gradient (optional for glow effect) */}
-      {/* <div className="absolute inset-0 bg-gradient-to-l from-[#031d26] via-[#031d26]/80 to-transparent z-[1]" /> */}
 
     </div>
   );

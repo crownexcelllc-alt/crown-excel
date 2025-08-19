@@ -15,7 +15,7 @@ const RMAEmpowering = () => {
             src={empoweringImage}
             width={632}
             height={425}
-            alt="Empowering Business"
+            alt="Cloud Empowering"
             className="w-full max-w-[632px] md:w-[447px] lg:w-[632px] h-auto mx-auto md:mx-0 lg:mx-0"
           />
         </div>
@@ -24,17 +24,17 @@ const RMAEmpowering = () => {
         <div className="relative w-full px-5 md:px-2 lg:px-0 lg:w-1/2 z-10 flex flex-col gap-6 mt-5 md:mt-5 lg:mt-[-40px]">
           {/* Highlighted Banner */}
           <p className="bg-[#ffd600] text-black text-center font-montserrat font-semibold text-lg md:text-xl lg:text-[22.4px] leading-snug px-6 py-1 rounded-md shadow-md">
-            Empowering Your Business with Tailored IT Solutions
+            Empowering Your Business with Cloud-first IT Solutions
           </p>
 
           {/* Title */}
           <h2 className="text-black text-[32px] md:text-[42px] lg:text-[52px] font-semibold leading-tight font-montserrat">
-            A TO Z NETWORKING PROPOSAL
+            Cloud Migration & Modernization
           </h2>
 
           {/* Description */}
           <p className="text-black text-base md:text-[16px] leading-[27.2px] font-montserrat z-30">
-            We provide a comprehensive “A to Z RMA Solution” to simplify the return, repair, or replacement process for your products. From initial request submission to resolution, our RMA process ensures every step is handled efficiently and transparently, allowing businesses to maintain operational continuity and customer satisfaction.
+            We help businesses migrate legacy systems to the cloud with minimal disruption and a clear rollback plan. Our modernization services optimize application architecture, reduce costs, and increase agility.
           </p>
 
           {/* Yellow Glowing Circle */}
@@ -54,18 +54,14 @@ const RMAEmpowering = () => {
               {/* Right Side */}
               <div className="empowering-right gap-5 md:gap-5 lg:gap-5 relative basis-[50%] flex flex-col items-start mt-5 md:mt-10 lg:-mt-10 z-10 px-2 lg:px-0">
                 <p className="bg-[#ffd600] text-center w-full text-black text-[17px] md:text-[20px] lg:text-[22.4px] font-[600] font-montserrat leading-[22px] lg:leading-[26.88px] px-2 md:px-10 lg:px-10 rounded py-[2px]">
-                  Empowering Your Business with Tailored IT Solutions
+                  Empowering Your Business with Cloud-first IT Solutions
                 </p>
                 <h1 className="text-[32px] md:text-[43px] lg:text-[52px] text-black font-[600] leading-[40px] lg:leading-[52px] font-montserrate">
-                 IT Consultancy
+                 Cloud Strategy & Consulting
                 </h1>
                 <p className="text-[16px] text-black leading-[27.2px] font-montserrat">
-                  Our RMA consultancy services focus on helping businesses improve their return management systems to enhance efficiency and customer experience. We conduct a thorough assessment of your current RMA process, identify areas for improvement, and implement customized solutions to optimize your return operations, reduce costs, and improve turnaround times.
+                  Our cloud consulting services help you define a clear migration roadmap, select the right providers (AWS, Azure, GCP), and plan for security and compliance. We ensure a smooth transition and measurable business value.
                 </p>
-      
-                
-      
-                
               </div>
               {/* Left Side */}
               <div className="empowering-left basis-[50%]">
@@ -73,12 +69,12 @@ const RMAEmpowering = () => {
                   src={NetworkIT}
                   width={527}
                   height={355}
-                  alt=""
+                  alt="Cloud architecture"
                   className="hidden md:block lg:block lg:w-[527px] lg:h-[355px]"
                 />
               </div>
       
-              
+               
             </div>
     </section>
   );

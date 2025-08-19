@@ -30,7 +30,7 @@ import microsof from '@/Components/Images/microsof.png'
 import lg from '@/Components/Images/lg.png'
 import lenovo from '@/Components/Images/lenovo (1).png'
 import Asus from '@/Components/Images/asus (1).png'
-import apple from '@/Components/Images/apple (1).png'
+import apple from '@/Components/Images/apple (3).png'
 import ServicesBrandImage from '../../../Components/Images/servicesbrands.png'
 const brands = [
   Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Noc, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, razor, microsof, lg, lenovo, apple
