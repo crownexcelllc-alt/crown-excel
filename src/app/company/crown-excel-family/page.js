@@ -176,11 +176,11 @@ function CrownExcelFamily() {
     },
     {
       id: 15,
-      name: "Abdullah Salar",
-      position: "Sales Executive",
-      department: "Sales",
-      experience: "8+ Years",
-      image: Abdullah,
+       name: "Shamry Salam",
+      position: "Receptionist",
+      department: "Reception",
+      experience: "10+ Years",
+      image: Shammry,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -204,11 +204,11 @@ function CrownExcelFamily() {
     },
     {
       id: 18,
-      name: "Nadeem",
-      position: "Salesman",
+       name: "Abdullah Salar",
+      position: "Sales Executive",
       department: "Sales",
-      experience: "7+ Years",
-      image: etc4,
+      experience: "8+ Years",
+      image: Abdullah,
       quote: "Our team is our extended family, and we grow together."
     },
     // {
@@ -231,11 +231,11 @@ function CrownExcelFamily() {
     },
     {
       id: 20,
-      name: "Brian Mwenda",
-      position: "Store Keeper",
-      department: "Warehouse",
+        name: "Nadeem",
+      position: "Salesman",
+      department: "Sales",
       experience: "7+ Years",
-      image: etc1,
+      image: etc4,
       quote: "Our team is our extended family, and we grow together."
     },
     {
@@ -259,11 +259,11 @@ function CrownExcelFamily() {
     },
     {
       id: 23,
-      name: "Shamry Salam",
-      position: "Receptionist",
-      department: "Reception",
-      experience: "10+ Years",
-      image: Shammry,
+       name: "Brian Mwenda",
+      position: "Store Keeper",
+      department: "Warehouse",
+      experience: "7+ Years",
+      image: etc1,
       quote: "Our team is our extended family, and we grow together."
     },
     // {
