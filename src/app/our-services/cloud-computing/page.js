@@ -4,14 +4,14 @@ import RMACoreAreas from '@/app/_components/OurServicesPages/RMA/RMACoreAreas/RM
 import RMAEmpowering from '@/app/_components/OurServicesPages/RMA/RMAEmpowering/RMAEmpowering'
 import RMAFaq from '@/app/_components/OurServicesPages/RMA/RMAFaq/RMAFaq'
 import RMAFirewall from '@/app/_components/OurServicesPages/RMA/RMAFirewall/RMAFirewall'
-import RMASmart from '@/app/_components/OurServicesPages/RMA/RMASmart/RMASmart'
+// import RMASmart from '@/app/_components/OurServicesPages/RMA/RMASmart/RMASmart'
 import React from 'react'
 
 const RMAfacility = () => {
   return (
     <div>
       <RMABanner/>
-      <RMASmart/>
+      {/* <RMASmart/> */}
       <RMAEmpowering/>
       <RMACoreAreas/>
       <RMACabling/>

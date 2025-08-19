@@ -2,18 +2,25 @@ import React from 'react'
 
 const NetworkingCabling = () => {
   return (
-    <div className='mt-20 relative overflow-hidden lg:h-[800px] px-5 lg:px-0'>
+    <div className='mt-12 relative overflow-hidden lg:h-auto px-5 lg:px-0 font-montserrat'>
       <h1 className='font-montserrat text-[24px] lg:text-[42px] font-[600] leading-[24px] lg:leading-[42px] text-black text-center'>CLOUD CONNECTIVITY & SECURITY</h1>
-      <div className="cabling-parts flex flex-col md:flex-row lg:flex-row items-cetner justify-around mt-10  gap-5 lg:gap-0">
-        <div className="cabling-left flex flex-col items-center justify-around rounded-[40px] p-[30px] w-full lg:w-[542.5px] lg:h-[582.5px]" style={{backgroundImage: 'linear-gradient(180deg, #16CA9A 0%, #084032 100%)'}}>
-            <h1 className='text-center text-[22px] leading-[24px] lg:text-[34px] lg:leading-[34px] font-[600] font-montserrat'>RELIABLE CLOUD CONNECTIVITY</h1>
-            <p className='text-center my-5 text-[16px] leading-[27.2px] font-montserrat'>Ensure low-latency, high-throughput connections between your on-prem systems and cloud workloads. We design secure networking patterns, hybrid connectivity, VPNs, and dedicated links to provide consistent performance.</p>
-            <button className='bg-[#fdd900] rounded-[30px] text-[15px] px-[24px] py-[12px] text-black'>Build hybrid & direct connect solutions</button>
+      <div className="cabling-parts flex flex-col md:flex-row lg:flex-row items-center justify-center mt-6 gap-6 lg:gap-6">
+        <div className="cabling-left flex flex-col items-center justify-center rounded-[20px] p-5 w-full lg:w-[460px] lg:min-h-[360px]" style={{backgroundImage: 'linear-gradient(180deg, #16CA9A 0%, #084032 100%)'}}>
+            <h1 className='text-center text-[20px] lg:text-[26px] leading-[24px] lg:leading-[30px] font-[700] text-white'>RELIABLE CLOUD CONNECTIVITY</h1>
+            <div className='text-center my-3 text-[15px] leading-[22px] text-white/90 max-w-[36rem]'>
+              Ensure low-latency, high-throughput connections between on-prem systems and cloud workloads. We design hybrid connectivity (VPNs, Direct Connect), SD-WAN optimizations, and dedicated private links to deliver consistent performance and predictable costs.
+            </div>
+            <p className='text-center text-sm text-white/80 mb-3 px-4'>Monitoring, failover planning, and bandwidth shaping are included to maintain SLAs for mission-critical services.</p>
+            <button className='bg-[#fdd900] rounded-[20px] text-[14px] px-[18px] py-[10px] text-black font-semibold mt-3'>Build hybrid & direct connect solutions</button>
         </div>
-        <div className="cabling-left flex flex-col items-center justify-around rounded-[40px] p-[30px] w-full lg:w-[542.5px] lg:h-[582.5px]" style={{backgroundImage: 'linear-gradient(180deg, #16CA9A 0%, #084032 100%)'}}>
-            <h1 className='text-center text-[24px] leading-[24px] lg:text-[34px] lg:leading-[34px] font-[600] font-montserrat'>SECURE NETWORK ARCHITECTURE</h1>
-            <p className='text-center my-5 text-[16px] leading-[27.2px] font-montserrat'>Protect data in transit and enforce network segmentation using cloud-native firewalls, micro-segmentation, and secure access gateways.</p>
-            <button className='bg-[#fdd900] rounded-[30px] text-[15px] px-[24px] py-[12px] text-black'>Design secure cloud networks</button>
+
+        <div className="cabling-right flex flex-col items-center justify-center rounded-[20px] p-5 w-full lg:w-[460px] lg:min-h-[360px]" style={{backgroundImage: 'linear-gradient(180deg, #16CA9A 0%, #084032 100%)'}}>
+            <h1 className='text-center text-[20px] lg:text-[26px] leading-[24px] lg:leading-[30px] font-[700] text-white'>SECURE NETWORK ARCHITECTURE</h1>
+            <div className='text-center my-3 text-[15px] leading-[22px] text-white/90 max-w-[36rem]'>
+              Protect data in transit and enforce network segmentation using cloud-native firewalls, micro-segmentation, and Zero Trust access controls. We implement identity-aware proxies and private endpoint strategies to reduce attack surface.
+            </div>
+            <p className='text-center text-sm text-white/80 mb-3 px-4'>Our designs include automated policy enforcement, encrypted backhauls, and continuous vulnerability scanning to keep your cloud network resilient.</p>
+            <button className='bg-[#fdd900] rounded-[20px] text-[14px] px-[18px] py-[10px] text-black font-semibold mt-3'>Design secure cloud networks</button>
         </div>
       </div>
     </div>
