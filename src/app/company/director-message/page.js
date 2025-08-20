@@ -15,13 +15,13 @@ function DirectorMessage() {
         </div>
       </div> */}
       <div className='flex flex-col items-center'>
-        <div className="lg:w-1/2 flex-shrink-0 relative mb-6">
+        <div className="flex-shrink-0 relative mb-0">
           <Image
             src={director}
             alt="Director's Photo"
             width={320}
             height={220}
-            className="w-full h-auto object-cover max-h-[620px] rounded-xl mx-auto"
+            className="h-auto object-cover w-[500px] max-h-[620px] rounded-xl mx-auto mt-5"
           />
           {/* lg:rounded-l-2xl */}
           <div className="absolute inset-0 rounded-xl"></div>
@@ -32,12 +32,12 @@ function DirectorMessage() {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-16">
               <div className="flex flex-col">
                 <div className="p-8 md:p-12 flex-1 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#16806b] font-montserrat mb-4">
+                  <h3 className="text-2xl md:text-5xl font-bold text-[#16806b] font-montserrat mb-4">
                     {` Director's Message`}
                   </h3>
                   <div className="w-16 h-1 bg-[#61ce70] mb-6"></div>
                   <div className="space-y-6 text-gray-700 font-muli leading-8">
-                    <p className="text-lg font-bold mb-2">
+                    <p className="text-xl font-semibold mb-2">
                       Together, let’s embrace technology and build a better tomorrow.
                     </p>
                     <p className="text-lg">

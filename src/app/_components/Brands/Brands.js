@@ -39,8 +39,8 @@ const brands = [
 
 const Brands = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#e6f0ee] py-12">
-      <h1 className="text-[32px] mb-10 font-montserrat leading-[32px] font-[700] text-black">
+    <div className="flex flex-col items-center justify-center bg-[#e6f0ee] py-0">
+      <h1 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
         BRANDS WE DEAL
       </h1>
 
@@ -48,7 +48,7 @@ const Brands = () => {
       <div className="relative w-full overflow-hidden">
         <div className="marquee w-full">
           {/* First sequence */}
-            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-4">
+            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-0">
               {brands.map((brand, i) => (
                 <div
                   key={i}
