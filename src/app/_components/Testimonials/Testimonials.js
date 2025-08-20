@@ -36,6 +36,8 @@ const sampleTestimonials = [
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState(sampleTestimonials)
+  // show first N reviews, expand to all when user clicks "Load more"
+  const [visibleCount, setVisibleCount] = useState(9)
   const [showForm, setShowForm] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -156,7 +158,7 @@ export default function Testimonials() {
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, idx) => (
+          {reviews.slice(0, visibleCount).map((review, idx) => (
             <TestimonialCard
               key={review.id ?? review._id ?? idx}
               title={review.title}
@@ -168,6 +170,18 @@ export default function Testimonials() {
             />
           ))}
         </div>
+
+        {/* Load more button - shows when there are more reviews than visibleCount */}
+        {reviews.length > visibleCount && (
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => setVisibleCount(reviews.length)}
+              className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-6 py-2 rounded-full font-montserrat font-semibold hover:from-[#149f83] hover:to-[#063827] transform hover:scale-105 transition-all duration-300 shadow-md"
+            >
+              Load more
+            </button>
+          </div>
+        )}
 
         {showForm && (
           <div

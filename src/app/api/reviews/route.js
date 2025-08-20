@@ -21,13 +21,19 @@ function jsonResponse(data, status = 200) {
 export async function POST(req) {
   try {
     const body = await req.json();
+    // support multiple possible field names from different frontends
     const name = (body.name || '').toString().trim();
     const position = (body.position || '').toString().trim();
     const company = (body.company || '').toString().trim();
-    const message = (body.message || '').toString().trim();
-    let rating = Number(body.rating || 5);
+    // frontend sometimes posts `comment` instead of `message`
+    const message = (body.message || body.comment || body.review || '').toString().trim();
+    const email = (body.email || '').toString().trim();
+    const avatar = (body.avatar || body.image || '').toString().trim();
+    const title = (body.title || body.reviewTitle || '').toString().trim();
+    let rating = Number(body.rating ?? 5);
     if (!name || !message) {
-      return jsonResponse({ error: 'name and message are required' }, 400);
+      console.warn('POST /api/reviews validation failed', { bodyPreview: { name: body.name, comment: body.comment, message: body.message, rating: body.rating } });
+      return jsonResponse({ error: 'name and message (or comment) are required' }, 400);
     }
     if (!Number.isFinite(rating)) rating = 5;
     rating = Math.max(1, Math.min(5, Math.round(rating)));
@@ -37,10 +43,13 @@ export async function POST(req) {
 
     const doc = {
       name,
+      email: email || null,
       position: position || null,
       company: company || null,
+      title: title || null,
       rating,
       message,
+      avatar: avatar || null,
       createdAt: new Date(),
       approved: false, // admin can approve later
     };
@@ -70,6 +79,9 @@ export async function GET(req) {
       ...r,
       _id: r._id.toString(),
       createdAt: r.createdAt ? (new Date(r.createdAt)).toISOString() : null,
+      avatar: r.avatar || null,
+      email: r.email || null,
+      title: r.title || null,
     }));
     return jsonResponse(normalized);
   } catch (err) {

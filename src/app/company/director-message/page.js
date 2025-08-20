@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 // import director from '@/Components/Images/director.png'
-import director from '@/Components/Images/director.jpg'
+import director from '@/Components/Images/director.png'
+import directorbg from '@/Components/Images/directorbg.png'
 
 function DirectorMessage() {
   return (
@@ -21,7 +22,7 @@ function DirectorMessage() {
             alt="Director's Photo"
             width={320}
             height={220}
-            className="h-auto object-cover w-[500px] max-h-[620px] rounded-xl mx-auto mt-5"
+            className="h-auto object-cover w-[500px] max-h-[620px] rounded-xl mx-auto mt-2"
           />
           {/* lg:rounded-l-2xl */}
           <div className="absolute inset-0 rounded-xl"></div>
