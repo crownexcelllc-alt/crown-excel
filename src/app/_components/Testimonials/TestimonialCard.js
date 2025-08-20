@@ -9,7 +9,7 @@ export default function TestimonialCard({ title, name, position, message, image,
     rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
 
   return (
-    <article className="group w-full max-w-[360px] hover:text-white bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col border hover:border-transparent hover:bg-gradient-to-r from-[#16CA9A] to-[#084032] border-[#16CA9A]">
+    <article className="group w-full hover:shadow-[#29856B] max-w-[360px] hover:text-white bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col border hover:border-transparent hover:bg-gradient-to-r from-[#16CA9A] to-[#084032] border-[#16CA9A]">
       {/* Top: rating badge & stars */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
