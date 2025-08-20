@@ -27,7 +27,7 @@ const RMABanner = () => {
           className="absolute -top-10 left-10 md:left-0"
         />
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          Cloud Computing<br className="block md:block" /> Solutions
+          Cloud <br className="block md:block" /> Computing<br className="block md:block" /> Solutions
         </h1>
         <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Modernize your infrastructure, secure your data, and scale on demand with Crown Excel’s cloud expertise.</p>
         <Image
