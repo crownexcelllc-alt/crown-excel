@@ -27,8 +27,9 @@ const ManagedITBanner = () => {
           className="absolute -top-10 left-10 md:left-0"
         />
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          Managed <br className="block md:hidden" /> IT
+          IT Infrastructure <br className="block md:block" /> & Managed Services
         </h1>
+        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, build and manage resilient IT infrastructure — from server rooms and virtualization to structured cabling and disaster recovery.</p>
         <Image
           src={icon1}
           alt="icon1"

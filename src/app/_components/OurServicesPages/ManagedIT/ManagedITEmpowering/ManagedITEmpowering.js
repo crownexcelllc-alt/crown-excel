@@ -24,17 +24,17 @@ const ManagedITEmpowering = () => {
         <div className="relative w-full items-start px-5 md:px-2 lg:px-0 lg:w-1/2 z-10 flex flex-col gap-6 mt-5 md:mt-5 lg:mt-[-40px]">
           {/* Highlighted Banner */}
           <p className="bg-[#ffd600] text-black text-center font-montserrat  text-lg md:text-xl lg:text-[18px] leading-[18px] px-[20px] py-[15px] rounded-md shadow-md">
-            Empowering Your Business with Tailored IT Solutions
+            Robust IT Infrastructure Designed for Performance
           </p>
 
           {/* Title */}
           <h2 className="text-black text-[32px] md:text-[42px] lg:text-[52px] font-semibold leading-tight font-montserrat">
-            Empowering Businesses with Seamless IT
+            Infrastructure Planning, Deployment & Management
           </h2>
 
           {/* Description */}
           <p className="text-black text-base md:text-[16px] leading-[27.2px] font-montserrat z-30">
-            Our Managed IT Services are crafted to eliminate technology hurdles, ensuring uninterrupted operations and enhanced productivity. Let us handle your IT so you can focus on driving your business forward.
+            We design and implement resilient infrastructure — server consolidation, virtualization, backup and recovery, and structured cabling — then manage it proactively to ensure uptime and scalability.
           </p>
 
           {/* Yellow Glowing Circle */}
@@ -70,12 +70,12 @@ const ManagedITEmpowering = () => {
               {/* Left Side */}
               <div className="empowering-left basis-[50%]">
                 <Image
-                  src={NetworkIT}
-                  width={527}
-                  height={355}
-                  alt=""
-                  className="hidden md:block lg:block lg:w-[527px] lg:h-[355px]"
-                />
+                src={NetworkIT}
+                width={527}
+                height={355}
+                alt="IT infrastructure diagram"
+                className="hidden md:block lg:block lg:w-[527px] lg:h-[355px]"
+              />
               </div>
       
               

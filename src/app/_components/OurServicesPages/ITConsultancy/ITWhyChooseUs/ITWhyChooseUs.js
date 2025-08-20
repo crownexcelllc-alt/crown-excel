@@ -9,7 +9,7 @@ import Image from 'next/image'
 const ITWhyChooseUs = () => {
   return (
     <div className='px-5'>
-      <h1 className='text-[#0e5d48] text-[30px] md:text-[32px] lg:text-[32px] font-[600] leading-[32px]'>Why Choose Us:</h1>
+      <h1 className='text-[#0e5d48] text-[30px] md:text-[32px] lg:text-[32px] font-[600] leading-[32px]'>Why choose Crown Excel for IT consultancy</h1>
        <Image
                         src={NetworkIT}
                         width={527}
@@ -22,9 +22,9 @@ const ITWhyChooseUs = () => {
             <Image alt='' src={Core1} width={572} height={386} className='w-full h-[220px] md:w-[397px] md:h-[267.5px] lg:w-[572px] lg:h-[386px]'/>
         </div>
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
-            <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Proactive IT Tailored IT Strategies for Every Business:</h1>
+      <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Tailored IT strategies aligned to your business goals</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-                <p className='text-black text-[16px] leading-[27.2px]'>At Crown Excel, we believe that one size does not fit all. That’s why we work closely with you to understand your business needs, challenges, and long-term goals. Our bespoke IT strategies ensure that every solution we provide is perfectly aligned with your unique requirements, helping you achieve sustainable growth.</p>
+        <p className='text-black text-[16px] leading-[27.2px]'>We design pragmatic IT strategies that map technology investments to measurable business outcomes — from cost savings to faster time-to-market. Our consultants assess your environment and build a prioritized roadmap you can execute with confidence.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='hidden md:block lg:block md:h-[350px] lg:h-[400px]'/>
@@ -34,10 +34,9 @@ const ITWhyChooseUs = () => {
             <Image alt='' src={Core2} width={572} height={386} className='w-full h-[220px] md:w-[397px] md:h-[267.5px] lg:w-[572px] lg:h-[386px]'/>
         </div>
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
-            <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Customized IT Experienced and Certified Professionals with Proven Expertise:</h1>
+      <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Experienced, certified consultants focused on outcomes</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-                <p className='text-black text-[16px] leading-[27.2px]'>Our team is made up of highly qualified IT professionals with decades of combined experience in consulting, systems design, and implementation. We stay ahead of industry trends, bringing cutting-edge knowledge and best practices to every project. Our consultants are not just IT experts; they are problem-solvers who are passionate about driving success for your business.
-</p>
+        <p className='text-black text-[16px] leading-[27.2px]'>Our consultants combine deep technical skills with industry experience — delivering clear recommendations, vendor-neutral guidance, and hands-on support to implement change quickly and safely.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='hidden md:block lg:block md:h-[350px] lg:h-[400px]'/>
@@ -47,9 +46,9 @@ const ITWhyChooseUs = () => {
             <Image alt='' src={Core3} width={572} height={386} className='w-full h-[220px] md:w-[397px] md:h-[267.5px] lg:w-[572px] lg:h-[386px]'/>
         </div>
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
-            <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>24/7 Proven Record of Driving Innovation and Results:</h1>
+      <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Proven track record delivering measurable results</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-                <p className='text-black text-[16px] leading-[27.2px]'>With a history of successful projects and satisfied clients, Crown Excel is a trusted name in IT consultancy. We have helped businesses across industries improve efficiency, enhance cybersecurity, and adopt innovative technologies. Our success stories are a testament to our commitment to delivering measurable outcomes and real value for our clients.</p>
+        <p className='text-black text-[16px] leading-[27.2px]'>We focus on outcomes: improved security, reduced operational cost, faster delivery, and scalable platforms. Our engagements emphasize quick wins and long-term capability building so clients see value from day one.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='md:h-[350px] lg:h-[400px] md:block hidden lg:block'/>
@@ -59,9 +58,9 @@ const ITWhyChooseUs = () => {
             <Image alt='' src={Core4} width={572} height={386} className='w-full h-[220px] md:w-[397px] md:h-[267.5px] lg:w-[572px] lg:h-[386px]'/>
         </div>
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
-            <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Cutting-Edge End-to-End Support to Simplify IT Challenges:</h1>
+      <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>End-to-end support from strategy to implementation</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-                <p className='text-black text-[16px] leading-[27.2px]'>We don’t just offer advice; we provide hands-on support at every stage of your IT journey. From initial assessments to solution implementation and ongoing monitoring, we ensure your IT projects are completed efficiently and seamlessly. With our comprehensive support, you can stay focused on your business while we take care of the technology.</p>
+        <p className='text-black text-[16px] leading-[27.2px]'>From quick assessments to full program delivery, we help design, procure, implement, and operate solutions. Our teams stay engaged until outcomes are achieved and your staff are confident running the new environment.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='md:h-[350px] lg:h-[400px] hidden md:block lg:block'/>

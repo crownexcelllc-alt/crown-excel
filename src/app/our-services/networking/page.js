@@ -4,14 +4,14 @@ import NetworkingBanner from '@/app/_components/OurServicesPages/Networking/Netw
 import NetworkingCabling from '@/app/_components/OurServicesPages/Networking/NetworkingCabling/NetworkingCabling'
 import NetworkingFAQ from '@/app/_components/OurServicesPages/Networking/NetworkingFAQ/NetworkingFAQ'
 import NetworkingFirewall from '@/app/_components/OurServicesPages/Networking/NetworkingFirewall/NetworkingFirewall'
-import NetworkingSmart from '@/app/_components/OurServicesPages/Networking/NetworkingSmart/NetworkingSmart'
+// import NetworkingSmart from '@/app/_components/OurServicesPages/Networking/NetworkingSmart/NetworkingSmart'
 import React from 'react'
 
 const Networking = () => {
   return (
     <div>
       <NetworkingBanner/>
-      <NetworkingSmart/>
+      {/* <NetworkingSmart/> */}
       <NetworkEmpowering/>
       <NetworkCoreAreas/>
       <NetworkingCabling/>

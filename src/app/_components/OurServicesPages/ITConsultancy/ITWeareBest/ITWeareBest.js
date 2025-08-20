@@ -6,7 +6,7 @@ import Semibottom from '../../../../../Components/Images/semicirlcebottom.png'
 
 const ITWeareBest = () => {
     return (
-        <div className='flex flex-col items-center mt-10'>
+        <div className='flex flex-col items-center mt-10 md:mt-[-200] '>
             <div className="heading-text relative my-10 mx-5 md:mx-0">
                 <Image alt='' src={Semitop} width={122} height={61} className='absolute -top-15.25 -right-10 lg:-top-15.25 lg:-right-10'/>
                 <h1 className='bg-[#119472] rounded text-white text-[20px] md:text-[44px] lg:text-[44px] font-[700] font-montserrat px-10 py-2 md:px-[50px] md:py-[15px] lg:px-[50px] lg:py-[15px] h-[50px] md:h-[74px] lg:h-[74px] flex items-center justify-center'>How We Are Best</h1>
@@ -25,9 +25,9 @@ const ITWeareBest = () => {
                 <div className="relative z-10 flex flex-col md:flex-col items-center  w-full max-w-[1400px] px-4 md:px-20 py-8 md:py-0 ">
 
 
-                    <div className="text-area-firwall  p-[20px] md:p-[50px]  text-center  ">
-                       Crown Excel’s IT consultancy stands out because of our client-centric approach and ability to align IT with business goals. Our team of seasoned consultants combines technical expertise with strategic foresight to deliver solutions that drive measurable results. By focusing on agility, scalability, and innovation, we empower businesses to harness the full potential of their IT investments and adapt seamlessly to ever-evolving challenges.
-                    </div>
+                          <div className="text-area-firwall  p-[20px] md:p-[50px]  text-center  ">
+                              Crown Excel combines strategic thinking, technical depth and delivery discipline to help clients capture value from technology. We focus on pragmatic solutions that reduce risk, accelerate projects and build internal capability — so clients see measurable improvements in performance and cost efficiency.
+                          </div>
 
                 </div>
             </div>

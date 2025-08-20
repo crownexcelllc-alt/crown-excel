@@ -24,19 +24,19 @@ const ITEmpowering = () => {
         <div className="relative w-full items-start px-5 md:px-2 lg:px-0 lg:w-1/2 z-10 flex flex-col gap-6 mt-5 md:mt-5 lg:mt-[-40px]">
           {/* Highlighted Banner */}
           <p className="bg-[#ffd600] text-black text-center font-montserrat  text-lg md:text-xl lg:text-[18px] leading-[18px] px-[20px] py-[15px] rounded-md shadow-md">
-            Empowering Your Business with Tailored IT Solutions
+            Strategic IT consultancy for measurable business value
           </p>
 
           {/* Title */}
           <h2 className="text-black text-[32px] md:text-[42px] lg:text-[52px] font-semibold leading-tight font-montserrat">
-           Transform Your Business with Strategic IT Insights
+           Transformative IT strategy and practical delivery
           </h2>
 
           {/* Description */}
           <p className="text-black text-base md:text-[16px] leading-[27.2px] font-montserrat z-30">
-            In today’s competitive environment, your technology can be your greatest asset—or your biggest challenge. Our IT Consultancy Services are built to help you leverage the power of technology to drive innovation, reduce costs, and increase efficiency. By offering tailored strategies and actionable insights, we empower you to transform your IT systems into a competitive advantage.
+            We help you prioritize initiatives that deliver measurable results — reducing cost, improving resilience, and enabling innovation. Our approach blends short-term wins with long-term capability building so your business is ready for tomorrow’s challenges.
             <br />
-            Whether you’re aiming to streamline operations, upgrade legacy systems, or adopt cutting-edge solutions, our consultants work with you to develop a clear and achievable roadmap. With Crown Excel by your side, your IT infrastructure will not only support your goals but also accelerate your path to success.
+            From vendor selection to program delivery and change enablement, we provide the expertise and governance needed to reduce risk and speed up outcomes.
           </p>
 
           {/* Yellow Glowing Circle */}
@@ -56,15 +56,13 @@ const ITEmpowering = () => {
               {/* Right Side */}
               <div className="empowering-right gap-5 md:gap-5 lg:gap-5 relative basis-[50%] flex flex-col items-start mt-5 md:mt-10 lg:-mt-10 z-10 px-2 lg:px-0">
                 <p className="bg-[#ffd600]  text-center w-full text-black text-[17px] md:text-[20px] lg:text-[18px] leading-[18px] px-[20px] py-[15px] font-[500] font-montserrat  lg:leading-[26.88px] md:px-10 lg:px-10 rounded ">
-                  Empowering Your Business with Tailored IT Solutions
+                  Strategic IT guidance and delivery support
                 </p>
                 <h1 className="text-[32px] md:text-[43px] lg:text-[52px] text-black font-[600] leading-[40px] lg:leading-[52px] font-montserrate">
-                 Expert Guidance for Seamless IT Integration
+                 Expert guidance for strategy and execution
                 </h1>
                 <p className="text-[16px] text-black leading-[27.2px] font-montserrat">
-                  Navigating the complexity of IT systems and emerging technologies can be overwhelming. That’s where our experts come in. Crown Excel provides seamless integration of IT solutions into your business, ensuring your systems work together harmoniously and deliver maximum value.
-                  <br />
-                  From cloud migration to implementing advanced cybersecurity measures, we ensure every aspect of your IT environment is optimized for reliability, scalability, and performance. With our expert guidance, your IT systems will operate like a well-oiled machine, driving efficiency, collaboration, and growth across all levels of your organization.
+                  We simplify complexity by aligning architecture, operations and governance to your business objectives. Our consultants help you select the right technologies, manage risk, and embed repeatable delivery practices so projects finish on time and on budget.
                 </p>
       
                 

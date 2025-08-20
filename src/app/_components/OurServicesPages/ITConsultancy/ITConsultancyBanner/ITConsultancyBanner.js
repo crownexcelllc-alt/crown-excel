@@ -27,7 +27,7 @@ const ITConsultancyBanner = () => {
           className="absolute -top-10 left-10 md:left-0"
         />
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          IT  <br className="block md:hidden" /> Consultancy
+          IT Consultancy
         </h1>
         <Image
           src={icon1}

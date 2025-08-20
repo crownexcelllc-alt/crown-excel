@@ -6,20 +6,20 @@ const ManagedITFaq = () => {
       <h1 className='text-[26px] md:text-[34px] lg:text-[40px] leading-[24px] lg:leading-[40px] font-[600] text-[#0e5d48] text-center'>FREQUENTLY ASKED QUESTIONS (FAQS)</h1>
       <div className="faqs flex items-center justify-center flex-wrap gap-10  mt-5">
         <div className="faqs-divs flex flex-col text-black w-full md:w-[422px] lg:w-[555px]  rounded-b-[20px]" style={{boxShadow: '0px 6px 5px 0px rgba(0, 0, 0, 0.5)'}}>
-            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]'>What are Managed IT Services, and how can Crown Excel help my business?</h1>
-            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>Managed IT Services involve outsourcing your IT operations to a specialized team like Crown Excel. We handle everything from system monitoring and maintenance to cybersecurity and cloud solutions. This allows your business to operate seamlessly while reducing downtime and IT-related stress.</p>
+            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]'>What IT infrastructure services does Crown Excel provide?</h1>
+            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>We provide server & storage design, virtualization, structured cabling, backup & disaster recovery, network security and 24/7 monitoring — end-to-end infrastructure lifecycle services.</p>
         </div>
          <div className="faqs-divs flex flex-col text-black w-full md:w-[422px] lg:w-[555px] rounded-b-[20px]" style={{boxShadow: '0px 6px 5px 0px rgba(0, 0, 0, 0.5)'}}>
-            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]' >How does Crown Excel ensure the security of my IT systems?</h1>
-            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>At Crown Excel, we implement advanced security measures, including firewalls, threat detection, data encryption, and regular security audits. Our proactive approach ensures your IT infrastructure remains protected from cyber threats, minimizing risks to your sensitive data.</p>
+            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]' >How do you protect my infrastructure from attacks or failures?</h1>
+            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>We use defense-in-depth: segmentation, firewall policies, IDS/IPS, regular patching, backups, and DR plans. Monitoring detects anomalies early so we can remediate issues before they escalate.</p>
         </div>
          <div className="faqs-divs flex flex-col text-black w-full md:w-[422px] lg:w-[555px] rounded-b-[20px]" style={{boxShadow: '0px 6px 5px 0px rgba(0, 0, 0, 0.5)'}}>
-            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px] ' >Can Crown Excel’s Managed IT Services scale with my growing business?</h1>
-            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>Yes, our Managed IT Services are designed to scale with your business. Whether you’re adding users, expanding locations, or adopting new technologies, we provide flexible IT solutions to meet your evolving needs without compromising quality or performance.</p>
+            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px] ' >Can you scale infrastructure when my business grows?</h1>
+            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>Absolutely — we plan for growth with modular architectures, capacity planning and cloud/hybrid options so you can scale compute, storage and network resources smoothly.</p>
         </div>
          <div className="faqs-divs flex flex-col text-black w-full md:w-[422px] lg:w-[555px] rounded-b-[20px]" style={{boxShadow: '0px 6px 5px 0px rgba(0, 0, 0, 0.5)'}}>
-            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]' >What kind of support can I expect from Crown Excel’s IT team?</h1>
-            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>Our dedicated team offers 24/7 support, including real-time monitoring, troubleshooting, and issue resolution. Whether you need assistance with system upgrades, IT emergencies, or strategic planning, we are here to provide prompt and reliable service.</p>
+            <h1 className='bg-[#ffd900] text-[20px] lg:text-[25px] font-[600] leading-[25px] p-[15px]' >What SLAs and response times do you offer?</h1>
+            <p className='p-[29px] bg-[#eaeaea] text-[16px] leading-[27.2px] rounded-b-[20px]'>We offer tailored SLAs depending on your needs: options include 24/7 monitoring with 1-hour critical incident response, routine maintenance windows, and scheduled reviews to ensure uptime targets are met.</p>
         </div>
       </div>
     </div>
