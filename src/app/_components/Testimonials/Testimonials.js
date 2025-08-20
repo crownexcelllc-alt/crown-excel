@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Star, X, Loader2 } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Star, X, Loader2, ChevronLeft, ChevronRight } from "lucide-react"
 import TestimonialCard from "./TestimonialCard"
 import User5 from '../../../Components/Images/user5.png'
 
@@ -36,8 +36,7 @@ const sampleTestimonials = [
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState(sampleTestimonials)
-  // show first N reviews, expand to all when user clicks "Load more"
-  const [visibleCount, setVisibleCount] = useState(9)
+  // show all reviews (removed load-more behavior)
   const [showForm, setShowForm] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -47,6 +46,11 @@ export default function Testimonials() {
     rating: 0,
     comment: "",
   })
+  const sliderRef = useRef(null)
+
+  const updateNavButtons = () => {
+    // placeholder for future enable/disable logic
+  }
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -63,6 +67,18 @@ export default function Testimonials() {
 
     fetchReviews()
   }, [])
+
+  // After reviews load, scroll the slider to the end so initial view starts from last
+  useEffect(() => {
+    const el = sliderRef.current
+    if (!el) return
+    // small timeout to allow layout to settle
+    const t = setTimeout(() => {
+      const max = el.scrollWidth - el.clientWidth
+      if (max > 0) el.scrollTo({ left: max })
+    }, 60)
+    return () => clearTimeout(t)
+  }, [reviews])
 
   const openModal = () => {
     setShowForm(true)
@@ -155,33 +171,69 @@ export default function Testimonials() {
             Share Your Experience
           </button>
         </div>
+        {/* Horizontal slider showing 3 cards with prev/next buttons */}
+        <div className="relative">
+          <button
+            aria-label="Previous testimonials"
+            id="prev-testimonial"
+            onClick={() => {
+              if (!sliderRef.current) return
+        const el = sliderRef.current
+        const step = Math.round(el.clientWidth / 4)
+        // wrap to end when at or very near the start
+        if (el.scrollLeft <= 2) {
+          const max = el.scrollWidth - el.clientWidth
+          el.scrollTo({ left: max, behavior: 'smooth' })
+        } else {
+          el.scrollBy({ left: -step, behavior: 'smooth' })
+        }
+            }}
+            className="absolute -left-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
+          >
+            <ChevronLeft className="w-5 h-5 text-[#084032]" />
+          </button>
 
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.slice(0, visibleCount).map((review, idx) => (
-            <TestimonialCard
-              key={review.id ?? review._id ?? idx}
-              title={review.title}
-              name={review.name}
-              position={review.role || review.position || review.company || ''}
-              message={review.comment || review.message || ''}
-              image={review.avatar || User5}
-              rating={review.rating ?? 5}
-            />
-          ))}
-        </div>
-
-        {/* Load more button - shows when there are more reviews than visibleCount */}
-        {reviews.length > visibleCount && (
-          <div className="mt-6 flex justify-center">
-            <button
-              onClick={() => setVisibleCount(reviews.length)}
-              className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-6 py-2 rounded-full font-montserrat font-semibold hover:from-[#149f83] hover:to-[#063827] transform hover:scale-105 transition-all duration-300 shadow-md"
-            >
-              Load more
-            </button>
+          <div ref={sliderRef} className="overflow-x-auto no-scrollbar" onScroll={() => updateNavButtons()} style={{ scrollBehavior: 'smooth' }}>
+            <div className="flex gap-8" style={{ padding: '0 1rem' }}>
+              {reviews.map((review, idx) => (
+                <div
+                  key={review.id ?? review._id ?? idx}
+                  className="flex-shrink-0"
+                  style={{ flex: '0 0 calc((100% - 96px) / 4)', maxWidth: '360px' }}
+                >
+                  <TestimonialCard
+                    title={review.title}
+                    name={review.name}
+                    position={review.role || review.position || review.company || ''}
+                    message={review.comment || review.message || ''}
+                    image={review.avatar || User5}
+                    rating={review.rating ?? 5}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        )}
+
+          <button
+            aria-label="Next testimonials"
+            id="next-testimonial"
+            onClick={() => {
+              if (!sliderRef.current) return
+        const el = sliderRef.current
+        const step = Math.round(el.clientWidth / 4)
+        // wrap to start when at or very near the end
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
+          el.scrollTo({ left: 0, behavior: 'smooth' })
+        } else {
+          el.scrollBy({ left: step, behavior: 'smooth' })
+        }
+            }}
+            className="absolute -right-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
+          >
+            <ChevronRight className="w-5 h-5 text-[#084032]" />
+          </button>
+        </div>
+        {/* Load more removed: all reviews are shown and slider wraps */}
 
         {showForm && (
           <div

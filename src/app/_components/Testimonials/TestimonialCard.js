@@ -9,66 +9,50 @@ export default function TestimonialCard({ title, name, position, message, image,
     rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
 
   return (
-    <article className="group w-full hover:shadow-[#29856B] max-w-[360px] hover:text-white bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col border hover:border-transparent hover:bg-gradient-to-r from-[#16CA9A] to-[#084032] border-[#16CA9A]">
-      {/* Top: rating badge & stars */}
+  <article className="w-full max-w-[360px] bg-[#f7f7f8] rounded-2xl p-6 shadow-sm border border-transparent flex flex-col justify-between h-[260px]">
+      {/* Header: avatar, name/date and provider badge */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="flex items-center" aria-hidden>
-            {stars.map((s) => (
-              <FaStar
-                key={s}
-                className={`mr-1 ${s <= rating ? 'text-[#ffd900]' : 'text-gray-300'}`}
-                style={{ width: 16, height: 16 }}
-              />
-            ))}
+          <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 bg-white">
+            {image ? (
+              <Image src={image} alt={name || 'Reviewer'} width={48} height={48} className="object-cover" />
+            ) : (
+              <div className="w-full h-full bg-gray-100" />
+            )}
           </div>
-          <div className="hidden sm:block text-sm text-gray-900 font-montserrat font-medium transition-colors duration-200 group-hover:text-white">{ratingLabel}</div>
+
+          <div>
+            <div className="text-base font-semibold text-gray-900 font-montserrat tracking-tight">{(name || 'Anonymous')}</div>
+            <div className="text-xs text-gray-500 mt-0.5 font-montserrat">{position || ''}</div>
+          </div>
         </div>
 
-    <div className="ml-auto">
-          <span
-      className="inline-flex items-center px-2.5 py-1  rounded-full text-xs font-medium bg-[#def7ef] text-[#065a44] border border-[#cfeee0] transition-colors duration-200 "
-            aria-hidden
-          >
-            {rating.toFixed(1)}
-          </span>
+        {/* Provider badge (Google G) */}
+        <div className="ml-4 flex items-start">
+          <svg width="28" height="28" viewBox="0 0 48 48" fill="none" aria-hidden>
+            <rect width="48" height="48" rx="8" fill="#FFFFFF" />
+            <path d="M24 12c3.31 0 6.03 1.25 8 2.99l-3.24 3.24C27.9 17.05 25.99 16 24 16c-4 0-7.38 2.5-8.6 6.02l-.11.34-3.04-2.35C14.86 13.3 19.12 12 24 12z" fill="#EA4335" />
+            <path d="M12.5 24c0-1.2.2-2.36.56-3.45l3.32 2.57C16.1 23.08 16 23.53 16 24c0 .47.1.92.38 1.28l-3.32 2.57A11.45 11.45 0 0 1 12.5 24z" fill="#FBBC05" />
+            <path d="M24 36c-4.88 0-9.14-1.3-12.2-3.34l3.04-2.35C16.62 31.5 20 34 24 34c1.99 0 3.9-.95 4.76-2.23L32 34.01C30.03 35.75 27.31 36 24 36z" fill="#34A853" />
+            <path d="M35.44 28.45C34.9 30.4 33.13 32 31 32c-1.99 0-3.9-.95-4.76-2.23L31 26c1.13 0 2.09.62 2.56 1.45z" fill="#4285F4" />
+          </svg>
         </div>
       </div>
 
-      {/* Quote / message */}
-      <div className="relative mb-4 flex-1">
-        <svg
-          className="absolute -top-1 left-0 w-6 h-6 text-[#084032] opacity-95 group-hover:text-white"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden
-        >
-          <path d="M7.17 6A4 4 0 0 0 4 10.17V12a4 4 0 0 0 4 4h1v-6H7.17zM17.17 6A4 4 0 0 0 14 10.17V12a4 4 0 0 0 4 4h1v-6h-1.83z" />
-        </svg>
-
-  <div className="text-sm text-gray-800  leading-relaxed font-montserrat pl-7 transition-colors duration-200 group-hover:text-white" style={{ maxHeight: '9rem', overflow: 'hidden' }}>
-          {message || 'No message provided.'}
+  {/* Stars */}
+  <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center" aria-hidden>
+          {stars.map((s) => (
+            <FaStar key={s} className={`mr-1 ${s <= rating ? 'text-[#FF7A00]' : 'text-gray-300'}`} style={{ width: 18, height: 18 }} />
+          ))}
         </div>
-
-        {/* subtle fade at bottom if text overflows */}
-        {/* <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent rounded-b-2xl" /> */}
+  <div className="text-xs text-gray-500 font-montserrat">{ratingLabel}</div>
       </div>
 
-      {/* Footer: avatar and author */}
-      <footer className="flex items-center gap-3 mt-3">
-        <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200">
-          {image ? (
-            <Image src={image} alt={name || 'Reviewer'} width={48} height={48} className="object-cover" />
-          ) : (
-            <div className="w-full h-full bg-gray-100" />
-          )}
-        </div>
-
-        <div className="flex-1">
-          <div className="text-sm font-medium text-gray-900 font-montserrat transition-colors duration-200 group-hover:text-white">{name || 'Anonymous'}</div>
-          {position && <div className="text-xs text-gray-500 transition-colors duration-200 group-hover:text-white/90">{position}</div>}
-        </div>
-      </footer>
+      {/* Message - flexible area so all cards match height */}
+      <div className="text-base text-gray-800 leading-relaxed font-montserrat flex-1 overflow-hidden mt-2">
+        <div style={{ maxHeight: '8.5rem', overflow: 'hidden' }}>{message || 'No message provided.'}</div>
+      </div>
     </article>
-  );
+  )
 }
