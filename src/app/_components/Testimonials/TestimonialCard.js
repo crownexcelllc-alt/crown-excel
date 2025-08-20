@@ -9,7 +9,7 @@ export default function TestimonialCard({ title, name, position, message, image,
     rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
 
   return (
-    <article className="w-full max-w-[360px] bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col border border-transparent hover:border-[#16CA9A]">
+    <article className="group w-full max-w-[360px] hover:text-white bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col border hover:border-transparent hover:bg-gradient-to-r from-[#16CA9A] to-[#084032] border-[#16CA9A]">
       {/* Top: rating badge & stars */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
@@ -17,17 +17,17 @@ export default function TestimonialCard({ title, name, position, message, image,
             {stars.map((s) => (
               <FaStar
                 key={s}
-                className={`mr-1 ${s <= rating ? 'text-[#16CA9A]' : 'text-gray-300'}`}
+                className={`mr-1 ${s <= rating ? 'text-[#ffd900]' : 'text-gray-300'}`}
                 style={{ width: 16, height: 16 }}
               />
             ))}
           </div>
-          <div className="hidden sm:block text-sm text-gray-900 font-montserrat font-medium">{ratingLabel}</div>
+          <div className="hidden sm:block text-sm text-gray-900 font-montserrat font-medium transition-colors duration-200 group-hover:text-white">{ratingLabel}</div>
         </div>
 
-        <div className="ml-auto">
+    <div className="ml-auto">
           <span
-            className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-[#def7ef] text-[#065a44] border border-[#cfeee0]"
+      className="inline-flex items-center px-2.5 py-1  rounded-full text-xs font-medium bg-[#def7ef] text-[#065a44] border border-[#cfeee0] transition-colors duration-200 "
             aria-hidden
           >
             {rating.toFixed(1)}
@@ -38,7 +38,7 @@ export default function TestimonialCard({ title, name, position, message, image,
       {/* Quote / message */}
       <div className="relative mb-4 flex-1">
         <svg
-          className="absolute -top-1 left-0 w-6 h-6 text-[#084032] opacity-95"
+          className="absolute -top-1 left-0 w-6 h-6 text-[#084032] opacity-95 group-hover:text-white"
           viewBox="0 0 24 24"
           fill="currentColor"
           aria-hidden
@@ -46,7 +46,7 @@ export default function TestimonialCard({ title, name, position, message, image,
           <path d="M7.17 6A4 4 0 0 0 4 10.17V12a4 4 0 0 0 4 4h1v-6H7.17zM17.17 6A4 4 0 0 0 14 10.17V12a4 4 0 0 0 4 4h1v-6h-1.83z" />
         </svg>
 
-  <div className="text-sm text-gray-800 leading-relaxed font-montserrat pl-7" style={{ maxHeight: '9rem', overflow: 'hidden' }}>
+  <div className="text-sm text-gray-800  leading-relaxed font-montserrat pl-7 transition-colors duration-200 group-hover:text-white" style={{ maxHeight: '9rem', overflow: 'hidden' }}>
           {message || 'No message provided.'}
         </div>
 
@@ -65,8 +65,8 @@ export default function TestimonialCard({ title, name, position, message, image,
         </div>
 
         <div className="flex-1">
-          <div className="text-sm font-medium text-gray-900 font-montserrat">{name || 'Anonymous'}</div>
-          {position && <div className="text-xs text-gray-500">{position}</div>}
+          <div className="text-sm font-medium text-gray-900 font-montserrat transition-colors duration-200 group-hover:text-white">{name || 'Anonymous'}</div>
+          {position && <div className="text-xs text-gray-500 transition-colors duration-200 group-hover:text-white/90">{position}</div>}
         </div>
       </footer>
     </article>
