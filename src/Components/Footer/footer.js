@@ -203,7 +203,7 @@ const Footer = () => {
                     className="object-contain mb-6"
                   />
                   <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                    Your desire is our Expertise
+                    Let's Embrace Technology
                   </p>
                 </div>
 
@@ -389,7 +389,7 @@ const Footer = () => {
                 height={70}
                 className="mx-auto object-contain mb-4"
               />
-              <p className="text-gray-300 text-base mb-6">Your desire is our Expertise</p>
+              <p className="text-gray-300 text-base mb-6">Let's Embrace Technology</p>
               <div className="space-y-2 text-sm text-gray-300">
                 <p><span className="font-semibold text-white">Phone:</span> {settings.phone}</p>
                 <p><span className="font-semibold text-white">Email:</span> {settings.email}</p>

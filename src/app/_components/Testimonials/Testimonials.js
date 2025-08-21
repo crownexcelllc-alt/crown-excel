@@ -11,6 +11,7 @@ const sampleTestimonials = [
     id: 1,
     name: "Sarah Johnson",
     role: "Marketing Director",
+  createdAt: '2024-08-01T12:00:00.000Z',
     rating: 5,
     comment: "This service exceeded all my expectations. The team was professional and delivered outstanding results.",
     avatar: "/placeholder.svg?height=48&width=48",
@@ -19,6 +20,7 @@ const sampleTestimonials = [
     id: 2,
     name: "Michael Chen",
     role: "CEO",
+  createdAt: '2024-07-15T09:30:00.000Z',
     rating: 5,
     comment:
       "Incredible attention to detail and customer service. I highly recommend this to anyone looking for quality.",
@@ -28,6 +30,7 @@ const sampleTestimonials = [
     id: 3,
     name: "Emily Rodriguez",
     role: "Product Manager",
+  createdAt: '2024-06-20T16:45:00.000Z',
     rating: 4,
     comment: "Great experience overall. The process was smooth and the final outcome was exactly what we needed.",
     avatar: "/placeholder.svg?height=48&width=48",
@@ -208,6 +211,7 @@ export default function Testimonials() {
                     message={review.comment || review.message || ''}
                     image={review.avatar || User5}
                     rating={review.rating ?? 5}
+                    date={review.createdAt || review.created_at || review.date || review.time || review.publishedAt}
                   />
                 </div>
               ))}
