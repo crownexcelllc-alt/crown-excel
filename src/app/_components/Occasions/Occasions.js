@@ -32,11 +32,11 @@ const Occasions = () => {
       <h1 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
         Transforming Occasions <br /> into Great Memories
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35">
+      <div className={`grid gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35 ${occasions.length === 1 ? 'grid-cols-1' : occasions.length === 2 ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
         {occasions.map((item, idx) => (
           <div
             key={idx}
-            className="bg-[#e2edeb] p-3 rounded-[20px] relative flex flex-col"
+            className="bg-[#e2edeb] p-3 rounded-[20px] relative flex flex-col w-full"
             style={{
               fontFamily: "__aeonik_3f9d62, __aeonik_Fallback_3f9d62, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
               fontSize: 16,
@@ -49,8 +49,7 @@ const Occasions = () => {
               transition: "all .3s",
               outline: "none",
               boxShadow: "none",
-              maxWidth: 300,
-              margin: "0 auto"
+              margin: "0"
             }}
           >
             {/* Dots background and centered main image */}

@@ -41,7 +41,7 @@ export default function TestimonialCard({ title, name, position, message, image,
 
         {/* Provider badge (Google G) */}
         <div className="ml-4 flex items-start">
-          <Image src={google} alt="Google" width={28} height={28} />
+          <Image src={google} alt="Google" width={24} height={24} />
         </div>
       </div>
 

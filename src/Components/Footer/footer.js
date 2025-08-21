@@ -155,28 +155,35 @@ const Footer = () => {
 
           {/* Mobile & Tablet View */}
           <div className="lg:hidden">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex justify-between items-stretch min-h-[280px] px-2">
               {topButtons.map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 p-3 bg-white/5 rounded-xl flex items-center justify-center">
-                    <Image
-                      src={item.imgSrc}
-                      alt={item.title}
-                      width={50}
-                      height={50}
-                      className="object-contain"
-                    />
+                <div key={index} className="flex-1 text-center relative group max-w-[33%]">
+                  {/* Divider */}
+                  {index < topButtons.length - 1 && (
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-40 bg-[#4ade80]/30"></div>
+                  )}
+
+                  <div className="px-1 py-8 flex flex-col justify-center items-center h-full">
+                    <div className="w-16 h-16 mx-auto mb-4 p-2 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
+                      <Image
+                        src={item.imgSrc}
+                        alt={item.title}
+                        width={40}
+                        height={40}
+                        className="object-contain"
+                      />
+                    </div>
+
+                    <h3 className="text-xs font-semibold mb-4 text-white leading-tight text-center">
+                      {item.title}
+                    </h3>
+
+                    <Link href={item.href}>
+                      <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-2 py-1.5 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg text-xs whitespace-nowrap">
+                        Get Started
+                      </button>
+                    </Link>
                   </div>
-
-                  <h3 className="text-lg font-semibold mb-4 text-white leading-tight">
-                    {item.title}
-                  </h3>
-
-                  <Link href={item.href}>
-                    <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-300 text-sm">
-                      Get Started
-                    </button>
-                  </Link>
                 </div>
               ))}
             </div>
@@ -390,10 +397,6 @@ const Footer = () => {
                 className="mx-auto object-contain mb-4"
               />
               <p className="text-gray-300 text-base mb-6">Let's Embrace Technology</p>
-              <div className="space-y-2 text-sm text-gray-300">
-                <p><span className="font-semibold text-white">Phone:</span> {settings.phone}</p>
-                <p><span className="font-semibold text-white">Email:</span> {settings.email}</p>
-              </div>
             </div>
 
             {/* Services and Company Links */}
@@ -470,11 +473,15 @@ const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30 inline-block">Contact Address</h3>
               <p className="text-gray-300 text-sm leading-relaxed max-w-xs mx-auto">
                 {settings.address}
               </p>
+                <div className="space-y-2 text-sm text-gray-300">
+                <p><span className="font-semibold text-white">Phone:</span> {settings.phone}</p>
+                <p><span className="font-semibold text-white">Email:</span> {settings.email}</p>
+              </div>
             </div>
 
             {/* Newsletter */}
