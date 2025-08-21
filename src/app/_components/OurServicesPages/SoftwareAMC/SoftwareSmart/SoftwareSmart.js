@@ -21,7 +21,7 @@ const SoftwareSmart = () => {
       description: "Create stunning, responsive websites that captivate your audience and drive conversions. Our expert developers build modern, fast-loading websites with cutting-edge technologies.",
       features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile First"],
       image: WebDevImg,
-      bgColor: "#1d8b6e"
+      bgColor: "from-blue-500 to-purple-600"
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const SoftwareSmart = () => {
       description: "Transform your ideas into powerful mobile and desktop applications. We develop user-friendly, feature-rich apps for iOS, Android, and cross-platform solutions.",
       features: ["Native & Cross-platform", "User-Friendly UI/UX", "Performance Optimized", "App Store Ready"],
       image: AppDevImg,
-      bgColor: "#119472"
+      bgColor: "from-green-500 to-teal-600"
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ const SoftwareSmart = () => {
       description: "Build robust, scalable software solutions tailored to your business needs. From enterprise applications to custom software, we deliver excellence.",
       features: ["Custom Solutions", "Scalable Architecture", "Enterprise Grade", "Cloud Integration"],
       image: SoftwareDevImg,
-      bgColor: "#13745a"
+      bgColor: "from-purple-500 to-pink-600"
     },
     {
       id: 4,
@@ -45,7 +45,7 @@ const SoftwareSmart = () => {
       description: "Launch your online store with powerful ecommerce platforms. We create secure, user-friendly online shopping experiences that boost sales.",
       features: ["Secure Payments", "Inventory Management", "Mobile Commerce", "Analytics Integration"],
       image: EcommerceImg,
-      bgColor: "#0d5c47"
+      bgColor: "from-orange-500 to-red-600"
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ const SoftwareSmart = () => {
       description: "Build your brand presence across social platforms. We create engaging content, manage communities, and drive meaningful interactions.",
       features: ["Content Strategy", "Community Management", "Brand Building", "Engagement Analytics"],
       image: SocialMediaImg,
-      bgColor: "#084032"
+      bgColor: "from-pink-500 to-rose-600"
     },
     {
       id: 6,
@@ -61,7 +61,7 @@ const SoftwareSmart = () => {
       description: "Accelerate your growth with data-driven digital marketing strategies. From PPC to email marketing, we deliver measurable results.",
       features: ["PPC Campaigns", "Email Marketing", "Conversion Optimization", "ROI Tracking"],
       image: DigitalMarketingImg,
-      bgColor: "#1d8b6e"
+      bgColor: "from-indigo-500 to-blue-600"
     },
     {
       id: 7,
@@ -69,7 +69,7 @@ const SoftwareSmart = () => {
       description: "Dominate search results and increase organic traffic. Our SEO experts optimize your website for better rankings and visibility.",
       features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Local SEO"],
       image: SeoImg,
-      bgColor: "#119472"
+      bgColor: "from-teal-500 to-cyan-600"
     },
     {
       id: 8,
@@ -77,7 +77,7 @@ const SoftwareSmart = () => {
       description: "Engage your audience with compelling, high-quality content. Our writers create content that informs, persuades, and converts.",
       features: ["SEO Content", "Blog Writing", "Copywriting", "Technical Writing"],
       image: ContentWritingImg,
-      bgColor: "#13745a"
+      bgColor: "from-yellow-500 to-orange-600"
     }
   ]
 
@@ -131,7 +131,7 @@ const SoftwareSmart = () => {
       <div className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-800 font-montserrat">
-            Explore Our <span className="text-[#1d8b6e]">Digital Solutions</span>
+            Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Digital Solutions</span>
           </h2>
           
           <div className="space-y-16">
@@ -156,7 +156,7 @@ const SoftwareSmart = () => {
                   
                   {/* Floating Elements */}
                   <div className="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center transform transition-all duration-500 group-hover:rotate-180">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg`} style={{backgroundColor: category.bgColor}}>
+                    <div className={`w-12 h-12 bg-gradient-to-r ${category.bgColor} rounded-full flex items-center justify-center text-white font-bold text-lg`}>
                       {category.id}
                     </div>
                   </div>
@@ -168,7 +168,7 @@ const SoftwareSmart = () => {
                     <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 font-montserrat">
                       {category.title}
                     </h3>
-                    <div className="w-20 h-1 rounded-full" style={{backgroundColor: category.bgColor}}></div>
+                    <div className={`w-20 h-1 bg-gradient-to-r ${category.bgColor} rounded-full`}></div>
                   </div>
                   
                   <p className="text-lg text-gray-600 leading-relaxed font-montserrat">
@@ -181,13 +181,13 @@ const SoftwareSmart = () => {
                         key={idx}
                         className="flex items-center space-x-3 p-3 bg-white rounded-xl shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
                       >
-                        <div className="w-3 h-3 rounded-full animate-pulse" style={{backgroundColor: category.bgColor}}></div>
+                        <div className={`w-3 h-3 bg-gradient-to-r ${category.bgColor} rounded-full animate-pulse`}></div>
                         <span className="text-sm font-semibold text-gray-700">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <button className="inline-flex items-center px-8 py-4 text-white font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl group" style={{backgroundColor: category.bgColor}}>
+                  <button className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${category.bgColor} text-white font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl group`}>
                     Learn More
                     <svg className="w-5 h-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
