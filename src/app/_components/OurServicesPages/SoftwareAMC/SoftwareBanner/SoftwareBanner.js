@@ -1,13 +1,14 @@
 import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
-import BannerImage from '../../../../../Components/Images/networkingbanner.png';
+// import BannerImage from '../../../../../Components/Images/networkingbanner.png';
+import BannerImage from '../../../../../Components/Images/solutions-main.png';
 import Image from 'next/image';
 
 const SoftwareBanner = () => {
   return (
    <div
-  className="relative bg-[#031d26] flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+  className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
   style={{
     backgroundImage: `url(${BannerImage.src})`,
     backgroundRepeat: 'no-repeat',
@@ -26,8 +27,8 @@ const SoftwareBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          Software<br className="block md:block" /> AMC
+        <h1 className="text-[30px] text-black md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
+          Software<br className="block md:block" /> Solutions
         </h1>
         <Image
           src={icon1}
