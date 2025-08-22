@@ -12,11 +12,11 @@ const ManagedIT = () => {
     <div>
       <ManagedITBanner/>
       <ManagedITSmart/>
-      <ManagedITEmpowering/>
+      {/* <ManagedITEmpowering/>
       <ManagedITWhyChooseUs/>
       <ManagedITCabling/>
       <ManagedITWeareBest/>
-      <ManagedITFaq/>
+      <ManagedITFaq/> */}
     </div>
   )
 }
