@@ -1,81 +1,439 @@
 import React from 'react';
 import Image from 'next/image';
-import empoweringImage from '../../../../../Components/Images/networkempower.png';
-import downArrow from '../../../../../Components/Images/downarrow.png';
 import NetworkIT from '../../../../../Components/Images/RMAIT.png';
 
 const RMAEmpowering = () => {
+  const cloudFeatures = [
+    {
+      number: "01",
+      title: "Cloud Migration Strategy",
+      description: "Comprehensive assessment and planning for seamless migration from legacy systems to modern cloud infrastructure with zero downtime.",
+      highlight: "99% Success Rate"
+    },
+    {
+      number: "02", 
+      title: "Multi-Cloud Architecture",
+      description: "Design and implement robust multi-cloud solutions across AWS, Azure, and Google Cloud for optimal performance and cost efficiency.",
+      highlight: "40% Cost Reduction"
+    },
+    {
+      number: "03",
+      title: "Cloud Security & Compliance",
+      description: "Enterprise-grade security frameworks, data encryption, and compliance management ensuring your cloud infrastructure meets industry standards.",
+      highlight: "100% Secure Deployment"
+    },
+    {
+      number: "04",
+      title: "DevOps & Automation",
+      description: "Streamlined CI/CD pipelines, infrastructure as code, and automated scaling solutions for rapid deployment and continuous integration.",
+      highlight: "60% Faster Deployment"
+    }
+  ];
+
+  const cloudStats = [
+    { value: "500+", label: "Cloud Migrations" },
+    { value: "99.9%", label: "Uptime Guaranteed" },
+    { value: "50%", label: "Cost Optimization" },
+    { value: "24/7", label: "Cloud Support" }
+  ];
+
+  const cloudServices = [
+    {
+      icon: "🚀",
+      title: "Infrastructure as a Service (IaaS)",
+      description: "Scalable virtual machines, storage, and networking resources on-demand with pay-as-you-use pricing model.",
+      features: ["Virtual Machines", "Auto Scaling", "Load Balancing", "Backup & Recovery"]
+    },
+    {
+      icon: "⚙️",
+      title: "Platform as a Service (PaaS)",
+      description: "Complete development and deployment environment in the cloud with built-in development tools.",
+      features: ["App Development", "Database Management", "API Gateway", "Monitoring Tools"]
+    },
+    {
+      icon: "📱",
+      title: "Software as a Service (SaaS)",
+      description: "Ready-to-use software applications delivered over the internet with automatic updates and maintenance.",
+      features: ["CRM Solutions", "ERP Systems", "Collaboration Tools", "Business Intelligence"]
+    },
+    {
+      icon: "🔒",
+      title: "Cloud Security Services",
+      description: "Comprehensive security solutions including identity management, threat detection, and compliance monitoring.",
+      features: ["Identity & Access", "Threat Protection", "Data Encryption", "Compliance Management"]
+    }
+  ];
+
+  const cloudTechnologies = [
+    {
+      category: "Public Cloud Platforms",
+      items: ["Amazon AWS", "Microsoft Azure", "Google Cloud Platform", "IBM Cloud", "Oracle Cloud"]
+    },
+    {
+      category: "Container Technologies",
+      items: ["Docker", "Kubernetes", "OpenShift", "Container Registry", "Microservices"]
+    },
+    {
+      category: "DevOps & CI/CD",
+      items: ["Jenkins", "GitLab CI", "Azure DevOps", "Terraform", "Ansible"]
+    },
+    {
+      category: "Monitoring & Analytics",
+      items: ["CloudWatch", "Azure Monitor", "Google Analytics", "Prometheus", "Grafana"]
+    }
+  ];
+
+  const cloudBenefits = [
+    {
+      title: "Cost Efficiency",
+      description: "Reduce infrastructure costs by up to 50% with pay-as-you-use pricing and optimized resource allocation.",
+      percentage: "50%"
+    },
+    {
+      title: "Scalability",
+      description: "Scale resources up or down instantly based on demand without hardware limitations.",
+      percentage: "∞"
+    },
+    {
+      title: "Security",
+      description: "Enterprise-grade security with 99.9% uptime and advanced threat protection mechanisms.",
+      percentage: "99.9%"
+    },
+    {
+      title: "Performance",
+      description: "Improve application performance by 60% with global CDN and optimized infrastructure.",
+      percentage: "60%"
+    }
+  ];
+
   return (
-    <section className="relative overflow-hidden  px-0 md:px-0 lg:px-0 py-10">
-      <div className="flex flex-col md:flex-row lg:flex-row md:items-start lg:items-center lg:justify-between md:gap-5 lg:gap-10">
-        
-        {/* Left Image */}
-        <div className="lg:flex-shrink-0 w-full lg:w-1/2">
-          <Image
-            src={empoweringImage}
-            width={632}
-            height={425}
-            alt="Cloud Empowering"
-            className="w-full max-w-[632px] md:w-[447px] lg:w-[632px] h-auto mx-auto md:mx-0 lg:mx-0"
-          />
-        </div>
-
-        {/* Right Content */}
-        <div className="relative w-full px-5 md:px-2 lg:px-0 lg:w-1/2 z-10 flex flex-col gap-6 mt-5 md:mt-5 lg:mt-[-40px]">
-          {/* Highlighted Banner */}
-          <p className="bg-[#ffd600] text-black text-center font-montserrat font-semibold text-lg md:text-xl lg:text-[22.4px] leading-snug px-6 py-1 rounded-md shadow-md">
-            Empowering Your Business with Cloud-first IT Solutions
-          </p>
-
-          {/* Title */}
-          <h2 className="text-black text-[32px] md:text-[42px] lg:text-[52px] font-semibold leading-tight font-montserrat">
-            Cloud Migration & Modernization
-          </h2>
-
-          {/* Description */}
-          <p className="text-black text-base md:text-[16px] leading-[27.2px] font-montserrat z-30">
-            We help businesses migrate legacy systems to the cloud with minimal disruption and a clear rollback plan. Our modernization services optimize application architecture, reduce costs, and increase agility.
-          </p>
-
-          {/* Yellow Glowing Circle */}
-          <div className="hidden md:block absolute w-[200px] h-[200px] bg-yellow-400 rounded-full blur-3xl opacity-70 right-[-60px] bottom-[-80px] z-10" />
-
-          {/* Down Arrow */}
-          <Image
-            src={downArrow}
-            alt="Scroll Down"
-            width={61}
-            height={187}
-            className="hidden  lg:block absolute right-5 top-90 z-20"
-          />
-        </div>
+    <section className="relative min-h-screen bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-32 h-32 border-2 border-[#16CA9A] rounded-full animate-pulse"></div>
+        <div className="absolute top-60 right-20 w-24 h-24 border-2 border-[#084032] rounded-lg rotate-45 animate-bounce"></div>
+        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-[#16CA9A]/20 rounded-full animate-ping"></div>
+        <div className="absolute top-1/3 right-1/3 w-20 h-20 border border-[#084032]/30 rounded-full"></div>
       </div>
-      <div className="mt-5 lg:mt-20 px-4 flex flex-col md:flex-row lg:flex-row items-center justify-between gap-5">
-              {/* Right Side */}
-              <div className="empowering-right gap-5 md:gap-5 lg:gap-5 relative basis-[50%] flex flex-col items-start mt-5 md:mt-10 lg:-mt-10 z-10 px-2 lg:px-0">
-                <p className="bg-[#ffd600] text-center w-full text-black text-[17px] md:text-[20px] lg:text-[22.4px] font-[600] font-montserrat leading-[22px] lg:leading-[26.88px] px-2 md:px-10 lg:px-10 rounded py-[2px]">
-                  Empowering Your Business with Cloud-first IT Solutions
-                </p>
-                <h1 className="text-[32px] md:text-[43px] lg:text-[52px] text-black font-[600] leading-[40px] lg:leading-[52px] font-montserrate">
-                 Cloud Strategy & Consulting
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        
+        {/* Hero Section with Unique Layout */}
+        <div className="grid lg:grid-cols-12 gap-8 items-center mb-20">
+          {/* Content Column */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="relative">
+              <div className="absolute -left-4 top-0 w-1 h-20 bg-gradient-to-b from-[#16CA9A] to-[#084032] rounded-full"></div>
+              <div className="pl-8">
+                <span className="inline-block px-4 py-2 bg-[#16CA9A]/10 text-[#084032] text-sm font-semibold rounded-lg mb-4">
+                  ☁️ Cloud Computing Excellence
+                </span>
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                  Enterprise
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
+                    Cloud Solutions
+                  </span>
                 </h1>
-                <p className="text-[16px] text-black leading-[27.2px] font-montserrat">
-                  Our cloud consulting services help you define a clear migration roadmap, select the right providers (AWS, Azure, GCP), and plan for security and compliance. We ensure a smooth transition and measurable business value.
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Transform your business with cutting-edge cloud computing solutions. We deliver scalable infrastructure, 
+                  seamless migration, and comprehensive cloud management services for modern enterprises.
                 </p>
               </div>
-              {/* Left Side */}
-              <div className="empowering-left basis-[50%]">
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pl-8">
+              {cloudStats.map((stat, index) => (
+                <div key={index} className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                  <div className="text-2xl font-bold text-[#16CA9A] mb-1">{stat.value}</div>
+                  <div className="text-xs text-gray-600 font-medium">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <div className="pl-8">
+              <a 
+                href="/contact-us"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
+              >
+                <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                </svg>
+                Start Cloud Migration
+                <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Image Column */}
+          <div className="lg:col-span-5">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#16CA9A]/20 to-[#084032]/20 rounded-3xl blur-2xl transform rotate-6"></div>
+              <div className="relative bg-white p-8 rounded-3xl shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
                 <Image
                   src={NetworkIT}
-                  width={527}
-                  height={355}
-                  alt="Cloud architecture"
-                  className="hidden md:block lg:block lg:w-[527px] lg:h-[355px]"
+                  width={400}
+                  height={300}
+                  alt="Cloud Computing Solutions"
+                  className="w-full h-auto rounded-2xl"
                 />
               </div>
-      
-               
             </div>
+          </div>
+        </div>
+
+        {/* Cloud Services Grid */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Services</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From infrastructure setup to application deployment, we provide end-to-end cloud solutions tailored to your business needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {cloudServices.map((service, index) => (
+              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-gray-700">
+                      <div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Cloud Technologies We Use */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Cloud <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Technologies</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              We leverage cutting-edge cloud technologies and platforms to deliver robust, scalable solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {cloudTechnologies.map((tech, index) => (
+              <div key={index} className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl border border-gray-200 hover:border-[#16CA9A] transition-colors duration-300">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-[#16CA9A]/20">{tech.category}</h3>
+                <ul className="space-y-3">
+                  {tech.items.map((item, idx) => (
+                    <li key={idx} className="flex items-center text-gray-700">
+                      <div className="w-2 h-2 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full mr-3"></div>
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Cloud Benefits Section */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Computing?</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Transform your business operations with measurable benefits and competitive advantages through cloud adoption
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {cloudBenefits.map((benefit, index) => (
+              <div key={index} className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="relative bg-white p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032] mb-4">
+                      {benefit.percentage}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Cloud Computing Process Steps - Unique Timeline Design */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Journey</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              A comprehensive four-phase approach to cloud transformation ensuring smooth migration and optimal performance
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#16CA9A] to-[#084032] rounded-full transform md:-translate-x-0.5"></div>
+            
+            <div className="space-y-12">
+              {cloudFeatures.map((feature, index) => (
+                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-16`}>
+                  {/* Timeline Node */}
+                  <div className="absolute left-6 md:left-1/2 w-6 h-6 bg-white border-4 border-[#16CA9A] rounded-full transform md:-translate-x-3 z-10"></div>
+                  
+                  {/* Content Card */}
+                  <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${index % 2 === 0 ? '' : 'md:text-right'}`}>
+                    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                      <div className={`flex items-center gap-4 mb-4 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+                        <div className="w-12 h-12 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">{feature.number}</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900">{feature.title}</h3>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
+                      <div className="inline-flex items-center px-4 py-2 bg-[#16CA9A]/10 text-[#16CA9A] rounded-lg text-sm font-semibold">
+                        ⚡ {feature.highlight}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Spacer for alternating layout */}
+                  <div className="hidden md:block w-5/12"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Industry Solutions */}
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Solutions</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tailored cloud computing solutions designed for specific industry requirements and compliance standards
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🏥</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+              <p className="text-gray-600 mb-4">HIPAA-compliant cloud solutions for patient data management, telemedicine platforms, and healthcare analytics.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Electronic Health Records (EHR)</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Telemedicine Solutions</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Medical Imaging Storage</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🏭</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
+              <p className="text-gray-600 mb-4">IoT-enabled cloud platforms for smart manufacturing, supply chain management, and predictive maintenance.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>IoT Device Management</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Supply Chain Analytics</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Predictive Maintenance</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🏦</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
+              <p className="text-gray-600 mb-4">Secure, compliant cloud infrastructure for banking, fintech applications, and financial data analytics.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Banking Applications</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Payment Processing</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Risk Management</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🎓</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
+              <p className="text-gray-600 mb-4">Scalable learning management systems, virtual classrooms, and educational content delivery platforms.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Learning Management Systems</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Virtual Classrooms</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Student Data Analytics</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🛒</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce</h3>
+              <p className="text-gray-600 mb-4">High-performance cloud solutions for online stores, inventory management, and customer analytics.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>E-commerce Platforms</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Inventory Management</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Customer Analytics</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <span className="text-white text-2xl">🎮</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
+              <p className="text-gray-600 mb-4">Low-latency cloud infrastructure for gaming platforms, content delivery, and media streaming services.</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Game Server Hosting</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Content Delivery Network</li>
+                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Media Streaming</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA Section */}
+        <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-3xl p-12 text-center text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Business?</h3>
+            <p className="text-xl mb-8 opacity-90">
+              Join hundreds of companies who have successfully migrated to the cloud with our expert guidance and support.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/contact-us"
+                className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300"
+              >
+                Start Cloud Journey
+              </a>
+              <a 
+                href="/our-services"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
+              >
+                Explore Cloud Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
