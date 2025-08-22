@@ -1,5 +1,5 @@
 import HardwareAmcBanner from '@/app/_components/OurServicesPages/HardwareAMC/HardwareAmcBanner/HardwareAmcBanner'
-import HardwareEmpowering from '@/app/_components/OurServicesPages/HardwareAMC/HardwareEmpowering/HardwareEmpowering'
+import HardwareEmpowering from '@/app/_components/OurServicesPages/HardwareAMC/HardwareEmpowering/HardwareEmpowering_new'
 import HardwareFaq from '@/app/_components/OurServicesPages/HardwareAMC/HardwareFaq/HardwareFaq'
 import HardwareServices from '@/app/_components/OurServicesPages/HardwareAMC/HardwareServices/HardwareServices'
 import HardwareSmart from '@/app/_components/OurServicesPages/HardwareAMC/HardwareSmart/HardwareSmart'
@@ -13,10 +13,10 @@ const HardwareAMC = () => {
       <HardwareAmcBanner/>
       {/* <HardwareSmart/> */}
       <HardwareEmpowering/>
-      <HardwareWhyChooseUS/>
+      {/* <HardwareWhyChooseUS/>
       <HardwareServices/>
       <HardwareWeAreBest/>
-      <HardwareFaq/>
+      <HardwareFaq/> */}
     </div>
   )
 }
