@@ -18,10 +18,9 @@ const ContactUsForm = () => {
   const [service, setService] = useState('Select Service')
   return (
     <div className='contact-us h-[600px] lg:h-[600px] text-black flex flex-col items-center w-full justify-center gap-10'>
-      <div className="header text-center">
-        <h1 className='text-[32px] lg:text-[32px] font-montserrat font-[600]'>Get a Quote</h1>
+      {/* <div className="header text-center"> */}
         {/* <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p> */}
-      </div>
+      {/* </div> */}
       <div className="contact-details flex items-center justify-center w-full px-4">
         <div className="contact-details-left bg-[#f8f8f8] rounded-[10px]  w-full max-w-[800px]" style={{ padding: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <form action="" className='flex flex-col items-center w-full'>
