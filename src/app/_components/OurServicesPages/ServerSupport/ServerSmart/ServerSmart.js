@@ -1,24 +1,417 @@
-import React from 'react'
-import NetworkingSmartImage from '../../../../../Components/Images/serversmart.png'
-import SignalTower from '../../../../../Components/Images/signaltower.png'
-import Image from 'next/image'
-const ServerSmart = () => {
+"use client";
+import React from 'react';
+import NetworkingSmartImage from '../../../../../Components/Images/serversmart.png';
+import SignalTower from '../../../../../Components/Images/signaltower.png';
+import Image from 'next/image';
+
+export default function ServerSmart() {
+  const storageServices = [
+    {
+      icon: "💾",
+      title: "Enterprise Storage Solutions",
+      description: "Scalable, high-performance storage systems for mission-critical business applications with enterprise-grade reliability.",
+      features: ["SAN & NAS Implementation", "High-Availability Storage", "Performance Optimization", "24/7 Monitoring"],
+      details: "Our enterprise storage solutions provide the foundation for your critical data infrastructure, ensuring optimal performance and reliability."
+    },
+    {
+      icon: "☁️",
+      title: "Cloud Storage Integration",
+      description: "Hybrid cloud storage solutions that seamlessly integrate on-premises and cloud infrastructure for maximum flexibility.",
+      features: ["Multi-Cloud Support", "Data Migration", "Cost Optimization", "Security Compliance"],
+      details: "Bridge your on-premises and cloud environments with intelligent data placement and automated tiering strategies."
+    },
+    {
+      icon: "🖥️",
+      title: "Virtualization Infrastructure", 
+      description: "Complete virtualization platform to maximize resource utilization and reduce infrastructure costs significantly.",
+      features: ["VMware vSphere", "Hyper-V Implementation", "Virtual Desktop Infrastructure", "Container Solutions"],
+      details: "Transform your IT infrastructure with cutting-edge virtualization technologies that deliver superior performance and efficiency."
+    },
+    {
+      icon: "📊",
+      title: "Data Management & Analytics",
+      description: "Comprehensive data lifecycle management with intelligent automation and advanced analytics capabilities.",
+      features: ["Data Deduplication", "Automated Tiering", "Lifecycle Management", "Performance Analytics"],
+      details: "Optimize your data strategy with intelligent management tools that reduce costs and improve operational efficiency."
+    },
+    {
+      icon: "🔒",
+      title: "Backup & Disaster Recovery",
+      description: "Robust backup and disaster recovery solutions ensuring business continuity and complete data protection.",
+      features: ["Automated Backups", "Site-to-Site Replication", "Cloud Backup", "RTO/RPO Optimization"],
+      details: "Protect your business with comprehensive disaster recovery solutions that guarantee rapid recovery and minimal downtime."
+    },
+    {
+      icon: "⚡",
+      title: "High-Performance Computing",
+      description: "Specialized storage solutions for high-performance computing workloads and data-intensive applications.",
+      features: ["NVMe Storage", "Parallel File Systems", "GPU Storage", "Scientific Computing"],
+      details: "Accelerate your most demanding workloads with purpose-built storage infrastructure designed for maximum performance."
+    }
+  ];
+
+  const virtualizedBenefits = [
+    { metric: "75%", label: "Cost Reduction", desc: "Infrastructure savings" },
+    { metric: "99.9%", label: "Uptime", desc: "System availability" },
+    { metric: "5x", label: "Faster Deployment", desc: "VM provisioning" },
+    { metric: "65%", label: "Energy Savings", desc: "Power efficiency" }
+  ];
+
+  const storageTypes = [
+    {
+      type: "Block Storage",
+      use: "Databases & Applications",
+      performance: "Ultra-High IOPS",
+      scalability: "Excellent",
+      price: "Premium"
+    },
+    {
+      type: "File Storage",
+      use: "Content & Collaboration",
+      performance: "High Performance",
+      scalability: "Very Good",
+      price: "Standard"
+    },
+    {
+      type: "Object Storage",
+      use: "Archive & Backup",
+      performance: "Standard",
+      scalability: "Unlimited",
+      price: "Economic"
+    }
+  ];
+
+  const technologyPartners = [
+    { name: "VMware", specialty: "Virtualization Platform" },
+    { name: "Dell EMC", specialty: "Enterprise Storage" },
+    { name: "NetApp", specialty: "Data Management" },
+    { name: "Microsoft", specialty: "Hyper-V & Azure" },
+    { name: "HPE", specialty: "Infrastructure Solutions" },
+    { name: "Cisco", specialty: "HyperFlex" }
+  ];
+
   return (
-    <div className='flex flex-col md:flex-row lg:flex-row items-center lg:items-center  justify-center gap-10 px-2 md:px-10 lg:px-15 py-10 md:py-10 lg:py-10'>
-      <div className="networking-left mt-0 md:mt-10 lg:mt-10 relative">
-        <Image alt='' src={SignalTower} width={40} height={56} className='absolute -mt-5'/>
-        <p className='w-full md:w-[327px] lg:w-[525px] p-[30px] rounded-[30px] h-auto bg-[#ffd900] text-black text-[14px] md:text-[16px] lg:text-[16px] leading-[27.2px] font-montserrat'>At Crown Excel, we provide expert Server Support Services to ensure your servers operate smoothly and securely. Servers are the backbone of your IT infrastructure, hosting critical applications, databases, and services that keep your business running. When server issues arise, they can disrupt operations, slow down productivity, and compromise data security. That’s where we step in.
-            <br />
-            <br />
-            Our dedicated team offers end-to-end server support, including installation, configuration, performance optimization, troubleshooting, and security management. Whether you operate on physical servers, virtual servers, or cloud-based systems, Crown Excel ensures your servers remain reliable, efficient, and scalable to meet your growing business needs.
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Clean Design */}
+      <section className="relative bg-gradient-to-br from-[#16CA9A]/5 to-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div>
+              <div className="inline-flex items-center bg-[#16CA9A]/10 px-4 py-2 rounded-full text-[#16CA9A] font-semibold text-sm mb-6">
+                <span className="mr-2">💾</span>
+                STORAGE & VIRTUALIZATION
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Modern Storage &
+                <span className="block text-[#16CA9A]">Virtualization Solutions</span>
+              </h1>
+              
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Transform your IT infrastructure with enterprise-grade storage and virtualization solutions. 
+                Maximize efficiency, reduce costs, and ensure scalability for your growing business needs.
+              </p>
 
-        </p>
-      </div>
-      <div className="networking-right ">
-        <Image alt='' src={NetworkingSmartImage} width={602} height={408} className='md:w-[400px] md:h-[250px] lg:w-[602px] lg:h-[408px]'/>
-      </div>
+              {/* Key Benefits */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                {virtualizedBenefits.map((benefit, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-3xl font-bold text-[#16CA9A] mb-1">{benefit.metric}</div>
+                    <div className="text-sm font-semibold text-gray-800">{benefit.label}</div>
+                    <div className="text-xs text-gray-500">{benefit.desc}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-[#16CA9A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#14b589] transition-colors">
+                  Get Assessment
+                </button>
+                <button className="border-2 border-[#16CA9A] text-[#16CA9A] px-8 py-3 rounded-lg font-semibold hover:bg-[#16CA9A] hover:text-white transition-colors">
+                  View Solutions
+                </button>
+              </div>
+            </div>
+
+            {/* Image */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-[#16CA9A]/10 to-transparent rounded-2xl p-8">
+                <Image
+                  src={NetworkingSmartImage}
+                  width={500}
+                  height={400}
+                  alt="Storage Solutions"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Storage & Virtualization Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive solutions designed to modernize your infrastructure and optimize performance
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {storageServices.map((service, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+                
+                <div className="space-y-2 mb-4">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-sm text-gray-700">
+                      <div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                
+                <p className="text-sm text-gray-500 italic">{service.details}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Storage Types Comparison */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Storage Architecture Options
+            </h2>
+            <p className="text-xl text-gray-600">
+              Choose the right storage solution for your specific requirements
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {storageTypes.map((storage, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-8 hover:border-[#16CA9A] hover:shadow-lg transition-all duration-300">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{storage.type}</h3>
+                  <div className="w-16 h-1 bg-[#16CA9A] mx-auto"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Primary Use:</span>
+                    <span className="font-semibold text-gray-900">{storage.use}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Performance:</span>
+                    <span className="font-semibold text-[#16CA9A]">{storage.performance}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Scalability:</span>
+                    <span className="font-semibold text-gray-900">{storage.scalability}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Price Point:</span>
+                    <span className="font-semibold text-gray-900">{storage.price}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Partners */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Technology Partners
+            </h2>
+            <p className="text-xl text-gray-600">
+              We work with industry-leading technology partners to deliver best-in-class solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {technologyPartners.map((partner, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="font-bold text-lg text-gray-900 mb-2">{partner.name}</div>
+                <div className="text-[#16CA9A] text-sm font-semibold">{partner.specialty}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation Process */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Implementation Process
+            </h2>
+            <p className="text-xl text-gray-600">
+              Our proven methodology ensures smooth deployment and optimal results
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: "Assessment", desc: "Comprehensive infrastructure analysis and requirements gathering" },
+              { step: "02", title: "Design", desc: "Custom solution architecture and implementation planning" },
+              { step: "03", title: "Deployment", desc: "Professional installation and configuration with minimal downtime" },
+              { step: "04", title: "Support", desc: "Ongoing monitoring, maintenance, and optimization services" }
+            ].map((phase, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-[#16CA9A] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                  {phase.step}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{phase.title}</h3>
+                <p className="text-gray-600">{phase.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-[#16CA9A] to-[#14b589] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border border-white rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-white rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-semibold text-sm mb-6">
+                <span className="mr-2">🚀</span>
+                GET STARTED TODAY
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Ready to Transform Your 
+                <span className="block">Infrastructure?</span>
+              </h2>
+              
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                Get a comprehensive assessment of your current infrastructure and discover how our storage and virtualization solutions can optimize your operations, reduce costs, and accelerate growth.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">Free Infrastructure Assessment</div>
+                    <div className="text-white/80 text-sm">Complete analysis of your current setup</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">Custom Solution Design</div>
+                    <div className="text-white/80 text-sm">Tailored to your business needs</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">24/7 Expert Support</div>
+                    <div className="text-white/80 text-sm">Round-the-clock technical assistance</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">Proven ROI Results</div>
+                    <div className="text-white/80 text-sm">Average 75% cost reduction</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-white text-[#16CA9A] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
+                  <span className="mr-2">📊</span>
+                  Schedule Free Assessment
+                </button>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#16CA9A] transition-all duration-300 flex items-center justify-center">
+                  <span className="mr-2">💬</span>
+                  Contact Expert Now
+                </button>
+              </div>
+              
+              <div className="mt-6 flex items-center text-white/80 text-sm">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                No commitment required • Response within 24 hours
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <Image
+                  src={SignalTower}
+                  width={400}
+                  height={300}
+                  alt="Infrastructure"
+                  className="w-full h-auto rounded-xl"
+                />
+                
+                {/* Stats Overlay */}
+                <div className="absolute -top-4 -right-4 bg-white rounded-lg p-4 shadow-lg">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#16CA9A]">99.9%</div>
+                    <div className="text-xs text-gray-600 font-semibold">Uptime</div>
+                  </div>
+                </div>
+                
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#16CA9A]">75%</div>
+                    <div className="text-xs text-gray-600 font-semibold">Cost Savings</div>
+                  </div>
+                </div>
+                
+                {/* Floating elements */}
+                <div className="absolute top-4 left-4 w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <div className="absolute bottom-8 right-8 w-2 h-2 bg-white rounded-full animate-pulse delay-1000"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default ServerSmart

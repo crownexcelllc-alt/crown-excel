@@ -1,4 +1,5 @@
 import HardwareRepairBanner from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairBanner/HardwareRepairBanner'
+import SecuritySolutionsEmpowering from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairEmpowering/HardwareRepairEmpowering'
 import HardwareRepairEmpowering from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairEmpowering/HardwareRepairEmpowering'
 import HardwareRepairFaq from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairFaq/HardwareRepairFaq'
 import HardwareRepairServices from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairServices/HardwareRepairServices'
@@ -12,11 +13,11 @@ const HardwareRepair = () => {
     <div>
       <HardwareRepairBanner/>
       {/* <HardwareRepairSmart/> */}
-      <HardwareRepairEmpowering/>
-      <HardwareRepairWhyChooseUs/>
+      <SecuritySolutionsEmpowering/>
+      {/* <HardwareRepairWhyChooseUs/>
       <HardwareRepairServices/>
       <HardwareRepairWeAreBest/>
-      <HardwareRepairFaq/>
+      <HardwareRepairFaq/> */}
     </div>
   )
 }
