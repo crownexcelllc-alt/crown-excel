@@ -1,6 +1,22 @@
 import React from 'react';
 import Image from 'next/image';
 import NetworkIT from '../../../../../Components/Images/networkIT.png';
+import InfraIcon from '../../../../../Components/Images/network-infra.png';
+import WirelessIcon from '../../../../../Components/Images/wireless.png';
+import SecurityIcon from '../../../../../Components/Images/security.png';
+import MonitoringIcon from '../../../../../Components/Images/monitoring.png';
+import Icon5G from '../../../../../Components/Images/5g.png';
+import IconCloud from '../../../../../Components/Images/Cloud Networking.png';
+import IconAI from '../../../../../Components/Images/AI-Powered Analytics.png';
+import IconHealthcare from '../../../../../Components/Images/healthcare.png';
+import IconEducation from '../../../../../Components/Images/education.png';
+import IconManufacturing from '../../../../../Components/Images/manufacturing.png';
+import IconRetail from '../../../../../Components/Images/retail.png';
+import IconCheck from '../../../../../Components/Images/check.png';
+// import Step1 from '../../../../../Components/Images/step1.png';
+// import Step2 from '../../../../../Components/Images/step2.png';
+// import Step3 from '../../../../../Components/Images/step3.png';
+// import Step4 from '../../../../../Components/Images/step4.png';
 
 const NetworkEmpowering = () => {
   const networkServices = [
@@ -9,28 +25,28 @@ const NetworkEmpowering = () => {
       title: "Network Infrastructure Design",
       description: "Complete network architecture planning with scalable solutions for enterprise growth.",
       features: ["LAN/WAN Setup", "Network Topology", "Bandwidth Planning", "Future Scaling"],
-      icon: "🏗️"
+  icon: InfraIcon
     },
     {
       id: 2,
       title: "Wireless Solutions",
       description: "High-performance WiFi networks with seamless coverage and advanced security protocols.",
       features: ["WiFi 6 Technology", "Mesh Networks", "Guest Access", "Coverage Analysis"],
-      icon: "📶"
+  icon: WirelessIcon
     },
     {
       id: 3,
       title: "Network Security",
       description: "Comprehensive security framework to protect your network from cyber threats.",
       features: ["Firewall Setup", "VPN Solutions", "Threat Detection", "Access Control"],
-      icon: "🔒"
+  icon: SecurityIcon
     },
     {
       id: 4,
       title: "Network Monitoring",
       description: "24/7 network monitoring and maintenance to ensure optimal performance and uptime.",
       features: ["Real-time Monitoring", "Performance Analytics", "Fault Detection", "Remote Support"],
-      icon: "📊"
+  icon: MonitoringIcon
     }
   ];
 
@@ -71,8 +87,8 @@ const NetworkEmpowering = () => {
               key={service.id}
               className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-[#16CA9A] group"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
+              <div className="mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                <Image src={service.icon} alt={service.title + ' icon'} width={40} height={40} style={{ filter: 'brightness(0)' }} />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-3 font-montserrat">
                 {service.title}
@@ -110,7 +126,7 @@ const NetworkEmpowering = () => {
             <div className="space-y-4">
               <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
                 <div className="w-8 h-8 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">✓</span>
+                  <Image src={IconCheck} alt="Check" width={20} height={20} />
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-1">Enterprise-Grade Security</h4>
@@ -187,7 +203,7 @@ const NetworkEmpowering = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white text-2xl font-bold">5G</span>
+                <Image src={Icon5G} alt="AI" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">5G Integration</h4>
               <p className="text-gray-600 text-sm">Ultra-fast connectivity with low latency for mission-critical applications</p>
@@ -195,7 +211,7 @@ const NetworkEmpowering = () => {
             
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white text-2xl">☁️</span>
+                <Image src={IconCloud} alt="Cloud" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">Cloud Networking</h4>
               <p className="text-gray-600 text-sm">Hybrid cloud solutions for seamless on-premise and cloud integration</p>
@@ -203,7 +219,7 @@ const NetworkEmpowering = () => {
             
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white text-2xl">🤖</span>
+                <Image src={IconAI} alt="AI" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">AI-Powered Analytics</h4>
               <p className="text-gray-600 text-sm">Intelligent network optimization with predictive maintenance capabilities</p>
@@ -225,24 +241,28 @@ const NetworkEmpowering = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               <div className="text-3xl mb-3">🏥</div>
+              <Image src={IconHealthcare} alt="Healthcare" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Healthcare</h4>
               <p className="text-gray-600 text-sm">HIPAA-compliant networks with high availability for patient care systems</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               <div className="text-3xl mb-3">🏫</div>
+              <Image src={IconEducation} alt="Education" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Education</h4>
               <p className="text-gray-600 text-sm">Scalable campus networks supporting thousands of concurrent users</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               <div className="text-3xl mb-3">🏭</div>
+              <Image src={IconManufacturing} alt="Manufacturing" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Manufacturing</h4>
               <p className="text-gray-600 text-sm">Industrial-grade networks for IoT devices and automation systems</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               <div className="text-3xl mb-3">🏪</div>
+              <Image src={IconRetail} alt="Retail" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Retail</h4>
               <p className="text-gray-600 text-sm">Secure POS networks with guest WiFi and inventory management</p>
             </div>

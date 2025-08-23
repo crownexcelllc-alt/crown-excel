@@ -4,13 +4,15 @@ import { FaStar } from 'react-icons/fa';
 import google from '@/Components/Images/google.svg'
 
 // Props: { title, name, position, message, image, rating }
-export default function TestimonialCard({ title, name, position, message, image, rating = 5, date }) {
+export default function TestimonialCard({ title, name, position, message, image, rating, date }) {
   const stars = [1, 2, 3, 4, 5];
-  const ratingLabel =
-    rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
+  const ratingLabel = rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
 
   return (
-  <article className="w-full max-w-[360px] bg-[#f6f6f8] rounded-2xl p-4 shadow-sm border border-transparent flex flex-col justify-between h-[220px]">
+    <article
+      className="bg-[#f9f9fb] rounded-2xl shadow-md p-6 flex flex-col items-start min-h-[220px]"
+      style={{ maxWidth: 370, width: '100%', margin: '0 auto', minWidth: 0 }}
+    >
       {/* Header: avatar, name/date and provider badge */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">

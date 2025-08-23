@@ -5,6 +5,11 @@ import { Star, X, Loader2, ChevronLeft, ChevronRight } from "lucide-react"
 import TestimonialCard from "./TestimonialCard"
 import User5 from '../../../Components/Images/user5.png'
 import Link from "next/link"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Navigation, Autoplay } from "swiper/modules"
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 // Sample testimonials data as fallback
 const sampleTestimonials = [
@@ -197,7 +202,7 @@ export default function Testimonials() {
                 </div>
                 {/* Horizontal slider showing 3 cards with prev/next buttons */}
                 <div className="relative">
-                    <button
+                    {/* <button
                         aria-label="Previous testimonials"
                         id="prev-testimonial"
                         onClick={() => {
@@ -217,17 +222,44 @@ export default function Testimonials() {
                         className="absolute -left-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
                     >
                         <ChevronLeft className="w-5 h-5 text-[#084032]" />
-                    </button>
-
-                    <div ref={sliderRef} className="overflow-x-auto no-scrollbar" onScroll={() => updateNavButtons()} style={{ scrollBehavior: 'smooth' }}>
-                        <div className="flex gap-8" style={{ padding: '0 1rem' }}>
+                    </button> */}
+{/* ref={sliderRef} */}
+ {/* onScroll={() => updateNavButtons()} style={{ scrollBehavior: 'smooth' }} */}
+                    <div  className="overflow-x-auto no-scrollbar">
+                                                <div className="flex" style={{ padding: '0 1.5rem' }}>
+                                                            <Swiper
+                                                                style={{ paddingBottom: '1rem' }}
+                                        modules={[Navigation, Autoplay]}
+                                        slidesPerView={3}
+                                        spaceBetween={24}
+                                        navigation={{
+                                            nextEl: '.swiper-button-next-custom',
+                                            prevEl: '.swiper-button-prev-custom',
+                                        }}
+                                        autoplay={{
+                                            delay: 4000,
+                                            disableOnInteraction: false,
+                                        }}
+                                        loop={true}
+                                        breakpoints={{
+                                            0: { slidesPerView: 1 },
+                                            640: { slidesPerView: 1 },
+                                            760: { slidesPerView: 2 },
+                                            1024: { slidesPerView: 4 },
+                                        }}
+                                        className="!flex justify-center"
+                                    >
                             {reviews.map((review, idx) => (
-                                <div
-                                    key={review.id ?? review._id ?? idx}
-                                    className="flex-shrink-0"
-                                    style={{ flex: '0 0 100%', maxWidth: '100%' }}
-                                >
-                                    <TestimonialCard
+                                // <div
+                                //     key={review.id ?? review._id ?? idx}
+                                //     className="flex-shrink-0"
+                                //     style={{ flex: '0 0 100%', maxWidth: '100%' }}
+                                // >
+                                                                    <SwiperSlide
+                                                                key={idx}
+                                                                className="!flex justify-center"
+                                                        >
+                                <TestimonialCard
                                         title={review.title}
                                         name={review.name}
                                         position={review.role || review.position || review.company || ''}
@@ -236,12 +268,20 @@ export default function Testimonials() {
                                         rating={review.rating ?? 5}
                                         date={review.createdAt || review.created_at || review.date || review.time || review.publishedAt}
                                     />
-                                </div>
+                                {/* </div> */}
+                            </SwiperSlide>
                             ))}
+                            </Swiper>
+                             <button className="swiper-button-prev-custom absolute left-2 top-[45%] z-10 text-green-900">
+                        <FaChevronLeft size={24} />
+                    </button>
+                    <button className="swiper-button-next-custom absolute right-2 top-[45%] z-10 text-green-900">
+                        <FaChevronRight size={24} />
+                    </button>
                         </div>
                     </div>
 
-                    <button
+                    {/* <button
                         aria-label="Next testimonials"
                         id="next-testimonial"
                         onClick={() => {
@@ -260,7 +300,7 @@ export default function Testimonials() {
                         className="absolute -right-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
                     >
                         <ChevronRight className="w-5 h-5 text-[#084032]" />
-                    </button>
+                    </button> */}
                 </div>
 
                 {/* Share Your Experience Button */}
