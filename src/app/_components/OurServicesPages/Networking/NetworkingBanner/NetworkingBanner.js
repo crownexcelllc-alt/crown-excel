@@ -17,7 +17,7 @@ const RMABanner = () => {
       }}
     >
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+      <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="network icon"
