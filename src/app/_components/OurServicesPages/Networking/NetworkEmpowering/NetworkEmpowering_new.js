@@ -203,7 +203,8 @@ const NetworkEmpowering = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Image src={Icon5G} alt="AI" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
+                {/* Use a white PNG icon for correct display, no filter needed */}
+                <Image src={require('../../../../../Components/Images/5g.png')} alt="5G" width={40} height={40} />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">5G Integration</h4>
               <p className="text-gray-600 text-sm">Ultra-fast connectivity with low latency for mission-critical applications</p>
@@ -240,28 +241,28 @@ const NetworkEmpowering = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              <div className="text-3xl mb-3">🏥</div>
+              {/* <div className="text-3xl mb-3">🏥</div> */}
               <Image src={IconHealthcare} alt="Healthcare" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Healthcare</h4>
               <p className="text-gray-600 text-sm">HIPAA-compliant networks with high availability for patient care systems</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              <div className="text-3xl mb-3">🏫</div>
+              {/* <div className="text-3xl mb-3">🏫</div> */}
               <Image src={IconEducation} alt="Education" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Education</h4>
               <p className="text-gray-600 text-sm">Scalable campus networks supporting thousands of concurrent users</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              <div className="text-3xl mb-3">🏭</div>
+              {/* <div className="text-3xl mb-3">🏭</div> */}
               <Image src={IconManufacturing} alt="Manufacturing" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Manufacturing</h4>
               <p className="text-gray-600 text-sm">Industrial-grade networks for IoT devices and automation systems</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              <div className="text-3xl mb-3">🏪</div>
+              {/* <div className="text-3xl mb-3">🏪</div> */}
               <Image src={IconRetail} alt="Retail" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Retail</h4>
               <p className="text-gray-600 text-sm">Secure POS networks with guest WiFi and inventory management</p>

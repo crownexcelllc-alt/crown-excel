@@ -1,6 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import NetworkIT from '../../../../../Components/Images/RMAIT.png';
+import IaaSIcon from '../../../../../Components/Images/iaas.png';
+import PaaSIcon from '../../../../../Components/Images/paas.png';
+import SaaSIcon from '../../../../../Components/Images/saas.png';
+import SecurityIcon from '../../../../../Components/Images/cloud-security.png';
 
 const RMAEmpowering = () => {
   const cloudFeatures = [
@@ -39,25 +43,25 @@ const RMAEmpowering = () => {
 
   const cloudServices = [
     {
-      icon: "🚀",
+      icon: IaaSIcon,
       title: "Infrastructure as a Service (IaaS)",
       description: "Scalable virtual machines, storage, and networking resources on-demand with pay-as-you-use pricing model.",
       features: ["Virtual Machines", "Auto Scaling", "Load Balancing", "Backup & Recovery"]
     },
     {
-      icon: "⚙️",
+      icon: PaaSIcon,
       title: "Platform as a Service (PaaS)",
       description: "Complete development and deployment environment in the cloud with built-in development tools.",
       features: ["App Development", "Database Management", "API Gateway", "Monitoring Tools"]
     },
     {
-      icon: "📱",
+      icon: SaaSIcon,
       title: "Software as a Service (SaaS)",
       description: "Ready-to-use software applications delivered over the internet with automatic updates and maintenance.",
       features: ["CRM Solutions", "ERP Systems", "Collaboration Tools", "Business Intelligence"]
     },
     {
-      icon: "🔒",
+      icon: SecurityIcon,
       title: "Cloud Security Services",
       description: "Comprehensive security solutions including identity management, threat detection, and compliance monitoring.",
       features: ["Identity & Access", "Threat Protection", "Data Encryption", "Compliance Management"]
@@ -199,7 +203,9 @@ const RMAEmpowering = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {cloudServices.map((service, index) => (
               <div key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <div className="mb-4 flex justify-center">
+                  <Image src={service.icon} alt={service.title + ' icon'} width={40} height={40} style={{ filter: 'brightness(0)' }} />
+                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
@@ -328,85 +334,91 @@ const RMAEmpowering = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🏥</span>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Healthcare */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/healthcare.png')} alt="Healthcare Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                <p className="text-gray-600 mb-4">HIPAA-compliant cloud solutions for patient data management, telemedicine platforms, and healthcare analytics.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Electronic Health Records (EHR)</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Telemedicine Solutions</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Medical Imaging Storage</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
-              <p className="text-gray-600 mb-4">HIPAA-compliant cloud solutions for patient data management, telemedicine platforms, and healthcare analytics.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Electronic Health Records (EHR)</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Telemedicine Solutions</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Medical Imaging Storage</li>
-              </ul>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🏭</span>
+              {/* Manufacturing */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/manufacturing.png')} alt="Manufacturing Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
+                <p className="text-gray-600 mb-4">IoT-enabled cloud platforms for smart manufacturing, supply chain management, and predictive maintenance.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>IoT Device Management</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Supply Chain Analytics</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Predictive Maintenance</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
-              <p className="text-gray-600 mb-4">IoT-enabled cloud platforms for smart manufacturing, supply chain management, and predictive maintenance.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>IoT Device Management</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Supply Chain Analytics</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Predictive Maintenance</li>
-              </ul>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🏦</span>
+              {/* Financial Services */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/financial.png')} alt="Financial Services Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
+                <p className="text-gray-600 mb-4">Secure, compliant cloud infrastructure for banking, fintech applications, and financial data analytics.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Banking Applications</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Payment Processing</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Risk Management</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
-              <p className="text-gray-600 mb-4">Secure, compliant cloud infrastructure for banking, fintech applications, and financial data analytics.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Banking Applications</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Payment Processing</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Risk Management</li>
-              </ul>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🎓</span>
+              {/* Education */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/education.png')} alt="Education Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
+                <p className="text-gray-600 mb-4">Scalable learning management systems, virtual classrooms, and educational content delivery platforms.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Learning Management Systems</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Virtual Classrooms</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Student Data Analytics</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
-              <p className="text-gray-600 mb-4">Scalable learning management systems, virtual classrooms, and educational content delivery platforms.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Learning Management Systems</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Virtual Classrooms</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Student Data Analytics</li>
-              </ul>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🛒</span>
+              {/* E-commerce */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/ecommerce.png')} alt="E-commerce Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce</h3>
+                <p className="text-gray-600 mb-4">High-performance cloud solutions for online stores, inventory management, and customer analytics.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>E-commerce Platforms</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Inventory Management</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Customer Analytics</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce</h3>
-              <p className="text-gray-600 mb-4">High-performance cloud solutions for online stores, inventory management, and customer analytics.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>E-commerce Platforms</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Inventory Management</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Customer Analytics</li>
-              </ul>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🎮</span>
+              {/* Gaming & Media */}
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                  <Image src={require('../../../../../Components/Images/gaming.png')} alt="Gaming & Media Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
+                <p className="text-gray-600 mb-4">Low-latency cloud infrastructure for gaming platforms, content delivery, and media streaming services.</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Game Server Hosting</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Content Delivery Network</li>
+                  <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Media Streaming</li>
+                </ul>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
-              <p className="text-gray-600 mb-4">Low-latency cloud infrastructure for gaming platforms, content delivery, and media streaming services.</p>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Game Server Hosting</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Content Delivery Network</li>
-                <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Media Streaming</li>
-              </ul>
             </div>
-          </div>
         </div>
 
         {/* Bottom CTA Section */}
