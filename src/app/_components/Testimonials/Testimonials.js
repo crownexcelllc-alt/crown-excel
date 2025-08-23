@@ -201,16 +201,18 @@ export default function Testimonials() {
                         aria-label="Previous testimonials"
                         id="prev-testimonial"
                         onClick={() => {
-                            if (!sliderRef.current) return
-                            const el = sliderRef.current
-                            const step = Math.round(el.clientWidth / 4)
-                            // wrap to end when at or very near the start
-                            if (el.scrollLeft <= 2) {
-                                const max = el.scrollWidth - el.clientWidth
-                                el.scrollTo({ left: max, behavior: 'smooth' })
-                            } else {
-                                el.scrollBy({ left: -step, behavior: 'smooth' })
+                            if (!sliderRef.current) return;
+                            const el = sliderRef.current;
+                            const cards = el.querySelectorAll('.flex-shrink-0');
+                            let activeIdx = 0;
+                            for (let i = 0; i < cards.length; i++) {
+                                if (cards[i].offsetLeft >= el.scrollLeft - 2) {
+                                    activeIdx = i;
+                                    break;
+                                }
                             }
+                            const prevIdx = Math.max(activeIdx - 1, 0);
+                            el.scrollTo({ left: cards[prevIdx].offsetLeft, behavior: 'smooth' });
                         }}
                         className="absolute -left-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
                     >
@@ -223,7 +225,7 @@ export default function Testimonials() {
                                 <div
                                     key={review.id ?? review._id ?? idx}
                                     className="flex-shrink-0"
-                                    style={{ flex: '0 0 calc((100% - 96px) / 4)', maxWidth: '360px' }}
+                                    style={{ flex: '0 0 100%', maxWidth: '100%' }}
                                 >
                                     <TestimonialCard
                                         title={review.title}
@@ -243,15 +245,17 @@ export default function Testimonials() {
                         aria-label="Next testimonials"
                         id="next-testimonial"
                         onClick={() => {
-                            if (!sliderRef.current) return
-                            const el = sliderRef.current
-                            const step = Math.round(el.clientWidth / 4)
-                            // wrap to start when at or very near the end
-                            if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
-                                el.scrollTo({ left: 0, behavior: 'smooth' })
-                            } else {
-                                el.scrollBy({ left: step, behavior: 'smooth' })
+                            if (!sliderRef.current) return;
+                            const el = sliderRef.current;
+                            const cards = el.querySelectorAll('.flex-shrink-0');
+                            let activeIdx = 0;
+                            for (let i = 0; i < cards.length; i++) {
+                                if (cards[i].offsetLeft > el.scrollLeft + 2) {
+                                    activeIdx = i;
+                                    break;
+                                }
                             }
+                            el.scrollTo({ left: cards[activeIdx].offsetLeft, behavior: 'smooth' });
                         }}
                         className="absolute -right-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
                     >

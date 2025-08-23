@@ -218,11 +218,11 @@ const SecuritySolutionsEmpowering = () => {
                   
                   <div className="space-y-3">
                     <h4 className="text-sm font-bold text-[#16CA9A] uppercase tracking-wide">Key Features</h4>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
-                          <span className="text-gray-600 text-sm font-medium">{feature}</span>
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-600 text-sm font-medium leading-relaxed">{feature}</span>
                         </div>
                       ))}
                     </div>
