@@ -48,11 +48,11 @@ const Brands = () => {
       <div className="relative w-full overflow-hidden">
         <div className="marquee w-full">
           {/* First sequence */}
-            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-0">
+            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-0 pl-10 pr-10">
               {brands.map((brand, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center transition-all duration-300 p-4 hover:-translate-y-1"
+                  className="flex items-center justify-center transition-all duration-300 p-2 hover:-translate-y-1"
                 >
                   <Image
                     src={brand}

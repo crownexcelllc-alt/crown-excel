@@ -190,7 +190,7 @@ export default function Testimonials() {
                                         <Star className="w-5 h-5 text-orange-400 fill-current opacity-50" />
                                     </div>
                                 </div>
-                                <p className="text-gray-600 mb-3">Based on <span className="font-bold">20 Reviews</span></p>
+                                <p className="text-gray-600 mb-3">Based on <span className="font-bold">500+ Reviews</span></p>
                                 <div className="flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 92" width="80px">
                                         <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"></path>
@@ -210,7 +210,7 @@ export default function Testimonials() {
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         slidesPerView={3}
-                        spaceBetween={20} // <-- positive value for gap between cards
+                        spaceBetween={2}
                         navigation={{
                             nextEl: ".swiper-button-next-custom",
                             prevEl: ".swiper-button-prev-custom"
@@ -221,18 +221,21 @@ export default function Testimonials() {
                         }}
                         loop={true}
                         breakpoints={{
-                            0: { slidesPerView: 1,  },
-                            640: { slidesPerView: 1, },
-                            760: { slidesPerView: 2, },
-                            1024: { slidesPerView: 3,  }
+                            0: { slidesPerView: 1 },
+                            640: { slidesPerView: 1 },
+                            760: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 }
                         }}
                         className="!flex justify-center"
                     >
                         {reviews.map((item, i) => (
                             <SwiperSlide
                                 key={i}
-                                className="!flex justify-center"
-                                style={{ paddingLeft: 16, paddingRight: 16 }} // Add horizontal gap between cards
+                                className="!flex justify-center sm:pl-0 sm:pr-0"
+                                style={{
+                                    paddingLeft: typeof window !== "undefined" && window.innerWidth < 640 ? 0 : 16,
+                                    paddingRight: typeof window !== "undefined" && window.innerWidth < 640 ? 0 : 16,
+                                }}
                             >
                                 <TestimonialCard
                                     name={item.name}
@@ -245,7 +248,6 @@ export default function Testimonials() {
                         ))}
                     </Swiper>
 
-
                     {/* Navigation Buttons */}
                     <button className="swiper-button-prev-custom absolute left-2 top-[45%] z-10 text-green-900">
                         <FaChevronLeft size={24} />
@@ -253,6 +255,14 @@ export default function Testimonials() {
                     <button className="swiper-button-next-custom absolute right-2 top-[45%] z-10 text-green-900">
                         <FaChevronRight size={24} />
                     </button>
+                </div>
+                {/* Add a Review Button */}
+                <div className="flex justify-center mt-10">
+                    <Link href="https://www.google.com/maps/place/CROWN+EXCEL+(Experience+Center)/@25.2603141,55.2886443,17z/data=!4m8!3m7!1s0x3e5f43ba6913e913:0x904de2fef7d413ec!8m2!3d25.2603093!4d55.2912192!9m1!1b1!16s%2Fg%2F11j7jbshl8?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">
+                        <button className="px-8 py-4 cursor-pointer bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-xl shadow-lg hover:bg-[#084032] transition-colors duration-300">
+                            Add a Review
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

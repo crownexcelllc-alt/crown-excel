@@ -1,7 +1,8 @@
 import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
-import BannerImage from '../../../../../Components/Images/networkingbanner.png';
+// import BannerImage from '../../../../../Components/Images/networkingbanner.png';
+import BannerImage from '../../../../../Components/Images/amc.png';
 import Image from 'next/image';
 
 const HardwareAmcBanner = () => {
