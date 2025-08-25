@@ -1,66 +1,59 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import google from '@/Components/Images/google.svg'
+import google from '@/Components/Images/google.svg';
 
-// Props: { title, name, position, message, image, rating }
-export default function TestimonialCard({ title, name, position, message, image, rating, date }) {
+// Props: { name, message, image, rating, date }
+export default function TestimonialCard({ name, message, image, rating, date }) {
   const stars = [1, 2, 3, 4, 5];
-  const ratingLabel = rating === 5 ? 'Excellent' : rating === 4 ? 'Very good' : rating === 3 ? 'Good' : rating === 2 ? 'Fair' : 'Poor';
+
+  // Format date
+  let dateLabel = '';
+  if (date) {
+    try {
+      const d = new Date(date);
+      if (!isNaN(d)) {
+        dateLabel = d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+      }
+    } catch (e) {}
+  }
 
   return (
     <article
-      className="bg-[#f9f9fb] rounded-2xl shadow-md p-6 flex flex-col items-start min-h-[220px]"
-      style={{ maxWidth: 370, width: '100%', margin: '0 auto', minWidth: 0 }}
+      className="bg-white rounded-[10px] p-6 flex flex-col min-h-[330px] w-full md:w-[400px] lg:w-[400px] mx-auto"
+      style={{ maxWidth: 400 }}
     >
-      {/* Header: avatar, name/date and provider badge */}
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 bg-white">
+      {/* Top: Avatar, Name, Google badge right */}
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-full overflow-hidden ring-1 ring-gray-200 bg-white flex-shrink-0">
             {image ? (
-              <Image src={image} alt={name || 'Reviewer'} width={48} height={48} className="object-cover" />
+              <Image src={image} alt={name || 'Reviewer'} width={56} height={56} className="object-cover" />
             ) : (
               <div className="w-full h-full bg-gray-100" />
             )}
           </div>
-
-          <div>
-            <div className="text-base font-semibold text-gray-900 font-montserrat tracking-tight">{(name || 'Anonymous')}</div>
-              <div className="text-[14px] leading-[22.4px] text-gray-500 mt-0.5 font-montserrat">
-                {(() => {
-                  if (!date) return position || ''
-                  try {
-                    const d = new Date(date)
-                    if (isNaN(d)) return position || ''
-                    return d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })
-                  } catch (e) {
-                    return position || ''
-                  }
-                })()}
-              </div>
+          <div className="flex flex-col justify-center">
+            <span className="text-[18px] font-[500] leading-[27px] font-inter text-black">{name || 'Anonymous'}</span>
+            <div className="text-gray-400 text-[14px] font-montserrat mt-1">{dateLabel}</div>
           </div>
         </div>
-
-        {/* Provider badge (Google G) */}
-        <div className="ml-4 flex items-start">
-          <Image src={google} alt="Google" width={24} height={24} />
+        <div className="flex items-center ml-4">
+          <Image src={google} alt="Google" width={22} height={22} />
         </div>
       </div>
 
-  {/* Stars */}
-  <div className="flex items-center gap-2 mt-3 mb-0">
-        <div className="flex items-center" aria-hidden>
-          {stars.map((s) => (
-            <FaStar key={s} className={`mr-1 ${s <= rating ? 'text-[#FF7A00]' : 'text-gray-300'}`} style={{ width: 22, height: 22 }} />
-          ))}
-        </div>
-  {/* <div className="text-xs text-gray-500 font-montserrat">{ratingLabel}</div> */}
+      {/* Stars */}
+      <div className="flex items-center gap-1 mb-2 ml-1">
+        {stars.map((s) => (
+          <FaStar key={s} className={`text-[18px] ${s <= rating ? 'text-[#FF7A00]' : 'text-gray-300'}`} />
+        ))}
       </div>
 
-      {/* Message - flexible area so all cards match height */}
-      <div className="text-base text-gray-800 leading-relaxed font-montserrat flex-1 overflow-hidden mt-2">
+      {/* Message */}
+      <div className="text-black text-[16px] font-lora leading-[25px] mt-2 flex-1 overflow-hidden text-left ml-1">
         <div style={{ maxHeight: '8.5rem', overflow: 'hidden' }}>{message || 'No message provided.'}</div>
       </div>
     </article>
-  )
+  );
 }

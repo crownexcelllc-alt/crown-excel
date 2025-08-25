@@ -162,9 +162,14 @@ export default function Testimonials() {
     }
 
     return (
-        <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6s lg:px-8">
+
+            {/* <div className="header bg-[#084032] w-full h-[110px] flex items-center justify-center">
+                <h1 className='text-center font-bold font-montserrat text-[24px] lg:text-[30px] leading-[30px] font-sans text-white'>
+                    What Our Clients Say About <br /> Our Services?
+                </h1>
+            </div> */}
+  <div className="text-center mb-12">
                     <div className="inline-block bg-gradient-to-r from-[#16CA9A] to-[#084032] bg-clip-text text-transparent">
                         <h2 className="text-4xl font-montserrat font-bold mb-4 text-[#084032]">What Our Clients Say</h2>
                     </div>
@@ -200,215 +205,56 @@ export default function Testimonials() {
                         </div>
                     </div>
                 </div>
-                {/* Horizontal slider showing 3 cards with prev/next buttons */}
+            <div className="relative w-full py-8 px-14">
                 <div className="relative">
-                    {/* <button
-                        aria-label="Previous testimonials"
-                        id="prev-testimonial"
-                        onClick={() => {
-                            if (!sliderRef.current) return;
-                            const el = sliderRef.current;
-                            const cards = el.querySelectorAll('.flex-shrink-0');
-                            let activeIdx = 0;
-                            for (let i = 0; i < cards.length; i++) {
-                                if (cards[i].offsetLeft >= el.scrollLeft - 2) {
-                                    activeIdx = i;
-                                    break;
-                                }
-                            }
-                            const prevIdx = Math.max(activeIdx - 1, 0);
-                            el.scrollTo({ left: cards[prevIdx].offsetLeft, behavior: 'smooth' });
+                    <Swiper
+                        modules={[Navigation, Autoplay]}
+                        slidesPerView={3}
+                        spaceBetween={20} // <-- positive value for gap between cards
+                        navigation={{
+                            nextEl: ".swiper-button-next-custom",
+                            prevEl: ".swiper-button-prev-custom"
                         }}
-                        className="absolute -left-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: false
+                        }}
+                        loop={true}
+                        breakpoints={{
+                            0: { slidesPerView: 1,  },
+                            640: { slidesPerView: 1, },
+                            760: { slidesPerView: 2, },
+                            1024: { slidesPerView: 3,  }
+                        }}
+                        className="!flex justify-center"
                     >
-                        <ChevronLeft className="w-5 h-5 text-[#084032]" />
-                    </button> */}
-{/* ref={sliderRef} */}
- {/* onScroll={() => updateNavButtons()} style={{ scrollBehavior: 'smooth' }} */}
-                    <div  className="overflow-x-auto no-scrollbar">
-                                                <div className="flex" style={{ padding: '0 1.5rem' }}>
-                                                            <Swiper
-                                                                style={{ paddingBottom: '1rem' }}
-                                        modules={[Navigation, Autoplay]}
-                                        slidesPerView={3}
-                                        spaceBetween={24}
-                                        navigation={{
-                                            nextEl: '.swiper-button-next-custom',
-                                            prevEl: '.swiper-button-prev-custom',
-                                        }}
-                                        autoplay={{
-                                            delay: 4000,
-                                            disableOnInteraction: false,
-                                        }}
-                                        loop={true}
-                                        breakpoints={{
-                                            0: { slidesPerView: 1 },
-                                            640: { slidesPerView: 1 },
-                                            760: { slidesPerView: 2 },
-                                            1024: { slidesPerView: 4 },
-                                        }}
-                                        className="!flex justify-center"
-                                    >
-                            {reviews.map((review, idx) => (
-                                // <div
-                                //     key={review.id ?? review._id ?? idx}
-                                //     className="flex-shrink-0"
-                                //     style={{ flex: '0 0 100%', maxWidth: '100%' }}
-                                // >
-                                                                    <SwiperSlide
-                                                                key={idx}
-                                                                className="!flex justify-center"
-                                                        >
+                        {reviews.map((item, i) => (
+                            <SwiperSlide
+                                key={i}
+                                className="!flex justify-center"
+                                style={{ paddingLeft: 16, paddingRight: 16 }} // Add horizontal gap between cards
+                            >
                                 <TestimonialCard
-                                        title={review.title}
-                                        name={review.name}
-                                        position={review.role || review.position || review.company || ''}
-                                        message={review.comment || review.message || ''}
-                                        image={review.avatar || User5}
-                                        rating={review.rating ?? 5}
-                                        date={review.createdAt || review.created_at || review.date || review.time || review.publishedAt}
-                                    />
-                                {/* </div> */}
+                                    name={item.name}
+                                    message={item.message}
+                                    image={item.avatar}
+                                    rating={item.rating}
+                                    date={item.createdAt}
+                                />
                             </SwiperSlide>
-                            ))}
-                            </Swiper>
-                             <button className="swiper-button-prev-custom absolute left-2 top-[45%] z-10 text-green-900">
+                        ))}
+                    </Swiper>
+
+
+                    {/* Navigation Buttons */}
+                    <button className="swiper-button-prev-custom absolute left-2 top-[45%] z-10 text-green-900">
                         <FaChevronLeft size={24} />
                     </button>
                     <button className="swiper-button-next-custom absolute right-2 top-[45%] z-10 text-green-900">
                         <FaChevronRight size={24} />
                     </button>
-                        </div>
-                    </div>
-
-                    {/* <button
-                        aria-label="Next testimonials"
-                        id="next-testimonial"
-                        onClick={() => {
-                            if (!sliderRef.current) return;
-                            const el = sliderRef.current;
-                            const cards = el.querySelectorAll('.flex-shrink-0');
-                            let activeIdx = 0;
-                            for (let i = 0; i < cards.length; i++) {
-                                if (cards[i].offsetLeft > el.scrollLeft + 2) {
-                                    activeIdx = i;
-                                    break;
-                                }
-                            }
-                            el.scrollTo({ left: cards[activeIdx].offsetLeft, behavior: 'smooth' });
-                        }}
-                        className="absolute -right-2 top-1/2 z-20 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
-                    >
-                        <ChevronRight className="w-5 h-5 text-[#084032]" />
-                    </button> */}
                 </div>
-
-                {/* Share Your Experience Button */}
-                <div className="text-center mt-12">
-                    <Link href={'https://www.google.com/maps/place/CROWN+EXCEL+(Experience+Center)/@25.2603141,55.2886443,17z/data=!4m8!3m7!1s0x3e5f43ba6913e913:0x904de2fef7d413ec!8m2!3d25.2603093!4d55.2912192!9m1!1b1!16s%2Fg%2F11j7jbshl8?entry=ttu&g_ep=EgoyMDI1MDgxNy4wIKXMDSoASAFQAw%3D%3D'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <button
-                            // onClick={openModal}
-                            className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-8 py-3 rounded-full font-montserrat font-semibold hover:from-[#149f83] hover:to-[#063827] transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                        >
-                            {/* Share Your Experience */}
-                            Leave a Comment
-                        </button>
-                    </Link>
-                </div>
-
-                {/* Load more removed: all reviews are shown and slider wraps */}
-
-                {showForm && (
-                    <div
-                        className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300`}
-                    // onClick={closeModal}
-                    >
-                        <div
-                            className={`bg-white rounded-2xl shadow-2xl w-full max-w-md transform transition-all duration-300 ${isModalVisible ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4"
-                                }`}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white p-6 rounded-t-2xl">
-                                <div className="flex justify-between items-center">
-                                    <h3 className="text-2xl font-montserrat font-bold">Share Your Review</h3>
-                                    <button
-                                        onClick={closeModal}
-                                        className="text-white hover:text-gray-200 transition-colors duration-200 hover:rotate-90 transform"
-                                    >
-                                        <X className="w-6 h-6" />
-                                    </button>
-                                </div>
-                                <p className="text-[#dff7ef] mt-2 font-montserrat">We'd love to hear about your experience!</p>
-                            </div>
-
-                            <form onSubmit={handleSubmit} className="p-6 space-y-6">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Name *</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16CA9A] focus:border-transparent transition-all duration-200"
-                                            placeholder="Your name"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                            required
-                                            className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16CA9A] focus:border-transparent transition-all duration-200"
-                                            placeholder="your@email.com"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-3">Rating *</label>
-                                    <div className="flex space-x-1">{renderStars(formData.rating, true)}</div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Your Review *</label>
-                                    <textarea
-                                        name="comment"
-                                        value={formData.comment}
-                                        onChange={handleInputChange}
-                                        required
-                                        rows={4}
-                                        className="w-full px-4 text-black py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#16CA9A] focus:border-transparent transition-all duration-200 resize-none font-montserrat"
-                                        placeholder="Tell us about your experience..."
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting || formData.rating === 0}
-                                    className="w-full bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white py-3 px-6 rounded-lg font-montserrat font-semibold hover:from-[#149f83] hover:to-[#063827] disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                                            Submitting...
-                                        </>
-                                    ) : (
-                                        "Submit Review"
-                                    )}
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                )}
             </div>
-        </section>
+        </div>
     )
 }

@@ -35,7 +35,7 @@ const TrustedPartner = () => {
                 </div>
             </div>
         </div>
-        <div className="small-screen lg:hidden flex flex-col w-full md:items-center bg-[#f9f5de] text-black">
+        <div className="small-screen lg:hidden flex flex-col w-full md:items-center text-black">
             <div className="small-top flex items-end justify-between w-full gap-2" style={{padding: '20px'}}>
                 <div className="sm-top-left flex flex-col gap-3 columns-1 w-[50%] md:mb-0">
                     <h1 className='text-[22px] md:text-[58px] font-bold leading-[22px] md:leading-[58px] font-roboto'>Your Trusted Partner for Premium Tech Solutions</h1>
