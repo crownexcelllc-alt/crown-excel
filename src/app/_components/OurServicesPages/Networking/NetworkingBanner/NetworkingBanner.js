@@ -3,18 +3,17 @@ import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
 // import BannerImage from '../../../../../Components/Images/networkingbanner.png';
-import BannerImage from '../../../../../Components/Images/networking pic.png';
+import BannerImage from '../../../../../Components/Images/networkingpic.png';
 import Image from 'next/image';
 
 const RMABanner = () => {
   return (
     <div
-      className="relative bg-[#031d26] flex md:flex-row items-center justify-between w-full h-[350px] lg:h-[550px] px-6 md:px-10 overflow-hidden"
+      className="relative flex md:flex-row items-center justify-between w-[100%] h-[350px] lg:h-[550px] px-6 md:px-10 overflow-hidden"
       style={{
         backgroundImage: `url(${BannerImage.src})`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'right center',
-        backgroundSize: 'contain', // or use 'auto 100%' for full height only
+        backgroundSize: '100% 100%', // <-- full width and height
       }}
     >
       {/* Left Text and Icons */}

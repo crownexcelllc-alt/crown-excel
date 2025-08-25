@@ -2,22 +2,21 @@ import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
 // import BannerImage from '../../../../../Components/Images/networkingbanner.png';
-import BannerImage from '../../../../../Components/Images/it consultancy.png';
+import BannerImage from '../../../../../Components/Images/itconsultancy.png';
 import Image from 'next/image';
 
 const ITConsultancyBanner = () => {
   return (
-   <div
-  className="relative bg-[#031d26] flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
-  style={{
-    backgroundImage: `url(${BannerImage.src})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-    backgroundSize: 'contain', // or use 'auto 100%' for full height only
-  }}
->
+    <div
+      className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+      style={{
+        backgroundImage: `url(${BannerImage.src})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '100% 100%',
+      }}
+    >
 
-      
+
       {/* Left Text and Icons */}
       <div className="relative z-10 w-full full text-white font-montserrat">
         <Image

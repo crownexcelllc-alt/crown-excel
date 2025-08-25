@@ -203,8 +203,8 @@ const NetworkEmpowering = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                {/* Use a white PNG icon for correct display, no filter needed */}
-                <Image src={require('../../../../../Components/Images/5g.png')} alt="5G" width={40} height={40} />
+                {/* FIX: Use imported Icon5G instead of require() */}
+                <Image src={Icon5G} alt="5G" width={40} height={40} />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2">5G Integration</h4>
               <p className="text-gray-600 text-sm">Ultra-fast connectivity with low latency for mission-critical applications</p>
