@@ -19,7 +19,8 @@ const ManagedITBanner = () => {
 
 
       {/* Left Text and Icons */}
-  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
+      {/* font-montserrat */}
+  <div className="relative z-10 w-full md:w-1/2 text-white ">
         <Image
           src={icon2}
           alt="icon2"
