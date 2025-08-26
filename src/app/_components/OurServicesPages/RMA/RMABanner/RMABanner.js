@@ -1,44 +1,53 @@
 import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
-// import BannerImage from '../../../../../Components/Images/networkingbanner.png';
 import BannerImage from '../../../../../Components/Images/clouds1.png';
 import Image from 'next/image';
 
 const RMABanner = () => {
   return (
-   <div
-  className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[550px] px-6 md:px-10 overflow-hidden"
-  style={{
-    backgroundImage: `url(${BannerImage.src})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '100% 100%',
-  }}
->
+    <div className="relative w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden flex items-center">
+      {/* Background as next/image fill - prevents stretching and keeps aspect ratio (object-cover) */}
+      <Image
+        src={BannerImage}
+        alt="Cloud background"
+        fill
+        priority
+        className="object-cover w-full h-full"
+      />
 
-      
+      {/* Optional overlay for better text contrast */}
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-[#0b2540]/50 to-transparent" /> */}
+
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+      <div className="relative z-10 w-full max-w-4xl text-white font-montserrat py-8">
         <Image
           src={icon2}
           alt="cloud icon"
           width={40}
           height={40}
-          className="absolute -top-10 left-10 md:left-0"
+          className="absolute -top-6 left-6"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
+        <h1 className="text-[30px] md:text-[76px] font-bold leading-[36px] md:leading-[76px] drop-shadow-lg">
           Cloud <br className="block md:block" /> Computing<br className="block md:block" /> Solutions
         </h1>
-        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Modernize your infrastructure, secure your data, and scale on demand with Crown Excel’s cloud expertise.</p>
+        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">
+          Modernize your infrastructure, secure your data, and scale on demand with Crown Excel’s cloud expertise.
+        </p>
+
+        {/* Small slogan
+        <div className="mt-6 text-[16px] md:text-[20px] font-semibold text-[#16CA9A]">
+          Empower your business with secure, reliable, and scalable cloud solutions.
+        </div> */}
+
         <Image
           src={icon1}
-          alt="icon1"
+          alt="decorative icon"
           width={40}
           height={40}
-          className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
+          className="absolute -bottom-6 right-6"
         />
       </div>
-
     </div>
   );
 };

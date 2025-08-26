@@ -11,22 +11,23 @@ const HardwareEmpowering = () => {
     window.location.href = '/contact-us';
   };
 
+  // Update AMC plans to remove hardware focus and add business/software/POS content
   const amcPlans = [
     {
       type: "Short Term AMC",
-      duration: "3-6 Months",
-      title: "Rapid Response & Quick Solutions",
-      subtitle: "Immediate IT Support for Growing Businesses",
+      duration: "1-6 Months",
+      title: "Quick Business & IT Support",
+      subtitle: "Immediate help for your business systems, software, POS, and more",
       features: [
-        "Rapid hardware diagnostics & troubleshooting",
-        "Emergency repair services (4-hour response)",
-        "Performance optimization & tuning",
+        "Rapid troubleshooting for business systems",
+        "Emergency support for POS, billing, and software",
+        "Software installation, updates & bug fixes",
         "Basic preventive maintenance schedules",
         "24/7 technical support hotline",
-        "On-site technician visits (monthly)",
-        "Hardware health monitoring reports"
+        "On-site visits for business operations (monthly)",
+        "System health monitoring reports"
       ],
-      benefits: "Perfect for startups, small businesses, and immediate repair needs",
+      benefits: "Best for startups, shops, and urgent business needs",
       icon: "⚡",
       color: "from-[#16CA9A] to-[#119472]",
       uptime: "99.5%",
@@ -34,20 +35,20 @@ const HardwareEmpowering = () => {
     },
     {
       type: "Long Term AMC", 
-      duration: "1-3 Years",
-      title: "Comprehensive Hardware Protection & Lifecycle Management",
-      subtitle: "Strategic IT Infrastructure Management",
+      duration: "6 Months - 3 Years",
+      title: "Complete Business & IT Management",
+      subtitle: "We handle all your business operations, software, POS, and IT needs",
       features: [
-        "Complete system maintenance & upgrades",
-        "Predictive failure analysis & prevention",
-        "Regular health check-ups (bi-weekly)",
-        "Hardware lifecycle management planning",
-        "Priority support & rapid replacements",
+        "Full system maintenance & upgrades",
+        "POS & billing software management",
+        "Regular check-ups for business operations",
+        "Software license management & renewals",
+        "Priority support & rapid issue resolution",
         "Advanced monitoring & reporting dashboards",
         "Dedicated account manager & technical team",
-        "Annual technology roadmap consultation"
+        "Annual business technology consultation"
       ],
-      benefits: "Ideal for enterprises, large businesses, and mission-critical operations",
+      benefits: "Ideal for enterprises, retail, and those who want total peace of mind",
       icon: "🛡️",
       color: "from-[#13745a] to-[#084032]",
       uptime: "99.9%",
@@ -55,65 +56,88 @@ const HardwareEmpowering = () => {
     }
   ];
 
+  // Update service features for business/software/POS
   const serviceFeatures = [
     { 
-      icon: "🔧", 
-      title: "Certified Expert Technicians", 
-      desc: "Hardware specialists with 10+ years experience and vendor certifications",
+      icon: "🧑‍💻", 
+      title: "Business & IT Experts", 
+      desc: "Specialists in business operations, POS, billing, and software management",
       metric: "200+ Certified Engineers"
     },
     { 
       icon: "⏰", 
       title: "24/7 Priority Support", 
-      desc: "Round-the-clock assistance with guaranteed response times and escalation matrix",
+      desc: "Round-the-clock help for any business, POS, or software issue",
       metric: "2-4 Hour Response"
     },
     { 
       icon: "📊", 
-      title: "Advanced Performance Monitoring", 
-      desc: "Real-time system health tracking with predictive analytics and automated alerts",
+      title: "Proactive Monitoring", 
+      desc: "Real-time tracking of business systems, POS, and software updates",
       metric: "99.9% Uptime Guarantee"
     },
     { 
       icon: "💰", 
       title: "Cost Optimization", 
-      desc: "Reduce operational expenses and extend hardware lifecycle with strategic maintenance",
+      desc: "Reduce expenses and improve business efficiency with smart management",
       metric: "40% Cost Reduction"
     },
     {
       icon: "🚀",
       title: "Rapid Deployment",
-      desc: "Quick setup and integration with minimal business disruption",
+      desc: "Quick setup and integration for your business and POS systems",
       metric: "24 Hour Setup"
     },
     {
-      icon: "�",
-      title: "Security Compliance",
-      desc: "Maintain security standards and regulatory compliance throughout maintenance",
+      icon: "🔒",
+      title: "Security & Compliance",
+      desc: "We keep your business data and software secure and compliant",
       metric: "100% Compliant"
     }
   ];
 
-  const industryStats = [
-    { number: "500+", label: "Active AMC Contracts", sublabel: "Across multiple industries" },
-    { number: "99.9%", label: "Average Uptime", sublabel: "Mission-critical systems" },
-    { number: "2 Hours", label: "Average Response", sublabel: "Emergency situations" },
-    { number: "₹50L+", label: "Cost Savings", sublabel: "Annual client savings" }
-  ];
-
+  // Update coverage areas for business/software/POS
   const coverageAreas = [
     {
-      category: "Hardware Coverage",
-      items: ["Servers & Workstations", "Network Infrastructure", "Storage Systems", "Printing Solutions", "Backup Systems", "Security Appliances"]
+      category: "What We Manage",
+      items: [
+        "Business Operations",
+        "POS & Billing Software",
+        "Inventory & CRM Systems",
+        "Cloud Services",
+        "Software Licensing",
+        "Data Backup & Security",
+        "Multi-location Management"
+      ]
     },
     {
       category: "Service Locations", 
-      items: ["On-site Support", "Remote Monitoring", "Data Center Visits", "Multi-location Coverage", "Emergency Call-outs", "Planned Maintenance"]
+      items: [
+        "On-site Support",
+        "Remote Monitoring",
+        "Multi-location Coverage",
+        "Emergency Call-outs",
+        "Planned Maintenance"
+      ]
     },
     {
       category: "Industry Expertise",
-      items: ["Healthcare", "Manufacturing", "Financial Services", "Education", "Government", "Retail & E-commerce"]
+      items: [
+        "Retail & E-commerce",
+        "Healthcare",
+        "Manufacturing",
+        "Financial Services",
+        "Education",
+        "Government"
+      ]
     }
+  ];
+
+  const industryStats = [
+    { number: "500+", label: "Active AMC Contracts", sublabel: "Across all business types" },
+    { number: "99.9%", label: "Average Uptime", sublabel: "Business systems managed" },
+    { number: "2 Hours", label: "Avg. Response", sublabel: "Emergency support" },
+    { number: "₹50L+", label: "Cost Savings", sublabel: "Annual client savings" }
   ];
 
   return (
@@ -136,25 +160,23 @@ const HardwareEmpowering = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-6 py-3 rounded-2xl text-sm font-bold uppercase tracking-wide shadow-lg">
-                    🔧 AMC SERVICES
+                    🧑‍💻 BUSINESS MANAGEMENT SERVICES
                   </div>
                   <div className="h-1 w-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
                 </div>
                 
                 <h1 className="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
-                  ENTERPRISE
+                  <span className="block">Hand Over All Your Business Work</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
-                    HARDWARE AMC
+                    We Handle Everything
                   </span>
                   <span className="block text-4xl md:text-5xl font-medium text-gray-700">
-                    Solutions & Support
+                    POS, Software, Operations—No Worries!
                   </span>
                 </h1>
                 
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
-                  Protect your critical IT infrastructure with our comprehensive Annual Maintenance Contracts. 
-                  From rapid emergency response to strategic lifecycle management, we ensure your hardware 
-                  operates at peak performance with guaranteed uptime and cost optimization.
+                  With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.
                 </p>
 
                 {/* Key Stats */}
@@ -210,11 +232,11 @@ const HardwareEmpowering = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              AMC <span className="text-[#16CA9A]">SOLUTIONS</span>
+              AMC <span className="text-[#16CA9A]">PLANS</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the perfect maintenance plan tailored to your business needs and growth trajectory
+              Short or long term—choose the AMC that fits your business. We handle everything for you!
             </p>
           </div>
 
@@ -262,7 +284,7 @@ const HardwareEmpowering = () => {
                         <p className="text-sm font-semibold text-gray-800 mb-2">{plan.benefits}</p>
                         <div className="flex items-center justify-center gap-2 mt-3">
                           <div className="bg-[#16CA9A] text-white px-4 py-2 rounded-full text-xs font-bold">
-                            ENTERPRISE GRADE
+                            ALL-IN-ONE SERVICE
                           </div>
                           <div className="bg-[#084032] text-white px-4 py-2 rounded-full text-xs font-bold">
                             24/7 SUPPORT
@@ -294,7 +316,7 @@ const HardwareEmpowering = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              WHY CHOOSE <span className="text-[#16CA9A]">OUR AMC</span>
+              WHY CHOOSE <span className="text-[#16CA9A]">CROWN EXCEL AMC?</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
           </div>
@@ -325,11 +347,11 @@ const HardwareEmpowering = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              COMPREHENSIVE <span className="text-[#16CA9A]">COVERAGE</span>
+              WHAT WE HANDLE <span className="text-[#16CA9A]">FOR YOU</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              End-to-end hardware maintenance across all technology domains and industry verticals
+              Hardware, software, support, and more—just hand over your IT work and be worry-free!
             </p>
           </div>
 
@@ -359,38 +381,37 @@ const HardwareEmpowering = () => {
           <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-3xl overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="p-12 text-white">
-                <h3 className="text-4xl font-black mb-6">Ready to Secure Your Hardware Infrastructure?</h3>
+                <h3 className="text-4xl font-black mb-6">Be Worry-Free—Let Us Handle Everything!</h3>
                 <p className="text-xl mb-6 opacity-90">
-                  Don't wait for hardware failures to disrupt your business operations. Get proactive AMC coverage today 
-                  and ensure 99.9% uptime for your critical systems with our enterprise-grade maintenance solutions.
+                  With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!
                 </p>
                 
                 {/* Benefits List */}
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">Guaranteed SLA with penalty clauses</span>
+                    <span className="text-lg">Full responsibility for your IT & hardware</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">Dedicated account management</span>
+                    <span className="text-lg">Software management & updates</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">Flexible contract terms & pricing</span>
+                    <span className="text-lg">24/7 support & rapid response</span>
                   </div>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg">
                     <span className="mr-2">🔍</span>
-                    Start Free Hardware Assessment
+                    Start Free Assessment
                   </button>
                   <button 
                     onClick={getQuote}
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
                   >
-                    <span className="mr-2">�</span>
+                    <span className="mr-2">📞</span>
                     Contact Support
                   </button>
                 </div>

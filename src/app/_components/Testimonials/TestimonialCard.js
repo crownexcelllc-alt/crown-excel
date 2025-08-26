@@ -20,7 +20,7 @@ export default function TestimonialCard({ name, message, image, rating, date }) 
 
   return (
     <article
-      className="bg-white rounded-[10px] p-6 flex flex-col min-h-[250px] w-full max-w-[95vw] sm:max-w-[450px] md:max-w-[350px] lg:max-w-[450px] mx-auto"
+      className="bg-white rounded-[10px] p-4 flex flex-col min-h-[240px] w-full max-w-[95vw] sm:max-w-[95vw] md:max-w-[520px] lg:max-w-[450px] mx-auto"
     >
       {/* Top: Avatar, Name, Google badge right */}
       <div className="flex items-center justify-between mb-3">

@@ -56,6 +56,8 @@ export default function Testimonials() {
         comment: "",
     })
     const sliderRef = useRef(null)
+    // detect small screens on the client to adjust slide padding
+    const isSmallScreen = typeof window !== "undefined" && window.innerWidth < 640
 
     const updateNavButtons = () => {
         // placeholder for future enable/disable logic
@@ -205,7 +207,7 @@ export default function Testimonials() {
                         </div>
                     </div>
                 </div>
-            <div className="relative w-full py-8 px-14">
+            <div className="relative w-full py-8 px-4 md:px-14">
                 <div className="relative">
                     <Swiper
                         modules={[Navigation, Autoplay]}
@@ -233,8 +235,9 @@ export default function Testimonials() {
                                 key={i}
                                 className="!flex justify-center sm:pl-0 sm:pr-0"
                                 style={{
-                                    paddingLeft: typeof window !== "undefined" && window.innerWidth < 640 ? 0 : 16,
-                                    paddingRight: typeof window !== "undefined" && window.innerWidth < 640 ? 0 : 16,
+                                    // on small screens show a single-sided gap (left) so the card has spacing
+                                    paddingLeft: isSmallScreen ? 16 : 16,
+                                    paddingRight: isSmallScreen ? 0 : 16,
                                 }}
                             >
                                 <TestimonialCard

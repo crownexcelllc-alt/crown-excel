@@ -8,17 +8,18 @@ import Image from 'next/image';
 const HardwareRepairBanner = () => {
   return (
     <div
-      className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+      className="relative flex md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
       style={{
         backgroundImage: `url(${BannerImage.src})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
 
 
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="icon2"
@@ -29,6 +30,14 @@ const HardwareRepairBanner = () => {
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
           Hardware<br className="block md:hidden" /> Repair
         </h1>
+
+        {/* Short paragraph about Security Solutions related to Hardware Repair */}
+        <p className="mt-3 text-[14px] md:text-[16px] max-w-lg">
+          Our hardware repair services include security-focused diagnostics and
+          remediation to protect your systems — firmware updates, secure
+          configuration checks, vulnerability fixes and physical component
+          replacement to ensure reliable and secure operation.
+        </p>
         <Image
           src={icon1}
           alt="icon1"

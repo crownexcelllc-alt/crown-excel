@@ -8,17 +8,18 @@ import Image from 'next/image';
 const ServerSupportBanner = () => {
   return (
     <div
-      className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+      className="relative flex md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
       style={{
         backgroundImage: `url(${BannerImage.src})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
 
 
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="icon2"
@@ -29,6 +30,14 @@ const ServerSupportBanner = () => {
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
           Server<br className="block md:hidden" /> Support
         </h1>
+
+        {/* Short paragraph about Storage & Virtualization */}
+        <p className="mt-3 text-[14px] md:text-[16px] max-w-lg">
+          Our server support includes storage and virtualization services — from
+          SAN/NAS design and capacity planning to VM provisioning, backup and
+          disaster recovery. We ensure efficient resource use, high availability,
+          and simplified management for your infrastructure.
+        </p>
         <Image
           src={icon1}
           alt="icon1"

@@ -9,17 +9,18 @@ import Image from 'next/image';
 const SoftwareBanner = () => {
   return (
    <div
-  className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+  className="relative flex md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
   style={{
     backgroundImage: `url(${BannerImage.src})`,
      backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
   }}
 >
 
       
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="icon2"
@@ -30,6 +31,14 @@ const SoftwareBanner = () => {
         <h1 className="text-[30px] text-white md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
           Software<br className="block md:block" /> Solutions
         </h1>
+
+        {/* Short paragraph about software solutions */}
+        <p className="mt-3 max-w-lg text-[14px] md:text-[16px] text-white">
+          We build custom software solutions that accelerate business processes —
+          from web and mobile apps to integrations and automation. Our team
+          focuses on scalability, security and maintainability to deliver
+          measurable results.
+        </p>
         <Image
           src={icon1}
           alt="icon1"

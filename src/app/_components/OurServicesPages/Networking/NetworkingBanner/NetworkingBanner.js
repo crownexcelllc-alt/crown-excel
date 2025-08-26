@@ -9,11 +9,12 @@ import Image from 'next/image';
 const RMABanner = () => {
   return (
     <div
-      className="relative flex md:flex-row items-center justify-between w-[100%] h-[350px] lg:h-[550px] px-6 md:px-10 overflow-hidden"
+      className="relative flex md:flex-row items-center justify-between w-[100%] h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
       style={{
         backgroundImage: `url(${BannerImage.src})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%', // <-- full width and height
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       {/* Left Text and Icons */}
@@ -28,7 +29,14 @@ const RMABanner = () => {
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
           Networking <br className="block md:block" /> Solutions
         </h1>
-        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, deploy and secure reliable networks that scale with your business — LAN/WAN, wireless, structured cabling, and managed network services from Crown Excel.</p>
+        {/* <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, deploy and secure reliable networks that scale with your business — LAN/WAN, wireless, structured cabling, and managed network services from Crown Excel.</p> */}
+
+        {/* Additional short paragraph about networking offerings */}
+        <p className="mt-3 max-w-lg text-[14px] md:text-[16px] text-white">
+          Our networking team provides end-to-end services: network design,
+          implementation, performance tuning, monitoring and 24/7 support to
+          ensure high availability and secure connectivity for your organization.
+        </p>
         <Image
           src={icon1}
           alt="network icon 2"

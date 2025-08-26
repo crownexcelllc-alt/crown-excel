@@ -8,17 +8,18 @@ import Image from 'next/image';
 const ManagedITBanner = () => {
   return (
     <div
-      className="relative flex flex- md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
+      className="relative flex md:flex-row items-center justify-between w-full h-[350px] lg:h-[500px] px-6 md:px-10 overflow-hidden"
       style={{
         backgroundImage: `url(${BannerImage.src})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
 
 
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full full text-white font-montserrat">
+  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="icon2"
@@ -29,7 +30,14 @@ const ManagedITBanner = () => {
         <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
           IT Infrastructure <br className="block md:block" /> & Managed Services
         </h1>
-        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, build and manage resilient IT infrastructure — from server rooms and virtualization to structured cabling and disaster recovery.</p>
+        {/* <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, build and manage resilient IT infrastructure — from server rooms and virtualization to structured cabling and disaster recovery.</p> */}
+
+        {/* Additional short paragraph about managed IT */}
+        <p className="mt-3 text-[14px] md:text-[16px] max-w-lg">
+          Our managed IT services offer 24/7 monitoring, proactive maintenance,
+          patching and performance tuning to keep your systems secure and
+          available, helping reduce downtime and operational risk.
+        </p>
         <Image
           src={icon1}
           alt="icon1"
