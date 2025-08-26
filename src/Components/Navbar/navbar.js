@@ -8,6 +8,7 @@ import { FaSortDown, FaChevronDown } from "react-icons/fa";
 // import { RiMenu3Fill } from "react-icons/ri";
 import { FiMenu } from "react-icons/fi";
 import mobileLogo from '../Images/Mobile-logo.png'
+import grabLogo from '../Images/admin-logo.svg'
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaAngleDown } from "react-icons/fa";
@@ -19,7 +20,6 @@ function Navbar() {
   const [logoUrl, setLogoUrl] = useState(Logo);
   const navLinks = [
     { label: 'Home', href: '/' },
-
     {
       label: 'Company',
       // href: '',
@@ -690,15 +690,27 @@ function Navbar() {
 
             <div>
               {/* Blinking GIF above the button */}
-              <div className="flex justify-center mb-2">
+              {/* <div className="flex justify-center mb-2">
                 <img
-                  src="/animation.gif"
+                  src={grabLogo.src}
                   alt="Blinking Retail Store GIF"
                   className="h-[80px] w-full"
-                  style={{ filter: 'drop-shadow(0 0 8px #4ade80)' }}
+                  
                 />
-              </div>
-              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900 text-white w-full h-11 text-base rounded-full shadow-md font-montserrat">Our Retail Store</button>
+              </div> */}
+              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900 text-white w-full h-18 text-base rounded-full shadow-md font-montserrat flex items-center justify-between animate-pulse" style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* Blinking GIF left side inside button, absolute and over bg */}
+                <span className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center">
+                  <img
+                      src={grabLogo.src}
+                    alt="Blinking Retail Store GIF"
+                    className="h-[60px] w-[100%] mr-2"
+                    style={{ animation: 'blink 1s infinite' }}
+                  />
+                </span>
+                {/* Button text right side */}
+                <span className="flex-1 text-right text-lg pr-4 mt-3">Our Retail Store</span>
+              </button>
             </div>
           </div>
         </div>
