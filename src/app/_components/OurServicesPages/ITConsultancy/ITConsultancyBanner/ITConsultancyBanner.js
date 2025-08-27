@@ -16,11 +16,11 @@ const ITConsultancyBanner = () => {
           priority
           className="object-cover w-full h-full"
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#031d26]/60 to-transparent" /> */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#031d26]/60 to-transparent" />
       </div>
 
       {/* Left Text and Icons */}
-      <div className="relative z-10 w-full max-w-4xl text-white font-montserrat py-8">
+      <div className="relative z-10 w-full md:w-3/5 lg:w-1/2 text-white font-montserrat py-8">
         <Image
           src={icon2}
           alt="icon2"
@@ -28,24 +28,24 @@ const ITConsultancyBanner = () => {
           height={40}
           className="absolute -top-10 left-6 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[36px] md:leading-[76px]">
+  <h1 className="text-[28px] md:text-[48px] lg:text-[60px] font-bold leading-[34px] md:leading-[52px] lg:leading-[64px]">
           IT Consultancy
         </h1>
 
         {/* New paragraph about IT consultancy */}
-        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">
+  <p className="mt-4 max-w-lg text-[14px] md:text-[16px] lg:text-[17px] text-white">
           We align your IT strategy with business goals — optimizing systems,
           improving security, and delivering scalable solutions for measurable
           growth.
         </p>
 
-        <Image
+        {/* <Image
           src={icon1}
           alt="icon1"
           width={40}
           height={40}
-          className="absolute -bottom-6 right-6"
-        />
+    className="absolute bottom-0 md:-bottom-4 right-6"
+        /> */}
       </div>
     </div>
   );

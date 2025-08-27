@@ -27,24 +27,24 @@ const HardwareRepairBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          Hardware<br className="block md:hidden" /> Repair
+  <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
+          Security<br className="block md:hidden" /> Solutions
         </h1>
 
         {/* Short paragraph about Security Solutions related to Hardware Repair */}
         <p className="mt-3 text-[14px] md:text-[16px] max-w-lg">
-          Our hardware repair services include security-focused diagnostics and
-          remediation to protect your systems — firmware updates, secure
-          configuration checks, vulnerability fixes and physical component
-          replacement to ensure reliable and secure operation.
+          Security is built into every repair — malware and ransomware cleanup,
+          firmware/BIOS hardening, secure configuration baselines, vulnerability
+          patching, and replacement of compromised components — restoring
+          reliability while strengthening your endpoint protection.
         </p>
-        <Image
+        {/* <Image
           src={icon1}
           alt="icon1"
           width={40}
           height={40}
           className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
-        />
+        /> */}
       </div>
 
       {/* Right Side Background */}

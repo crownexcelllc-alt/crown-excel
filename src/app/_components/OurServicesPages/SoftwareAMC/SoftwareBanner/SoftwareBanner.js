@@ -28,8 +28,8 @@ const SoftwareBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] text-white md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
-          Software<br className="block md:block" /> Solutions
+  <h1 className="text-[30px] text-white md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
+          Software Solutions
         </h1>
 
         {/* Short paragraph about software solutions */}
@@ -39,13 +39,13 @@ const SoftwareBanner = () => {
           focuses on scalability, security and maintainability to deliver
           measurable results.
         </p>
-        <Image
+        {/* <Image
           src={icon1}
           alt="icon1"
           width={40}
           height={40}
           className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
-        />
+        /> */}
       </div>
 
       {/* Right Side Background */}

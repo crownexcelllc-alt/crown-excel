@@ -27,7 +27,7 @@ const HardwareAmcBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
+  <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
           Hardware<br className="block md:hidden" /> AMC
         </h1>
 
@@ -38,13 +38,13 @@ const HardwareAmcBanner = () => {
           support, and long-term plans for continued proactive maintenance,
           priority response, and minimized downtime.
         </p>
-        <Image
+        {/* <Image
           src={icon1}
           alt="icon1"
           width={40}
           height={40}
           className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
-        />
+        /> */}
       </div>
 
       {/* Right Side Background */}

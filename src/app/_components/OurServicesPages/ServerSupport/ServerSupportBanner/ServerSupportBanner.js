@@ -27,7 +27,7 @@ const ServerSupportBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
+  <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
           Server<br className="block md:hidden" /> Support
         </h1>
 

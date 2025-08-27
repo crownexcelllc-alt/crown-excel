@@ -26,7 +26,7 @@ const RMABanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[30px] md:leading-[76px]">
+  <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
           Networking <br className="block md:block" /> Solutions
         </h1>
         {/* <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">Design, deploy and secure reliable networks that scale with your business — LAN/WAN, wireless, structured cabling, and managed network services from Crown Excel.</p> */}
@@ -37,13 +37,13 @@ const RMABanner = () => {
           implementation, performance tuning, monitoring and 24/7 support to
           ensure high availability and secure connectivity for your organization.
         </p>
-        <Image
+        {/* <Image
           src={icon1}
           alt="network icon 2"
           width={40}
           height={40}
           className="absolute -bottom-15 lg:-bottom-10 right-70 md:right-130 lg:right-220"
-        />
+        /> */}
       </div>
 
     </div>

@@ -28,10 +28,10 @@ const RMABanner = () => {
           height={40}
           className="absolute -top-6 left-6"
         />
-        <h1 className="text-[30px] md:text-[76px] font-bold leading-[36px] md:leading-[76px] drop-shadow-lg">
+        <h1 className="text-[28px] md:text-[48px] lg:text-[76px] font-bold leading-[34px] md:leading-[52px] lg:leading-[76px] drop-shadow-lg">
           Cloud <br className="block md:block" /> Computing<br className="block md:block" /> Solutions
         </h1>
-        <p className="mt-4 max-w-lg text-[14px] md:text-[18px] text-white">
+        <p className="mt-4 max-w-lg text-[14px] md:text-[16px] lg:text-[18px] text-white">
           Modernize your infrastructure, secure your data, and scale on demand with Crown Excel’s cloud expertise.
         </p>
 
@@ -40,13 +40,13 @@ const RMABanner = () => {
           Empower your business with secure, reliable, and scalable cloud solutions.
         </div> */}
 
-        <Image
+        {/* <Image
           src={icon1}
           alt="decorative icon"
           width={40}
           height={40}
           className="absolute -bottom-6 right-6"
-        />
+        /> */}
       </div>
     </div>
   );
