@@ -30,7 +30,7 @@ function DirectorMessage() {
         {/* Director's Message below the image */}
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-16">
+            <div className="rounded-2xl overflow-hidden mb-16">
               <div className="flex flex-col">
                 <div className="p-8 md:p-12 flex-1 flex flex-col justify-center">
                   <h3 className="text-2xl md:text-5xl font-bold text-[#16806b] font-montserrat mb-4">
