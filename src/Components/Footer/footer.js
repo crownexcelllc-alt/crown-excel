@@ -331,7 +331,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://www.blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                    <Link href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                       <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
                       Blogs
                     </Link>
@@ -474,7 +474,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link  href="https://www.blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                    <Link  href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
                       <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
                       Blogs
                     </Link>
