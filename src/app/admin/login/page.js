@@ -19,7 +19,7 @@ export default function LoginPage() {
     if (res.ok) {
       const { token } = await res.json();
       localStorage.setItem("jwt", token);
-      router.replace("/admin"); // Instantly navigate to admin dashboard
+      window.location.href = "/admin"; // Force reload and navigate to admin
     } else {
       setError("Invalid email or password");
     }
@@ -31,7 +31,7 @@ export default function LoginPage() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "linear-gradient(135deg, #084032 0%, #0e6b50 100%)"
+    //   background: "linear-gradient(135deg, #084032 0%, #0e6b50 100%)"
     }}>
       <form
         onSubmit={handleLogin}
@@ -57,7 +57,8 @@ export default function LoginPage() {
             padding: "12px",
             borderRadius: "8px",
             border: "1px solid #ccc",
-            fontSize: "16px"
+            fontSize: "16px",
+            color:'black'
           }}
         />
         <input
@@ -70,7 +71,8 @@ export default function LoginPage() {
             padding: "12px",
             borderRadius: "8px",
             border: "1px solid #ccc",
-            fontSize: "16px"
+            fontSize: "16px",
+            color:'black'
           }}
         />
         <button
