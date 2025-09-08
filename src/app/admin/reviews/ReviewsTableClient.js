@@ -1,10 +1,12 @@
 "use client"
 import React, { useState, useMemo } from 'react';
+import ReviewPopupForm from './ReviewPopupForm';
 
 export default function ReviewsTableClient({ initialData = [], apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [rows, setRows] = useState(initialData || []);
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const filtered = useMemo(() => {
     return rows.filter(r => showAll ? true : !r.approved);
@@ -33,7 +35,6 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Approve failed');
-      // refresh the list to reflect change from backend
       await refresh();
     } catch (err) {
       alert('Failed to approve: ' + (err.message || err));
@@ -47,27 +48,40 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       const res = await fetch(`${apiBase}/api/reviews?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Delete failed');
-      // refresh after delete
       await refresh();
     } catch (err) {
       alert('Failed to delete: ' + (err.message || err));
     } finally { setLoading(false); }
   }
 
+  function handleSuccess() {
+    refresh();
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={showAll} onChange={e => setShowAll(e.target.checked)} />
-            <span>Show all reviews (including approved)</span>
-          </label>
+          <button
+            onClick={() => setShowPopup(true)}
+            className="px-3 py-2 rounded bg-[#084032] text-white"
+          >
+            Add Review
+          </button>
           <button onClick={refresh} className={`px-3 py-2 rounded bg-green-600 text-white ${loading ? 'opacity-60' : ''}`}>Refresh</button>
         </div>
         <div>
           <span className="text-sm text-gray-600">Total: {rows.length}</span>
         </div>
       </div>
+
+      {showPopup && (
+        <ReviewPopupForm
+          apiBase={apiBase}
+          onClose={() => setShowPopup(false)}
+          onSuccess={handleSuccess}
+        />
+      )}
 
       <div className="overflow-x-auto border rounded">
         <table className="min-w-full text-sm">

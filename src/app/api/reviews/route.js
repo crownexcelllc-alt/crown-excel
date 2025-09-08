@@ -51,7 +51,7 @@ export async function POST(req) {
       message,
       avatar: avatar || null,
       createdAt: new Date(),
-      approved: false, // admin can approve later
+      approved: true, // admin can approve later
     };
 
     const result = await col.insertOne(doc);
