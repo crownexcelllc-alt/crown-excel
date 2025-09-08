@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import AdminLayout from '@/Components/Admin/AdminLayout';
 import './admin.css';
-import LogoutButton from "./components/LogoutButton";
+// import LogoutButton from "./components/LogoutButton";
 import LoginPage from "./login/page";
 
 export default function Layout({ children }) {
@@ -30,9 +30,9 @@ export default function Layout({ children }) {
 
   return (
     <div>
-      <header>
+      {/* <header>
         <LogoutButton />
-      </header>
+      </header> */}
       <AdminLayout>
         {children}
       </AdminLayout>
