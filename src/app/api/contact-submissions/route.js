@@ -14,10 +14,10 @@ async function saveSubmission({ name, email, phone, subject, service, comments }
 }
 
 const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_ADMIN_ORIGIN || '*',
+  'Access-Control-Allow-Origin': 'http://localhost:3000' || '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
-};
+};  
 
 export async function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: CORS_HEADERS });

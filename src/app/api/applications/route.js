@@ -15,10 +15,11 @@ async function saveApplicationMongo({ name, email, phone, position, info }) {
 
 export async function GET() {
   try {
-    const apps = await getApplications();
-    return NextResponse.json(apps.map(a => ({ id: a._id?.toString?.() || a.id, name: a.name, email: a.email, phone: a.phone, position: a.position, info: a.info, createdAt: a.createdAt })));
-  } catch (err) {
-    return NextResponse.json({ error: 'Failed to read applications' }, { status: 500 });
+    const db = await getDb();
+    const data = await db.collection('applications').find({}).toArray();
+    return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 

@@ -10,6 +10,7 @@ export default async function ReviewsPage() {
   let reviews = [];
   try {
     const res = await fetch(`${apiBase}/api/reviews?all=true`, { cache: 'no-store' });
+    console.log('res',res);
     if (res.ok) reviews = await res.json();
   } catch (err) { console.error('Failed to fetch reviews', err); }
 

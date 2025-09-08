@@ -10,6 +10,7 @@ export default async function ApplicationsPage() {
   let applications = [];
   try {
     const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
+    console.log('res',res);
     if (res.ok) applications = await res.json();
   } catch (err) { console.error('Failed to fetch applications', err); }
 
