@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
-import Logo from '../Images/cleaned_file.svg';
 import Image from 'next/image';
 // import { ChevronDown } from 'lucide-react';
 import './Navbar.css';
@@ -15,9 +14,9 @@ import { FaAngleDown } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaLaptop, FaDesktop, FaPrint, FaNetworkWired, FaMouse, FaTools, FaMobileAlt, FaServer, FaUserTie, FaCogs, FaUsers, FaHistory, FaCommentDots, FaQuestionCircle } from "react-icons/fa";
 import { MdDevicesOther, MdRouter, MdSecurity } from "react-icons/md";
+import logo from '../Images/logos.png';
 
 function Navbar() {
-  const [logoUrl, setLogoUrl] = useState(Logo);
   const navLinks = [
     { label: 'Home', href: '/' },
     {
@@ -98,20 +97,7 @@ function Navbar() {
   const [medNav, setMedNav] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    async function fetchLogo() {
-      try {
-        const res = await fetch('/api/logo');
-        const data = await res.json();
-        console.log('Fetched logo data:', data);
 
-        if (data.logo) setLogoUrl(data.logo);
-      } catch {
-        setLogoUrl('/file.svg');
-      }
-    }
-    fetchLogo();
-  }, []);
 
 
 
@@ -192,7 +178,7 @@ function Navbar() {
       <div className="logo hidden md:flex">
         <Link href="/">
           <img
-            src={logoUrl}
+            src={logo.src}
             alt="Logo"
             height={50}
             width={150}
