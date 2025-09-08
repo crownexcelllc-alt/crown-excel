@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useMemo } from 'react';
 
-export default function ApplicationsTableClient({ initialData = [], apiBase = '' }) {
+export default function ApplicationsTableClient({ initialData = [], apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [rows, setRows] = useState(initialData || []);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);

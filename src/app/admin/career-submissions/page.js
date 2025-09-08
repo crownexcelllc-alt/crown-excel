@@ -7,9 +7,7 @@ export const metadata = {
 export default async function CareerSubmissionsPage() {
   let applications = [];
   try {
-   const res = await fetch("/api/contact-submissions");
-// const data = await res.json();
-    console.log('res',res);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/applications`, { cache: 'no-store' });
     if (res.ok) {
       applications = await res.json();
     } else {

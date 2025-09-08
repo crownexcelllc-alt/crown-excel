@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 
-export default function SettingsClient({ initialSettings = {}, apiBase = '' }) {
+export default function SettingsClient({ initialSettings = {}, apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [settings, setSettings] = useState(initialSettings);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');

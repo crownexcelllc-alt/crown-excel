@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useMemo } from 'react';
 
-export default function ReviewsTableClient({ initialData = [], apiBase = '' }) {
+export default function ReviewsTableClient({ initialData = [], apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [rows, setRows] = useState(initialData || []);
   const [showAll, setShowAll] = useState(false);
   const [loading, setLoading] = useState(false);
