@@ -26,7 +26,7 @@ const OurManagementKnowmore = () => {
                     At Crown Excel, we have an experienced management team dedicated to handling both hardware and software orders with efficiency and precision. Every project and order is managed with the utmost care, supported by comprehensive corporate services and deep technical expertise.
                     </p>
                     <p className='text-gray-700 font-muli text-lg leading-[1.8] mb-8'>
-                    Our leadership fosters a collaborative and inclusive work environment, enabling every team member to operate seamlessly across departments. This unified approach ensures that we consistently deliver exceptional results and exceed client expectations. know more py inquiry wala link lga dena
+                    Our leadership fosters a collaborative and inclusive work environment, enabling every team member to operate seamlessly across departments. This unified approach ensures that we consistently deliver exceptional results and exceed client expectations.
                     </p>
 
                     {/* Animated Button */}
