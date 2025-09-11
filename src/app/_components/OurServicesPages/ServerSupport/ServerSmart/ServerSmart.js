@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import NetworkingSmartImage from '../../../../../Components/Images/serversmart.png';
-import SignalTower from '../../../../../Components/Images/signaltower.png';
+import SignalTower from '../../../../../Components/Images/TowerImage.png';
 import Image from 'next/image';
 
 export default function ServerSmart() {
@@ -22,7 +22,7 @@ export default function ServerSmart() {
     },
     {
       icon: "🖥️",
-      title: "Virtualization Infrastructure", 
+      title: "Virtualization Infrastructure",
       description: "Complete virtualization platform to maximize resource utilization and reduce infrastructure costs significantly.",
       features: ["VMware vSphere", "Hyper-V Implementation", "Virtual Desktop Infrastructure", "Container Solutions"],
       details: "Transform your IT infrastructure with cutting-edge virtualization technologies that deliver superior performance and efficiency."
@@ -102,14 +102,14 @@ export default function ServerSmart() {
                 <span className="mr-2">💾</span>
                 STORAGE & VIRTUALIZATION
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Modern Storage &
                 <span className="block text-[#16CA9A]">Virtualization Solutions</span>
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Transform your IT infrastructure with enterprise-grade storage and virtualization solutions. 
+                Transform your IT infrastructure with enterprise-grade storage and virtualization solutions.
                 Maximize efficiency, reduce costs, and ensure scalability for your growing business needs.
               </p>
 
@@ -168,7 +168,7 @@ export default function ServerSmart() {
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
-                
+
                 <div className="space-y-2 mb-4">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-sm text-gray-700">
@@ -177,7 +177,7 @@ export default function ServerSmart() {
                     </div>
                   ))}
                 </div>
-                
+
                 <p className="text-sm text-gray-500 italic">{service.details}</p>
               </div>
             ))}
@@ -196,7 +196,7 @@ export default function ServerSmart() {
               Choose the right storage solution for your specific requirements
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {storageTypes.map((storage, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-xl p-8 hover:border-[#16CA9A] hover:shadow-lg transition-all duration-300">
@@ -204,7 +204,7 @@ export default function ServerSmart() {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{storage.type}</h3>
                   <div className="w-16 h-1 bg-[#16CA9A] mx-auto"></div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Primary Use:</span>
@@ -291,7 +291,7 @@ export default function ServerSmart() {
           <div className="absolute bottom-10 right-10 w-24 h-24 border border-white rounded-full"></div>
           <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-white rounded-full"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -299,16 +299,16 @@ export default function ServerSmart() {
                 <span className="mr-2">🚀</span>
                 GET STARTED TODAY
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                Ready to Transform Your 
+                Ready to Transform Your
                 <span className="block">Infrastructure?</span>
               </h2>
-              
+
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
                 Get a comprehensive assessment of your current infrastructure and discover how our storage and virtualization solutions can optimize your operations, reduce costs, and accelerate growth.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
@@ -321,7 +321,7 @@ export default function ServerSmart() {
                     <div className="text-white/80 text-sm">Complete analysis of your current setup</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -333,7 +333,7 @@ export default function ServerSmart() {
                     <div className="text-white/80 text-sm">Tailored to your business needs</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -345,7 +345,7 @@ export default function ServerSmart() {
                     <div className="text-white/80 text-sm">Round-the-clock technical assistance</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mt-1">
                     <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -358,7 +358,7 @@ export default function ServerSmart() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-[#16CA9A] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
                   <span className="mr-2">📊</span>
@@ -369,7 +369,7 @@ export default function ServerSmart() {
                   Contact Expert Now
                 </button>
               </div>
-              
+
               <div className="mt-6 flex items-center text-white/80 text-sm">
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -377,7 +377,7 @@ export default function ServerSmart() {
                 No commitment required • Response within 24 hours
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <Image
@@ -385,9 +385,10 @@ export default function ServerSmart() {
                   width={400}
                   height={300}
                   alt="Infrastructure"
-                  className="w-full h-auto rounded-xl"
+                 className="w-full h-auto rounded-xl p-4 transform rotate-[-7deg]"
+
                 />
-                
+
                 {/* Stats Overlay */}
                 <div className="absolute -top-4 -right-4 bg-white rounded-lg p-4 shadow-lg">
                   <div className="text-center">
@@ -395,14 +396,14 @@ export default function ServerSmart() {
                     <div className="text-xs text-gray-600 font-semibold">Uptime</div>
                   </div>
                 </div>
-                
+
                 <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-[#16CA9A]">75%</div>
                     <div className="text-xs text-gray-600 font-semibold">Cost Savings</div>
                   </div>
                 </div>
-                
+
                 {/* Floating elements */}
                 <div className="absolute top-4 left-4 w-3 h-3 bg-white rounded-full animate-pulse"></div>
                 <div className="absolute bottom-8 right-8 w-2 h-2 bg-white rounded-full animate-pulse delay-1000"></div>

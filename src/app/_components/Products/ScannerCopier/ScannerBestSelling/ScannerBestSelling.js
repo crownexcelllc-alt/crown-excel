@@ -13,12 +13,12 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const carouselData = [
     {
-        title: 'HP Laserjet Pro',
+        title: 'HP LaserJet Pro',
         description: `The HP LaserJet Pro MFP 4103fdw is a high-performance multifunction monochrome laser printer designed for medium to large-sized offices.`,
         image: BestProduct1,
     },
     {
-        title: 'Epson Ecotank L8050',
+        title: 'Epson EcoTank L8050',
         description: 'The Epson EcoTank L8050 is a top choice for anyone who loves photography but hates high printing costs.',
         image: BestProduct2,
     },

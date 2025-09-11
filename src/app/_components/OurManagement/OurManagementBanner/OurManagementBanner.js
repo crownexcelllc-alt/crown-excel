@@ -10,7 +10,7 @@ const OurManagementBanner = () => {
           <Image alt='' src={BannerImage} width={4000} height={4000} className='h-full w-full' />
         </div>
       </div>
-      <div className="banner-text p-[30px] lg:p-[40px] bg-white/70 absolute w-fit h-[305px]  md:w-[320px] lg:w-[580px] md:h-[402px] lg:h-[430px] top-2.5 left-5 right-5  lg:left-15 flex flex-col md:items-start items-center justify-around">
+      <div className="banner-text p-[30px] gap-3 lg:p-[40px] bg-white/70 absolute w-fit h-[305px]  md:w-[320px] lg:w-[580px] md:h-[402px] lg:h-[430px] top-2.5 left-5 right-5  lg:left-15 flex flex-col md:items-start items-center justify-around">
         <button className='bg-[#0d5c47] text-white rounded text-[16px] font-[600] leading-[16px] py-[10px] px-[20px]'>
           Our Management
         </button>

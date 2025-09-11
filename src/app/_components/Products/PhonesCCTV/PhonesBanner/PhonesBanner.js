@@ -5,9 +5,9 @@ import Image from 'next/image'
 import Stars from '../../../../../Components/Images/stars.png'
 const PhonesBanner = () => {
   return (
-    <div >
+    <div className=''>
       <div
-        className="hidden lg:flex items-center justify-between w-full h-[180px] lg:h-[500px] md:h-[350px] px-3 md:px-1 relative"
+        className="hidden lg:flex items-center justify-between w-full h-[180px] lg:h-[600px] md:h-[350px] px-3 md:px-1 relative"
         style={{
           background: 'linear-gradient(87deg, #2D2D2D 35%, #147D61 100%)',
         }}

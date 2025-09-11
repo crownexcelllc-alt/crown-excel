@@ -12,7 +12,7 @@ const Header = () => {
       }}
     >
       <h1 className='text-white text-[40px] lg:text-[48px] font-montserrat font-[600]'>About Us</h1>
-      <p className='text-white text-[12px] lg:text-[16px] leading-[20px] lg:leading-[27px] lg:w-[975px] font-montserrat'>At Crown Excel, we believe that our success is driven by the talent and passion of our team. We are always looking for br dedicated, innovative, and skilled professionals to join us in delivering cutting-edge IT solutions, hardware services, and software products that shape the future of businesses</p>
+      <p className='text-white text-[12px] lg:text-[16px] leading-[20px] lg:leading-[27px] lg:w-[975px] font-montserrat'>At Crown Excel, we believe that our success is driven by the talent and passion of our team. We are always looking for dedicated, innovative, and skilled professionals to join us in delivering cutting-edge IT solutions, hardware services, and software products that shape the future of businesses</p>
     </div>
   )
 }

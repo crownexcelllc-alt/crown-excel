@@ -164,7 +164,7 @@ export default function Testimonials() {
     }
 
     return (
-         <div className="max-w-7xl mx-auto px-4 sm:px-6s lg:px-8">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6s lg:px-8 mt-5">
 
             {/* <div className="header bg-[#084032] w-full h-[110px] flex items-center justify-center">
                 <h1 className='text-center font-bold font-montserrat text-[24px] lg:text-[30px] leading-[30px] font-sans text-white'>
@@ -207,8 +207,8 @@ export default function Testimonials() {
                         </div>
                     </div>
                 </div>
-            <div className="relative w-full py-8 px-4 md:px-14">
-                <div className="relative">
+            <div className="relative w-full py-8 px-4 md:px-14 ">
+                <div className="relative  p-5">
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         slidesPerView={3}

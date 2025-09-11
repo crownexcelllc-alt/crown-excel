@@ -12,7 +12,7 @@ const SwitchingHeavyComputing = () => {
                         <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Built with high-performance capabilities, network switches handle complex networking tasks like data routing, traffic management, and load balancing with ease, ensuring seamless connectivity for all devices.</p>
                     </div>
                     <div className="right-part -mt-20 text-black bg-[#e9e9e9]  rounded-[20px] p-[20px] lg:p-[32px]" >
-                        <h1 className=' text-[24px] lg:text-[28px] font-montserrat font-[600] leading-[25px] lg:leading-[33px]'>Advance Graphics Capabilities</h1>
+                        <h1 className=' text-[24px] lg:text-[28px] font-montserrat font-[600] leading-[25px] lg:leading-[33px]'>Advanced Graphics Capabilities</h1>
                         <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Equipped with cutting-edge technology, these switches support advanced features like VLANs, QoS, and link aggregation, providing robust solutions for data-intensive and high-traffic network environments.</p>
                     </div>
                 </div>

@@ -4,11 +4,11 @@ import LogoutButton from '@/app/admin/components/LogoutButton';
 
 export default function AdminLayout({ children, title = 'Admin Dashboard' }) {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--background)', color: 'var(--foreground)' }}>
-      <aside style={{ width: 240, background: '#fff', borderRight: '1px solid #eee', padding: 24 }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'white', color: 'black' }}>
+      <aside style={{ color: "black",width: 240, background: '#fff', borderRight: '1px solid #eee', padding: 24 }}>
         <div className="mb-6">
           <Link href="/">
-            <p className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>Admin</p>
+            <p className="text-xl font-bold" style={{ color: 'black' }}>Admin</p>
           </Link>
         </div>
         <nav className="flex flex-col gap-2 text-sm">

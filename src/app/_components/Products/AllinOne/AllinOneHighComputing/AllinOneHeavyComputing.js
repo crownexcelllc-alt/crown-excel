@@ -12,7 +12,7 @@ const AllinOneHeavyComputing = () => {
                             <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Unleash unparalleled speed with cutting-edge processors built for multitasking and high-performance tasks. Designed to handle demanding applications with efficiency and reliability.</p>
                         </div>
                         <div className="right-part -mt-20 text-black bg-[#e9e9e9]  rounded-[20px] p-[20px] lg:p-[32px]" >
-                            <h1 className=' text-[24px] lg:text-[28px] font-montserrat font-[600] leading-[25px] lg:leading-[33px]'>Advance Graphics Capabilities</h1>
+                            <h1 className=' text-[24px] lg:text-[28px] font-montserrat font-[600] leading-[25px] lg:leading-[33px]'>Advanced Graphics Capabilities</h1>
                             <p className='mt-4 text-[14px] lg:text-[16px] font-montserrat leading-[27px]'>Experience stunning visuals and superior rendering with state-of-the-art graphics technology. Ideal for gamers, creators, and professionals seeking immersive and detailed displays.</p>
                         </div>
                     </div>

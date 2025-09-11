@@ -54,19 +54,19 @@ const Services = () => {
           {/* Hardware Services */}
           <div className="card bg-white text-black w-[350px] font-montserrat lg:w-[550px] py-[40px] px-[10px] lg:py-[50px] lg:px-[30px] text-center lg:text-start transition-transform duration-500 origin-bottom-left hover:-translate-x-4 hover:-translate-y-4 hover:scale-105 hover:shadow-[0_8px_32px_rgba(0,0,0,0.15)] animate-cardFadeIn" style={{ animationDelay: '0.1s' }}>
             <h1 className="font-semibold text-[16px] lg:text-[24px] font-montserrat">Cloud Computing</h1>
-            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">We help businesses migrate legacy systems to the cloud with minimal disruption and a clear rollback plan. Our modernization services optimize application architecture, reduce costs, and increase agility.</p>
+            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">We offer expert cloud computing services, helping businesses seamlessly migrate legacy systems to the cloud with minimal disruption and a clear rollback strategy. Our cloud modernization solutions enhance application architecture, reduce IT costs, and boost business agility.</p>
           </div>
 
           {/* Software Services */}
           <div className="card bg-black text-white w-[350px] lg:w-[550px] py-[40px] px-[10px] lg:py-[50px] lg:px-[30px] text-center lg:text-start transition-transform duration-500 origin-center hover:-translate-y-2 hover:scale-105 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)] animate-cardFadeIn" style={{ animationDelay: '0.3s' }}>
             <h1 className="font-semibold text-[16px] lg:text-[24px] font-montserrat">Software Solutions</h1>
-            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">We provide tailored IT consulting services to optimize infrastructure, boost efficiency, and align technology with your goals.</p>
+            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">We deliver custom software solutions designed to meet your unique business needs. From application development to system integration, our services enhance operational efficiency and align technology with your strategic goals.</p>
           </div>
 
           {/* IT Services */}
           <div className="card bg-[#0e4637] text-white w-[350px] lg:w-[550px] py-[40px] px-[10px] lg:py-[50px] lg:px-[30px] text-center lg:text-start transition-transform duration-500 origin-top-right hover:translate-x-4 hover:-translate-y-4 hover:scale-105 hover:shadow-[0_8px_32px_rgba(0,0,0,0.18)] animate-cardFadeIn" style={{ animationDelay: '0.5s' }}>
             <h1 className="font-semibold text-[16px] lg:text-[24px] font-montserrat">IT Infrastructure</h1>
-            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">End-to-end IT management with proactive monitoring, ensuring smooth operations and prompt support for your business.</p>
+            <p className="mt-2 text-[10px] lg:text-[16px] font-montserrat">Our comprehensive IT infrastructure management services include proactive monitoring, network optimization, and reliable technical support. We ensure smooth business operations and scalable infrastructure tailored to your growth.</p>
           </div>
         </div>
       </div>

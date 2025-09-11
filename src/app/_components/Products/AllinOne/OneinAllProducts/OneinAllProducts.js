@@ -8,7 +8,7 @@ import Allinone6 from '../../../../../Components/Images/oneinall6.png'
 import Image from 'next/image'
 const OneinAllProducts = () => {
     const Business = [
-        { Image: Allinone1, title: 'ASUS EXPERT CENTER D700 SC', desc: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed .' },
+        { Image: Allinone1, title: 'ASUS EXPERT CENTER D700 SC', desc: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.' },
         { Image: Allinone2, title: 'Envy 34-C1098Nh', desc: 'The HP Envy 34-C1098Nh All-in-One (AIO) PC is a premium computing solution that elevates your digital experience.' },
         { Image: Allinone3, title: 'HP All-in-One', desc: 'The HP All-in-One 22-dd2267nh Bundle PC offers a compact and efficient computing solution suitable for various tasks.' },
     ]
@@ -24,7 +24,7 @@ const OneinAllProducts = () => {
                 <div className="allinone-bottom-top mt-10">
                     <div className="title-button flex flex-col md:flex-row lg:flex-row items-center justify-between px-5 mt-10">
                         <h1 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>For Businesses:</h1>
-                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Out Store</button>
+                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Our Store</button>
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Business.map((item, i) => (
@@ -43,7 +43,7 @@ const OneinAllProducts = () => {
                 <div className="allinone-bottom-bottom mt-20">
                     <div className="title-button flex flex-col md:flex-row lg:flex-row items-center justify-between px-5 mt-10">
                         <h1 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>For Individuals:</h1>
-                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Out Store</button>
+                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Our Store</button>
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Individuals.map((item, i) => (

@@ -10,7 +10,7 @@ const UnleashPower = () => {
       </div>
       <div className="unleash-center  flex flex-col h-full w-full items-center justify-center z-10">
         <div className="heading text-center">
-            <h1 className='text-[20px] md:text-[24px] leading-[40px] lg:text-[40px] font-[700] font-montserrat lg:leading-[60px] text-black'>UNLEASE POWER, PORTABILITY AND <br className='hidden lg:block'/> PERORMANCE IN ONE LAPTOP</h1>
+            <h1 className='text-[20px] md:text-[24px] leading-[40px] lg:text-[40px] font-[700] font-montserrat lg:leading-[60px] text-black'>UNLEASH POWER, PORTABILITY AND <br className='hidden lg:block'/> PERFORMANCE IN ONE LAPTOP</h1>
         </div>
         <div className="image mt-5 md:my-20 lg:mt-10">
             <Image alt='' height={400} width={800} src={Laptop} className='lg:w-[800px] lg:h-[400px] md:w-[600px] w-[300px]'/>

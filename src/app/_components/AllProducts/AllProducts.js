@@ -16,6 +16,7 @@ import Accessories from '../../../Components/Images/accessories.png'
 import Biometric from '../../../Components/Images/biometric.png'
 import Cctv from '../../../Components/Images/cctv.png'
 import { FaArrowRight } from "react-icons/fa";
+import Link from 'next/link';
 
 
 const categories = [
@@ -36,64 +37,75 @@ const productDetails = {
     laptops: {
         title: 'Laptops',
         description: 'High-performance laptops for work and play. Choose from a wide range of brands and specs.',
-        Image: Laptop
+        Image: Laptop,
+        href: '/products/laptops'
     },
     desktop: {
         title: 'Desktop',
         description: 'Powerful desktops for office, gaming, and creative work. Custom builds available.',
-        Image: Desktop
+        Image: Desktop,
+        href: '/products/pc'
     },
     'all-in-one': {
         title: 'All In One',
         description: 'Space-saving all-in-one PCs with sleek design and robust performance.',
-        Image: Screen
+        Image: Screen,
+        href: '/products/all-in-one'
 
     },
     printers: {
         title: 'Printers',
         description: 'Reliable printers for home and business, including laser, inkjet, and multifunction models.',
-        Image: Printer
+        Image: Printer,
+        href: '/products/printers'
     },
     routers: {
         title: 'Routers',
         description: 'Fast and secure routers for seamless connectivity and network management.',
-        Image: Routerr
+        Image: Routerr,
+        href: '/products/routers-access-points'
 
     },
     switching: {
         title: 'Switching',
         description: 'Network switches for scalable and efficient networking solutions.',
-        Image: Switching
+        Image: Switching,
+        href: '/products/switching'
 
     },
     'scanners-copier': {
         title: 'Scanners & Copier',
         description: 'High-resolution scanners and copiers for all your document needs.',
-        Image: Scanner
+        Image: Scanner,
+        href: '/products/scanners-copier'
 
     },
     'keyboards-mouse': {
         title: 'Keyboards & Mouse',
         description: 'Ergonomic keyboards and mice for comfortable and productive use.',
-        Image: Keyboard
+        Image: Keyboard,
+        href: '/products/keyboard-mouse'
 
     },
     accessories: {
         title: 'Accessories',
         description: 'A wide range of computer accessories to enhance your setup.',
-        Image: Accessories
+        Image: Accessories,
+        href: '/products/accessories'
 
     },
     biometrics: {
         title: 'Biometrics',
         description: 'Advanced biometric devices for secure authentication and access control.',
-        Image: Biometric
+        Image: Biometric,
+        href: '/products/biometrics'
 
     },
     'phones-cctv': {
         title: 'Phones & CCTV',
         description: 'Latest phones and CCTV systems for communication and security.',
-        Image: Cctv
+        Image: Cctv,
+        href: '/products/phones-cctv'
 
     },
 };
@@ -127,7 +139,7 @@ const AllProducts = () => {
                 }}>
                     <div className="all-products-left flex mt-[60px] flex-col items-center justify-center">
                         <h1 className='text-[56px] font-[600] text-black '>{productDetails[active].title}</h1>
-                        <button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
+                        <Link href={productDetails[active].href}><button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button></Link>
                     </div>
                     <div className="all-products-right  mt-[150px]">
                         <Image width={539} height={224} className='md:w-[294.6px] md:h-[122.3px] lg:w-[539px] lg:h-[224px]' alt='img' src={productDetails[active].Image} />

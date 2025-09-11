@@ -119,7 +119,7 @@ function CrownExcelFamily() {
     {
       id: 9,
       name: "Lavina Santlalani",
-      position: "Businees Development Manager",
+      position: "Business Development Manager",
       department: "Business Development",
       experience: "7+ Years",
       image: Lavina,
@@ -128,7 +128,7 @@ function CrownExcelFamily() {
     {
       id: 10,
       // name: "Jahubar Sathik.H",
-      name: "Jubair sathik",
+      name: "Jubair Sathik",
       position: "Logistics Coordinator",
       department: "Admin",
       experience: "7+ Years",
@@ -252,7 +252,7 @@ function CrownExcelFamily() {
       name:
         "Junaid Ali",
       position: "Store Operations",
-      department: "Wharehouse",
+      department: "Warehouse",
       experience: "7+ Years",
       image: etc2,
       quote: "Our team is our extended family, and we grow together."
@@ -287,7 +287,7 @@ function CrownExcelFamily() {
     {
       id: 24,
       name: "Gemuh Fidelis Mashim",
-      position: "store supervisor",
+      position: "Store Supervisor",
       department: "Inventory",
       experience: "7+ Years",
       image: Fidelis,
@@ -313,7 +313,7 @@ function CrownExcelFamily() {
     },
     {
       img: communityImg,
-      title: "Internals Matters",
+      title: "Internal Matters",
       description: "Giving back to our community and supporting those in need."
     },
     {
@@ -496,7 +496,7 @@ function CrownExcelFamily() {
                     {value.title === 'Excellence' && (
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2" /><path d="M8 12L11 15L16 10" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     )}
-                    {(value.title === 'Crown Excel' || value.title === 'Internals Matters') && (
+                    {(value.title === 'Crown Excel' || value.title === 'Internal Matters') && (
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M2 8L6 16H18L22 8L12 2L2 8Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="M6 16V20H18V16" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /></svg>
                     )}
                     {value.title === 'Continuous Growth' && (
@@ -616,7 +616,7 @@ function CrownExcelFamily() {
                 </Link>
                 <Link href="/company/career">
                   <button className="bg-transparent text-white border-2 border-white px-8 py-2 rounded-lg font-montserrat font-medium hover:bg-white hover:text-[#16806b] transition-colors">
-                    Apply Job
+                   Apply Now
                   </button>
                 </Link>
               </div>

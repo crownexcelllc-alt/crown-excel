@@ -3,6 +3,13 @@ import React from 'react';
 import Image from 'next/image';
 import empoweringImage from '../../../../../Components/Images/networkempower.png';
 import NetworkIT from '../../../../../Components/Images/hardwareempowering.png';
+import Dirham from '../../../../../Components/Images/dirham.png';
+import ITservice from '../../../../../Components/Images/serviceIt.png'
+import Support from '../../../../../Components/Images/support.png'
+import Proactive from '../../../../../Components/Images/proactive.png'
+import Cost from '../../../../../Components/Images/cost.png'
+import Rapid from '../../../../../Components/Images/rapid.png'
+import Security from '../../../../../Components/Images/security3.png'
 
 const HardwareEmpowering = () => {
   // Get quote function
@@ -34,7 +41,7 @@ const HardwareEmpowering = () => {
       response: "4 Hours"
     },
     {
-      type: "Long Term AMC", 
+      type: "Long Term AMC",
       duration: "6 Months - 3 Years",
       title: "Complete Business & IT Management",
       subtitle: "We handle all your business operations, software, POS, and IT needs",
@@ -58,41 +65,47 @@ const HardwareEmpowering = () => {
 
   // Update service features for business/software/POS
   const serviceFeatures = [
-    { 
-      icon: "🧑‍💻", 
-      title: "Business & IT Experts", 
+    {
+      icon: "🧑‍💻",
+      title: "Business & IT Experts",
       desc: "Specialists in business operations, POS, billing, and software management",
-      metric: "200+ Certified Engineers"
+      metric: "200+ Certified Engineers",
+      Image : ITservice
     },
-    { 
-      icon: "⏰", 
-      title: "24/7 Priority Support", 
+    {
+      icon: "⏰",
+      title: "24/7 Priority Support",
       desc: "Round-the-clock help for any business, POS, or software issue",
-      metric: "2-4 Hour Response"
+      metric: "2-4 Hour Response",
+      Image : Support
     },
-    { 
-      icon: "📊", 
-      title: "Proactive Monitoring", 
+    {
+      icon: "📊",
+      title: "Proactive Monitoring",
       desc: "Real-time tracking of business systems, POS, and software updates",
-      metric: "99.9% Uptime Guarantee"
+      metric: "99.9% Uptime Guarantee",
+      Image : Proactive
     },
-    { 
-      icon: "💰", 
-      title: "Cost Optimization", 
+    {
+      icon: "💰",
+      title: "Cost Optimization",
       desc: "Reduce expenses and improve business efficiency with smart management",
-      metric: "40% Cost Reduction"
+      metric: "40% Cost Reduction",
+      Image : Cost
     },
     {
       icon: "🚀",
       title: "Rapid Deployment",
       desc: "Quick setup and integration for your business and POS systems",
-      metric: "24 Hour Setup"
+      metric: "24 Hour Setup",
+      Image : Rapid
     },
     {
       icon: "🔒",
       title: "Security & Compliance",
       desc: "We keep your business data and software secure and compliant",
-      metric: "100% Compliant"
+      metric: "100% Compliant",
+      Image : Security
     }
   ];
 
@@ -111,7 +124,7 @@ const HardwareEmpowering = () => {
       ]
     },
     {
-      category: "Service Locations", 
+      category: "Service Locations",
       items: [
         "On-site Support",
         "Remote Monitoring",
@@ -134,11 +147,13 @@ const HardwareEmpowering = () => {
   ];
 
   const industryStats = [
-    { number: "500+", label: "Active AMC Contracts", sublabel: "Across all business types" },
+    { number: "500+", label: "Ongoing AMC Contracts", sublabel: "Across all business types" },
     { number: "99.9%", label: "Average Uptime", sublabel: "Business systems managed" },
-    { number: "2 Hours", label: "Avg. Response", sublabel: "Emergency support" },
-    { number: "₹50L+", label: "Cost Savings", sublabel: "Annual client savings" }
+    { number: "30 mins", label: "Avg. Response", sublabel: "Emergency support" },
+    { number: "50%+", label: "Cost Savings", sublabel: "Annual client savings", useDirham: true }
   ];
+
+
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
@@ -151,7 +166,7 @@ const HardwareEmpowering = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
+
         {/* Hero Section with Zigzag Layout */}
         <div className="mb-20">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -164,7 +179,7 @@ const HardwareEmpowering = () => {
                   </div>
                   <div className="h-1 w-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
                 </div>
-                
+
                 <h1 className="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
                   <span className="block">Hand Over All Your Business Work</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
@@ -174,7 +189,7 @@ const HardwareEmpowering = () => {
                     POS, Software, Operations—No Worries!
                   </span>
                 </h1>
-                
+
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
                   With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.
                 </p>
@@ -183,15 +198,27 @@ const HardwareEmpowering = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6">
                   {industryStats.map((stat, index) => (
                     <div key={index} className="text-center">
-                      <div className="text-2xl md:text-3xl font-black text-[#16CA9A]">{stat.number}</div>
+                      <div className="flex justify-center items-center gap-1 text-2xl md:text-3xl font-black text-[#16CA9A]">
+                        {stat.useDirham && (
+                          <Image
+                            src={Dirham}
+                            alt="Dirham Symbol"
+                            width={30}
+                            height={30}
+                            className="inline-block object-contain"
+                          />
+                        )}
+                        {stat.number}
+                      </div>
                       <div className="text-sm font-semibold text-gray-800">{stat.label}</div>
                       <div className="text-xs text-gray-600">{stat.sublabel}</div>
                     </div>
                   ))}
                 </div>
-                
+
+
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button 
+                  <button
                     onClick={getQuote}
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
                   >
@@ -252,12 +279,12 @@ const HardwareEmpowering = () => {
                         {plan.duration}
                       </div>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <h3 className="text-2xl font-black text-gray-900">{plan.type}</h3>
                       <h4 className="text-lg font-semibold text-gray-700">{plan.title}</h4>
                       <p className="text-sm text-gray-600">{plan.subtitle}</p>
-                      
+
                       {/* Key Metrics */}
                       <div className="grid grid-cols-2 gap-3 my-4">
                         <div className="text-center bg-gray-50 p-3 rounded-lg">
@@ -269,7 +296,7 @@ const HardwareEmpowering = () => {
                           <div className="text-xs text-gray-600">Response Time</div>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-3">
                         <h5 className="text-sm font-bold text-gray-800 uppercase tracking-wide">Included Services</h5>
                         {plan.features.map((feature, idx) => (
@@ -279,7 +306,7 @@ const HardwareEmpowering = () => {
                           </div>
                         ))}
                       </div>
-                      
+
                       <div className={`bg-gradient-to-r ${plan.color} bg-opacity-10 p-4 rounded-xl mt-6`}>
                         <p className="text-sm font-semibold text-gray-800 mb-2">{plan.benefits}</p>
                         <div className="flex items-center justify-center gap-2 mt-3">
@@ -291,8 +318,8 @@ const HardwareEmpowering = () => {
                           </div>
                         </div>
                       </div>
-                      
-                      <button 
+
+                      <button
                         onClick={getQuote}
                         className={`w-full mt-6 py-4 bg-gradient-to-r ${plan.color} text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden`}
                       >
@@ -313,6 +340,7 @@ const HardwareEmpowering = () => {
         </div>
 
         {/* Service Features - Hexagonal Grid */}
+        {/* Service Features - Image Cards (Reference Style) */}
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
@@ -321,21 +349,36 @@ const HardwareEmpowering = () => {
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {serviceFeatures.map((feature, index) => (
-              <div key={index} className="group">
-                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-[#16CA9A]/30">
-                  <div className="text-center space-y-4">
-                    <div className="text-4xl mb-3">{feature.icon}</div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#16CA9A] transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {feature.desc}
-                    </p>
-                    <div className="bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 p-3 rounded-lg">
-                      <div className="text-lg font-black text-[#16CA9A]">{feature.metric}</div>
-                    </div>
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+              >
+                {/* Replace emoji with image */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={feature.Image} // 👈 you add your own images here
+                    alt={feature.title}
+                    fill
+                    className="object-cover transform group-hover:scale-110 transition duration-700"
+                  />
+                  {/* Optional gradient overlay with your colors */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#084032]/70 via-transparent to-transparent"></div>
+                </div>
+
+                {/* Text content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#16CA9A] transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    {feature.desc}
+                  </p>
+                  <div className="bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 p-3 rounded-lg text-center">
+                    <span className="text-lg font-black text-[#16CA9A]">
+                      {feature.metric}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -385,7 +428,7 @@ const HardwareEmpowering = () => {
                 <p className="text-xl mb-6 opacity-90">
                   With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!
                 </p>
-                
+
                 {/* Benefits List */}
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
@@ -401,13 +444,13 @@ const HardwareEmpowering = () => {
                     <span className="text-lg">24/7 support & rapid response</span>
                   </div>
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg">
                     <span className="mr-2">🔍</span>
                     Start Free Assessment
                   </button>
-                  <button 
+                  <button
                     onClick={getQuote}
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
                   >

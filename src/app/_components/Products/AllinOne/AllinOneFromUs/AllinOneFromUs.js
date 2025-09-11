@@ -18,11 +18,11 @@ const AllinOneFromUs = () => {
         </div>
         <div className="right-part-divs text-black p-[14px] w-full h-auto lg:w-[476px] lg:h-[147px]" >
             <h1 className='font-montserrat text-[22px] font-[600] leading-[26px]'>Latest Technology</h1>
-            <p className='text-[16px] leading-[27px] font-montserrat mt-5'>Desktops have incorporated the latest in processors, high-capacity storage, and top-of-the line graphics cards to ensure superb performance to clients.</p>
+            <p className='text-[16px] leading-[27px] font-montserrat mt-5'>Desktops have incorporated the latest in processors, high-capacity storage, and top-of-the-line graphics cards to ensure superb performance to clients.</p>
         </div>
         <div className="right-part-divs text-white rounded-[20px] p-[30px] w-full h-auto lg:w-[476px] lg:h-auto" style={{backgroundImage: 'linear-gradient(339deg, #084032 25%, #118264 52%)'}} >
             <h1 className='font-montserrat text-[22px] font-[600] leading-[26px]'>Customization & Upgrades</h1>
-            <p className='text-[16px] leading-[27px] font-montserrat mt-5'>Does it need certain configurations? We can provide customization services so that the desktop PC is tailored specifically to your needs-whether business or game-related.</p>
+            <p className='text-[16px] leading-[27px] font-montserrat mt-5'>Need specific configurations? We can provide customization services so that the desktop PC is tailored specifically to your needs-whether business or game-related.</p>
         </div>
         <div className="right-part-divs text-black p-[14px] w-full h-auto lg:w-[476px] lg:h-[147px]" >
             <h1 className='font-montserrat text-[22px] font-[600] leading-[26px]'>Warranty & After-Sales Support</h1>

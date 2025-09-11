@@ -24,7 +24,7 @@ const LaptopBanner = () => {
           </div>
           <div className="text flex flex-col items-center  mb-4">
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[50px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='md:text-[40px] font-montserrat lg:text-[50px]  font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
+            <h1 className='md:text-[40px] font-montserrat lg:text-[50px]  font-[900] text-[#147d61]'>LAPTOP BRANDS</h1>
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-[40px] lg:text-[50px] leading-tight tracking-tight ">FOR EVERY NEED
             </h1>
           </div>

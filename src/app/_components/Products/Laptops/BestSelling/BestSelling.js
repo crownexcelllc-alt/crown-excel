@@ -14,7 +14,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 const carouselData = [
     {
         title: 'LENOVOLEGION SLIM 5',
-        description: `Experience Unmatched quality and reliablity  woth our  premieum  hardware  solutions and expert AMC services. We offer cutting-edge technology and ongoing support to ensure your busines.`,
+        description: `Experience unmatched quality and reliability with our premium hardware solutions and expert AMC services. We offer cutting-edge technology and ongoing support to ensure your business thrives.`,
         image: BestProduct1,
     },
     {

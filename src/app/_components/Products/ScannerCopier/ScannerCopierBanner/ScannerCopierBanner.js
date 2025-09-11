@@ -24,7 +24,7 @@ const ScannerCopierBanner = () => {
           </div>
           <div className="text flex flex-col items-center mb-4">
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='text-[60px] font-montserrat font-[900] text-[#147d61]'>SCANNERS BRANDS</h1>
+            <h1 className='text-[60px] font-montserrat font-[900] text-[#147d61]'>SCANNER BRANDS</h1>
             <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
             </h1>
           </div>

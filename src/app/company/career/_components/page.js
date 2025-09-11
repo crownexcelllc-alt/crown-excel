@@ -9,9 +9,9 @@ const positions = [
     title: 'Virtual Assistant',
     description: 'We are hiring a Virtual Assistant for software configuration.',
     requirements: [
-      '2 Years Experience',
+      '2+ Years of Experience',
       'Can speak Arabic and English',
-      'Full Time Job',
+      'Full-Time Position',
     ],
   },
   {
@@ -19,9 +19,9 @@ const positions = [
     title: 'Hardware Specialist',
     description: 'We are hiring a Hardware Specialist for IT support.',
     requirements: [
-      '3 Years Experience',
+      '3+ Years of Experience',
       'Expert in hardware troubleshooting',
-      'Full Time Job',
+      'Full-Time Position',
     ],
   },
 ];

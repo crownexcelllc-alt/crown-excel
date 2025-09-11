@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 const Business = [
     { Image: Popular1, Title: 'CANON LIDE SCANNER' },
-    { Image: Popular2, Title: 'HP Laserjet Pro' },
+    { Image: Popular2, Title: 'HP LaserJet Pro' },
     { Image: Popular3, Title: 'HP SCANJET 5000' },
 ]
 const Individuals = [
