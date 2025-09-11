@@ -28,7 +28,7 @@ const TrustedPartner = () => {
                         </div>
                     </div>
                     <Link href={'/company/about-us'}>
-                    <div className="arrow-icon hidden md:flex absolute bg-[#084032] w-20 h-20 rounded-full items-center justify-center text-white text-4xl cursor-pointer top-105 left-75 z-10 transition-all duration-300">
+                    <div className="arrow-icon hidden md:flex absolute bg-[#084032] w-20 h-20 rounded-full items-center justify-center text-white text-4xl cursor-pointer top-92 left-75 z-10 transition-all duration-300">
                         <FaArrowRight />
                     </div>
                     </Link>
