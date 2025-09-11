@@ -11,7 +11,7 @@ const ContactUsPageBanner = () => {
         backgroundPosition: 'top',
       }}
     >
-      <h1 className='text-white text-[40px] lg:text-[48px] font-montserrat font-[600]'>Contact US</h1>
+      <h1 className='text-white text-[40px] lg:text-[48px] font-montserrat font-[600]'>Contact Us</h1>
       <p className='text-white text-[12px] lg:text-[16px] leading-[20px] lg:leading-[27px] lg:w-[975px] font-montserrat'>Fill out the form below, give us a call, or send us an email, and we’ll get back to you promptly. At Crown Excel, we value your time and are committed to providing fast and efficient support. Let’s connect!</p>
     </div>
   )

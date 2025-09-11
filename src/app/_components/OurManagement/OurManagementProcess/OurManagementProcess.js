@@ -6,7 +6,7 @@ const OurManagementProcess = () => {
   return (
     <div className='flex flex-col items-center p-[20px] lg:p-[70px] bg-[#e5e0c8]'>
       <h1 className='text-black text-[30px] md:text-[40px] lg:text-[50px] leading-[30px] lg:leading-[65px] text-center tracking-[0.1px] font-[700] mt-10 lg:mt-0'>
-      What makes our <span className='text-[#0d5c47]'>Process</span> best
+      What makes our <span className='text-[#0d5c47]'>Process</span> the best
       </h1>
       <div className="cards-divs flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 justify-center gap-5 mt-10">
         {/* Card 1 */}
