@@ -105,7 +105,7 @@ const HardwareEmpowering = () => {
       title: "Security & Compliance",
       desc: "We keep your business data and software secure and compliant",
       metric: "100% Compliant",
-      Image : Security
+      Image : Security,
     }
   ];
 
