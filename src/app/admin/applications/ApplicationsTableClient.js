@@ -7,6 +7,8 @@ export default function ApplicationsTableClient({ initialData = [], apiBase = pr
   const [page, setPage] = useState(1);
   const pageSize = 10;
   const [loading, setLoading] = useState(false);
+  console.log("Application Row", rows);
+  
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

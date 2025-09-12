@@ -7,7 +7,7 @@ export default function AdminLayout({ children, title = 'Admin Dashboard' }) {
     <div style={{ display: 'flex', minHeight: '100vh', background: 'white', color: 'black' }}>
       <aside style={{ color: "black",width: 240, background: '#fff', borderRight: '1px solid #eee', padding: 24 }}>
         <div className="mb-6">
-          <Link href="/">
+          <Link href="/admin">
             <p className="text-xl font-bold" style={{ color: 'black' }}>Admin</p>
           </Link>
         </div>
@@ -25,7 +25,7 @@ export default function AdminLayout({ children, title = 'Admin Dashboard' }) {
       <main style={{ flex: 1, padding: 32 }}>
         <header className="mb-6">
           <h1 className="text-2xl font-semibold">{title}</h1>
-          <p className="text-sm text-gray-600 mt-1">Admin interface — theme uses site colors</p>
+          {/* <p className="text-sm  text-gray-600 mt-1">Admin interface — theme uses site colors</p> */}
         </header>
         <section>
           {children}
