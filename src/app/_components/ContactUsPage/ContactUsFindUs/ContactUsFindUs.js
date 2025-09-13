@@ -12,7 +12,9 @@ import Link from 'next/link';
 import { FaX } from 'react-icons/fa6';
 import { XLogoIcon } from '@phosphor-icons/react';
 import { InstagramLogo, LinkedinLogo } from 'phosphor-react';
-import { FaYoutube, FaPinterest, FaTiktok, FaTelegramPlane, FaSnapchatGhost } from 'react-icons/fa';
+import { FaYoutube, FaPinterest, FaTiktok, FaTelegramPlane, FaSnapchatGhost, FaWhatsapp, FaReddit } from 'react-icons/fa';
+import { BsThreads } from 'react-icons/bs'; // Bootstrap icon as alternative placeholder
+
 
 const ContactUsFindUs = () => {
     const [settings, setSettings] = useState({
@@ -111,6 +113,16 @@ const ContactUsFindUs = () => {
 
                     {settings.snapchat && (
                         <SocialIcon href={settings.snapchat}><FaSnapchatGhost className="text-[#084032]" /></SocialIcon>
+                    )}
+                    {settings.whatsapp && (
+                        <SocialIcon href={settings.whatsapp}><FaWhatsapp  className="text-[#084032]" /></SocialIcon>
+                    )}
+                    {settings.threads && (
+  <SocialIcon href={settings.threads}><BsThreads className="text-[#084032]" /></SocialIcon>
+)}
+
+                    {settings.reddit && (
+                        <SocialIcon href={settings.reddit}><FaReddit  className="text-[#084032]" /></SocialIcon>
                     )}
                 </div>
 

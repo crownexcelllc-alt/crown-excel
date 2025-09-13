@@ -33,8 +33,12 @@ async function saveSettings(data) {
   tiktok: data.tiktok || '',
   telegram: data.telegram || '',
   snapchat: data.snapchat || '',
+  whatsapp: data.whatsapp || '',
+  reddit: data.reddit || '',
+  threads: data.threads || '',
   updatedAt: new Date().toISOString()
 };
+
   
   await db.collection('settings').replaceOne(
     { _id: 'website_settings' },
