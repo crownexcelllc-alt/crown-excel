@@ -1,19 +1,57 @@
 "use client";
 import React from 'react';
-import NetworkingSmartImage from '../../../../../Components/Images/serversmart.png';
+import NetworkingSmartImage from '../../../../../Components/Images/modernstorage.jpg';
 import SignalTower from '../../../../../Components/Images/TowerImage.png';
 import Image from 'next/image';
+import Dragon from '../../../../../Components/Images/dragon.png'
+import Intel from '../../../../../Components/Images/intell.png'
+import Dell from '../../../../../Components/Images/dell (1).png'
+import Accer from '../../../../../Components/Images/acer (2).png'
+import Xerox from '../../../../../Components/Images/Xerox.png'
+import Amd from '../../../../../Components/Images/amdd.png'
+import HP from '../../../../../Components/Images/hp (1).png'
+import ViewSonic from '../../../../../Components/Images/view sonic.png'
+import Optoma from '../../../../../Components/Images/optoma.png'
+import ricoh from '../../../../../Components/Images/ricoh.png'
+import meetion from '../../../../../Components/Images/meetion.png'
+import logitech from '../../../../../Components/Images/logitech.png'
+import lexar from '../../../../../Components/Images/lexar.png'
+import Kingston from '../../../../../Components/Images/Kingston.png'
+import epson from '../../../../../Components/Images/epson.png'
+import crucial from '../../../../../Components/Images/crucial.png'
+import canon from '../../../../../Components/Images/canon.png'
+import brother from '../../../../../Components/Images/brother.png'
+import benq from '../../../../../Components/Images/benq.png'
+import aoc from '../../../../../Components/Images/aoc.png'
+import alienware from '../../../../../Components/Images/alienware.png'
+import adhua from '../../../../../Components/Images/adhua.png'
+import tplink from '../../../../../Components/Images/tp link.png'
+import samsung from '../../../../../Components/Images/samsung (1).png'
+import razor from '../../../../../Components/Images/razor.png'
+import microsof from '../../../../../Components/Images/microsof.png'
+import lg from '../../../../../Components/Images/lg.png'
+import lenovo from '../../../../../Components/Images/lenovo (1).png'
+import Asus from '../../../../../Components/Images/asus (1).png'
+import apple from '../../../../../Components/Images/apple (3).png'
+import Enterprise from '../../../../../Components/Images/optimizedstorage.jpg'
+import CloudStorage from '../../../../../Components/Images/cloudstorage.jpg'
+import Virtualization from '../../../../../Components/Images/virtualization.jpg'
+import DataManagement from '../../../../../Components/Images/Datamanagement.jpg'
+import Disaster from '../../../../../Components/Images/Disaster.png'
+import Computing from '../../../../../Components/Images/HighComputing.jpg'
 
 export default function ServerSmart() {
   const storageServices = [
+
     {
-      icon: "💾",
+      Image: Enterprise,
       title: "Enterprise Storage Solutions",
       description: "Scalable, high-performance storage systems for mission-critical business applications with enterprise-grade reliability.",
       features: ["SAN & NAS Implementation", "High-Availability Storage", "Performance Optimization", "24/7 Monitoring"],
       details: "Our enterprise storage solutions provide the foundation for your critical data infrastructure, ensuring optimal performance and reliability."
     },
     {
+      Image: CloudStorage,
       icon: "☁️",
       title: "Cloud Storage Integration",
       description: "Hybrid cloud storage solutions that seamlessly integrate on-premises and cloud infrastructure for maximum flexibility.",
@@ -21,6 +59,7 @@ export default function ServerSmart() {
       details: "Bridge your on-premises and cloud environments with intelligent data placement and automated tiering strategies."
     },
     {
+      Image: Virtualization,
       icon: "🖥️",
       title: "Virtualization Infrastructure",
       description: "Complete virtualization platform to maximize resource utilization and reduce infrastructure costs significantly.",
@@ -28,21 +67,21 @@ export default function ServerSmart() {
       details: "Transform your IT infrastructure with cutting-edge virtualization technologies that deliver superior performance and efficiency."
     },
     {
-      icon: "📊",
+      Image: DataManagement,
       title: "Data Management & Analytics",
       description: "Comprehensive data lifecycle management with intelligent automation and advanced analytics capabilities.",
       features: ["Data Deduplication", "Automated Tiering", "Lifecycle Management", "Performance Analytics"],
       details: "Optimize your data strategy with intelligent management tools that reduce costs and improve operational efficiency."
     },
     {
-      icon: "🔒",
+      Image: Disaster,
       title: "Backup & Disaster Recovery",
       description: "Robust backup and disaster recovery solutions ensuring business continuity and complete data protection.",
       features: ["Automated Backups", "Site-to-Site Replication", "Cloud Backup", "RTO/RPO Optimization"],
       details: "Protect your business with comprehensive disaster recovery solutions that guarantee rapid recovery and minimal downtime."
     },
     {
-      icon: "⚡",
+      Image: Computing,
       title: "High-Performance Computing",
       description: "Specialized storage solutions for high-performance computing workloads and data-intensive applications.",
       features: ["NVMe Storage", "Parallel File Systems", "GPU Storage", "Scientific Computing"],
@@ -82,13 +121,39 @@ export default function ServerSmart() {
   ];
 
   const technologyPartners = [
-    { name: "VMware", specialty: "Virtualization Platform" },
-    { name: "Dell EMC", specialty: "Enterprise Storage" },
-    { name: "NetApp", specialty: "Data Management" },
-    { name: "Microsoft", specialty: "Hyper-V & Azure" },
-    { name: "HPE", specialty: "Infrastructure Solutions" },
-    { name: "Cisco", specialty: "HyperFlex" }
+    { name: "Dragon", Image: Dragon },
+    { name: "Intel", Image: Intel },
+    { name: "Dell", Image: Dell },
+    { name: "Acer", Image: Accer },
+    { name: "Xerox", Image: Xerox },
+    { name: "AMD", Image: Amd },
+    { name: "HP", Image: HP },
+    { name: "ViewSonic", Image: ViewSonic },
+    { name: "Optoma", Image: Optoma },
+    { name: "Ricoh", Image: ricoh },
+    { name: "Meetion", Image: meetion },
+    { name: "Logitech", Image: logitech },
+    { name: "Lexar", Image: lexar },
+    { name: "Kingston", Image: Kingston },
+    { name: "Epson", Image: epson },
+    { name: "Crucial", Image: crucial },
+    { name: "Canon", Image: canon },
+    { name: "Brother", Image: brother },
+    { name: "BenQ", Image: benq },
+    { name: "AOC", Image: aoc },
+    { name: "Alienware", Image: alienware },
+    { name: "Dahua", Image: adhua },
+    { name: "TP-Link", Image: tplink },
+    { name: "Samsung", Image: samsung },
+    { name: "Razer", Image: razor },
+    { name: "Microsoft", Image: microsof },
+    { name: "LG", Image: lg },
+    { name: "Lenovo", Image: lenovo },
+    { name: "Asus", Image: Asus },
+    { name: "Apple", Image: apple }
   ];
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -165,7 +230,7 @@ export default function ServerSmart() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {storageServices.map((service, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <Image src={service.Image} alt={service.title} width={800} className='w-full h-[200px] rounded-[10px] mb-5'/>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
 
@@ -241,14 +306,25 @@ export default function ServerSmart() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {technologyPartners.map((partner, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="font-bold text-lg text-gray-900 mb-2">{partner.name}</div>
-                <div className="text-[#16CA9A] text-sm font-semibold">{partner.specialty}</div>
-              </div>
-            ))}
+          <div className="flex items-center justify-center flex-wrap gap-8">
+            <div className='flex items-center justify-center flex-wrap gap-8 w-[800px]'>
+              {technologyPartners.map((partner, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-[30px] w-[100px] h-[100px]  flex items-center justify-center shadow-md hover:shadow-xl transition-shadow duration-300 group"
+                >
+                  <Image
+                    src={partner.Image}
+                    alt={partner.name}
+                    width={60}
+                    height={60}
+                    className="transform transition-transform duration-300 group-hover:-translate-y-2"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 
@@ -385,7 +461,7 @@ export default function ServerSmart() {
                   width={400}
                   height={300}
                   alt="Infrastructure"
-                 className="w-full h-auto rounded-xl p-4 transform rotate-[-7deg]"
+                  className="w-full h-auto rounded-xl p-4 transform rotate-[-7deg]"
 
                 />
 

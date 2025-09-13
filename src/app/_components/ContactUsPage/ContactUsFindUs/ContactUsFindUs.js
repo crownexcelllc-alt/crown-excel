@@ -12,6 +12,8 @@ import Link from 'next/link';
 import { FaX } from 'react-icons/fa6';
 import { XLogoIcon } from '@phosphor-icons/react';
 import { InstagramLogo, LinkedinLogo } from 'phosphor-react';
+import { FaYoutube, FaPinterest, FaTiktok, FaTelegramPlane, FaSnapchatGhost } from 'react-icons/fa';
+
 const ContactUsFindUs = () => {
     const [settings, setSettings] = useState({
         phone: '+971 4-354 0566',
@@ -20,8 +22,14 @@ const ContactUsFindUs = () => {
         facebook: '',
         twitter: '',
         instagram: '',
-        linkedin: ''
+        linkedin: '',
+        youtube: '',
+        pinterest: '',
+        tiktok: '',
+        telegram: '',
+        snapchat: ''
     });
+
     console.log('logo', settings?.logo)
 
     useEffect(() => {
@@ -37,6 +45,14 @@ const ContactUsFindUs = () => {
                 console.warn('Could not load settings:', err);
             });
     }, []);
+    const SocialIcon = ({ href, children }) => (
+        <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
+            <Link href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+            </Link>
+        </div>
+    );
+
     return (
         <div className='flex flex-col md:flex-col lg:flex-row lg:items-center py-10 md:py-[120px] px-5 md:px-20 lg:px-10 gap-10 md:gap-20'>
             <div className="finus-left flex items-center justify-center">
@@ -60,37 +76,45 @@ const ContactUsFindUs = () => {
                         <p className='text-[16px] leading-[27.2px] text-black'>{settings?.phone}</p>
                     </div>
                 </div>
-                <div className="social-media-icons flex items-center gap-2">
-                    <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
-                        {settings.facebook && (
-                            <Link href={settings.facebook}>
-                                <IoLogoFacebook className="text-[#084032]" />
-                            </Link>
-                        )}
+                <div className="social-media-icons flex flex-wrap items-center gap-2 mt-4">
+                    {settings.facebook && (
+                        <SocialIcon href={settings.facebook}><IoLogoFacebook className="text-[#084032]" /></SocialIcon>
+                    )}
 
-                    </div>
-                    <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
-                        {settings.twitter && (
-                            <Link href={settings.twitter}>
-                                <XLogoIcon className="text-[#084032]" />
-                            </Link>
-                        )}
-                    </div>
-                    <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
-                        {settings.instagram && (
-                            <Link href={settings.instagram}>
-                                <InstagramLogo className="text-[#084032]" />
-                            </Link>
-                        )}
-                    </div>
-                    <div className="border border-black h-[60px] w-[60px] rounded-full text-[25px] flex items-center justify-center">
-                        {settings.linkedin && (
-                            <Link href={settings.linkedin}>
-                                <LinkedinLogo className="text-[#084032]" />
-                            </Link>
-                        )}
-                    </div>
+                    {settings.twitter && (
+                        <SocialIcon href={settings.twitter}><XLogoIcon className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.instagram && (
+                        <SocialIcon href={settings.instagram}><InstagramLogo className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.linkedin && (
+                        <SocialIcon href={settings.linkedin}><LinkedinLogo className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.youtube && (
+                        <SocialIcon href={settings.youtube}><FaYoutube className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.pinterest && (
+                        <SocialIcon href={settings.pinterest}><FaPinterest className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.tiktok && (
+                        <SocialIcon href={settings.tiktok}><FaTiktok className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.telegram && (
+                        <SocialIcon href={settings.telegram}><FaTelegramPlane className="text-[#084032]" /></SocialIcon>
+                    )}
+
+                    {settings.snapchat && (
+                        <SocialIcon href={settings.snapchat}><FaSnapchatGhost className="text-[#084032]" /></SocialIcon>
+                    )}
                 </div>
+
+
             </div>
         </div>
     )

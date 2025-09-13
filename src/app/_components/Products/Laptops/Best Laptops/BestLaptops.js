@@ -18,7 +18,7 @@ const BestLaptops = () => {
           <p className='text-black z-10 text-[16px] leading-[27px] text-center font-montserrat'>Our laptops come from esteemed manufacturers with the latest features and technologies to keep you <br /> productive and in touch.</p>
           <button 
             onClick={scrollToTop}
-            className='bg-[#0f7459] rounded shadow-lg font-[500] font-montserrat w-[133px] h-[35px] text-[15px] flex items-center justify-center hover:bg-[#0d5c47] transition-colors duration-300 hover:cursor-pointer' 
+            className='bg-[#0f7459] rounded shadow-lg font-[500] font-montserrat w-[140px] h-[35px] text-[15px] flex items-center justify-center hover:bg-[#0d5c47] transition-colors duration-300 hover:cursor-pointer' 
             style={{ padding: '10px 20px 10px 20px'}}
           >
             Get A Quote

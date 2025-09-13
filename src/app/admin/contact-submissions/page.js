@@ -10,9 +10,9 @@ export const revalidate = 0;
 export default async function ContactSubmissionsPage() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
   let submissions = [];
-  
+
   try {
-    const res = await fetch(`${apiBase}/api/contact-submissions`, { 
+    const res = await fetch(`${apiBase}/api/contact-submissions`, {
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json'
@@ -28,12 +28,15 @@ export default async function ContactSubmissionsPage() {
   }
 
   return (
-    <div className="bg-white p-4 rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Contact Submissions</h2>
-      <p className="text-sm text-gray-600 mb-4">
-        Manage contact form submissions from your website. Total submissions: {submissions.length}
-      </p>
-      <ContactTableClient initialData={submissions} apiBase={apiBase} />
+    <div>
+      <h2 className="text-[30px] font-bold uppercase">Inquiry Forms</h2>
+      <div className="bg-white p-4 rounded shadow mt-10">
+
+        <p className="text-sm text-gray-600 mb-4">
+          <span className='font-bold'>Total Inquiries i:</span> {submissions.length}
+        </p>
+        <ContactTableClient initialData={submissions} apiBase={apiBase} />
+      </div>
     </div>
   );
 }

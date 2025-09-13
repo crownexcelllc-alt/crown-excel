@@ -8,7 +8,6 @@ export default function ContactTableClient({ initialData = [], apiBase = process
   const pageSize = 12;
   const [loading, setLoading] = useState(false);
 
-  // Auto-load data if no initial data provided
   useEffect(() => {
     if (!initialData || initialData.length === 0) {
       refresh();
@@ -42,12 +41,14 @@ export default function ContactTableClient({ initialData = [], apiBase = process
     } catch (err) {
       console.error('Failed to refresh:', err);
       alert('Failed to refresh: ' + err.message);
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
   }
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['id','name','email','phone','subject','service','comments','createdAt'];
+    const headers = ['id', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
     const csv = [headers.join(',')].concat(rows.map(r => headers.map(h => {
       const v = r[h] ?? r[h] === 0 ? r[h] : '';
       const s = (v + '').replace(/"/g, '""');
@@ -61,55 +62,94 @@ export default function ContactTableClient({ initialData = [], apiBase = process
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white rounded-xl shadow-lg p-6 w-full">
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search name, email, phone, subject..." className="border p-2 rounded w-80" />
-          <button onClick={() => { setQuery(''); setPage(1); }} className="px-3 py-2 bg-gray-100 rounded">Clear</button>
+          <input
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search name, email, phone, subject..."
+            className="border border-[#00a63e] focus:border-[#084032] p-2 rounded-lg w-80 outline-none transition-all"
+          />
+          <button
+            onClick={() => { setQuery(''); setPage(1); }}
+            className="px-3 py-2 bg-gray-100 hover:bg-[#00a63e] hover:text-white rounded-lg transition-all"
+          >
+            Clear
+          </button>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={refresh} className={`px-3 py-2 rounded bg-green-600 text-white ${loading ? 'opacity-60' : ''}`}>Refresh</button>
-          <button onClick={downloadCSV} className="px-3 py-2 rounded bg-blue-600 text-white">Export CSV</button>
+          <button
+            onClick={refresh}
+            className={`px-3 py-2 rounded-lg bg-[#00a63e] hover:bg-[#084032] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
+          >
+            Refresh
+          </button>
+          <button
+            onClick={downloadCSV}
+            className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-800 text-white font-semibold shadow transition-all"
+          >
+            Export CSV
+          </button>
         </div>
       </div>
 
-      <div className="overflow-x-auto border rounded">
-        <table className="min-w-full text-sm">
-          <thead className="bg-gray-100 text-left">
-            <tr>
-              <th className="px-3 py-2 border">ID</th>
-              <th className="px-3 py-2 border">Name</th>
-              <th className="px-3 py-2 border">Email</th>
-              <th className="px-3 py-2 border">Phone</th>
-              <th className="px-3 py-2 border">Subject</th>
-              <th className="px-3 py-2 border">Service</th>
-              <th className="px-3 py-2 border">Comments</th>
-              <th className="px-3 py-2 border">Submitted At</th>
+      <div style={{ overflowX: "auto" }} className="w-full">
+        <table style={{ whiteSpace: "nowrap" }} className=" min-w-full text-sm overflow-hidden shadow">
+          <thead>
+            <tr className="bg-[#084032] text-white">
+              <th className="px-4 py-3 font-semibold">Inquiry ID</th>
+              <th className="px-4 py-3 font-semibold">Name</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Phone</th>
+              <th className="px-4 py-3 font-semibold">Subject</th>
+              <th className="px-4 py-3 font-semibold">Service</th>
+              <th className="px-4 py-3 font-semibold">Comments</th>
+              <th className="px-4 py-3 font-semibold">Submitted At</th>
             </tr>
           </thead>
           <tbody>
             {pageData.map(s => (
-              <tr key={s.id ?? s._id} className="hover:bg-gray-50 align-top">
-                <td className="px-3 py-2 border align-top">{s.id ?? s._id}</td>
-                <td className="px-3 py-2 border align-top">{s.name}</td>
-                <td className="px-3 py-2 border align-top">{s.email}</td>
-                <td className="px-3 py-2 border align-top">{s.phone}</td>
-                <td className="px-3 py-2 border align-top">{s.subject}</td>
-                <td className="px-3 py-2 border align-top">{s.service}</td>
-                <td className="px-3 py-2 border align-top"><div className="max-w-md break-words">{s.comments}</div></td>
-                <td className="px-3 py-2 border align-top">{s.createdAt ? new Date(s.createdAt).toLocaleString() : ''}</td>
+              <tr key={s.id ?? s._id} className="hover:bg-[#e6f9f0] align-top transition-all">
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.id ?? s._id}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.email}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.phone}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.subject}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.service}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top max-w-sm whitespace-pre-wrap break-words">
+                  {s.comments}
+                </td>
+
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
+                  {s.createdAt ? new Date(s.createdAt).toLocaleString() : ''}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <div className="flex items-center justify-between mt-4">
-        <div className="text-sm text-gray-600">Showing {Math.min(rows.length, (page-1)*pageSize + 1)} - {Math.min(rows.length, page*pageSize)} of {rows.length}</div>
+      <div className="flex items-center justify-between mt-6">
+        <div className="text-sm text-gray-600">
+          Showing {Math.min(rows.length, (page - 1) * pageSize + 1)} - {Math.min(rows.length, page * pageSize)} of {rows.length}
+        </div>
         <div className="flex items-center gap-2">
-          <button disabled={page<=1} onClick={() => setPage(p => Math.max(1,p-1))} className="px-3 py-1 border rounded">Prev</button>
-          <div className="px-3 py-1">{page} / {totalPages}</div>
-          <button disabled={page>=totalPages} onClick={() => setPage(p => Math.min(totalPages,p+1))} className="px-3 py-1 border rounded">Next</button>
+          <button
+            disabled={page <= 1}
+            onClick={() => setPage(p => Math.max(1, p - 1))}
+            className="px-4 py-2 border rounded-lg disabled:opacity-50 bg-white hover:bg-[#e6f9f0] transition-all"
+          >
+            Prev
+          </button>
+          <div className="px-4 py-2 font-semibold">{page} / {totalPages}</div>
+          <button
+            disabled={page >= totalPages}
+            onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+            className="px-4 py-2 border rounded-lg disabled:opacity-50 bg-white hover:bg-[#e6f9f0] transition-all"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

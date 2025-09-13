@@ -24,7 +24,7 @@ const ITWhyChooseUs = () => {
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
       <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Tailored IT strategies aligned to your business goals</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-        <p className='text-black text-[16px] leading-[27.2px]'>We design pragmatic IT strategies that map technology investments to measurable business outcomes — from cost savings to faster time-to-market. Our consultants assess your environment and build a prioritized roadmap you can execute with confidence.</p>
+        <p className='text-black text-[16px] leading-[27.2px]'>We design pragmatic IT strategies that map technology investments to measurable business outcomes — from cost savings to faster time-to-market. Our consultants access your environment and build a prioritized roadmap you can execute with confidence.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='hidden md:block lg:block md:h-[350px] lg:h-[400px]'/>

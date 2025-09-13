@@ -1,77 +1,72 @@
-"use client";
+// app/admin/dashboard/page.tsx (or pages/admin/dashboard.tsx if using Pages Router)
 
-import { useEffect, useState } from "react";
+export const revalidate = 60; // Regenerate the page every 60 seconds
 
-export const dynamic = 'force-dynamic';
+async function fetchCounts() {
+  try {
+    const [appRes, contactRes, reviewRes] = await Promise.all([
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`, { cache: 'no-store' }),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact-submissions`, { cache: 'no-store' }),
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`, { cache: 'no-store' }),
+    ]);
 
-export default function AdminDashboard() {
-  const [applicationCount, setApplicationCount] = useState(null);
-  const [contactCount, setContactCount] = useState(null);
-  const [reviewCount, setReviewCount] = useState(null);
-
-  useEffect(() => {
-    async function fetchCounts() {
-      try {
-        // Fetch Applications
-        const appRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`);
-        if (!appRes.ok) throw new Error('Failed to fetch applications');
-        const appData = await appRes.json();
-        setApplicationCount(appData.length);
-
-        // Fetch Contact Submissions
-        const contactRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact-submissions`);
-        if (!contactRes.ok) throw new Error('Failed to fetch contact submissions');
-        const contactData = await contactRes.json();
-        setContactCount(contactData.length);
-
-        // Fetch Reviews
-        const reviewRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`);
-        if (!reviewRes.ok) throw new Error('Failed to fetch reviews');
-        const reviewData = await reviewRes.json();
-        setReviewCount(reviewData.length);
-      } catch (err) {
-        console.error("Error fetching counts:", err);
-        setApplicationCount(0);
-        setContactCount(0);
-        setReviewCount(0);
-      }
+    if (!appRes.ok || !contactRes.ok || !reviewRes.ok) {
+      throw new Error("One or more API responses failed");
     }
 
-    fetchCounts();
-  }, []);
+    const [appData, contactData, reviewData] = await Promise.all([
+      appRes.json(),
+      contactRes.json(),
+      reviewRes.json(),
+    ]);
+
+    return {
+      applicationCount: appData.length,
+      contactCount: contactData.length,
+      reviewCount: reviewData.length,
+    };
+  } catch (err) {
+    console.error("Error fetching counts:", err);
+    return {
+      applicationCount: 0,
+      contactCount: 0,
+      reviewCount: 0,
+    };
+  }
+}
+
+export default async function AdminDashboard() {
+  const { applicationCount, contactCount, reviewCount } = await fetchCounts();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 overflow-x-hidden">
       {/* Stats */}
+      <h1 className="text-[30px] font-bold">ADMIN DASHBOARD</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Applications */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-2">Applications</h3>
           <p className="text-3xl font-bold text-blue-600">
-            {applicationCount !== null ? applicationCount : '...'}
+            {applicationCount}
           </p>
           <p className="text-sm text-gray-600">Total applications</p>
         </div>
 
-        {/* Contact Submissions */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-2">Contact Submissions</h3>
           <p className="text-3xl font-bold text-green-600">
-            {contactCount !== null ? contactCount : '...'}
+            {contactCount}
           </p>
           <p className="text-sm text-gray-600">Total contacts</p>
         </div>
 
-        {/* Reviews */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-2">Reviews</h3>
           <p className="text-3xl font-bold text-purple-600">
-            {reviewCount !== null ? reviewCount : '...'}
+            {reviewCount}
           </p>
           <p className="text-sm text-gray-600">Total reviews</p>
         </div>
 
-        {/* Website Settings (static) */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-2">Website Settings</h3>
           <p className="text-3xl font-bold text-orange-600">✓</p>

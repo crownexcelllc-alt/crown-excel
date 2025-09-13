@@ -36,7 +36,7 @@ const ManagedITWhyChooseUs = () => {
         <div className="major-div-right flex flex-col items-start gap-5 lg:mr-7">
             <h1 className='text-[26px] lg:text-[32px] font-[600] leading-[26px] lg:leading-[32px] text-[#0e5d48]'>Customized Infrastructure Strategies Tailored to Your Business</h1>
             <div className="text-area-div bg-[#eae9e9] rounded-[30px] p-5 lg:p-[34px]">
-                <p className='text-black text-[16px] leading-[27.2px]'>No two businesses are alike, and neither are our solutions. We thoroughly assess your existing IT infrastructure and goals to create a bespoke IT strategy that aligns with your operational objectives. From optimizing your systems to implementing advanced solutions, our services adapt to your specific requirements.</p>
+                <p className='text-black text-[16px] leading-[27.2px]'>No two businesses are alike, and neither are our solutions. We thoroughly access your existing IT infrastructure and goals to create a bespoke IT strategy that aligns with your operational objectives. From optimizing your systems to implementing advanced solutions, our services adapt to your specific requirements.</p>
             </div>
         </div>
         <Image alt='' src={BorderImage} width={5} height={10} className='hidden md:block lg:block md:h-[350px] lg:h-[400px]'/>

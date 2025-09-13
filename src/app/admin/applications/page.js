@@ -10,13 +10,20 @@ export default async function ApplicationsPage() {
   let applications = [];
   try {
     const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });
-    console.log('res',res);
+    console.log('res', res);
     if (res.ok) applications = await res.json();
   } catch (err) { console.error('Failed to fetch applications', err); }
 
   return (
-    <div className="bg-white p-4 rounded shadow">
-      <ApplicationsTableClient initialData={applications} apiBase={apiBase} />
+    <div>
+      <h1 className='text-[30px] font-bold'>JOB APPLICATIONS</h1>
+      
+      <div className="bg-white p-4 rounded shadow mt-10">
+        <p className="text-sm text-gray-600 mb-4">
+          <span className='font-bold'>Total Job Applications:</span> {applications.length}
+        </p>
+        <ApplicationsTableClient initialData={applications} apiBase={apiBase} />
+      </div>
     </div>
   );
 }

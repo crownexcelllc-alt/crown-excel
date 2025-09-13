@@ -15,7 +15,7 @@ const ManagedITSmart = () => {
       metricLabel: "Uptime"
     },
     {
-      title: "Network Infrastructure", 
+      title: "Network Infrastructure",
       description: "Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations.",
       features: ["Network Design", "Firewall Configuration", "VPN Setup", "Bandwidth Optimization"],
       icon: "🌐",
@@ -57,7 +57,7 @@ const ManagedITSmart = () => {
   ];
 
   const managementPhases = [
-    { phase: "ASSESS", title: "Infrastructure Analysis", icon: "🔍", color: "from-[#16CA9A] to-[#119472]" },
+    { phase: "ACCESS", title: "Infrastructure Analysis", icon: "🔍", color: "from-[#16CA9A] to-[#119472]" },
     { phase: "PLAN", title: "Strategic Roadmap", icon: "📋", color: "from-[#119472] to-[#13745a]" },
     { phase: "DEPLOY", title: "Implementation", icon: "🚀", color: "from-[#13745a] to-[#0d5c47]" },
     { phase: "MANAGE", title: "Ongoing Support", icon: "⚙️", color: "from-[#0d5c47] to-[#084032]" }
@@ -67,22 +67,22 @@ const ManagedITSmart = () => {
     <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-white overflow-hidden">
       {/* Unique Hexagonal Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+        <div className="absolute top-10 left-10 w-32 h-32" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
           <div className="w-full h-full bg-[#16CA9A]"></div>
         </div>
-        <div className="absolute top-40 right-20 w-24 h-24" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+        <div className="absolute top-40 right-20 w-24 h-24" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
           <div className="w-full h-full bg-[#119472]"></div>
         </div>
-        <div className="absolute bottom-32 left-32 w-28 h-28" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+        <div className="absolute bottom-32 left-32 w-28 h-28" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
           <div className="w-full h-full bg-[#13745a]"></div>
         </div>
-        <div className="absolute bottom-10 right-40 w-36 h-36" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+        <div className="absolute bottom-10 right-40 w-36 h-36" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
           <div className="w-full h-full bg-[#0d5c47]"></div>
         </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
+
         {/* Unique Diagonal Split Hero */}
         <div className="mb-20 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#16CA9A]/5 to-transparent transform skew-y-1"></div>
@@ -100,16 +100,16 @@ const ManagedITSmart = () => {
                   <p className="text-xl text-gray-600 mt-2">Excellence Redefined</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200 shadow-lg">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Revolutionary IT infrastructure management combining cutting-edge technology, 
+                  Revolutionary IT infrastructure management combining cutting-edge technology,
                   enterprise security, and 24/7 operational excellence for unstoppable business growth.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link 
+                <Link
                   href="/contact-us"
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
                 >
@@ -159,48 +159,41 @@ const ManagedITSmart = () => {
 
           {/* Honeycomb Grid Layout */}
           <div className="relative">
-            <div className="grid lg:grid-cols-3 gap-8 mb-8">
-              {infrastructureServices.slice(0, 3).map((service, index) => (
-                <div key={index} className="group relative">
-                  <div 
-                    className="w-full h-80 bg-gradient-to-br from-white to-gray-50 border-4 border-[#16CA9A]/20 hover:border-[#16CA9A] transition-all duration-500 group-hover:shadow-2xl relative overflow-hidden"
-                    style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+              {infrastructureServices.map((service, index) => (
+                <div key={index} className="relative group">
+                  <div
+                    className="relative w-full h-80 bg-white border-2 border-[#16CA9A]/30 overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl"
+                    style={{
+                      clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
+                      background: 'linear-gradient(to bottom right, #ffffff, #f3f4f6)',
+                    }}
                   >
-                    <div className="absolute inset-4 flex flex-col justify-center items-center text-center p-6">
-                      <div className="text-5xl mb-4 transform group-hover:scale-125 transition-transform duration-300">
-                        {service.icon}
-                      </div>
-                      <h3 className="text-xl font-black text-gray-900 mb-3">{service.title}</h3>
-                      <div className="text-3xl font-bold text-[#16CA9A] mb-1">{service.metric}</div>
-                      <div className="text-sm text-gray-600 font-semibold mb-4">{service.metricLabel}</div>
-                      <p className="text-xs text-gray-700 leading-relaxed line-clamp-3">{service.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                    {/* Hover overlay with green tint */}
+                    <div className="absolute inset-0 bg-[#16CA9A]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
-            <div className="grid lg:grid-cols-3 gap-8 lg:ml-24">
-              {infrastructureServices.slice(3, 6).map((service, index) => (
-                <div key={index + 3} className="group relative">
-                  <div 
-                    className="w-full h-80 bg-gradient-to-br from-white to-gray-50 border-4 border-[#084032]/20 hover:border-[#084032] transition-all duration-500 group-hover:shadow-2xl relative overflow-hidden"
-                    style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}
-                  >
-                    <div className="absolute inset-4 flex flex-col justify-center items-center text-center p-6">
-                      <div className="text-5xl mb-4 transform group-hover:scale-125 transition-transform duration-300">
-                        {service.icon}
+                    {/* Content container */}
+                    <div className="absolute inset-4 z-20 flex flex-col items-center text-center justify-center transition-all duration-300">
+                      {/* Initial view: Icon + Title */}
+                      <div className="flex flex-col items-center space-y-2 group-hover:opacity-0 transition-opacity duration-300">
+                        <div className="text-5xl">{service.icon}</div>
+                        <h3 className="text-lg font-bold text-gray-800">{service.title}</h3>
                       </div>
-                      <h3 className="text-xl font-black text-gray-900 mb-3">{service.title}</h3>
-                      <div className="text-3xl font-bold text-[#084032] mb-1">{service.metric}</div>
-                      <div className="text-sm text-gray-600 font-semibold mb-4">{service.metricLabel}</div>
-                      <p className="text-xs text-gray-700 leading-relaxed line-clamp-3">{service.description}</p>
+
+                      {/* Hover view: Full Info */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 className="text-lg font-bold text-gray-900 mb-1">{service.title}</h3>
+                        <div className="text-2xl font-semibold text-[#16CA9A]">{service.metric}</div>
+                        <div className="text-sm text-gray-700 mb-3">{service.metricLabel}</div>
+                        <p className="text-sm text-gray-800 leading-snug">{service.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
         {/* Unique Radial Process Flow */}
@@ -221,14 +214,14 @@ const ManagedITSmart = () => {
                   <div className="text-sm font-semibold">EXCELLENCE</div>
                 </div>
               </div>
-              
+
               {/* Orbital Elements */}
               {managementPhases.map((phase, index) => {
                 const angle = (index * 90) - 45; // 90 degrees apart, starting at -45
                 const radius = 140;
                 const x = Math.cos(angle * Math.PI / 180) * radius;
                 const y = Math.sin(angle * Math.PI / 180) * radius;
-                
+
                 return (
                   <div
                     key={index}
@@ -254,14 +247,14 @@ const ManagedITSmart = () => {
         <div className="relative">
           <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
             <div className="bg-gradient-to-br from-[#16CA9A] to-[#084032] p-12 text-white relative">
-              <div className="absolute top-0 right-0 w-32 h-32 opacity-20" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-20" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
                 <div className="w-full h-full bg-white"></div>
               </div>
               <h3 className="text-4xl font-black mb-6">Ready to Transform?</h3>
               <p className="text-xl mb-8 opacity-90">
                 Join the infrastructure revolution with enterprise-grade solutions that scale with your ambitions.
               </p>
-              <Link 
+              <Link
                 href="/contact-us"
                 className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg"
               >
@@ -269,14 +262,14 @@ const ManagedITSmart = () => {
               </Link>
             </div>
             <div className="bg-gray-900 p-12 text-white relative">
-              <div className="absolute bottom-0 left-0 w-28 h-28 opacity-20" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)'}}>
+              <div className="absolute bottom-0 left-0 w-28 h-28 opacity-20" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
                 <div className="w-full h-full bg-[#16CA9A]"></div>
               </div>
               <h3 className="text-4xl font-black mb-6">Need Consultation?</h3>
               <p className="text-xl mb-8 opacity-90">
                 Expert guidance for complex infrastructure challenges and strategic technology decisions.
               </p>
-              <Link 
+              <Link
                 href="/our-services"
                 className="inline-flex items-center px-8 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-colors duration-300"
               >

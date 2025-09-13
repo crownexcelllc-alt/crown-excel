@@ -18,7 +18,7 @@ export default async function SettingsPage() {
     instagram: '',
     linkedin: ''
   };
-  
+
   try {
     const res = await fetch(`${apiBase}/api/settings`, { cache: 'no-store' });
     if (res.ok) {
@@ -34,9 +34,13 @@ export default async function SettingsPage() {
   }
 
   return (
-    <div className="bg-white p-6 rounded shadow">
-      <p className="text-sm text-gray-600 mb-6">Manage your website contact information and social media links</p>
-      <SettingsClient initialSettings={settings} apiBase={apiBase} />
+    <div>
+      <h1 className='text-[30px] font-bold '>BUSINESS SETTINGS</h1>
+        <p className="text-sm text-gray-600 ">Manage your website contact information and social media links</p>
+
+      <div className="bg-white p-6 rounded shadow mt-5">
+        <SettingsClient initialSettings={settings} apiBase={apiBase} />
+      </div>
     </div>
   );
 }

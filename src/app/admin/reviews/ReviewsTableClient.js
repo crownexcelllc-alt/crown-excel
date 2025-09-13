@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useMemo } from 'react';
 import ReviewPopupForm from './ReviewPopupForm';
 
@@ -21,7 +21,9 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       setRows(data);
     } catch (err) {
       alert('Failed to refresh reviews');
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function approve(id) {
@@ -59,19 +61,24 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
+    <div className="bg-white rounded-xl shadow-lg p-6 w-full">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setShowPopup(true)}
-            className="px-3 py-2 rounded bg-[#084032] text-white"
+            className="px-3 py-2 rounded-lg bg-[#084032] hover:bg-[#00a63e] text-white font-semibold shadow transition-all"
           >
             Add Review
           </button>
-          <button onClick={refresh} className={`px-3 py-2 rounded bg-green-600 text-white ${loading ? 'opacity-60' : ''}`}>Refresh</button>
+          <button
+            onClick={refresh}
+            className={`px-3 py-2 rounded-lg bg-green-600 hover:bg-green-800 text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}
+          >
+            Refresh
+          </button>
         </div>
-        <div>
-          <span className="text-sm text-gray-600">Total: {rows.length}</span>
+        <div className="text-sm text-gray-600">
+          <span className='font-bold'>Total Reviews: </span>{rows.length}
         </div>
       </div>
 
@@ -83,33 +90,47 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
         />
       )}
 
-      <div className="overflow-x-auto border rounded">
-        <table className="min-w-full text-sm">
-          <thead className="bg-gray-100 text-left">
-            <tr>
-              <th className="px-3 py-2 border">ID</th>
-              <th className="px-3 py-2 border">Name</th>
-              <th className="px-3 py-2 border">Company</th>
-              <th className="px-3 py-2 border">Rating</th>
-              <th className="px-3 py-2 border">Message</th>
-              <th className="px-3 py-2 border">Approved</th>
-              <th className="px-3 py-2 border">Actions</th>
+      <div className="overflow-x-auto w-full">
+        <table className="min-w-full text-sm shadow border border-gray-100">
+          <thead>
+            <tr className="bg-[#084032] text-white text-left">
+              <th className="px-4 py-3 font-semibold">ID</th>
+              <th className="px-4 py-3 font-semibold">Name</th>
+              <th className="px-4 py-3 font-semibold">Company</th>
+              <th className="px-4 py-3 font-semibold">Rating</th>
+              <th className="px-4 py-3 font-semibold">Message</th>
+              <th className="px-4 py-3 font-semibold">Approved</th>
+              <th className="px-4 py-3 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map(r => (
-              <tr key={r._id} className="hover:bg-gray-50 align-top">
-                <td className="px-3 py-2 border align-top">{r._id}</td>
-                <td className="px-3 py-2 border align-top">{r.name}</td>
-                <td className="px-3 py-2 border align-top">{r.company}</td>
-                <td className="px-3 py-2 border align-top">{r.rating}</td>
-                <td className="px-3 py-2 border align-top"><div className="max-w-md break-words">{r.message}</div></td>
-                <td className="px-3 py-2 border align-top">{r.approved ? 'Yes' : 'No'}</td>
-                <td className="px-3 py-2 border align-top">
+              <tr key={r._id} className="hover:bg-[#e6f9f0] align-top transition-all">
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">{r._id}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">{r.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">{r.company}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">{r.rating}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top max-w-sm whitespace-pre-wrap break-words text-left">
+                  {r.message}
+                </td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">
+                  {r.approved ? 'Yes' : 'No'}
+                </td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top text-left">
                   {!r.approved && (
-                    <button onClick={() => approve(r._id)} className="px-2 py-1 bg-[#084032] text-white rounded mr-2">Approve</button>
+                    <button
+                      onClick={() => approve(r._id)}
+                      className="px-2 py-1 bg-[#084032] hover:bg-[#00a63e] text-white rounded mr-2 transition-all"
+                    >
+                      Approve
+                    </button>
                   )}
-                  <button onClick={() => remove(r._id)} className="px-2 py-1 border rounded text-red-600">Delete</button>
+                  <button
+                    onClick={() => remove(r._id)}
+                    className="px-2 py-1 border border-red-600 text-red-600 hover:bg-red-50 rounded transition-all"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

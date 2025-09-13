@@ -53,62 +53,62 @@ export default function ApplicationsTableClient({ initialData = [], apiBase = pr
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white rounded-xl shadow-lg p-6 w-full">
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <input 
             value={query} 
             onChange={e => setQuery(e.target.value)} 
             placeholder="Search name, email, phone, position..." 
-            className="border p-2 rounded w-80" 
+            className="border border-[#00a63e] focus:border-[#084032] p-2 rounded-lg w-80 outline-none transition-all" 
           />
-          <button onClick={() => { setQuery(''); setPage(1); }} className="px-3 py-2 bg-gray-100 rounded">Clear</button>
+          <button onClick={() => { setQuery(''); setPage(1); }} className="px-3 py-2 bg-gray-100 hover:bg-[#00a63e] hover:text-white rounded-lg transition-all">Clear</button>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={refresh} className={`px-3 py-2 rounded bg-green-600 text-white ${loading ? 'opacity-60' : ''}`}>Refresh</button>
-          <button onClick={downloadCSV} className="px-3 py-2 rounded bg-blue-600 text-white">Export CSV</button>
+          <button onClick={refresh} className={`px-3 py-2 rounded-lg bg-[#00a63e] hover:bg-[#084032] text-white font-semibold shadow ${loading ? 'opacity-60' : ''} transition-all`}>Refresh</button>
+          <button onClick={downloadCSV} className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-800 text-white font-semibold shadow transition-all">Export CSV</button>
         </div>
       </div>
 
-      <div className="overflow-x-auto border rounded">
-        <table className="min-w-full text-sm">
-          <thead className="bg-gray-100 text-left">
-            <tr>
-              <th className="px-3 py-2 border">ID</th>
-              <th className="px-3 py-2 border">Name</th>
-              <th className="px-3 py-2 border">Email</th>
-              <th className="px-3 py-2 border">Phone</th>
-              <th className="px-3 py-2 border">Position</th>
-              <th className="px-3 py-2 border">Experience</th>
-              <th className="px-3 py-2 border">Education</th>
-              <th className="px-3 py-2 border">CV</th>
-              <th className="px-3 py-2 border">Applied At</th>
+      <div style={{ overflowX: "auto" }} className="w-full">
+        <table style={{ whiteSpace: "nowrap" }} className="min-w-full text-sm  overflow-hidden shadow">
+          <thead>
+            <tr className="bg-[#084032] text-white">
+              <th className="px-4 py-3 font-semibold">Application ID</th>
+              <th className="px-4 py-3 font-semibold">Name</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Phone</th>
+              <th className="px-4 py-3 font-semibold">Position</th>
+              <th className="px-4 py-3 font-semibold">Experience</th>
+              <th className="px-4 py-3 font-semibold">Education</th>
+              <th className="px-4 py-3 font-semibold">CV</th>
+              <th className="px-4 py-3 font-semibold">Applied At</th>
             </tr>
           </thead>
           <tbody>
             {pageData.map(app => (
-              <tr key={app.id ?? app._id} className="hover:bg-gray-50 align-top">
-                <td className="px-3 py-2 border align-top">{app.id ?? app._id}</td>
-                <td className="px-3 py-2 border align-top">{app.name}</td>
-                <td className="px-3 py-2 border align-top">{app.email}</td>
-                <td className="px-3 py-2 border align-top">{app.phone}</td>
-                <td className="px-3 py-2 border align-top">{app.position}</td>
-                <td className="px-3 py-2 border align-top">
+              <tr key={app.id ?? app._id} className="hover:bg-[#e6f9f0] align-top transition-all">
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{app.id ?? app._id}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{app.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{app.email}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{app.phone}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{app.position}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
                   <div className="max-w-xs break-words">{app.experience}</div>
                 </td>
-                <td className="px-3 py-2 border align-top">
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
                   <div className="max-w-xs break-words">{app.education}</div>
                 </td>
-                <td className="px-3 py-2 border align-top">
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
                   {app.cv ? (
-                    <a href={app.cv} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    <a href={app.cv} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">
                       View CV
                     </a>
                   ) : (
-                    'No CV'
+                    <span className="text-gray-400">No CV</span>
                   )}
                 </td>
-                <td className="px-3 py-2 border align-top">
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
                   {app.createdAt ? new Date(app.createdAt).toLocaleString() : ''}
                 </td>
               </tr>
@@ -117,7 +117,7 @@ export default function ApplicationsTableClient({ initialData = [], apiBase = pr
         </table>
       </div>
 
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-6">
         <div className="text-sm text-gray-600">
           Showing {Math.min(rows.length, (page-1)*pageSize + 1)} - {Math.min(rows.length, page*pageSize)} of {rows.length}
         </div>
@@ -125,15 +125,15 @@ export default function ApplicationsTableClient({ initialData = [], apiBase = pr
           <button 
             disabled={page<=1} 
             onClick={() => setPage(p => Math.max(1,p-1))} 
-            className="px-3 py-1 border rounded disabled:opacity-50"
+            className="px-4 py-2 border rounded-lg disabled:opacity-50 bg-white hover:bg-[#e6f9f0] transition-all"
           >
             Prev
           </button>
-          <div className="px-3 py-1">{page} / {totalPages}</div>
+          <div className="px-4 py-2 font-semibold">{page} / {totalPages}</div>
           <button 
             disabled={page>=totalPages} 
             onClick={() => setPage(p => Math.min(totalPages,p+1))} 
-            className="px-3 py-1 border rounded disabled:opacity-50"
+            className="px-4 py-2 border rounded-lg disabled:opacity-50 bg-white hover:bg-[#e6f9f0] transition-all"
           >
             Next
           </button>

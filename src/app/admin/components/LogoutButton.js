@@ -1,15 +1,14 @@
-"use client";
-import { useRouter } from "next/navigation";
+// /admin/components/LogoutButton.tsx
+'use client';
 
-export default function LogoutButton() {
-  const router = useRouter();
-  function handleLogout() {
-    localStorage.removeItem("jwt");
-    window.location.reload(); // Instantly updates layout and shows login page
-  }
+export default function LogoutButton({ children }) {
+  const handleLogout = async () => {
+    // your logout logic
+  };
+
   return (
-    <button onClick={handleLogout} style={{ padding: "8px 16px", background: "#084032", color: "#fff", borderRadius: 4 }}>
-      Logout
+    <button onClick={handleLogout}>
+      {children}
     </button>
   );
 }

@@ -576,8 +576,8 @@ const Footer = () => {
             </p>
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
               <p className="text-gray-300">
-                Crafted with{' '}
-                <span className="text-red-400 mx-1">❤️</span>
+                Developed
+                
                 by{' '}
                 <span className="text-[#4ade80] font-semibold hover:text-[#22c55e] transition-colors">
                   Tech Solutionor

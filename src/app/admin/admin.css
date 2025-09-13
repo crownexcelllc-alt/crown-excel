@@ -1,3 +1,7 @@
+*{
+  scrollbar-width: thin;
+  scrollbar-color: #084032 #edf2f7;
+}
 /* Admin Panel Styles */
 .admin-container {
   min-height: 100vh;

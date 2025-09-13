@@ -1,9 +1,9 @@
+// src/app/admin/layout.js
 "use client";
 import { useEffect, useState } from "react";
 import AdminLayout from '@/Components/Admin/AdminLayout';
-import './admin.css';
-// import LogoutButton from "./components/LogoutButton";
 import LoginPage from "./login/page";
+import "./admin.css"
 
 export default function Layout({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -14,28 +14,12 @@ export default function Layout({ children }) {
       setIsAuthenticated(!!token);
     };
     checkAuth();
-
-    // Listen for JWT changes (login/logout) from anywhere in the app
     window.addEventListener("storage", checkAuth);
     return () => window.removeEventListener("storage", checkAuth);
   }, []);
 
-  if (isAuthenticated === null) {
-    return null;
-  }
+  if (isAuthenticated === null) return null;
+  if (!isAuthenticated) return <LoginPage />;
 
-  if (!isAuthenticated) {
-    return <LoginPage />;
-  }
-
-  return (
-    <div>
-      {/* <header>
-        <LogoutButton />
-      </header> */}
-      <AdminLayout>
-        {children}
-      </AdminLayout>
-    </div>
-  );
+  return <AdminLayout>{children}</AdminLayout>;
 }
