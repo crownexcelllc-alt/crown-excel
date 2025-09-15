@@ -6,6 +6,8 @@ import Partner from '../Images/footerpartner.png'
 import Coorporate from '../Images/footercoorporates.png'
 import Wholesale from '../Images/footerwholesale.png'
 import FooterLogo from '../Images/footerlogo.png'
+import logo from "../Images/logos.png"
+
 import {
   FacebookLogo,
   InstagramLogo,
@@ -203,7 +205,7 @@ const Footer = () => {
               <div className="col-span-4">
                 <div className="mb-8">
                   <Image
-                    src={logoUrl || FooterLogo}
+                    src={logo}
                     alt="Crown Excel Logo"
                     width={180}
                     height={90}
