@@ -33,7 +33,7 @@ export default async function ContactSubmissionsPage() {
       <div className="bg-white p-4 rounded shadow mt-10">
 
         <p className="text-sm text-gray-600 mb-4">
-          <span className='font-bold'>Total Inquiries i:</span> {submissions.length}
+          <span className='font-bold'>Total Inquiries:</span> {submissions.length}
         </p>
         <ContactTableClient initialData={submissions} apiBase={apiBase} />
       </div>

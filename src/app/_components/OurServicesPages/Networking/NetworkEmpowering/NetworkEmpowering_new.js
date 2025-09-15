@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import NetworkIT from '../../../../../Components/Images/networkIT.png';
+import NetworkIT from '../../../../../Components/Images/NetworkingSolutions.jpg';
 import InfraIcon from '../../../../../Components/Images/network-infra.png';
 import WirelessIcon from '../../../../../Components/Images/wireless.png';
 import SecurityIcon from '../../../../../Components/Images/security.png';
@@ -179,7 +179,7 @@ const NetworkEmpowering = () => {
             <div className="relative z-10">
               <Image
                 src={NetworkIT}
-                width={500}
+                width={800}
                 height={350}
                 alt="Network Infrastructure"
                 className="rounded-2xl shadow-2xl"
@@ -244,28 +244,28 @@ const NetworkEmpowering = () => {
               {/* <div className="text-3xl mb-3">🏥</div> */}
               <Image src={IconHealthcare} alt="Healthcare" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Healthcare</h4>
-              <p className="text-gray-600 text-sm">HIPAA-compliant networks with high availability for patient care systems</p>
+              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               {/* <div className="text-3xl mb-3">🏫</div> */}
               <Image src={IconEducation} alt="Education" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Education</h4>
-              <p className="text-gray-600 text-sm">Scalable campus networks supporting thousands of concurrent users</p>
+              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering innovative networking, IT hardware, and software solutions tailored to meet the evolving demands of the education sector. We empower institutions with reliable technologies that enhance learning, collaboration, and digital campus experiences.</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               {/* <div className="text-3xl mb-3">🏭</div> */}
               <Image src={IconManufacturing} alt="Manufacturing" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Manufacturing</h4>
-              <p className="text-gray-600 text-sm">Industrial-grade networks for IoT devices and automation systems</p>
+              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, offering robust networking, IT hardware, and software solutions designed to meet the rigorous demands of the manufacturing industry. We help optimize operations, improve productivity, and ensure seamless connectivity across production environments.</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               {/* <div className="text-3xl mb-3">🏪</div> */}
               <Image src={IconRetail} alt="Retail" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Retail</h4>
-              <p className="text-gray-600 text-sm">Secure POS networks with guest WiFi and inventory management</p>
+              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering efficient networking, IT hardware, and software solutions customized for the retail sector. From POS systems to inventory management and customer engagement tools, we help retail businesses streamline operations and stay competitive.</p>
             </div>
           </div>
         </div>

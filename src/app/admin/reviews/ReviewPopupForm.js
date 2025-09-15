@@ -47,6 +47,30 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
   function handleStarChange(rating) {
     setForm((f) => ({ ...f, rating }));
   }
+  async function uploadToCloudinary(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "crownexcel-avatars"); // Make sure this preset exists in your Cloudinary dashboard
+
+    try {
+      const res = await fetch("https://api.cloudinary.com/v1_1/dqghun7oj/image/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      console.log("Cloudinary response:", data); // Debug log
+      if (data.error?.message === "Upload preset not found") {
+        throw new Error("Cloudinary upload preset 'crownexcel-avatars' not found. Please create it in your Cloudinary dashboard.");
+      }
+      if (!data.secure_url) {
+        throw new Error(data.error?.message || "Failed to upload image to Cloudinary");
+      }
+      return data.secure_url;
+    } catch (err) {
+      console.error("Cloudinary upload error:", err);
+      throw err;
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -54,55 +78,32 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
     setError("");
     try {
       let avatarUrl = "";
+      console.log(avatarUrl);
+      
       if (form.avatar) {
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          avatarUrl = reader.result;
-          const res = await fetch(`${apiBase}/api/reviews`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...form, avatar: avatarUrl }),
-          });
+        try {
+          avatarUrl = await uploadToCloudinary(form.avatar);
+          console.log("Avatar URL:", avatarUrl); // Debug log
+        } catch (err) {
+          setError("Failed to upload avatar image. Please try again.");
           setLoading(false);
-          if (res.ok) {
-            setForm({
-              name: "",
-              message: "",
-              rating: 5,
-              avatar: null,
-            });
-            setPreview(null);
-            if (onSuccess) onSuccess();
-            if (onClose) onClose();
-          } else {
-            setError("Failed to add review");
-          }
-        };
-        reader.readAsDataURL(form.avatar);
-      } else {
-        const res = await fetch(`${apiBase}/api/reviews`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        setLoading(false);
-        if (res.ok) {
-          setForm({
-            name: "",
-            message: "",
-            rating: 5,
-            avatar: null,
-          });
-          setPreview(null);
-          if (onSuccess) onSuccess();
-          if (onClose) onClose();
-        } else {
-          setError("Failed to add review");
+          return;
         }
       }
+      const res = await fetch(`${apiBase}/api/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, avatar: avatarUrl }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to add review. Please try again.");
+      }
+      setLoading(false);
+      onSuccess();
+      onClose(); // Automatically close the popup after success
     } catch (err) {
       setLoading(false);
-      setError("Error submitting review");
+      setError(err.message);
     }
   }
 
@@ -133,6 +134,8 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
           boxShadow: "0 12px 40px #0003",
           position: "relative",
           fontFamily: "inherit",
+          maxHeight: "95vh", // Added for scrollable overflow
+          overflowY: "auto", // Added for scrollable overflow
         }}
       >
         <button
@@ -324,6 +327,8 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
             min-width: 0 !important;
             max-width: 98vw !important;
             padding: 16px !important;
+            max-height: 95vh !important; /* Also add for mobile */
+            overflow-y: auto !important;
           }
           h2 {
             font-size: 18px !important;

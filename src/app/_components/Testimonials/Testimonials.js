@@ -10,6 +10,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Navigation, Autoplay } from "swiper/modules"
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { FaUserCircle } from "react-icons/fa";
+import { RxAvatar } from "react-icons/rx";
+import Avatar from '../../../Components/Images/defaultavatar.jpg'
+
 
 // Sample testimonials data as fallback
 const sampleTestimonials = [
@@ -243,7 +247,7 @@ export default function Testimonials() {
                                 <TestimonialCard
                                     name={item.name}
                                     message={item.message}
-                                    image={item.avatar}
+                                    image={item.avatar || Avatar}
                                     rating={item.rating}
                                     date={item.createdAt}
                                 />

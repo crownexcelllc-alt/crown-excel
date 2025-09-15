@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 // Uses NEXT_PUBLIC or server env var MONGODB_URI and optional MONGODB_DB
-const uri = 'mongodb+srv://mw951390:1234@cluster0.xxofs0k.mongodb.net/crownexceladmin';
+const uri = 'mongodb+srv://admin:admin@cluster0.ac1fznk.mongodb.net';
 const dbName = process.env.MONGODB_DB || 'crownexceladmin';
 
 if (!uri) {

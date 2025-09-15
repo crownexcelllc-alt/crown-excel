@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import google from '@/Components/Images/google.svg';
+import Avatar from '../../../Components/Images/defaultavatar.jpg'
 
 // Props: { name, message, image, rating, date }
 export default function TestimonialCard({ name, message, image, rating = 0, date }) {
@@ -34,7 +35,7 @@ export default function TestimonialCard({ name, message, image, rating = 0, date
               {image ? (
                 <Image src={image} alt={name || 'Reviewer'} width={56} height={56} className="object-cover" />
               ) : (
-                <div className="w-full h-full bg-gray-100" />
+                <Image src={Avatar} alt="Default Avatar" width={56} height={56} className="object-cover" />
               )}
             </div>
             <div className="flex flex-col justify-center">

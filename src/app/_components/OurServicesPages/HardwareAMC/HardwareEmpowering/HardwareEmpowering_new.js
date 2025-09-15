@@ -308,7 +308,7 @@ const HardwareEmpowering = () => {
                       </div>
 
                       <div className={`bg-gradient-to-r ${plan.color} bg-opacity-10 p-4 rounded-xl mt-6`}>
-                        <p className="text-sm font-semibold text-gray-800 mb-2">{plan.benefits}</p>
+                        <p className="text-sm font-semibold text-white mb-2">{plan.benefits}</p>
                         <div className="flex items-center justify-center gap-2 mt-3">
                           <div className="bg-[#16CA9A] text-white px-4 py-2 rounded-full text-xs font-bold">
                             ALL-IN-ONE SERVICE

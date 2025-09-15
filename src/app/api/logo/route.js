@@ -4,12 +4,13 @@ import cloudinary from 'cloudinary';
 
 // Cloudinary config (configured once)
 cloudinary.v2.config({
-  cloud_name: 'dyivow3eg',
-  api_key: '259854239836562',
-  api_secret: 'vOOZCW87NPQdBhWThhldaM229ng',
+  cloud_name: 'dqghun7oj',
+  api_key: '281487587427693',
+  api_secret: 'bxbrN76auL9pNUINMVdKJwqv6Uo',
 });
 
-const MONGO_URI = 'mongodb+srv://mw951390:1234@cluster0.xxofs0k.mongodb.net/crownexceladmin';
+// const MONGO_URI = 'mongodb+srv://mw951390:1234@cluster0.xxofs0k.mongodb.net/crownexceladmin';
+const MONGO_URI = 'mongodb+srv://admin:admin@cluster0.ac1fznk.mongodb.net';
 const DB_NAME = 'crownexceladmin';
 const COLLECTION = 'settings';
 
