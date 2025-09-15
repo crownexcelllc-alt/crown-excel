@@ -82,9 +82,7 @@ export default function TestimonialCard({ name, message, image, rating = 0, date
           {isLong && (
             <>
               <div className="pointer-events-none absolute bottom-0 left-0 right-14 h-6 bg-gradient-to-t from-white via-white/70 to-transparent" />
-              <span className="absolute bottom-0 right-0 z-[1] text-[12px] md:text-[12px] font-medium text-[#084032] bg-white px-1 rounded">
-                ... more
-              </span>
+              
             </>
           )}
         </div>
