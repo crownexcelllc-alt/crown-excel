@@ -67,7 +67,7 @@ export default function TestimonialCard({ name, message, image, rating = 0, date
         {/* Message – 4-line clamp + fade + “… more” */}
         <div className="relative mt-2 flex-1 ml-1">
           <p
-            className="text-black text-[15px] md:text-[16px] font-lora leading-[24px] md:leading-[25px] text-left"
+            className="font-google text-[#1f1f1f] tracking-[0.1px] text-[15px] md:text-[14px] leading-[24px] md:leading-[1.25rem] text-left"
             style={{
               display: '-webkit-box',
               WebkitLineClamp: 4,
@@ -78,7 +78,7 @@ export default function TestimonialCard({ name, message, image, rating = 0, date
           >
             {message || 'No message provided.'}
           </p>
-
+          {/* Make sure to import Google Sans in your HTML head or _app.js for this to work */}
           {isLong && (
             <>
               <div className="pointer-events-none absolute bottom-0 left-0 right-14 h-6 bg-gradient-to-t from-white via-white/70 to-transparent" />

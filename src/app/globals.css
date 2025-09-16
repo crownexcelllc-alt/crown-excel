@@ -19,8 +19,11 @@ font-family: 'Montserrat', sans-serif;
 }
 .font-urbanist {
   font-family: "Urbanist", sans-serif;
-  
 }
+.font-googlesans {
+    font-family: 'Google Sans', 'Roboto', 'Arial', sans-serif; 
+    font-weight: 400;
+  }
 .font-lucida {
     font-family: 'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
   }

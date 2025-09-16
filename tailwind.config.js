@@ -12,7 +12,8 @@ export const theme = {
       montserrat: ['Montserrat', 'sans-serif'],
       mulish: ['Mulish", sans-serif'],
       jakarta: ['"Plus Jakarta Sans", sans-serif;'],
-      inter: ['"Inter", sans-serif']
+      inter: ['"Inter", sans-serif'],
+      google: ['"Google Sans"', 'Roboto', 'Arial', 'sans-serif'], // Add this line
     },
   },
 };
