@@ -398,7 +398,7 @@ const Footer = () => {
             {/* Logo and Company Info */}
             <div className="text-center mb-12">
               <Image
-                src={logoUrl || FooterLogo}
+                src={logo}
                 alt="Crown Excel Logo"
                 width={140}
                 height={70}
