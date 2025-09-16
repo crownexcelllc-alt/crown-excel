@@ -344,13 +344,13 @@ const RMAEmpowering = () => {
       <p className="text-gray-600 mb-4">
         Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>HIPAA-compliant cloud solutions for patient data management</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Electronic Health Records (EHR) integration and support</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Telemedicine platforms with secure video consultation features</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Medical imaging storage and high-speed data access</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Healthcare analytics and reporting tools</li>
-      </ul>
+      </ul> */}
     </div>
 
     {/* Manufacturing */}
@@ -360,15 +360,15 @@ const RMAEmpowering = () => {
       </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
       <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to manufacturing industry needs.
+        Crown Excel supports manufacturers in the UAE with robust IT infrastructure, advanced networking, and automation-ready software solutions designed to optimize production, enhance connectivity, and drive innovation across factory operations.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Industrial networking and factory floor connectivity</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Real-time production monitoring systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>IoT integration for smart manufacturing</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Hardware for rugged environments and automation control</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Data collection and analytics for operational efficiency</li>
-      </ul>
+      </ul> */}
     </div>
 
     {/* Financial Services */}
@@ -378,15 +378,15 @@ const RMAEmpowering = () => {
       </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
       <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to the financial services industry.
+        Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>High-security network infrastructure for banks and fintech</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Core banking and transaction system support</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Cloud-based disaster recovery and data backup</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Endpoint protection and cybersecurity solutions</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Compliance-ready data handling and encryption</li>
-      </ul>
+      </ul> */}
     </div>
 
     {/* Education */}
@@ -396,33 +396,33 @@ const RMAEmpowering = () => {
       </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
       <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to the education sector.
+        Crown Excel empowers schools and universities in the UAE with innovative IT hardware, secure networking, and digital learning platforms that foster collaboration, streamline campus management, and support academic achievement.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Smart classroom and e-learning infrastructure</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Campus-wide secure Wi-Fi and network management</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Learning Management System (LMS) integration</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Device management for student and faculty hardware</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Cloud-based collaboration and content sharing tools</li>
-      </ul>
+      </ul> */}
     </div>
 
-    {/* E-commerce */}
+    {/* Retail */}
     <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/ecommerce.png')} alt="E-commerce Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+        <Image src={require('../../../../../Components/Images/ecommerce.png')} alt="Retail Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
       </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">Retail</h3>
       <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to the e-commerce industry.
+        Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Scalable infrastructure for online storefronts</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Secure payment gateway integrations</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Inventory and logistics management systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>CRM and customer engagement tools</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Real-time analytics and reporting dashboards</li>
-      </ul>
+      </ul> */}
     </div>
 
     {/* Gaming & Media */}
@@ -432,15 +432,15 @@ const RMAEmpowering = () => {
       </div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
       <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to the media and entertainment industry.
+        Crown Excel enables media and gaming companies in the UAE to deliver immersive experiences with high-performance IT infrastructure, ultra-fast networking, and scalable cloud platforms designed for creative workflows, live streaming, and digital content delivery.
       </p>
-      <ul className="space-y-2 text-sm text-gray-700">
+      {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>High-speed data transfer and storage for large media files</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Post-production and editing suite optimization</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Broadcast-ready infrastructure and network reliability</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Live streaming and content delivery systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Collaborative cloud platforms for media teams</li>
-      </ul>
+      </ul> */}
     </div>
   </div>
 </div>

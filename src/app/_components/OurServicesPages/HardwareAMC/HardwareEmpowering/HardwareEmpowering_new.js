@@ -6,7 +6,7 @@ import NetworkIT from '../../../../../Components/Images/hardwareempowering.png';
 import Dirham from '../../../../../Components/Images/dirham.png';
 import ITservice from '../../../../../Components/Images/serviceIt.png'
 import Support from '../../../../../Components/Images/support.png'
-import Proactive from '../../../../../Components/Images/proactive.png'
+import Proactive from '../../../../../Components/Images/proacitve.png'
 import Cost from '../../../../../Components/Images/cost.png'
 import Rapid from '../../../../../Components/Images/rapid.png'
 import Security from '../../../../../Components/Images/security3.png'

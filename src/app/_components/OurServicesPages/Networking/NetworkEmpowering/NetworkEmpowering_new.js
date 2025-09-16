@@ -230,7 +230,7 @@ const NetworkEmpowering = () => {
 
         {/* Industry Solutions Section */}
         <div className="mb-16">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 ">
             <h3 className="text-3xl font-bold text-gray-800 mb-4 font-montserrat">
               Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Solutions</span>
             </h3>
@@ -251,21 +251,21 @@ const NetworkEmpowering = () => {
               {/* <div className="text-3xl mb-3">🏫</div> */}
               <Image src={IconEducation} alt="Education" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Education</h4>
-              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering innovative networking, IT hardware, and software solutions tailored to meet the evolving demands of the education sector. We empower institutions with reliable technologies that enhance learning, collaboration, and digital campus experiences.</p>
+              <p className="text-gray-600 text-sm">Crown Excel empowers educational institutions across the UAE with cutting-edge networking, IT hardware, and software solutions designed to support modern learning environments and academic excellence.</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               {/* <div className="text-3xl mb-3">🏭</div> */}
               <Image src={IconManufacturing} alt="Manufacturing" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Manufacturing</h4>
-              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, offering robust networking, IT hardware, and software solutions designed to meet the rigorous demands of the manufacturing industry. We help optimize operations, improve productivity, and ensure seamless connectivity across production environments.</p>
+              <p className="text-gray-600 text-sm">Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.</p>
             </div>
             
             <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
               {/* <div className="text-3xl mb-3">🏪</div> */}
               <Image src={IconRetail} alt="Retail" width={32} height={32} style={{ filter: 'brightness(0)' }} />
               <h4 className="text-lg font-bold text-gray-800 mb-2">Retail</h4>
-              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering efficient networking, IT hardware, and software solutions customized for the retail sector. From POS systems to inventory management and customer engagement tools, we help retail businesses streamline operations and stay competitive.</p>
+              <p className="text-gray-600 text-sm">Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.</p>
             </div>
           </div>
         </div>

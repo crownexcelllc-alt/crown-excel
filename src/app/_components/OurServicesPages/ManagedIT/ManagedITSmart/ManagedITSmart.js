@@ -3,6 +3,14 @@ import NetworkingSmartImage from '../../../../../Components/Images/manageditsmar
 import SignalTower from '../../../../../Components/Images/signaltower.png';
 import Image from 'next/image';
 import Link from 'next/link';
+// import Server from '../../../../../Components/Images/coreinfrastrucutre.jpg';
+import Storage from '../../../../../Components/Images/storagesolutions.jpg';
+import Network from '../../../../../Components/Images/networkinfrastructure.jpg';
+import Monitoring from '../../../../../Components/Images/networkinfrastructure.jpg';
+import Security from '../../../../../Components/Images/Security2.jpg';
+import Virtualization from '../../../../../Components/Images/Virtualization2.jpg';
+import Server from '../../../../../Components/Images/coreinfrastrucutre2.jpg';
+
 
 const ManagedITSmart = () => {
   const infrastructureServices = [
@@ -10,7 +18,7 @@ const ManagedITSmart = () => {
       title: "Server Infrastructure",
       description: "Enterprise-grade server solutions with high availability, load balancing, and redundancy for mission-critical applications.",
       features: ["Physical & Virtual Servers", "Load Balancing", "High Availability Clusters", "Server Monitoring"],
-      icon: "🖥️",
+      Image: Server,
       metric: "99.9%",
       metricLabel: "Uptime"
     },
@@ -18,7 +26,7 @@ const ManagedITSmart = () => {
       title: "Network Infrastructure",
       description: "Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations.",
       features: ["Network Design", "Firewall Configuration", "VPN Setup", "Bandwidth Optimization"],
-      icon: "🌐",
+      Image: Network,
       metric: "24/7",
       metricLabel: "Monitoring"
     },
@@ -26,7 +34,7 @@ const ManagedITSmart = () => {
       title: "Storage Solutions",
       description: "Scalable storage systems with automated backup, disaster recovery, and data protection for business continuity.",
       features: ["SAN/NAS Storage", "Backup Solutions", "Disaster Recovery", "Data Archiving"],
-      icon: "💾",
+      Image: Storage,
       metric: "100%",
       metricLabel: "Data Security"
     },
@@ -34,7 +42,7 @@ const ManagedITSmart = () => {
       title: "Virtualization",
       description: "Complete virtualization solutions to maximize resource utilization, reduce costs, and improve system flexibility.",
       features: ["VMware Solutions", "Hyper-V Implementation", "Virtual Desktop Infrastructure", "Container Solutions"],
-      icon: "📦",
+      Image: Virtualization,
       metric: "60%",
       metricLabel: "Cost Savings"
     },
@@ -42,7 +50,7 @@ const ManagedITSmart = () => {
       title: "Security Infrastructure",
       description: "Multi-layered security framework protecting your IT assets from cyber threats and ensuring compliance.",
       features: ["Endpoint Protection", "Network Security", "Identity Management", "Compliance Monitoring"],
-      icon: "🔒",
+      Image: Security,
       metric: "Zero",
       metricLabel: "Breaches"
     },
@@ -50,7 +58,7 @@ const ManagedITSmart = () => {
       title: "Monitoring & Management",
       description: "24/7 proactive monitoring with real-time alerts, performance optimization, and automated maintenance.",
       features: ["Real-time Monitoring", "Performance Analytics", "Automated Alerts", "Remote Management"],
-      icon: "📊",
+      Image: Monitoring,
       metric: "15min",
       metricLabel: "Response Time"
     }
@@ -161,38 +169,46 @@ const ManagedITSmart = () => {
           <div className="relative">
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
               {infrastructureServices.map((service, index) => (
-                <div key={index} className="relative group">
-                  <div
-                    className="relative w-full h-80 bg-white border-2 border-[#16CA9A]/30 overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl"
-                    style={{
-                      clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)',
-                      background: 'linear-gradient(to bottom right, #ffffff, #f3f4f6)',
-                    }}
-                  >
-                    {/* Hover overlay with green tint */}
-                    <div className="absolute inset-0 bg-[#16CA9A]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                <div
+                  key={index}
+                  className=" w-full h-110 bg-white border border-gray-200 rounded-xl shadow-md p-6 flex flex-col justify-between items-left text-left transition-all duration-300"
+                >
+                  {/* Image */}
+                  <div className="relative w-full h-50 rounded">
+                    <Image
+                      alt={service.title}
+                      src={service.Image}
+                      fill
+                      // width={350}
+                      // height={200}
+                    className="rounded"
+                    />
+                  </div>
 
-                    {/* Content container */}
-                    <div className="absolute inset-4 z-20 flex flex-col items-center text-center justify-center transition-all duration-300">
-                      {/* Initial view: Icon + Title */}
-                      <div className="flex flex-col items-center space-y-2 group-hover:opacity-0 transition-opacity duration-300">
-                        <div className="text-5xl">{service.icon}</div>
-                        <h3 className="text-lg font-bold text-gray-800">{service.title}</h3>
-                      </div>
+                  <div>
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-gray-800 mb-1">
+                      {service.title}
+                    </h3>
 
-                      {/* Hover view: Full Info */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 className="text-lg font-bold text-gray-900 mb-1">{service.title}</h3>
-                        <div className="text-2xl font-semibold text-[#16CA9A]">{service.metric}</div>
-                        <div className="text-sm text-gray-700 mb-3">{service.metricLabel}</div>
-                        <p className="text-sm text-gray-800 leading-snug">{service.description}</p>
-                      </div>
+                    {/* Metric */}
+                    <div className="text-2xl font-semibold text-[#16CA9A]">
+                      {service.metric}
                     </div>
+
+                    {/* Metric Label */}
+                    <div className="text-sm text-gray-700 mb-2">{service.metricLabel}</div>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 leading-snug">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+
 
         </div>
 
