@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import ContactUs from '../../../../Components/Images/contactus.jpg'
+import ContactUs from '../../../../Components/Images/contact.jpg'
 import Image from 'next/image'
 import { IoLocationOutline } from "react-icons/io5";
 import { MdMailOutline } from "react-icons/md";
@@ -58,7 +58,7 @@ const ContactUsFindUs = () => {
     return (
         <div className='flex flex-col md:flex-col lg:flex-row lg:items-center py-10 md:py-[120px] px-5 md:px-20 lg:px-10 gap-10 md:gap-20'>
             <div className="finus-left flex items-center justify-center">
-                <Image alt='' src={ContactUs} width={595} height={574} className='rounded-[10px]' />
+                <Image alt='' src={ContactUs} width={1000} height={800} className='rounded-[10px] w-[600px] h-[380px]' />
             </div>
             <div className="finus-right flex flex-col gap-5">
                 <div className="heading">
