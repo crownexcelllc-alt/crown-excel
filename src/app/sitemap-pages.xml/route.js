@@ -1,5 +1,5 @@
 export default async function sitemapPages() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:2999';
   const fs = await import('fs');
   const path = await import('path');
 

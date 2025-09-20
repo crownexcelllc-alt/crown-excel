@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ReviewsPage() {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:2999';
   let reviews = [];
   try {
     const res = await fetch(`${apiBase}/api/reviews?all=true`, { cache: 'no-store' });
