@@ -96,9 +96,9 @@ export default function LoginPage() {
             {error}
           </div>
         )}
-        <div style={{ textAlign: "center", color: "#888", fontSize: "13px", marginTop: "10px" }}>
+        {/* <div style={{ textAlign: "center", color: "#888", fontSize: "13px", marginTop: "10px" }}>
           <span>Demo: admin@crownexcel.com / admin123</span>
-        </div>
+        </div> */}
       </form>
     </div>
   );
