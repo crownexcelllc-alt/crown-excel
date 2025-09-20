@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+
 export async function POST(request) {
   const { email, password } = await request.json();
   const adminEmail = process.env.ADMIN_EMAIL;

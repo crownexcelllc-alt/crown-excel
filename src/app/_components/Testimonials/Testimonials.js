@@ -180,7 +180,7 @@ export default function Testimonials() {
                         <h2 className="text-4xl font-montserrat font-bold mb-4 text-[#084032]">What Our Clients Say</h2>
                     </div>
                     <p className="text-xl text-[#084032] max-w-2xl mx-auto mb-0 font-montserrat">
-                        Don't just take our word for it. Here's what our satisfied customers have to say about their experience.
+                        Don&apos;t just take our word for it. Here&apos;s what our satisfied customers have to say about their experience.
                     </p>
 
                     {/* Google Reviews Badge */}

@@ -10,6 +10,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { IoIosLogOut } from "react-icons/io";
 
 export default function AdminLayout({ children, title = '' }) {
+  
   const pathname = usePathname();
 
   const navLinks = [
