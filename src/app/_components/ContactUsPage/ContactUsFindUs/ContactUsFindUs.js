@@ -65,16 +65,28 @@ const ContactUsFindUs = () => {
                     <h1 className='text-[#084032] font-[800] text-[36px]'>Find Us</h1>
                 </div>
                 <div className="location flex flex-col">
-                    <div className="location-para flex items-center gap-2">
-                        <IoLocationOutline className='text-[#084032]' />
+                    <div className="location-para flex items-start gap-3 mb-3">
+                        <IoLocationOutline className='text-[#084032] text-[20px] mt-1 flex-shrink-0' />
                         <p className='text-[16px] leading-[27.2px] text-black'>{settings?.address}</p>
                     </div>
-                    <div className="location-para flex items-center gap-2">
-                        <MdMailOutline className='text-[#084032]' />
+                    <div className="location-para flex items-start gap-3 mb-3">
+                        <IoLocationOutline className='text-[#084032] text-[20px] mt-1 flex-shrink-0' />
+                        <p className='text-[16px] leading-[27.2px] text-black'>
+                            Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai - Al Souq Al Kabeer - Dubai - United Arab Emirates
+                        </p>
+                    </div>
+                    <div className="location-para flex items-start gap-3 mb-3">
+                        <IoLocationOutline className='text-[#084032] text-[20px] mt-1 flex-shrink-0' />
+                        <p className='text-[16px] leading-[27.2px] text-black'>
+                            Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai - Dubai - United Arab Emirates
+                        </p>
+                    </div>
+                    <div className="location-para flex items-center gap-3 mb-2">
+                        <MdMailOutline className='text-[#084032] text-[20px] flex-shrink-0' />
                         <p className='text-[16px] leading-[27.2px] text-black'>{settings?.email}</p>
                     </div>
-                    <div className="location-para flex items-center gap-2">
-                        <FiPhoneCall className='text-[#084032]' />
+                    <div className="location-para flex items-center gap-3">
+                        <FiPhoneCall className='text-[#084032] text-[20px] flex-shrink-0' />
                         <p className='text-[16px] leading-[27.2px] text-black'>{settings?.phone}</p>
                     </div>
                 </div>
