@@ -10,12 +10,12 @@ const locations = [
   },
   {
     title: "Experience Centre",
-    address: "Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai - Al Souq Al Kabeer - Dubai - United Arab Emirates",
+    address: "Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai",
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3845315746543!2d55.28903431500394!3d25.260309283903773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43ba6913e913%3A0x904de2fef7d413ec!2sCROWN%20EXCEL%20(Experience%20Center)!5e0!3m2!1sen!2sae!4v1695456789123!5m2!1sen!2sae"
   },
   {
     title: "Branch 2",
-    address: "Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai - Dubai - United Arab Emirates",
+    address: "Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai - Dubai",
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.387894572635!2d55.28934531500394!3d25.260183483903798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43326d8e4cc9%3A0x4d452917e7a19b6!2sCROWN%20EXCEL%20(branch%202)!5e0!3m2!1sen!2sae!4v1695456789124!5m2!1sen!2sae"
   }
 ];
@@ -38,7 +38,7 @@ const ContactUsMap = () => {
                 <div className="p-6">
                   <div className="flex items-start gap-2 mb-3">
                     <FaMapMarkerAlt className="text-[#16CA9A] flex-shrink-0" size={24} />
-                    <span className="text-sm text-gray-700 font-medium">
+                    <span className="text-[14px] text-gray-700 font-medium">
                       {loc.address}
                     </span>
                   </div>
