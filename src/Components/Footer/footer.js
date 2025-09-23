@@ -584,14 +584,7 @@ const Footer = () => {
                   Tech Solutionor
                 </span>
               </p>
-              <div className="flex gap-4">
-                <Link href="/privacy-policy" className="text-gray-400 hover:text-[#4ade80] transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms-and-conditions" className="text-gray-400 hover:text-[#4ade80] transition-colors">
-                  Terms & Conditions
-                </Link>
-              </div>
+              
             </div>
           </div>
         </div>
