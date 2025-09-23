@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 // import Background from '@/Components/Images/company-history.jpg'
-import Background from '@/Components/Images/company-history.png'
+// import Background from '@/Components/Images/company-history.png'
+import Background from '@/Components/Images/company-history.webp'
 
 const CompanyHistoryBanner = () => {
   return (

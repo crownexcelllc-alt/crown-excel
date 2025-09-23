@@ -2,7 +2,8 @@ import React from 'react';
 import icon1 from '../../../../../Components/Images/networkingbannericon.png';
 import icon2 from '../../../../../Components/Images/networkingbannericon2.png';
 // import BannerImage from '../../../../../Components/Images/networkingbanner.png';
-import BannerImage from '../../../../../Components/Images/storage1.png';
+// import BannerImage from '../../../../../Components/Images/storage1.png';
+import BannerImage from '../../../../../Components/Images/storage1.webp';
 import Image from 'next/image';
 
 const ServerSupportBanner = () => {
