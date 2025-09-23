@@ -12,6 +12,8 @@ const ContactUsForm = () => {
     "Hardware AMC",
     "Server Support",
     "Hardware Repair",
+    "Wholesale Inquiries",
+    "Become Our Partner",
   ];
 
   const [formData, setFormData] = useState({
@@ -134,7 +136,11 @@ const ContactUsForm = () => {
               style={{ padding: "14px 18px" }}
             >
               {services.map((item, index) => (
-                <option key={index} value={item}>
+                <option
+                  key={index}
+                  value={item}
+                  disabled={index === 0}
+                >
                   {item}
                 </option>
               ))}

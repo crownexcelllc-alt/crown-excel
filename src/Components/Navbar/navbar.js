@@ -15,6 +15,8 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { FaLaptop, FaDesktop, FaPrint, FaNetworkWired, FaMouse, FaTools, FaMobileAlt, FaServer, FaUserTie, FaCogs, FaUsers, FaHistory, FaCommentDots, FaQuestionCircle } from "react-icons/fa";
 import { MdDevicesOther, MdRouter, MdSecurity } from "react-icons/md";
 import logo from '../Images/logos.png';
+import { TbCloudComputing } from "react-icons/tb";
+import { CgSmartphoneChip } from "react-icons/cg";
 
 function Navbar() {
   const navLinks = [
@@ -425,8 +427,8 @@ function Navbar() {
                           desc: "Complete networking solutions"
                         },
                         'Cloud Computing': {
-                          icon: <FaTools size={24} className="text-green-900" />,
-                          desc: "Return merchandise services"
+                          icon: <TbCloudComputing size={24} className="text-green-900" />,
+                          desc: "Scalable cloud data solutions"
                         },
                         'IT Infrastructure': {
                           icon: <FaServer size={24} className="text-green-900" />,
@@ -441,12 +443,12 @@ function Navbar() {
                           desc: "Hardware maintenance contracts"
                         },
                         'Software Solutions': {
-                          icon: <FaCogs size={24} className="text-green-900" />,
+                          icon: <CgSmartphoneChip  size={24} className="text-green-900" />,
                           desc: "Software support agreements"
                         },
                         'Security Solutions': {
                           icon: <FaTools size={24} className="text-green-900" />,
-                          desc: "Device repair & maintenance"
+                          desc: "Advanced cybersecurity and protection"
                         },
                         'Storage & Virtualization': {
                           icon: <FaServer size={24} className="text-green-900" />,

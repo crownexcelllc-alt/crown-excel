@@ -74,12 +74,11 @@ const OurServices = () => {
             >
                 <div className='our-services-top-text flex flex-col items-center md:items-start lg:items-start justify-center w-full'>
                     <p className="text-[13px] w-[209px] h-[30px] flex items-center justify-center font-montserrat font-[600] text-[#084032] tracking-[1.3px] bg-[#e6eeff] rounded-[30px] mb-4 shadow-sm" style={{ padding: '4px 13px' }}>
-                        WHAT WE DO FOR YOUU
+                        How We Add Value
                     </p>
                     <h1 className="text-[24px] flex flex-col items-center md:items-start lg:items-start md:text-start lg:text-start text-center md:text-[40px] font-[800] text-[#084032] leading-[40px] lg:leading-[48px] font-montserrat">
-                        <AnimatedText text="We can inspire and Offer" />
-
-                        <AnimatedText text="Different Services" />
+                       <AnimatedText text="We bring fresh prespectives and tailored " />
+              <AnimatedText text="Services to meet your needs" />
                     </h1>
                 </div>
                 <div className="our-services-top-cards mt-20  flex flex-wrap items-center gap-10">

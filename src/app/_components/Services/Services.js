@@ -34,11 +34,11 @@ const Services = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-16">
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <p className="bg-[#e6eeff] text-green-900 px-4 py-1 font-montserrat rounded-full text-xs font-semibold tracking-wider mb-3 w-max shadow-sm">
-              WHAT WE DO FOR YOU
+              How We Add Value
             </p>
             <div className="flex flex-col font-montserrat items-center md:items-start heading text-2xl md:text-4xl font-extrabold leading-tight text-white text-center md:text-start">
-              <AnimatedText text="We can inspire and Offer" />
-              <AnimatedText text="Different Services" />
+              <AnimatedText text="We bring fresh prespectives and tailored " />
+              <AnimatedText text="Services to meet your needs" />
             </div>
           </div>
           <Link href="/our-services">

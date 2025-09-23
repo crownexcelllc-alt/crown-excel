@@ -13,7 +13,7 @@ const TrustedPartner = () => {
             <div className="container  w-full flex flex-col lg:flex-row items-center  justify-center gap-8 " style={{ paddingBottom: '10px'}}>
                 <div className="left-part text-black w-full lg:w-2/5 mb-8 lg:mb-0">
                     <h1 className="font-semibold font-roboto  text-[58px] sm:text-5xl lg:text-5xl leading-[58px] text-center lg:text-left">Trusted Partner for Tech Solutions</h1>
-                    <p className=" text-[16] font-montserrat leading-[27px] text-center lg:text-left" style={{marginTop: '20px'}}>Crown Excel delivers top-tier technology solutions for businesses and individuals, providing reliable hardware and IT services backed by over 15 years of excellence and 17,000 satisfied customers. From cutting-edge hardware to comprehensive IT solutions, we ensure top performance, innovation, and exceptional service. Our mission is to offer the latest technology at unbeatable rates, catering to all your business and personal needs. Whether you’re upgrading office systems or seeking expert IT services, Crown Excel is your trusted partner for quality, performance, and satisfaction.</p>
+                    <p className=" text-[16] font-montserrat leading-[27px] text-center lg:text-left" style={{marginTop: '20px'}}>Crown Excel delivers top-tier technology solutions for businesses and individuals, providing reliable hardware and IT services backed by mover than 15 years of excellence and over 17,000 satisfied customers. From cutting-edge hardware to comprehensive IT solutions, we ensure top performance, innovation, and exceptional service. Our mission is to offer the latest technology at unbeatable rates, catering to all your business and personal needs. Whether you’re upgrading office systems or seeking expert IT services, Crown Excel is your trusted partner for quality, performance, and satisfaction.</p>
                 </div>
                 <div className="right-part relative w-full lg:w-3/5 flex flex-col gap-8">
                     <div className="right-top w-full mt-10">
@@ -47,7 +47,7 @@ const TrustedPartner = () => {
                 </div>
             </div>
             <div className="small-bottom" style={{padding: '0px 20px 20px 20px'}}>
-                <p className='text-[12px] md:text-[16px]  leading-[20px] font-montserrat'>From premium laptops and gaming systems to cutting-edge hardware, we offer reliable, innovative products backed by exceptional service. Our mission is to provide the latest technology at unbeatable rates, ensuring top performance and value with every purchase.
+                <p className='text-[12px] md:text-[16px]  leading-[20px] font-montserrat'>From premium laptops and gaming systems to cutting-edge hardware, we deliver innovation, performance and exceptional service. Our mission is to provide the latest technology at unbeatable rates, ensuring top performance and value with every purchase.
                     <br />
                     <br />
                     Whether you’re upgrading office equipment or building a custom gaming rig, Crown Excel is your trusted partner for quality, performance, and satisfaction.

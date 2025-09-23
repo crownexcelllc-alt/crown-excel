@@ -36,77 +36,69 @@ const categories = [
 const productDetails = {
     laptops: {
         title: 'Laptops',
-        description: 'High-performance laptops for work and play. Choose from a wide range of brands and specs.',
+        description: 'Explore high-performance laptops with Intel/AMD processors, SSD storage, FHD/4K displays, and long battery life. Ideal for business, gaming, and everyday use.',
         Image: Laptop,
         href: '/products/laptops'
     },
     desktop: {
         title: 'Desktop',
-        description: 'Powerful desktops for office, gaming, and creative work. Custom builds available.',
+        description: 'Powerful desktops featuring multi-core CPUs, high RAM, SSD/HDD options, and dedicated graphics. Perfect for office productivity, creative work, and gaming. Custom builds available.',
         Image: Desktop,
         href: '/products/pc'
     },
     'all-in-one': {
         title: 'All In One',
-        description: 'Space-saving all-in-one PCs with sleek design and robust performance.',
+        description: 'Sleek all-in-one PCs with integrated FHD displays, compact design, and efficient Intel/AMD processors. Save space without compromising on performance.',
         Image: Screen,
         href: '/products/all-in-one'
-
     },
     printers: {
         title: 'Printers',
-        description: 'Reliable printers for home and business, including laser, inkjet, and multifunction models.',
+        description: 'Reliable laser and inkjet printers with wireless connectivity, duplex printing, and multifunction (print/scan/copy) features for home and business.',
         Image: Printer,
         href: '/products/printers'
     },
     routers: {
         title: 'Routers',
-        description: 'Fast and secure routers for seamless connectivity and network management.',
+        description: 'High-speed Wi-Fi 6/5 routers with dual-band support, advanced security, and easy setup for seamless internet and network management.',
         Image: Routerr,
         href: '/products/routers-access-points'
-
     },
     switching: {
         title: 'Switching',
-        description: 'Network switches for scalable and efficient networking solutions.',
+        description: 'Managed and unmanaged network switches with multiple Gigabit ports, PoE support, and robust performance for scalable networking.',
         Image: Switching,
         href: '/products/switching'
-
     },
     'scanners-copier': {
         title: 'Scanners & Copier',
-        description: 'High-resolution scanners and copiers for all your document needs.',
+        description: 'High-resolution scanners and copiers with fast scanning speeds, ADF, and versatile document handling for offices and businesses.',
         Image: Scanner,
         href: '/products/scanners-copier'
-
     },
     'keyboards-mouse': {
         title: 'Keyboards & Mouse',
-        description: 'Ergonomic keyboards and mice for comfortable and productive use.',
+        description: 'Ergonomic keyboards and precision mice, including wireless and mechanical options, for comfortable and productive computing.',
         Image: Keyboard,
         href: '/products/keyboard-mouse'
-
     },
     accessories: {
         title: 'Accessories',
-        description: 'A wide range of computer accessories to enhance your setup.',
+        description: 'Enhance your setup with monitors, cables, adapters, laptop bags, cooling pads, and more essential computer accessories.',
         Image: Accessories,
         href: '/products/accessories'
-
     },
     biometrics: {
         title: 'Biometrics',
-        description: 'Advanced biometric devices for secure authentication and access control.',
+        description: 'Advanced biometric devices including fingerprint scanners, facial recognition, and access control systems for secure authentication.',
         Image: Biometric,
         href: '/products/biometrics'
-
     },
     'phones-cctv': {
         title: 'Phones & CCTV',
-        description: 'Latest phones and CCTV systems for communication and security.',
+        description: 'Latest IP phones and CCTV systems with HD cameras, night vision, remote monitoring, and secure communication for home and business.',
         Image: Cctv,
         href: '/products/phones-cctv'
-
     },
 };
 
@@ -139,7 +131,14 @@ const AllProducts = () => {
                 }}>
                     <div className="all-products-left flex mt-[60px] flex-col items-center justify-center">
                         <h1 className='text-[56px] font-[600] text-black '>{productDetails[active].title}</h1>
-                        <Link href={productDetails[active].href}><button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button></Link>
+                        <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
+                            {productDetails[active].description}
+                        </p>
+                        <Link href={productDetails[active].href}>
+                            <button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>
+                                Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' />
+                            </button>
+                        </Link>
                     </div>
                     <div className="all-products-right  mt-[150px]">
                         <Image width={539} height={224} className='md:w-[294.6px] md:h-[122.3px] lg:w-[539px] lg:h-[224px]' alt='img' src={productDetails[active].Image} />
@@ -178,6 +177,9 @@ const AllProducts = () => {
                                     minHeight: '250px'
                                 }}>
                                     <h2 className="text-lg text-black font-bold text-[30px]   ">{productDetails[item.slug].title}</h2>
+                                    <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
+                                        {productDetails[item.slug].description}
+                                    </p>
                                     <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
                                     <div className="w-full flex justify-center">
                                         <Image

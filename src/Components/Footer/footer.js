@@ -574,25 +574,24 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p className="text-gray-300 text-sm mb-4 md:mb-0">
-              © 2024 Crown Excel. All rights reserved.
+              © 2024 Crown Excel. All Rights Reserved.
             </p>
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
               <p className="text-gray-300">
                 Developed
-                
                 by{' '}
                 <span className="text-[#4ade80] font-semibold hover:text-[#22c55e] transition-colors">
                   Tech Solutionor
                 </span>
               </p>
-              {/* <div className="flex gap-4">
+              <div className="flex gap-4">
                 <Link href="/privacy-policy" className="text-gray-400 hover:text-[#4ade80] transition-colors">
                   Privacy Policy
                 </Link>
-                <Link href="/terms-of-service" className="text-gray-400 hover:text-[#4ade80] transition-colors">
-                  Terms of Service
+                <Link href="/terms-and-conditions" className="text-gray-400 hover:text-[#4ade80] transition-colors">
+                  Terms & Conditions
                 </Link>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -603,3 +602,4 @@ const Footer = () => {
 };
 
 export default Footer;
+// export default Footer;
