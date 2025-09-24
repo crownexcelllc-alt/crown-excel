@@ -279,7 +279,7 @@ function Navbar() {
                             'IT Infrastructure': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Comprehensive IT management' },
                             'IT Consultancy': { icon: <FaUserTie size={20} className="text-green-900" />, desc: 'Expert technology guidance' },
                             'Long/Short Term AMC': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
-                            'Software Solutions': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Software support agreements' },
+                            'Software Solutions': { icon: <CgSmartphoneChip size={20} className="text-green-900" />, desc: 'Software support agreements' },
                             'Security Solutions': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Device repair & maintenance' },
                             'Storage & Virtualization': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Server maintenance solutions' },
                             'About Us': { icon: <FaUsers size={20} className="text-green-900" />, desc: 'Learn about our company' },
@@ -630,12 +630,12 @@ function Navbar() {
                                 'Biometric': { icon: <MdSecurity size={18} className="text-green-900" />, desc: 'Security authentication systems' },
                                 'Phones and CCTV': { icon: <FaMobileAlt size={18} className="text-green-900" />, desc: 'Communication & surveillance' },
                                 'Networking': { icon: <FaNetworkWired size={18} className="text-green-900" />, desc: 'Complete networking solutions' },
-                                'Cloud Computing': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Return merchandise services' },
+                                'Cloud Computing': { icon: <TbCloudComputing size={18} className="text-green-900" />, desc: 'Return merchandise services' },
                                 'IT Infrastructure': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Comprehensive IT management' },
                                 'IT Consultancy': { icon: <FaUserTie size={18} className="text-green-900" />, desc: 'Expert technology guidance' },
                                 'Long/Short Term AMC': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
-                                'Software Solutions': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Software support agreements' },
-                                'Security Solutions': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Device repair & maintenance' },
+                                'Software Solutions': { icon: <CgSmartphoneChip size={18} className="text-green-900" />, desc: 'Software support agreements' },
+                                'Security Solutions': { icon: <FaTools size={18} className="text-green-900" />, desc: 'Advanced cybersecurity and protection' },
                                 'Storage & Virtualization': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Server maintenance solutions' },
                                 'About Us': { icon: <FaUsers size={18} className="text-green-900" />, desc: 'Learn about our company' },
                                 'Company History': { icon: <FaHistory size={18} className="text-green-900" />, desc: 'Our journey through time' },
@@ -686,18 +686,18 @@ function Navbar() {
                   
                 />
               </div> */}
-              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900 text-white w-full h-18 text-base rounded-full shadow-md font-montserrat flex items-center justify-between animate-pulse" style={{ position: 'relative', overflow: 'hidden' }}>
+              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900  text-white w-full h-18 text-base rounded-full shadow-md font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
-                <span className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center">
+                {/* <span className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center">
                   <img
                       src={grabLogo.src}
                     alt="Blinking Retail Store GIF"
                     className="h-[60px] w-[100%] mr-2"
                     style={{ animation: 'blink 1s infinite' }}
                   />
-                </span>
+                </span> */}
                 {/* Button text right side */}
-                <span className="flex-1 text-right text-lg pr-4 mt-3">Our Retail Store</span>
+                <span className=" text-lg ">Our Retail Store</span>
               </button>
             </div>
           </div>
