@@ -13,7 +13,7 @@ const ContactUs = () => {
         {/* <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p> */}
       </div>
       <ContactUsForm/>
-      <ContactUsFindUs/>
+      {/* <ContactUsFindUs/> */}
       <ContactUsMap/>
     </div>
   )

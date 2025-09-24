@@ -77,7 +77,7 @@ const ContactUsForm = () => {
 
   return (
     <div className="contact-us h-[auto] text-black flex flex-col items-center w-full mt-10 justify-center gap-10">
-      <div className="contact-details flex items-center justify-center w-full px-4 gap-10">
+      <div className="contact-details flex flex-col-reverse md:flex-row items-center justify-center w-full px-4 gap-10">
         
         <div
           className="contact-details-left bg-[#f8f8f8] rounded-[10px] w-full max-w-[800px]"
