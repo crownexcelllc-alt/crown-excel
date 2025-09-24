@@ -686,9 +686,10 @@ function Navbar() {
                   
                 />
               </div> */}
-              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900  text-white w-full h-18 text-base rounded-full shadow-md font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
+              <h1 className='text-black text-center text-[20px] font-bold'>Our Retail Store</h1>
+              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-2 text-white w-full h-18 text-base rounded-full  font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
-                <span className="flex items-center animate-pulse">
+                <span className="flex items-center">
                   <img
                       src={grabLogo.src}
                     alt="Blinking Retail Store GIF"
