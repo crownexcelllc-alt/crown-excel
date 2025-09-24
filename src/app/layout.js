@@ -6,6 +6,7 @@ import Navbar from "@/Components/Navbar/navbar";
 import Footer from "@/Components/Footer/footer";
 import { usePathname } from "next/navigation";
 import ScrollToTopButton from "./_components/ScrollToTopButton/ScrollToTopButton";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       >
         {!isAdminRoute && <Navbar />}
         {children}
+         <SpeedInsights />
         {!isAdminRoute && <Footer />}
         <ScrollToTopButton />
       </body>
