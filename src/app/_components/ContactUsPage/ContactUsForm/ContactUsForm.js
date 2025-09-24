@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
+import ContactUs from '../../../../Components/Images/contactus.jpg'
 
 const ContactUsForm = () => {
   const services = [
@@ -75,7 +77,8 @@ const ContactUsForm = () => {
 
   return (
     <div className="contact-us h-[auto] text-black flex flex-col items-center w-full mt-10 justify-center gap-10">
-      <div className="contact-details flex items-center justify-center w-full px-4">
+      <div className="contact-details flex items-center justify-center w-full px-4 gap-10">
+        
         <div
           className="contact-details-left bg-[#f8f8f8] rounded-[10px] w-full max-w-[800px]"
           style={{ padding: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
@@ -174,6 +177,9 @@ const ContactUsForm = () => {
               </p>
             )}
           </form>
+        </div>
+        <div className="image-left">
+          <Image alt='' src={ContactUs} width={1000} height={800} className='rounded-[10px] w-[1000px] h-[380px]' />
         </div>
       </div>
     </div>

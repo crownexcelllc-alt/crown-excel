@@ -259,6 +259,29 @@ const Footer = () => {
                     )}
                   </div>
                 </div>
+                {/* Newsletter Subscription */}
+                <div className='mt-8'>
+                  {/* <h4 className="text-white font-semibold mb-4">Newsletter</h4> */}
+                  <p className="text-gray-300 mb-4 text-sm">Stay updated with our latest news and offers</p>
+                  <div className="flex">
+                    <input
+                      type="email"
+                      value={emailInput}
+                      onChange={e => setEmailInput(e.target.value)}
+                      placeholder="Enter your email"
+                      className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
+                    />
+                    <button
+                      onClick={submitSubscription}
+                      className={`bg-[#4ade80] hover:bg-[#22c55e] px-6 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
+                    >
+                      <PaperPlaneRight size={20} className="text-white" />
+                    </button>
+                  </div>
+                  {emailMessage && (
+                    <p className="text-sm mt-3 text-gray-400">{emailMessage}</p>
+                  )}
+                </div>
               </div>
 
               {/* Our Services - Takes 3 columns */}
@@ -360,34 +383,14 @@ const Footer = () => {
                       <span className="font-semibold text-white">Email:</span> {settings.email}
                     </p>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed flex flex-col gap-2">
                     <span className=" block"> <span className='font-semibold text-white '>Address:</span> {settings.address}</span>
+                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai</span>
+                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai </span>
                   </p>
                 </div>
 
-                {/* Newsletter Subscription */}
-                <div>
-                  {/* <h4 className="text-white font-semibold mb-4">Newsletter</h4> */}
-                  <p className="text-gray-300 mb-4 text-sm">Stay updated with our latest news and offers</p>
-                  <div className="flex">
-                    <input
-                      type="email"
-                      value={emailInput}
-                      onChange={e => setEmailInput(e.target.value)}
-                      placeholder="Enter your email"
-                      className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
-                    />
-                    <button
-                      onClick={submitSubscription}
-                      className={`bg-[#4ade80] hover:bg-[#22c55e] px-6 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
-                    >
-                      <PaperPlaneRight size={20} className="text-white" />
-                    </button>
-                  </div>
-                  {emailMessage && (
-                    <p className="text-sm mt-3 text-gray-400">{emailMessage}</p>
-                  )}
-                </div>
+                
               </div>
 
             </div>

@@ -275,7 +275,7 @@ function Navbar() {
                             'Biometric': { icon: <MdSecurity size={20} className="text-green-900" />, desc: 'Security authentication systems' },
                             'Phones and CCTV': { icon: <FaMobileAlt size={20} className="text-green-900" />, desc: 'Communication & surveillance' },
                             'Networking': { icon: <FaNetworkWired size={20} className="text-green-900" />, desc: 'Complete networking solutions' },
-                            'Cloud Computing': { icon: <FaTools size={20} className="text-green-900" />, desc: 'Return merchandise services' },
+                            'Cloud Computing': { icon: <TbCloudComputing size={20} className="text-green-900" />, desc: 'Scalable cloud data solutions' },
                             'IT Infrastructure': { icon: <FaServer size={20} className="text-green-900" />, desc: 'Comprehensive IT management' },
                             'IT Consultancy': { icon: <FaUserTie size={20} className="text-green-900" />, desc: 'Expert technology guidance' },
                             'Long/Short Term AMC': { icon: <FaCogs size={20} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
@@ -630,7 +630,7 @@ function Navbar() {
                                 'Biometric': { icon: <MdSecurity size={18} className="text-green-900" />, desc: 'Security authentication systems' },
                                 'Phones and CCTV': { icon: <FaMobileAlt size={18} className="text-green-900" />, desc: 'Communication & surveillance' },
                                 'Networking': { icon: <FaNetworkWired size={18} className="text-green-900" />, desc: 'Complete networking solutions' },
-                                'Cloud Computing': { icon: <TbCloudComputing size={18} className="text-green-900" />, desc: 'Return merchandise services' },
+                                'Cloud Computing': { icon: <TbCloudComputing size={18} className="text-green-900" />, desc: 'Scalable cloud data solutions' },
                                 'IT Infrastructure': { icon: <FaServer size={18} className="text-green-900" />, desc: 'Comprehensive IT management' },
                                 'IT Consultancy': { icon: <FaUserTie size={18} className="text-green-900" />, desc: 'Expert technology guidance' },
                                 'Long/Short Term AMC': { icon: <FaCogs size={18} className="text-green-900" />, desc: 'Hardware maintenance contracts' },
@@ -688,16 +688,16 @@ function Navbar() {
               </div> */}
               <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-4 bg-green-900  text-white w-full h-18 text-base rounded-full shadow-md font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
-                {/* <span className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center">
+                <span className="flex items-center animate-pulse">
                   <img
                       src={grabLogo.src}
                     alt="Blinking Retail Store GIF"
                     className="h-[60px] w-[100%] mr-2"
                     style={{ animation: 'blink 1s infinite' }}
                   />
-                </span> */}
+                </span>
                 {/* Button text right side */}
-                <span className=" text-lg ">Our Retail Store</span>
+                {/* <span className=" text-lg ">Our Retail Store</span> */}
               </button>
             </div>
           </div>

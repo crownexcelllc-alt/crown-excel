@@ -34,8 +34,8 @@ const ContactUsMap = () => {
               <h3 className="text-center text-[20px] font-bold mb-3" style={{ color: "#16CA9A" }}>
                 {loc.title}
               </h3>
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ">
-                <div className="p-6">
+              <div className="bg-white rounded-xl h-[400px] shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ">
+                <div className="p-6 flex flex-col justify-between h-full">
                   <div className="flex items-start gap-2 mb-3">
                     <FaMapMarkerAlt className="text-[#16CA9A] flex-shrink-0" size={24} />
                     <span className="text-[14px] text-gray-700 font-medium">
@@ -43,12 +43,12 @@ const ContactUsMap = () => {
                     </span>
                   </div>
 
-                  <div className="w-full h-[280px] rounded-lg overflow-hidden">
+                  <div className="w-full  rounded-lg overflow-hidden">
                     <iframe
                       src={loc.mapSrc}
                       title={loc.title}
                       aria-label={loc.title}
-                      className="w-full h-full border-0"
+                      className="w-full h-[300px] border-0"
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
@@ -64,7 +64,7 @@ const ContactUsMap = () => {
   )
 }
 
-<div>
+{/* <div>
 
   <h3 className="text-lg font-semibold text-[#084032] mb-4 text-center">Branch 2</h3>
   <div className="flex items-center justify-center mb-3">
@@ -84,7 +84,7 @@ const ContactUsMap = () => {
       referrerPolicy="no-referrer-when-downgrade"
     ></iframe>
   </div>
-</div>
+</div> */}
 
 
 export default ContactUsMap

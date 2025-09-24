@@ -9,7 +9,7 @@ const ContactUs = () => {
     <div>
       <ContactUsPageBanner/>
        <div className="header text-center">
-        <h1 className='text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]'>Get a Quote</h1>
+        <h1 className='text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]'>Contact us</h1>
         {/* <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p> */}
       </div>
       <ContactUsForm/>
