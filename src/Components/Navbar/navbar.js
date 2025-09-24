@@ -686,7 +686,7 @@ function Navbar() {
                   
                 />
               </div> */}
-              <h1 className='text-black text-center text-[20px] font-bold'>Our Retail Store</h1>
+              <h1 onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className='text-black text-center text-[20px] font-bold'><span className='font-normal'>Click here to visit</span> Our Retail Store</h1>
               <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-2 text-white w-full h-18 text-base rounded-full  font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
                 <span className="flex items-center">
