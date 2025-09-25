@@ -294,39 +294,7 @@ export default function ServerSmart() {
         </div>
       </section>
 
-      {/* Technology Partners */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Technology Partners
-            </h2>
-            <p className="text-xl text-gray-600">
-              We work with industry-leading technology partners to deliver best-in-class solutions
-            </p>
-          </div>
-
-          <div className="flex items-center justify-center flex-wrap gap-8">
-            <div className='flex items-center justify-center flex-wrap gap-8 w-[800px]'>
-              {technologyPartners.map((partner, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-[30px] w-[100px] h-[100px]  flex items-center justify-center shadow-md hover:shadow-xl transition-shadow duration-300 group"
-                >
-                  <Image
-                    src={partner.Image}
-                    alt={partner.name}
-                    width={60}
-                    height={60}
-                    className="transform transition-transform duration-300 group-hover:-translate-y-2"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
+      
 
       {/* Implementation Process */}
       <section className="py-20 bg-white">
