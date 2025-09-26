@@ -15,10 +15,10 @@ const Networking = () => {
       <NetworkingBanner/>
       {/* <NetworkingSmart/> */}
       <NetworkEmpowering/>
-        <div className="header text-center">
-        <h1 className='text-[32px] text-black -mb-10 lg:text-[32px] font-montserrat font-[600]'>Get a Quote</h1>
+        {/* <div className="header text-center">
+        <h1 className='text-[32px] text-black -mb-10 lg:text-[32px] font-montserrat font-[600]'>Get a Quote</h1> */}
         {/* <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p> */}
-      </div>
+      {/* </div> */}
       {/* <ContactUsForm/>  */}
       {/* <NetworkEmpowering/> */}
       {/* <NetworkCoreAreas/>

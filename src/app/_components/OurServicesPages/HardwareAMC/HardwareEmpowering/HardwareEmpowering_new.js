@@ -10,6 +10,8 @@ import Proactive from '../../../../../Components/Images/proacitve.png'
 import Cost from '../../../../../Components/Images/cost.png'
 import Rapid from '../../../../../Components/Images/rapid.png'
 import Security from '../../../../../Components/Images/security3.png'
+import { BsLightningChargeFill } from "react-icons/bs";
+import { MdSecurity } from "react-icons/md";
 
 const HardwareEmpowering = () => {
   // Get quote function
@@ -35,7 +37,7 @@ const HardwareEmpowering = () => {
         "System health monitoring reports"
       ],
       benefits: "Best for startups, shops, and urgent business needs",
-      icon: "⚡",
+      icon: <BsLightningChargeFill />,
       color: "from-[#16CA9A] to-[#119472]",
       uptime: "99.5%",
       response: "4 Hours"
@@ -56,7 +58,7 @@ const HardwareEmpowering = () => {
         "Annual business technology consultation"
       ],
       benefits: "Ideal for enterprises, retail, and those who want total peace of mind",
-      icon: "🛡️",
+      icon: <MdSecurity/>,
       color: "from-[#13745a] to-[#084032]",
       uptime: "99.9%",
       response: "2 Hours"
@@ -175,7 +177,7 @@ const HardwareEmpowering = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-6 py-3 rounded-2xl text-sm font-bold uppercase tracking-wide shadow-lg">
-                    🧑‍💻 BUSINESS MANAGEMENT SERVICES
+                    BUSINESS MANAGEMENT SERVICES
                   </div>
                   <div className="h-1 w-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
                 </div>
@@ -228,7 +230,7 @@ const HardwareEmpowering = () => {
                     </svg>
                   </button>
                   <button className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300">
-                    📞 Emergency Support
+                    Emergency Support
                   </button>
                 </div>
               </div>
@@ -274,7 +276,7 @@ const HardwareEmpowering = () => {
                   <div className="bg-white rounded-3xl p-8 h-full">
                     {/* Header */}
                     <div className="flex items-center justify-between mb-6">
-                      <div className="text-4xl">{plan.icon}</div>
+                      <div className="text-4xl text-green-400">{plan.icon}</div>
                       <div className={`bg-gradient-to-r ${plan.color} text-white px-4 py-2 rounded-full text-sm font-bold`}>
                         {plan.duration}
                       </div>
@@ -447,14 +449,14 @@ const HardwareEmpowering = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg">
-                    <span className="mr-2">🔍</span>
+                    {/* <span className="mr-2">🔍</span> */}
                     Start Free Assessment
                   </button>
                   <button
                     onClick={getQuote}
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
                   >
-                    <span className="mr-2">📞</span>
+                    {/* <span className="mr-2">📞</span> */}
                     Contact Support
                   </button>
                 </div>

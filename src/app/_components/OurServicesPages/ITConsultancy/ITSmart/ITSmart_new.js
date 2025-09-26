@@ -3,6 +3,12 @@ import NetworkingSmartImage from '../../../../../Components/Images/itsmart.png';
 import SignalTower from '../../../../../Components/Images/signaltower.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AiOutlineRobot } from "react-icons/ai";
+import { GrTechnology } from "react-icons/gr";
+import { AiOutlineCloudServer } from "react-icons/ai";
+import { AiOutlineShop } from "react-icons/ai";
+import { GrCompliance } from "react-icons/gr";
+import { IoBulbOutline } from "react-icons/io5";
 
 const ITSmart = () => {
   const consultancyServices = [
@@ -10,42 +16,42 @@ const ITSmart = () => {
       title: "Digital Transformation Strategy",
       description: "Comprehensive roadmaps for modernizing legacy systems, adopting cloud technologies, and implementing digital-first processes that drive competitive advantage.",
       benefits: ["30% faster time-to-market", "50% operational efficiency", "25% cost reduction", "Future-ready architecture"],
-      icon: "🚀",
+      icon: <AiOutlineRobot/>,
       category: "Strategy"
     },
     {
       title: "Technology Architecture Review",
       description: "Deep analysis of current IT architecture, identifying bottlenecks, security gaps, and optimization opportunities for scalable growth.",
       benefits: ["Performance optimization", "Security enhancement", "Scalability planning", "Risk mitigation"],
-      icon: "🏗️",
+      icon: <GrTechnology/>,
       category: "Architecture"
     },
     {
       title: "Cloud Migration Planning",
       description: "Strategic cloud adoption plans with vendor selection, migration timelines, and risk management for seamless transition to cloud platforms.",
       benefits: ["60% cost savings", "99.9% uptime", "Instant scalability", "Global accessibility"],
-      icon: "☁️",
+      icon: <AiOutlineCloudServer/>,
       category: "Cloud"
     },
     {
       title: "Vendor Selection & Management",
       description: "Expert guidance in technology vendor evaluation, procurement strategy, contract negotiation, and ongoing relationship management.",
       benefits: ["Best-fit solutions", "Cost optimization", "Quality assurance", "Long-term partnerships"],
-      icon: "🤝",
+      icon: <AiOutlineShop/>,
       category: "Procurement"
     },
     {
       title: "IT Governance & Compliance",
       description: "Establishing robust IT governance frameworks, compliance management, and risk assessment processes for regulatory adherence.",
       benefits: ["Regulatory compliance", "Risk reduction", "Process standardization", "Audit readiness"],
-      icon: "📋",
+      icon: <GrCompliance/>,
       category: "Governance"
     },
     {
       title: "Innovation Strategy",
       description: "Technology innovation roadmaps incorporating emerging technologies like AI, IoT, and blockchain for competitive differentiation.",
       benefits: ["Innovation acceleration", "Market leadership", "Competitive advantage", "Future readiness"],
-      icon: "💡",
+      icon: <IoBulbOutline/>,
       category: "Innovation"
     }
   ];
@@ -143,9 +149,9 @@ const ITSmart = () => {
                         href="/our-services"
                         className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300"
                       >
-                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {/* <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
+                        </svg> */}
                         View All Services
                       </Link>
                     </div>

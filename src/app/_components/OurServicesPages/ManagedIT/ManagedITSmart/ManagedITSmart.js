@@ -46,7 +46,10 @@ import Virtualization2 from '../../../../../Components/Images/virtualization.jpg
 import DataManagement from '../../../../../Components/Images/Datamanagement.jpg'
 import Disaster from '../../../../../Components/Images/Disaster.png'
 import Computing from '../../../../../Components/Images/HighComputing.jpg'
-
+import { MdManageAccounts } from "react-icons/md";
+import { FaUniversalAccess } from "react-icons/fa";
+import { GrDeploy } from "react-icons/gr";
+import { SlCalender } from "react-icons/sl";
 
 const ManagedITSmart = () => {
    const technologyPartners = [
@@ -133,10 +136,10 @@ const ManagedITSmart = () => {
   ];
 
   const managementPhases = [
-    { phase: "ACCESS", title: "Infrastructure Analysis", icon: "🔍", color: "from-[#16CA9A] to-[#119472]" },
-    { phase: "PLAN", title: "Strategic Roadmap", icon: "📋", color: "from-[#119472] to-[#13745a]" },
-    { phase: "DEPLOY", title: "Implementation", icon: "🚀", color: "from-[#13745a] to-[#0d5c47]" },
-    { phase: "MANAGE", title: "Ongoing Support", icon: "⚙️", color: "from-[#0d5c47] to-[#084032]" }
+    { phase: "ACCESS", title: "Infrastructure Analysis", icon: <FaUniversalAccess/>, color: "from-[#16CA9A] to-[#119472]" },
+    { phase: "PLAN", title: "Strategic Roadmap", icon: <SlCalender/>, color: "from-[#119472] to-[#13745a]" },
+    { phase: "DEPLOY", title: "Implementation", icon: <GrDeploy/>, color: "from-[#13745a] to-[#0d5c47]" },
+    { phase: "MANAGE", title: "Ongoing Support", icon:  <MdManageAccounts/>, color: "from-[#0d5c47] to-[#084032]" }
   ];
 
   return (

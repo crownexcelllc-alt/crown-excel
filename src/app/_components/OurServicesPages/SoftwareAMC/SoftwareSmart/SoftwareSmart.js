@@ -233,11 +233,9 @@ const SoftwareSmart = () => {
               {/* Enhanced CTA Section */}
               <div className="pt-6">
                 <div className="flex flex-col sm:flex-row gap-4 items-start">
-                  <button className="group px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+                  <button className="group px-5 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
                     <span className="relative z-10 flex items-center">
-                      <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+                      
                       Explore Our Solutions
                       <svg className="w-5 h-5 ml-3 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -246,11 +244,9 @@ const SoftwareSmart = () => {
                     <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </button>
                   
-                  <button className="group px-8 py-4 bg-white text-[#084032] font-bold text-lg rounded-xl shadow-lg border-2 border-[#16CA9A] hover:bg-[#16CA9A] hover:text-white transition-all duration-300 transform hover:scale-105">
+                  <button className="group px-5 py-4 bg-white text-[#084032] font-bold text-lg rounded-xl shadow-lg border-2 border-[#16CA9A] hover:bg-[#16CA9A] hover:text-white transition-all duration-300 transform hover:scale-105">
                     <span className="flex items-center">
-                      <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
+                      
                       Get Free Consultation
                     </span>
                   </button>

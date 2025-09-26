@@ -70,7 +70,7 @@ const NetworkEmpowering = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-semibold rounded-full mb-6">
-            <span className="text-sm">🌐 Enterprise Networking Solutions</span>
+            <span className="text-sm">Enterprise Networking Solutions</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-montserrat">
             Complete Network <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Infrastructure</span>
@@ -235,7 +235,7 @@ const NetworkEmpowering = () => {
               Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Solutions</span>
             </h3>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Tailored networking solutions designed for your industry's unique requirements
+              Tailored networking solutions designed for your industry&apos;s unique requirements
             </p>
           </div>
           

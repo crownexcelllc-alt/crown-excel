@@ -2,7 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 import empoweringImage from '../../../../../Components/Images/networkempower.png';
+import { MdSecurity } from "react-icons/md";
 import NetworkIT from '../../../../../Components/Images/hardwarerepairempowering.png';
+import { SiSpringsecurity } from "react-icons/si";
+import { TbDeviceCctv } from "react-icons/tb";
+import { GrUserExpert } from "react-icons/gr";
+import { AiOutlineAudit } from "react-icons/ai";
 
 const HardwareRepairEmpowering = () => {
   return (
@@ -27,7 +32,7 @@ const HardwareRepairEmpowering = () => {
               <div className="space-y-8">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] p-4 rounded-2xl shadow-2xl">
-                    <span className="text-2xl">🛡️</span>
+                    <span className="text-2xl text-white"><MdSecurity /></span>
                   </div>
                   <div className="h-1 w-24 bg-gradient-to-r from-[#16CA9A] to-[#084032] transform skew-x-12"></div>
                   <span className="text-[#16CA9A] font-bold uppercase tracking-widest text-sm">SECURITY SOLUTIONS</span>
@@ -54,11 +59,11 @@ const HardwareRepairEmpowering = () => {
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
                   <button className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-2xl shadow-2xl hover:shadow-[#16CA9A]/25 transition-all duration-300 transform hover:scale-105 group">
-                    <span className="mr-3">📞</span>
+                    {/* <span className="mr-3">📞</span> */}
                     Get Free Security Audit
                   </button>
                   <button className="inline-flex items-center px-8 py-5 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-2xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300">
-                    <span className="mr-2">📝</span>
+                    {/* <span className="mr-2">📝</span> */}
                     Request Solution
                   </button>
                 </div>
@@ -98,22 +103,22 @@ const HardwareRepairEmpowering = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block">🔒</div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><SiSpringsecurity/></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Advanced Protection</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Multi-layered security for networks, devices, and data.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block">📹</div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><TbDeviceCctv/></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Surveillance & Access</h3>
               <p className="text-gray-600 leading-relaxed text-sm">CCTV, access control, and monitoring for total safety.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block">🧑‍💻</div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><GrUserExpert/></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Expert Team</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Certified security professionals and rapid response.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block">📊</div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><AiOutlineAudit/></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Compliance & Audits</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Stay compliant with regular audits and reporting.</p>
             </div>
@@ -161,12 +166,12 @@ const HardwareRepairEmpowering = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="inline-flex items-center px-8 py-4 bg-[#16CA9A] text-white font-bold rounded-xl hover:bg-[#084032] hover:text-white transition-colors duration-300 shadow-lg">
-                    <span className="mr-2">📞</span>
+                  <button className="inline-flex items-center px-5 py-4 bg-[#16CA9A] text-white font-bold rounded-xl hover:bg-[#084032] hover:text-white transition-colors duration-300 shadow-lg">
+                    {/* <span className="mr-2">📞</span> */}
                     Call Now For Free Security Audit
                   </button>
                   <button className="inline-flex items-center px-8 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-colors duration-300">
-                    <span className="mr-2">📝</span>
+                    {/* <span className="mr-2">📝</span> */}
                     Request Solution
                   </button>
                 </div>

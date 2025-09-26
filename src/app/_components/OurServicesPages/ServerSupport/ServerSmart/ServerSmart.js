@@ -39,6 +39,8 @@ import Virtualization from '../../../../../Components/Images/virtualization.jpg'
 import DataManagement from '../../../../../Components/Images/Datamanagement.jpg'
 import Disaster from '../../../../../Components/Images/Disaster.png'
 import Computing from '../../../../../Components/Images/HighComputing.jpg'
+import { MdStorage } from "react-icons/md";
+import { PiRocketFill } from "react-icons/pi";
 
 export default function ServerSmart() {
   const storageServices = [
@@ -164,7 +166,7 @@ export default function ServerSmart() {
             {/* Content */}
             <div>
               <div className="inline-flex items-center bg-[#16CA9A]/10 px-4 py-2 rounded-full text-[#16CA9A] font-semibold text-sm mb-6">
-                <span className="mr-2">💾</span>
+                <span className="mr-2"><MdStorage /></span>
                 STORAGE & VIRTUALIZATION
               </div>
 
@@ -340,7 +342,7 @@ export default function ServerSmart() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-semibold text-sm mb-6">
-                <span className="mr-2">🚀</span>
+                <span className="mr-2 "><PiRocketFill /></span>
                 GET STARTED TODAY
               </div>
 
@@ -405,11 +407,11 @@ export default function ServerSmart() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-[#16CA9A] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
-                  <span className="mr-2">📊</span>
+                  {/* <span className="mr-2">📊</span> */}
                   Schedule Free Assessment
                 </button>
                 <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#16CA9A] transition-all duration-300 flex items-center justify-center">
-                  <span className="mr-2">💬</span>
+                  {/* <span className="mr-2">💬</span> */}
                   Contact Expert Now
                 </button>
               </div>
