@@ -199,26 +199,26 @@ const Footer = () => {
 
           {/* Desktop Layout */}
           <div className="hidden md:block">
-            <div className="grid grid-cols-12 gap-8">
+            <div className="flex items-start gap-10">
 
               {/* Company Info - Takes 4 columns */}
-              <div className="col-span-4">
-                <div className="mb-8">
+              <div className="">
+                <div className="mb-0">
                   <Image
                     src={logo}
                     alt="Crown Excel Logo"
                     width={180}
                     height={90}
-                    className="object-contain mb-6"
+                    className="object-contain mb-1"
                   />
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  <p className="text-gray-300 text-lg leading-relaxed mb-4">
                     Let&apos;s Embrace Technology
                   </p>
                 </div>
 
                 {/* Social Media */}
                 <div>
-                  <h4 className="text-white font-semibold mb-4">Follow Us</h4>
+                  <h4 className="text-white font-semibold mb-2">Follow Us</h4>
                   <div className="flex gap-4">
                     {settings.facebook && (
                       <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
@@ -260,7 +260,7 @@ const Footer = () => {
                   </div>
                 </div>
                 {/* Newsletter Subscription */}
-                <div className='mt-8'>
+                <div className='mt-5'>
                   {/* <h4 className="text-white font-semibold mb-4">Newsletter</h4> */}
                   <p className="text-gray-300 mb-4 text-sm">Stay updated with our latest news and offers</p>
                   <div className="flex">
@@ -269,7 +269,7 @@ const Footer = () => {
                       value={emailInput}
                       onChange={e => setEmailInput(e.target.value)}
                       placeholder="Enter your email"
-                      className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
+                      className="w-[250px]  bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
                     />
                     <button
                       onClick={submitSubscription}
@@ -284,113 +284,115 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Our Services - Takes 3 columns */}
-              <div className="col-span-3">
-                <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
-                <ul className="space-y-4">
-                  <li>
-                    <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Software Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Long/Short Term AMC
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/it-consultancy" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      IT Consultancy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/networking" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Networking Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/storage&virtualization" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Storage & Virtualization
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/sitemap.xml" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Sitemaps
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Company Links - Takes 2 columns */}
-              <div className="col-span-2">
-                <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Company</h3>
-                <ul className="space-y-4">
-                  <li>
-                    <Link href="/company/about-us" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/career" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Careers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/company-history" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Our History
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/leader-team" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Leadership
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      Blogs
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/faq" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                      <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                      FAQ
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Contact & Newsletter - Takes 3 columns */}
-              <div className="col-span-3">
-                <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Get In Touch</h3>
-
-                <div className="mb-8">
-                  <div className="mb-4">
-                    <p className="text-gray-300 mb-2">
-                      <span className="font-semibold text-white">Phone:</span> {settings.phone}
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      <span className="font-semibold text-white">Email:</span> {settings.email}
-                    </p>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed flex flex-col gap-2">
-                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> {settings.address}</span>
-                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai</span>
-                    <span className=" block"> <span className='font-semibold text-white '>Address:</span> Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai </span>
-                  </p>
+              <div className='flex items-start justify-between  w-full'>
+                {/* Our Services - Takes 3 columns */}
+                <div className="w-[200px]">
+                  <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
+                  <ul className="space-y-4">
+                    <li>
+                      <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Software Solutions
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Long/Short Term AMC
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/our-services/it-consultancy" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        IT Consultancy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/our-services/networking" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Networking Solutions
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/our-services/storage&virtualization" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Storage & Virtualization
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/sitemap.xml" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Sitemaps
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
 
-                
+                {/* Company Links - Takes 2 columns */}
+                <div className="w-[200px]">
+                  <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Company</h3>
+                  <ul className="space-y-4">
+                    <li>
+                      <Link href="/company/about-us" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        About Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/company/career" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Careers
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/company/company-history" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Our History
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/company/leader-team" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Leadership
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Blogs
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/company/faq" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        FAQ
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Contact & Newsletter - Takes 3 columns */}
+                <div className="w-[400px]">
+                  <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Get In Touch</h3>
+
+                  <div className="mb-8">
+                    <div className="mb-4">
+                      <p className="text-gray-300 mb-2">
+                        <span className="font-semibold text-white">Phone:</span> {settings.phone}
+                      </p>
+                      <p className="text-gray-300 mb-4">
+                        <span className="font-semibold text-white">Email:</span> {settings.email}
+                      </p>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed flex flex-col gap-2">
+                      <span className=" block text-[14px]"> <span className='font-semibold text-white '>Head Office:</span> {settings.address}</span>
+                      <span className=" block text-[14px]"> <span className='font-semibold text-white '>Experience Centre:</span> Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai</span>
+                      <span className=" block text-[14px]"> <span className='font-semibold text-white '>Branch 2:</span> Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai </span>
+                    </p>
+                  </div>
+
+
+                </div>
               </div>
 
             </div>
@@ -479,7 +481,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link  href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                    <Link href="https://blog.grabatoz.ae/" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
                       <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
                       Blogs
                     </Link>
@@ -492,10 +494,21 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="text-center mb-8">
               <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30 inline-block">Contact Address</h3>
-              <p className="text-gray-300 text-sm leading-relaxed max-w-xs mx-auto">
-                {settings.address}
-              </p>
-                <div className="space-y-2 text-sm text-gray-300">
+              <div className="addresses flex flex-col ">
+                <h1><span className='font-bold text-[14px]'>Head Office:</span> </h1>
+                <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
+                  {settings.address}
+                </p>
+                <h1><span className='font-bold text-[14px]'>Experience Centre:</span></h1>
+                <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
+                   Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai
+                </p>
+                <h1><span className='font-bold text-[14px]'>Branch 2:</span></h1>
+                <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
+                   Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai - Dubai
+                </p>
+              </div>
+              <div className="space-y-2 text-sm text-gray-300">
                 <p><span className="font-semibold text-white">Phone:</span> {settings.phone}</p>
                 <p><span className="font-semibold text-white">Email:</span> {settings.email}</p>
               </div>
@@ -587,7 +600,7 @@ const Footer = () => {
                   Tech Solutionor
                 </span>
               </p>
-              
+
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ import { MdDevicesOther, MdRouter, MdSecurity } from "react-icons/md";
 import logo from '../Images/logos.png';
 import { TbCloudComputing } from "react-icons/tb";
 import { CgSmartphoneChip } from "react-icons/cg";
+import { FaLongArrowAltDown } from "react-icons/fa";
 
 function Navbar() {
   const navLinks = [
@@ -676,7 +677,7 @@ function Navbar() {
               </ul>
             </div>
 
-            <div>
+            <div className='flex flex-col items-center'>
               {/* Blinking GIF above the button */}
               {/* <div className="flex justify-center mb-2">
                 <img
@@ -687,9 +688,10 @@ function Navbar() {
                 />
               </div> */}
               <h1 onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className='text-black text-center text-[20px] font-bold'><span className='font-normal'>Click here to visit</span> Our Retail Store</h1>
+              <FaLongArrowAltDown className='text-black animate-bounce text-[20px] -mb-5 mt-2'/>
               <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-2 text-white w-full h-18 text-base rounded-full  font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
-                <span className="flex items-center">
+                <span className="flex items-center ">
                   <img
                       src={grabLogo.src}
                     alt="Blinking Retail Store GIF"

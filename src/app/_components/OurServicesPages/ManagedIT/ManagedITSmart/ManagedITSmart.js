@@ -1,5 +1,5 @@
 import React from 'react';
-import NetworkingSmartImage from '../../../../../Components/Images/manageditsmart.png';
+import NetworkingSmartImage from '../../../../../Components/Images/Itinfrastructure.jpg';
 import SignalTower from '../../../../../Components/Images/signaltower.png';
 import Image from 'next/image';
 import Link from 'next/link';

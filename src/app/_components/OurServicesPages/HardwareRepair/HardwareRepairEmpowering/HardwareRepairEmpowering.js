@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import empoweringImage from '../../../../../Components/Images/networkempower.png';
+import empoweringImage from '../../../../../Components/Images/completesecurity.jpg';
 import { MdSecurity } from "react-icons/md";
-import NetworkIT from '../../../../../Components/Images/hardwarerepairempowering.png';
+import NetworkIT from '../../../../../Components/Images/staysecure.jpg';
 import { SiSpringsecurity } from "react-icons/si";
 import { TbDeviceCctv } from "react-icons/tb";
 import { GrUserExpert } from "react-icons/gr";
