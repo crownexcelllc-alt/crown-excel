@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import empoweringImage from '../../../../../Components/Images/completesecurity.jpg';
 import { MdSecurity } from "react-icons/md";
@@ -10,6 +10,27 @@ import { GrUserExpert } from "react-icons/gr";
 import { AiOutlineAudit } from "react-icons/ai";
 
 const HardwareRepairEmpowering = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  // Open with animation
+  const openModal = () => {
+    setShowModal(true);
+    setTimeout(() => setIsModalOpen(true), 10);
+  };
+  // Close with animation
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setShowModal(false), 300);
+  };
+
+  const toggleModal = () => {
+    if (!showModal) {
+      openModal();
+    } else {
+      closeModal();
+    }
+  };
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-50 overflow-hidden">
       {/* Animated Background Elements */}
@@ -21,7 +42,7 @@ const HardwareRepairEmpowering = () => {
       </div>
 
       {/* Matrix-like grid overlay */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{backgroundImage: 'radial-gradient(circle, #16CA9A 1px, transparent 1px)', backgroundSize: '50px 50px'}}></div>
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #16CA9A 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero Section */}
@@ -62,18 +83,82 @@ const HardwareRepairEmpowering = () => {
                     {/* <span className="mr-3">📞</span> */}
                     Get Free Security Audit
                   </button>
-                  <button className="inline-flex items-center px-8 py-5 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-2xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300">
+                  <button onClick={toggleModal} className="bg-[#16CA9A] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#084032] transition-colors">
                     {/* <span className="mr-2">📝</span> */}
                     Request Solution
                   </button>
                 </div>
               </div>
             </div>
+            {showModal && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center"
+                style={{
+                  background: "rgba(0,0,0,0.35)",
+                  transition: "background 0.3s",
+                }}
+              >
+                {/* Background overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r from-[#16CA9A] to-[#084032] transition-opacity duration-300 ${isModalOpen ? 'opacity-90' : 'opacity-0'}`}
+                ></div>
+                {/* Modal with custom drop-out animation */}
+                <div
+                  className={`relative z-10 bg-white text-black rounded-lg p-8 w-full max-w-md shadow-xl transform transition-all duration-300
+                    ${isModalOpen ? 'scale-100 opacity-100 translate-x-0 translate-y-0' : 'opacity-0 scale-90 translate-x-[40vw] translate-y-[40vh]'}
+                  `}
+                  style={{
+                    transition: "all 0.4s cubic-bezier(.4,0,.2,1)",
+                  }}
+                >
+                  <h2 className="text-2xl font-bold mb-4">Request a Solution</h2>
+                  <form className="space-y-4">
+                    <div>
+                      <label className="block font-medium">Name</label>
+                      <input
+                        type="text"
+                        className="w-full border border-gray-300 rounded px-4 py-2"
+                        placeholder="Your Name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-medium">Email</label>
+                      <input
+                        type="email"
+                        className="w-full border border-gray-300 rounded px-4 py-2"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-medium">Message</label>
+                      <textarea
+                        className="w-full border border-gray-300 rounded px-4 py-2"
+                        placeholder="Tell us what you need..."
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-[#16CA9A] text-white px-6 py-2 rounded hover:bg-[#084032] transition-colors"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                  {/* Close Button */}
+                  <button
+                    onClick={toggleModal}
+                    className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-2xl font-bold transition-colors duration-200"
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Right Image */}
             <div className="lg:col-span-6 order-1 lg:order-2">
               <div className="relative">
                 <div className="absolute -inset-8 bg-gradient-to-r from-[#16CA9A]/20 via-[#32a987]/10 to-[#084032]/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-white to-green-50 p-8 transform rotate-6 hover:rotate-0 transition-transform duration-700 shadow-2xl border-2 border-[#16CA9A]/30" style={{clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'}}>
+                <div className="relative bg-gradient-to-br from-white to-green-50 p-8 transform rotate-6 hover:rotate-0 transition-transform duration-700 shadow-2xl border-2 border-[#16CA9A]/30" style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}>
                   <Image
                     src={empoweringImage}
                     width={500}
@@ -103,22 +188,22 @@ const HardwareRepairEmpowering = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><SiSpringsecurity/></div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><SiSpringsecurity /></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Advanced Protection</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Multi-layered security for networks, devices, and data.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><TbDeviceCctv/></div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><TbDeviceCctv /></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Surveillance & Access</h3>
               <p className="text-gray-600 leading-relaxed text-sm">CCTV, access control, and monitoring for total safety.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><GrUserExpert/></div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><GrUserExpert /></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Expert Team</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Certified security professionals and rapid response.</p>
             </div>
             <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl shadow-lg border border-[#16CA9A]/20 hover:border-[#16CA9A]/50 transition-all duration-300">
-              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><AiOutlineAudit/></div>
+              <div className="text-3xl mb-3 p-3 bg-gradient-to-r from-[#16CA9A]/10 to-[#084032]/10 rounded-xl inline-block text-[#16CA9A]"><AiOutlineAudit /></div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">Compliance & Audits</h3>
               <p className="text-gray-600 leading-relaxed text-sm">Stay compliant with regular audits and reporting.</p>
             </div>
@@ -201,5 +286,22 @@ const HardwareRepairEmpowering = () => {
     </section>
   );
 };
+
+// export default HardwareRepairEmpowering;
+//                   <div className="absolute top-4 right-4 bg-[#16CA9A]/90 backdrop-blur-sm rounded-lg p-3">
+//                     <div className="text-center">
+//                       <div className="text-2xl font-black text-white">🛡️</div>
+//                       <div className="text-xs text-white font-bold">SECURED</div>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 export default HardwareRepairEmpowering;
