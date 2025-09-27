@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import NetworkingSmartImage from '../../../../../Components/Images/modernstorage.jpg';
-import SignalTower from '../../../../../Components/Images/TowerImage.png';
+import SignalTower from '../../../../../Components/Images/transform.jpg';
 import Image from 'next/image';
 import Dragon from '../../../../../Components/Images/dragon.png'
 import Intel from '../../../../../Components/Images/intell.png'
@@ -431,7 +431,7 @@ export default function ServerSmart() {
                   width={400}
                   height={300}
                   alt="Infrastructure"
-                  className="w-full h-auto rounded-xl p-4 transform rotate-[-7deg]"
+                  className="w-full h-auto  p-4 transform rounded-[30px]"
 
                 />
 
