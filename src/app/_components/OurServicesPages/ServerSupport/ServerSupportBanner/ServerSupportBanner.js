@@ -29,15 +29,12 @@ const ServerSupportBanner = () => {
           className="absolute -top-10 left-10 md:left-0"
         />
   <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
-          Server<br className="block md:hidden" /> Support
+          Storage and<br className="block md:hidden" /> Virtualization
         </h1>
 
         {/* Short paragraph about Storage & Virtualization */}
         <p className="mt-3 text-[14px] md:text-[16px] max-w-lg">
-          Our server support includes storage and virtualization services — from
-          SAN/NAS design and capacity planning to VM provisioning, backup and
-          disaster recovery. We ensure efficient resource use, high availability,
-          and simplified management for your infrastructure.
+          Our server support services specialize in enterprise-grade storage and virtualization solutions. We provide end-to-end support, including SAN/NAS architecture design, capacity planning, VM provisioning, and comprehensive backup and disaster recovery strategies. Our approach ensures optimal resource utilization, high availability, and streamlined infrastructure management to support scalable and resilient IT environments.
         </p>
         <Image
           src={icon1}

@@ -169,7 +169,7 @@ const AllProducts = () => {
                                 {item.name}
                             </button>
                             {active === item.slug && (
-                                <div className="flex flex-col justify-between items-center  rounded-lg mt-2 p-4 shadow-md" style={{
+                                <div className="flex flex-col justify-between items-center  rounded-lg mt-2 p-4 shadow-md gap-5" style={{
                                     // backgroundImage: `url(${Background.src})`,
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
@@ -180,7 +180,9 @@ const AllProducts = () => {
                                     <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
                                         {productDetails[item.slug].description}
                                     </p>
+                                    <Link href={productDetails[active].href}>
                                     <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
+                                    </Link>
                                     <div className="w-full flex justify-center">
                                         <Image
                                             src={productDetails[item.slug].Image}
