@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/1.0">
   <url>
-    <loc>http://localhost:3000/</loc>
+    <loc>https://www.crownexcel.ae/</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -9,13 +9,13 @@
   
   <!-- About Us Pages -->
   <url>
-    <loc>http://localhost:3000/about-us</loc>
+    <loc>https://www.crownexcel.ae/about-us</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/about-us/career</loc>
+    <loc>https://www.crownexcel.ae/about-us/career</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -23,49 +23,49 @@
   
   <!-- Company Pages -->
   <url>
-    <loc>http://localhost:3000/company/about-us</loc>
+    <loc>https://www.crownexcel.ae/company/about-us</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/career</loc>
+    <loc>https://www.crownexcel.ae/company/career</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/company-history</loc>
+    <loc>https://www.crownexcel.ae/company/company-history</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/crown-excel-family</loc>
+    <loc>https://www.crownexcel.ae/company/crown-excel-family</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/director-message</loc>
+    <loc>https://www.crownexcel.ae/company/director-message</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/events</loc>
+    <loc>https://www.crownexcel.ae/company/events</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/faq</loc>
+    <loc>https://www.crownexcel.ae/company/faq</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/company/leader-team</loc>
+    <loc>https://www.crownexcel.ae/company/leader-team</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -73,7 +73,7 @@
   
   <!-- Contact -->
   <url>
-    <loc>http://localhost:3000/contact-us</loc>
+    <loc>https://www.crownexcel.ae/contact-us</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -81,7 +81,7 @@
   
   <!-- Management -->
   <url>
-    <loc>http://localhost:3000/our-management</loc>
+    <loc>https://www.crownexcel.ae/our-management</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -89,43 +89,43 @@
   
   <!-- Services -->
   <url>
-    <loc>http://localhost:3000/our-services</loc>
+    <loc>https://www.crownexcel.ae/our-services</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/cloud-computing</loc>
+    <loc>https://www.crownexcel.ae/our-services/cloud-computing</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/it-consultancy</loc>
+    <loc>https://www.crownexcel.ae/our-services/it-consultancy</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/it-infrastructure</loc>
+    <loc>https://www.crownexcel.ae/our-services/it-infrastructure</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/networking</loc>
+    <loc>https://www.crownexcel.ae/our-services/networking</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/security-solutions</loc>
+    <loc>https://www.crownexcel.ae/our-services/security-solutions</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/our-services/software-solutions</loc>
+    <loc>https://www.crownexcel.ae/our-services/software-solutions</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -133,73 +133,73 @@
   
   <!-- Products -->
   <url>
-    <loc>http://localhost:3000/products</loc>
+    <loc>https://www.crownexcel.ae/products</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/accessories</loc>
+    <loc>https://www.crownexcel.ae/products/accessories</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/all-in-one</loc>
+    <loc>https://www.crownexcel.ae/products/all-in-one</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/biometrics</loc>
+    <loc>https://www.crownexcel.ae/products/biometrics</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/keyboard-mouse</loc>
+    <loc>https://www.crownexcel.ae/products/keyboard-mouse</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/laptops</loc>
+    <loc>https://www.crownexcel.ae/products/laptops</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/pc</loc>
+    <loc>https://www.crownexcel.ae/products/pc</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/phones-cctv</loc>
+    <loc>https://www.crownexcel.ae/products/phones-cctv</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/printers</loc>
+    <loc>https://www.crownexcel.ae/products/printers</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/routers-access-points</loc>
+    <loc>https://www.crownexcel.ae/products/routers-access-points</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/scanners-copier</loc>
+    <loc>https://www.crownexcel.ae/products/scanners-copier</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:3000/products/switching</loc>
+    <loc>https://www.crownexcel.ae/products/switching</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
