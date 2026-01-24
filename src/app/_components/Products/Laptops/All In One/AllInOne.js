@@ -9,8 +9,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Business = [
-    { Image: Popular1, Title: 'Acer NITRO NL16-71G-55JR' },
-    { Image: Popular2, Title: 'Acer NITRO NL16-71G-55JR' },
+    { Image: Popular1, Title: 'Acer NITRO LITE NL16-71G-76SE' },
+    { Image: Popular2, Title: 'Acer NITRO LITE NL16-71G-578S' },
     { Image: Popular3, Title: 'Acer NITRO V 15 ANV15-52-99' },
 ]
 const Individuals = [
