@@ -8,20 +8,20 @@ import Image from 'next/image'
 const occasions = [
   {
     id: 1,
-    heading: 'Extend credit up to 90 days',
-    description: 'Offer credit terms over Comfi and get paid upfront. It’s the end of cash flow problems.',
+    heading: 'Social Meeting',
+    description: 'At Crown Excel, we bring teams and clients together through engaging social gatherings that strengthen relationships and foster meaningful connections.',
     image: Meeting1,
   },
   {
     id: 2,
-    heading: 'Boost sales',
-    description: 'Drive loyalty and higher order values by unlocking payment flexibility for your buyers from Day 1.',
+    heading: 'Annual Awards Meeting',
+    description: 'We celebrate excellence and recognize outstanding achievements at our annual awards ceremony, honoring the dedication and hard work of the Crown Excel family.',
     image: Meeting2,
   },
   {
     id: 3,
-    heading: 'Reduced outstanding',
-    description: "Don't rely on your customers remembering to pay on time. Save all those hours chasing late payments.",
+    heading: 'Global Exhibitions',
+    description: 'Crown Excel proudly participates in global exhibitions and trade shows, showcasing innovative IT solutions and building partnerships across the world.',
     image: Meeting3,
   }
 ]
