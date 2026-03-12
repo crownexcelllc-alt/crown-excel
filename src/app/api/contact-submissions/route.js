@@ -37,11 +37,22 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { name, email, phone, subject, service, comments } = body || {};
-    // Make phone optional (only require name and email)
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Missing required fields: name and email are required' }, { status: 400, headers: CORS_HEADERS });
+    if (!name || !email || !phone || !subject || !service || !comments) {
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400, headers: CORS_HEADERS });
     }
+
+    // Verify that OTP was verified for this email
+    const db = await getDb();
+    const otpRecord = await db.collection('otps').findOne({ email, verified: true });
+    if (!otpRecord) {
+      return NextResponse.json({ error: 'Email not verified. Please verify OTP first.' }, { status: 403, headers: CORS_HEADERS });
+    }
+
     const entry = await saveSubmission({ name, email, phone, subject, service, comments });
+
+    // Clean up used OTP
+    await db.collection('otps').deleteMany({ email });
+
     return NextResponse.json({ ok: true, entry }, { status: 201, headers: CORS_HEADERS });
   } catch (err) {
     console.error(err);

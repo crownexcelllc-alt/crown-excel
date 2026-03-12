@@ -27,10 +27,22 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { name, email, phone, position, info } = body || {};
-    if (!name || !email || !phone) {
+    if (!name || !email || !phone || !position) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    // Verify that OTP was verified for this email
+    const db = await getDb();
+    const otpRecord = await db.collection('otps').findOne({ email, verified: true });
+    if (!otpRecord) {
+      return NextResponse.json({ error: 'Email not verified. Please verify OTP first.' }, { status: 403 });
+    }
+
     const entry = await saveApplicationMongo({ name, email, phone, position, info });
+
+    // Clean up used OTP
+    await db.collection('otps').deleteMany({ email });
+
     return NextResponse.json({ ok: true, entry }, { status: 201 });
   } catch (err) {
     console.error(err);
