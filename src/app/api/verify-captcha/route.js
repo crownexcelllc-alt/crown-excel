@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // Google's official reCAPTCHA v2 test secret (always passes). Replace with your own v2 secret for production.
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY || '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY || '6Le98YgsAAAAAHUyK4uMt4G7tiIUtJPwNpMFPQ4W';
 
 export async function POST(request) {
   try {

@@ -3,7 +3,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 // Google's official reCAPTCHA v2 test key (always passes). Replace with your own v2 key for production.
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Le98YgsAAAAAOfcBPgjzuelv3993Kfps6PHMiFb';
 
 const CaptchaModal = ({ isOpen, onVerified, onClose }) => {
   const [error, setError] = useState('');
