@@ -15,11 +15,14 @@ import {
   PaperPlaneRight,
 } from 'phosphor-react';
 import { XLogoIcon } from '@phosphor-icons/react';
+import ContactFormPopup from '../ContactFormPopup/ContactFormPopup';
 
 const Footer = () => {
   const [emailInput, setEmailInput] = useState('');
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [emailMessage, setEmailMessage] = useState('');
+  const [showContactPopup, setShowContactPopup] = useState(false);
+  const [popupSubject, setPopupSubject] = useState('');
   const [logoUrl, setLogoUrl] = useState(FooterLogo);
   const [settings, setSettings] = useState({
     phone: '+971 4-354 0566',
@@ -145,11 +148,12 @@ const Footer = () => {
                     {item.title}
                   </h3>
 
-                  <Link href={item.href}>
-                    <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                      Get Started
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => { setPopupSubject(item.title); setShowContactPopup(true); }}
+                    className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"
+                  >
+                    Get Started
+                  </button>
                 </div>
               </div>
             ))}
@@ -180,11 +184,12 @@ const Footer = () => {
                       {item.title}
                     </h3>
 
-                    <Link href={item.href}>
-                      <button className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-2 py-1.5 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg text-xs whitespace-nowrap">
-                        Get Started
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => { setPopupSubject(item.title); setShowContactPopup(true); }}
+                      className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-2 py-1.5 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg text-xs whitespace-nowrap cursor-pointer"
+                    >
+                      Get Started
+                    </button>
                   </div>
                 </div>
               ))}
@@ -606,6 +611,12 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Contact Form Popup */}
+      <ContactFormPopup
+        isOpen={showContactPopup}
+        onClose={() => setShowContactPopup(false)}
+        preSelectedSubject={popupSubject}
+      />
     </footer>
   );
 };

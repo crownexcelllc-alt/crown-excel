@@ -34,7 +34,7 @@ export default function AdminLayout({ children, title = '' }) {
       </div>
 
       {/* Sidebar */}
-      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6">
+      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 pt-16 md:pt-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
         <div className="mb-6">
           <Link href="/admin">
             <Image alt='Crown Excel Logo' width={200} height={200} src={Logo} />

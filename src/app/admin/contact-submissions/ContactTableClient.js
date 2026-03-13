@@ -5,8 +5,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
   const [rows, setRows] = useState(initialData || []);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const pageSize = 12;
+  const [pageSize, setPageSize] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [viewRow, setViewRow] = useState(null);
 
   useEffect(() => {
     if (!initialData || initialData.length === 0) {
@@ -14,17 +15,26 @@ export default function ContactTableClient({ initialData = [], apiBase = process
     }
   }, []);
 
+  // Sort latest first
+  const sorted = useMemo(() => {
+    return [...rows].sort((a, b) => {
+      const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      return db - da;
+    });
+  }, [rows]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return rows;
-    return rows.filter(r => (
+    if (!q) return sorted;
+    return sorted.filter(r => (
       (r.name || '').toString().toLowerCase().includes(q) ||
       (r.email || '').toString().toLowerCase().includes(q) ||
       (r.phone || '').toString().toLowerCase().includes(q) ||
       (r.subject || '').toString().toLowerCase().includes(q) ||
       (r.service || '').toString().toLowerCase().includes(q)
     ));
-  }, [rows, query]);
+  }, [sorted, query]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const pageData = filtered.slice((page - 1) * pageSize, page * pageSize);
@@ -48,18 +58,23 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['id', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
-    const csv = [headers.join(',')].concat(rows.map(r => headers.map(h => {
-      const v = r[h] ?? r[h] === 0 ? r[h] : '';
-      const s = (v + '').replace(/"/g, '""');
-      return `"${s}"`;
-    }).join(',')).join('\n'));
-    const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const headers = ['#', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
+    const csv = [headers.join(',')].concat(rows.map((r, i) => {
+      const vals = [i + 1, r.name, r.email, r.phone, r.subject, r.service, r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
+      return vals.map(v => {
+        const s = ((v ?? '') + '').replace(/"/g, '""');
+        return `"${s}"`;
+      }).join(',');
+    })).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = 'contact_submissions.csv'; document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
   }
+
+  // Get the global index for a row on current page
+  const getGlobalIndex = (pageIndex) => (page - 1) * pageSize + pageIndex + 1;
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 w-full">
@@ -94,35 +109,57 @@ export default function ContactTableClient({ initialData = [], apiBase = process
         </div>
       </div>
 
-      <div style={{ overflowX: "auto" }} className="w-full">
-        <table style={{ whiteSpace: "nowrap" }} className=" min-w-full text-sm overflow-hidden shadow">
-          <thead>
+      {/* Page size selector */}
+      <div className="flex items-center gap-2 mb-4">
+        <span className="text-sm text-gray-600">Rows per page:</span>
+        <select
+          value={pageSize}
+          onChange={e => { setPageSize(Number(e.target.value)); setPage(1); }}
+          className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm outline-none focus:border-[#084032] cursor-pointer"
+        >
+          {[10, 25, 50, 100].map(n => (
+            <option key={n} value={n}>{n}</option>
+          ))}
+        </select>
+      </div>
+
+      <div style={{ overflowX: "auto", maxHeight: "520px", overflowY: "auto" }} className="w-full rounded-lg border border-gray-200">
+        <table style={{ whiteSpace: "nowrap" }} className="w-full text-sm overflow-hidden">
+          <thead className="sticky top-0 z-10">
             <tr className="bg-[#084032] text-white">
-              <th className="px-4 py-3 font-semibold">Inquiry ID</th>
-              <th className="px-4 py-3 font-semibold">Name</th>
-              <th className="px-4 py-3 font-semibold">Email</th>
-              <th className="px-4 py-3 font-semibold">Phone</th>
-              <th className="px-4 py-3 font-semibold">Subject</th>
-              <th className="px-4 py-3 font-semibold">Service</th>
-              <th className="px-4 py-3 font-semibold">Comments</th>
-              <th className="px-4 py-3 font-semibold">Submitted At</th>
+              <th className="px-3 py-3 font-semibold text-left">Inquiry #</th>
+              <th className="px-3 py-3 font-semibold text-left">Name</th>
+              <th className="px-3 py-3 font-semibold text-left">Email</th>
+              <th className="px-3 py-3 font-semibold text-left">Phone</th>
+              <th className="px-3 py-3 font-semibold text-left">Subject</th>
+              <th className="px-3 py-3 font-semibold text-left">Service</th>
+              <th className="px-3 py-3 font-semibold text-left">Comments</th>
+              <th className="px-3 py-3 font-semibold text-left">Submitted At</th>
+              <th className="px-3 py-3 font-semibold text-left">Action</th>
             </tr>
           </thead>
           <tbody>
-            {pageData.map(s => (
-              <tr key={s.id ?? s._id} className="hover:bg-[#e6f9f0] align-top transition-all">
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.id ?? s._id}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.name}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.email}</td>
+            {pageData.map((s, idx) => (
+              <tr key={s.id ?? s._id ?? idx} className="hover:bg-[#e6f9f0] align-top transition-all">
+                <td className="px-4 py-3 border-b border-gray-100 align-top font-semibold text-[#084032]">{getGlobalIndex(idx)}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.email}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top">{s.phone}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.subject}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.service}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top max-w-sm whitespace-pre-wrap break-words">
-                  {s.comments}
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.subject}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.service}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis whitespace-nowrap">
+                  {(s.comments || '').length > 30 ? s.comments.substring(0, 30) + '...' : s.comments}
                 </td>
-
                 <td className="px-4 py-3 border-b border-gray-100 align-top">
                   {s.createdAt ? new Date(s.createdAt).toLocaleString() : ''}
+                </td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">
+                  <button
+                    onClick={() => setViewRow({ ...s, inquiryNo: getGlobalIndex(idx) })}
+                    className="px-3 py-1.5 bg-[#084032] hover:bg-[#0a5a47] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer"
+                  >
+                    View
+                  </button>
                 </td>
               </tr>
             ))}
@@ -132,7 +169,7 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
       <div className="flex items-center justify-between mt-6">
         <div className="text-sm text-gray-600">
-          Showing {Math.min(rows.length, (page - 1) * pageSize + 1)} - {Math.min(rows.length, page * pageSize)} of {rows.length}
+          Showing {Math.min(filtered.length, (page - 1) * pageSize + 1)} - {Math.min(filtered.length, page * pageSize)} of {filtered.length}
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -152,6 +189,71 @@ export default function ContactTableClient({ initialData = [], apiBase = process
           </button>
         </div>
       </div>
+
+      {/* View Detail Popup */}
+      {viewRow && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setViewRow(null)}>
+          <div
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-[600px] max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="bg-[#084032] rounded-t-2xl px-6 py-4 flex items-center justify-between">
+              <h2 className="text-white text-lg font-bold">Inquiry #{viewRow.inquiryNo}</h2>
+              <button
+                onClick={() => setViewRow(null)}
+                className="text-white/80 hover:text-white text-2xl font-bold cursor-pointer leading-none"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Details */}
+            <div className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Name</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.name || '—'}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
+                  <p className="text-[#084032] font-semibold text-sm break-all">{viewRow.email || '—'}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.phone || '—'}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Subject</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.subject || '—'}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.service || '—'}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Comments</p>
+                <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-700 whitespace-pre-wrap break-words min-h-[80px]">
+                  {viewRow.comments || '—'}
+                </div>
+              </div>
+
+              <button
+                onClick={() => setViewRow(null)}
+                className="w-full bg-[#084032] hover:bg-[#0a5a47] text-white rounded-full h-[42px] font-semibold text-[14px] cursor-pointer transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
