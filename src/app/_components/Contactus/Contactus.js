@@ -1,5 +1,5 @@
 ﻿"use client"
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LottieAnimation from '../lootieanimation/animation'
 import CaptchaModal from '../../../Components/CaptchaModal/CaptchaModal'
 import OtpModal from '../../../Components/OtpModal/OtpModal'
@@ -33,6 +33,34 @@ const Contactus = () => {
   const [showOtp, setShowOtp] = useState(false)
   const [formRef, setFormRef] = useState(null)
   const [pendingPayload, setPendingPayload] = useState(null)
+  const [openDropdown, setOpenDropdown] = useState(null)
+  const subjectDropdownRef = useRef(null)
+  const serviceDropdownRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const clickedOutsideSubject = subjectDropdownRef.current && !subjectDropdownRef.current.contains(event.target);
+      const clickedOutsideService = serviceDropdownRef.current && !serviceDropdownRef.current.contains(event.target);
+
+      if (clickedOutsideSubject && clickedOutsideService) {
+        setOpenDropdown(null);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setOpenDropdown(null);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);
@@ -121,14 +149,14 @@ const Contactus = () => {
           <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we&apos;ll be happy to assist you.</p>
         </div>
         <div className="contact-details flex flex-col md:flex-row lg:flex-row items-center justify-between w-full px-[50px]">
-          <div className="contact-details-left bg-[#f8f8f8] rounded shadow-2xl" style={{ padding: '20px 20px 20px 20px' }}>
-            <form className='flex flex-col items-center' onSubmit={handleFormSubmit}>
-              <div className="name-email flex items-center gap-5">
-                <input className='border text-[13px] bg-white text-[#8692ad] rounded w-[150px] lg:w-[250px] h-[50px] outline-0' type="text" name="name" placeholder='Name *' required style={{ padding: '14px 18px 14px 18px' }} />
-                <input className='border text-[13px] bg-white text-[#8692ad] rounded w-[150px] lg:w-[250px] h-[50px] outline-0' type="email" placeholder='Email *' name="email" required style={{ padding: '14px 18px 14px 18px' }} />
+          <div className="contact-details-left w-full max-w-[560px] bg-[#f8f8f8] rounded shadow-2xl" style={{ padding: '20px 20px 20px 20px' }}>
+            <form className='flex w-full flex-col items-stretch' onSubmit={handleFormSubmit}>
+              <div className="name-email flex w-full flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-5">
+                <input className='border text-[13px] bg-white text-[#8692ad] rounded w-full md:w-[250px] h-[50px] outline-0' type="text" name="name" placeholder='Name *' required style={{ padding: '14px 18px 14px 18px' }} />
+                <input className='border text-[13px] bg-white text-[#8692ad] rounded w-full md:w-[250px] h-[50px] outline-0' type="email" placeholder='Email *' name="email" required style={{ padding: '14px 18px 14px 18px' }} />
               </div>
-              <div className="phone-subject flex items-center gap-5 mt-5">
-                <div className="flex border rounded w-[150px] lg:w-[250px] h-[50px] bg-white overflow-hidden">
+              <div className="phone-row mt-5">
+                <div className="flex border rounded w-full h-[50px] bg-white overflow-hidden">
                   <select
                     value={countryCode}
                     onChange={(e) => setCountryCode(e.target.value)}
@@ -155,19 +183,78 @@ const Contactus = () => {
                     style={{ padding: '14px 10px' }}
                   />
                 </div>
-                <select name="subject" value={subject} onChange={(e) => setSubject(e.target.value)} className='border text-[13px] bg-white text-[#8692ad] rounded w-[150px] lg:w-[250px] h-[50px]' required style={{ padding: '14px 18px 14px 18px' }}>
-                  {subjects.map((item, index) => (
-                    <option key={index} value={item} disabled={index === 0} className='text-[13px] text-[#084032]'>{item}</option>
-                  ))}
-                </select>
               </div>
-              <select id="service" name="service" value={service} onChange={(e) => setService(e.target.value)} className="border mt-5 text-[13px] bg-white text-[#8692ad] rounded w-full h-[50px]" required style={{ padding: '14px 18px 14px 18px' }}>
-                {services.map((item, index) => (
-                  <option key={index} value={item} disabled={index === 0} className='border text-[13px] text-[#084032] w-[150px] h-[50px] mt-5' style={{ padding: '14px 18px 14px 18px' }}>
-                    {item}
-                  </option>
-                ))}
-              </select>
+              <div className="subject-service flex w-full justify-center gap-3 mt-5">
+                <div ref={subjectDropdownRef} className="relative w-[47%] md:w-[250px]">
+                  <input type="hidden" name="subject" value={subject} />
+                  <button
+                    type="button"
+                    onClick={() => setOpenDropdown(openDropdown === 'subject' ? null : 'subject')}
+                    className='flex items-center justify-between border text-[13px] bg-white rounded w-full h-[50px] cursor-pointer'
+                    style={{ padding: '14px 12px 14px 12px' }}
+                    aria-expanded={openDropdown === 'subject'}
+                    aria-haspopup="listbox"
+                  >
+                    <span className={subject === 'Select Subject' ? 'text-[#8692ad]' : 'text-[#084032]'}>{subject}</span>
+                    <span className={`text-[#6b7280] transition-transform ${openDropdown === 'subject' ? 'rotate-180' : ''}`}>▼</span>
+                  </button>
+                  {openDropdown === 'subject' && (
+                    <div className="absolute left-0 top-[calc(100%+6px)] z-40 w-full rounded border border-[#d1d5db] bg-white shadow-lg">
+                      <ul role="listbox" className="max-h-[220px] overflow-y-auto py-1">
+                        {subjects.slice(1).map((item) => (
+                          <li key={item}>
+                            <button
+                              type="button"
+                              className="w-full px-3 py-2 text-left text-[13px] text-[#084032] hover:bg-[#f2f7f4]"
+                              onClick={() => {
+                                setSubject(item);
+                                setOpenDropdown(null);
+                              }}
+                            >
+                              {item}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                <div ref={serviceDropdownRef} className="relative w-[47%] md:w-[250px]">
+                  <input type="hidden" id="service" name="service" value={service} />
+                  <button
+                    type="button"
+                    onClick={() => setOpenDropdown(openDropdown === 'service' ? null : 'service')}
+                    className='flex items-center justify-between border text-[13px] bg-white rounded w-full h-[50px] cursor-pointer'
+                    style={{ padding: '14px 12px 14px 12px' }}
+                    aria-expanded={openDropdown === 'service'}
+                    aria-haspopup="listbox"
+                  >
+                    <span className={service === 'Select Service' ? 'text-[#8692ad]' : 'text-[#084032]'}>{service}</span>
+                    <span className={`text-[#6b7280] transition-transform ${openDropdown === 'service' ? 'rotate-180' : ''}`}>▼</span>
+                  </button>
+                  {openDropdown === 'service' && (
+                    <div className="absolute left-0 top-[calc(100%+6px)] z-40 w-full rounded border border-[#d1d5db] bg-white shadow-lg">
+                      <ul role="listbox" className="max-h-[220px] overflow-y-auto py-1">
+                        {services.slice(1).map((item) => (
+                          <li key={item}>
+                            <button
+                              type="button"
+                              className="w-full px-3 py-2 text-left text-[13px] text-[#084032] hover:bg-[#f2f7f4]"
+                              onClick={() => {
+                                setService(item);
+                                setOpenDropdown(null);
+                              }}
+                            >
+                              {item}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
               <textarea name="comments" id="comments" placeholder='Comments *' required className='border text-[13px] bg-white text-[#8692ad] rounded w-full h-[96px] mt-5' style={{ padding: '14px 18px 14px 18px' }}></textarea>
               <button disabled={loading} className='bg-[#084032] mt-5 text-white rounded-[30px] text-[16px] font-bold h-[55px] w-full cursor-pointer' style={{ padding: '14px 20px 14px 20px' }}>{loading ? 'Submitting...' : 'SUBMIT NOW'}</button>
             </form>

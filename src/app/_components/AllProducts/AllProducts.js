@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-import Background from '../../../Components/Images/productsBg.png'
-
 import Laptop from '../../../Components/Images/laptops.png'
 import Desktop from '../../../Components/Images/pc.png'
 import Screen from '../../../Components/Images/screen.png'
@@ -104,6 +102,7 @@ const productDetails = {
 
 const AllProducts = () => {
     const [active, setActive] = useState(categories[0].slug);
+    const activeProduct = productDetails[active];
 
     return (
         <div>
@@ -122,7 +121,7 @@ const AllProducts = () => {
                         ))}
                     </div>
                 </div>
-                <div className=" h-[500px] w-full   flex  items-center justify-around " style={{
+                <div className=" h-[500px] w-full flex items-center justify-around bg-gradient-to-b from-[#f8ffef] via-[#f0fbe5] to-[#e6f5d7] rounded-[24px]" style={{
                     // backgroundImage: `url(${Background.src})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
@@ -130,18 +129,27 @@ const AllProducts = () => {
                     minHeight: '250px'
                 }}>
                     <div className="all-products-left flex mt-[60px] flex-col items-center justify-center">
-                        <h1 className='text-[56px] font-[600] text-black '>{productDetails[active].title}</h1>
+                        <h1 className='text-[56px] font-[600] text-black '>{activeProduct.title}</h1>
                         <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
-                            {productDetails[active].description}
+                            {activeProduct.description}
                         </p>
-                        <Link href={productDetails[active].href}>
+                        <Link href={activeProduct.href}>
                             <button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>
                                 Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' />
                             </button>
                         </Link>
                     </div>
-                    <div className="all-products-right  mt-[150px]">
-                        <Image width={539} height={224} className='md:w-[294.6px] md:h-[122.3px] lg:w-[539px] lg:h-[224px]' alt='img' src={productDetails[active].Image} />
+                    <div className="all-products-right mt-[80px] flex items-center justify-center">
+                        <div className="relative overflow-hidden rounded-[30px] border border-[#9fca83] bg-gradient-to-br from-white via-[#f8ffef] to-[#dcf2ca] p-7 shadow-[0_25px_55px_rgba(8,64,50,0.2)]">
+                            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.88),transparent_55%),radial-gradient(circle_at_85%_82%,rgba(153,214,111,0.38),transparent_53%)]" />
+                            <Image
+                                width={539}
+                                height={224}
+                                className='relative z-10 md:w-[294.6px] md:h-[122.3px] lg:w-[539px] lg:h-[224px] object-contain drop-shadow-[0_22px_18px_rgba(0,0,0,0.3)]'
+                                alt={activeProduct.title}
+                                src={activeProduct.Image}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,7 +158,7 @@ const AllProducts = () => {
                     <h1 className='font-semibold text-green-900 text-[30px]'>All Products</h1>
                 </div>
                 <div
-                    className="all-products flex flex-col"
+                    className="all-products flex flex-col rounded-[20px] bg-gradient-to-b from-[#f8ffef] via-[#f0fbe5] to-[#e6f5d7] pb-4"
                     style={{
                         // backgroundImage: `url(${Background.src})`,
                         backgroundRepeat: 'no-repeat',
@@ -169,7 +177,7 @@ const AllProducts = () => {
                                 {item.name}
                             </button>
                             {active === item.slug && (
-                                <div className="flex flex-col justify-between items-center  rounded-lg mt-2 p-4 shadow-md gap-5" style={{
+                                <div className="flex flex-col justify-between items-center rounded-lg mt-2 p-4 shadow-md gap-5" style={{
                                     // backgroundImage: `url(${Background.src})`,
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
@@ -180,17 +188,20 @@ const AllProducts = () => {
                                     <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
                                         {productDetails[item.slug].description}
                                     </p>
-                                    <Link href={productDetails[active].href}>
-                                    <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
+                                    <Link href={productDetails[item.slug].href}>
+                                        <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
                                     </Link>
                                     <div className="w-full flex justify-center">
-                                        <Image
-                                            src={productDetails[item.slug].Image}
-                                            alt={productDetails[item.slug].title}
-                                            width={220}
-                                            height={180}
-                                            className="object-contain"
-                                        />
+                                        <div className="relative overflow-hidden rounded-[20px] border border-[#9fca83] bg-gradient-to-br from-white via-[#f9fff2] to-[#dcf2ca] p-3 shadow-[0_16px_35px_rgba(8,64,50,0.18)]">
+                                            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(255,255,255,0.88),transparent_58%),radial-gradient(circle_at_85%_82%,rgba(153,214,111,0.35),transparent_50%)]" />
+                                            <Image
+                                                src={productDetails[item.slug].Image}
+                                                alt={productDetails[item.slug].title}
+                                                width={220}
+                                                height={180}
+                                                className="relative z-10 object-contain drop-shadow-[0_14px_16px_rgba(0,0,0,0.28)]"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             )}
