@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import Image from 'next/image'
 
@@ -56,7 +55,7 @@ const Brands = () => {
                 >
                   <Image
                     src={brand}
-                    alt="Brand Logo"
+                    alt={`Brand logo ${i + 1}`}
                     width={160}
                     height={160}
                     className="object-contain w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] transition-transform duration-500 hover:scale-110"

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Partner from '../Images/footerpartner.png'
 import Coorporate from '../Images/footercoorporates.png'
 import Wholesale from '../Images/footerwholesale.png'
-import FooterLogo from '../Images/footerlogo.png'
 import logo from "../Images/logos.png"
 
 import {
@@ -23,17 +22,15 @@ const Footer = () => {
   const [emailMessage, setEmailMessage] = useState('');
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [popupSubject, setPopupSubject] = useState('');
-  const [logoUrl, setLogoUrl] = useState(FooterLogo);
   const [settings, setSettings] = useState({
     phone: '+971 4-354 0566',
     email: 'contact@crownexcel.com',
-    address: 'Al Jahra Building, 2nd floor, 18th St – Al Raffa – Dubai',
+    address: 'Al Jahra Building, 2nd floor, 18th St - Al Raffa - Dubai',
     facebook: '',
     twitter: '',
     instagram: '',
     linkedin: ''
   });
-  console.log('logo', settings?.logo)
 
   useEffect(() => {
     // Fetch settings from API
@@ -47,21 +44,6 @@ const Footer = () => {
       .catch(err => {
         console.warn('Could not load settings:', err);
       });
-  }, []);
-
-  useEffect(() => {
-    async function fetchLogo() {
-      try {
-        const res = await fetch('/api/logo');
-        const data = await res.json();
-        console.log('Fetched logo data:', data);
-
-        if (data.logo) setLogoUrl(data.logo);
-      } catch {
-        setLogoUrl('/file.svg');
-      }
-    }
-    fetchLogo();
   }, []);
 
   const topButtons = [
@@ -108,11 +90,11 @@ const Footer = () => {
         const json = await res.json().catch(() => ({}));
         throw new Error(json?.error || 'Failed to submit');
       }
-      setEmailMessage('Thanks — we saved your email and notified the team.');
+      setEmailMessage('Thanks - we saved your email and notified the team.');
       setEmailInput('');
     } catch (err) {
       console.error(err);
-      setEmailMessage('Failed to submit — please try again later.');
+      setEmailMessage('Failed to submit - please try again later.');
     } finally {
       setLoadingEmail(false);
       setTimeout(() => setEmailMessage(''), 6000);
@@ -149,6 +131,7 @@ const Footer = () => {
                   </h3>
 
                   <button
+                    type="button"
                     onClick={() => { setPopupSubject(item.title); setShowContactPopup(true); }}
                     className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer"
                   >
@@ -185,6 +168,7 @@ const Footer = () => {
                     </h3>
 
                     <button
+                      type="button"
                       onClick={() => { setPopupSubject(item.title); setShowContactPopup(true); }}
                       className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] hover:from-[#22c55e] hover:to-[#16a34a] text-white font-medium px-2 py-1.5 rounded-md transition-all duration-300 transform hover:scale-105 shadow-lg text-xs whitespace-nowrap cursor-pointer"
                     >
@@ -226,38 +210,38 @@ const Footer = () => {
                   <h4 className="text-white font-semibold mb-2">Follow Us</h4>
                   <div className="flex gap-4">
                     {settings.facebook && (
-                      <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <FacebookLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                       </Link>
                     )}
                     {settings.twitter && (
-                      <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" aria-label="Visit our X page" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <XLogoIcon size={24} className="text-white group-hover:scale-110 transition-transform" />
                       </Link>
                     )}
                     {settings.instagram && (
-                      <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <InstagramLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                       </Link>
                     )}
                     {settings.linkedin && (
-                      <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                      <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page" className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                         <LinkedinLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                       </Link>
                     )}
                     {/* Default icons if no settings */}
                     {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (
                       <>
-                        <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                        <div aria-hidden="true" className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                           <FacebookLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
-                        <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                        <div aria-hidden="true" className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                           <XLogoIcon size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
-                        <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                        <div aria-hidden="true" className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                           <InstagramLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
-                        <div className="w-12 h-12 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                        <div aria-hidden="true" className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                           <LinkedinLogo size={24} className="text-white group-hover:scale-110 transition-transform" />
                         </div>
                       </>
@@ -268,8 +252,10 @@ const Footer = () => {
                 <div className='mt-5'>
                   {/* <h4 className="text-white font-semibold mb-4">Newsletter</h4> */}
                   <p className="text-gray-300 mb-4 text-sm">Stay updated with our latest news and offers</p>
-                  <div className="flex">
+                  <form className="flex" onSubmit={submitSubscription}>
+                    <label htmlFor="footer-email-desktop" className="sr-only">Email address</label>
                     <input
+                      id="footer-email-desktop"
                       type="email"
                       value={emailInput}
                       onChange={e => setEmailInput(e.target.value)}
@@ -277,12 +263,13 @@ const Footer = () => {
                       className="w-[250px]  bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors"
                     />
                     <button
-                      onClick={submitSubscription}
+                      type="submit"
+                      aria-label="Submit newsletter email"
                       className={`bg-[#4ade80] hover:bg-[#22c55e] px-6 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
                     >
                       <PaperPlaneRight size={20} className="text-white" />
                     </button>
-                  </div>
+                  </form>
                   {emailMessage && (
                     <p className="text-sm mt-3 text-gray-400">{emailMessage}</p>
                   )}
@@ -500,15 +487,15 @@ const Footer = () => {
             <div className="text-center mb-8">
               <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30 inline-block">Contact Address</h3>
               <div className="addresses flex flex-col ">
-                <h1><span className='font-bold text-[14px]'>Head Office:</span> </h1>
+                <h4><span className='font-bold text-[14px]'>Head Office:</span> </h4>
                 <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
                   {settings.address}
                 </p>
-                <h1><span className='font-bold text-[14px]'>Experience Centre:</span></h1>
+                <h4><span className='font-bold text-[14px]'>Experience Centre:</span></h4>
                 <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
                    Shop No. 2 - Building 716 Khalid Bin Al Waleed Rd - opposite Main Entrance of Admiral Plaza Hotel - Bur Dubai
                 </p>
-                <h1><span className='font-bold text-[14px]'>Branch 2:</span></h1>
+                <h4><span className='font-bold text-[14px]'>Branch 2:</span></h4>
                 <p className="text-gray-300 text-[14px] leading-relaxed max-w-xs mx-auto">
                    Admiral Plaza Hotel Building - 37C Street - Shop 5 - Khalid Bin Al Waleed Rd - Bur Dubai - Dubai
                 </p>
@@ -522,8 +509,10 @@ const Footer = () => {
             {/* Newsletter */}
             <div className="mb-12">
               <h4 className="text-white font-semibold mb-4 text-center">Stay Updated</h4>
-              <div className="flex max-w-sm mx-auto">
+              <form className="flex max-w-sm mx-auto" onSubmit={submitSubscription}>
+                <label htmlFor="footer-email-mobile" className="sr-only">Email address</label>
                 <input
+                  id="footer-email-mobile"
                   type="email"
                   value={emailInput}
                   onChange={e => setEmailInput(e.target.value)}
@@ -531,12 +520,13 @@ const Footer = () => {
                   className="flex-1 bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[#4ade80] transition-colors text-sm"
                 />
                 <button
-                  onClick={submitSubscription}
+                  type="submit"
+                  aria-label="Submit newsletter email"
                   className={`bg-[#4ade80] hover:bg-[#22c55e] px-4 py-3 rounded-r-lg transition-colors duration-300 ${loadingEmail ? 'opacity-60 pointer-events-none' : ''}`}
                 >
                   <PaperPlaneRight size={18} className="text-white" />
                 </button>
-              </div>
+              </form>
               {emailMessage && (
                 <p className="text-xs mt-3 text-gray-400 text-center">{emailMessage}</p>
               )}
@@ -547,38 +537,38 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Follow Us</h4>
               <div className="flex justify-center gap-4">
                 {settings.facebook && (
-                  <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.facebook} target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <FacebookLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                   </Link>
                 )}
                 {settings.twitter && (
-                  <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.twitter} target="_blank" rel="noopener noreferrer" aria-label="Visit our X page" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <XLogoIcon size={20} className="text-white group-hover:scale-110 transition-transform" />
                   </Link>
                 )}
                 {settings.instagram && (
-                  <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <InstagramLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                   </Link>
                 )}
                 {settings.linkedin && (
-                  <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
+                  <Link href={settings.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page" className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group">
                     <LinkedinLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                   </Link>
                 )}
                 {/* Default icons if no settings */}
                 {!settings.facebook && !settings.twitter && !settings.instagram && !settings.linkedin && (
                   <>
-                    <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                    <div aria-hidden="true" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                       <FacebookLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
-                    <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                    <div aria-hidden="true" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                       <XLogoIcon size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
-                    <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                    <div aria-hidden="true" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                       <InstagramLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
-                    <div className="w-10 h-10 bg-white/10 hover:bg-[#4ade80] rounded-lg flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                    <div aria-hidden="true" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 group">
                       <LinkedinLogo size={20} className="text-white group-hover:scale-110 transition-transform" />
                     </div>
                   </>
@@ -595,7 +585,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <p className="text-gray-300 text-sm mb-4 md:mb-0">
-              © 2024 Crown Excel. All Rights Reserved.
+              (c) 2024 Crown Excel. All Rights Reserved.
             </p>
             <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
               <p className="text-gray-300">
@@ -623,3 +613,8 @@ const Footer = () => {
 
 export default Footer;
 // export default Footer;
+
+
+
+
+

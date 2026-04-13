@@ -13,7 +13,6 @@ import Keyboard from '../../../Components/Images/keyboard.png'
 import Accessories from '../../../Components/Images/accessories.png'
 import Biometric from '../../../Components/Images/biometric.png'
 import Cctv from '../../../Components/Images/cctv.png'
-import { FaArrowRight } from "react-icons/fa";
 import Link from 'next/link';
 
 
@@ -113,7 +112,9 @@ const AllProducts = () => {
                         {categories.map((item, index) => (
                             <button
                                 key={index}
+                                type="button"
                                 onClick={() => setActive(item.slug)}
+                                aria-pressed={active === item.slug}
                                 className={`px-4 py-2 border border-green-900 rounded-lg text-sm font-medium transition text-black hover:text-white                ${active === item.slug ? 'bg-green-900 text-white' : 'bg-[#defaca] text-black hover:bg-green-900 '}`}
                             >
                                 {item.name}
@@ -133,10 +134,15 @@ const AllProducts = () => {
                         <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
                             {activeProduct.description}
                         </p>
-                        <Link href={activeProduct.href}>
-                            <button className='flex mt-2.5 items-center justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[57px] w-[150px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>
-                                Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' />
-                            </button>
+                        <Link
+                            href={activeProduct.href}
+                            className='mt-2.5 flex h-[57px] w-[150px] items-center justify-center gap-1 rounded-[30px] bg-white text-[#084032] font-semibold leading-[15px]'
+                            style={{ boxShadow: '0px 0px 10px black' }}
+                        >
+                            Explore More
+                            <span aria-hidden="true" className='flex h-[25px] w-[25px] items-center justify-center rounded-full border-2 text-sm font-extrabold'>
+                                {"->"}
+                            </span>
                         </Link>
                     </div>
                     <div className="all-products-right mt-[80px] flex items-center justify-center">
@@ -170,7 +176,9 @@ const AllProducts = () => {
                     {categories.map((item, index) => (
                         <div key={index} className="flex flex-col w-full px-4">
                             <button
+                                type="button"
                                 onClick={() => setActive(item.slug)}
+                                aria-pressed={active === item.slug}
                                 className={`px-4 py-2 mt-2 border border-green-900 rounded-lg text-sm font-medium transition
             ${active === item.slug ? 'bg-green-900 text-white' : 'bg-[#defaca] text-black hover:bg-green-900 hover:text-white'}`}
                             >
@@ -188,8 +196,15 @@ const AllProducts = () => {
                                     <p className="text-base text-gray-700 mt-2 mb-2 max-w-md text-center">
                                         {productDetails[item.slug].description}
                                     </p>
-                                    <Link href={productDetails[item.slug].href}>
-                                        <button className='flex items-center text-[12px] justify-center cursor-pointer leading-[15px] font-semibold gap-1 border-0 rounded-[30px] outline-0 bg-white h-[45px] w-[130px] text-[#084032]' style={{ boxShadow: '0px 0px 10px black' }}>Explore More <FaArrowRight className='border-2 rounded-full font-extrabold w-[25px] h-[25px] px-1 py-1' /></button>
+                                    <Link
+                                        href={productDetails[item.slug].href}
+                                        className='flex h-[45px] w-[130px] items-center justify-center gap-1 rounded-[30px] bg-white text-[12px] font-semibold leading-[15px] text-[#084032]'
+                                        style={{ boxShadow: '0px 0px 10px black' }}
+                                    >
+                                        Explore More
+                                        <span aria-hidden="true" className='flex h-[25px] w-[25px] items-center justify-center rounded-full border-2 text-sm font-extrabold'>
+                                            {"->"}
+                                        </span>
                                     </Link>
                                     <div className="w-full flex justify-center">
                                         <div className="relative overflow-hidden rounded-[20px] border border-[#9fca83] bg-gradient-to-br from-white via-[#f9fff2] to-[#dcf2ca] p-3 shadow-[0_16px_35px_rgba(8,64,50,0.18)]">
@@ -214,3 +229,6 @@ const AllProducts = () => {
 };
 
 export default AllProducts;
+
+
+

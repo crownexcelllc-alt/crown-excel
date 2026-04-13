@@ -535,16 +535,19 @@ function Navbar() {
         ))}
       </ul>
       <div className="nav-button hidden md:block">
-        <button
-          onClick={() => window.open("https://grabatoz.ae", "_blank")}
-          className="bg-gray-200 text-black w-36 h-11 text-base rounded-full shadow-md font-muli"
+        <Link
+          href="https://grabatoz.ae"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-gray-200 text-black w-36 h-11 text-base rounded-full shadow-md font-muli inline-flex items-center justify-center"
         >
           Our Retail Store
-        </button>
+        </Link>
 
       </div>
       {/* Mobile Menu Button */}
       <button
+        type="button"
         className="md:hidden  flex items-center text-2xl font-extrabold focus:outline-none"
         onClick={() => { if (mobileMenuShown) { closeMobileMenu(); } else { openMobileMenu('left'); } setMedNav(false); }}
         // Double-click opens from right if closed, or closes if open
@@ -554,7 +557,7 @@ function Navbar() {
         <FaBarsStaggered className='font-extrabold text-[30px] text-green-950' />
       </button>
       {/* Mobile NavLinks Drawer (slide in from left or right, smooth open/close) */}
-      <div className={`mobile-navbar fixed inset-0 z-50 flex flex-col md:hidden ${mobileMenuShown ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+      {mobileMenuShown && <div className={`mobile-navbar fixed inset-0 z-50 flex flex-col md:hidden pointer-events-auto`}>
          {/* Overlay to prevent scrolling behind and close on click */}
          <div
            className={`fixed inset-0 bg-black bg-opacity-40 transition-opacity duration-300 ease-in-out ${mobileMenuShown && mobileMenuOpen ? 'opacity-100' : (mobileMenuShown ? 'opacity-20' : 'opacity-0')}`}
@@ -563,7 +566,6 @@ function Navbar() {
          {/* Slide-in menu from the chosen side. When closing we animate to the far right so it moves across the screen. */}
         <div
           className={`bg-white h-full max-w-[90vw] w-full fixed top-0 ${mobileMenuSide === 'right' ? 'right-0' : 'left-0'} shadow-xl transform ${getTransformClass()} transition-transform duration-300 ease-in-out pointer-events-auto`}
-          aria-hidden={!mobileMenuShown}
         >
           <div className="p-4 flex flex-col gap-4 h-full">
             <div className="logo-icon-button flex items-center justify-between">
@@ -571,6 +573,7 @@ function Navbar() {
                 <Link href='/'><Image className='text-green-900' onClick={() => closeMobileMenu()} width={100} height={100} src={mobileLogo} alt="Mobile Logo" /></Link>
               </div>
               <button
+                type="button"
                 className="self-end text-[16px] font-bold mb-4 border-2 rounded-full text-green-900 w-[34px] h-[34px] flex items-center justify-center"
                 onClick={() => closeMobileMenu()}
                 aria-label="Close mobile menu"
@@ -589,7 +592,7 @@ function Navbar() {
                           href={item.href}
                           className={`text-base font-semibold flex-1 ${pathname === item.href ? 'text-white bg-green-900 px-3 py-1 rounded' : 'text-gray-800'}`}
                           onClick={() => {
-                            if (!item.hasDropdown) setMobileMenuOpen(false);
+                            if (!item.hasDropdown) closeMobileMenu();
                           }}
                         >
                           {item.label}
@@ -604,6 +607,7 @@ function Navbar() {
                       )}
                       {item.hasDropdown && (
                         <button
+                          type="button"
                           className="ml-3 text-gray-600 focus:outline-none p-2 rounded hover:bg-gray-100"
                           onClick={() => setOpenDropdownIndex(openDropdownIndex === i ? null : i)}
                           aria-label={`Toggle ${item.label} dropdown`}
@@ -654,7 +658,7 @@ function Navbar() {
                                 <li key={j} className="rounded-lg group">
                                   <Link
                                     href={subItem.href}
-                                    onClick={() => setMobileMenuOpen(false)}
+                                    onClick={() => closeMobileMenu()}
                                     className={`flex items-center gap-3 p-2 rounded ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : 'hover:bg-gray-50'}`}
                                   >
                                     <div className="w-9 h-9 flex items-center justify-center bg-[#f1f5f9] rounded-md">
@@ -687,9 +691,9 @@ function Navbar() {
                   
                 />
               </div> */}
-              <h1 onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className='text-black text-center text-[20px] font-bold'><span className='font-normal'>Click here to visit</span> Our Retail Store</h1>
+              <Link href='https://grabatoz.ae' target='_blank' rel='noopener noreferrer' className='text-black text-center text-[20px] font-bold'><span className='font-normal'>Click here to visit</span> Our Retail Store</Link>
               <FaLongArrowAltDown className='text-black animate-bounce text-[20px] -mb-5 mt-2'/>
-              <button onClick={() => { setMobileMenuOpen(false); window.location.href = 'https://grabatoz.ae'; }} className="mt-2 text-white w-full h-18 text-base rounded-full  font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
+              <a href='https://grabatoz.ae' target='_blank' rel='noopener noreferrer' aria-label='Visit our retail store' className="mt-2 text-white w-full h-18 text-base rounded-full  font-montserrat flex items-center justify-center " style={{ position: 'relative', overflow: 'hidden' }}>
                 {/* Blinking GIF left side inside button, absolute and over bg */}
                 <span className="flex items-center ">
                   <img
@@ -699,13 +703,14 @@ function Navbar() {
                     style={{ animation: 'blink 1s infinite' }}
                   />
                 </span>
+                <span className='sr-only'>Visit our retail store</span>
                 {/* Button text right side */}
                 {/* <span className=" text-lg ">Our Retail Store</span> */}
-              </button>
+              </a>
             </div>
           </div>
         </div>
-         </div>
+         </div>}
        </div>
   );
 }

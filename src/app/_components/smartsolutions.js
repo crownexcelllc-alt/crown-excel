@@ -7,7 +7,7 @@ function SmartSolutions() {
     <div className="relative w-full min-h-[180px] sm:min-h-[180px] md:min-h-[250px] lg:min-h-[320px] xl:min-h-[600px]  overflow-hidden">
       <Image
         src={Banner}
-        alt="img"
+        alt="Crown Excel technology solutions banner"
         fill
         className="object-cover w-full h-full"
         priority

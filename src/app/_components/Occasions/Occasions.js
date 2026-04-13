@@ -29,9 +29,9 @@ const occasions = [
 const Occasions = () => {
   return (
     <div className="w-full flex flex-col items-center pt-12 mb-10">
-      <h1 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
+      <h2 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
         Transforming Occasions <br /> into Great Memories
-      </h1>
+      </h2>
       <div className={`grid gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35 ${occasions.length === 1 ? 'grid-cols-1' : occasions.length === 2 ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
         {occasions.map((item, idx) => (
           <div
@@ -62,7 +62,6 @@ const Occasions = () => {
                   fill
                   className="object-cover"
                   style={{ borderRadius: 20 }}
-                  priority
                 />
               </div>
               {/* Centered main image */}
@@ -73,18 +72,17 @@ const Occasions = () => {
                   width={180}
                   height={180}
                   className="object-contain rounded-2xl"
-                  priority
                 />
               </div>
             </div>
             {/* Text content */}
             <div className="relative z-10 bg-transparent px-2 pb-2 flex-1 flex flex-col">
-              <h2
+              <h3
                 style={{ fontFamily: "__aeonik_3f9d62, sans-serif" }}
                 className="text-[22px] font-bold text-black mb-2 font-montserrat"
               >
                 {item.heading}
-              </h2>
+              </h3>
               <p className="text-base text-black">{item.description}</p>
             </div>
           </div>

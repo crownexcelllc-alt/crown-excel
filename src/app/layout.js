@@ -1,12 +1,6 @@
-"use client";
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/Navbar/navbar";
-import Footer from "@/Components/Footer/footer";
-import { usePathname } from "next/navigation";
-import ScrollToTopButton from "./_components/ScrollToTopButton/ScrollToTopButton";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import LayoutShell from "@/Components/Layout/LayoutShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,23 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: {
+    default: "Crown Excel | IT Hardware and Solutions in Dubai",
+    template: "%s | Crown Excel",
+  },
+  description:
+    "Crown Excel provides IT hardware, infrastructure, networking, and managed technology solutions for businesses in Dubai and the UAE.",
+};
+
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-
-  // Check if the route starts with /admin
-  const isAdminRoute = pathname.startsWith("/admin");
-
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         style={{ backgroundColor: "white" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {!isAdminRoute && <Navbar />}
-        {children}
-         <SpeedInsights />
-        {!isAdminRoute && <Footer />}
-        <ScrollToTopButton />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
