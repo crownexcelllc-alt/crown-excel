@@ -393,14 +393,14 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           <p className="text-sm text-gray-400 mb-4">
             {canEditContent ? 'Add sections to start building your page content.' : 'No content sections available.'}
           </p>
-          {canEditContent && (
+          {/* canEditContent && (
             <button
               onClick={() => setShowTemplateModal(true)}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#084032] text-white text-sm font-semibold hover:bg-[#0a5c48] transition"
             >
               <FiPlus /> Add Section
             </button>
-          )}
+          ) */}
         </div>
       ) : (
         <div className="space-y-4">
@@ -465,7 +465,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
       )}
 
       {/* Add Section Button */}
-      {canEditContent && (
+      {/* canEditContent && (
         <div className="flex justify-center">
           <button
             onClick={() => setShowTemplateModal(true)}
@@ -474,7 +474,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
             <FiPlus /> Add Section
           </button>
         </div>
-      )}
+      ) */}
 
       {/* Template Modal */}
       {showTemplateModal && canEditContent && (
