@@ -1,12 +1,13 @@
 import React from 'react';
 import ApplicationsTableClient from './ApplicationsTableClient';
+import { getApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Applications - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ApplicationsPage() {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:2999';
+  const apiBase = getApiBase();
   let applications = [];
   try {
     const res = await fetch(`${apiBase}/api/applications`, { cache: 'no-store' });

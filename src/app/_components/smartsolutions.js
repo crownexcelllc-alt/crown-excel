@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Banner from '../../Components/Images/banner.png'
+const Banner = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1780490952/cms/default/content/c4uladmenf4p8fyzruoy.webp', height: 1000, width: 1000 };
 
 function SmartSolutions() {
   return (

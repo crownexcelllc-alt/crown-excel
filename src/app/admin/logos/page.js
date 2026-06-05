@@ -1,12 +1,13 @@
 import React from 'react';
 import LogoClient from './LogoClient';
+import { getApiBase } from '@/lib/api-helper';
 
 export const metadata = { title: 'Logo Management - Admin' };
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function LogosPage() {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:2999';
+  const apiBase = getApiBase();
   let currentLogo = '/Images/footerlogo.png';
   
   try {

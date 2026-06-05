@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '../../../lib/mongodb';
 import { ObjectId } from 'mongodb';
+import { logActivity } from '../../../lib/activity-logger';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -55,6 +56,7 @@ export async function POST(req) {
     };
 
     const result = await col.insertOne(doc);
+    await logActivity(req, 'create_review', name, { rating, company, position });
     // return saved document with string id
     return jsonResponse({ ...doc, _id: result.insertedId.toString() }, 201);
   } catch (err) {
@@ -101,10 +103,16 @@ export async function PATCH(req) {
     const db = await getDb();
     const col = db.collection('reviews');
 
+    const existing = await col.findOne({ _id: new ObjectId(id) });
+    const target = existing ? existing.name : id;
+
     const result = await col.updateOne({ _id: new ObjectId(id) }, { $set: { approved: approve } });
     if (result.matchedCount === 0) {
       return jsonResponse({ error: 'Not found' }, 404);
     }
+
+    await logActivity(req, 'update_review', target, { id, approved: approve });
+
     return jsonResponse({ ok: true });
   } catch (err) {
     console.error('PATCH /api/reviews error', err);
@@ -121,8 +129,14 @@ export async function DELETE(req) {
 
     const db = await getDb();
     const col = db.collection('reviews');
+    const existing = await col.findOne({ _id: new ObjectId(id) });
+    const target = existing ? existing.name : id;
+
     const result = await col.deleteOne({ _id: new ObjectId(id) });
     if (result.deletedCount === 0) return jsonResponse({ error: 'Not found' }, 404);
+
+    await logActivity(req, 'delete_review', target, { id });
+
     return jsonResponse({ ok: true });
   } catch (err) {
     console.error('DELETE /api/reviews error', err);

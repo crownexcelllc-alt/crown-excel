@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/mongodb';
+import { logActivity } from '@/lib/activity-logger';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_ADMIN_ORIGIN || '*',
@@ -63,6 +64,7 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const settings = await saveSettings(body);
+    await logActivity(request, 'update_settings', 'Global Settings', { keys: Object.keys(body) });
     return NextResponse.json({ ok: true, settings }, { status: 200, headers: CORS_HEADERS });
   } catch (err) {
     console.error('Error saving settings:', err);

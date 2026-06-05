@@ -20,7 +20,7 @@ const HardwareAmcBanner = () => {
 
 
       {/* Left Text and Icons */}
-  <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
+      <div className="relative z-10 w-full md:w-1/2 text-white font-montserrat">
         <Image
           src={icon2}
           alt="icon2"
@@ -28,8 +28,8 @@ const HardwareAmcBanner = () => {
           height={40}
           className="absolute -top-10 left-10 md:left-0"
         />
-  <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
-          Hardware<br className="block md:hidden" /> AMC
+        <h1 className="text-[30px] md:text-[48px] font-bold leading-[30px] md:leading-[52px]">
+          Hardware
         </h1>
 
         {/* Short paragraph about Long-Term and Short-Term AMC */}

@@ -17,8 +17,9 @@ export default function LoginPage() {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      const { token } = await res.json();
+      const { token, user } = await res.json();
       localStorage.setItem("jwt", token);
+      localStorage.setItem("user", JSON.stringify(user || { role: 'super_admin' }));
       window.location.href = "/admin"; // Force reload and navigate to admin
     } else {
       setError("Invalid email or password");

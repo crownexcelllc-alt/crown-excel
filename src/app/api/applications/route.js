@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/mongodb';
+import { logActivity } from '@/lib/activity-logger';
 
 async function getApplications() {
   const db = await getDb();
@@ -39,6 +40,8 @@ export async function POST(request) {
     }
 
     const entry = await saveApplicationMongo({ name, email, phone, position, info });
+
+    await logActivity(request, 'career_application_submitted', name, { email, position });
 
     // Clean up used OTP
     await db.collection('otps').deleteMany({ email });

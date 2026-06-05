@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { MongoClient } from 'mongodb';
 import cloudinary from 'cloudinary';
+import { logActivity } from '../../../lib/activity-logger';
 
 // Cloudinary config (configured once)
 cloudinary.v2.config({
@@ -106,6 +107,8 @@ export async function POST(req) {
     // Update in-memory cache immediately so GETs are fast
     cachedLogo = secureUrl;
     cachedAt = Date.now();
+
+    await logActivity(req, 'update_logo', 'Website Logo', { url: secureUrl });
 
     return jsonWithCache({ logo: secureUrl });
   } catch (err) {
