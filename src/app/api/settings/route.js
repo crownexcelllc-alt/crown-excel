@@ -21,26 +21,30 @@ async function getSettings() {
 async function saveSettings(data) {
   const db = await getDb();
   const settingsData = {
-  _id: 'website_settings',
-  phone: data.phone || '',
-  email: data.email || '',
-  address: data.address || '',
-  facebook: data.facebook || '',
-  twitter: data.twitter || '',
-  instagram: data.instagram || '',
-  linkedin: data.linkedin || '',
-  youtube: data.youtube || '',
-  pinterest: data.pinterest || '',
-  tiktok: data.tiktok || '',
-  telegram: data.telegram || '',
-  snapchat: data.snapchat || '',
-  whatsapp: data.whatsapp || '',
-  reddit: data.reddit || '',
-  threads: data.threads || '',
-  updatedAt: new Date().toISOString()
-};
+    _id: 'website_settings',
+    phone: data.phone || '',
+    email: data.email || '',
+    address: data.address || '',
+    facebook: data.facebook || '',
+    twitter: data.twitter || '',
+    instagram: data.instagram || '',
+    linkedin: data.linkedin || '',
+    youtube: data.youtube || '',
+    pinterest: data.pinterest || '',
+    tiktok: data.tiktok || '',
+    telegram: data.telegram || '',
+    snapchat: data.snapchat || '',
+    whatsapp: data.whatsapp || '',
+    reddit: data.reddit || '',
+    threads: data.threads || '',
+    googleAnalyticsId: data.googleAnalyticsId || '',
+    googleTagManagerId: data.googleTagManagerId || '',
+    facebookPixelId: data.facebookPixelId || '',
+    customHeadScript: data.customHeadScript || '',
+    customBodyScript: data.customBodyScript || '',
+    updatedAt: new Date().toISOString()
+  };
 
-  
   await db.collection('settings').replaceOne(
     { _id: 'website_settings' },
     settingsData,

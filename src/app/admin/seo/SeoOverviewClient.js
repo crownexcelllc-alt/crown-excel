@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { FiSearch, FiGlobe, FiCheckCircle, FiAlertTriangle, FiXCircle, FiExternalLink } from 'react-icons/fi';
+import { FiSearch, FiGlobe, FiCheckCircle, FiAlertTriangle, FiXCircle, FiExternalLink, FiCopy, FiCheck } from 'react-icons/fi';
 
 export default function SeoOverviewClient({ initialPages = [], apiBase }) {
   const [currentUser, setCurrentUser] = useState(null);
@@ -24,6 +24,15 @@ export default function SeoOverviewClient({ initialPages = [], apiBase }) {
   const [pages, setPages] = useState(initialPages);
   const [search, setSearch] = useState('');
   const [scoreFilter, setScoreFilter] = useState('all');
+  const [copiedText, setCopiedText] = useState('');
+
+  const handleCopy = (text) => {
+    if (typeof window !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      setTimeout(() => setCopiedText(''), 2000);
+    }
+  };
 
   // Filter pages
   const filteredPages = useMemo(() => {
@@ -65,7 +74,7 @@ export default function SeoOverviewClient({ initialPages = [], apiBase }) {
     const display = getScoreDisplay(score);
     return (
       <div className="flex items-center gap-2">
-        <div className="flex-1 bg-gray-200 rounded-full h-2 w-24">
+        <div className="flex-1 bg-gray-200 rounded-full h-2 w-14">
           <div
             className={`h-2 rounded-full transition-all ${
               score >= 70 ? 'bg-green-500' : score >= 30 ? 'bg-yellow-500' : 'bg-red-500'
@@ -142,15 +151,15 @@ export default function SeoOverviewClient({ initialPages = [], apiBase }) {
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Page</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Meta Title</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Meta Description</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">SEO Score</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+          <div className="overflow-auto max-h-[500px] min-h-[350px]">
+            <table className="w-full border-collapse">
+              <thead className="sticky top-0 bg-gray-50 border-b border-gray-200 z-10">
+                <tr className="bg-gray-50">
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Page</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Meta Title</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Meta Description</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">SEO Score</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -158,32 +167,44 @@ export default function SeoOverviewClient({ initialPages = [], apiBase }) {
                   const scoreDisplay = getScoreDisplay(page.seoScore);
                   return (
                     <tr key={page._id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3">
-                        <code className="text-sm font-mono text-gray-800">{page.path}</code>
-                        <span className={`ml-2 px-1.5 py-0.5 rounded text-[10px] font-medium ${
-                          page.type === 'dynamic' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
-                        }`}>
-                          {page.type}
-                        </span>
+                      <td className="px-4 py-2">
+                        <div className="flex items-center gap-1.5 min-w-0 max-w-[150px] sm:max-w-[220px]">
+                          <code className="text-xs font-mono text-gray-800 truncate" title={page.path}>{page.path}</code>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCopy(page.path);
+                            }}
+                            className="p-1 text-gray-400 hover:text-[#084032] rounded hover:bg-gray-100 transition-colors flex-shrink-0"
+                            title="Copy Path"
+                          >
+                            {copiedText === page.path ? <FiCheck className="text-green-600" size={12} /> : <FiCopy size={12} />}
+                          </button>
+                          <span className={`px-1.5 py-0.5 rounded text-[9px] font-medium flex-shrink-0 ${
+                            page.type === 'dynamic' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
+                          }`}>
+                            {page.type}
+                          </span>
+                        </div>
                       </td>
-                      <td className="px-4 py-3">
-                        <span className="text-sm text-gray-700 line-clamp-1">
+                      <td className="px-4 py-2">
+                        <span className="text-xs text-gray-700 line-clamp-3 max-w-[180px] sm:max-w-[220px] block font-medium" title={page.metaTitle || ''}>
                           {page.metaTitle || <span className="text-gray-400 italic">Not set</span>}
                         </span>
                       </td>
-                      <td className="px-4 py-3">
-                        <span className="text-sm text-gray-500 line-clamp-1 max-w-[200px] block">
+                      <td className="px-4 py-2">
+                        <span className="text-xs text-gray-500 line-clamp-3 max-w-[200px] sm:max-w-[250px] block" title={page.metaDescription || ''}>
                           {page.metaDescription || <span className="text-gray-400 italic">Not set</span>}
                         </span>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <ScoreBar score={page.seoScore} />
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <div className="flex items-center justify-end gap-1">
                           <Link
                             href={`/admin/seo/${page._id}`}
-                            className="px-3 py-1.5 text-xs font-medium text-white bg-[#084032] rounded hover:bg-[#0a5c48] transition-colors"
+                            className="px-3 py-1.5 text-xs font-semibold text-white bg-[#084032] rounded hover:bg-[#0a5c48] transition-colors whitespace-nowrap"
                           >
                             {canEditSeo ? (page.hasSeo ? 'Edit SEO' : 'Add SEO') : 'View SEO'}
                           </Link>
@@ -191,7 +212,8 @@ export default function SeoOverviewClient({ initialPages = [], apiBase }) {
                             href={page.path}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                            title="View Live Page"
                           >
                             <FiExternalLink size={14} />
                           </a>

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import { BarChart3, Code } from 'lucide-react';
 
 export default function SettingsClient({ initialSettings = {}, apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [settings, setSettings] = useState(initialSettings);
@@ -123,6 +124,187 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
           <SocialInput platform="Telegram" field="telegram" settings={settings} handleChange={handleChange} />
           <SocialInput platform="Reddit" field="reddit" settings={settings} handleChange={handleChange} />
           <SocialInput platform="Threads" field="threads" settings={settings} handleChange={handleChange} />
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-3 flex items-center gap-2">
+          <BarChart3 className="w-6 h-6 text-[#084032]" />
+          Analytics & Marketing Pixels
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          {/* Google Analytics & Tag Manager Card */}
+          <div className="bg-gray-50/50 hover:bg-gray-50 border border-gray-200 rounded-xl p-5 transition shadow-sm flex flex-col justify-between md:col-span-2">
+            <div>
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm">
+                    G
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-sm md:text-base">Google Analytics & Tag Manager</h3>
+                    <p className="text-xs text-gray-500">Track site traffic and manage custom event tags</p>
+                  </div>
+                </div>
+                {(settings.googleAnalyticsId || settings.googleTagManagerId) ? (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    ACTIVE
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gray-100 text-gray-400 border border-gray-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                    INACTIVE
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                  <label htmlFor="googleAnalyticsId" className="block text-xs font-bold text-gray-700 mb-1.5">
+                    GA4 Measurement ID
+                  </label>
+                  <input
+                    id="googleAnalyticsId"
+                    type="text"
+                    value={settings.googleAnalyticsId || ''}
+                    onChange={(e) => handleChange('googleAnalyticsId', e.target.value)}
+                    placeholder="G-XXXXXXXXXX"
+                    className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                  />
+                  <span className="text-[10px] text-gray-400 mt-1">Starting with "G-"</span>
+                </div>
+
+                <div className="flex flex-col">
+                  <label htmlFor="googleTagManagerId" className="block text-xs font-bold text-gray-700 mb-1.5">
+                    GTM Container ID
+                  </label>
+                  <input
+                    id="googleTagManagerId"
+                    type="text"
+                    value={settings.googleTagManagerId || ''}
+                    onChange={(e) => handleChange('googleTagManagerId', e.target.value)}
+                    placeholder="GTM-XXXXXXX"
+                    className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                  />
+                  <span className="text-[10px] text-gray-400 mt-1">Starting with "GTM-"</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Facebook Pixel Card */}
+          <div className="bg-gray-50/50 hover:bg-gray-50 border border-gray-200 rounded-xl p-5 transition shadow-sm flex flex-col justify-between md:col-span-1">
+            <div>
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
+                    f
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-sm md:text-base">Facebook Pixel</h3>
+                    <p className="text-xs text-gray-500">Track Meta advertising conversion events</p>
+                  </div>
+                </div>
+                {settings.facebookPixelId ? (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    ACTIVE
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gray-100 text-gray-400 border border-gray-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                    INACTIVE
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="facebookPixelId" className="block text-xs font-bold text-gray-700 mb-1.5">
+                  Pixel ID
+                </label>
+                <input
+                  id="facebookPixelId"
+                  type="text"
+                  value={settings.facebookPixelId || ''}
+                  onChange={(e) => handleChange('facebookPixelId', e.target.value)}
+                  placeholder="1234567890"
+                  className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm
+                             focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white"
+                />
+                <span className="text-[10px] text-gray-400 mt-1">Numeric identifier from Meta Ads manager</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom Header & Body Scripts Injection Card */}
+          <div className="bg-gray-50/50 hover:bg-gray-50 border border-gray-200 rounded-xl p-5 transition shadow-sm flex flex-col justify-between md:col-span-3">
+            <div>
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-200">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                    <Code className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-sm md:text-base">Custom Scripts Injection</h3>
+                    <p className="text-xs text-gray-500">Inject custom HTML scripts inside Head and Body tags safely</p>
+                  </div>
+                </div>
+                {(settings.customHeadScript || settings.customBodyScript) ? (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    SCRIPTS ACTIVE
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gray-100 text-gray-400 border border-gray-200">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                    NO SCRIPTS
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col">
+                  <label htmlFor="customHeadScript" className="block text-xs font-bold text-gray-700 mb-1.5">
+                    Custom Header Scripts (HTML)
+                  </label>
+                  <textarea
+                    id="customHeadScript"
+                    value={settings.customHeadScript || ''}
+                    onChange={(e) => handleChange('customHeadScript', e.target.value)}
+                    placeholder="<!-- Injected inside <head> -->&#10;<script>...</script>"
+                    rows={4}
+                    className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                  />
+                  <span className="text-[10px] text-gray-400 mt-1">
+                    Raw HTML/scripts injected in &lt;head&gt; (e.g. site ownership keys, web verification tags, hotjar).
+                  </span>
+                </div>
+
+                <div className="flex flex-col">
+                  <label htmlFor="customBodyScript" className="block text-xs font-bold text-gray-700 mb-1.5">
+                    Custom Body Scripts (HTML)
+                  </label>
+                  <textarea
+                    id="customBodyScript"
+                    value={settings.customBodyScript || ''}
+                    onChange={(e) => handleChange('customBodyScript', e.target.value)}
+                    placeholder="<!-- Injected before </body> -->&#10;<noscript>...</noscript>"
+                    rows={4}
+                    className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 shadow-sm font-mono
+                               focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
+                  />
+                  <span className="text-[10px] text-gray-400 mt-1">
+                    Raw HTML/scripts injected before &lt;/body&gt; (e.g. fallback pixel tracking noscripts, chat icons, tools).
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

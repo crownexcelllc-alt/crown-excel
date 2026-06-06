@@ -23,7 +23,12 @@ export async function GET() {
       facebook: '',
       twitter: '',
       instagram: '',
-      linkedin: ''
+      linkedin: '',
+      googleAnalyticsId: '',
+      googleTagManagerId: '',
+      facebookPixelId: '',
+      customHeadScript: '',
+      customBodyScript: ''
     };
     
     const result = settings ? { ...defaultSettings, ...settings } : defaultSettings;

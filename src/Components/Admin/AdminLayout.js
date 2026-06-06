@@ -94,8 +94,8 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/pages", label: "Pages & Routes", group: "CMS" },
     { href: "/admin/seo", label: "SEO Manager", group: "CMS" },
     { href: "/admin/media", label: "Media Library", group: "CMS" },
-    { href: "/admin/users", label: "Users", group: "CMS" },
-    { href: "/admin/activity", label: "Activity Logs", group: "CMS" },
+    { href: "/admin/users", label: "Users", group: "Management" },
+    { href: "/admin/activity", label: "Activity Logs", group: "Management" },
   ];
 
   const filteredLinks = navLinks.filter(link => isRouteAllowed(link.href));

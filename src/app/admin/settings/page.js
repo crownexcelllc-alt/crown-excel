@@ -17,7 +17,20 @@ export default async function SettingsPage() {
     facebook: '',
     twitter: '',
     instagram: '',
-    linkedin: ''
+    linkedin: '',
+    youtube: '',
+    pinterest: '',
+    tiktok: '',
+    telegram: '',
+    snapchat: '',
+    whatsapp: '',
+    reddit: '',
+    threads: '',
+    googleAnalyticsId: '',
+    googleTagManagerId: '',
+    facebookPixelId: '',
+    customHeadScript: '',
+    customBodyScript: ''
   };
 
   try {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { FiSearch, FiRefreshCw, FiEdit, FiEye, FiArchive, FiGlobe, FiLayers, FiChevronRight, FiChevronDown, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiEdit, FiEye, FiGlobe, FiLayers, FiChevronRight, FiChevronDown, FiCheckCircle, FiAlertCircle, FiCopy, FiCheck } from 'react-icons/fi';
 
 export default function PagesClient({ initialRoutes = [], apiBase, initialError }) {
   const [routes, setRoutes] = useState(initialRoutes);
@@ -14,6 +14,29 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
   const [typeFilter, setTypeFilter] = useState('all');
   const [expandedPaths, setExpandedPaths] = useState(new Set());
   const [currentUser, setCurrentUser] = useState(null);
+  const [copiedText, setCopiedText] = useState('');
+  const [activeDropdownId, setActiveDropdownId] = useState(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (e.target && e.target.closest('.dropdown-container')) {
+        return;
+      }
+      setActiveDropdownId(null);
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+  const handleCopy = (text) => {
+    if (typeof window !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedText(text);
+      setTimeout(() => setCopiedText(''), 2000);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -217,7 +240,6 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
               <option value="all">All Status</option>
               <option value="active">Active</option>
               <option value="draft">Draft</option>
-              <option value="archived">Archived</option>
             </select>
             <select
               value={typeFilter}
@@ -270,16 +292,16 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
             )}
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Route Path</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">File</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Scanned</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+          <div className="overflow-auto max-h-[500px] min-h-[350px]">
+            <table className="w-full border-collapse">
+              <thead className="sticky top-0 bg-gray-50 border-b border-gray-200 z-10">
+                <tr className="bg-gray-50">
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Route Path</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Type</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">File</th>
+                  <th className="px-4 py-2 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Scanned</th>
+                  <th className="px-4 py-2 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -290,87 +312,126 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
 
                   return (
                     <tr key={route._id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <div className="flex items-center gap-1" style={{ paddingLeft: `${indent * 16}px` }}>
                           {hasChildren ? (
                             <button
-                              onClick={() => toggleExpand(route.path)}
-                              className="p-0.5 hover:bg-gray-200 rounded"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleExpand(route.path);
+                              }}
+                              className="p-0.5 hover:bg-gray-200 rounded flex-shrink-0"
                             >
                               {isExpanded ? <FiChevronDown size={14} /> : <FiChevronRight size={14} />}
                             </button>
                           ) : (
-                            <span className="w-5" />
+                            <span className="w-5 flex-shrink-0" />
                           )}
-                          <FiLayers className="text-gray-400 mr-1.5" size={14} />
-                          <Link href={`/admin/pages/${route._id}`} className="text-sm font-mono text-[#084032] hover:text-[#0a5c48] hover:underline font-semibold">
-                            {route.path}
-                          </Link>
+                          <FiLayers className="text-gray-400 mr-1.5 flex-shrink-0" size={14} />
+                          <div className="flex items-center gap-1.5 min-w-0 max-w-[120px] sm:max-w-[180px] md:max-w-[220px]">
+                            <Link 
+                              href={`/admin/pages/${route._id}`} 
+                              className="text-sm font-mono text-[#084032] hover:text-[#0a5c48] hover:underline font-semibold truncate"
+                              title={route.path}
+                            >
+                              {route.path}
+                            </Link>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCopy(route.path);
+                              }}
+                              className="p-1 text-gray-400 hover:text-[#084032] rounded hover:bg-gray-100 transition-colors flex-shrink-0"
+                              title="Copy Path"
+                            >
+                              {copiedText === route.path ? <FiCheck className="text-green-600" size={13} /> : <FiCopy size={13} />}
+                            </button>
+                          </div>
                         </div>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <TypeBadge type={route.type} />
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <StatusBadge status={route.status} />
                       </td>
-                      <td className="px-4 py-3">
-                        <span className="text-xs text-gray-500 font-mono">{route.filePath}</span>
+                      <td className="px-4 py-2">
+                        <div className="flex items-center gap-1.5 min-w-0 max-w-[110px] sm:max-w-[150px] md:max-w-[180px]">
+                          <span className="text-xs text-gray-500 font-mono truncate" title={route.filePath}>
+                            {route.filePath || '—'}
+                          </span>
+                          {route.filePath && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCopy(route.filePath);
+                              }}
+                              className="p-1 text-gray-400 hover:text-[#084032] rounded hover:bg-gray-100 transition-colors flex-shrink-0"
+                              title="Copy File Path"
+                            >
+                              {copiedText === route.filePath ? <FiCheck className="text-green-600" size={12} /> : <FiCopy size={12} />}
+                            </button>
+                          )}
+                        </div>
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-2">
                         <span className="text-xs text-gray-500">
                           {route.lastScannedAt ? new Date(route.lastScannedAt).toLocaleDateString('en-US', {
                             month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                           }) : '—'}
                         </span>
                       </td>
-                      <td className="px-4 py-3">
-                        <div className="flex items-center justify-end gap-1">
-                          <Link
-                            href={`/admin/pages/${route._id}`}
-                            className="p-2 text-gray-500 hover:text-[#084032] hover:bg-gray-100 rounded transition-colors"
-                            title={canEditPages ? "Edit Content" : "View Content"}
+                      <td className="px-4 py-2 text-right">
+                        <div className="relative inline-block text-left dropdown-container">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveDropdownId(activeDropdownId === route._id ? null : route._id);
+                            }}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-gray-300 rounded-md text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#00a63e] shadow-sm transition-colors"
                           >
-                            <FiEdit size={15} />
-                          </Link>
-                          {canViewSeo && (
-                            <Link
-                              href={`/admin/seo/${route._id}`}
-                              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                              title={canEditSeo ? "Manage SEO" : "View SEO"}
+                            Actions
+                            <FiChevronDown size={14} className={`transition-transform duration-200 ${activeDropdownId === route._id ? 'rotate-180' : ''}`} />
+                          </button>
+
+                          {activeDropdownId === route._id && (
+                            <div
+                              className="absolute right-0 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 divide-y divide-gray-100 origin-top-right focus:outline-none"
+                              onClick={(e) => e.stopPropagation()}
                             >
-                              <FiGlobe size={15} />
-                            </Link>
-                          )}
-                          <a
-                            href={route.path}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded transition-colors"
-                            title="View Page"
-                          >
-                            <FiEye size={15} />
-                          </a>
-                          {canEditPages && (
-                            <>
-                              {route.status === 'active' ? (
-                                <button
-                                  onClick={() => handleStatusChange(route._id, 'archived')}
-                                  className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                                  title="Archive"
+                              <div className="py-1">
+                                <Link
+                                  href={`/admin/pages/${route._id}`}
+                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                                  onClick={() => setActiveDropdownId(null)}
                                 >
-                                  <FiArchive size={15} />
-                                </button>
-                              ) : (
-                                <button
-                                  onClick={() => handleStatusChange(route._id, 'active')}
-                                  className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded transition-colors"
-                                  title="Restore"
+                                  <FiEdit className="text-gray-400" size={14} />
+                                  {canEditPages ? "Edit Content" : "View Content"}
+                                </Link>
+
+                                {canViewSeo && (
+                                  <Link
+                                    href={`/admin/seo/${route._id}`}
+                                    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                                    onClick={() => setActiveDropdownId(null)}
+                                  >
+                                    <FiGlobe className="text-gray-400" size={14} />
+                                    {canEditSeo ? "Manage SEO" : "View SEO"}
+                                  </Link>
+                                )}
+
+                                <a
+                                  href={route.path}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                                  onClick={() => setActiveDropdownId(null)}
                                 >
-                                  <FiCheckCircle size={15} />
-                                </button>
-                              )}
-                            </>
+                                  <FiEye className="text-gray-400" size={14} />
+                                  View Page
+                                </a>
+                              </div>
+                            </div>
                           )}
                         </div>
                       </td>
