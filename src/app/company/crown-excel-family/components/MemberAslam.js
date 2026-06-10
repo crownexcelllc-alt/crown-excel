@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import Aslam from '@/Components/Images/aslam.jpg';
 
-export default function MemberAslam({ name, position, tenure, dept, quote }) {
+export default function MemberAslam({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Muhammad Aslam";
   const displayPosition = position || "Accountant";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Accounts";
   const displayQuote = quote || `Our team is our extended family, and we grow together.`;
+  const displayImage = image || Aslam;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={Aslam} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

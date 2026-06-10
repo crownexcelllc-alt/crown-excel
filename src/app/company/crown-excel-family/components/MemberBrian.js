@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import etc1 from '@/Components/Images/etc1.jpg';
 
-export default function MemberBrian({ name, position, tenure, dept, quote }) {
+export default function MemberBrian({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Brian Mwenda";
   const displayPosition = position || "Store Keeper";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Warehouse";
   const displayQuote = quote || `Our team is our extended family, and we grow together.`;
+  const displayImage = image || etc1;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={etc1} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

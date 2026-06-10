@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import Lavina from '@/Components/Images/Lavina.jpg';
 
-export default function MemberLavina({ name, position, tenure, dept, quote }) {
+export default function MemberLavina({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Lavina Santlalani";
   const displayPosition = position || "Business Development Manager";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Business Development";
   const displayQuote = quote || `Our team is our extended family, and we grow together.`;
+  const displayImage = image || Lavina;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={Lavina} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

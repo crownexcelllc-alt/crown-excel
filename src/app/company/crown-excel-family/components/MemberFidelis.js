@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import Fidelis from '@/Components/Images/Fidelis.jpg';
 
-export default function MemberFidelis({ name, position, tenure, dept, quote }) {
+export default function MemberFidelis({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Gemuh Fidelis Mashim";
   const displayPosition = position || "Store Supervisor";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Inventory";
   const displayQuote = quote || `Our team is our extended family, and we grow together.`;
+  const displayImage = image || Fidelis;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={Fidelis} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

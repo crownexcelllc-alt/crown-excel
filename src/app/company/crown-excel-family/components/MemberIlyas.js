@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import ilyaskhan from '@/Components/Images/ilyaskhan.jpg';
 
-export default function MemberIlyas({ name, position, tenure, dept, quote }) {
+export default function MemberIlyas({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Ilyas Khan";
   const displayPosition = position || "Managing Director";
   const displayTenure = tenure || "15+ Years";
   const displayDept = dept || "Management";
   const displayQuote = quote || `Our success is built on the foundation of trust, integrity, and family values.`;
+  const displayImage = image || ilyaskhan;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={ilyaskhan} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

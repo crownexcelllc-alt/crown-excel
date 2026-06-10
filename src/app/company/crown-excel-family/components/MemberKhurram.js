@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import sirKhurram from '@/Components/Images/sir profile pic.png';
 
-export default function MemberKhurram({ name, position, tenure, dept, quote }) {
+export default function MemberKhurram({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Khurram Razzaq";
   const displayPosition = position || "Marketing Manager";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Marketing";
   const displayQuote = quote || `Innovation and tradition go hand in hand in our family business.`;
+  const displayImage = image || sirKhurram;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={sirKhurram} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 

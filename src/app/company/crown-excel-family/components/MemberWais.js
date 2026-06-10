@@ -3,17 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import waiskhan from '@/Components/Images/waiskhan.png';
 
-export default function MemberWais({ name, position, tenure, dept, quote }) {
+export default function MemberWais({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Muhammad Wais Khan";
   const displayPosition = position || "Sales Manager";
   const displayTenure = tenure || "7+ Years";
   const displayDept = dept || "Sales";
   const displayQuote = quote || `Every decision we make reflects our commitment to our family and community.`;
+  const displayImage = image || waiskhan;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
-          src={waiskhan} 
+          src={displayImage} 
           alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 
