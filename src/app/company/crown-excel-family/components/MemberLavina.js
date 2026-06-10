@@ -3,13 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import Lavina from '@/Components/Images/Lavina.jpg';
 
-export default function MemberLavina() {
+export default function MemberLavina({ name, position, tenure, dept, quote }) {
+  const displayName = name || "Lavina Santlalani";
+  const displayPosition = position || "Business Development Manager";
+  const displayTenure = tenure || "7+ Years";
+  const displayDept = dept || "Business Development";
+  const displayQuote = quote || `Our team is our extended family, and we grow together.`;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
           src={Lavina} 
-          alt="Lavina Santlalani" 
+          alt={displayName} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 
           className="rounded-t-2xl" 
@@ -17,17 +22,17 @@ export default function MemberLavina() {
         />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4">
-          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">7+ Years</p>
+          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{displayTenure}</p>
         </div>
         <div className="absolute bottom-4 left-4">
-          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Business Development</p>
+          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">{displayDept}</p>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">Lavina Santlalani</h3>
-        <p className="text-[#084032] font-muli font-medium mb-4">Business Development Manager</p>
+        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{displayName}</h3>
+        <p className="text-[#084032] font-muli font-medium mb-4">{displayPosition}</p>
         <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-          <p className="text-gray-600 font-muli italic text-sm">"Our team is our extended family, and we grow together."</p>
+          <p className="text-gray-600 font-muli italic text-sm">"{displayQuote.replace(/^"|"$/g, '')}"</p>
         </blockquote>
       </div>
     </div>
