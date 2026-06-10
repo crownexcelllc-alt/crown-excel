@@ -1,15 +1,15 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import etc2 from '@/Components/Images/etc2.jpg';
+import defaultAvatar from '@/Components/Images/defaultavatar.jpg';
 
-export default function MemberJunaidA({ name, position, tenure, dept, quote, image }) {
-  const displayName = name || "Junaid Ali";
-  const displayPosition = position || "Store Operations";
-  const displayTenure = tenure || "7+ Years";
-  const displayDept = dept || "Warehouse";
+export default function MemberSaleem({ name, position, tenure, dept, quote, image }) {
+  const displayName = name || "Saleem";
+  const displayPosition = position || "Sales Executive";
+  const displayTenure = tenure || "5+ Years";
+  const displayDept = dept || "Sales";
   const displayQuote = quote || `Our team is our extended family, and we grow together.`;
-  const displayImage = image || etc2;
+  const displayImage = image || defaultAvatar;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">

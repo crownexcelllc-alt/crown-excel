@@ -18,25 +18,24 @@ import MemberWais from './components/MemberWais';
 import MemberSaqib from './components/MemberSaqib';
 import MemberVishal from './components/MemberVishal';
 import MemberKhurram from './components/MemberKhurram';
-import MemberJunaidA from './components/MemberJunaidA';
 import MemberBrian from './components/MemberBrian';
 import MemberRauf from './components/MemberRauf';
 import MemberNadeem from './components/MemberNadeem';
 import MemberTarun from './components/MemberTarun';
 import MemberIbad from './components/MemberIbad';
 import MemberAbdullah from './components/MemberAbdullah';
-import MemberSajan from './components/MemberSajan';
 import MemberJunaidS from './components/MemberJunaidS';
 import MemberShammry from './components/MemberShammry';
 import MemberJubair from './components/MemberJubair';
-import MemberFarooq from './components/MemberFarooq';
 import MemberFazal from './components/MemberFazal';
-import MemberAshiq from './components/MemberAshiq';
 import MemberNabiha from './components/MemberNabiha';
 import MemberLavina from './components/MemberLavina';
 import MemberSaeed from './components/MemberSaeed';
 import MemberAslam from './components/MemberAslam';
-import MemberFidelis from './components/MemberFidelis';
+import MemberSaleem from './components/MemberSaleem';
+import MemberSalman from './components/MemberSalman';
+// import MemberHassan from './components/MemberHassan';
+// import MemberOmar from './components/MemberOmar';
 
 function CrownExcelFamily() {
   const [cmsData, setCmsData] = useState(null);
@@ -191,14 +190,6 @@ function CrownExcelFamily() {
                 quote={getField('MemberKhurram', 'paragraph_4')} 
                 image={getField('MemberKhurram', 'image_sirkhurram')}
               />
-              <MemberJunaidA 
-                name={getField('MemberJunaidA', 'heading')} 
-                position={getField('MemberJunaidA', 'paragraph_3')} 
-                tenure={getField('MemberJunaidA', 'paragraph')} 
-                dept={getField('MemberJunaidA', 'paragraph_2')} 
-                quote={getField('MemberJunaidA', 'paragraph_4')} 
-                image={getField('MemberJunaidA', 'image_etc2')}
-              />
               <MemberBrian 
                 name={getField('MemberBrian', 'heading')} 
                 position={getField('MemberBrian', 'paragraph_3')} 
@@ -247,14 +238,6 @@ function CrownExcelFamily() {
                 quote={getField('MemberAbdullah', 'paragraph_4')} 
                 image={getField('MemberAbdullah', 'image_abdullah')}
               />
-              <MemberSajan 
-                name={getField('MemberSajan', 'heading')} 
-                position={getField('MemberSajan', 'paragraph_3')} 
-                tenure={getField('MemberSajan', 'paragraph')} 
-                dept={getField('MemberSajan', 'paragraph_2')} 
-                quote={getField('MemberSajan', 'paragraph_4')} 
-                image={getField('MemberSajan', 'image_sajan')}
-              />
               <MemberJunaidS 
                 name={getField('MemberJunaidS', 'heading')} 
                 position={getField('MemberJunaidS', 'paragraph_3')} 
@@ -279,14 +262,6 @@ function CrownExcelFamily() {
                 quote={getField('MemberJubair', 'paragraph_4')} 
                 image={getField('MemberJubair', 'image_jhubar')}
               />
-              <MemberFarooq 
-                name={getField('MemberFarooq', 'heading')} 
-                position={getField('MemberFarooq', 'paragraph_3')} 
-                tenure={getField('MemberFarooq', 'paragraph')} 
-                dept={getField('MemberFarooq', 'paragraph_2')} 
-                quote={getField('MemberFarooq', 'paragraph_4')} 
-                image={getField('MemberFarooq', 'image_farooq')}
-              />
               <MemberFazal 
                 name={getField('MemberFazal', 'heading')} 
                 position={getField('MemberFazal', 'paragraph_3')} 
@@ -294,14 +269,6 @@ function CrownExcelFamily() {
                 dept={getField('MemberFazal', 'paragraph_2')} 
                 quote={getField('MemberFazal', 'paragraph_4')} 
                 image={getField('MemberFazal', 'image_fazal')}
-              />
-              <MemberAshiq 
-                name={getField('MemberAshiq', 'heading')} 
-                position={getField('MemberAshiq', 'paragraph_3')} 
-                tenure={getField('MemberAshiq', 'paragraph')} 
-                dept={getField('MemberAshiq', 'paragraph_2')} 
-                quote={getField('MemberAshiq', 'paragraph_4')} 
-                image={getField('MemberAshiq', 'image_ashiq')}
               />
               <MemberNabiha 
                 name={getField('MemberNabiha', 'heading')} 
@@ -335,14 +302,38 @@ function CrownExcelFamily() {
                 quote={getField('MemberAslam', 'paragraph_4')} 
                 image={getField('MemberAslam', 'image_aslam')}
               />
-              <MemberFidelis 
-                name={getField('MemberFidelis', 'heading')} 
-                position={getField('MemberFidelis', 'paragraph_3')} 
-                tenure={getField('MemberFidelis', 'paragraph')} 
-                dept={getField('MemberFidelis', 'paragraph_2')} 
-                quote={getField('MemberFidelis', 'paragraph_4')} 
-                image={getField('MemberFidelis', 'image_fidelis')}
+              <MemberSaleem 
+                name={getField('MemberSaleem', 'heading')} 
+                position={getField('MemberSaleem', 'paragraph_3')} 
+                tenure={getField('MemberSaleem', 'paragraph')} 
+                dept={getField('MemberSaleem', 'paragraph_2')} 
+                quote={getField('MemberSaleem', 'paragraph_4')} 
+                image={getField('MemberSaleem', 'image_saleem')}
               />
+              <MemberSalman 
+                name={getField('MemberSalman', 'heading')} 
+                position={getField('MemberSalman', 'paragraph_3')} 
+                tenure={getField('MemberSalman', 'paragraph')} 
+                dept={getField('MemberSalman', 'paragraph_2')} 
+                quote={getField('MemberSalman', 'paragraph_4')} 
+                image={getField('MemberSalman', 'image_salman')}
+              />
+              {/* <MemberHassan 
+                name={getField('MemberHassan', 'heading')} 
+                position={getField('MemberHassan', 'paragraph_3')} 
+                tenure={getField('MemberHassan', 'paragraph')} 
+                dept={getField('MemberHassan', 'paragraph_2')} 
+                quote={getField('MemberHassan', 'paragraph_4')} 
+                image={getField('MemberHassan', 'image_hassan')}
+              /> */}
+              {/* <MemberOmar 
+                name={getField('MemberOmar', 'heading')} 
+                position={getField('MemberOmar', 'paragraph_3')} 
+                tenure={getField('MemberOmar', 'paragraph')} 
+                dept={getField('MemberOmar', 'paragraph_2')} 
+                quote={getField('MemberOmar', 'paragraph_4')} 
+                image={getField('MemberOmar', 'image_omar')}
+              /> */}
             </div>
           </div>
 
