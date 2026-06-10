@@ -59,7 +59,16 @@ function CrownExcelFamily() {
            s.sectionName?.toLowerCase() === sectionId.toLowerCase()
     );
     if (section && section.fields && section.fields[fieldKey]) {
-      return section.fields[fieldKey].value || defaultValue;
+      const field = section.fields[fieldKey];
+      if (field.type === 'image') {
+        const val = field.value;
+        // If the value is a static file import path or is identical to the original path,
+        // fall back to the component's static fallback.
+        if (!val || val.startsWith('@/') || val.startsWith('.') || val === field.originalValue) {
+          return defaultValue;
+        }
+      }
+      return field.value || defaultValue;
     }
     return defaultValue;
   };
