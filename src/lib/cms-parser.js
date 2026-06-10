@@ -43,6 +43,9 @@ function cleanText(text) {
   // Strip JSX curly braces around string literals
   text = text.replace(/\{"([\s\S]*?)"\}/g, '$1');
   text = text.replace(/\{'([\s\S]*?)'\}/g, '$1');
+  // Extract default text from {var || "default"} patterns
+  text = text.replace(/\{[^}]*\|\|\s*"([^"]+)"\s*\}/g, '$1');
+  text = text.replace(/\{[^}]*\|\|\s*'([^']+)'\s*\}/g, '$1');
   // Strip remaining curly braces and variables (e.g. {icon1})
   text = text.replace(/\{[\s\S]*?\}/g, '');
   // Clean whitespace
@@ -86,8 +89,8 @@ export function parsePageContent(pageFilePath) {
       }
     }
 
-    // Find paragraphs (p)
-    const pRegex = /<p[^>]*>([\s\S]*?)<\/p>/gi;
+    // Find paragraphs (p) - use (?!\w) to avoid matching <path, <polygon, etc.
+    const pRegex = /<p(?!\w)[^>]*>([\s\S]*?)<\/p>/gi;
     while ((match = pRegex.exec(content)) !== null) {
       const rawText = match[1];
       const text = cleanText(rawText);
@@ -333,7 +336,7 @@ export function updatePageFiles(sections) {
               return match;
             });
           } else if (isParagraph) {
-            const paragraphTagRegex = /<p([^>]*)>([\s\S]*?)<\/p>/gi;
+            const paragraphTagRegex = /<p(?!\w)([^>]*)>([\s\S]*?)<\/p>/gi;
             updatedContent = fileContent.replace(paragraphTagRegex, (match, attrs, innerContent) => {
               if (currentIndex === targetIndex) {
                 currentIndex++;
@@ -355,7 +358,7 @@ export function updatePageFiles(sections) {
             contentChanged = true;
           } else {
             // 2. Text-based fallback (replaces only the first matching tag to avoid scrambling other duplicates)
-            const tagRegex = /(<(h[1-4]|p)[^>]*>)([\s\S]*?)(<\/\2>)/gi;
+            const tagRegex = /(<(h[1-4]|p(?!\w))[^>]*>)([\s\S]*?)(<\/\2>)/gi;
             let replaced = false;
             const fallbackContent = fileContent.replace(tagRegex, (match, openTag, tagName, innerContent, closeTag) => {
               if (replaced) return match;
@@ -428,7 +431,7 @@ function replaceHeadingContentByIndex(fileContent, targetIndex, newValue) {
 }
 
 function replaceParagraphContentByIndex(fileContent, targetIndex, newValue) {
-  const tagRegex = /<p([^>]*)>([\s\S]*?)<\/p>/gi;
+  const tagRegex = /<p(?!\w)([^>]*)>([\s\S]*?)<\/p>/gi;
   let currentIndex = 0;
   return fileContent.replace(tagRegex, (match, attrs, innerContent) => {
     if (currentIndex === targetIndex) {

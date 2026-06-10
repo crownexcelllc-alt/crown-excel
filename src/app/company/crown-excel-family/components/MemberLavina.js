@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Lavina from '@/Components/Images/Lavina.jpg';
+const Lavina = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781077194/cms/default/content/ddxnafsqfewireva19cg.png', height: 1000, width: 1000 };
 
 export default function MemberLavina({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Lavina Santlalani";
@@ -23,17 +23,17 @@ export default function MemberLavina({ name, position, tenure, dept, quote, imag
         />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4">
-          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{displayTenure}</p>
+          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">1+ Years</p>
         </div>
         <div className="absolute bottom-4 left-4">
-          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">{displayDept}</p>
+          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Business Development</p>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{displayName}</h3>
-        <p className="text-[#084032] font-muli font-medium mb-4">{displayPosition}</p>
+        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">Lavina Santlalani</h3>
+        <p className="text-[#084032] font-muli font-medium mb-4">Business Development Manager</p>
         <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-          <p className="text-gray-600 font-muli italic text-sm">"{displayQuote.replace(/^"|"$/g, '')}"</p>
+          <p className="text-gray-600 font-muli italic text-sm">"Our team is our extended family, and we grow together."</p>
         </blockquote>
       </div>
     </div>

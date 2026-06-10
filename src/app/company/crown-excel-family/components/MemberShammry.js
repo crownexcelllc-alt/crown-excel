@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Shammry from '@/Components/Images/Shammry.jpg';
+const Shammry = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781074283/cms/default/content/aid8jlwgobnekdpku5nx.jpg', height: 1000, width: 1000 };
 
 export default function MemberShammry({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Shamry Salam";
@@ -23,17 +23,17 @@ export default function MemberShammry({ name, position, tenure, dept, quote, ima
         />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4">
-          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{displayTenure}</p>
+          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">2+ Years</p>
         </div>
         <div className="absolute bottom-4 left-4">
-          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">{displayDept}</p>
+          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Reception</p>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{displayName}</h3>
-        <p className="text-[#084032] font-muli font-medium mb-4">{displayPosition}</p>
+        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">Shamry Salam</h3>
+        <p className="text-[#084032] font-muli font-medium mb-4">Receptionist</p>
         <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
-          <p className="text-gray-600 font-muli italic text-sm">"{displayQuote.replace(/^"|"$/g, '')}"</p>
+          <p className="text-gray-600 font-muli italic text-sm">"Our team is our extended family, and we grow together."</p>
         </blockquote>
       </div>
     </div>
