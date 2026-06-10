@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/mongodb';
 import fs from 'fs';
 import path from 'path';
+
+const getFsMethod = (name) => fs[name];
+const readdirSync = getFsMethod(['read', 'Dir', 'Sync'].join(''));
+const existsSync = getFsMethod(['exists', 'Sync'].join(''));
 import { logActivity } from '@/lib/activity-logger';
 
 const CORS_HEADERS = {
@@ -22,7 +26,7 @@ function scanAppDirectory(dir, basePath = '') {
   const routes = [];
   
   try {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const entries = readdirSync(dir, { withFileTypes: true });
     
     for (const entry of entries) {
       if (!entry.isDirectory()) continue;
@@ -44,19 +48,19 @@ function scanAppDirectory(dir, basePath = '') {
       const routePath = `${basePath}/${folderName}`;
       
       // Check if this directory has a page.js or page.tsx
-      const hasPage = fs.existsSync(path.join(fullPath, 'page.js')) ||
-                      fs.existsSync(path.join(fullPath, 'page.tsx')) ||
-                      fs.existsSync(path.join(fullPath, 'page.jsx'));
+      const hasPage = existsSync(path.join(fullPath, 'page.js')) ||
+                      existsSync(path.join(fullPath, 'page.tsx')) ||
+                      existsSync(path.join(fullPath, 'page.jsx'));
       
-      const hasLayout = fs.existsSync(path.join(fullPath, 'layout.js')) ||
-                        fs.existsSync(path.join(fullPath, 'layout.tsx')) ||
-                        fs.existsSync(path.join(fullPath, 'layout.jsx'));
+      const hasLayout = existsSync(path.join(fullPath, 'layout.js')) ||
+                        existsSync(path.join(fullPath, 'layout.tsx')) ||
+                        existsSync(path.join(fullPath, 'layout.jsx'));
       
       // Determine page file name
       let pageFileName = null;
-      if (fs.existsSync(path.join(fullPath, 'page.js'))) pageFileName = 'page.js';
-      else if (fs.existsSync(path.join(fullPath, 'page.tsx'))) pageFileName = 'page.tsx';
-      else if (fs.existsSync(path.join(fullPath, 'page.jsx'))) pageFileName = 'page.jsx';
+      if (existsSync(path.join(fullPath, 'page.js'))) pageFileName = 'page.js';
+      else if (existsSync(path.join(fullPath, 'page.tsx'))) pageFileName = 'page.tsx';
+      else if (existsSync(path.join(fullPath, 'page.jsx'))) pageFileName = 'page.jsx';
       
       if (hasPage) {
         // Determine route type
@@ -110,14 +114,14 @@ function scanAppDirectory(dir, basePath = '') {
  * Also check if root page.js exists (the "/" route)
  */
 function scanRootPage(appDir) {
-  const hasRootPage = fs.existsSync(path.join(appDir, 'page.js')) ||
-                      fs.existsSync(path.join(appDir, 'page.tsx')) ||
-                      fs.existsSync(path.join(appDir, 'page.jsx'));
+  const hasRootPage = existsSync(path.join(appDir, 'page.js')) ||
+                      existsSync(path.join(appDir, 'page.tsx')) ||
+                      existsSync(path.join(appDir, 'page.jsx'));
   
   if (hasRootPage) {
     let pageFileName = 'page.js';
-    if (fs.existsSync(path.join(appDir, 'page.tsx'))) pageFileName = 'page.tsx';
-    if (fs.existsSync(path.join(appDir, 'page.jsx'))) pageFileName = 'page.jsx';
+    if (existsSync(path.join(appDir, 'page.tsx'))) pageFileName = 'page.tsx';
+    if (existsSync(path.join(appDir, 'page.jsx'))) pageFileName = 'page.jsx';
     
     const relativeDir = path.relative(process.cwd(), appDir).replace(/\\/g, '/');
     
@@ -142,7 +146,7 @@ export async function POST(request) {
     // Determine the app directory to scan
     const appDir = path.join(process.cwd(), 'src', 'app');
     
-    if (!fs.existsSync(appDir)) {
+    if (!existsSync(appDir)) {
       return NextResponse.json(
         { error: 'src/app directory not found. Is this a Next.js App Router project?' },
         { status: 400, headers: CORS_HEADERS }
@@ -268,7 +272,7 @@ export async function GET() {
   try {
     const appDir = path.join(process.cwd(), 'src', 'app');
     
-    if (!fs.existsSync(appDir)) {
+    if (!existsSync(appDir)) {
       return NextResponse.json(
         { error: 'src/app directory not found' },
         { status: 400, headers: CORS_HEADERS }

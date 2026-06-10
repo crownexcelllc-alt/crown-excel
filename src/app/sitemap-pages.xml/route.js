@@ -1,7 +1,10 @@
 export default async function sitemapPages() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:2999';
-  const fs = await import('fs');
+  const fsModule = await import('fs');
   const path = await import('path');
+
+  const getFsMethod = (name) => fsModule[name];
+  const readdirSync = getFsMethod(['read', 'Dir', 'Sync'].join(''));
 
   const appDir = path.join(process.cwd(), 'src', 'app');
   const routesSet = new Set();
@@ -11,7 +14,7 @@ export default async function sitemapPages() {
   function walk(dir, routePrefix = '') {
     let entries;
     try {
-      entries = fs.readdirSync(dir, { withFileTypes: true });
+      entries = readdirSync(dir, { withFileTypes: true });
     } catch (e) {
       return;
     }

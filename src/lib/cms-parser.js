@@ -1,6 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
+// Dynamically reference fs methods to prevent Next.js Node File Trace (NFT) from scanning and bundling the entire workspace.
+const getFsMethod = (name) => fs[name];
+const existsSync = getFsMethod(['exists', 'Sync'].join(''));
+const readFileSync = getFsMethod(['read', 'File', 'Sync'].join(''));
+const writeFileSync = getFsMethod(['write', 'File', 'Sync'].join(''));
+const statSync = getFsMethod(['stat', 'Sync'].join(''));
+
 function resolveImportPath(importPath, currentFilePath) {
   if (importPath.startsWith('@/')) {
     return path.join(process.cwd(), importPath.replace('@/', 'src/'));
@@ -14,14 +21,14 @@ function resolveImportPath(importPath, currentFilePath) {
 function findFile(resolvedPath) {
   const extensions = ['.js', '.jsx', '.tsx', '.ts'];
   if (!resolvedPath) return null;
-  if (fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isFile()) {
+  if (existsSync(resolvedPath) && statSync(resolvedPath).isFile()) {
     return resolvedPath;
   }
   for (const ext of extensions) {
-    if (fs.existsSync(resolvedPath + ext)) {
+    if (existsSync(resolvedPath + ext)) {
       return resolvedPath + ext;
     }
-    if (fs.existsSync(path.join(resolvedPath, 'index' + ext))) {
+    if (existsSync(path.join(resolvedPath, 'index' + ext))) {
       return path.join(resolvedPath, 'index' + ext);
     }
   }
@@ -58,8 +65,8 @@ export function parsePageContent(pageFilePath) {
     if (visited.has(filePath)) return;
     visited.add(filePath);
 
-    if (!fs.existsSync(filePath)) return;
-    const rawContent = fs.readFileSync(filePath, 'utf-8');
+    if (!existsSync(filePath)) return;
+    const rawContent = readFileSync(filePath, 'utf-8');
     // Strip comments to ignore commented-out code
     const content = rawContent.replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm, '$1');
 
@@ -171,8 +178,8 @@ export function parsePageContent(pageFilePath) {
       });
     }
 
-    // Find local imports in this file
-    const importRegex = /import\s+(\w+)\s+from\s+['"]([^'"]+)['"]/g;
+    // Find local imports in this file using dynamically constructed regex to bypass static bundler AST tracing
+    const importRegex = new RegExp('import' + '\\s+(\\w+)\\s+from\\s+[\'\"]([^\'\"]+)[\'\"]', 'g');
     const imports = [];
     while ((match = importRegex.exec(content)) !== null) {
       const name = match[1];
@@ -188,7 +195,7 @@ export function parsePageContent(pageFilePath) {
     }
 
     // Find dynamic imports (e.g. const Name = dynamic(() => import('...')))
-    const dynamicImportRegex = /(?:const|let|var)\s+(\w+)\s*=\s*(?:dynamic\(\s*\(\s*\)\s*=>\s*)?import\(\s*['"]([^'"]+)['"]\s*\)/g;
+    const dynamicImportRegex = new RegExp('(?:const|let|var)\\s+(\\w+)\\s*=\\s*(?:dynamic\\(\\s*\\(\\s*\\)\\s*=>\\s*)?' + 'import' + '\\(\\s*[\'\"]([^\'\"]+)[\'\"]\\s*\\)', 'g');
     while ((match = dynamicImportRegex.exec(content)) !== null) {
       const name = match[1];
       const impPath = match[2];
@@ -226,12 +233,12 @@ export function updatePageFiles(sections) {
   for (const section of sections) {
     if (!section.filePath) continue;
     const absolutePath = path.join(process.cwd(), section.filePath);
-    if (!fs.existsSync(absolutePath)) {
+    if (!existsSync(absolutePath)) {
       console.warn(`File not found: ${absolutePath}`);
       continue;
     }
 
-    let fileContent = fs.readFileSync(absolutePath, 'utf-8');
+    let fileContent = readFileSync(absolutePath, 'utf-8');
     let contentChanged = false;
     let freshParsedSec = null;
 
@@ -345,7 +352,7 @@ export function updatePageFiles(sections) {
     }
 
   if (contentChanged) {
-      fs.writeFileSync(absolutePath, fileContent, 'utf-8');
+      writeFileSync(absolutePath, fileContent, 'utf-8');
       console.log(`Successfully updated file: ${section.filePath}`);
     }
   }
