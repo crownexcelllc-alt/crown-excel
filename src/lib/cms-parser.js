@@ -302,49 +302,105 @@ export function updatePageFiles(sections) {
         const textRegex = regexStr ? new RegExp(regexStr, 'gi') : null;
 
         if (textRegex) {
-          const tagRegex = /(<(h[1-4]|p)[^>]*>)([\s\S]*?)(<\/\2>)/gi;
-          let replaced = false;
-          const updatedContent = fileContent.replace(tagRegex, (match, openTag, tagName, innerContent, closeTag) => {
-            const newInner = innerContent.replace(textRegex, value);
-            if (newInner !== innerContent) {
-              replaced = true;
-              return `${openTag}${newInner}${closeTag}`;
-            }
-            return match;
-          });
+          let targetIndex = 0;
+          const keyMatch = fieldKey.match(/_(\d+)$/);
+          if (keyMatch) {
+            targetIndex = parseInt(keyMatch[1], 10) - 1;
+          }
 
-          if (replaced) {
+          const isHeading = fieldKey.startsWith('heading');
+          const isParagraph = fieldKey.startsWith('paragraph');
+
+          // 1. Precise index-based replacement first (safest for duplicates)
+          let currentIndex = 0;
+          let preciseReplaced = false;
+          let updatedContent = '';
+
+          if (isHeading) {
+            const headingTagRegex = /<(h[1-4])([^>]*)>([\s\S]*?)<\/h[1-4]>/gi;
+            updatedContent = fileContent.replace(headingTagRegex, (match, tag, attrs, innerContent) => {
+              if (currentIndex === targetIndex) {
+                currentIndex++;
+                const cleanedInner = cleanText(innerContent);
+                const cleanedSearch = cleanText(searchVal);
+                if (cleanedInner.toLowerCase() === cleanedSearch.toLowerCase() || innerContent.match(textRegex)) {
+                  preciseReplaced = true;
+                  return `<${tag}${attrs}>${value}</${tag}>`;
+                }
+              } else {
+                currentIndex++;
+              }
+              return match;
+            });
+          } else if (isParagraph) {
+            const paragraphTagRegex = /<p([^>]*)>([\s\S]*?)<\/p>/gi;
+            updatedContent = fileContent.replace(paragraphTagRegex, (match, attrs, innerContent) => {
+              if (currentIndex === targetIndex) {
+                currentIndex++;
+                const cleanedInner = cleanText(innerContent);
+                const cleanedSearch = cleanText(searchVal);
+                if (cleanedInner.toLowerCase() === cleanedSearch.toLowerCase() || innerContent.match(textRegex)) {
+                  preciseReplaced = true;
+                  return `<p${attrs}>${value}</p>`;
+                }
+              } else {
+                currentIndex++;
+              }
+              return match;
+            });
+          }
+
+          if (preciseReplaced) {
             fileContent = updatedContent;
             contentChanged = true;
           } else {
-            // Index-based fallback (e.g. if the tag was cleared in the file)
-            let targetIndex = 0;
-            const keyMatch = fieldKey.match(/_(\d+)$/);
-            if (keyMatch) {
-              targetIndex = parseInt(keyMatch[1], 10) - 1;
-            }
-
-            let indexReplaced = false;
-            if (fieldKey.startsWith('heading')) {
-              const newContent = replaceHeadingContentByIndex(fileContent, targetIndex, value);
-              if (newContent !== fileContent) {
-                fileContent = newContent;
-                contentChanged = true;
-                indexReplaced = true;
-                console.log(`Index-based fallback: Updated heading tag at index ${targetIndex} to "${value}"`);
+            // 2. Text-based fallback (replaces only the first matching tag to avoid scrambling other duplicates)
+            const tagRegex = /(<(h[1-4]|p)[^>]*>)([\s\S]*?)(<\/\2>)/gi;
+            let replaced = false;
+            const fallbackContent = fileContent.replace(tagRegex, (match, openTag, tagName, innerContent, closeTag) => {
+              if (replaced) return match;
+              
+              const isTypeMatch = (isHeading && tagName.toLowerCase().startsWith('h')) ||
+                                  (isParagraph && tagName.toLowerCase() === 'p');
+              
+              if (isTypeMatch) {
+                const newInner = innerContent.replace(textRegex, value);
+                if (newInner !== innerContent) {
+                  replaced = true;
+                  return `${openTag}${newInner}${closeTag}`;
+                }
               }
-            } else if (fieldKey.startsWith('paragraph')) {
-              const newContent = replaceParagraphContentByIndex(fileContent, targetIndex, value);
-              if (newContent !== fileContent) {
-                fileContent = newContent;
-                contentChanged = true;
-                indexReplaced = true;
-                console.log(`Index-based fallback: Updated paragraph tag at index ${targetIndex} to "${value}"`);
-              }
-            }
+              return match;
+            });
 
-            if (!indexReplaced) {
-              console.warn(`Could not find text in file: "${searchVal}"`);
+            if (replaced) {
+              fileContent = fallbackContent;
+              contentChanged = true;
+              console.log(`Fallback text replacement: Updated first match of "${searchVal}" to "${value}" for ${fieldKey}`);
+            } else {
+              // 3. Absolute index-based fallback
+              let indexReplaced = false;
+              if (isHeading) {
+                const newContent = replaceHeadingContentByIndex(fileContent, targetIndex, value);
+                if (newContent !== fileContent) {
+                  fileContent = newContent;
+                  contentChanged = true;
+                  indexReplaced = true;
+                  console.log(`Index-based fallback: Updated heading tag at index ${targetIndex} to "${value}"`);
+                }
+              } else if (isParagraph) {
+                const newContent = replaceParagraphContentByIndex(fileContent, targetIndex, value);
+                if (newContent !== fileContent) {
+                  fileContent = newContent;
+                  contentChanged = true;
+                  indexReplaced = true;
+                  console.log(`Index-based fallback: Updated paragraph tag at index ${targetIndex} to "${value}"`);
+                }
+              }
+
+              if (!indexReplaced) {
+                console.warn(`Could not find text or index in file: "${searchVal}" for ${fieldKey}`);
+              }
             }
           }
         }
