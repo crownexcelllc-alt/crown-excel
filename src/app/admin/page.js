@@ -2,7 +2,7 @@ import { getApiBase } from '@/lib/api-helper';
 
 // app/admin/dashboard/page.tsx (or pages/admin/dashboard.tsx if using Pages Router)
 
-export const revalidate = 60; // Regenerate the page every 60 seconds
+export const dynamic = 'force-dynamic';
 
 async function fetchCounts() {
   try {
