@@ -28,8 +28,9 @@ import MemberJunaidS from './components/MemberJunaidS';
 import MemberShammry from './components/MemberShammry';
 import MemberJubair from './components/MemberJubair';
 import MemberFazal from './components/MemberFazal';
-import MemberNabiha from './components/MemberNabiha';
 import MemberLavina from './components/MemberLavina';
+import MemberAfreed from './components/MemberAfreed';
+import MemberNafees from './components/MemberNafees';
 import MemberSaeed from './components/MemberSaeed';
 import MemberAslam from './components/MemberAslam';
 import MemberSaleem from './components/MemberSaleem';
@@ -260,13 +261,21 @@ function CrownExcelFamily() {
                 quote={getField('MemberFazal', 'paragraph_4')} 
                 image={getField('MemberFazal', 'image_fazal')}
               />
-              <MemberNabiha 
-                name={getField('MemberNabiha', 'heading')} 
-                position={getField('MemberNabiha', 'paragraph_3')} 
-                tenure={getField('MemberNabiha', 'paragraph')} 
-                dept={getField('MemberNabiha', 'paragraph_2')} 
-                quote={getField('MemberNabiha', 'paragraph_4')} 
-                image={getField('MemberNabiha', 'image_nabiha')}
+              <MemberAfreed 
+                name={getField('MemberAfreed', 'heading')} 
+                position={getField('MemberAfreed', 'paragraph_3')} 
+                tenure={getField('MemberAfreed', 'paragraph')} 
+                dept={getField('MemberAfreed', 'paragraph_2')} 
+                quote={getField('MemberAfreed', 'paragraph_4')} 
+                image={getField('MemberAfreed', 'image_afreed')}
+              />
+              <MemberNafees 
+                name={getField('MemberNafees', 'heading')} 
+                position={getField('MemberNafees', 'paragraph_3')} 
+                tenure={getField('MemberNafees', 'paragraph')} 
+                dept={getField('MemberNafees', 'paragraph_2')} 
+                quote={getField('MemberNafees', 'paragraph_4')} 
+                image={getField('MemberNafees', 'image_nafees')}
               />
               <MemberLavina 
                 name={getField('MemberLavina', 'heading')} 

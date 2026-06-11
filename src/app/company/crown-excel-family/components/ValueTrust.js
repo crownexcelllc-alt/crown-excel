@@ -10,8 +10,8 @@ export default function ValueTrust({ title, desc }) {
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.5 6.5 3 9.5 3C11.04 3 12.5 3.81 13.25 5.09C14 3.81 15.46 3 17 3C20 3 22.5 5.5 22.5 8.5C22.5 13.5 15 21 15 21H12Z" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{displayTitle}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{displayDesc}</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">Trust & Integrity</h3>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Trust & Integrity Building lasting relationships based on mutual trust and unwavering integrity.</p>
       </div>
     </div>
   );

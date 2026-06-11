@@ -1,16 +1,16 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-const defaultAvatar = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781079466/cms/default/content/ef512zpwk8nzg8eqzhad.png', height: 1000, width: 1000 };
+const defaultAvatar = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781173351/cms/default/content/nvlnppqr26tkao72kwja.jpg', height: 1000, width: 1000 };
 
-export default function MemberSaleem({ name, position, tenure, dept, quote, image }) {
+export default function MemberNafees({ name, position, tenure, dept, quote, image }) {
   const displayImage = image || defaultAvatar;
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
       <div className="relative h-64 bg-[#f3f4f6] overflow-hidden rounded-t-2xl flex items-center justify-center">
         <Image 
           src={displayImage} 
-          alt={name || "Nabiha Abdul Majid"} 
+          alt={name || "Mohammad Nafees Ahmad"} 
           fill 
           style={{ objectFit: 'contain', objectPosition: 'center top' }} 
           className="rounded-t-2xl" 
@@ -18,21 +18,20 @@ export default function MemberSaleem({ name, position, tenure, dept, quote, imag
         />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4">
-          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">2+ Years</p>
+          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{tenure || "2+ Years"}</p>
         </div>
         <div className="absolute bottom-4 left-4">
-          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Business Development</p>
+          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Marketplace </p>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{name || "Nabiha Abdul Majid"}</h3>
-        <p className="text-[#084032] font-muli font-medium mb-4">Business Development Executive 
-</p>
+        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{name || "Mohammad Nafees Ahmad"}</h3>
+        <p className="text-[#084032] font-muli font-medium mb-4">Marketplace representative</p>
         <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
           {quote ? (
             <p className="text-gray-600 font-muli italic text-sm">"{quote.replace(/^"|"$/g, '')}"</p>
           ) : (
-            <p className="text-gray-600 font-muli italic text-sm">"Stepping into every opportunity with confidence, professionalism, and purpose."</p>
+            <p className="text-gray-600 font-muli italic text-sm">"Committed to serving our customers with integrity and care."</p>
           )}
         </blockquote>
       </div>

@@ -10,8 +10,8 @@ export default function ValueInternalMatters({ title, desc }) {
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M2 8L6 16H18L22 8L12 2L2 8Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="M6 16V20H18V16" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /></svg>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{displayTitle}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{displayDesc}</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">Internal Matters</h3>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Internal Matters Giving back to our community and supporting those in need.</p>
       </div>
     </div>
   );
