@@ -22,7 +22,6 @@ import MemberBrian from './components/MemberBrian';
 import MemberRauf from './components/MemberRauf';
 import MemberNadeem from './components/MemberNadeem';
 import MemberIbad from './components/MemberIbad';
-import MemberIbathur from './components/MemberIbathur';
 import MemberAbdullah from './components/MemberAbdullah';
 import MemberJunaidS from './components/MemberJunaidS';
 import MemberShammry from './components/MemberShammry';
@@ -204,14 +203,6 @@ function CrownExcelFamily() {
                 dept={getField('MemberNadeem', 'paragraph_2')} 
                 quote={getField('MemberNadeem', 'paragraph_4')} 
                 image={getField('MemberNadeem', 'image_etc4')}
-              />
-              <MemberIbathur 
-                name={getField('MemberIbathur', 'heading')} 
-                position={getField('MemberIbathur', 'paragraph_3')} 
-                tenure={getField('MemberIbathur', 'paragraph')} 
-                dept={getField('MemberIbathur', 'paragraph_2')} 
-                quote={getField('MemberIbathur', 'paragraph_4')} 
-                image={getField('MemberIbathur', 'image_ibathur')}
               />
               <MemberIbad 
                 name={getField('MemberIbad', 'heading')} 
