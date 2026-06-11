@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Ibad from '@/Components/Images/ibad.jpg';
+const Ibad = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781174141/cms/default/content/ugwrkzezkol2eaqvdgom.webp', height: 1000, width: 1000 };
 
 export default function MemberIbad({ name, position, tenure, dept, quote, image }) {
   const displayName = name || "Ibathur Rahman";
