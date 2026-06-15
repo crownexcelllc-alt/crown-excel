@@ -34,6 +34,8 @@ import MemberSaeed from './components/MemberSaeed';
 import MemberAslam from './components/MemberAslam';
 import MemberSaleem from './components/MemberSaleem';
 import MemberSalman from './components/MemberSalman';
+import MemberTarun from './components/MemberTarun';
+import MemberSafeel from './components/MemberSafeel';
 // import MemberHassan from './components/MemberHassan';
 // import MemberOmar from './components/MemberOmar';
 
@@ -307,6 +309,22 @@ function CrownExcelFamily() {
                 dept={getField('MemberSalman', 'paragraph_2')} 
                 quote={getField('MemberSalman', 'paragraph_4')} 
                 image={getField('MemberSalman', 'image_salman')}
+              />
+              <MemberTarun 
+                name={getField('MemberTarun', 'heading')} 
+                position={getField('MemberTarun', 'paragraph_3')} 
+                tenure={getField('MemberTarun', 'paragraph')} 
+                dept={getField('MemberTarun', 'paragraph_2')} 
+                quote={getField('MemberTarun', 'paragraph_4')} 
+                image={getField('MemberTarun', 'image_tarun')}
+              />
+              <MemberSafeel 
+                name={getField('MemberSafeel', 'heading')} 
+                position={getField('MemberSafeel', 'paragraph_3')} 
+                tenure={getField('MemberSafeel', 'paragraph')} 
+                dept={getField('MemberSafeel', 'paragraph_2')} 
+                quote={getField('MemberSafeel', 'paragraph_4')} 
+                image={getField('MemberSafeel', 'image_defaultavatar')}
               />
               {/* <MemberHassan 
                 name={getField('MemberHassan', 'heading')} 

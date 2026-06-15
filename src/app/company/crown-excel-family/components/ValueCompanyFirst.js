@@ -2,16 +2,14 @@
 import React from 'react';
 
 export default function ValueCompanyFirst({ title, desc }) {
-  const displayTitle = title || "Company First";
-  const displayDesc = desc || "Treating every team member and customer as part of our extended family.";
   return (
     <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center justify-center px-8 py-10 border border-[#e5e7eb]" style={{ minHeight: '260px' }}>
       <div className="w-14 h-14 flex items-center justify-center bg-[#16806b] rounded-xl mb-6">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#fff" strokeWidth="2" /><path d="M16 3H8V7H16V3Z" stroke="#fff" strokeWidth="2" /></svg>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">Company First</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Company First Treating every team member and customer as part of our extended family.</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Company First"}</h3>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Treating every team member and customer as part of our extended family."}</p>
       </div>
     </div>
   );
