@@ -9,7 +9,7 @@ export default function ValueContinuousGrowth({ title, desc }) {
       </div>
       <div className="flex flex-col items-center text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Continuous Growth"}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Embracing change and fostering continuous learning and development."}</p>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Continuous Growth Embracing change and fostering continuous learning and development.</p>
       </div>
     </div>
   );

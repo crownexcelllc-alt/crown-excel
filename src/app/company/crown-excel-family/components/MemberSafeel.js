@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-const defaultAvatar = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781173307/cms/default/content/wqmarjbcfko6wcvpyocy.png', height: 1000, width: 1000 };
+const defaultAvatar = { src: 'https://res.cloudinary.com/dqghun7oj/image/upload/v1781518323/cms/default/content/od5acg1d5eivnj7frear.jpg', height: 1000, width: 1000 };
 
 export default function MemberSafeel({ name, position, tenure, dept, quote, image }) {
   const displayImage = image || defaultAvatar;
@@ -21,12 +21,12 @@ export default function MemberSafeel({ name, position, tenure, dept, quote, imag
           <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{tenure || "1+ Years"}</p>
         </div>
         <div className="absolute bottom-4 left-4">
-          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">{dept || "Sales"}</p>
+          <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">Accounts</p>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">{name || "Safeel"}</h3>
-        <p className="text-[#084032] font-muli font-medium mb-4">{position || "Sales Representative"}</p>
+        <h3 className="text-xl font-bold text-[#16806b] font-montserrat mb-2 group-hover:text-[#084032] transition-colors">Mohamed Safeel</h3>
+        <p className="text-[#084032] font-muli font-medium mb-4">Accounts & Logistics </p>
         <blockquote className="text-gray-600 font-muli italic text-sm leading-relaxed border-l-4 border-[#61ce70] pl-4">
           {quote ? (
             <p className="text-gray-600 font-muli italic text-sm">"{quote.replace(/^"|"$/g, '')}"</p>

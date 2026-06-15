@@ -155,6 +155,43 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
     }
   };
 
+  // Custom link wrapper helper
+  const handleInsertLink = (sectionIndex, fieldKey) => {
+    if (!canEditContent) return;
+    const inputId = `input-${sectionIndex}-${fieldKey}`;
+    const element = document.getElementById(inputId);
+    if (!element) return;
+
+    const start = element.selectionStart;
+    const end = element.selectionEnd;
+    const val = element.value || '';
+    const selectedText = val.substring(start, end);
+
+    const url = prompt("Enter URL path (e.g. /our-services/networking) or full link (https://...):");
+    if (url === null) return; // Cancelled
+
+    let linkText = selectedText;
+    if (!selectedText) {
+      linkText = prompt("Enter text to display for the link:", "Click here");
+      if (!linkText) return;
+    }
+
+    const newTab = confirm("Do you want this link to open in a new tab?");
+    const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+
+    const replacement = `<a href="${url}"${targetAttr}>${linkText}</a>`;
+    const newValue = val.substring(0, start) + replacement + val.substring(end);
+    
+    updateField(sectionIndex, fieldKey, 'value', newValue);
+
+    // Refocus and set cursor selection range
+    setTimeout(() => {
+      element.focus();
+      const newCursorPos = start + replacement.length;
+      element.setSelectionRange(newCursorPos, newCursorPos);
+    }, 50);
+  };
+
   // Save content
   const handleSave = async (status = content.status) => {
     if (!canEditContent) return;
@@ -207,14 +244,28 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
     return (
       <div key={fieldKey} className="mb-4">
-        <label className="flex items-center gap-1.5 text-sm font-semibold text-gray-700 mb-1.5">
-          {fieldIcon(field.type)}
-          {label}
-          {field.tag && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">&lt;{field.tag}&gt;</span>}
+        <label className="flex items-center justify-between text-sm font-semibold text-gray-700 mb-1.5">
+          <span className="flex items-center gap-1.5">
+            {fieldIcon(field.type)}
+            {label}
+            {field.tag && <span className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">&lt;{field.tag}&gt;</span>}
+          </span>
+          {canEditContent && (field.type === 'richtext' || field.type === 'text') && (
+            <button
+              type="button"
+              onClick={() => handleInsertLink(sectionIndex, fieldKey)}
+              className="text-xs text-[#084032] hover:text-[#0a5c48] flex items-center gap-1 hover:underline focus:outline-none cursor-pointer"
+              title="Select text in the input first, then click here to turn it into a link"
+            >
+              <FiLink size={12} />
+              Add Link
+            </button>
+          )}
         </label>
 
         {field.type === 'richtext' || field.type === 'json' ? (
           <textarea
+            id={`input-${sectionIndex}-${fieldKey}`}
             disabled={!canEditContent}
             value={field.value || ''}
             onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
@@ -291,6 +342,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
         ) : (
           <div>
             <input
+              id={`input-${sectionIndex}-${fieldKey}`}
               disabled={!canEditContent}
               type={field.type === 'url' ? 'url' : 'text'}
               value={field.value || ''}

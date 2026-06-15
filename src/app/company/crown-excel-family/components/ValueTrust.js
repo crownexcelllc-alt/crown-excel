@@ -9,7 +9,7 @@ export default function ValueTrust({ title, desc }) {
       </div>
       <div className="flex flex-col items-center text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Trust & Integrity"}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Building lasting relationships based on mutual trust and unwavering integrity."}</p>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Trust & Integrity Building lasting relationships based on mutual trust and unwavering integrity.</p>
       </div>
     </div>
   );

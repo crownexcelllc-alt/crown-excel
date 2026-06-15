@@ -9,7 +9,7 @@ export default function ValueSustainability({ title, desc }) {
       </div>
       <div className="flex flex-col items-center text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Sustainability"}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Building a sustainable future for our family and the next generation."}</p>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Sustainability Building a sustainable future for our family and the next generation.</p>
       </div>
     </div>
   );

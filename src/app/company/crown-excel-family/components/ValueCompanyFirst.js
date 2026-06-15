@@ -9,7 +9,7 @@ export default function ValueCompanyFirst({ title, desc }) {
       </div>
       <div className="flex flex-col items-center text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Company First"}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Treating every team member and customer as part of our extended family."}</p>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Company First Treating every team member and customer as part of our extended family.</p>
       </div>
     </div>
   );

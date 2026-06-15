@@ -9,7 +9,7 @@ export default function ValueExcellence({ title, desc }) {
       </div>
       <div className="flex flex-col items-center text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-2 font-montserrat">{title || "Excellence"}</h3>
-        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">{desc || "Striving for excellence in everything we do, from service to innovation."}</p>
+        <p className="text-gray-500 font-muli text-base leading-relaxed mb-2">Excellence Striving for excellence in everything we do, from service to innovation.</p>
       </div>
     </div>
   );

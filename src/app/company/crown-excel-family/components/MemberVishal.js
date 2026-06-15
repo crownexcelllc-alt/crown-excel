@@ -18,7 +18,7 @@ export default function MemberVishal({ name, position, tenure, dept, quote, imag
         />
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-4 right-4">
-          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">{tenure || "7+ Years"}</p>
+          <p className="bg-[#61ce70] text-white px-3 py-1 rounded-full text-sm font-montserrat font-medium">1+ Years</p>
         </div>
         <div className="absolute bottom-4 left-4">
           <p className="bg-white/90 text-[#16806b] px-3 py-1 rounded-full text-xs font-montserrat font-semibold shadow">{dept || "Business Development"}</p>
