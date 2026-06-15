@@ -186,7 +186,8 @@ export async function POST(request) {
       const existing = await collection.findOne(filter);
       
       if (existing) {
-        // Update scan metadata but keep status
+        // Update scan metadata, reactivating the route if it was archived
+        const newStatus = existing.status === 'archived' ? 'active' : existing.status;
         await collection.updateOne(
           { _id: existing._id },
           {
@@ -198,6 +199,7 @@ export async function POST(request) {
               fileName: route.fileName,
               filePath: route.filePath,
               hasLayout: route.hasLayout,
+              status: newStatus,
               lastScannedAt: now,
               updatedAt: now,
             }
@@ -225,14 +227,21 @@ export async function POST(request) {
     const scannedPaths = new Set(routes.map(r => r.path));
     let archived = 0;
     
-    for (const dbRoute of allDbRoutes) {
-      if (!scannedPaths.has(dbRoute.path) && dbRoute.status !== 'archived') {
-        await collection.updateOne(
-          { _id: dbRoute._id },
-          { $set: { status: 'archived', updatedAt: now } }
-        );
-        archived++;
+    // Safety check: only archive database routes if we scanned multiple routes.
+    // If routes.length is <= 1 (e.g. only root or empty), we are likely in a serverless
+    // environment (like Vercel) where original source files aren't package-bundled.
+    if (routes.length > 1) {
+      for (const dbRoute of allDbRoutes) {
+        if (!scannedPaths.has(dbRoute.path) && dbRoute.status !== 'archived') {
+          await collection.updateOne(
+            { _id: dbRoute._id },
+            { $set: { status: 'archived', updatedAt: now } }
+          );
+          archived++;
+        }
       }
+    } else {
+      console.warn('Scanned 1 or 0 routes. Bypassing archiving step to prevent accidental route soft-deletion.');
     }
     
     await logActivity(request, 'scan_routes', websiteId || 'default', {

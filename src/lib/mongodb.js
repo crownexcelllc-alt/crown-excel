@@ -23,7 +23,7 @@ export async function getDb() {
   if (cachedDb) return cachedDb;
   if (!uri) throw new Error('MONGODB_URI environment variable is not set');
   if (!cachedClient) {
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(uri);
     await client.connect();
     cachedClient = client;
     global._mongoClient = client;
