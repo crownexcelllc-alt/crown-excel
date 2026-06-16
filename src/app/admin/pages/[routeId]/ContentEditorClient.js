@@ -1,7 +1,49 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText, FiX } from 'react-icons/fi';
+
+// Standalone Custom ContentEditable Component for safe rich-text rendering & editing
+function ContentEditable({ value, onChange, disabled, id, className, placeholder, isSingleLine }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current && ref.current.innerHTML !== value) {
+      ref.current.innerHTML = value || '';
+    }
+  }, [value]);
+
+  const handleInput = (e) => {
+    if (onChange) {
+      onChange(e.target.innerHTML);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (isSingleLine && e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      id={id}
+      contentEditable={!disabled}
+      onInput={handleInput}
+      onKeyDown={handleKeyDown}
+      className={`${className} content-editable-box ${isSingleLine ? 'content-editable-single' : 'content-editable-rich'}`}
+      style={{
+        outline: 'none',
+        whiteSpace: 'pre-wrap',
+        overflowWrap: 'break-word',
+        backgroundColor: disabled ? '#f9fafb' : '#ffffff',
+        cursor: disabled ? 'not-allowed' : 'text',
+      }}
+      placeholder={placeholder}
+    />
+  );
+}
 
 export default function ContentEditorClient({ initialContent, routeId, routePath, apiBase, templates = [], isNew }) {
   const [content, setContent] = useState(initialContent || { sections: [], status: 'draft', version: 1 });
@@ -14,13 +56,14 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
   // Link Modal States
   const [showLinkModal, setShowLinkModal] = useState(false);
-  const [linkModalData, setLinkModalData] = useState(null); // { sectionIndex, fieldKey, start, end, initialText, fullText, isExisting }
+  const [linkModalData, setLinkModalData] = useState(null); // { sectionIndex, fieldKey, fullText, isExisting }
   const [linkStep, setLinkStep] = useState(1);
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [linkNewTab, setLinkNewTab] = useState(true);
   const [existingLinkDetected, setExistingLinkDetected] = useState(false);
-  const [existingLinkInfo, setExistingLinkInfo] = useState(null); // { start, end, url, isNewTab, text, fullMatch }
+  const [savedRange, setSavedRange] = useState(null);
+  const [targetAnchorNode, setTargetAnchorNode] = useState(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -165,78 +208,36 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
     }
   };
 
-  // Helper to find a link surrounding the cursor position
-  const findLinkAtCursor = (text, cursorPos) => {
-    const regex = /<a\s+[^>]*href="([^"]*)"([^>]*)>([\s\S]*?)<\/a>/gi;
-    let match;
-    while ((match = regex.exec(text)) !== null) {
-      const matchStart = match.index;
-      const matchEnd = regex.lastIndex;
-      if (cursorPos >= matchStart && cursorPos <= matchEnd) {
-        const href = match[1];
-        const attributes = match[2];
-        const linkTextContent = match[3];
-        const isNewTab = attributes.includes('_blank');
-        return {
-          start: matchStart,
-          end: matchEnd,
-          url: href,
-          isNewTab,
-          text: linkTextContent,
-          fullMatch: match[0]
-        };
-      }
-    }
-    return null;
-  };
+  // Helper to find a text node and wrap it in a link
+  const wrapTextInLink = (parentEl, searchText, url, openNewTab) => {
+    const walk = document.createTreeWalker(parentEl, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while ((node = walk.nextNode())) {
+      // Skip text nodes inside existing <a> tags
+      if (node.parentNode.tagName === 'A') continue;
 
-  // Helper to find an existing link wrapping a specific text
-  const findLinkByText = (text, searchWord) => {
-    if (!searchWord || searchWord.trim().length === 0) return null;
-    try {
-      const escaped = searchWord.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-      const regexStr = `<a\\s+[^>]*href="([^"]*)"([^>]*)>\\s*(${escaped})\\s*<\\/a>`;
-      const regex = new RegExp(regexStr, 'gi');
-      const match = regex.exec(text);
-      if (match) {
-        const isNewTab = match[2].includes('_blank');
-        return {
-          start: match.index,
-          end: match.index + match[0].length,
-          url: match[1],
-          isNewTab,
-          text: match[3],
-          fullMatch: match[0]
-        };
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return null;
-  };
+      const text = node.nodeValue;
+      const index = text.indexOf(searchText);
+      if (index !== -1) {
+        const range = document.createRange();
+        range.setStart(node, index);
+        range.setEnd(node, index + searchText.length);
 
-  // Dynamically detect existing links as the user types/updates the text in Step 1
-  useEffect(() => {
-    if (!showLinkModal || !linkModalData) return;
-    const val = linkModalData.fullText;
-    
-    // Check if there is an existing link matching linkText
-    const match = findLinkByText(val, linkText);
-    if (match) {
-      setExistingLinkDetected(true);
-      setExistingLinkInfo(match);
-      setLinkUrl(match.url);
-      setLinkNewTab(match.isNewTab);
-    } else {
-      // If we initially started with an existing link, and the user hasn't changed the text, keep it.
-      if (linkModalData.isExisting && linkText === linkModalData.initialText) {
-        // Keep initial match
-      } else {
-        setExistingLinkDetected(false);
-        setExistingLinkInfo(null);
+        const a = document.createElement('a');
+        a.setAttribute('href', url);
+        if (openNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+        a.textContent = searchText;
+
+        range.deleteContents();
+        range.insertNode(a);
+        return true;
       }
     }
-  }, [linkText, showLinkModal]);
+    return false;
+  };
 
   // Custom link wrapper helper
   const handleInsertLink = (sectionIndex, fieldKey) => {
@@ -245,129 +246,141 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
     const element = document.getElementById(inputId);
     if (!element) return;
 
-    const start = element.selectionStart;
-    const end = element.selectionEnd;
-    const val = element.value || '';
-    const selectedText = val.substring(start, end);
+    // Get browser selection inside contenteditable
+    const selection = window.getSelection();
+    const range = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+    const selectedText = selection.toString();
 
-    // Look for link at cursor position
-    const existing = findLinkAtCursor(val, start);
+    // Check if selection is within the target contenteditable element
+    let targetRange = range;
+    const isRangeInside = range && element.contains(range.commonAncestorContainer);
     
-    if (existing) {
+    if (!isRangeInside) {
+      // Fallback: create a range at the end of the element
+      const newRange = document.createRange();
+      newRange.selectNodeContents(element);
+      newRange.collapse(false); // Collapse to end
+      targetRange = newRange;
+    }
+
+    // Check if selection starts/ends inside a link tag
+    let parentNode = targetRange ? targetRange.commonAncestorContainer : null;
+    if (parentNode && parentNode.nodeType === 3) { // Text node
+      parentNode = parentNode.parentNode;
+    }
+    const closestAnchor = parentNode ? parentNode.closest('a') : null;
+
+    setSavedRange(targetRange);
+    const val = element.innerHTML || '';
+
+    if (closestAnchor) {
+      const href = closestAnchor.getAttribute('href') || '';
+      const isNewTab = closestAnchor.getAttribute('target') === '_blank';
+      const text = closestAnchor.textContent || '';
+
       setLinkModalData({
         sectionIndex,
         fieldKey,
-        start: existing.start,
-        end: existing.end,
-        initialText: existing.text,
         fullText: val,
         isExisting: true
       });
-      setLinkText(existing.text);
-      setLinkUrl(existing.url);
-      setLinkNewTab(existing.isNewTab);
+      setLinkText(text);
+      setLinkUrl(href);
+      setLinkNewTab(isNewTab);
       setExistingLinkDetected(true);
-      setExistingLinkInfo(existing);
+      setTargetAnchorNode(closestAnchor);
       setLinkStep(1);
       setShowLinkModal(true);
     } else {
-      // Check if the selected text has a link matching it elsewhere
-      const searchMatch = findLinkByText(val, selectedText);
-      if (searchMatch) {
-        setLinkModalData({
-          sectionIndex,
-          fieldKey,
-          start: searchMatch.start,
-          end: searchMatch.end,
-          initialText: searchMatch.text,
-          fullText: val,
-          isExisting: true
-        });
-        setLinkText(searchMatch.text);
-        setLinkUrl(searchMatch.url);
-        setLinkNewTab(searchMatch.isNewTab);
-        setExistingLinkDetected(true);
-        setExistingLinkInfo(searchMatch);
-        setLinkStep(1);
-        setShowLinkModal(true);
-      } else {
-        setLinkModalData({
-          sectionIndex,
-          fieldKey,
-          start,
-          end,
-          initialText: selectedText,
-          fullText: val,
-          isExisting: false
-        });
-        setLinkText(selectedText);
-        setLinkUrl('');
-        setLinkNewTab(true);
-        setExistingLinkDetected(false);
-        setExistingLinkInfo(null);
-        setLinkStep(1);
-        setShowLinkModal(true);
-      }
+      setLinkModalData({
+        sectionIndex,
+        fieldKey,
+        fullText: val,
+        isExisting: false
+      });
+      setLinkText(selectedText);
+      setLinkUrl('');
+      setLinkNewTab(true);
+      setExistingLinkDetected(false);
+      setTargetAnchorNode(null);
+      setLinkStep(1);
+      setShowLinkModal(true);
     }
   };
 
   const handleSaveLink = () => {
     if (!linkModalData) return;
-    const { sectionIndex, fieldKey, fullText, start, end } = linkModalData;
+    const { sectionIndex, fieldKey } = linkModalData;
     const element = document.getElementById(`input-${sectionIndex}-${fieldKey}`);
     if (!element) return;
 
-    const targetAttr = linkNewTab ? ' target="_blank" rel="noopener noreferrer"' : '';
-    const replacement = `<a href="${linkUrl}"${targetAttr}>${linkText}</a>`;
-
-    let replaceStart = start;
-    let replaceEnd = end;
-
-    if (existingLinkDetected && existingLinkInfo) {
-      replaceStart = existingLinkInfo.start;
-      replaceEnd = existingLinkInfo.end;
+    if (existingLinkDetected && targetAnchorNode) {
+      // Update existing anchor element
+      targetAnchorNode.setAttribute('href', linkUrl);
+      if (linkNewTab) {
+        targetAnchorNode.setAttribute('target', '_blank');
+        targetAnchorNode.setAttribute('rel', 'noopener noreferrer');
+      } else {
+        targetAnchorNode.removeAttribute('target');
+        targetAnchorNode.removeAttribute('rel');
+      }
+      targetAnchorNode.textContent = linkText;
     } else {
-      // Fallback if they changed linkText and we didn't have selection / it wasn't matched
-      if (linkText !== linkModalData.initialText) {
-        const foundIdx = fullText.indexOf(linkText);
-        if (foundIdx !== -1) {
-          replaceStart = foundIdx;
-          replaceEnd = foundIdx + linkText.length;
+      // If we have a selection range and selection text matches linkText, use range
+      const selection = window.getSelection();
+      const hasSelection = selection.toString() === linkText;
+      
+      let inserted = false;
+      if (hasSelection && savedRange) {
+        const a = document.createElement('a');
+        a.setAttribute('href', linkUrl);
+        if (linkNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
         }
+        a.textContent = linkText;
+
+        selection.removeAllRanges();
+        selection.addRange(savedRange);
+        savedRange.deleteContents();
+        savedRange.insertNode(a);
+        inserted = true;
+      } else {
+        // Fallback: search plain text node and wrap
+        inserted = wrapTextInLink(element, linkText, linkUrl, linkNewTab);
+      }
+
+      if (!inserted) {
+        // Fallback to inserting at the end if wrap failed (should not happen due to validation)
+        const a = document.createElement('a');
+        a.setAttribute('href', linkUrl);
+        if (linkNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+        a.textContent = linkText;
+        element.appendChild(a);
       }
     }
 
-    const newValue = fullText.substring(0, replaceStart) + replacement + fullText.substring(replaceEnd);
-    updateField(sectionIndex, fieldKey, 'value', newValue);
+    // Trigger update and close modal
+    updateField(sectionIndex, fieldKey, 'value', element.innerHTML);
     setShowLinkModal(false);
-
-    // Refocus and set cursor selection range
-    setTimeout(() => {
-      element.focus();
-      const newCursorPos = replaceStart + replacement.length;
-      element.setSelectionRange(newCursorPos, newCursorPos);
-    }, 50);
   };
 
   const handleRemoveLink = () => {
-    if (!linkModalData || !existingLinkInfo) return;
-    const { sectionIndex, fieldKey, fullText } = linkModalData;
+    if (!linkModalData || !targetAnchorNode) return;
+    const { sectionIndex, fieldKey } = linkModalData;
     const element = document.getElementById(`input-${sectionIndex}-${fieldKey}`);
     if (!element) return;
 
-    const replaceStart = existingLinkInfo.start;
-    const replaceEnd = existingLinkInfo.end;
-    const newValue = fullText.substring(0, replaceStart) + linkText + fullText.substring(replaceEnd);
+    // Replace the anchor tag with its text content
+    const textNode = document.createTextNode(targetAnchorNode.textContent);
+    targetAnchorNode.parentNode.replaceChild(textNode, targetAnchorNode);
 
-    updateField(sectionIndex, fieldKey, 'value', newValue);
+    // Trigger update and close modal
+    updateField(sectionIndex, fieldKey, 'value', element.innerHTML);
     setShowLinkModal(false);
-
-    // Refocus and set cursor selection range
-    setTimeout(() => {
-      element.focus();
-      const newCursorPos = replaceStart + linkText.length;
-      element.setSelectionRange(newCursorPos, newCursorPos);
-    }, 50);
   };
 
   // Save content
@@ -431,7 +444,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           {canEditContent && (field.type === 'richtext' || field.type === 'text') && (
             <button
               type="button"
-              onClick={() => handleInsertLink(sectionIndex, fieldKey)}
+              onMouseDown={(e) => { e.preventDefault(); handleInsertLink(sectionIndex, fieldKey); }}
               className="text-xs text-[#084032] hover:text-[#0a5c48] flex items-center gap-1 hover:underline focus:outline-none cursor-pointer"
               title="Select text in the input first, then click here to turn it into a link"
             >
@@ -442,17 +455,31 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
         </label>
 
         {field.type === 'richtext' || field.type === 'json' ? (
-          <textarea
-            id={`input-${sectionIndex}-${fieldKey}`}
-            disabled={!canEditContent}
-            value={field.value || ''}
-            onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
-            placeholder={field.type === 'json' ? '[\n  { "question": "...", "answer": "..." }\n]' : `Enter ${label.toLowerCase()}...`}
-            rows={field.type === 'json' ? 8 : 4}
-            className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-y
-                       focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm
-                       ${field.type === 'json' ? 'font-mono' : ''} ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-          />
+          field.type === 'json' ? (
+            <textarea
+              id={`input-${sectionIndex}-${fieldKey}`}
+              disabled={!canEditContent}
+              value={field.value || ''}
+              onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
+              placeholder='[\n  { "question": "...", "answer": "..." }\n]'
+              rows={8}
+              className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm resize-y
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-mono
+                         ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+            />
+          ) : (
+            <ContentEditable
+              id={`input-${sectionIndex}-${fieldKey}`}
+              disabled={!canEditContent}
+              value={field.value || ''}
+              onChange={(val) => updateField(sectionIndex, fieldKey, 'value', val)}
+              placeholder={`Enter ${label.toLowerCase()}...`}
+              isSingleLine={false}
+              className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
+                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm
+                         ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+            />
+          )
         ) : field.type === 'image' ? (
           <div className="space-y-2">
             <div className="flex gap-2 items-center">
@@ -519,16 +546,29 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           </div>
         ) : (
           <div>
-            <input
-              id={`input-${sectionIndex}-${fieldKey}`}
-              disabled={!canEditContent}
-              type={field.type === 'url' ? 'url' : 'text'}
-              value={field.value || ''}
-              onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
-              placeholder={`Enter ${label.toLowerCase()}...`}
-              className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
-                         focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
-            />
+            {field.type === 'text' ? (
+              <ContentEditable
+                id={`input-${sectionIndex}-${fieldKey}`}
+                disabled={!canEditContent}
+                value={field.value || ''}
+                onChange={(val) => updateField(sectionIndex, fieldKey, 'value', val)}
+                placeholder={`Enter ${label.toLowerCase()}...`}
+                isSingleLine={true}
+                className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+              />
+            ) : (
+              <input
+                id={`input-${sectionIndex}-${fieldKey}`}
+                disabled={!canEditContent}
+                type={field.type === 'url' ? 'url' : 'text'}
+                value={field.value || ''}
+                onChange={(e) => updateField(sectionIndex, fieldKey, 'value', e.target.value)}
+                placeholder={`Enter ${label.toLowerCase()}...`}
+                className={`w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 shadow-sm
+                           focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
+              />
+            )}
             {field.tag && (
               <div className="mt-1.5 flex items-center gap-2">
                 <label className="text-xs text-gray-500">HTML Tag:</label>
@@ -555,6 +595,33 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
   return (
     <div className="space-y-6">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .content-editable-box:empty:before {
+          content: attr(placeholder);
+          color: #9ca3af;
+          cursor: text;
+        }
+        .content-editable-rich {
+          min-height: 100px;
+        }
+        .content-editable-single {
+          min-height: 38px;
+          display: flex;
+          align-items: center;
+        }
+        .content-editable-box a {
+          color: #084032 !important;
+          text-decoration: underline !important;
+          font-weight: 600 !important;
+          background-color: #f0fdf4 !important;
+          padding: 2px 6px !important;
+          margin: 0 2px !important;
+          border-radius: 4px !important;
+          border: 1px dashed #22c55e !important;
+          pointer-events: none !important;
+          display: inline-block !important;
+        }
+      `}} />
       {/* Top Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <Link
@@ -742,140 +809,161 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
       )}
 
       {/* Link Modal */}
-      {showLinkModal && canEditContent && linkModalData && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50" onClick={() => setShowLinkModal(false)}>
-          <div className="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full mx-4 border border-gray-100 flex flex-col relative" onClick={(e) => e.stopPropagation()}>
-            <button 
-              onClick={() => setShowLinkModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition cursor-pointer"
-            >
-              <FiX size={18} />
-            </button>
+      {showLinkModal && canEditContent && linkModalData && (() => {
+        const getPlainTextFromHtml = (html) => {
+          if (typeof document === 'undefined') return '';
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html || '';
+          return tempDiv.textContent || tempDiv.innerText || '';
+        };
 
-            <div className="flex items-center gap-2 mb-4">
-              <span className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
-                <FiLink size={18} />
-              </span>
-              <h3 className="text-lg font-bold text-gray-900">
-                {existingLinkDetected ? 'Edit Link' : 'Add Link'}
-              </h3>
-            </div>
+        const modalPlainText = getPlainTextFromHtml(linkModalData.fullText);
+        const cleanPlain = modalPlainText.replace(/\s+/g, ' ').toLowerCase();
+        const cleanSearch = linkText.replace(/\s+/g, ' ').toLowerCase();
+        const canProceed = existingLinkDetected || (cleanSearch && cleanPlain.includes(cleanSearch));
 
-            {linkStep === 1 ? (
-              <div className="space-y-4 flex-1">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Text to Link
-                  </label>
-                  <input
-                    type="text"
-                    value={linkText}
-                    onChange={(e) => setLinkText(e.target.value)}
-                    placeholder="Enter text to link (e.g. click here)..."
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
-                    autoFocus
-                  />
-                </div>
+        return (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50" onClick={() => setShowLinkModal(false)}>
+            <div className="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full mx-4 border border-gray-100 flex flex-col relative" onClick={(e) => e.stopPropagation()}>
+              <button 
+                onClick={() => setShowLinkModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+              >
+                <FiX size={18} />
+              </button>
 
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Full Content Reference (Copy from here)
-                  </label>
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-3.5 text-sm text-gray-700 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto select-text">
-                    {linkModalData.fullText}
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1.5">
-                    This shows the entire text field content. You can copy text or verify where you want to apply the link.
-                  </p>
-                </div>
-
-                <div className="flex justify-end gap-2.5 pt-2 border-t border-gray-100 mt-4">
-                  <button
-                    onClick={() => setShowLinkModal(false)}
-                    className="px-4.5 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={() => setLinkStep(2)}
-                    disabled={!linkText.trim()}
-                    className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold flex items-center gap-1.5 cursor-pointer
-                      ${!linkText.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
-                  >
-                    Next
-                  </button>
-                </div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
+                  <FiLink size={18} />
+                </span>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {existingLinkDetected ? 'Edit Link' : 'Add Link'}
+                </h3>
               </div>
-            ) : (
-              <div className="space-y-4 flex-1">
-                {existingLinkDetected && (
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800 flex items-start gap-2">
-                    <FiAlertCircle className="mt-0.5 flex-shrink-0" size={14} />
-                    <div>
-                      <span className="font-semibold">Existing link detected!</span> Saving will update this link's URL/behavior. You can also completely remove the link wrapper.
-                    </div>
-                  </div>
-                )}
 
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
-                    Link URL
-                  </label>
-                  <input
-                    type="text"
-                    value={linkUrl}
-                    onChange={(e) => setLinkUrl(e.target.value)}
-                    placeholder="e.g. /our-services/networking or https://google.com"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
-                    autoFocus
-                  />
-                </div>
-
-                <div className="flex items-center gap-2 py-2 px-3.5 bg-gray-50 border border-gray-200 rounded-lg">
-                  <input
-                    type="checkbox"
-                    id="link-new-tab-checkbox"
-                    checked={linkNewTab}
-                    onChange={(e) => setLinkNewTab(e.target.checked)}
-                    className="w-4.5 h-4.5 text-[#084032] border-gray-300 rounded-md focus:ring-[#084032] focus:ring-2 accent-[#084032] cursor-pointer"
-                  />
-                  <label htmlFor="link-new-tab-checkbox" className="text-sm font-semibold text-gray-700 cursor-pointer select-none">
-                    Open in a new tab
-                  </label>
-                </div>
-
-                <div className="flex items-center justify-between pt-2 border-t border-gray-100 mt-4 gap-2">
-                  <button
-                    onClick={() => setLinkStep(1)}
-                    className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
-                  >
-                    Back
-                  </button>
-                  
-                  <div className="flex gap-2">
-                    {existingLinkDetected && (
-                      <button
-                        onClick={handleRemoveLink}
-                        className="px-4 py-2 text-sm bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 rounded-lg transition font-semibold flex items-center gap-1 cursor-pointer"
-                      >
-                        <FiTrash2 size={14} /> Remove Link
-                      </button>
+              {linkStep === 1 ? (
+                <div className="space-y-4 flex-1">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Text to Link
+                    </label>
+                    <input
+                      type="text"
+                      value={linkText}
+                      onChange={(e) => setLinkText(e.target.value)}
+                      placeholder="Enter text to link (e.g. click here)..."
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                      autoFocus
+                    />
+                    {linkText && !canProceed && (
+                      <p className="text-xs text-red-500 font-semibold mt-1.5 flex items-center gap-1">
+                        <FiAlertCircle size={14} className="flex-shrink-0" />
+                        This text does not exist in the paragraph. Please add it to the main editor first.
+                      </p>
                     )}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Full Content Reference (Copy from here)
+                    </label>
+                    <div 
+                      className="bg-gray-50 border border-gray-200 rounded-lg p-3.5 text-sm text-gray-700 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto select-text"
+                      dangerouslySetInnerHTML={{ __html: linkModalData.fullText || '' }}
+                    />
+                    <p className="text-xs text-gray-500 mt-1.5">
+                      This shows the entire text field content. You can copy text or verify where you want to apply the link.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-2.5 pt-2 border-t border-gray-100 mt-4">
                     <button
-                      onClick={handleSaveLink}
-                      disabled={!linkUrl.trim()}
-                      className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold cursor-pointer
-                        ${!linkUrl.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                      onClick={() => setShowLinkModal(false)}
+                      className="px-4.5 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
                     >
-                      Save
+                      Cancel
+                    </button>
+                    <button
+                      onClick={() => setLinkStep(2)}
+                      disabled={!linkText.trim() || !canProceed}
+                      className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold flex items-center gap-1.5 cursor-pointer
+                        ${(!linkText.trim() || !canProceed) ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                    >
+                      Next
                     </button>
                   </div>
                 </div>
-              </div>
-            )}
+              ) : (
+                <div className="space-y-4 flex-1">
+                  {existingLinkDetected && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800 flex items-start gap-2">
+                      <FiAlertCircle className="mt-0.5 flex-shrink-0" size={14} />
+                      <div>
+                        <span className="font-semibold">Existing link detected!</span> Saving will update this link's URL/behavior. You can also completely remove the link wrapper.
+                      </div>
+                    </div>
+                  )}
+
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                      Link URL
+                    </label>
+                    <input
+                      type="text"
+                      value={linkUrl}
+                      onChange={(e) => setLinkUrl(e.target.value)}
+                      placeholder="e.g. /our-services/networking or https://google.com"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                      autoFocus
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-2 py-2 px-3.5 bg-gray-50 border border-gray-200 rounded-lg">
+                    <input
+                      type="checkbox"
+                      id="link-new-tab-checkbox"
+                      checked={linkNewTab}
+                      onChange={(e) => setLinkNewTab(e.target.checked)}
+                      className="w-4.5 h-4.5 text-[#084032] border-gray-300 rounded-md focus:ring-[#084032] focus:ring-2 accent-[#084032] cursor-pointer"
+                    />
+                    <label htmlFor="link-new-tab-checkbox" className="text-sm font-semibold text-gray-700 cursor-pointer select-none">
+                      Open in a new tab
+                    </label>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-gray-100 mt-4 gap-2">
+                    <button
+                      onClick={() => setLinkStep(1)}
+                      className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
+                    >
+                      Back
+                    </button>
+                    
+                    <div className="flex gap-2">
+                      {existingLinkDetected && (
+                        <button
+                          onClick={handleRemoveLink}
+                          className="px-4 py-2 text-sm bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 rounded-lg transition font-semibold flex items-center gap-1 cursor-pointer"
+                        >
+                          <FiTrash2 size={14} /> Remove Link
+                        </button>
+                      )}
+                      <button
+                        onClick={handleSaveLink}
+                        disabled={!linkUrl.trim()}
+                        className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold cursor-pointer
+                          ${!linkUrl.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Bottom Save Bar */}
       <div className="bg-white p-4 rounded-lg shadow flex items-center justify-between">
