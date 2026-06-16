@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText } from 'react-icons/fi';
+import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText, FiX } from 'react-icons/fi';
 
 export default function ContentEditorClient({ initialContent, routeId, routePath, apiBase, templates = [], isNew }) {
   const [content, setContent] = useState(initialContent || { sections: [], status: 'draft', version: 1 });
@@ -11,6 +11,16 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
   const [uploadingField, setUploadingField] = useState(null); // 'sectionIndex_fieldKey'
   const [showTemplateModal, setShowTemplateModal] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+
+  // Link Modal States
+  const [showLinkModal, setShowLinkModal] = useState(false);
+  const [linkModalData, setLinkModalData] = useState(null); // { sectionIndex, fieldKey, start, end, initialText, fullText, isExisting }
+  const [linkStep, setLinkStep] = useState(1);
+  const [linkText, setLinkText] = useState('');
+  const [linkUrl, setLinkUrl] = useState('');
+  const [linkNewTab, setLinkNewTab] = useState(true);
+  const [existingLinkDetected, setExistingLinkDetected] = useState(false);
+  const [existingLinkInfo, setExistingLinkInfo] = useState(null); // { start, end, url, isNewTab, text, fullMatch }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -155,6 +165,79 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
     }
   };
 
+  // Helper to find a link surrounding the cursor position
+  const findLinkAtCursor = (text, cursorPos) => {
+    const regex = /<a\s+[^>]*href="([^"]*)"([^>]*)>([\s\S]*?)<\/a>/gi;
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+      const matchStart = match.index;
+      const matchEnd = regex.lastIndex;
+      if (cursorPos >= matchStart && cursorPos <= matchEnd) {
+        const href = match[1];
+        const attributes = match[2];
+        const linkTextContent = match[3];
+        const isNewTab = attributes.includes('_blank');
+        return {
+          start: matchStart,
+          end: matchEnd,
+          url: href,
+          isNewTab,
+          text: linkTextContent,
+          fullMatch: match[0]
+        };
+      }
+    }
+    return null;
+  };
+
+  // Helper to find an existing link wrapping a specific text
+  const findLinkByText = (text, searchWord) => {
+    if (!searchWord || searchWord.trim().length === 0) return null;
+    try {
+      const escaped = searchWord.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      const regexStr = `<a\\s+[^>]*href="([^"]*)"([^>]*)>\\s*(${escaped})\\s*<\\/a>`;
+      const regex = new RegExp(regexStr, 'gi');
+      const match = regex.exec(text);
+      if (match) {
+        const isNewTab = match[2].includes('_blank');
+        return {
+          start: match.index,
+          end: match.index + match[0].length,
+          url: match[1],
+          isNewTab,
+          text: match[3],
+          fullMatch: match[0]
+        };
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return null;
+  };
+
+  // Dynamically detect existing links as the user types/updates the text in Step 1
+  useEffect(() => {
+    if (!showLinkModal || !linkModalData) return;
+    const val = linkModalData.fullText;
+    
+    // Check if there is an existing link matching linkText
+    const match = findLinkByText(val, linkText);
+    if (match) {
+      setExistingLinkDetected(true);
+      setExistingLinkInfo(match);
+      setLinkUrl(match.url);
+      setLinkNewTab(match.isNewTab);
+    } else {
+      // If we initially started with an existing link, and the user hasn't changed the text, keep it.
+      if (linkModalData.isExisting && linkText === linkModalData.initialText) {
+        // Keep initial match
+      } else {
+        setExistingLinkDetected(false);
+        setExistingLinkInfo(null);
+      }
+    }
+  }, [linkText, showLinkModal]);
+
   // Custom link wrapper helper
   const handleInsertLink = (sectionIndex, fieldKey) => {
     if (!canEditContent) return;
@@ -167,27 +250,122 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
     const val = element.value || '';
     const selectedText = val.substring(start, end);
 
-    const url = prompt("Enter URL path (e.g. /our-services/networking) or full link (https://...):");
-    if (url === null) return; // Cancelled
+    // Look for link at cursor position
+    const existing = findLinkAtCursor(val, start);
+    
+    if (existing) {
+      setLinkModalData({
+        sectionIndex,
+        fieldKey,
+        start: existing.start,
+        end: existing.end,
+        initialText: existing.text,
+        fullText: val,
+        isExisting: true
+      });
+      setLinkText(existing.text);
+      setLinkUrl(existing.url);
+      setLinkNewTab(existing.isNewTab);
+      setExistingLinkDetected(true);
+      setExistingLinkInfo(existing);
+      setLinkStep(1);
+      setShowLinkModal(true);
+    } else {
+      // Check if the selected text has a link matching it elsewhere
+      const searchMatch = findLinkByText(val, selectedText);
+      if (searchMatch) {
+        setLinkModalData({
+          sectionIndex,
+          fieldKey,
+          start: searchMatch.start,
+          end: searchMatch.end,
+          initialText: searchMatch.text,
+          fullText: val,
+          isExisting: true
+        });
+        setLinkText(searchMatch.text);
+        setLinkUrl(searchMatch.url);
+        setLinkNewTab(searchMatch.isNewTab);
+        setExistingLinkDetected(true);
+        setExistingLinkInfo(searchMatch);
+        setLinkStep(1);
+        setShowLinkModal(true);
+      } else {
+        setLinkModalData({
+          sectionIndex,
+          fieldKey,
+          start,
+          end,
+          initialText: selectedText,
+          fullText: val,
+          isExisting: false
+        });
+        setLinkText(selectedText);
+        setLinkUrl('');
+        setLinkNewTab(true);
+        setExistingLinkDetected(false);
+        setExistingLinkInfo(null);
+        setLinkStep(1);
+        setShowLinkModal(true);
+      }
+    }
+  };
 
-    let linkText = selectedText;
-    if (!selectedText) {
-      linkText = prompt("Enter text to display for the link:", "Click here");
-      if (!linkText) return;
+  const handleSaveLink = () => {
+    if (!linkModalData) return;
+    const { sectionIndex, fieldKey, fullText, start, end } = linkModalData;
+    const element = document.getElementById(`input-${sectionIndex}-${fieldKey}`);
+    if (!element) return;
+
+    const targetAttr = linkNewTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+    const replacement = `<a href="${linkUrl}"${targetAttr}>${linkText}</a>`;
+
+    let replaceStart = start;
+    let replaceEnd = end;
+
+    if (existingLinkDetected && existingLinkInfo) {
+      replaceStart = existingLinkInfo.start;
+      replaceEnd = existingLinkInfo.end;
+    } else {
+      // Fallback if they changed linkText and we didn't have selection / it wasn't matched
+      if (linkText !== linkModalData.initialText) {
+        const foundIdx = fullText.indexOf(linkText);
+        if (foundIdx !== -1) {
+          replaceStart = foundIdx;
+          replaceEnd = foundIdx + linkText.length;
+        }
+      }
     }
 
-    const newTab = confirm("Do you want this link to open in a new tab?");
-    const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
-
-    const replacement = `<a href="${url}"${targetAttr}>${linkText}</a>`;
-    const newValue = val.substring(0, start) + replacement + val.substring(end);
-    
+    const newValue = fullText.substring(0, replaceStart) + replacement + fullText.substring(replaceEnd);
     updateField(sectionIndex, fieldKey, 'value', newValue);
+    setShowLinkModal(false);
 
     // Refocus and set cursor selection range
     setTimeout(() => {
       element.focus();
-      const newCursorPos = start + replacement.length;
+      const newCursorPos = replaceStart + replacement.length;
+      element.setSelectionRange(newCursorPos, newCursorPos);
+    }, 50);
+  };
+
+  const handleRemoveLink = () => {
+    if (!linkModalData || !existingLinkInfo) return;
+    const { sectionIndex, fieldKey, fullText } = linkModalData;
+    const element = document.getElementById(`input-${sectionIndex}-${fieldKey}`);
+    if (!element) return;
+
+    const replaceStart = existingLinkInfo.start;
+    const replaceEnd = existingLinkInfo.end;
+    const newValue = fullText.substring(0, replaceStart) + linkText + fullText.substring(replaceEnd);
+
+    updateField(sectionIndex, fieldKey, 'value', newValue);
+    setShowLinkModal(false);
+
+    // Refocus and set cursor selection range
+    setTimeout(() => {
+      element.focus();
+      const newCursorPos = replaceStart + linkText.length;
       element.setSelectionRange(newCursorPos, newCursorPos);
     }, 50);
   };
@@ -559,6 +737,142 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
             >
               Cancel
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Link Modal */}
+      {showLinkModal && canEditContent && linkModalData && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50" onClick={() => setShowLinkModal(false)}>
+          <div className="bg-white rounded-xl shadow-2xl p-6 max-w-lg w-full mx-4 border border-gray-100 flex flex-col relative" onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setShowLinkModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+            >
+              <FiX size={18} />
+            </button>
+
+            <div className="flex items-center gap-2 mb-4">
+              <span className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
+                <FiLink size={18} />
+              </span>
+              <h3 className="text-lg font-bold text-gray-900">
+                {existingLinkDetected ? 'Edit Link' : 'Add Link'}
+              </h3>
+            </div>
+
+            {linkStep === 1 ? (
+              <div className="space-y-4 flex-1">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                    Text to Link
+                  </label>
+                  <input
+                    type="text"
+                    value={linkText}
+                    onChange={(e) => setLinkText(e.target.value)}
+                    placeholder="Enter text to link (e.g. click here)..."
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                    autoFocus
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                    Full Content Reference (Copy from here)
+                  </label>
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-3.5 text-sm text-gray-700 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto select-text">
+                    {linkModalData.fullText}
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1.5">
+                    This shows the entire text field content. You can copy text or verify where you want to apply the link.
+                  </p>
+                </div>
+
+                <div className="flex justify-end gap-2.5 pt-2 border-t border-gray-100 mt-4">
+                  <button
+                    onClick={() => setShowLinkModal(false)}
+                    className="px-4.5 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => setLinkStep(2)}
+                    disabled={!linkText.trim()}
+                    className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold flex items-center gap-1.5 cursor-pointer
+                      ${!linkText.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4 flex-1">
+                {existingLinkDetected && (
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800 flex items-start gap-2">
+                    <FiAlertCircle className="mt-0.5 flex-shrink-0" size={14} />
+                    <div>
+                      <span className="font-semibold">Existing link detected!</span> Saving will update this link's URL/behavior. You can also completely remove the link wrapper.
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                    Link URL
+                  </label>
+                  <input
+                    type="text"
+                    value={linkUrl}
+                    onChange={(e) => setLinkUrl(e.target.value)}
+                    placeholder="e.g. /our-services/networking or https://google.com"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 shadow-xs focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition text-sm font-medium"
+                    autoFocus
+                  />
+                </div>
+
+                <div className="flex items-center gap-2 py-2 px-3.5 bg-gray-50 border border-gray-200 rounded-lg">
+                  <input
+                    type="checkbox"
+                    id="link-new-tab-checkbox"
+                    checked={linkNewTab}
+                    onChange={(e) => setLinkNewTab(e.target.checked)}
+                    className="w-4.5 h-4.5 text-[#084032] border-gray-300 rounded-md focus:ring-[#084032] focus:ring-2 accent-[#084032] cursor-pointer"
+                  />
+                  <label htmlFor="link-new-tab-checkbox" className="text-sm font-semibold text-gray-700 cursor-pointer select-none">
+                    Open in a new tab
+                  </label>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 border-t border-gray-100 mt-4 gap-2">
+                  <button
+                    onClick={() => setLinkStep(1)}
+                    className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 border border-gray-300 rounded-lg transition font-semibold cursor-pointer"
+                  >
+                    Back
+                  </button>
+                  
+                  <div className="flex gap-2">
+                    {existingLinkDetected && (
+                      <button
+                        onClick={handleRemoveLink}
+                        className="px-4 py-2 text-sm bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 rounded-lg transition font-semibold flex items-center gap-1 cursor-pointer"
+                      >
+                        <FiTrash2 size={14} /> Remove Link
+                      </button>
+                    )}
+                    <button
+                      onClick={handleSaveLink}
+                      disabled={!linkUrl.trim()}
+                      className={`px-5 py-2 text-sm text-white rounded-lg transition font-semibold cursor-pointer
+                        ${!linkUrl.trim() ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#084032] hover:bg-[#0a5c48]'}`}
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

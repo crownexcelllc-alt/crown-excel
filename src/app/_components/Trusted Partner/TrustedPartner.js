@@ -11,7 +11,7 @@ const TrustedPartner = () => {
             <div className="trusted-partner-large-screen hidden lg:flex w-full  flex-col lg:flex-row items-center lg:items-start justify-center ">
             <div className="container  w-full flex flex-col lg:flex-row items-center  justify-center gap-8 " style={{ paddingBottom: '10px'}}>
                 <div className="left-part text-black w-full lg:w-2/5 mb-8 lg:mb-0">
-                    <h2 className="font-semibold font-roboto  text-[58px] sm:text-5xl lg:text-5xl leading-[58px] text-center lg:text-left">Trusted<a href="Partner" target="_blank" rel="noopener noreferrer"> Partner </a> for Tech Solutions</h2>
+                    <h2 className="font-semibold font-roboto  text-[58px] sm:text-5xl lg:text-5xl leading-[58px] text-center lg:text-left">Trusted <a href="https://www.grabatoz.ae/ae-en">Partner</a>  for Tech Solutions</h2>
                     <p className=" text-[16] font-montserrat leading-[27px] text-center lg:text-left" style={{marginTop: '20px'}}>Crown Excel delivers top-tier technology solutions for businesses and individuals, providing reliable hardware and IT services backed by mover than 15 years of excellence and over 17,000 satisfied customers. From cutting-edge hardware to comprehensive IT solutions, we ensure top performance, innovation, and exceptional service. Our mission is to offer the latest technology at unbeatable rates, catering to all your business and personal needs. Whether you're upgrading office systems or seeking expert IT services, Crown Excel is your trusted partner for quality, performance, and satisfaction.</p>
                 </div>
                 <div className="right-part relative w-full lg:w-3/5 flex flex-col gap-8">
