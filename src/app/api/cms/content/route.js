@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
-import { parsePageContent, updatePageFiles } from '@/lib/cms-parser';
+import { parsePageContent, updatePageFiles, cleanText } from '@/lib/cms-parser';
 import path from 'path';
 import fs from 'fs';
 import { logActivity } from '@/lib/activity-logger';
@@ -186,13 +186,21 @@ export async function GET(request) {
             if (!existingSec.fields[key]) {
               existingSec.fields[key] = { ...parsedField };
             } else {
-               const dbField = existingSec.fields[key];
-               // Use parsed value if DB value is undefined or null
-               if (dbField.value === undefined || dbField.value === null) {
-                 dbField.value = parsedField.value;
-               }
-              // Always keep originalValue synced with the JSX file
-              dbField.originalValue = parsedField.originalValue;
+                const dbField = existingSec.fields[key];
+                // Use parsed value if DB value is undefined or null
+                if (dbField.value === undefined || dbField.value === null) {
+                  dbField.value = parsedField.value;
+                } else {
+                  // If the clean texts are identical (meaning only HTML tags/links differ),
+                  // sync the DB value with the value parsed from disk (which has the live links)
+                  const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                  const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+                  if (cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase()) {
+                    dbField.value = parsedField.value;
+                  }
+                }
+               // Always keep originalValue synced with the JSX file
+               dbField.originalValue = parsedField.originalValue;
               // Sync metadata
               if (parsedField.isImport) {
                 dbField.isImport = parsedField.isImport;

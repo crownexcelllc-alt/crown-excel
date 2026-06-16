@@ -338,7 +338,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
     if (closestAnchor) {
       const href = closestAnchor.getAttribute('href') || '';
-      const isNewTab = closestAnchor.getAttribute('target') === '_blank';
+      const isNewTab = closestAnchor.hasAttribute('target') ? closestAnchor.getAttribute('target') === '_blank' : true;
       const text = closestAnchor.textContent || '';
 
       setLinkModalData({

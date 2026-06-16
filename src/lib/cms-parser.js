@@ -35,11 +35,20 @@ function findFile(resolvedPath) {
   return null;
 }
 
-function cleanText(text) {
+export function cleanText(text) {
   // Strip JSX comments {/* ... */}
   text = text.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+  // Convert Next.js Link tags to anchor tags
+  text = text.replace(/<Link(\s+[^>]*)>/gi, '<a$1>');
+  text = text.replace(/<\/Link>/gi, '</a>');
+  // Protect <a> and </a> tags using unique placeholder tokens
+  text = text.replace(/<a(\s+[^>]*)>/gi, '___A_START_ATTRS___$1___A_END_ATTRS___');
+  text = text.replace(/<\/a>/gi, '___A_CLOSE___');
   // Strip HTML/JSX tags
   text = text.replace(/<[^>]+>/g, ' ');
+  // Restore protected <a> and </a> tags
+  text = text.replace(/___A_START_ATTRS___([\s\S]*?)___A_END_ATTRS___/g, '<a$1>');
+  text = text.replace(/___A_CLOSE___/g, '</a>');
   // Strip JSX curly braces around string literals
   text = text.replace(/\{"([\s\S]*?)"\}/g, '$1');
   text = text.replace(/\{'([\s\S]*?)'\}/g, '$1');
