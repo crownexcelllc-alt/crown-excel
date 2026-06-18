@@ -163,9 +163,9 @@ export default function AdminLayout({ children, title = '' }) {
                 <div key={group} className="mb-3">
                   <button
                     onClick={() => setBlogsOpen(!blogsOpen)}
-                    className="w-full flex items-center justify-between px-3 py-1.5 text-left text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded transition duration-150 cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-gray-100 rounded transition duration-150 cursor-pointer text-sm"
                   >
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Blogs</span>
+                    <span>Blogs</span>
                     <span className="text-gray-400">
                       {blogsOpen ? (
                         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" /></svg>
@@ -181,10 +181,10 @@ export default function AdminLayout({ children, title = '' }) {
                         return (
                           <Link key={link.href} href={link.href}>
                             <p
-                              className={`px-3 py-1.5 text-xs rounded ${
+                              className={`px-3 py-2 text-sm rounded ${
                                 isActive
                                   ? "bg-[#084032] text-white font-semibold"
-                                  : "hover:bg-gray-100 text-gray-600"
+                                  : "hover:bg-gray-100"
                               }`}
                               style={isActive ? { cursor: "default" } : {}}
                             >
