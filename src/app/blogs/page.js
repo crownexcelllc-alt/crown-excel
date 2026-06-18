@@ -58,7 +58,7 @@ export default async function ClientBlogsPage() {
             {blogs.map((blog) => (
               <article
                 key={blog._id}
-                className="bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-xl border border-gray-150 flex flex-col transition-all duration-300 transform hover:-translate-y-1 group"
+                className="bg-white rounded-2xl overflow-hidden shadow-xs border border-gray-150 flex flex-col"
               >
                 {/* Cover Image Wrapper */}
                 <Link href={`/blogs/${blog.slug}`} className="block relative aspect-video bg-gray-100 overflow-hidden">
@@ -66,7 +66,7 @@ export default async function ClientBlogsPage() {
                     <img
                       src={blog.coverImage}
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-[#084032]/5 flex items-center justify-center text-5xl">
@@ -103,7 +103,7 @@ export default async function ClientBlogsPage() {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-gray-800 leading-snug hover:text-[#00a63e] transition-colors">
+                    <h2 className="text-xl font-bold text-[#00a63e] leading-snug">
                       <Link href={`/blogs/${blog.slug}`}>
                         {blog.title}
                       </Link>
@@ -119,7 +119,7 @@ export default async function ClientBlogsPage() {
                   <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-sm">
                     <Link
                       href={`/blogs/${blog.slug}`}
-                      className="font-bold text-[#084032] hover:text-[#00a63e] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                      className="font-bold text-[#084032] flex items-center gap-1"
                     >
                       Read Article <span className="text-base">→</span>
                     </Link>
