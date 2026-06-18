@@ -1,0 +1,141 @@
+import React from 'react';
+import { getApiBase } from '@/lib/api-helper';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Blog - Insights & Tech Solutions',
+  description: 'Read the latest updates, tutorials, and expert analysis on IT infrastructure, hardware, cloud computing, and Excel automation.',
+};
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export default async function ClientBlogsPage() {
+  const apiBase = getApiBase();
+  let blogs = [];
+
+  try {
+    const res = await fetch(`${apiBase}/api/blogs`, { cache: 'no-store' });
+    if (res.ok) {
+      blogs = await res.json();
+    }
+  } catch (err) {
+    console.error('Failed to fetch public blogs list', err);
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-50 text-gray-800">
+      {/* Premium Hero Banner */}
+      <section className="bg-gradient-to-br from-[#084032] via-[#0b5c48] to-[#04241c] text-white py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(74,222,128,0.1),transparent)]" />
+        <div className="max-w-6xl mx-auto text-center relative z-10 space-y-4">
+          <span className="inline-block px-4 py-1.5 bg-[#4ade80]/10 border border-[#4ade80]/30 text-[#4ade80] rounded-full text-xs font-bold uppercase tracking-wider">
+            Our Insights
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
+            The Crown Excel Blog
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            Expert opinions, technical guides, and business insights on IT hardware, infrastructure, cloud systems, and Excel reporting.
+          </p>
+        </div>
+      </section>
+
+      {/* Blog Listing Grid */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        {blogs.length === 0 ? (
+          <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-green-50 text-[#084032] rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
+              📰
+            </div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">No Articles Yet</h2>
+            <p className="text-gray-500 max-w-md mx-auto px-4">
+              We are preparing amazing content for you. Check back soon to read our first publications!
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogs.map((blog) => (
+              <article
+                key={blog._id}
+                className="bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-xl border border-gray-150 flex flex-col transition-all duration-300 transform hover:-translate-y-1 group"
+              >
+                {/* Cover Image Wrapper */}
+                <Link href={`/blogs/${blog.slug}`} className="block relative aspect-video bg-gray-100 overflow-hidden">
+                  {blog.coverImage ? (
+                    <img
+                      src={blog.coverImage}
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#084032]/5 flex items-center justify-center text-5xl">
+                      👑
+                    </div>
+                  )}
+                  {/* Dynamic Status Badges on card */}
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                    {blog.tags && blog.tags.slice(0, 1).map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 bg-black/60 backdrop-blur-md text-white rounded-md text-[10px] font-bold uppercase tracking-wider"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+
+                {/* Article Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    {/* Meta Info */}
+                    <div className="flex items-center text-xs text-gray-400 gap-3">
+                      <span className="font-semibold text-gray-500">By {blog.author || 'Admin'}</span>
+                      <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                      <span>
+                        {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString(undefined, {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        }) : 'N/A'}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h2 className="text-xl font-bold text-gray-800 leading-snug hover:text-[#00a63e] transition-colors">
+                      <Link href={`/blogs/${blog.slug}`}>
+                        {blog.title}
+                      </Link>
+                    </h2>
+
+                    {/* Excerpt */}
+                    <p className="text-gray-550 text-sm leading-relaxed line-clamp-3">
+                      {blog.excerpt || 'Read this article to learn more about this topic from our tech experts...'}
+                    </p>
+                  </div>
+
+                  {/* Footer links on card */}
+                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-sm">
+                    <Link
+                      href={`/blogs/${blog.slug}`}
+                      className="font-bold text-[#084032] hover:text-[#00a63e] flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
+                    >
+                      Read Article <span className="text-base">→</span>
+                    </Link>
+                    
+                    {blog.commentCount > 0 && (
+                      <span className="text-xs text-gray-400 font-semibold flex items-center gap-1">
+                        💬 {blog.commentCount} {blog.commentCount === 1 ? 'Comment' : 'Comments'}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
+  );
+}
