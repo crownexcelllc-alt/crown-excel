@@ -48,13 +48,19 @@ const ROLE_PERMISSIONS = {
     canManageUsers: false, canManageWebsites: true, canScanRoutes: true,
     canViewActivity: true
   },
+  client: {
+    canEditContent: true, canEditSeo: true, canUploadMedia: true,
+    canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
+    canViewActivity: false
+  },
   seo: {
     canEditContent: true, canEditSeo: true, canUploadMedia: false,
     canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
     canViewActivity: false
   },
-  client: {
-    canEditContent: true, canEditSeo: true, canUploadMedia: true,
+  // ── NEW: Blog Manager ─────────────────────────────────────────────────────
+  blog: {
+    canEditContent: true, canEditSeo: false, canUploadMedia: true,
     canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
     canViewActivity: false
   },
