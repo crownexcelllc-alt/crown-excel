@@ -22,7 +22,8 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/redirects",
     "/admin/media",
     "/admin/activity",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   client: [
     "/admin",
@@ -34,28 +35,32 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/seo",
     "/admin/redirects",
     "/admin/media",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   seo: [
     "/admin",
     "/admin/pages",
     "/admin/seo",
     "/admin/redirects",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   editor: [
     "/admin",
     "/admin/pages",
     "/admin/redirects",
     "/admin/media",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ],
   viewer: [
     "/admin",
     "/admin/pages",
     "/admin/seo",
     "/admin/redirects",
-    "/admin/blogs"
+    "/admin/blogs",
+    "/admin/appointments"
   ]
 };
 
@@ -115,6 +120,7 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/blogs", label: "List Blogs", group: "Blogs" },
     { href: "/admin/blogs/add", label: "Add Blog", group: "Blogs" },
     { href: "/admin/blogs/comments", label: "Comment List", group: "Blogs" },
+    { href: "/admin/appointments", label: "Appointment Links", group: "Scheduling" },
     { href: "/admin/users", label: "Users", group: "Management" },
     { href: "/admin/activity", label: "Activity Logs", group: "Management" },
   ];
