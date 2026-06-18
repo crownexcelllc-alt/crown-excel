@@ -15,6 +15,9 @@ const ROLES = [
 export default function UsersClient({ initialUsers = [], websites = [], apiBase }) {
   const [users, setUsers] = useState(initialUsers);
   const [showModal, setShowModal] = useState(false);
+  const [editUser, setEditUser] = useState(null); // user being edited
+  const [editForm, setEditForm] = useState({ name: '', email: '', password: '' });
+  const [editLoading, setEditLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'editor', assignedWebsites: [] });
@@ -64,6 +67,43 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
     } catch (err) {
       showMsg('Failed to update role', 'error');
     }
+  };
+
+  const openEdit = (user) => {
+    setEditUser(user);
+    setEditForm({ name: user.name || '', email: user.email || '', password: '' });
+  };
+
+  const handleEdit = async () => {
+    if (!editForm.name || !editForm.email) {
+      showMsg('Name and Email are required', 'error');
+      return;
+    }
+    setEditLoading(true);
+    try {
+      const body = { id: editUser._id, name: editForm.name, email: editForm.email };
+      if (editForm.password.trim()) body.password = editForm.password.trim();
+      const res = await fetch(`${apiBase}/api/cms/users`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setUsers(prev => prev.map(u =>
+          u._id === editUser._id
+            ? { ...u, name: editForm.name, email: editForm.email }
+            : u
+        ));
+        showMsg('User updated successfully!', 'success');
+        setEditUser(null);
+      } else {
+        showMsg(data.error || 'Failed to update user', 'error');
+      }
+    } catch (err) {
+      showMsg('Error: ' + err.message, 'error');
+    }
+    setEditLoading(false);
   };
 
   const handleDelete = async (userId) => {
@@ -194,6 +234,14 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-2">
+                      {/* Edit Button */}
+                      <button
+                        onClick={() => openEdit(user)}
+                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                        title="Edit User"
+                      >
+                        <FiEdit2 size={15} />
+                      </button>
                       {user.status === 'active' ? (
                         <button
                           onClick={() => handleToggleStatus(user._id, 'active')}
@@ -325,7 +373,63 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
       </div>
 
 
-      {/* Create User Modal */}
+      {/* ── Edit User Modal ────────────────────────────────────────────── */}
+      {editUser && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setEditUser(null)}>
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">Edit User</h3>
+                <p className="text-xs text-gray-400 mt-0.5">Updating: {editUser.name}</p>
+              </div>
+              <button onClick={() => setEditUser(null)} className="p-1 hover:bg-gray-100 rounded"><FiX /></button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Name *</label>
+                <input
+                  value={editForm.name}
+                  onChange={(e) => setEditForm(p => ({ ...p, name: e.target.value }))}
+                  placeholder="Full name"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                <input
+                  type="email"
+                  value={editForm.email}
+                  onChange={(e) => setEditForm(p => ({ ...p, email: e.target.value }))}
+                  placeholder="user@example.com"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                  New Password
+                  <span className="ml-1 text-xs font-normal text-gray-400">(khali choro agar change nahi karna)</span>
+                </label>
+                <input
+                  type="password"
+                  value={editForm.password}
+                  onChange={(e) => setEditForm(p => ({ ...p, password: e.target.value }))}
+                  placeholder="Leave blank to keep current password"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-900 focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] outline-none"
+                />
+              </div>
+              <button
+                onClick={handleEdit}
+                disabled={editLoading}
+                className="w-full px-4 py-2.5 bg-[#084032] text-white text-sm font-semibold rounded-md hover:bg-[#0a5c48] transition disabled:opacity-60"
+              >
+                {editLoading ? 'Saving...' : 'Save Changes'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Create User Modal ────────────────────────────────────────────── */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setShowModal(false)}>
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6" onClick={(e) => e.stopPropagation()}>
