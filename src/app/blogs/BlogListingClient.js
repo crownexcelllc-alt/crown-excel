@@ -39,11 +39,8 @@ export default function BlogListingClient({ initialBlogs = [] }) {
     }
     if (search) {
       const q = search.trim().toLowerCase();
-      const matchTitle = blog.title?.toLowerCase().includes(q);
-      const matchExcerpt = blog.excerpt?.toLowerCase().includes(q);
-      const matchCategory = blog.category?.toLowerCase().includes(q);
-      const matchTags = blog.tags?.some(tag => tag.toLowerCase().includes(q));
-      if (!matchTitle && !matchExcerpt && !matchCategory && !matchTags) {
+      const titleLower = blog.title?.trim().toLowerCase() || '';
+      if (!titleLower.startsWith(q)) {
         return false;
       }
     }
@@ -99,24 +96,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
           </div>
         </div>
 
-        {/* Active Filter Banner */}
-        {(category || search) && (
-          <div className="flex items-center justify-between bg-white px-6 py-4 rounded-xl border border-gray-200 shadow-2xs">
-            <span className="text-sm font-semibold text-gray-700">
-              Showing blogs {category ? `in Category: "${category}"` : ''} {search ? `${category ? 'and ' : ''}matching search: "${search}"` : ''}
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                setCategory('');
-                setSearch('');
-              }}
-              className="text-xs font-bold text-[#084032] hover:text-[#00a63e] uppercase tracking-wider transition-colors"
-            >
-              Clear Filter &times;
-            </button>
-          </div>
-        )}
+
 
         {/* Blog Cards Grid */}
         {filteredBlogs.length === 0 ? (
