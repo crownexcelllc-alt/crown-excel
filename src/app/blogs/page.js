@@ -10,14 +10,32 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default async function ClientBlogsPage() {
+export default async function ClientBlogsPage({ searchParams }) {
   const apiBase = getApiBase();
   let blogs = [];
+
+  const resolvedSearchParams = await searchParams;
+  const categoryFilter = resolvedSearchParams?.category;
+  const searchFilter = resolvedSearchParams?.search;
 
   try {
     const res = await fetch(`${apiBase}/api/blogs`, { cache: 'no-store' });
     if (res.ok) {
       blogs = await res.json();
+
+      if (categoryFilter) {
+        blogs = blogs.filter(b => b.category?.trim().toLowerCase() === categoryFilter.trim().toLowerCase());
+      }
+
+      if (searchFilter) {
+        const q = searchFilter.trim().toLowerCase();
+        blogs = blogs.filter(b => 
+          b.title?.toLowerCase().includes(q) ||
+          b.excerpt?.toLowerCase().includes(q) ||
+          b.category?.toLowerCase().includes(q) ||
+          b.tags?.some(tag => tag.toLowerCase().includes(q))
+        );
+      }
     }
   } catch (err) {
     console.error('Failed to fetch public blogs list', err);
@@ -43,6 +61,19 @@ export default async function ClientBlogsPage() {
 
       {/* Blog Listing Grid */}
       <section className="max-w-6xl mx-auto px-6 py-20">
+        {(categoryFilter || searchFilter) && (
+          <div className="mb-8 flex items-center justify-between bg-white px-6 py-4 rounded-xl border border-gray-200 shadow-2xs">
+            <span className="text-sm font-semibold text-gray-700">
+              Showing blogs {categoryFilter ? `in Category: "${categoryFilter}"` : `matching: "${searchFilter}"`}
+            </span>
+            <Link
+              href="/blogs"
+              className="text-xs font-bold text-[#084032] hover:text-[#00a63e] uppercase tracking-wider transition-colors"
+            >
+              Clear Filter &times;
+            </Link>
+          </div>
+        )}
         {blogs.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
             <div className="w-16 h-16 bg-green-50 text-[#084032] rounded-full flex items-center justify-center text-3xl mx-auto mb-6">

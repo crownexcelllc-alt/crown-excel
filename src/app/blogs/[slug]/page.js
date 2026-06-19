@@ -38,6 +38,7 @@ export default async function BlogDetailsPage({ params }) {
   let settings = null;
   let recentBlogs = [];
   let popularTags = [];
+  let categoriesList = [];
 
   try {
     // 1. Fetch Blog Data
@@ -79,6 +80,17 @@ export default async function BlogDetailsPage({ params }) {
         popularTags = Object.keys(tagCounts)
           .sort((a, b) => tagCounts[b] - tagCounts[a])
           .slice(0, 10);
+
+        // Extract categories and counts
+        const categoryCounts = allBlogs.reduce((acc, b) => {
+          if (b.category) {
+            const cat = b.category.trim();
+            acc[cat] = (acc[cat] || 0) + 1;
+          }
+          return acc;
+        }, {});
+        categoriesList = Object.entries(categoryCounts)
+          .sort((a, b) => a[0].localeCompare(b[0]));
       }
     }
   } catch (err) {
@@ -181,14 +193,16 @@ export default async function BlogDetailsPage({ params }) {
 
             {/* Tags (Inside Article) */}
             {blog.tags && blog.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {blog.tags.map((tag, idx) => (
-                  <span
+                  <Link
                     key={idx}
-                    className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[10px] font-bold uppercase tracking-wide border border-gray-150"
+                    href={`/blogs?search=${encodeURIComponent(tag)}`}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#084032] hover:bg-[#00a63e] text-white rounded-full text-[10px] font-bold uppercase tracking-wider border border-[#084032] hover:border-[#00a63e] transition-all duration-200 shadow-2xs"
                   >
-                    #{tag}
-                  </span>
+                    <span className="text-white/60 select-none font-bold">#</span>
+                    <span>{tag}</span>
+                  </Link>
                 ))}
               </div>
             )}
@@ -231,14 +245,38 @@ export default async function BlogDetailsPage({ params }) {
             </Link>
           </div>
 
+          {/* Categories Widget */}
+          {categoriesList.length > 0 && (
+            <div className="text-left space-y-4 pb-8 border-b border-gray-100">
+              <div className="relative pb-2 border-b border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900">Categories</h3>
+                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#00a63e] -mb-px" />
+              </div>
+              <div className="space-y-3 pt-2">
+                {categoriesList.map(([cat, count]) => (
+                  <Link
+                    key={cat}
+                    href={`/blogs?category=${encodeURIComponent(cat)}`}
+                    className="block text-xs font-bold text-gray-800 hover:text-[#00a63e] transition-colors uppercase tracking-wider"
+                  >
+                    {cat} <span className="text-gray-400 font-normal">({count})</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Recent Posts widget */}
           <div className="text-left space-y-4 pb-8 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-gray-900">Recent Articles</h3>
+            <div className="relative pb-2 border-b border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900">Recent Posts</h3>
+              <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#00a63e] -mb-px" />
+            </div>
             
             {recentBlogs.length === 0 ? (
               <p className="text-xs text-gray-400 italic">No other articles available.</p>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 pt-2">
                 {recentBlogs.map((b) => (
                   <div key={b._id} className="flex gap-3 group">
                     <Link href={`/blogs/${b.slug}`} className="w-20 aspect-video rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
@@ -301,8 +339,11 @@ export default async function BlogDetailsPage({ params }) {
           {/* Popular Tags cloud widget */}
           {popularTags.length > 0 && (
             <div className="text-left space-y-4">
-              <h3 className="text-lg font-bold text-gray-900">Popular Tags</h3>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="relative pb-2 border-b border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900">Popular Tags</h3>
+                <div className="absolute bottom-0 left-0 w-8 h-[3px] bg-[#00a63e] -mb-px" />
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-2">
                 {popularTags.map((tag) => (
                   <Link
                     key={tag}
