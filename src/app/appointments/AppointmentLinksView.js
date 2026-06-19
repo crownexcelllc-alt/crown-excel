@@ -42,7 +42,7 @@ export default function AppointmentLinksView({ links = [] }) {
     <div className="min-h-screen bg-gradient-to-br from-[#f0f7f4] via-white to-[#e8f5f0] py-16 px-4 text-left">
       
       {/* Back Button */}
-      <div className="max-w-4xl mx-auto mb-6">
+      <div className="max-w-6xl mx-auto mb-6">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#084032] hover:text-[#00a63e] uppercase tracking-wider transition-colors cursor-pointer"
@@ -52,7 +52,7 @@ export default function AppointmentLinksView({ links = [] }) {
       </div>
 
       {/* Hero Section */}
-      <div className="max-w-4xl mx-auto text-center mb-12">
+      <div className="max-w-6xl mx-auto text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#084032] text-white mb-6 shadow-lg">
           <FiCalendar size={28} />
         </div>
@@ -70,7 +70,7 @@ export default function AppointmentLinksView({ links = [] }) {
 
       {/* Category Filter Tabs */}
       {activeLinks.length > 0 && categoriesList.length > 2 && (
-        <div className="max-w-4xl mx-auto mb-10">
+        <div className="max-w-6xl mx-auto mb-10">
           <div className="flex flex-wrap gap-2 justify-center border-b border-gray-100 pb-5">
             {categoriesList.map(cat => {
               const isActive = selectedCategory.toLowerCase() === cat.toLowerCase();
@@ -93,7 +93,7 @@ export default function AppointmentLinksView({ links = [] }) {
       )}
 
       {/* Profile Directory Cards Grid */}
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {activeLinks.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-2xl border border-gray-100 shadow-xs max-w-lg mx-auto">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-50 text-gray-400 mb-4">
@@ -113,7 +113,7 @@ export default function AppointmentLinksView({ links = [] }) {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredLinks.map((link) => (
               <div
                 key={link.id}
