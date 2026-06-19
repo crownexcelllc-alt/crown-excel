@@ -97,6 +97,8 @@ export async function POST(req) {
     const author = (body.author || 'Admin').toString().trim();
     const tags = Array.isArray(body.tags) ? body.tags : [];
     const published = !!body.published;
+    const readMinutes = body.readMinutes !== undefined && body.readMinutes !== null ? parseInt(body.readMinutes, 10) || null : null;
+    const category = (body.category || '').toString().trim() || null;
     
     // SEO fields
     const metaTitle = (body.metaTitle || '').toString().trim();
@@ -131,6 +133,8 @@ export async function POST(req) {
       author,
       tags,
       published,
+      readMinutes,
+      category,
       metaTitle: metaTitle || null,
       metaDescription: metaDescription || null,
       keywords: keywords || null,
@@ -187,6 +191,10 @@ export async function PATCH(req) {
     if (body.metaTitle !== undefined) updateFields.metaTitle = body.metaTitle.toString().trim() || null;
     if (body.metaDescription !== undefined) updateFields.metaDescription = body.metaDescription.toString().trim() || null;
     if (body.keywords !== undefined) updateFields.keywords = body.keywords.toString().trim() || null;
+
+    // Custom fields
+    if (body.readMinutes !== undefined) updateFields.readMinutes = body.readMinutes !== null ? parseInt(body.readMinutes, 10) || null : null;
+    if (body.category !== undefined) updateFields.category = body.category !== null ? body.category.toString().trim() || null : null;
 
     const result = await col.updateOne({ _id: new ObjectId(id) }, { $set: updateFields });
     await logActivity(req, 'update_blog', updateFields.title || existing.title, { id });

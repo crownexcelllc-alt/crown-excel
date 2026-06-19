@@ -125,6 +125,12 @@ export default async function BlogDetailsPage({ params }) {
           </h1>
           <div className="flex flex-wrap items-center gap-4 text-xs text-gray-300 font-semibold pt-4 mt-2">
             <span className="bg-white/10 px-2.5 py-1 rounded text-white">By {blog.author || 'Admin'}</span>
+            {blog.category && (
+              <>
+                <span className="w-1 h-1 bg-white/20 rounded-full" />
+                <span className="bg-[#4ade80]/20 text-[#4ade80] px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider border border-[#4ade80]/30">{blog.category}</span>
+              </>
+            )}
             <span className="w-1 h-1 bg-white/20 rounded-full" />
             <span>
               {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString(undefined, {
@@ -134,6 +140,12 @@ export default async function BlogDetailsPage({ params }) {
                 year: 'numeric'
               }) : 'N/A'}
             </span>
+            {blog.readMinutes && (
+              <>
+                <span className="w-1 h-1 bg-white/20 rounded-full" />
+                <span className="flex items-center gap-1">⏱ {blog.readMinutes} min read</span>
+              </>
+            )}
           </div>
         </div>
       </div>

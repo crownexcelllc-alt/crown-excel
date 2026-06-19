@@ -20,6 +20,8 @@ export default function BlogFormClient({
   const [author, setAuthor] = useState(initialData?.author || 'Admin');
   const [tagsInput, setTagsInput] = useState(initialData?.tags?.join(', ') || '');
   const [published, setPublished] = useState(initialData?.published ?? false);
+  const [readMinutes, setReadMinutes] = useState(initialData?.readMinutes || '');
+  const [category, setCategory] = useState(initialData?.category || '');
 
   // SEO states
   const [metaTitle, setMetaTitle] = useState(initialData?.metaTitle || '');
@@ -37,8 +39,45 @@ export default function BlogFormClient({
   const [loadingMedia, setLoadingMedia] = useState(false);
   const [mediaSearch, setMediaSearch] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [mediaTarget, setMediaTarget] = useState('cover'); // 'cover' | 'editor'
+  const [mediaModalTab, setMediaModalTab] = useState('library'); // 'library' | 'url'
+  const [inputUrl, setInputUrl] = useState('');
 
   const editorRef = useRef(null);
+  const savedRangeRef = useRef(null);
+
+  // Selection range saving and restoring helpers
+  const saveSelection = () => {
+    if (typeof window !== 'undefined') {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        savedRangeRef.current = sel.getRangeAt(0);
+      }
+    }
+  };
+
+  const restoreSelection = () => {
+    if (typeof window !== 'undefined' && savedRangeRef.current) {
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(savedRangeRef.current);
+    }
+  };
+
+  const handleEditorBlur = () => {
+    saveSelection();
+    handleEditorChange();
+  };
+
+  const handleMediaSelect = (url) => {
+    if (mediaTarget === 'editor') {
+      restoreSelection();
+      executeCommand('insertImage', url);
+    } else {
+      setCoverImage(url);
+    }
+    setShowMediaModal(false);
+  };
 
   // Prefill editor on load
   useEffect(() => {
@@ -85,8 +124,13 @@ export default function BlogFormClient({
   // Run document formatting commands
   const executeCommand = (command, value = null) => {
     if (typeof document !== 'undefined') {
+      restoreSelection();
+      if (editorRef.current) {
+        editorRef.current.focus();
+      }
       document.execCommand(command, false, value);
       handleEditorChange();
+      saveSelection();
     }
   };
 
@@ -148,8 +192,7 @@ export default function BlogFormClient({
       const data = await res.json();
       
       if (data.media?.url) {
-        setCoverImage(data.media.url);
-        setShowMediaModal(false);
+        handleMediaSelect(data.media.url);
       }
     } catch (err) {
       alert('Upload failed: ' + err.message);
@@ -189,6 +232,8 @@ export default function BlogFormClient({
       metaTitle,
       metaDescription,
       keywords,
+      readMinutes: readMinutes ? parseInt(readMinutes, 10) : null,
+      category: category || null,
     };
 
     setLoading(true);
@@ -292,7 +337,11 @@ export default function BlogFormClient({
             />
             <button
               type="button"
-              onClick={() => setShowMediaModal(true)}
+              onClick={() => {
+                setMediaTarget('cover');
+                setMediaModalTab('library');
+                setShowMediaModal(true);
+              }}
               className="px-4 py-2 bg-gray-100 border border-gray-300 hover:bg-gray-200 text-gray-700 font-medium rounded-lg text-sm transition-all"
             >
               Browse Library
@@ -344,113 +393,206 @@ export default function BlogFormClient({
 
           {activeTab === 'visual' ? (
             <div className="border border-gray-300 rounded-lg overflow-hidden flex flex-col">
-              {/* WYSIWYG Formatting bar */}
-              <div className="bg-gray-50 border-b border-gray-200 p-2 flex flex-wrap gap-1 items-center">
+              <div className="bg-gray-50 border-b border-gray-200 p-2.5 flex flex-wrap gap-1.5 items-center">
+                {/* Style Dropdown */}
+                <select
+                  onChange={(e) => {
+                    executeCommand('formatBlock', e.target.value);
+                  }}
+                  defaultValue="<p>"
+                  className="bg-white border border-gray-300 rounded px-2.5 py-1.5 text-xs font-semibold outline-none cursor-pointer text-gray-700 hover:bg-gray-50 focus:ring-1 focus:ring-[#084032] mr-1"
+                >
+                  <option value="<p>">Normal Text</option>
+                  <option value="<h1>">Heading 1</option>
+                  <option value="<h2>">Heading 2</option>
+                  <option value="<h3>">Heading 3</option>
+                  <option value="<h4>">Heading 4</option>
+                </select>
+
+                <div className="h-5 w-px bg-gray-300 mx-1" />
+
+                {/* B I U Buttons */}
                 <button
                   type="button"
-                  onClick={() => executeCommand('bold')}
-                  className="px-2.5 py-1 text-xs font-bold bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('bold'); }}
+                  className="p-1.5 text-xs font-bold bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center min-w-8 h-8"
                   title="Bold"
                 >
                   B
                 </button>
                 <button
                   type="button"
-                  onClick={() => executeCommand('italic')}
-                  className="px-2.5 py-1 text-xs italic bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('italic'); }}
+                  className="p-1.5 text-xs italic bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center min-w-8 h-8"
                   title="Italic"
                 >
                   I
                 </button>
                 <button
                   type="button"
-                  onClick={() => executeCommand('underline')}
-                  className="px-2.5 py-1 text-xs underline bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('underline'); }}
+                  className="p-1.5 text-xs underline bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center min-w-8 h-8"
                   title="Underline"
                 >
                   U
                 </button>
-                <div className="h-4 w-px bg-gray-300 mx-1" />
+
+                <div className="h-5 w-px bg-gray-300 mx-1" />
+
+                {/* List Buttons */}
                 <button
                   type="button"
-                  onClick={() => executeCommand('formatBlock', '<h1>')}
-                  className="px-2.5 py-1 text-xs font-semibold bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
-                  title="Heading 1"
-                >
-                  H1
-                </button>
-                <button
-                  type="button"
-                  onClick={() => executeCommand('formatBlock', '<h2>')}
-                  className="px-2.5 py-1 text-xs font-semibold bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
-                  title="Heading 2"
-                >
-                  H2
-                </button>
-                <button
-                  type="button"
-                  onClick={() => executeCommand('formatBlock', '<p>')}
-                  className="px-2.5 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
-                  title="Paragraph"
-                >
-                  Normal
-                </button>
-                <div className="h-4 w-px bg-gray-300 mx-1" />
-                <button
-                  type="button"
-                  onClick={() => executeCommand('insertUnorderedList')}
-                  className="px-2 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('insertUnorderedList'); }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
                   title="Bullet List"
                 >
-                  • List
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                  </svg>
                 </button>
                 <button
                   type="button"
-                  onClick={() => executeCommand('insertOrderedList')}
-                  className="px-2 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-gray-100 text-black shadow-xs cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('insertOrderedList'); }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
                   title="Numbered List"
                 >
-                  1. List
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="10" y1="6" x2="21" y2="6"></line>
+                    <line x1="10" y1="12" x2="21" y2="12"></line>
+                    <line x1="10" y1="18" x2="21" y2="18"></line>
+                    <path d="M4 6h1v4"></path>
+                    <path d="M4 10h2"></path>
+                    <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"></path>
+                  </svg>
                 </button>
-                <div className="h-4 w-px bg-gray-300 mx-1" />
+
+                <div className="h-5 w-px bg-gray-300 mx-1" />
+
+                {/* Alignment Buttons */}
                 <button
                   type="button"
-                  onClick={() => {
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('justifyLeft'); }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Align Left"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="17" y1="10" x2="3" y2="10"></line>
+                    <line x1="21" y1="6" x2="3" y2="6"></line>
+                    <line x1="21" y1="14" x2="3" y2="14"></line>
+                    <line x1="17" y1="18" x2="3" y2="18"></line>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('justifyCenter'); }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Align Center"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="18" y1="10" x2="6" y2="10"></line>
+                    <line x1="21" y1="6" x2="3" y2="6"></line>
+                    <line x1="21" y1="14" x2="3" y2="14"></line>
+                    <line x1="18" y1="18" x2="6" y2="18"></line>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('justifyRight'); }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-gray-750 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Align Right"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="21" y1="10" x2="7" y2="10"></line>
+                    <line x1="21" y1="6" x2="3" y2="6"></line>
+                    <line x1="21" y1="14" x2="3" y2="14"></line>
+                    <line x1="21" y1="18" x2="7" y2="18"></line>
+                  </svg>
+                </button>
+
+                <div className="h-5 w-px bg-gray-300 mx-1" />
+
+                {/* Media Buttons */}
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    saveSelection();
+                    setMediaTarget('editor');
+                    setMediaModalTab('library');
+                    setInputUrl('');
+                    setShowMediaModal(true);
+                  }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Insert Image"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    const url = prompt('Enter YouTube Video URL:');
+                    if (url) {
+                      let embedUrl = url;
+                      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                      const match = url.match(regExp);
+                      if (match && match[2].length === 11) {
+                        embedUrl = `https://www.youtube.com/embed/${match[2]}`;
+                      }
+                      const iframeHtml = `<div class="aspect-video w-full my-4 relative overflow-hidden rounded-lg"><iframe src="${embedUrl}" class="absolute inset-0 w-full h-full" frameborder="0" allowfullscreen></iframe></div>`;
+                      executeCommand('insertHTML', iframeHtml);
+                    }
+                  }}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Insert YouTube Video"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M23 7l-7 5 7 5V7z"></path>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
                     const url = prompt('Enter link URL:');
                     if (url) executeCommand('createLink', url);
                   }}
-                  className="px-2 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer"
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
                   title="Insert Link"
                 >
-                  Link
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
                 </button>
+
                 <button
                   type="button"
-                  onClick={() => {
-                    const url = prompt('Enter image URL:');
-                    if (url) executeCommand('insertImage', url);
-                  }}
-                  className="px-2 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer"
-                  title="Insert Image"
-                >
-                  Img
-                </button>
-                <button
-                  type="button"
-                  onClick={() => executeCommand('removeFormat')}
-                  className="px-2 py-1 text-xs bg-white border border-gray-200 rounded hover:bg-red-50 text-red-600 shadow-xs ml-auto cursor-pointer"
+                  onMouseDown={(e) => { e.preventDefault(); executeCommand('removeFormat'); }}
+                  className="px-2.5 py-1.5 text-xs bg-white border border-gray-200 rounded hover:bg-red-50 text-red-600 shadow-xs ml-auto cursor-pointer font-semibold"
                   title="Clear formatting"
                 >
                   Clear
                 </button>
               </div>
 
-              {/* Editing Area */}
               <div
                 ref={editorRef}
                 contentEditable
-                onBlur={handleEditorChange}
+                onBlur={handleEditorBlur}
                 onInput={handleEditorChange}
+                onKeyUp={saveSelection}
+                onMouseUp={saveSelection}
                 className="w-full p-4 min-h-[350px] outline-none prose max-w-none focus:ring-0 overflow-y-auto"
                 style={{ direction: 'left', textAlign: 'left' }}
               />
@@ -464,6 +606,36 @@ export default function BlogFormClient({
               className="w-full p-4 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
             />
           )}
+        </div>
+
+        {/* Category & Read Minutes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Blog Category
+            </label>
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="e.g. Technology, Tutorials, Insights"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Read Minutes
+            </label>
+            <input
+              type="number"
+              min="0"
+              value={readMinutes}
+              onChange={(e) => setReadMinutes(e.target.value)}
+              placeholder="e.g. 5"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all"
+            />
+          </div>
         </div>
 
         {/* Author & Tags */}
@@ -574,7 +746,9 @@ export default function BlogFormClient({
           <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-gray-100">
             {/* Modal Header */}
             <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-800">Select Cover Image</h3>
+              <h3 className="text-lg font-bold text-gray-800">
+                {mediaTarget === 'editor' ? 'Insert Image' : 'Select Cover Image'}
+              </h3>
               <button
                 type="button"
                 onClick={() => setShowMediaModal(false)}
@@ -584,69 +758,136 @@ export default function BlogFormClient({
               </button>
             </div>
 
-            {/* Upload & Search controls */}
-            <div className="p-6 border-b border-gray-100 flex flex-col sm:flex-row gap-4 items-center justify-between bg-white">
-              <div className="relative w-full sm:w-72">
-                <input
-                  type="text"
-                  value={mediaSearch}
-                  onChange={(e) => setMediaSearch(e.target.value)}
-                  placeholder="Search media..."
-                  className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-1 focus:ring-[#084032] outline-none"
-                />
-              </div>
-
-              <div className="flex gap-2 w-full sm:w-auto justify-end">
-                <label className="cursor-pointer px-4 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-sm transition-all text-center">
-                  {uploadingImage ? 'Uploading...' : 'Upload New Image'}
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    disabled={uploadingImage}
-                    className="hidden"
-                  />
-                </label>
-              </div>
+            {/* Tabs */}
+            <div className="flex border-b border-gray-200 bg-gray-50 px-6">
+              <button
+                type="button"
+                onClick={() => setMediaModalTab('library')}
+                className={`py-3 px-4 text-sm font-semibold border-b-2 transition-all ${
+                  mediaModalTab === 'library'
+                    ? 'border-[#084032] text-[#084032]'
+                    : 'border-transparent text-gray-550 hover:text-[#084032]'
+                }`}
+              >
+                Media Library
+              </button>
+              <button
+                type="button"
+                onClick={() => setMediaModalTab('url')}
+                className={`py-3 px-4 text-sm font-semibold border-b-2 transition-all ${
+                  mediaModalTab === 'url'
+                    ? 'border-[#084032] text-[#084032]'
+                    : 'border-transparent text-gray-550 hover:text-[#084032]'
+                }`}
+              >
+                Insert from URL
+              </button>
             </div>
 
-            {/* Media Grid */}
-            <div className="flex-1 overflow-y-auto p-6 bg-gray-50 min-h-[300px]">
-              {loadingMedia ? (
-                <div className="flex items-center justify-center h-48">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#084032]"></div>
-                </div>
-              ) : mediaList.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-48 text-gray-500">
-                  <span className="mb-2">No media found.</span>
-                  <span className="text-xs">Upload images using the upload button above.</span>
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                  {mediaList.map((media) => (
-                    <div
-                      key={media._id}
-                      onClick={() => {
-                        setCoverImage(media.url);
-                        setShowMediaModal(false);
-                      }}
-                      className="group cursor-pointer border border-gray-200 hover:border-[#084032] rounded-lg overflow-hidden bg-white shadow-xs hover:shadow transition-all relative flex flex-col"
+            {mediaModalTab === 'url' ? (
+              <div className="flex-1 overflow-y-auto p-8 bg-gray-50 flex items-center justify-center min-h-[350px]">
+                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm max-w-lg w-full space-y-4">
+                  <h4 className="text-sm font-bold text-gray-800">Insert Image from External URL</h4>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1">Image Link (HTTPS)</label>
+                    <input
+                      type="url"
+                      value={inputUrl}
+                      onChange={(e) => setInputUrl(e.target.value)}
+                      placeholder="https://example.com/image.jpg"
+                      className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setInputUrl('')}
+                      className="px-4 py-2 border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold rounded-lg text-sm transition-all"
                     >
-                      <div className="w-full aspect-square bg-gray-100 relative overflow-hidden">
-                        <img
-                          src={media.thumbnailUrl || media.url}
-                          alt={media.alt || media.originalName}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
-                        />
-                      </div>
-                      <div className="p-2 border-t border-gray-100 text-[10px] text-gray-500 truncate">
-                        {media.originalName}
-                      </div>
-                    </div>
-                  ))}
+                      Clear
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!inputUrl}
+                      onClick={() => {
+                        if (inputUrl) {
+                          handleMediaSelect(inputUrl);
+                          setInputUrl('');
+                        }
+                      }}
+                      className="px-5 py-2 bg-[#084032] hover:bg-[#00a63e] disabled:opacity-50 text-white font-semibold rounded-lg text-sm shadow transition-all cursor-pointer"
+                    >
+                      Insert Image
+                    </button>
+                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <>
+                {/* Upload & Search controls */}
+                <div className="p-6 border-b border-gray-100 flex flex-col sm:flex-row gap-4 items-center justify-between bg-white">
+                  <div className="relative w-full sm:w-72">
+                    <input
+                      type="text"
+                      value={mediaSearch}
+                      onChange={(e) => setMediaSearch(e.target.value)}
+                      placeholder="Search media..."
+                      className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-1 focus:ring-[#084032] outline-none"
+                    />
+                  </div>
+
+                  <div className="flex gap-2 w-full sm:w-auto justify-end">
+                    <label className="cursor-pointer px-4 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-sm transition-all text-center">
+                      {uploadingImage ? 'Uploading...' : 'Upload New Image'}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        disabled={uploadingImage}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                {/* Media Grid */}
+                <div className="flex-1 overflow-y-auto p-6 bg-gray-50 min-h-[300px]">
+                  {loadingMedia ? (
+                    <div className="flex items-center justify-center h-48">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#084032]"></div>
+                    </div>
+                  ) : mediaList.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-48 text-gray-500">
+                      <span className="mb-2">No media found.</span>
+                      <span className="text-xs">Upload images using the upload button above.</span>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                      {mediaList.map((media) => (
+                        <div
+                          key={media._id}
+                          onClick={() => {
+                            handleMediaSelect(media.url);
+                          }}
+                          className="group cursor-pointer border border-gray-200 hover:border-[#084032] rounded-lg overflow-hidden bg-white shadow-xs hover:shadow transition-all relative flex flex-col"
+                        >
+                          <div className="w-full aspect-square bg-gray-100 relative overflow-hidden">
+                            <img
+                              src={media.thumbnailUrl || media.url}
+                              alt={media.alt || media.originalName}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                            />
+                          </div>
+                          <div className="p-2 border-t border-gray-100 text-[10px] text-gray-500 truncate">
+                            {media.originalName}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
 
             {/* Modal Footer */}
             <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end">

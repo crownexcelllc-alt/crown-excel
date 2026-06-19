@@ -100,7 +100,20 @@ export default async function ClientBlogsPage() {
                           year: 'numeric'
                         }) : 'N/A'}
                       </span>
+                      {blog.readMinutes && (
+                        <>
+                          <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                          <span>⏱ {blog.readMinutes} min read</span>
+                        </>
+                      )}
                     </div>
+
+                    {/* Category Label */}
+                    {blog.category && (
+                      <span className="text-[10px] text-[#084032] font-extrabold uppercase tracking-wider block">
+                        {blog.category}
+                      </span>
+                    )}
 
                     {/* Title */}
                     <h2 className="text-xl font-bold text-[#00a63e] leading-snug">
