@@ -110,9 +110,8 @@ export default async function ClientBlogsPage({ searchParams }) {
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
                     {/* Meta Info */}
-                    <div className="flex items-center text-xs text-gray-400 gap-3">
-                      <span className="font-semibold text-gray-500">By {blog.author || 'Admin'}</span>
-                      <span className="w-1 h-1 bg-gray-300 rounded-full" />
+                    <div className="flex justify-between items-center text-xs text-gray-500 font-semibold w-full">
+                      <span className="text-gray-700">By {blog.author || 'Admin'}</span>
                       <span>
                         {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString(undefined, {
                           month: 'short',
@@ -121,13 +120,6 @@ export default async function ClientBlogsPage({ searchParams }) {
                         }) : 'N/A'}
                       </span>
                     </div>
-
-                    {/* Category Label */}
-                    {blog.category && (
-                      <span className="text-[10px] text-[#084032] font-extrabold uppercase tracking-wider block">
-                        {blog.category}
-                      </span>
-                    )}
 
                     {/* Title */}
                     <h2 className="text-xl font-bold text-[#00a63e] leading-snug line-clamp-1">
