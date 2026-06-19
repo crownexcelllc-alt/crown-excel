@@ -109,19 +109,18 @@ export default async function BlogDetailsPage({ params }) {
       </main>
     );
   }
-
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-800 pb-20">
+    <main className="min-h-screen bg-white text-gray-800 pb-20">
       {/* Visual Top Header */}
       <div className="w-full bg-gradient-to-r from-[#084032] to-[#04241c] py-16 text-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-left">
           <Link
             href="/blogs"
             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4ade80] hover:text-white uppercase tracking-wider mb-4 transition-colors"
           >
             ← Back to Articles
           </Link>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight max-w-4xl">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight max-w-4xl">
             {blog.title}
           </h1>
           <div className="flex flex-wrap items-center gap-4 text-xs text-gray-300 font-semibold pt-4 mt-2">
@@ -140,14 +139,14 @@ export default async function BlogDetailsPage({ params }) {
       </div>
 
       {/* Main Grid: Content + Sidebar */}
-      <div className="max-w-6xl mx-auto px-6 pt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
-        {/* Main Content Column (8/12) */}
-        <div className="lg:col-span-8 space-y-12">
+        {/* Main Content Column (9/12) */}
+        <div className="lg:col-span-9 space-y-12 text-left">
           
-          <article className="bg-white rounded-2xl border border-gray-150 p-6 md:p-8 shadow-xs">
+          <article className="text-left space-y-6">
             {/* Cover Image */}
-            <div className="w-full aspect-video rounded-xl overflow-hidden mb-8 bg-gray-100 relative border border-gray-100">
+            <div className="w-full aspect-video rounded-xl overflow-hidden mb-8 bg-gray-50 relative border border-gray-100">
               {blog.coverImage ? (
                 <img
                   src={blog.coverImage}
@@ -163,7 +162,7 @@ export default async function BlogDetailsPage({ params }) {
 
             {/* Excerpt Panel */}
             {blog.excerpt && (
-              <div className="p-5 bg-gray-50 border-l-4 border-[#084032] text-gray-600 rounded-r-xl text-lg italic leading-relaxed text-left mb-8">
+              <div className="p-5 bg-green-50/30 border-l-4 border-[#084032] text-gray-600 rounded-r-xl text-lg italic leading-relaxed text-left mb-8">
                 {blog.excerpt}
               </div>
             )}
@@ -194,7 +193,7 @@ export default async function BlogDetailsPage({ params }) {
           </article>
 
           {/* Comments integration */}
-          <div className="bg-white rounded-2xl border border-gray-150 p-6 md:p-8 shadow-xs">
+          <div className="pt-10 border-t border-gray-100">
             <BlogCommentsSection 
               blogId={blog._id} 
               initialComments={comments} 
@@ -203,26 +202,26 @@ export default async function BlogDetailsPage({ params }) {
           </div>
         </div>
 
-        {/* Sidebar Column (4/12) */}
-        <aside className="lg:col-span-4 lg:sticky lg:top-10 space-y-8">
+        {/* Sidebar Column (3/12) */}
+        <aside className="lg:col-span-3 lg:sticky lg:top-10 space-y-8 text-left">
           
           {/* About Crown Excel widget */}
-          <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-xs text-left space-y-4">
-            <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-3">Crown Excel</h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+          <div className="text-left space-y-4 pb-8 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-gray-900">Crown Excel</h3>
+            <p className="text-sm text-gray-650 leading-relaxed">
               We are a premier provider of customized IT solutions, networking architectures, system consulting, and hardware provisions for organizations in Dubai and the UAE.
             </p>
             <Link 
               href="/contact-us"
-              className="inline-block px-4 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
+              className="inline-block px-4 py-2.5 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-xs shadow-xs transition-all w-full text-center"
             >
               Contact Our Experts
             </Link>
           </div>
 
           {/* Recent Posts widget */}
-          <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-xs text-left space-y-4">
-            <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-3">Recent Articles</h3>
+          <div className="text-left space-y-4 pb-8 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-gray-900">Recent Articles</h3>
             
             {recentBlogs.length === 0 ? (
               <p className="text-xs text-gray-400 italic">No other articles available.</p>
@@ -248,7 +247,7 @@ export default async function BlogDetailsPage({ params }) {
                       >
                         {b.title}
                       </Link>
-                      <span className="text-[10px] text-gray-400 block font-semibold">
+                      <span className="text-[10px] text-gray-450 block font-semibold">
                         {b.createdAt ? new Date(b.createdAt).toLocaleDateString(undefined, {
                           month: 'short',
                           day: 'numeric'
@@ -262,45 +261,41 @@ export default async function BlogDetailsPage({ params }) {
           </div>
 
           {/* Help/Support CTA card */}
-          <div className="bg-gradient-to-br from-[#084032] to-[#04241c] rounded-2xl p-6 shadow-md text-white text-left space-y-4 relative overflow-hidden border border-[#4ade80]/20">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(74,222,128,0.1),transparent)]" />
+          <div className="text-left space-y-4 pb-8 border-b border-gray-100">
+            <span className="text-[10px] font-bold text-[#084032] uppercase tracking-wider block">
+              Direct Help Desk
+            </span>
+            <h3 className="text-lg font-bold text-gray-900 leading-snug">Need Immediate IT Support?</h3>
+            <p className="text-xs text-gray-650 leading-relaxed">
+              Contact our support desk for hardware repair, server support, software maintenance, and corporate AMC inquiries.
+            </p>
             
-            <div className="relative z-10 space-y-4">
-              <span className="text-[10px] font-bold text-[#4ade80] uppercase tracking-wider bg-white/10 px-2 py-0.5 rounded">
-                Direct Help Desk
-              </span>
-              <h3 className="text-xl font-bold leading-snug">Need Immediate IT Support?</h3>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Contact our support desk for hardware repair, server support, software maintenance, and corporate AMC inquiries.
-              </p>
-              
-              <div className="pt-2 space-y-2 text-xs">
-                <a 
-                  href={`tel:${companyPhone}`}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 hover:bg-white/20 rounded-lg text-white font-semibold transition-all border border-white/10"
-                >
-                  📞 {companyPhone}
-                </a>
-                <a 
-                  href={`mailto:${companyEmail}`}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#4ade80] hover:bg-[#22c55e] rounded-lg text-white font-semibold transition-all"
-                >
-                  ✉ {companyEmail}
-                </a>
-              </div>
+            <div className="pt-2 space-y-2 text-xs">
+              <a 
+                href={`tel:${companyPhone}`}
+                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#084032] hover:bg-[#00a63e] rounded-lg text-white font-semibold transition-all w-full"
+              >
+                📞 {companyPhone}
+              </a>
+              <a 
+                href={`mailto:${companyEmail}`}
+                className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 hover:bg-gray-50 rounded-lg text-gray-700 font-semibold transition-all bg-white w-full"
+              >
+                ✉ {companyEmail}
+              </a>
             </div>
           </div>
 
           {/* Popular Tags cloud widget */}
           {popularTags.length > 0 && (
-            <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-xs text-left space-y-4">
-              <h3 className="text-lg font-bold text-gray-800 border-b border-gray-100 pb-3">Popular Tags</h3>
+            <div className="text-left space-y-4">
+              <h3 className="text-lg font-bold text-gray-900">Popular Tags</h3>
               <div className="flex flex-wrap gap-1.5">
                 {popularTags.map((tag) => (
                   <Link
                     key={tag}
                     href={`/blogs?search=${tag}`}
-                    className="px-2.5 py-1 bg-gray-50 hover:bg-green-50 text-xs font-semibold text-gray-600 hover:text-[#084032] border border-gray-200 hover:border-green-200 rounded-md transition-all"
+                    className="px-2.5 py-1 bg-gray-50 hover:bg-green-50 text-xs font-semibold text-gray-650 hover:text-[#084032] border border-gray-200 hover:border-green-200 rounded-md transition-all"
                   >
                     {tag}
                   </Link>
