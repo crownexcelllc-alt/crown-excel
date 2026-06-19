@@ -258,7 +258,7 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
                       <div>
                         <span className="font-semibold text-gray-800 block leading-tight">{link.name}</span>
                         {link.description && (
-                          <span className="text-[11px] text-gray-400 block line-clamp-1 mt-0.5 max-w-[200px]">
+                          <span className="text-[11px] text-gray-400 line-clamp-1 mt-0.5 max-w-[300px] break-words">
                             {link.description}
                           </span>
                         )}
