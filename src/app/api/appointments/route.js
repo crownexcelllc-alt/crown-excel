@@ -39,6 +39,15 @@ export async function POST(request) {
         id: l.id || `link_${Date.now()}_${Math.random().toString(36).slice(2)}`,
         name: String(l.name).trim(),
         url: String(l.url).trim(),
+        description: l.description ? String(l.description).trim() : '',
+        profileImage: l.profileImage ? String(l.profileImage).trim() : '',
+        category: l.category ? String(l.category).trim() : '',
+        socials: {
+          linkedin: l.socials?.linkedin ? String(l.socials.linkedin).trim() : '',
+          twitter: l.socials?.twitter ? String(l.socials.twitter).trim() : '',
+          facebook: l.socials?.facebook ? String(l.socials.facebook).trim() : '',
+          instagram: l.socials?.instagram ? String(l.socials.instagram).trim() : '',
+        },
         active: l.active !== false, // default true if not set
       }));
 

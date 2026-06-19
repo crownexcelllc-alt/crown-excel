@@ -1,77 +1,145 @@
 'use client';
 
 import { useState } from 'react';
-import { FiPlus, FiTrash2, FiSave, FiCalendar, FiEdit2, FiCheck, FiX } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiCalendar, FiEdit2, FiUpload, FiX, FiCheck, FiMail, FiGlobe } from 'react-icons/fi';
+import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
 
 export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) {
-  const normalize = (links) =>
-    links.map(l => ({ ...l, active: l.active !== false }));
+  // Helper to ensure all rich schema fields are initialized
+  const normalize = (items) =>
+    items.map(l => ({
+      id: l.id || `link_${Date.now()}_${Math.random().toString(36).slice(2)}`,
+      name: l.name || '',
+      url: l.url || '',
+      description: l.description || '',
+      profileImage: l.profileImage || '',
+      category: l.category || '',
+      socials: {
+        linkedin: l.socials?.linkedin || '',
+        twitter: l.socials?.twitter || '',
+        facebook: l.socials?.facebook || '',
+        instagram: l.socials?.instagram || '',
+      },
+      active: l.active !== false,
+    }));
 
   const [links, setLinks] = useState(normalize(initialLinks));
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState(null);
 
-  // Inline edit state: which link id is being edited
-  const [editingId, setEditingId] = useState(null);
-  const [editDraft, setEditDraft] = useState({ name: '', url: '' });
+  // Modal form states
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
-  // ── add new row ──────────────────────────────────────────────────────────────
-  function addLink() {
-    const newId = `link_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    const newLink = { id: newId, name: '', url: '', active: true };
-    setLinks(prev => [...prev, newLink]);
-    // immediately open edit mode for this row
-    setEditingId(newId);
-    setEditDraft({ name: '', url: '' });
+  // ── open modal for add new ──────────────────────────────────────────────────
+  function openAddModal() {
+    setFormData({
+      id: `link_${Date.now()}_${Math.random().toString(36).slice(2)}`,
+      name: '',
+      url: '',
+      description: '',
+      profileImage: '',
+      category: '',
+      socials: {
+        linkedin: '',
+        twitter: '',
+        facebook: '',
+        instagram: '',
+      },
+      active: true,
+      isNew: true
+    });
+    setShowModal(true);
   }
 
-  // ── delete row ───────────────────────────────────────────────────────────────
+  // ── open modal for edit ─────────────────────────────────────────────────────
+  function openEditModal(link) {
+    setFormData({
+      ...link,
+      socials: {
+        linkedin: link.socials?.linkedin || '',
+        twitter: link.socials?.twitter || '',
+        facebook: link.socials?.facebook || '',
+        instagram: link.socials?.instagram || '',
+      },
+      isNew: false
+    });
+    setShowModal(true);
+  }
+
+  // ── delete row ──────────────────────────────────────────────────────────────
   function removeLink(id) {
-    if (editingId === id) setEditingId(null);
+    if (!confirm('Are you sure you want to delete this appointment profile?')) return;
     const updated = links.filter(l => l.id !== id);
     setLinks(updated);
     persistLinks(updated);
   }
 
-  // ── toggle active/inactive ───────────────────────────────────────────────────
+  // ── toggle active/inactive ──────────────────────────────────────────────────
   function toggleActive(id) {
     const updated = links.map(l => l.id === id ? { ...l, active: !l.active } : l);
     setLinks(updated);
     persistLinks(updated);
   }
 
-  // ── inline edit helpers ──────────────────────────────────────────────────────
-  function startEdit(link) {
-    setEditingId(link.id);
-    setEditDraft({ name: link.name, url: link.url });
-  }
+  // ── upload image to Cloudinary ──────────────────────────────────────────────
+  async function handleImageUpload(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  function cancelEdit(id) {
-    // If it was a brand-new unsaved row (empty name/url), remove it
-    const link = links.find(l => l.id === id);
-    if (link && !link.name && !link.url) {
-      setLinks(prev => prev.filter(l => l.id !== id));
+    try {
+      setUploadingImage(true);
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('websiteId', 'default');
+      fd.append('folder', 'appointments');
+
+      const res = await fetch(`${apiBase}/api/cms/media`, {
+        method: 'POST',
+        body: fd,
+      });
+
+      if (!res.ok) throw new Error('Upload failed');
+      const data = await res.json();
+      
+      if (data.media?.url) {
+        setFormData(prev => ({ ...prev, profileImage: data.media.url }));
+      }
+    } catch (err) {
+      alert('Upload failed: ' + err.message);
+    } finally {
+      setUploadingImage(false);
     }
-    setEditingId(null);
   }
 
-  function confirmEdit(id) {
-    if (!editDraft.name.trim() || !editDraft.url.trim()) {
-      setMessage({ type: 'error', text: 'Please fill in both Name and URL.' });
-      setTimeout(() => setMessage(null), 3000);
+  // ── save modal changes ──────────────────────────────────────────────────────
+  function saveModal(e) {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.url.trim()) {
+      alert('Please fill in both Name and Booking URL.');
       return;
     }
-    const updated = links.map(l =>
-      l.id === id ? { ...l, name: editDraft.name.trim(), url: editDraft.url.trim() } : l
-    );
+
+    let updated;
+    if (formData.isNew) {
+      // Remove temporary isNew key and append
+      const { isNew, ...newLink } = formData;
+      updated = [...links, newLink];
+    } else {
+      const { isNew, ...updatedLink } = formData;
+      updated = links.map(l => l.id === formData.id ? updatedLink : l);
+    }
+
     setLinks(updated);
-    setEditingId(null);
+    setShowModal(false);
+    setFormData(null);
     persistLinks(updated);
   }
 
-  // ── persist to DB ────────────────────────────────────────────────────────────
+  // ── persist to DB ───────────────────────────────────────────────────────────
   async function persistLinks(linksToSave) {
-    // Only save rows that have both name and url filled
+    // Only save valid rows that have both name and url
     const valid = linksToSave.filter(l => l.name && l.url);
     setSaving(true);
     setMessage(null);
@@ -83,11 +151,7 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
       });
       const data = await res.json();
       if (res.ok && data.ok) {
-        // Sync state with server response (keeps unsaved rows intact)
-        setLinks(prev => {
-          const saved = new Map(data.links.map(l => [l.id, l]));
-          return prev.map(l => saved.get(l.id) || l);
-        });
+        setLinks(normalize(data.links));
         setMessage({ type: 'success', text: 'Saved successfully!' });
       } else {
         setMessage({ type: 'error', text: data.error || 'Failed to save.' });
@@ -104,14 +168,14 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
   const totalCount = links.filter(l => l.name && l.url).length;
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 text-left">
 
       {/* ── Top bar ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-[#084032]">
           <FiCalendar size={18} />
           <span className="font-semibold text-sm">
-            Manage Appointment Links
+            Manage Appointment Profiles
           </span>
           {totalCount > 0 && (
             <span className="ml-1 text-xs text-gray-400 font-normal">
@@ -120,11 +184,11 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
           )}
         </div>
         <button
-          onClick={addLink}
-          className="flex items-center gap-2 px-4 py-2 bg-[#084032] text-white text-sm rounded hover:bg-[#0a5c48] transition-colors duration-200"
+          onClick={openAddModal}
+          className="flex items-center gap-2 px-4 py-2 bg-[#084032] text-white text-sm rounded hover:bg-[#0a5c48] transition-colors duration-200 cursor-pointer"
         >
           <FiPlus size={14} />
-          Add New Link
+          Add Appointment Slot
         </button>
       </div>
 
@@ -150,7 +214,7 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
         <div className="flex flex-col items-center justify-center py-16 text-gray-400 border-2 border-dashed border-gray-200 rounded-xl">
           <FiCalendar size={34} className="mb-3 opacity-40" />
           <p className="text-sm font-medium">No appointment links yet.</p>
-          <p className="text-xs mt-1">Click <strong>&ldquo;Add New Link&rdquo;</strong> to get started.</p>
+          <p className="text-xs mt-1">Click <strong>&ldquo;Add Appointment Slot&rdquo;</strong> to get started.</p>
         </div>
       ) : (
 
@@ -159,136 +223,353 @@ export default function AppointmentsClient({ initialLinks = [], apiBase = '' }) 
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-10">#</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Name</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">URL</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide w-12">#</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Profile</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Department/Category</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Booking URL</th>
                 <th className="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wide w-28">Status</th>
                 <th className="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wide w-24">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
-              {links.map((link, idx) => {
-                const isEditing = editingId === link.id;
-                const isSaved = !!(link.name && link.url);
+            <tbody className="divide-y divide-gray-100 bg-white">
+              {links.map((link, idx) => (
+                <tr key={link.id} className="hover:bg-gray-50 transition-colors">
+                  {/* Index */}
+                  <td className="px-4 py-4">
+                    <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#084032]/10 text-[#084032] text-xs font-bold">
+                      {idx + 1}
+                    </span>
+                  </td>
 
-                return (
-                  <tr
-                    key={link.id}
-                    className={`transition-colors ${
-                      isEditing ? 'bg-[#f0f7f4]' : isSaved ? 'hover:bg-gray-50' : 'bg-yellow-50'
-                    }`}
-                  >
-                    {/* # */}
-                    <td className="px-4 py-3">
-                      <span className="w-6 h-6 flex items-center justify-center rounded-full bg-[#084032]/10 text-[#084032] text-xs font-bold">
-                        {idx + 1}
-                      </span>
-                    </td>
-
-                    {/* Name */}
-                    <td className="px-4 py-3">
-                      {isEditing ? (
-                        <input
-                          autoFocus
-                          type="text"
-                          value={editDraft.name}
-                          onChange={e => setEditDraft(d => ({ ...d, name: e.target.value }))}
-                          placeholder="Link name (e.g. Book a Call)"
-                          className="w-full px-2.5 py-1.5 border border-[#084032] rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#084032]/30"
+                  {/* Profile Info */}
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-3">
+                      {link.profileImage ? (
+                        <img
+                          src={link.profileImage}
+                          alt={link.name}
+                          className="w-10 h-10 rounded-full object-cover border border-gray-200 shrink-0 bg-gray-50"
                         />
                       ) : (
-                        <span className={`font-medium ${!isSaved ? 'text-gray-400 italic text-xs' : 'text-gray-800'}`}>
-                          {link.name || 'Unsaved — click edit'}
-                        </span>
+                        <div className="w-10 h-10 rounded-full bg-[#084032]/10 flex items-center justify-center text-[#084032] text-sm font-bold shrink-0">
+                          {link.name ? link.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'AP'}
+                        </div>
                       )}
-                    </td>
-
-                    {/* URL */}
-                    <td className="px-4 py-3 max-w-[250px]">
-                      {isEditing ? (
-                        <input
-                          type="url"
-                          value={editDraft.url}
-                          onChange={e => setEditDraft(d => ({ ...d, url: e.target.value }))}
-                          placeholder="https://calendar.google.com/..."
-                          className="w-full px-2.5 py-1.5 border border-[#084032] rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#084032]/30"
-                        />
-                      ) : (
-                        <span className="text-gray-400 text-xs truncate block max-w-[220px]" title={link.url}>
-                          {link.url || '—'}
-                        </span>
-                      )}
-                    </td>
-
-                    {/* Status Toggle */}
-                    <td className="px-4 py-3 text-center">
-                      {isSaved ? (
-                        <button
-                          onClick={() => toggleActive(link.id)}
-                          title={link.active ? 'Click to deactivate' : 'Click to activate'}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 ${
-                            link.active
-                              ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                              : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                          }`}
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full ${link.active ? 'bg-green-500' : 'bg-gray-400'}`} />
-                          {link.active ? 'Active' : 'Inactive'}
-                        </button>
-                      ) : (
-                        <span className="text-xs text-gray-300">—</span>
-                      )}
-                    </td>
-
-                    {/* Actions */}
-                    <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-1.5">
-                        {isEditing ? (
-                          <>
-                            {/* Confirm */}
-                            <button
-                              onClick={() => confirmEdit(link.id)}
-                              title="Save"
-                              className="p-1.5 text-green-600 hover:text-green-800 hover:bg-green-50 rounded transition-colors"
-                            >
-                              <FiCheck size={15} />
-                            </button>
-                            {/* Cancel */}
-                            <button
-                              onClick={() => cancelEdit(link.id)}
-                              title="Cancel"
-                              className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors"
-                            >
-                              <FiX size={15} />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            {/* Edit */}
-                            <button
-                              onClick={() => startEdit(link)}
-                              title="Edit"
-                              className="p-1.5 text-[#084032] hover:text-[#0a5c48] hover:bg-[#084032]/10 rounded transition-colors"
-                            >
-                              <FiEdit2 size={14} />
-                            </button>
-                            {/* Delete */}
-                            <button
-                              onClick={() => removeLink(link.id)}
-                              title="Delete"
-                              className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                            >
-                              <FiTrash2 size={14} />
-                            </button>
-                          </>
+                      <div>
+                        <span className="font-semibold text-gray-800 block leading-tight">{link.name}</span>
+                        {link.description && (
+                          <span className="text-[11px] text-gray-400 block line-clamp-1 mt-0.5 max-w-[200px]">
+                            {link.description}
+                          </span>
                         )}
                       </div>
-                    </td>
-                  </tr>
-                );
-              })}
+                    </div>
+                  </td>
+
+                  {/* Department / Category */}
+                  <td className="px-4 py-4">
+                    {link.category ? (
+                      <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider bg-green-50 text-[#084032] border border-[#084032]/10 px-2 py-0.5 rounded">
+                        {link.category}
+                      </span>
+                    ) : (
+                      <span className="text-gray-400 text-xs italic">General</span>
+                    )}
+                  </td>
+
+                  {/* Booking URL */}
+                  <td className="px-4 py-4 max-w-[200px]">
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#084032] hover:text-[#00a63e] hover:underline text-xs truncate block"
+                      title={link.url}
+                    >
+                      {link.url}
+                    </a>
+                  </td>
+
+                  {/* Status Toggle */}
+                  <td className="px-4 py-4 text-center">
+                    <button
+                      onClick={() => toggleActive(link.id)}
+                      title={link.active ? 'Click to deactivate' : 'Click to activate'}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                        link.active
+                          ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                      }`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full ${link.active ? 'bg-green-500' : 'bg-gray-400'}`} />
+                      {link.active ? 'Active' : 'Inactive'}
+                    </button>
+                  </td>
+
+                  {/* Actions */}
+                  <td className="px-4 py-4 text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <button
+                        onClick={() => openEditModal(link)}
+                        title="Edit Details"
+                        className="p-1.5 text-[#084032] hover:text-[#0a5c48] hover:bg-[#084032]/10 rounded transition-colors cursor-pointer"
+                      >
+                        <FiEdit2 size={14} />
+                      </button>
+                      <button
+                        onClick={() => removeLink(link.id)}
+                        title="Delete Slot"
+                        className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors cursor-pointer"
+                      >
+                        <FiTrash2 size={14} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* ── Form Edit Modal ── */}
+      {showModal && formData && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 overflow-y-auto">
+          <div className="bg-white rounded-2xl w-full max-w-2xl shadow-xl flex flex-col p-6 md:p-8 space-y-6 text-left my-8">
+            
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+              <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <FiCalendar className="text-[#084032]" />
+                {formData.isNew ? 'Create Appointment Slot' : 'Edit Appointment Profile'}
+              </h2>
+              <button
+                onClick={() => { setShowModal(false); setFormData(null); }}
+                className="p-1 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-all cursor-pointer"
+              >
+                <FiX size={20} />
+              </button>
+            </div>
+
+            {/* Modal Body Form */}
+            <form onSubmit={saveModal} className="space-y-5">
+              
+              {/* Profile Details Fields Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                {/* Full Name */}
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-gray-600">Full Name *</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.name}
+                    onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
+                    placeholder="e.g. John Doe"
+                    className="w-full px-3 py-2 border border-gray-250 rounded-lg text-sm focus:outline-none focus:border-[#084032] focus:ring-1 focus:ring-[#084032]"
+                  />
+                </div>
+
+                {/* Calendar URL */}
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-gray-600">Calendar Booking URL *</label>
+                  <input
+                    required
+                    type="url"
+                    value={formData.url}
+                    onChange={e => setFormData(p => ({ ...p, url: e.target.value }))}
+                    placeholder="https://calendar.google.com/..."
+                    className="w-full px-3 py-2 border border-gray-250 rounded-lg text-sm focus:outline-none focus:border-[#084032] focus:ring-1 focus:ring-[#084032]"
+                  />
+                </div>
+
+                {/* Department / Category */}
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-gray-600">Department / Category</label>
+                  <input
+                    type="text"
+                    value={formData.category}
+                    onChange={e => setFormData(p => ({ ...p, category: e.target.value }))}
+                    placeholder="e.g. Technical Support, Sales"
+                    className="w-full px-3 py-2 border border-gray-250 rounded-lg text-sm focus:outline-none focus:border-[#084032] focus:ring-1 focus:ring-[#084032]"
+                  />
+                </div>
+
+                {/* Profile Image URL & Upload */}
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-gray-600 block">Profile Image URL</label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={formData.profileImage}
+                      onChange={e => setFormData(p => ({ ...p, profileImage: e.target.value }))}
+                      placeholder="https://cloudinary.com/..."
+                      className="flex-1 px-3 py-2 border border-gray-250 rounded-lg text-sm focus:outline-none focus:border-[#084032]"
+                    />
+                    
+                    {/* Cloudinary Upload Trigger */}
+                    <div className="relative">
+                      <input
+                        type="file"
+                        id="modal-image-upload"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                        disabled={uploadingImage}
+                      />
+                      <label
+                        htmlFor="modal-image-upload"
+                        className={`flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-600 text-sm font-semibold cursor-pointer select-none transition-colors ${
+                          uploadingImage ? 'opacity-50 pointer-events-none' : ''
+                        }`}
+                      >
+                        {uploadingImage ? (
+                          <svg className="animate-spin h-4.5 w-4.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                          </svg>
+                        ) : (
+                          <FiUpload size={14} />
+                        )}
+                        <span>{uploadingImage ? 'Uploading' : 'Upload'}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Profile Image Preview if URL exists */}
+              {formData.profileImage && (
+                <div className="flex items-center gap-3 bg-gray-50 p-2.5 rounded-lg border border-gray-150 w-fit">
+                  <img
+                    src={formData.profileImage}
+                    alt="Uploaded Preview"
+                    className="w-12 h-12 rounded-lg object-cover border border-gray-200"
+                  />
+                  <div className="text-left">
+                    <span className="text-[11px] font-bold text-green-700 block">Preview Ready</span>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(p => ({ ...p, profileImage: '' }))}
+                      className="text-[10px] text-red-500 hover:text-red-700 font-semibold uppercase tracking-wider block mt-0.5 cursor-pointer"
+                    >
+                      Remove Photo
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Bio / Description */}
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-600">Bio / Description (Client-side details)</label>
+                <textarea
+                  rows="3"
+                  value={formData.description}
+                  onChange={e => setFormData(p => ({ ...p, description: e.target.value }))}
+                  placeholder="Provide a brief description of this meeting's scope, consulting parameters, or consultant biography..."
+                  className="w-full px-3 py-2 border border-gray-250 rounded-lg text-sm focus:outline-none focus:border-[#084032] focus:ring-1 focus:ring-[#084032]"
+                />
+              </div>
+
+              {/* Social links section */}
+              <div className="border-t border-gray-100 pt-4 space-y-3">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Social Profile Links</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* LinkedIn */}
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-550 flex items-center gap-1.5">
+                      <FaLinkedinIn className="text-blue-600" />
+                      LinkedIn Profile
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.socials.linkedin}
+                      onChange={e => setFormData(p => ({
+                        ...p,
+                        socials: { ...p.socials, linkedin: e.target.value }
+                      }))}
+                      placeholder="https://linkedin.com/in/username"
+                      className="w-full px-3 py-1.5 border border-gray-200 rounded-md text-xs focus:outline-none focus:border-[#084032]"
+                    />
+                  </div>
+
+                  {/* Twitter */}
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-550 flex items-center gap-1.5">
+                      <FaTwitter className="text-sky-500" />
+                      Twitter Profile
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.socials.twitter}
+                      onChange={e => setFormData(p => ({
+                        ...p,
+                        socials: { ...p.socials, twitter: e.target.value }
+                      }))}
+                      placeholder="https://twitter.com/username"
+                      className="w-full px-3 py-1.5 border border-gray-200 rounded-md text-xs focus:outline-none focus:border-[#084032]"
+                    />
+                  </div>
+
+                  {/* Facebook */}
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-550 flex items-center gap-1.5">
+                      <FaFacebookF className="text-indigo-600" />
+                      Facebook Profile
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.socials.facebook}
+                      onChange={e => setFormData(p => ({
+                        ...p,
+                        socials: { ...p.socials, facebook: e.target.value }
+                      }))}
+                      placeholder="https://facebook.com/username"
+                      className="w-full px-3 py-1.5 border border-gray-200 rounded-md text-xs focus:outline-none focus:border-[#084032]"
+                    />
+                  </div>
+
+                  {/* Instagram */}
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-550 flex items-center gap-1.5">
+                      <FaInstagram className="text-pink-500" />
+                      Instagram Profile
+                    </label>
+                    <input
+                      type="url"
+                      value={formData.socials.instagram}
+                      onChange={e => setFormData(p => ({
+                        ...p,
+                        socials: { ...p.socials, instagram: e.target.value }
+                      }))}
+                      placeholder="https://instagram.com/username"
+                      className="w-full px-3 py-1.5 border border-gray-200 rounded-md text-xs focus:outline-none focus:border-[#084032]"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Actions Footer */}
+              <div className="flex justify-end gap-3 border-t border-gray-100 pt-4 mt-6">
+                <button
+                  type="button"
+                  onClick={() => { setShowModal(false); setFormData(null); }}
+                  className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-50 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-[#084032] hover:bg-[#0a5c48] text-white rounded-lg text-sm font-semibold flex items-center gap-1 cursor-pointer"
+                >
+                  <FiCheck size={14} />
+                  Save Profile
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
       )}
 
