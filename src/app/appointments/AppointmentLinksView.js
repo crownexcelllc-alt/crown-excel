@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { FiCalendar, FiClock, FiArrowRight } from 'react-icons/fi';
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
 
@@ -40,6 +41,16 @@ export default function AppointmentLinksView({ links = [] }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f7f4] via-white to-[#e8f5f0] py-16 px-4 text-left">
       
+      {/* Back Button */}
+      <div className="max-w-4xl mx-auto mb-6">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#084032] hover:text-[#00a63e] uppercase tracking-wider transition-colors cursor-pointer"
+        >
+          ← Back to Home
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <div className="max-w-4xl mx-auto text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#084032] text-white mb-6 shadow-lg">
@@ -162,7 +173,7 @@ export default function AppointmentLinksView({ links = [] }) {
                         href={link.socials.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-7 h-7 rounded-full bg-gray-50 hover:bg-blue-50 text-gray-400 hover:text-blue-600 flex items-center justify-center transition-all border border-gray-200"
+                        className="w-7 h-7 rounded-full bg-blue-50 text-[#0077b5] border border-blue-200 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] flex items-center justify-center transition-all"
                         title="LinkedIn Profile"
                       >
                         <FaLinkedinIn size={11} />
@@ -173,7 +184,7 @@ export default function AppointmentLinksView({ links = [] }) {
                         href={link.socials.twitter}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-7 h-7 rounded-full bg-gray-50 hover:bg-sky-50 text-gray-400 hover:text-sky-500 flex items-center justify-center transition-all border border-gray-200"
+                        className="w-7 h-7 rounded-full bg-sky-50 text-[#1da1f2] border border-sky-200 hover:bg-[#1da1f2] hover:text-white hover:border-[#1da1f2] flex items-center justify-center transition-all"
                         title="Twitter Profile"
                       >
                         <FaTwitter size={11} />
@@ -184,7 +195,7 @@ export default function AppointmentLinksView({ links = [] }) {
                         href={link.socials.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-7 h-7 rounded-full bg-gray-50 hover:bg-indigo-50 text-gray-400 hover:text-indigo-650 flex items-center justify-center transition-all border border-gray-200"
+                        className="w-7 h-7 rounded-full bg-indigo-50 text-[#1877f2] border border-indigo-200 hover:bg-[#1877f2] hover:text-white hover:border-[#1877f2] flex items-center justify-center transition-all"
                         title="Facebook Profile"
                       >
                         <FaFacebookF size={11} />
@@ -195,7 +206,7 @@ export default function AppointmentLinksView({ links = [] }) {
                         href={link.socials.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-7 h-7 rounded-full bg-gray-50 hover:bg-pink-50 text-gray-400 hover:text-pink-650 flex items-center justify-center transition-all border border-gray-200"
+                        className="w-7 h-7 rounded-full bg-pink-50 text-[#e1306c] border border-pink-200 hover:bg-[#e1306c] hover:text-white hover:border-[#e1306c] flex items-center justify-center transition-all"
                         title="Instagram Profile"
                       >
                         <FaInstagram size={11} />
