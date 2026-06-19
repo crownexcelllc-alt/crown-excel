@@ -97,7 +97,7 @@ export default function BlogCommentsSection({
       </div>
 
       {/* Leave a Comment Form */}
-      <div className="bg-gray-50 rounded-2xl border border-gray-150 p-6 md:p-8 space-y-6 text-left">
+      <div className="bg-white space-y-6 text-left">
         <div className="space-y-1">
           <h4 className="text-xl font-bold text-gray-850">Leave a Comment</h4>
           <p className="text-xs text-gray-400">Your email address will not be published. Required fields are marked *</p>

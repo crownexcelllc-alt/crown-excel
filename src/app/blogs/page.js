@@ -92,7 +92,7 @@ export default async function ClientBlogsPage({ searchParams }) {
                 className="bg-white rounded-2xl overflow-hidden shadow-xs border border-gray-150 flex flex-col"
               >
                 {/* Cover Image Wrapper */}
-                <Link href={`/blogs/${blog.slug}`} className="block relative aspect-video bg-gray-100 overflow-hidden">
+                <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   {blog.coverImage ? (
                     <img
                       src={blog.coverImage}
@@ -104,17 +104,6 @@ export default async function ClientBlogsPage({ searchParams }) {
                       👑
                     </div>
                   )}
-                  {/* Dynamic Status Badges on card */}
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                    {blog.tags && blog.tags.slice(0, 1).map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 bg-black/60 backdrop-blur-md text-white rounded-md text-[10px] font-bold uppercase tracking-wider"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </Link>
 
                 {/* Article Body */}
@@ -131,12 +120,6 @@ export default async function ClientBlogsPage({ searchParams }) {
                           year: 'numeric'
                         }) : 'N/A'}
                       </span>
-                      {blog.readMinutes && (
-                        <>
-                          <span className="w-1 h-1 bg-gray-300 rounded-full" />
-                          <span>⏱ {blog.readMinutes} min read</span>
-                        </>
-                      )}
                     </div>
 
                     {/* Category Label */}
@@ -147,14 +130,14 @@ export default async function ClientBlogsPage({ searchParams }) {
                     )}
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-[#00a63e] leading-snug">
+                    <h2 className="text-xl font-bold text-[#00a63e] leading-snug line-clamp-1">
                       <Link href={`/blogs/${blog.slug}`}>
                         {blog.title}
                       </Link>
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-gray-550 text-sm leading-relaxed line-clamp-3">
+                    <p className="text-gray-550 text-sm leading-relaxed line-clamp-2">
                       {blog.excerpt || 'Read this article to learn more about this topic from our tech experts...'}
                     </p>
                   </div>
@@ -163,14 +146,14 @@ export default async function ClientBlogsPage({ searchParams }) {
                   <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-sm">
                     <Link
                       href={`/blogs/${blog.slug}`}
-                      className="font-bold text-[#084032] flex items-center gap-1"
+                      className="font-bold text-[#084032] flex items-center gap-1 hover:text-[#00a63e] transition-colors"
                     >
                       Read Article <span className="text-base">→</span>
                     </Link>
                     
-                    {blog.commentCount > 0 && (
+                    {blog.readMinutes && (
                       <span className="text-xs text-gray-400 font-semibold flex items-center gap-1">
-                        💬 {blog.commentCount} {blog.commentCount === 1 ? 'Comment' : 'Comments'}
+                        ⏱ {blog.readMinutes} min read
                       </span>
                     )}
                   </div>
