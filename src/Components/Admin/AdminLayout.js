@@ -135,6 +135,7 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/blogs", label: "List Blogs", group: "Blogs" },
     { href: "/admin/blogs/add", label: "Add Blog", group: "Blogs" },
     { href: "/admin/blogs/comments", label: "Comment List", group: "Blogs" },
+    { href: "/admin/blogs/users", label: "Blog Users", group: "Blogs" },
     { href: "/admin/appointments", label: "Appointment Links", group: "Scheduling" },
     { href: "/admin/users", label: "Users", group: "Management" },
     { href: "/admin/activity", label: "Activity Logs", group: "Management" },

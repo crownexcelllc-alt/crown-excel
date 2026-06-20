@@ -229,7 +229,7 @@ export default async function BlogDetailsPage({ params }) {
         </div>
 
         {/* Sidebar Column (3/12) */}
-        <aside className="lg:col-span-3 lg:sticky lg:top-10 space-y-8 text-left">
+        <aside className="lg:col-span-3 space-y-8 text-left">
           
           {/* About Crown Excel widget */}
           <div className="text-left space-y-4 pb-8 border-b border-gray-100">
