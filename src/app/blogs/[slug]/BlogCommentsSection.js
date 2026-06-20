@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import OtpModal from '@/Components/OtpModal/OtpModal';
 
 export default function BlogCommentsSection({ 
   blogId, 
@@ -14,18 +15,27 @@ export default function BlogCommentsSection({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [showOtpModal, setShowOtpModal] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
     setSuccess(false);
 
-    if (!authorName.trim() || !commentText.trim()) {
-      setError('Name and Comment are required.');
+    if (!authorName.trim() || !authorEmail.trim() || !commentText.trim()) {
+      setError('Name, Email, and Comment are required.');
       return;
     }
 
+    // Open OtpModal to verify email before posting
+    setShowOtpModal(true);
+  };
+
+  const handleCommentSubmit = async () => {
+    setShowOtpModal(false);
     setLoading(true);
+    setError('');
+    setSuccess(false);
 
     try {
       const res = await fetch(`${apiBase}/api/blogs/comments`, {
@@ -34,7 +44,7 @@ export default function BlogCommentsSection({
         body: JSON.stringify({
           blogId,
           authorName: authorName.trim(),
-          authorEmail: authorEmail.trim() || null,
+          authorEmail: authorEmail.trim(),
           comment: commentText.trim(),
         }),
       });
@@ -132,13 +142,14 @@ export default function BlogCommentsSection({
             </div>
             <div>
               <label className="block text-xs font-semibold text-gray-650 mb-1">
-                Email
+                Email <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 value={authorEmail}
                 onChange={(e) => setAuthorEmail(e.target.value)}
-                placeholder="john@example.com (optional)"
+                placeholder="john@example.com"
+                required
                 className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-1 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all"
               />
             </div>
@@ -167,6 +178,13 @@ export default function BlogCommentsSection({
           </button>
         </form>
       </div>
+
+      <OtpModal
+        isOpen={showOtpModal}
+        email={authorEmail}
+        onVerified={handleCommentSubmit}
+        onClose={() => setShowOtpModal(false)}
+      />
     </div>
   );
 }
