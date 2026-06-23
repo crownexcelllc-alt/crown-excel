@@ -1,74 +1,52 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Script from "next/script";
+import React from "react";
+import parse, { domToReact } from "html-react-parser";
 
 export default function CustomScripts({ settings }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
 
-  useEffect(() => {
-    // Exclude injection on admin routes or if settings aren't loaded
-    if (isAdmin || !settings) return;
+  if (isAdmin || !settings) return null;
 
-    // Use a global window flag to prevent duplicate injections on SPA page transitions
-    if (window.customScriptsInjected) return;
-    window.customScriptsInjected = true;
-
-    // Inject Custom Head Script (HTML)
-    if (settings.customHeadScript) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = settings.customHeadScript;
-      
-      const elementsToAppend = [];
-      Array.from(tempDiv.childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          if (node.tagName === "SCRIPT") {
-            const script = document.createElement("script");
-            // Copy all attributes (like src, async, defer, etc.)
-            Array.from(node.attributes).forEach((attr) => {
-              script.setAttribute(attr.name, attr.value);
-            });
-            script.innerHTML = node.innerHTML;
-            elementsToAppend.push({ target: document.head, element: script });
-          } else {
-            elementsToAppend.push({ target: document.head, element: node.cloneNode(true) });
-          }
+  // Options for html-react-parser to upgrade <script> to next/script
+  const parseOptions = {
+    replace: (domNode) => {
+      if (domNode.name === "script") {
+        const { src, id, async, defer, ...otherAttribs } = domNode.attribs || {};
+        
+        // Extract inner HTML if there is a text child
+        let innerHTML = "";
+        if (domNode.children && domNode.children.length > 0) {
+          // Join text content of all children
+          innerHTML = domNode.children.map(child => child.data).join("");
         }
-      });
+        
+        // Generate a stable key/id
+        const scriptId = id || `custom-script-${Math.random().toString(36).substr(2, 9)}`;
 
-      elementsToAppend.forEach(({ target, element }) => {
-        target.appendChild(element);
-      });
+        return (
+          <Script
+            key={scriptId}
+            id={scriptId}
+            src={src}
+            async={async !== undefined ? true : undefined}
+            defer={defer !== undefined ? true : undefined}
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}
+            {...otherAttribs}
+          />
+        );
+      }
     }
+  };
 
-    // Inject Custom Body Script (HTML)
-    if (settings.customBodyScript) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = settings.customBodyScript;
-      
-      const elementsToAppend = [];
-      Array.from(tempDiv.childNodes).forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          if (node.tagName === "SCRIPT") {
-            const script = document.createElement("script");
-            // Copy all attributes
-            Array.from(node.attributes).forEach((attr) => {
-              script.setAttribute(attr.name, attr.value);
-            });
-            script.innerHTML = node.innerHTML;
-            elementsToAppend.push({ target: document.body, element: script });
-          } else {
-            elementsToAppend.push({ target: document.body, element: node.cloneNode(true) });
-          }
-        }
-      });
-
-      elementsToAppend.forEach(({ target, element }) => {
-        target.appendChild(element);
-      });
-    }
-  }, [settings, isAdmin]);
-
-  return null;
+  return (
+    <>
+      {settings.customHeadScript && parse(settings.customHeadScript, parseOptions)}
+      {settings.customBodyScript && parse(settings.customBodyScript, parseOptions)}
+    </>
+  );
 }
