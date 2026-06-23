@@ -10,7 +10,10 @@ import { FiLogOut, FiLock } from 'react-icons/fi';
 import { IoIosLogOut } from "react-icons/io";
 
 const ROLE_ALLOWED_ROUTES = {
+  // ── Super Admin: everything ───────────────────────────────────────────────
   super_admin: ["*"],
+
+  // ── Admin: everything except User Management ──────────────────────────────
   admin: [
     "/admin",
     "/admin/applications",
@@ -21,8 +24,13 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/seo",
     "/admin/redirects",
     "/admin/media",
-    "/admin/activity"
+    "/admin/activity",
+    "/admin/blogs",
+    "/admin/appointments",
+    "/admin/users",
   ],
+
+  // ── Client: own website management ───────────────────────────────────────
   client: [
     "/admin",
     "/admin/applications",
@@ -32,32 +40,47 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/pages",
     "/admin/seo",
     "/admin/redirects",
-    "/admin/media"
+    "/admin/media",
+    "/admin/blogs",
+    "/admin/appointments",
   ],
+
+  // ── SEO Specialist: Pages & Routes + SEO Manager + URL Redirects ──────────
   seo: [
     "/admin",
     "/admin/pages",
     "/admin/seo",
-    "/admin/redirects"
+    "/admin/redirects",
   ],
+
+  // ── Blog Manager: ONLY Blogs section ─────────────────────────────────────
+  blog: [
+    "/admin",
+    "/admin/blogs",
+  ],
+
+  // ── Editor: Pages, Redirects & Media only ────────────────────────────────
   editor: [
     "/admin",
     "/admin/pages",
     "/admin/redirects",
-    "/admin/media"
+    "/admin/media",
   ],
+
+  // ── Viewer: Pages & SEO view only ────────────────────────────────────────
   viewer: [
     "/admin",
     "/admin/pages",
     "/admin/seo",
-    "/admin/redirects"
-  ]
+    "/admin/redirects",
+  ],
 };
 
 export default function AdminLayout({ children, title = '' }) {
   const pathname = usePathname();
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [blogsOpen, setBlogsOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -78,9 +101,18 @@ export default function AdminLayout({ children, title = '' }) {
     setLoading(false);
   }, []);
 
-  const role = currentUser?.role || 'super_admin';
+  useEffect(() => {
+    if (pathname && pathname.startsWith("/admin/blogs")) {
+      setBlogsOpen(true);
+    }
+  }, [pathname]);
+
+  // ⚠️ Do NOT default to super_admin — wait for real user data
+  // If currentUser is null (still loading), role is null → no routes shown
+  const role = currentUser?.role ?? null;
 
   const isRouteAllowed = (path) => {
+    if (!role) return false; // Not loaded yet → deny all
     const allowed = ROLE_ALLOWED_ROUTES[role] || [];
     if (allowed.includes("*")) return true;
     return allowed.some(allowedPath => {
@@ -100,6 +132,11 @@ export default function AdminLayout({ children, title = '' }) {
     { href: "/admin/seo", label: "SEO Manager", group: "CMS" },
     { href: "/admin/redirects", label: "URL Redirects", group: "CMS" },
     { href: "/admin/media", label: "Media Library", group: "CMS" },
+    { href: "/admin/blogs", label: "List Blogs", group: "Blogs" },
+    { href: "/admin/blogs/add", label: "Add Blog", group: "Blogs" },
+    { href: "/admin/blogs/comments", label: "Comment List", group: "Blogs" },
+    { href: "/admin/blogs/users", label: "Blog Users", group: "Blogs" },
+    { href: "/admin/appointments", label: "Appointment Links", group: "Scheduling" },
     { href: "/admin/users", label: "Users", group: "Management" },
     { href: "/admin/activity", label: "Activity Logs", group: "Management" },
   ];
@@ -113,7 +150,7 @@ export default function AdminLayout({ children, title = '' }) {
     return acc;
   }, {});
 
-  const isAllowed = loading || isRouteAllowed(pathname);
+  const isAllowed = loading || (role !== null && isRouteAllowed(pathname));
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white text-black relative">
@@ -141,30 +178,82 @@ export default function AdminLayout({ children, title = '' }) {
           </Link>
         </div>
         <hr className='bg-gray-400 text-gray-400 w-full h-[2px] mb-7' />
-        <nav className="flex flex-col gap-1 text-sm">
-          {Object.entries(groupedLinks).map(([group, links]) => (
-            <div key={group} className="mb-3">
-              <p className="px-3 py-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">{group}</p>
-              {links.map(link => {
-                const isActive = pathname === link.href;
+        {/* ── Sidebar nav: only render after user role is confirmed ── */}
+        {loading ? (
+          // Skeleton while loading — prevents role flash
+          <div className="flex flex-col gap-2 mt-1">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-8 bg-gray-100 rounded animate-pulse" style={{ opacity: 1 - i * 0.15 }} />
+            ))}
+          </div>
+        ) : (
+          <nav className="flex flex-col gap-1 text-sm">
+            {Object.entries(groupedLinks).map(([group, links]) => {
+              if (group === 'Blogs') {
                 return (
-                  <Link key={link.href} href={link.href}>
-                    <p
-                      className={`px-3 py-2 rounded ${
-                        isActive
-                          ? "bg-[#084032] text-white font-semibold"
-                          : "hover:bg-gray-100"
-                      }`}
-                      style={isActive ? { cursor: "default" } : {}}
+                  <div key={group} className="mb-3">
+                    <button
+                      onClick={() => setBlogsOpen(!blogsOpen)}
+                      className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-gray-100 rounded transition duration-150 cursor-pointer text-sm"
                     >
-                      {link.label}
-                    </p>
-                  </Link>
+                      <span>Blogs</span>
+                      <span className="text-gray-400">
+                        {blogsOpen ? (
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" /></svg>
+                        ) : (
+                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" /></svg>
+                        )}
+                      </span>
+                    </button>
+                    {blogsOpen && (
+                      <div className="mt-1 pl-2 ml-1 flex flex-col gap-0.5 border-l border-gray-150">
+                        {links.map(link => {
+                          const isActive = pathname === link.href;
+                          return (
+                            <Link key={link.href} href={link.href}>
+                              <p
+                                className={`px-3 py-2 text-sm rounded ${
+                                  isActive
+                                    ? "bg-[#084032] text-white font-semibold"
+                                    : "hover:bg-gray-100"
+                                }`}
+                                style={isActive ? { cursor: "default" } : {}}
+                              >
+                                {link.label}
+                              </p>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
-              })}
-            </div>
-          ))}
-        </nav>
+              }
+              return (
+                <div key={group} className="mb-3">
+                  <p className="px-3 py-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">{group}</p>
+                  {links.map(link => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link key={link.href} href={link.href}>
+                        <p
+                          className={`px-3 py-2 rounded ${
+                            isActive
+                              ? "bg-[#084032] text-white font-semibold"
+                              : "hover:bg-gray-100"
+                          }`}
+                          style={isActive ? { cursor: "default" } : {}}
+                        >
+                          {link.label}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </nav>
+        )}
       </aside>
 
       {/* Main content */}
