@@ -28,7 +28,8 @@ export async function GET() {
       googleTagManagerId: '',
       facebookPixelId: '',
       customHeadScript: '',
-      customBodyScript: ''
+      customBodyScript: '',
+      thirdPartyApps: []
     };
     
     const result = settings ? { ...defaultSettings, ...settings } : defaultSettings;

@@ -43,10 +43,24 @@ export default function CustomScripts({ settings }) {
     }
   };
 
+  // Filter active third-party apps
+  const activeThirdPartyApps = settings.thirdPartyApps?.filter(app => app.active && app.code) || [];
+  
+  // Combine custom scripts with third-party app scripts based on position
+  const combinedHeadScript = [
+    settings.customHeadScript || '',
+    ...activeThirdPartyApps.filter(app => app.position === 'head').map(app => app.code)
+  ].join('\n');
+
+  const combinedBodyScript = [
+    settings.customBodyScript || '',
+    ...activeThirdPartyApps.filter(app => app.position === 'body').map(app => app.code)
+  ].join('\n');
+
   return (
     <>
-      {settings.customHeadScript && parse(settings.customHeadScript, parseOptions)}
-      {settings.customBodyScript && parse(settings.customBodyScript, parseOptions)}
+      {combinedHeadScript.trim() && parse(combinedHeadScript, parseOptions)}
+      {combinedBodyScript.trim() && parse(combinedBodyScript, parseOptions)}
     </>
   );
 }

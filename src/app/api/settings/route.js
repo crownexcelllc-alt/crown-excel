@@ -42,6 +42,7 @@ async function saveSettings(data) {
     facebookPixelId: data.facebookPixelId || '',
     customHeadScript: data.customHeadScript || '',
     customBodyScript: data.customBodyScript || '',
+    thirdPartyApps: Array.isArray(data.thirdPartyApps) ? data.thirdPartyApps : [],
     updatedAt: new Date().toISOString()
   };
 

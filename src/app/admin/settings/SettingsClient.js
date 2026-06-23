@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { BarChart3, Code } from 'lucide-react';
+import { BarChart3, Code, Plus, Trash2 } from 'lucide-react';
 
 export default function SettingsClient({ initialSettings = {}, apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [settings, setSettings] = useState(initialSettings);
@@ -9,6 +9,28 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
 
   const handleChange = (field, value) => {
     setSettings(prev => ({ ...prev, [field]: value }));
+  };
+
+  const addApp = () => {
+    const newApp = { id: Date.now().toString(), name: '', code: '', position: 'head', active: true };
+    setSettings(prev => ({
+      ...prev,
+      thirdPartyApps: [...(prev.thirdPartyApps || []), newApp]
+    }));
+  };
+
+  const updateApp = (id, field, value) => {
+    setSettings(prev => ({
+      ...prev,
+      thirdPartyApps: prev.thirdPartyApps.map(app => app.id === id ? { ...app, [field]: value } : app)
+    }));
+  };
+
+  const removeApp = (id) => {
+    setSettings(prev => ({
+      ...prev,
+      thirdPartyApps: prev.thirdPartyApps.filter(app => app.id !== id)
+    }));
   };
 
   const handleSave = async () => {
@@ -240,6 +262,99 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
             </div>
           </div>
 
+          {/* Third-Party Apps Builder Card */}
+          <div className="bg-gray-50/50 border border-gray-200 rounded-xl p-5 shadow-sm flex flex-col justify-between md:col-span-3">
+            <div>
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-200">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                    <Plus className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-sm md:text-base">Third-Party Apps & Integrations</h3>
+                    <p className="text-xs text-gray-500">Add Microsoft Clarity, Chat Widgets, and other 3rd party scripts by name.</p>
+                  </div>
+                </div>
+                <button
+                  onClick={addApp}
+                  className="px-3 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition flex items-center gap-1"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  Add App
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {(!settings.thirdPartyApps || settings.thirdPartyApps.length === 0) && (
+                  <div className="text-center py-6 text-sm text-gray-400 bg-white border border-dashed border-gray-300 rounded-lg">
+                    No 3rd party apps added yet. Click "Add App" to integrate one.
+                  </div>
+                )}
+                
+                {settings.thirdPartyApps?.map((app) => (
+                  <div key={app.id} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative transition-all">
+                    <div className="absolute top-4 right-4 flex items-center gap-3">
+                      <label className="flex items-center cursor-pointer gap-2">
+                        <span className="text-xs font-semibold text-gray-500">{app.active ? 'Active' : 'Inactive'}</span>
+                        <div className="relative">
+                          <input 
+                            type="checkbox" 
+                            className="sr-only" 
+                            checked={app.active}
+                            onChange={(e) => updateApp(app.id, 'active', e.target.checked)}
+                          />
+                          <div className={`block w-10 h-6 rounded-full transition ${app.active ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                          <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${app.active ? 'transform translate-x-4' : ''}`}></div>
+                        </div>
+                      </label>
+                      <button 
+                        onClick={() => removeApp(app.id)}
+                        className="text-red-400 hover:text-red-600 transition p-1"
+                        title="Remove App"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pr-32">
+                      <div className="flex flex-col md:col-span-2">
+                        <label className="block text-xs font-bold text-gray-700 mb-1.5">App Name</label>
+                        <input
+                          type="text"
+                          value={app.name}
+                          onChange={(e) => updateApp(app.id, 'name', e.target.value)}
+                          placeholder="e.g., Microsoft Clarity"
+                          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none"
+                        />
+                      </div>
+                      <div className="flex flex-col md:col-span-1">
+                        <label className="block text-xs font-bold text-gray-700 mb-1.5">Injection Position</label>
+                        <select
+                          value={app.position}
+                          onChange={(e) => updateApp(app.id, 'position', e.target.value)}
+                          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none bg-white"
+                        >
+                          <option value="head">Head (Analytics, Meta tags)</option>
+                          <option value="body">Body (Chat widgets, Pixels)</option>
+                        </select>
+                      </div>
+                      <div className="flex flex-col md:col-span-3 mt-2">
+                        <label className="block text-xs font-bold text-gray-700 mb-1.5">HTML/Script Code</label>
+                        <textarea
+                          value={app.code}
+                          onChange={(e) => updateApp(app.id, 'code', e.target.value)}
+                          placeholder="Paste the provided <script> or HTML code here..."
+                          rows={3}
+                          className="rounded-md border border-gray-300 px-3 py-2 text-sm font-mono focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none resize-y"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Custom Header & Body Scripts Injection Card */}
           <div className="bg-gray-50/50 hover:bg-gray-50 border border-gray-200 rounded-xl p-5 transition shadow-sm flex flex-col justify-between md:col-span-3">
             <div>
@@ -281,7 +396,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                                focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">
-                    Raw HTML/scripts injected in &lt;head&gt; (e.g. site ownership keys, web verification tags, hotjar).
+                    Raw HTML/scripts injected in &lt;head&gt; (e.g. Microsoft Clarity, Google Tag Manager, site ownership keys, hotjar).
                   </span>
                 </div>
 
@@ -299,7 +414,7 @@ export default function SettingsClient({ initialSettings = {}, apiBase = process
                                focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition bg-white resize-none"
                   />
                   <span className="text-[10px] text-gray-400 mt-1">
-                    Raw HTML/scripts injected before &lt;/body&gt; (e.g. fallback pixel tracking noscripts, chat icons, tools).
+                    Raw HTML/scripts injected before &lt;/body&gt; (e.g. 3rd party apps, Tawk.to chat widget, fallback pixel tracking).
                   </span>
                 </div>
               </div>
