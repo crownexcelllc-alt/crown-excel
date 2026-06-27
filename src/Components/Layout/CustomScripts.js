@@ -44,18 +44,24 @@ export default function CustomScripts({ settings }) {
   };
 
   // Filter active third-party apps
-  const activeThirdPartyApps = settings.thirdPartyApps?.filter(app => app.active && app.code) || [];
+  const activeThirdPartyApps = settings.thirdPartyApps?.filter(app => app.active) || [];
   
-  // Combine custom scripts with third-party app scripts based on position
+  // Combine custom scripts with third-party app scripts
   const combinedHeadScript = [
     settings.customHeadScript || '',
-    ...activeThirdPartyApps.filter(app => app.position === 'head').map(app => app.code)
-  ].join('\n');
+    settings.googleAnalyticsHeadCode || '',
+    settings.googleTagManagerHeadCode || '',
+    settings.facebookPixelHeadCode || '',
+    ...activeThirdPartyApps.map(app => app.headCode || '')
+  ].filter(Boolean).join('\n');
 
   const combinedBodyScript = [
     settings.customBodyScript || '',
-    ...activeThirdPartyApps.filter(app => app.position === 'body').map(app => app.code)
-  ].join('\n');
+    settings.googleAnalyticsBodyCode || '',
+    settings.googleTagManagerBodyCode || '',
+    settings.facebookPixelBodyCode || '',
+    ...activeThirdPartyApps.map(app => app.bodyCode || '')
+  ].filter(Boolean).join('\n');
 
   return (
     <>
