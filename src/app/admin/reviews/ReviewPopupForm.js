@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import toast from 'react-hot-toast';
 
 function StarRating({ value, onChange }) {
   return (
@@ -99,11 +100,13 @@ export default function ReviewPopupForm({ apiBase, onClose, onSuccess }) {
         throw new Error("Failed to add review. Please try again.");
       }
       setLoading(false);
+      toast.success('Review added successfully!');
       onSuccess();
       onClose(); // Automatically close the popup after success
     } catch (err) {
       setLoading(false);
       setError(err.message);
+      toast.error(err.message);
     }
   }
 

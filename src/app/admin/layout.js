@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import AdminLayout from '@/Components/Admin/AdminLayout';
 import LoginPage from "./login/page";
+import { Toaster } from 'react-hot-toast';
 import "./admin.css"
 
 export default function Layout({ children }) {
@@ -28,5 +29,10 @@ export default function Layout({ children }) {
   if (isAuthenticated === null) return null;
   if (!isAuthenticated) return <LoginPage />;
 
-  return <AdminLayout>{children}</AdminLayout>;
+  return (
+    <>
+      <Toaster position="top-right" />
+      <AdminLayout>{children}</AdminLayout>
+    </>
+  );
 }

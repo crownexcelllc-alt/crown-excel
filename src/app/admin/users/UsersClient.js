@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { FiPlus, FiUsers, FiEdit2, FiTrash2, FiShield, FiCheckCircle, FiAlertCircle, FiX, FiUserCheck, FiUserX } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 
 const ROLES = [
   { value: 'super_admin', label: 'Super Admin',   color: 'bg-red-100 text-red-700',    desc: 'Full access to everything' },
@@ -18,14 +19,11 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
   const [editUser, setEditUser] = useState(null); // user being edited
   const [editForm, setEditForm] = useState({ name: '', email: '', password: '' });
   const [editLoading, setEditLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState('');
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'editor', assignedWebsites: [] });
 
   const showMsg = (msg, type) => {
-    setMessage(msg);
-    setMessageType(type);
-    setTimeout(() => setMessage(''), 4000);
+    if (type === 'success') toast.success(msg);
+    else toast.error(msg);
   };
 
   const handleCreate = async () => {
@@ -148,14 +146,6 @@ export default function UsersClient({ initialUsers = [], websites = [], apiBase 
 
   return (
     <div className="space-y-6">
-      {message && (
-        <div className={`rounded-md px-4 py-3 text-sm font-medium flex items-center gap-2
-          ${messageType === 'success' ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-700 border border-red-300'}`}>
-          {messageType === 'success' ? <FiCheckCircle /> : <FiAlertCircle />}
-          {message}
-        </div>
-      )}
-
       {/* Stats + Add */}
       <div className="flex items-center justify-between">
         <div className="flex gap-4 text-sm text-gray-500">

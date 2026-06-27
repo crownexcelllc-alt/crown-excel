@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useMemo } from 'react';
 import ReviewPopupForm from './ReviewPopupForm';
+import toast from 'react-hot-toast';
 
 export default function ReviewsTableClient({ initialData = [], apiBase = process.env.NEXT_PUBLIC_API_URL }) {
   const [rows, setRows] = useState(initialData || []);
@@ -19,8 +20,9 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       if (!res.ok) throw new Error('Fetch failed');
       const data = await res.json();
       setRows(data);
+      toast.success('Reviews refreshed');
     } catch (err) {
-      alert('Failed to refresh reviews');
+      toast.error('Failed to refresh reviews');
     } finally {
       setLoading(false);
     }
@@ -37,9 +39,10 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Approve failed');
+      toast.success('Review approved');
       await refresh();
     } catch (err) {
-      alert('Failed to approve: ' + (err.message || err));
+      toast.error('Failed to approve: ' + (err.message || err));
     } finally { setLoading(false); }
   }
 
@@ -50,9 +53,10 @@ export default function ReviewsTableClient({ initialData = [], apiBase = process
       const res = await fetch(`${apiBase}/api/reviews?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Delete failed');
+      toast.success('Review deleted');
       await refresh();
     } catch (err) {
-      alert('Failed to delete: ' + (err.message || err));
+      toast.error('Failed to delete: ' + (err.message || err));
     } finally { setLoading(false); }
   }
 

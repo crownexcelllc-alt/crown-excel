@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiSave, FiEye, FiSearch, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 
 const InputField = ({ label, value, onChange, type = 'text', placeholder = '', helpText = '', maxLength, disabled }) => (
   <div className="flex flex-col mb-4">
@@ -51,8 +52,6 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
     sitemap: { include: true, priority: 0.5, changeFrequency: 'weekly' },
   });
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState('');
   const [activeTab, setActiveTab] = useState('meta');
   const [keywordsInput, setKeywordsInput] = useState(
     Array.isArray(seo.metaKeywords) ? seo.metaKeywords.join(', ') : ''
@@ -117,13 +116,9 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
       }
 
       const data = await res.json();
-      setMessage(`SEO saved successfully! Score: ${data.seoScore}%`);
-      setMessageType('success');
-      setTimeout(() => setMessage(''), 4000);
+      toast.success(`SEO saved successfully! Score: ${data.seoScore}%`);
     } catch (err) {
-      setMessage('Failed to save: ' + err.message);
-      setMessageType('error');
-      setTimeout(() => setMessage(''), 5000);
+      toast.error('Failed to save: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -174,19 +169,6 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
           )}
         </div>
       </div>
-
-      {/* Message */}
-      {message && (
-        <div
-          className={`rounded-md px-4 py-3 text-sm font-medium flex items-center gap-2
-            ${messageType === 'success'
-              ? 'bg-green-100 text-green-700 border border-green-300'
-              : 'bg-red-100 text-red-700 border border-red-300'}`}
-        >
-          {messageType === 'success' ? <FiCheckCircle /> : <FiAlertCircle />}
-          {message}
-        </div>
-      )}
 
       {/* Tabs */}
       <div className="bg-white rounded-lg shadow">
