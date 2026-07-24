@@ -1,0 +1,22 @@
+export default function robots() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.crownexcel.ae';
+
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/admin',
+          '/admin/*',
+          '/api',
+          '/api/*',
+        ],
+      },
+    ],
+    sitemap: [
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/sitemap-pages.xml`,
+    ],
+  };
+}
