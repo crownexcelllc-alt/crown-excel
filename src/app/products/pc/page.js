@@ -8,6 +8,14 @@ import HeavyComputing from '@/app/_components/Products/Desktop/HeavyComputing/He
 import AllinOneDesktops from '@/app/_components/Products/Desktop/AllinOneDesktops/AllinOneDesktops'
 import WhyBuyFromUs from '@/app/_components/Products/Desktop/WhyBuyFromUs/WhyBuyFromUs'
 import DesktopBrands from '@/app/_components/Products/Desktop/DesktopBrandsWeDeal/DesktopBrands'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/pc', {
+    title: 'Desktops & PCs | Crown Excel',
+    description: 'Business PCs, desktop computers, and customized workstations at Crown Excel Dubai.',
+  });
+}
 
 const page = () => {
   return (

@@ -1,13 +1,16 @@
 import ContactUsForm from '@/app/_components/ContactUsPage/ContactUsForm/ContactUsForm'
 import NetworkCoreAreas from '@/app/_components/OurServicesPages/Networking/NetworkCoreAreas/NetworkCoreAreas'
 import NetworkEmpowering from '@/app/_components/OurServicesPages/Networking/NetworkEmpowering/NetworkEmpowering_new'
-// import NetworkEmpowering from '@/app/_components/OurServicesPages/Networking/NetworkEmpowering/NetworkEmpowering'
 import NetworkingBanner from '@/app/_components/OurServicesPages/Networking/NetworkingBanner/NetworkingBanner'
-// import NetworkingCabling from '@/app/_components/OurServicesPages/Networking/NetworkingCabling/NetworkingCabling'
-// import NetworkingFAQ from '@/app/_components/OurServicesPages/Networking/NetworkingFAQ/NetworkingFAQ'
-// import NetworkingFirewall from '@/app/_components/OurServicesPages/Networking/NetworkingFirewall/NetworkingFirewall'
-// import NetworkingSmart from '@/app/_components/OurServicesPages/Networking/NetworkingSmart/NetworkingSmart'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/networking', {
+    title: 'Networking & Cabling Solutions | Crown Excel',
+    description: 'Structured cabling, network switches, routers, and enterprise network setup in Dubai.',
+  });
+}
 
 const Networking = () => {
   return (

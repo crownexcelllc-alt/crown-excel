@@ -3,6 +3,7 @@ import { getApiBase } from '@/lib/api-helper';
 import { getDb } from '@/lib/mongodb';
 import Link from 'next/link';
 import BlogCommentsSection from './BlogCommentsSection';
+import { generateCmsMetadata, getCmsSeo } from '@/lib/cms-fetch';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -11,16 +12,22 @@ export const revalidate = 0;
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const apiBase = getApiBase();
+  const routePath = `/blogs/${slug}`;
 
   try {
+    const cmsSeo = await getCmsSeo(routePath);
+    if (cmsSeo) {
+      return await generateCmsMetadata(routePath);
+    }
+
     const res = await fetch(`${apiBase}/api/blogs?slug=${slug}`);
     if (res.ok) {
       const blog = await res.json();
-      return {
-        title: blog.metaTitle || `${blog.title} | Blog`,
+      return await generateCmsMetadata(routePath, {
+        title: blog.metaTitle || `${blog.title} | Crown Excel Blog`,
         description: blog.metaDescription || blog.excerpt || 'Read the article on Crown Excel Blog.',
         keywords: blog.keywords || '',
-      };
+      });
     }
   } catch (err) {
     console.error('generateMetadata error for blog slug: ' + slug, err);

@@ -7,6 +7,14 @@ import SwitchingLatestProduct from '@/app/_components/Products/Switching/Switchi
 import SwitchingUnlease from '@/app/_components/Products/Switching/SwitchingUnlease/SwitchingUnlease'
 import SwitchingWhyBuyFromUs from '@/app/_components/Products/Switching/SwitchingWhyBuyFromUs/SwitchingWhyBuyFromUs'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/switching', {
+    title: 'Network Switches & Managed Switches | Crown Excel',
+    description: 'Gigabit network switches, PoE switches, and managed network switching solutions in Dubai.',
+  });
+}
 
 const Switching = () => {
   return (

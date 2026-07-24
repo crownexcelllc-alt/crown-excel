@@ -7,6 +7,14 @@ import PrinterBanner from '@/app/_components/Products/Printers/PrinterBanner/Pri
 import UnleasePrinters from '@/app/_components/Products/Printers/UnleasePrinters/UnleasePrinters'
 import WhyBuyFromUsPrinters from '@/app/_components/Products/Printers/WhyBuyFromUsPrinters/WhyBuyFromUsPrinters'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/printers', {
+    title: 'Printers & Multi-Function Printers | Crown Excel',
+    description: 'Laserjet, inkjet, barcode, and heavy-duty office printers at Crown Excel Dubai.',
+  });
+}
 
 const Printers = () => {
   return (

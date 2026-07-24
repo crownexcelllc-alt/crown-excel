@@ -1,11 +1,14 @@
-// import ServerEmpowering from '@/app/_components/OurServicesPages/ServerSupport/ServerEmpowering/ServerEmpowering'
-// import ServerFaq from '@/app/_components/OurServicesPages/ServerSupport/ServerFaq/ServerFaq'
-// import ServerServices from '@/app/_components/OurServicesPages/ServerSupport/ServerServices/ServerServices'
 import ServerSmart from '@/app/_components/OurServicesPages/ServerSupport/ServerSmart/ServerSmart'
 import ServerSupportBanner from '@/app/_components/OurServicesPages/ServerSupport/ServerSupportBanner/ServerSupportBanner'
-// import ServerWeAreBest from '@/app/_components/OurServicesPages/ServerSupport/ServerWeAreBest/ServerWeAreBest'
-// import ServerWhyChooseUs from '@/app/_components/OurServicesPages/ServerSupport/ServerWhyChooseUs/ServerWhyChooseUs'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/storage&virtualization', {
+    title: 'Storage & Virtualization Solutions | Crown Excel',
+    description: 'SAN/NAS storage solutions, server virtualization, and data management in Dubai.',
+  });
+}
 
 const ServerSupport = () => {
   return (

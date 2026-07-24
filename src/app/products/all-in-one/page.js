@@ -7,6 +7,14 @@ import AllinOneHeavyComputing from '@/app/_components/Products/AllinOne/AllinOne
 import OneinAllProducts from '@/app/_components/Products/AllinOne/OneinAllProducts/OneinAllProducts'
 import AllinOneFromUs from '@/app/_components/Products/AllinOne/AllinOneFromUs/AllinOneFromUs'
 import AllinOneBrandsWeDeal from '@/app/_components/Products/AllinOne/AllinOneBrandsWeDeal/AllinOneBrandsWeDeal'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/all-in-one', {
+    title: 'All-In-One PCs & Desktops | Crown Excel',
+    description: 'High-performance All-In-One desktop computers for office and business solutions in Dubai.',
+  });
+}
 
 const AllinOne = () => {
   return (

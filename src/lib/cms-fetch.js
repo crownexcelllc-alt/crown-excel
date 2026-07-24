@@ -31,11 +31,36 @@ import { getDb } from '@/lib/mongodb';
  */
 export async function getCmsSeo(path, websiteId = 'default') {
   try {
+    if (!path) return null;
     const db = await getDb();
-    const seo = await db.collection('cms_seo').findOne({
-      path,
+    const cleanPath = path.trim();
+    const withoutTrailing = cleanPath.length > 1 && cleanPath.endsWith('/') ? cleanPath.slice(0, -1) : cleanPath;
+    const withTrailing = withoutTrailing === '/' ? '/' : withoutTrailing + '/';
+
+    // 1. Search directly by path
+    let seo = await db.collection('cms_seo').findOne({
+      path: { $in: [cleanPath, withoutTrailing, withTrailing] },
       websiteId,
     });
+
+    if (!seo) {
+      // 2. Search via routeId in cms_routes
+      const route = await db.collection('cms_routes').findOne({
+        path: { $in: [cleanPath, withoutTrailing, withTrailing] },
+        websiteId,
+      });
+
+      if (route) {
+        const routeIdStr = route._id.toString();
+        seo = await db.collection('cms_seo').findOne({
+          $or: [
+            { routeId: routeIdStr },
+            { routeId: route._id }
+          ],
+          websiteId,
+        });
+      }
+    }
     return seo || null;
   } catch (err) {
     console.error(`getCmsSeo error for ${path}:`, err);
@@ -122,8 +147,12 @@ export async function generateCmsMetadata(path, defaults = {}, websiteId = 'defa
   };
 
   // Keywords
-  if (seo.metaKeywords?.length) {
-    metadata.keywords = seo.metaKeywords;
+  if (seo.metaKeywords) {
+    if (Array.isArray(seo.metaKeywords) && seo.metaKeywords.length > 0) {
+      metadata.keywords = seo.metaKeywords;
+    } else if (typeof seo.metaKeywords === 'string' && seo.metaKeywords.trim()) {
+      metadata.keywords = seo.metaKeywords.split(',').map(k => k.trim()).filter(Boolean);
+    }
   }
 
   // Canonical

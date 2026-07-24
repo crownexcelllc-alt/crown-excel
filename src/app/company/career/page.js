@@ -1,12 +1,18 @@
-import React from 'react'
-import Career from './_components/page'
+import React from 'react';
+import Career from './_components/page';
+import { generateCmsMetadata } from '@/lib/cms-fetch';
 
-function page() {
-  return (
-    <div>
-      <Career/>
-    </div>
-  )
+export async function generateMetadata() {
+  return await generateCmsMetadata('/company/career', {
+    title: 'Careers | Crown Excel',
+    description: 'Explore career opportunities and job openings at Crown Excel IT Solutions in Dubai.',
+  });
 }
 
-export default page
+export default function CareerPage() {
+  return (
+    <div>
+      <Career />
+    </div>
+  );
+}

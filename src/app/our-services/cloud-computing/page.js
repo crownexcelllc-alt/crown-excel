@@ -1,11 +1,14 @@
 import RMABanner from '@/app/_components/OurServicesPages/RMA/RMABanner/RMABanner'
-// import RMACabling from '@/app/_components/OurServicesPages/RMA/RMACabling/RMACabling'
-// import RMACoreAreas from '@/app/_components/OurServicesPages/RMA/RMACoreAreas/RMACoreAreas'
 import RMAEmpowering from '@/app/_components/OurServicesPages/RMA/RMAEmpowering/RMAEmpowering'
-// import RMAFaq from '@/app/_components/OurServicesPages/RMA/RMAFaq/RMAFaq'
-// import RMAFirewall from '@/app/_components/OurServicesPages/RMA/RMAFirewall/RMAFirewall'
-// import RMASmart from '@/app/_components/OurServicesPages/RMA/RMASmart/RMASmart'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/cloud-computing', {
+    title: 'Cloud Computing Services | Crown Excel',
+    description: 'Scalable cloud computing, cloud storage, and virtual infrastructure solutions in Dubai.',
+  });
+}
 
 const RMAfacility = () => {
   return (

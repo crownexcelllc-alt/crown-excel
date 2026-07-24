@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { generateCmsMetadata } from '@/lib/cms-fetch';
 
-function page() {
-  return (
-    <div>
-      hello
-    </div>
-  )
+export async function generateMetadata() {
+  return await generateCmsMetadata('/company/leader-team', {
+    title: 'Leadership Team | Crown Excel',
+    description: 'Meet the leadership and executive team driving innovation at Crown Excel.',
+  });
 }
 
-export default page
+export default function LeaderTeamPage() {
+  return (
+    <div>
+      Leadership Team
+    </div>
+  );
+}

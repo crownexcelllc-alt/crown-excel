@@ -6,6 +6,14 @@ import HardwareSmart from '@/app/_components/OurServicesPages/HardwareAMC/Hardwa
 import HardwareWeAreBest from '@/app/_components/OurServicesPages/HardwareAMC/HardwareWeAreBest/HardwareWeAreBest'
 import HardwareWhyChooseUS from '@/app/_components/OurServicesPages/HardwareAMC/HardwareWhyChooseUS/HardwareWhyChooseUS'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/long/short-term-amc', {
+    title: 'Hardware AMC Contracts | Crown Excel',
+    description: 'Long and short-term Annual Maintenance Contracts (AMC) for corporate IT hardware.',
+  });
+}
 
 const HardwareAMC = () => {
   return (

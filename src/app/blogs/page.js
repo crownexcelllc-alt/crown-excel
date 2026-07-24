@@ -1,11 +1,14 @@
 import React from 'react';
 import { getApiBase } from '@/lib/api-helper';
 import BlogListingClient from './BlogListingClient';
+import { generateCmsMetadata } from '@/lib/cms-fetch';
 
-export const metadata = {
-  title: 'Blog - Insights & Tech Solutions',
-  description: 'Read the latest updates, tutorials, and expert analysis on IT infrastructure, hardware, cloud computing, and Excel automation.',
-};
+export async function generateMetadata() {
+  return await generateCmsMetadata('/blogs', {
+    title: 'Blog - Insights & Tech Solutions',
+    description: 'Read the latest updates, tutorials, and expert analysis on IT infrastructure, hardware, cloud computing, and Excel automation.',
+  });
+}
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

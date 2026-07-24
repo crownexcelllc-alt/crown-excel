@@ -1,11 +1,14 @@
 import SoftwareBanner from '@/app/_components/OurServicesPages/SoftwareAMC/SoftwareBanner/SoftwareBanner'
-// import SoftwareEmpowering from '@/app/_components/OurServicesPages/SoftwareAMC/SoftwareEmpowering/SoftwareEmpowering'
 import SoftwareSmart from '@/app/_components/OurServicesPages/SoftwareAMC/SoftwareSmart/SoftwareSmart'
 import React from 'react'
-// import SoftwareCoreAreas from '../../_components/OurServicesPages/SoftwareAMC/SoftwareCoreAreas/SoftwareCoreAreas'
-// import SoftwareCabling from '../../_components/OurServicesPages/SoftwareAMC/SoftwareCabling/SoftwareCabling'
-// import SoftwareWeAreBest from '@/app/_components/OurServicesPages/SoftwareAMC/SoftwareWeAreBest/SoftwareWeAreBest'
-// import SoftwareFaq from '@/app/_components/OurServicesPages/SoftwareAMC/SoftwareFaq/SoftwareFaq'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/software-solutions', {
+    title: 'Software Solutions & Maintenance | Crown Excel',
+    description: 'Corporate software maintenance, license management, and software support solutions in Dubai.',
+  });
+}
 
 const SoftwareAMC = () => {
   return (

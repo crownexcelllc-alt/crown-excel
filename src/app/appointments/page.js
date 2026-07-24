@@ -1,10 +1,14 @@
 import { getApiBase } from '@/lib/api-helper';
 import AppointmentLinksView from './AppointmentLinksView';
+import { generateCmsMetadata } from '@/lib/cms-fetch';
 
-export const metadata = {
-  title: 'Book an Appointment - Crown Excel',
-  description: 'Schedule an appointment with Crown Excel using our easy online booking system powered by Google Calendar.',
-};
+export async function generateMetadata() {
+  return await generateCmsMetadata('/appointments', {
+    title: 'Book an Appointment - Crown Excel',
+    description: 'Schedule an appointment with Crown Excel using our easy online booking system powered by Google Calendar.',
+  });
+}
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
