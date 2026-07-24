@@ -94,7 +94,6 @@ export default function SeoEditorClient({ initialSeo, routeId, routePath, apiBas
   const handleSave = async () => {
     if (!canEditSeo) return;
     setLoading(true);
-    setMessage('');
     try {
       const payload = {
         ...seo,
