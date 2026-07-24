@@ -16,8 +16,78 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/about-us',
+        destination: '/company/about-us',
+        permanent: true,
+      },
+      {
+        source: '/about',
+        destination: '/company/about-us',
+        permanent: true,
+      },
+      {
+        source: '/career',
+        destination: '/company/career',
+        permanent: true,
+      },
+      {
+        source: '/careers',
+        destination: '/company/career',
+        permanent: true,
+      },
+      {
+        source: '/company-history',
+        destination: '/company/company-history',
+        permanent: true,
+      },
+      {
+        source: '/history',
+        destination: '/company/company-history',
+        permanent: true,
+      },
+      {
+        source: '/director-message',
+        destination: '/company/director-message',
+        permanent: true,
+      },
+      {
+        source: '/events',
+        destination: '/company/events',
+        permanent: true,
+      },
+      {
+        source: '/faq',
+        destination: '/company/faq',
+        permanent: true,
+      },
+      {
+        source: '/faqs',
+        destination: '/company/faq',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contact-us',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/our-services',
+        permanent: true,
+      },
+      {
+        source: '/management',
+        destination: '/our-management',
+        permanent: true,
+      },
+      {
         source: '/company/leader-team',
         destination: '/our-management',
+        permanent: true,
+      },
+      {
+        source: '/our-services/amc',
+        destination: '/our-services/long/short-term-amc',
         permanent: true,
       },
     ];
