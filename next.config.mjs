@@ -13,6 +13,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/company/leader-team',
+        destination: '/our-management',
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     root: path.join(__dirname),
   },
