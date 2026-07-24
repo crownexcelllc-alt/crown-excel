@@ -4,6 +4,14 @@ import ContactUsForm from '../_components/ContactUsPage/ContactUsForm/ContactUsF
 import ContactUsMap from '../_components/ContactUsPage/ContactUsMap/ContactUsMap'
 import AppointmentSection from '../_components/ContactUsPage/AppointmentSection/AppointmentSection'
 import { getApiBase } from '@/lib/api-helper'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/contact-us', {
+    title: 'Contact Us | Crown Excel',
+    description: 'Get in touch with Crown Excel for IT hardware, server support, networking solutions, and tech inquiries in Dubai and UAE.',
+  });
+}
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

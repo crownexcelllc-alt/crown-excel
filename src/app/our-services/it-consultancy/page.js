@@ -6,6 +6,14 @@ import ITSmart from '@/app/_components/OurServicesPages/ITConsultancy/ITSmart/IT
 import ITWeareBest from '@/app/_components/OurServicesPages/ITConsultancy/ITWeareBest/ITWeareBest'
 import ITWhyChooseUs from '@/app/_components/OurServicesPages/ITConsultancy/ITWhyChooseUs/ITWhyChooseUs'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/our-services/it-consultancy', {
+    title: 'IT Consultancy Services | Crown Excel',
+    description: 'Expert IT consultancy and strategy to optimize corporate infrastructure in Dubai.',
+  });
+}
 
 const ITConsultancy = () => {
   return (

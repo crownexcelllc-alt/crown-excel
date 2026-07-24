@@ -9,6 +9,14 @@ import PopularKeyboard from '@/app/_components/Products/KeyboardMouse/PopularKey
 import UnlimitedGamingKeyboards from '@/app/_components/Products/KeyboardMouse/UnlimitedGamingKeyboards/UnlimitedGamingKeyboards'
 import WhyBuyKeyboardFromUs from '@/app/_components/Products/KeyboardMouse/WhyBuyKeyboardFromUs/WhyBuyKeyboardFromUs'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/keyboard-mouse', {
+    title: 'Keyboards & Mice | Crown Excel',
+    description: 'Ergonomic, wireless, and gaming keyboards and mice at Crown Excel Dubai.',
+  });
+}
 
 const KeyboardMouse = () => {
   return (

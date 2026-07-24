@@ -5,6 +5,14 @@ import BiometricBrands from '@/app/_components/Products/Biometric/BiometricBrand
 import BiometricUltimateSolutions from '@/app/_components/Products/Biometric/BiometricUltimateSolutions/BiometricUltimateSolutions'
 import BiometricWhyFromUs from '@/app/_components/Products/Biometric/BiometricWhyFromUs/BiometricWhyFromUs'
 import React from 'react'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/products/biometrics', {
+    title: 'Biometric Access Control & Attendance | Crown Excel',
+    description: 'Biometric systems, attendance scanners, and access control solutions in Dubai.',
+  });
+}
 
 const Biometrics = () => {
   return (

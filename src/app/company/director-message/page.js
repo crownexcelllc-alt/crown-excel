@@ -1,8 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
-// import director from '@/Components/Images/director.png'
 import director from '@/Components/Images/director.png'
 import directorbg from '@/Components/Images/directorbg.png'
+import { generateCmsMetadata } from '@/lib/cms-fetch';
+
+export async function generateMetadata() {
+  return await generateCmsMetadata('/company/director-message', {
+    title: "Director's Message | Crown Excel",
+    description: "Read the Director's message and vision for Crown Excel General Trading LLC.",
+  });
+}
 
 function DirectorMessage() {
   return (
