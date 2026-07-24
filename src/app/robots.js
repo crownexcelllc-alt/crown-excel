@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://crownexcel.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.crownexcel.ae';
 
   return {
     rules: [
@@ -14,6 +14,9 @@ export default function robots() {
         ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: [
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/sitemap-pages.xml`,
+    ],
   };
 }
