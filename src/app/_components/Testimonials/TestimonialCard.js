@@ -36,7 +36,7 @@ export default function TestimonialCard({ name, message, image, rating = 0, date
         <div className="flex relative items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <div className="w-14 h-14 rounded-full overflow-hidden ring-1 ring-gray-200 bg-white flex-shrink-0 flex items-center justify-center">
-              {image && typeof image === 'string' && image.trim() !== '' ? (
+              {image && (typeof image === 'object' || (typeof image === 'string' && image.trim() !== '')) ? (
                 <Image src={image} alt={name || 'Reviewer'} width={56} height={56} className="object-cover" />
               ) : (
                 <span
