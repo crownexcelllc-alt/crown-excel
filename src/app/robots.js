@@ -14,9 +14,6 @@ export default function robots() {
         ],
       },
     ],
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap-pages.xml`,
-    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

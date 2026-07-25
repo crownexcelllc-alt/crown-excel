@@ -155,9 +155,25 @@ export async function generateCmsMetadata(path, defaults = {}, websiteId = 'defa
     }
   }
 
-  // Canonical
-  if (seo.canonicalUrl) {
-    metadata.alternates = { canonical: seo.canonicalUrl };
+  // Canonical: Use admin custom canonical if provided; otherwise fallback to defaults or page path
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.crownexcel.ae';
+  let canonicalToUse = null;
+
+  if (seo?.canonicalUrl && typeof seo.canonicalUrl === 'string' && seo.canonicalUrl.trim()) {
+    canonicalToUse = seo.canonicalUrl.trim();
+  } else if (defaults?.alternates?.canonical) {
+    canonicalToUse = defaults.alternates.canonical;
+  } else {
+    const cleanPath = path === '/' ? '' : (path.startsWith('/') ? path : '/' + path);
+    canonicalToUse = `${siteUrl}${cleanPath}`;
+  }
+
+  if (canonicalToUse) {
+    if (!canonicalToUse.startsWith('http://') && !canonicalToUse.startsWith('https://')) {
+      const cleanRel = canonicalToUse.startsWith('/') ? canonicalToUse : '/' + canonicalToUse;
+      canonicalToUse = `${siteUrl}${cleanRel}`;
+    }
+    metadata.alternates = { canonical: canonicalToUse };
   }
 
   // Robots
