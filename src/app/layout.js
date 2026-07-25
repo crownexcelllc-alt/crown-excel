@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.crownexcel.ae"),
   title: {
     default: "Crown Excel | IT Hardware and Solutions in Dubai",
     template: "%s | Crown Excel",
@@ -35,9 +36,10 @@ export default async function RootLayout({ children }) {
   }
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body
+        suppressHydrationWarning
         style={{ backgroundColor: "white" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
