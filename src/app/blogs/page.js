@@ -1,5 +1,5 @@
 import React from 'react';
-import { getApiBase } from '@/lib/api-helper';
+import { getDb } from '@/lib/mongodb';
 import BlogListingClient from './BlogListingClient';
 import { generateCmsMetadata } from '@/lib/cms-fetch';
 
@@ -10,18 +10,18 @@ export async function generateMetadata() {
   });
 }
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 300;
 
 export default async function ClientBlogsPage() {
-  const apiBase = getApiBase();
   let blogs = [];
 
   try {
-    const res = await fetch(`${apiBase}/api/blogs`, { cache: 'no-store' });
-    if (res.ok) {
-      blogs = await res.json();
-    }
+    const db = await getDb();
+    const docs = await db.collection('blogs').find({ status: 'published' }).sort({ createdAt: -1 }).toArray();
+    blogs = docs.map(d => ({
+      ...d,
+      _id: d._id.toString(),
+    }));
   } catch (err) {
     console.error('Failed to fetch public blogs list', err);
   }

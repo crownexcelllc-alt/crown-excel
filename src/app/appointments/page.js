@@ -1,5 +1,5 @@
-import { getApiBase } from '@/lib/api-helper';
 import AppointmentLinksView from './AppointmentLinksView';
+import { getDb } from '@/lib/mongodb';
 import { generateCmsMetadata } from '@/lib/cms-fetch';
 
 export async function generateMetadata() {
@@ -9,19 +9,20 @@ export async function generateMetadata() {
   });
 }
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 300;
 
 export default async function AppointmentsPublicPage() {
-  const apiBase = getApiBase();
   let links = [];
 
   try {
-    const res = await fetch(`${apiBase}/api/appointments`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      links = data.links || [];
-    }
+    const db = await getDb();
+    const docs = await db.collection('appointment_links').find({ active: { $ne: false } }).toArray();
+    links = docs.map(d => ({
+      _id: d._id.toString(),
+      title: d.title || '',
+      url: d.url || '',
+      active: d.active !== false,
+    }));
   } catch (err) {
     console.error('Error fetching appointment links:', err);
   }
