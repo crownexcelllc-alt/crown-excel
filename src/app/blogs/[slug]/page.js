@@ -1,17 +1,14 @@
 import React from 'react';
-import { getApiBase } from '@/lib/api-helper';
 import { getDb } from '@/lib/mongodb';
 import Link from 'next/link';
 import BlogCommentsSection from './BlogCommentsSection';
 import { generateCmsMetadata, getCmsSeo } from '@/lib/cms-fetch';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 300;
 
 // Dynamic SEO Metadata Generator
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const apiBase = getApiBase();
   const routePath = `/blogs/${slug}`;
 
   try {
@@ -20,9 +17,9 @@ export async function generateMetadata({ params }) {
       return await generateCmsMetadata(routePath);
     }
 
-    const res = await fetch(`${apiBase}/api/blogs?slug=${slug}`);
-    if (res.ok) {
-      const blog = await res.json();
+    const db = await getDb();
+    const blog = await db.collection('blogs').findOne({ slug });
+    if (blog) {
       return await generateCmsMetadata(routePath, {
         title: blog.metaTitle || `${blog.title} | Crown Excel Blog`,
         description: blog.metaDescription || blog.excerpt || 'Read the article on Crown Excel Blog.',
@@ -38,7 +35,6 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogDetailsPage({ params }) {
   const { slug } = await params;
-  const apiBase = getApiBase();
 
   let blog = null;
   let comments = [];
@@ -48,57 +44,60 @@ export default async function BlogDetailsPage({ params }) {
   let categoriesList = [];
 
   try {
-    // 1. Fetch Blog Data
-    const res = await fetch(`${apiBase}/api/blogs?slug=${slug}`, { cache: 'no-store' });
-    if (res.ok) {
-      blog = await res.json();
+    const db = await getDb();
+
+    // 1. Fetch Blog Data directly from DB
+    const blogDoc = await db.collection('blogs').findOne({ slug, status: 'published' });
+    if (blogDoc) {
+      blog = { ...blogDoc, _id: blogDoc._id.toString() };
     }
 
-    // 2. Fetch Blog Comments & Settings & Sidebar Data
     if (blog?._id) {
-      // Fetch comments
-      const commentsRes = await fetch(`${apiBase}/api/blogs/comments?blogId=${blog._id}`, { cache: 'no-store' });
-      if (commentsRes.ok) {
-        comments = await commentsRes.json();
-      }
+      // Fetch comments directly from DB
+      const commentDocs = await db.collection('blog_comments')
+        .find({ blogId: blog._id, status: 'approved' })
+        .sort({ createdAt: -1 })
+        .toArray();
+      comments = commentDocs.map(c => ({ ...c, _id: c._id.toString() }));
 
       // Fetch website settings
       try {
-        const db = await getDb();
-        settings = await db.collection("settings").findOne({ _id: "website_settings" });
+        settings = await db.collection('settings').findOne({ _id: 'website_settings' });
       } catch (e) {
-        console.error("Failed to load settings:", e);
+        console.error('Failed to load settings:', e);
       }
 
-      // Fetch other blogs for sidebar widgets
-      const blogsRes = await fetch(`${apiBase}/api/blogs`, { cache: 'no-store' });
-      if (blogsRes.ok) {
-        const allBlogs = await blogsRes.json();
-        
-        // Filter out current blog
-        recentBlogs = allBlogs.filter(b => b._id !== blog._id).slice(0, 4);
+      // Fetch all published blogs directly from DB
+      const allBlogsDocs = await db.collection('blogs')
+        .find({ status: 'published' })
+        .sort({ createdAt: -1 })
+        .toArray();
 
-        // Extract most popular tags
-        const tagsList = allBlogs.flatMap(b => b.tags || []);
-        const tagCounts = tagsList.reduce((acc, t) => {
-          acc[t] = (acc[t] || 0) + 1;
-          return acc;
-        }, {});
-        popularTags = Object.keys(tagCounts)
-          .sort((a, b) => tagCounts[b] - tagCounts[a])
-          .slice(0, 10);
+      const allBlogs = allBlogsDocs.map(b => ({ ...b, _id: b._id.toString() }));
 
-        // Extract categories and counts
-        const categoryCounts = allBlogs.reduce((acc, b) => {
-          if (b.category) {
-            const cat = b.category.trim();
-            acc[cat] = (acc[cat] || 0) + 1;
-          }
-          return acc;
-        }, {});
-        categoriesList = Object.entries(categoryCounts)
-          .sort((a, b) => a[0].localeCompare(b[0]));
-      }
+      // Filter out current blog
+      recentBlogs = allBlogs.filter(b => b._id !== blog._id).slice(0, 4);
+
+      // Extract most popular tags
+      const tagsList = allBlogs.flatMap(b => b.tags || []);
+      const tagCounts = tagsList.reduce((acc, t) => {
+        acc[t] = (acc[t] || 0) + 1;
+        return acc;
+      }, {});
+      popularTags = Object.keys(tagCounts)
+        .sort((a, b) => tagCounts[b] - tagCounts[a])
+        .slice(0, 10);
+
+      // Extract categories and counts
+      const categoryCounts = allBlogs.reduce((acc, b) => {
+        if (b.category) {
+          const cat = b.category.trim();
+          acc[cat] = (acc[cat] || 0) + 1;
+        }
+        return acc;
+      }, {});
+      categoriesList = Object.entries(categoryCounts)
+        .sort((a, b) => a[0].localeCompare(b[0]));
     }
   } catch (err) {
     console.error('Failed to fetch blog post details', err);
@@ -128,6 +127,7 @@ export default async function BlogDetailsPage({ params }) {
       </main>
     );
   }
+
   return (
     <main className="min-h-screen bg-white text-gray-800 pb-20">
       {/* Visual Top Header */}
@@ -230,7 +230,6 @@ export default async function BlogDetailsPage({ params }) {
             <BlogCommentsSection 
               blogId={blog._id} 
               initialComments={comments} 
-              apiBase={apiBase} 
             />
           </div>
         </div>
@@ -300,7 +299,7 @@ export default async function BlogDetailsPage({ params }) {
                     <div className="min-w-0 space-y-0.5">
                       <Link 
                         href={`/blogs/${b.slug}`}
-                        className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-tight"
+                        className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-[#00a63e] line-clamp-2 leading-tight"
                       >
                         {b.title}
                       </Link>

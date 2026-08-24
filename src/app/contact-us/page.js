@@ -1,9 +1,9 @@
-import React from 'react'
-import ContactUsPageBanner from '../_components/ContactUsPage/ContactUsPageBanner/ContactUsPageBanner'
-import ContactUsForm from '../_components/ContactUsPage/ContactUsForm/ContactUsForm'
-import ContactUsMap from '../_components/ContactUsPage/ContactUsMap/ContactUsMap'
-import AppointmentSection from '../_components/ContactUsPage/AppointmentSection/AppointmentSection'
-import { getApiBase } from '@/lib/api-helper'
+import React from 'react';
+import ContactUsPageBanner from '../_components/ContactUsPage/ContactUsPageBanner/ContactUsPageBanner';
+import ContactUsForm from '../_components/ContactUsPage/ContactUsForm/ContactUsForm';
+import ContactUsMap from '../_components/ContactUsPage/ContactUsMap/ContactUsMap';
+import AppointmentSection from '../_components/ContactUsPage/AppointmentSection/AppointmentSection';
+import { getDb } from '@/lib/mongodb';
 import { generateCmsMetadata } from '@/lib/cms-fetch';
 
 export async function generateMetadata() {
@@ -13,34 +13,36 @@ export async function generateMetadata() {
   });
 }
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Enable Incremental Static Regeneration (ISR) to deliver instant HTML (0ms - 20ms TTFB)
+export const revalidate = 300;
 
 const ContactUs = async () => {
-  const apiBase = getApiBase();
   let appointmentLinks = [];
 
   try {
-    const res = await fetch(`${apiBase}/api/appointments`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      appointmentLinks = data.links || [];
-    }
+    const db = await getDb();
+    const docs = await db.collection('appointment_links').find({ active: { $ne: false } }).toArray();
+    appointmentLinks = docs.map(d => ({
+      _id: d._id.toString(),
+      title: d.title || '',
+      url: d.url || '',
+      active: d.active !== false,
+    }));
   } catch (err) {
-    console.error('Failed to fetch appointment links:', err);
+    console.error('Failed to fetch appointment links in ContactUs:', err);
   }
 
   return (
     <div>
-      <ContactUsPageBanner/>
-       <div className="header text-center">
-        <h1 className='text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]'>Contact us</h1>
+      <ContactUsPageBanner />
+      <div className="header text-center">
+        <h1 className="text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]">Contact us</h1>
       </div>
-      <ContactUsForm/>
+      <ContactUsForm />
       <AppointmentSection links={appointmentLinks} />
-      <ContactUsMap/>
+      <ContactUsMap />
     </div>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;
