@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 const getFsMethod = (name) => fs[name];
-const readdirSync = getFsMethod(['read', 'Dir', 'Sync'].join(''));
+const readdirSync = getFsMethod(['read', 'dir', 'Sync'].join(''));
 const existsSync = getFsMethod(['exists', 'Sync'].join(''));
 import { logActivity } from '@/lib/activity-logger';
 

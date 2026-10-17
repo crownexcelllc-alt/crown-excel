@@ -312,6 +312,12 @@ const Footer = () => {
                       </Link>
                     </li>
                     <li>
+                      <Link href="/laptop-wholesale-supplier-in-dubai-or-uae" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                        Laptop Wholesale Supplier
+                      </Link>
+                    </li>
+                    <li>
                       <Link href="/sitemap.xml" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
                         <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
                         Sitemaps
@@ -433,6 +439,12 @@ const Footer = () => {
                     <Link href="/our-services/networking" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
                       <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
                       Networking
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/laptop-wholesale-supplier-in-dubai-or-uae" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
+                      Laptop Wholesale Supplier
                     </Link>
                   </li>
                   <li>

@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Title>Crown Excel Wholesale Laptop &amp; Monitor Inventory</Title>
+  <Author>Crown Excel General Trading LLC</Author>
+  <Company>Crown Excel</Company>
+ </DocumentProperties>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#2D2D2D"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="Header">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#0F604B"/>
+   </Borders>
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Color="#FFFFFF" ss:Bold="1"/>
+   <Interior ss:Color="#147A5F" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="Data">
+   <Alignment ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="Code">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Color="#147A5F" ss:Bold="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="Brand">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Bold="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="Particular">
+   <Font ss:FontName="Calibri" ss:Size="11" ss:Bold="1" ss:Color="#2D2D2D"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="Status">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Font ss:FontName="Calibri" ss:Size="10" ss:Color="#147A5F" ss:Bold="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#E2E8F0"/>
+   </Borders>
+  </Style>
+ </Styles>
+ 
+  <Worksheet ss:Name="Gaming Laptops">
+    <Table ss:DefaultRowHeight="20">
+      <Column ss:Width="110"/>
+      <Column ss:Width="70"/>
+      <Column ss:Width="120"/>
+      <Column ss:Width="230"/>
+      <Column ss:Width="360"/>
+      <Column ss:Width="130"/>
+      
+    <Row ss:Height="26" ss:StyleID="Header">
+      <Cell><Data ss:Type="String">Item Code</Data></Cell>
+      <Cell><Data ss:Type="String">Brand</Data></Cell>
+      <Cell><Data ss:Type="String">Category</Data></Cell>
+      <Cell><Data ss:Type="String">Particular / Product Name</Data></Cell>
+      <Cell><Data ss:Type="String">Specifications</Data></Cell>
+      <Cell><Data ss:Type="String">Wholesale Availability</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">G614JU-N3111W</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">ASUS</Data></Cell>
+      <Cell><Data ss:Type="String">Gaming Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">ASUS ROG Strix G16 (2023)</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i7-13650HX, 16GB DDR5, 512GB PCIe 4.0 SSD, NVIDIA RTX 4050 6GB, 16&quot; FHD+ 165Hz IPS</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">FA507NU-LP031W</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">ASUS</Data></Cell>
+      <Cell><Data ss:Type="String">Gaming Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">ASUS TUF Gaming A15</Data></Cell>
+      <Cell><Data ss:Type="String">AMD Ryzen 7 7735HS, 16GB DDR5, 512GB NVMe SSD, NVIDIA RTX 4050 6GB, 15.6&quot; FHD 144Hz</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">AN515-58-79A5</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Acer</Data></Cell>
+      <Cell><Data ss:Type="String">Gaming Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Acer Nitro 5 Gaming Notebook</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i7-12650H, 16GB DDR4, 512GB Gen4 SSD, NVIDIA RTX 4060 8GB, 15.6&quot; FHD 144Hz IPS</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">82WM0006AX</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Lenovo</Data></Cell>
+      <Cell><Data ss:Type="String">Gaming Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Lenovo Legion Pro 5 16ARX8</Data></Cell>
+      <Cell><Data ss:Type="String">AMD Ryzen 7 7745HX, 16GB DDR5, 1TB NVMe SSD, NVIDIA RTX 4070 8GB, 16&quot; WQXGA 240Hz 500nits</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">8A6A8EA</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">HP</Data></Cell>
+      <Cell><Data ss:Type="String">Gaming Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">HP Victus Gaming 16-r0002ne</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i7-13700H, 16GB DDR5, 1TB PCIe Gen4 SSD, NVIDIA RTX 4060 8GB, 16.1&quot; FHD 144Hz IPS</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    </Table>
+  </Worksheet>
+ 
+  <Worksheet ss:Name="Business Laptops">
+    <Table ss:DefaultRowHeight="20">
+      <Column ss:Width="110"/>
+      <Column ss:Width="70"/>
+      <Column ss:Width="120"/>
+      <Column ss:Width="230"/>
+      <Column ss:Width="360"/>
+      <Column ss:Width="130"/>
+      
+    <Row ss:Height="26" ss:StyleID="Header">
+      <Cell><Data ss:Type="String">Item Code</Data></Cell>
+      <Cell><Data ss:Type="String">Brand</Data></Cell>
+      <Cell><Data ss:Type="String">Category</Data></Cell>
+      <Cell><Data ss:Type="String">Particular / Product Name</Data></Cell>
+      <Cell><Data ss:Type="String">Specifications</Data></Cell>
+      <Cell><Data ss:Type="String">Wholesale Availability</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">21HM005PGR</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Lenovo</Data></Cell>
+      <Cell><Data ss:Type="String">Business Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Lenovo ThinkPad X1 Carbon Gen 11</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i7-1355U, 16GB LPDDR5, 512GB PCIe SSD, Intel Iris Xe, 14.0&quot; WUXGA IPS 400nits, Win 11 Pro</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">21HD0006AX</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Lenovo</Data></Cell>
+      <Cell><Data ss:Type="String">Business Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Lenovo ThinkPad T14 Gen 4</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1335U, 16GB DDR5, 512GB NVMe SSD, Intel Iris Xe, 14.0&quot; WUXGA IPS, dTPM 2.0, Win 11 Pro</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">818M8EA</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">HP</Data></Cell>
+      <Cell><Data ss:Type="String">Business Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">HP EliteBook 840 G10</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i7-1355U, 16GB DDR5, 512GB PCIe NVMe SSD, Intel Iris Xe, 14.0&quot; WUXGA IPS Anti-Glare, Wolf Security</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">725M4EA</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">HP</Data></Cell>
+      <Cell><Data ss:Type="String">Business Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">HP ProBook 450 G10</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1335U, 8GB DDR4, 512GB NVMe SSD, Intel Iris Xe, 15.6&quot; FHD IPS, Win 11 Pro</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">TMP215-54-52E4</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Acer</Data></Cell>
+      <Cell><Data ss:Type="String">Business Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Acer TravelMate P2 15</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1235U, 16GB DDR4, 512GB PCIe NVMe SSD, Intel Iris Xe, 15.6&quot; FHD IPS, MIL-STD 810H</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    </Table>
+  </Worksheet>
+ 
+  <Worksheet ss:Name="Personal Laptops">
+    <Table ss:DefaultRowHeight="20">
+      <Column ss:Width="110"/>
+      <Column ss:Width="70"/>
+      <Column ss:Width="120"/>
+      <Column ss:Width="230"/>
+      <Column ss:Width="360"/>
+      <Column ss:Width="130"/>
+      
+    <Row ss:Height="26" ss:StyleID="Header">
+      <Cell><Data ss:Type="String">Item Code</Data></Cell>
+      <Cell><Data ss:Type="String">Brand</Data></Cell>
+      <Cell><Data ss:Type="String">Category</Data></Cell>
+      <Cell><Data ss:Type="String">Particular / Product Name</Data></Cell>
+      <Cell><Data ss:Type="String">Specifications</Data></Cell>
+      <Cell><Data ss:Type="String">Wholesale Availability</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">15s-fq5020ne</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">HP</Data></Cell>
+      <Cell><Data ss:Type="String">Personal Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">HP 15s Everyday Laptop</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1235U, 8GB DDR4, 512GB PCIe NVMe SSD, Intel Iris Xe, 15.6&quot; FHD Micro-Edge Anti-Glare</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">82X7002PAX</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Lenovo</Data></Cell>
+      <Cell><Data ss:Type="String">Personal Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Lenovo IdeaPad Slim 3 15IRU8</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1335U, 8GB LPDDR5, 512GB NVMe SSD, 15.6&quot; FHD IPS 300nits, Rapid Charge Boost</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">82VG00F8AX</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Lenovo</Data></Cell>
+      <Cell><Data ss:Type="String">Personal Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Lenovo IdeaPad 1 15AMN7</Data></Cell>
+      <Cell><Data ss:Type="String">AMD Ryzen 3 7320U, 8GB LPDDR5, 256GB NVMe SSD, AMD Radeon 610M Graphics, 15.6&quot; FHD Anti-Glare</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">A315-59-54Q7</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">Acer</Data></Cell>
+      <Cell><Data ss:Type="String">Personal Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">Acer Aspire 3 A315</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1235U, 8GB DDR4, 512GB PCIe NVMe SSD, Intel Iris Xe, 15.6&quot; FHD Acer ComfyView Display</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">X1504ZA-NJ1024W</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">ASUS</Data></Cell>
+      <Cell><Data ss:Type="String">Personal Laptops</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">ASUS Vivobook 15</Data></Cell>
+      <Cell><Data ss:Type="String">Intel Core i5-1235U, 8GB DDR4, 512GB PCIe NVMe SSD, Intel Iris Xe, 15.6&quot; FHD NanoEdge Display</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    </Table>
+  </Worksheet>
+ 
+  <Worksheet ss:Name="Monitors">
+    <Table ss:DefaultRowHeight="20">
+      <Column ss:Width="110"/>
+      <Column ss:Width="70"/>
+      <Column ss:Width="120"/>
+      <Column ss:Width="230"/>
+      <Column ss:Width="360"/>
+      <Column ss:Width="130"/>
+      
+    <Row ss:Height="26" ss:StyleID="Header">
+      <Cell><Data ss:Type="String">Item Code</Data></Cell>
+      <Cell><Data ss:Type="String">Brand</Data></Cell>
+      <Cell><Data ss:Type="String">Category</Data></Cell>
+      <Cell><Data ss:Type="String">Particular / Product Name</Data></Cell>
+      <Cell><Data ss:Type="String">Specifications</Data></Cell>
+      <Cell><Data ss:Type="String">Wholesale Availability</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">24G2SP/EU</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">AOC</Data></Cell>
+      <Cell><Data ss:Type="String">Monitors</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">AOC 24G2SP 23.8&quot; Gaming Monitor</Data></Cell>
+      <Cell><Data ss:Type="String">1920x1080 FHD IPS, 165Hz Refresh Rate, 1ms MPRT, Adaptive Sync, Height Adjustable Stand, HDMI/DP/VGA</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">27G2SP/EU</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">AOC</Data></Cell>
+      <Cell><Data ss:Type="String">Monitors</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">AOC 27G2SP 27&quot; Gaming Monitor</Data></Cell>
+      <Cell><Data ss:Type="String">1920x1080 FHD IPS, 165Hz, 1ms Response Time, G-Sync Compatible, Frameless Bezel, HDMI 1.4 / DP 1.2</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">Q27G2S/EU</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">AOC</Data></Cell>
+      <Cell><Data ss:Type="String">Monitors</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">AOC Q27G2S/EU 27&quot; QHD Gaming Monitor</Data></Cell>
+      <Cell><Data ss:Type="String">2560x1440 QHD IPS, 165Hz, 1ms, HDR10, 10-Bit Color Depth, Height Adjust, 2x HDMI 2.0 / DP 1.2</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    <Row ss:Height="22" ss:StyleID="Data">
+      <Cell ss:StyleID="Code"><Data ss:Type="String">24B2XH</Data></Cell>
+      <Cell ss:StyleID="Brand"><Data ss:Type="String">AOC</Data></Cell>
+      <Cell><Data ss:Type="String">Monitors</Data></Cell>
+      <Cell ss:StyleID="Particular"><Data ss:Type="String">AOC 24B2XH 23.8&quot; Business Office Monitor</Data></Cell>
+      <Cell><Data ss:Type="String">1920x1080 FHD IPS, 75Hz, 3-Sided Borderless, Flicker-Free &amp; LowBlue Mode, HDMI / VGA, VESA Mountable</Data></Cell>
+      <Cell ss:StyleID="Status"><Data ss:Type="String">Ready Stock - Dubai</Data></Cell>
+    </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
