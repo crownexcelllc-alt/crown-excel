@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import ContactFormPopup from '@/Components/ContactFormPopup/ContactFormPopup';
+import WholesaleContactModal from './WholesaleContactModal';
 
 // Project Images
 import BannerLaptop1 from '@/Components/Images/BannerLaptop1.png';
@@ -1547,8 +1546,8 @@ export default function WholesaleClientPage() {
 
 
 
-      {/* Official Verified Contact Popup with OTP Flow */}
-      <ContactFormPopup
+      {/* Dedicated Wholesale Laptop Inquiry Modal */}
+      <WholesaleContactModal
         isOpen={showContactPopup}
         onClose={() => setShowContactPopup(false)}
         preSelectedSubject={popupSubject}

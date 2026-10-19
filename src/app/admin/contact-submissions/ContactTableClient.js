@@ -32,7 +32,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
       (r.email || '').toString().toLowerCase().includes(q) ||
       (r.phone || '').toString().toLowerCase().includes(q) ||
       (r.subject || '').toString().toLowerCase().includes(q) ||
-      (r.service || '').toString().toLowerCase().includes(q)
+      (r.service || '').toString().toLowerCase().includes(q) ||
+      (r.company || '').toString().toLowerCase().includes(q) ||
+      (r.comments || '').toString().toLowerCase().includes(q)
     ));
   }, [sorted, query]);
 
@@ -58,9 +60,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['#', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
+    const headers = ['#', 'name', 'company', 'email', 'phone', 'subject', 'service', 'quantity', 'comments', 'createdAt'];
     const csv = [headers.join(',')].concat(rows.map((r, i) => {
-      const vals = [i + 1, r.name, r.email, r.phone, r.subject, r.service, r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
+      const vals = [i + 1, r.name, r.company || '', r.email, r.phone, r.subject, r.service, r.quantity || '', r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
       return vals.map(v => {
         const s = ((v ?? '') + '').replace(/"/g, '""');
         return `"${s}"`;
@@ -228,9 +230,21 @@ export default function ContactTableClient({ initialData = [], apiBase = process
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.subject || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service / Requirement</p>
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.service || '—'}</p>
                 </div>
+                {viewRow.company && (
+                  <div>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Company</p>
+                    <p className="text-[#084032] font-semibold text-sm">{viewRow.company}</p>
+                  </div>
+                )}
+                {viewRow.quantity && (
+                  <div>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Quantity</p>
+                    <p className="text-[#084032] font-semibold text-sm">{viewRow.quantity}</p>
+                  </div>
+                )}
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
