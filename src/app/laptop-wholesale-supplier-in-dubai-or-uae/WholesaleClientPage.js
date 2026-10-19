@@ -813,7 +813,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER ASPIRE LITE AL15-36P-36UJ',
                 particular: 'ACER ASPIRE LITE AL15-36P-36UJ INTEL CORE 3 N350, 8GB RAM, 256GB SSD, INTEL SHARED, 15.6 FHD, DOS, ENGLISH KEYBOARD, SILVER',
                 image: ImgNX_DGJEM_002,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.28]'
               },
               {
                 brand: 'ACER',
@@ -822,7 +822,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER ASPIRE ALITE15-54P',
                 particular: 'ACER ASPIRE ALITE15-54P, INTEL® CORE™ ULTRA 5-115U,8GB RAM,512GB SSD, 15.6" FHD, INTEL® SHARED,DOS,ENGLISH KEYBOARD,SILVER',
                 image: ImgNX_DTGEM_001,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.28]'
               },
               {
                 brand: 'ACER',
@@ -831,7 +831,7 @@ export default function WholesaleClientPage() {
                 name: 'Acer Predator Helios Neo PHN16-73-94ZR',
                 particular: "Acer Predator Helios Neo PHN16-73-94ZR, Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 240Hz, NVIDIA® GeForce® RTX™ 5070 8GB, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
                 image: ImgNH_QX5EM_003,
-                imageClassName: 'scale-[1.38] group-hover:scale-[1.44]'
+                imageClassName: 'scale-[1.38]'
               },
               {
                 brand: 'ACER',
@@ -840,7 +840,7 @@ export default function WholesaleClientPage() {
                 name: 'Predator Helios Neo 16 AI PHN16-73-97BP',
                 particular: "Predator Helios Neo 16 AI PHN16-73-97BP Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 180Hz, 8GB NVIDIA RTX 5060, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
                 image: ImgNH_QVUEM_002,
-                imageClassName: 'scale-[1.38] group-hover:scale-[1.44]'
+                imageClassName: 'scale-[1.38]'
               },
               {
                 brand: 'ACER',
@@ -849,7 +849,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER TRAVELMATE P214-56',
                 particular: 'ACER TRAVELMATE P214-56,INTEL® CORE™ ULTRA 5 225U,8GB RAM,512GB SSD,14” WUXGA IPS, INTEL® SHARED MEMORY,DOS,ENGLISH KEYBOARD,BACKLIT,SILVER',
                 image: ImgNX_BSQEM_001,
-                imageClassName: 'scale-[1.36] group-hover:scale-[1.42]'
+                imageClassName: 'scale-[1.36]'
               },
               {
                 brand: 'AOC',
@@ -874,7 +874,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS EXPERTBOOK B1503CV',
                 particular: 'ASUS EXPERTBOOK B1503CV, INTEL CORE I3-1315U, 8GB DDR5, 256GB SSD M.2 2280 PCIE 4.0, 15.6" FHD 60HZ, WIN 11 HOME, ENG KEYBOARD, GENTLE GREY',
                 image: Img90NX0801_M04XV0,
-                imageClassName: 'scale-[1.44] group-hover:scale-[1.50]'
+                imageClassName: 'scale-[1.44]'
               },
               {
                 brand: 'ASUS',
@@ -883,7 +883,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS VIVOBOOK X1504VA-BQ4675 (English)',
                 particular: 'ASUS VIVOBOOK X1504VA-BQ4675 I3-1315U , 8GB RAM, 512GB SSD, 15.6-INCH, FHD , INTEL® UHD GRAPHICS,DOS,ENGLISH KEYBOARD,QUIET BLUE.',
                 image: Img90NB10J1_M04TL0,
-                imageClassName: 'scale-[1.12] group-hover:scale-[1.18]'
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -892,7 +892,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS VIVOBOOK A1502VA-BQ1385',
                 particular: 'ASUS VIVOBOOK A1502VA-BQ1385, INTEL CORE I7-13620H, 16GB RAM, 512GB SSD, 15.6 FHD (1920 X 1080), INTEL UHD GRAPHICS, DOS, ENGLISH KEYBOARD, QUIET BLUE',
                 image: Img90NB10T1_M01YX0,
-                imageClassName: 'scale-[1.12] group-hover:scale-[1.18]'
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -901,7 +901,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS VIVOBOOK X1504VA-BQ4675 (Arabic)',
                 particular: 'ASUS VIVOBOOK X1504VA-BQ4675 I3-1315U , 8GB RAM, 512GB SSD, 15.6-INCH, FHD , INTEL® UHD GRAPHICS,DOS,ARABIC KEYBOARD,QUIET BLUE',
                 image: Img90NB10J1_M04TK0,
-                imageClassName: 'scale-[1.12] group-hover:scale-[1.18]'
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -910,7 +910,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS VIVOBOOK A1502VA-BQ1386',
                 particular: 'ASUS VIVOBOOK A1502VA-BQ1386, INTEL CORE I7-13620H, 16GB RAM, 512GB SSD, 15.6 FHD (1920 X 1080), INTEL UHD GRAPHICS, DOS, ENGLISH KEYBOARD, COOL SILVER',
                 image: Img90NB10T2_M01YY0,
-                imageClassName: 'scale-[1.12] group-hover:scale-[1.18]'
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -919,7 +919,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS VIVOBOOK S5507QA-MA007W OLED',
                 particular: 'ASUS VIVOBOOK S5507QA-MA007W SNAPDRAGON X PLUS X1P42100, 16GB RAM, 1TB SSD, 15.6 OLED (2880 X 1620), QUALCOMM ADRENO X1-45, WIN 11 HOME, RGB 1 ZONE BACKLIT ENGLISH KEYBOARD, COOL SILVER',
                 image: Img90NB14Q2_M003W0,
-                imageClassName: 'scale-[1.12] group-hover:scale-[1.18]'
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -928,7 +928,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS ZENBOOK A14 X3407RA-QD004W',
                 particular: 'ASUS ZENBOOK A14 X3407RA-QD004W, SNAPDRAGON X ELITE X1E-78-100,16GB RAM,1TB SSD, 14 WUXGA OLED, INTEGRATED GRAPHICS,WINDOWS 11 HOME,BACKLIT ENGLISH KEYBOARD, ICELAND GRAY',
                 image: Img90NB16G2_M00230,
-                imageClassName: 'scale-[1.34] group-hover:scale-[1.40]'
+                imageClassName: 'scale-[1.34]'
               },
               {
                 brand: 'HP',
@@ -937,7 +937,7 @@ export default function WholesaleClientPage() {
                 name: 'HP OmniBook 3 Laptop 16-bu0065nia',
                 particular: 'HP OmniBook 3 Laptop 16-bu0065nia,Intel® Core™ 5 120U,16 GB DDR5-5200,512 GB PCIe® Gen4 NVMe,16" Diagonal 2K (1920 x 1200) IPS,Integrated,Intel® Graphics,DOS 3.0,English Backlit KB,Silver',
                 image: ImgD78MQEA_BH5,
-                imageClassName: 'scale-[1.24] group-hover:scale-[1.30]'
+                imageClassName: 'scale-[1.24]'
               },
               {
                 brand: 'LENOVO',
@@ -946,7 +946,7 @@ export default function WholesaleClientPage() {
                 name: 'LENOVO IDEAPAD SLIM 3I',
                 particular: 'LENOVO IDEAPAD SLIM 3I,INTEL CORE™ 3 304,8GB RAM,512GB SSD, INTEGRATED INTEL® GRAPHICS, 15.3" WUXGA IPS,DOS,BACKLIT, ENGLISH KEYBOARD, LUNA GREY',
                 image: Img83RR0040PS,
-                imageClassName: 'scale-[1.36] group-hover:scale-[1.42]'
+                imageClassName: 'scale-[1.36]'
               },
               {
                 brand: 'LENOVO',
@@ -971,7 +971,7 @@ export default function WholesaleClientPage() {
                 name: 'Lenovo V15 Gen 6',
                 particular: 'Lenovo V15 Gen 6 ,Intel® N100,8GB SODIMM DDR5-4800,256GB SSD M.2,15.6" FHD (1920x1080),Integrated Intel® UHD Graphics,Dos,Non-backlit English,Business Black',
                 image: Img83M4000YGP,
-                imageClassName: 'scale-[1.26] group-hover:scale-[1.32]'
+                imageClassName: 'scale-[1.26]'
               }
             ].map((product) => {
               const { line1, line2 } = getTwoLineTitle(product.name);
@@ -988,7 +988,7 @@ export default function WholesaleClientPage() {
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className={`object-contain transition-transform duration-500 ease-out ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2 group-hover:scale-105'
+                      className={`object-contain ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2'
                         }`}
                     />
                   </div>
