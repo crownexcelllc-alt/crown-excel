@@ -1,5 +1,5 @@
 import React from 'react';
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsSeo } from '@/lib/cms-fetch';
 import WholesaleClientPage from './WholesaleClientPage';
 
 export async function generateMetadata() {
@@ -30,6 +30,14 @@ export async function generateMetadata() {
       siteName: 'Crown Excel',
       locale: 'en_AE',
       type: 'website',
+      images: [
+        {
+          url: 'https://www.crownexcel.ae/logo.png',
+          width: 800,
+          height: 600,
+          alt: 'Crown Excel Wholesale Laptops in Dubai and UAE',
+        },
+      ],
     },
     Author: { name: 'Crown Excel General Trading LLC' },
     publisher: { name: 'Crown Excel General Trading LLC' },
@@ -39,6 +47,7 @@ export async function generateMetadata() {
       title: 'Laptop Wholesale Supplier in Dubai | Bulk Laptops in UAE',
       description:
         'Wholesale laptops in Dubai & UAE. Business, gaming, workstation & refurbished bulk laptop supply for resellers and enterprises.',
+      images: ['https://www.crownexcel.ae/logo.png'],
     },
   });
 }
@@ -46,7 +55,16 @@ export async function generateMetadata() {
 // Enable Incremental Static Regeneration (ISR)
 export const revalidate = 300;
 
-export default function LaptopWholesalePage() {
+export default async function LaptopWholesalePage() {
+  const cmsSeo = await getCmsSeo('/laptop-wholesale-supplier-in-dubai-or-uae');
+  let customSchemaObj = null;
+  if (cmsSeo?.schema?.customSchema && typeof cmsSeo.schema.customSchema === 'string') {
+    try {
+      customSchemaObj = JSON.parse(cmsSeo.schema.customSchema);
+    } catch (e) {
+      console.error('Failed to parse CMS customSchema in LaptopWholesalePage:', e);
+    }
+  }
   const jsonLdData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -183,6 +201,16 @@ export default function LaptopWholesalePage() {
       },
     ],
   };
+
+  if (customSchemaObj) {
+    if (Array.isArray(customSchemaObj)) {
+      jsonLdData['@graph'].push(...customSchemaObj);
+    } else if (customSchemaObj['@graph']) {
+      jsonLdData['@graph'].push(...customSchemaObj['@graph']);
+    } else {
+      jsonLdData['@graph'].push(customSchemaObj);
+    }
+  }
 
   return (
     <>
