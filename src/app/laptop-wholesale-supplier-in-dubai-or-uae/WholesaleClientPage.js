@@ -619,7 +619,7 @@ export default function WholesaleClientPage() {
             }}
           >
             <span className="block not-italic text-[#171717] lg:whitespace-nowrap">
-              Looking For Wholesale Laptops
+              Looking  <p className="inline-block bg-[#FFE500] py-2 px-3"> Wholesale </p> Deals For
             </span>
             {/* Dynamic Animated Category Typewriter */}
             <span
