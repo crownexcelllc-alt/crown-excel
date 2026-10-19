@@ -23,16 +23,24 @@ import GamingPredatorHeliosAi from '@/Components/Images/gaming_predator_helios_a
 import GamingLenovoLegionPro5i from '@/Components/Images/gaming_lenovo_legion_pro5i.jpg';
 import GamingLenovoLoq from '@/Components/Images/gaming_lenovo_loq.jpg';
 
-// Inventory Product WebP / PNG Images
+// Inventory Product WebP Images (Matched by Product Barcode)
+import Img24B3HA2_89 from '@/Components/Images/24B3HA2-89.webp';
+import Img25B36H_89 from '@/Components/Images/25B36H-89.webp';
 import Img83F30082AX from '@/Components/Images/83F30082AX.webp';
+import Img83M4000YGP from '@/Components/Images/83M4000YGP.webp';
+import Img83RR0040PS from '@/Components/Images/83RR0040PS.webp';
 import Img83S0007FUS from '@/Components/Images/83S0007FUS.webp';
 import Img90NB10J1_M04TK0 from '@/Components/Images/90NB10J1-M04TK0.webp';
 import Img90NB10J1_M04TL0 from '@/Components/Images/90NB10J1-M04TL0.webp';
 import Img90NB10T1_M01YX0 from '@/Components/Images/90NB10T1-M01YX0.webp';
 import Img90NB10T2_M01YY0 from '@/Components/Images/90NB10T2-M01YY0.webp';
 import Img90NB14Q2_M003W0 from '@/Components/Images/90NB14Q2-M003W0.webp';
+import Img90NB16G2_M00230 from '@/Components/Images/90NB16G2-M00230.webp';
+import Img90NX0801_M04XV0 from '@/Components/Images/90NX0801-M04XV0.webp';
+import ImgD78MQEA_BH5 from '@/Components/Images/D78MQEA_BH5.webp';
 import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.webp';
 import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.webp';
+import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.webp';
 import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.webp';
 import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.webp';
 import ScreenImage from '@/Components/Images/screen.png';
@@ -822,7 +830,7 @@ export default function WholesaleClientPage() {
                 barcode: 'NH.QX5EM.003',
                 name: 'Acer Predator Helios Neo PHN16-73-94ZR',
                 particular: "Acer Predator Helios Neo PHN16-73-94ZR, Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 240Hz, NVIDIA® GeForce® RTX™ 5070 8GB, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
-                image: GamingAcerPredatorHelios,
+                image: ImgNH_QX5EM_003,
                 imageClassName: 'scale-[1.30] group-hover:scale-[1.36]'
               },
               {
@@ -831,7 +839,7 @@ export default function WholesaleClientPage() {
                 barcode: 'NH.QVUEM.002',
                 name: 'Predator Helios Neo 16 AI PHN16-73-97BP',
                 particular: "Predator Helios Neo 16 AI PHN16-73-97BP Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 180Hz, 8GB NVIDIA RTX 5060, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
-                image: GamingPredatorHeliosAi
+                image: ImgNH_QVUEM_002
               },
               {
                 brand: 'ACER',
@@ -839,7 +847,7 @@ export default function WholesaleClientPage() {
                 barcode: 'NX.BSQEM.001',
                 name: 'ACER TRAVELMATE P214-56',
                 particular: 'ACER TRAVELMATE P214-56,INTEL® CORE™ ULTRA 5 225U,8GB RAM,512GB SSD,14” WUXGA IPS, INTEL® SHARED MEMORY,DOS,ENGLISH KEYBOARD,BACKLIT,SILVER',
-                image: BestLaptop2
+                image: ImgNX_BSQEM_001
               },
               {
                 brand: 'AOC',
@@ -847,7 +855,7 @@ export default function WholesaleClientPage() {
                 barcode: '24B3HA2-89',
                 name: 'AOC MONITOR-23.8" flat wide monitor',
                 particular: 'AOC MONITOR-23.8" flat wide monitor',
-                image: ScreenImage
+                image: Img24B3HA2_89
               },
               {
                 brand: 'AOC',
@@ -855,7 +863,7 @@ export default function WholesaleClientPage() {
                 barcode: '25B36H-89',
                 name: 'AOC 25" IPS FHD 100Hz Monitor 25B36H-89',
                 particular: 'AOC| 25"|IPS|FHD|100Hz|HDMI&VGA|GameMode|VESAMount',
-                image: ScreenImage
+                image: Img25B36H_89
               },
               {
                 brand: 'ASUS',
@@ -863,7 +871,7 @@ export default function WholesaleClientPage() {
                 barcode: '90NX0801-M04XV0',
                 name: 'ASUS EXPERTBOOK B1503CV',
                 particular: 'ASUS EXPERTBOOK B1503CV, INTEL CORE I3-1315U, 8GB DDR5, 256GB SSD M.2 2280 PCIE 4.0, 15.6" FHD 60HZ, WIN 11 HOME, ENG KEYBOARD, GENTLE GREY',
-                image: BannerLaptop1
+                image: Img90NX0801_M04XV0
               },
               {
                 brand: 'ASUS',
@@ -911,7 +919,7 @@ export default function WholesaleClientPage() {
                 barcode: '90NB16G2-M00230',
                 name: 'ASUS ZENBOOK A14 X3407RA-QD004W',
                 particular: 'ASUS ZENBOOK A14 X3407RA-QD004W, SNAPDRAGON X ELITE X1E-78-100,16GB RAM,1TB SSD, 14 WUXGA OLED, INTEGRATED GRAPHICS,WINDOWS 11 HOME,BACKLIT ENGLISH KEYBOARD, ICELAND GRAY',
-                image: BannerLaptop2
+                image: Img90NB16G2_M00230
               },
               {
                 brand: 'HP',
@@ -919,7 +927,7 @@ export default function WholesaleClientPage() {
                 barcode: 'D78MQEA#BH5',
                 name: 'HP OmniBook 3 Laptop 16-bu0065nia',
                 particular: 'HP OmniBook 3 Laptop 16-bu0065nia,Intel® Core™ 5 120U,16 GB DDR5-5200,512 GB PCIe® Gen4 NVMe,16" Diagonal 2K (1920 x 1200) IPS,Integrated,Intel® Graphics,DOS 3.0,English Backlit KB,Silver',
-                image: BestLaptop1
+                image: ImgD78MQEA_BH5
               },
               {
                 brand: 'LENOVO',
@@ -927,7 +935,7 @@ export default function WholesaleClientPage() {
                 barcode: '83RR0040PS',
                 name: 'LENOVO IDEAPAD SLIM 3I',
                 particular: 'LENOVO IDEAPAD SLIM 3I,INTEL CORE™ 3 304,8GB RAM,512GB SSD, INTEGRATED INTEL® GRAPHICS, 15.3" WUXGA IPS,DOS,BACKLIT, ENGLISH KEYBOARD, LUNA GREY',
-                image: LatestProduct3
+                image: Img83RR0040PS
               },
               {
                 brand: 'LENOVO',
@@ -935,7 +943,7 @@ export default function WholesaleClientPage() {
                 barcode: '83F30082AX',
                 name: 'Lenovo Legion Pro 5i (16", 10)',
                 particular: 'Lenovo Legion Pro 5i (16", 10) Intel Core™ Ultra 7 255HX, 2x 16GB SODIMM DDR5-5600, 1TB SSD M.2 2280, 16" WQXGA OLED 500nits 165Hz, NVIDIA GeForce RTX™ 5070 8GB GDDR7, DOS, 24-Zone RGB Backlit Arabic Keyboard, Eclipse Black',
-                image: GamingLenovoLegionPro5i
+                image: Img83F30082AX
               },
               {
                 brand: 'LENOVO',
@@ -943,7 +951,7 @@ export default function WholesaleClientPage() {
                 barcode: '83S0007FUS',
                 name: 'Lenovo LOQ Gaming Laptop 15.6"',
                 particular: 'Lenovo LOQ Gaming Laptop, AMD Ryzen 7 170 2025, 16GB Memory, 512GB Storage, 15.6" 2K, NVIDIA GeForce RTX 4050, Luna Grey',
-                image: GamingLenovoLoq
+                image: Img83S0007FUS
               },
               {
                 brand: 'LENOVO',
@@ -951,7 +959,7 @@ export default function WholesaleClientPage() {
                 barcode: '83M4000YGP',
                 name: 'Lenovo V15 Gen 6',
                 particular: 'Lenovo V15 Gen 6 ,Intel® N100,8GB SODIMM DDR5-4800,256GB SSD M.2,15.6" FHD (1920x1080),Integrated Intel® UHD Graphics,Dos,Non-backlit English,Business Black',
-                image: BestLaptop1
+                image: Img83M4000YGP
               }
             ].map((product) => {
               const { line1, line2 } = getTwoLineTitle(product.name);
