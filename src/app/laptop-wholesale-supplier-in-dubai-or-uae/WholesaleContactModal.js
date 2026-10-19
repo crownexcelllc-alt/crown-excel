@@ -257,25 +257,16 @@ export default function WholesaleContactModal({ isOpen, onClose, preSelectedSubj
     try {
       setLoading(true);
 
-      // Structure comments cleanly for admin review
-      const formattedComments = [
-        `Country: ${selectedCountry}`,
-        `Product Category: ${subject}`,
-        quantity.trim() ? `Order Quantity: ${quantity.trim()}` : null,
-        destination.trim() ? `Destination City / Country: ${destination.trim()}` : null,
-        '',
-        'Inquiry Details:',
-        comments.trim(),
-      ].filter((x) => x !== null).join('\n');
-
       const payload = {
         name: name.trim(),
         email: email.trim(),
+        country: selectedCountry,
         phone: `${countryCode} ${phone.trim()}`,
         subject: subject,
         service: service,
-        comments: formattedComments,
         quantity: quantity.trim(),
+        destination: destination.trim(),
+        comments: comments.trim(),
         isWholesale: true,
       };
 

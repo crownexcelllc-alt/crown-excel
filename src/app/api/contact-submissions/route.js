@@ -7,7 +7,7 @@ async function getSubmissions() {
   return db.collection('contact_submissions').find().sort({ _id: -1 }).toArray();
 }
 
-async function saveSubmission({ name, email, phone, subject, service, comments, company, quantity }) {
+async function saveSubmission({ name, email, phone, subject, service, comments, country, quantity, destination, company }) {
   const db = await getDb();
   const doc = {
     name,
@@ -16,8 +16,10 @@ async function saveSubmission({ name, email, phone, subject, service, comments, 
     subject,
     service,
     comments,
-    ...(company ? { company } : {}),
+    ...(country ? { country } : {}),
     ...(quantity ? { quantity } : {}),
+    ...(destination ? { destination } : {}),
+    ...(company ? { company } : {}),
     createdAt: new Date().toISOString()
   };
   const res = await db.collection('contact_submissions').insertOne(doc);
@@ -42,11 +44,13 @@ export async function GET() {
       name: s.name,
       email: s.email,
       phone: s.phone,
+      country: s.country || '',
       subject: s.subject,
       service: s.service,
-      comments: s.comments,
-      company: s.company || '',
       quantity: s.quantity || '',
+      destination: s.destination || '',
+      company: s.company || '',
+      comments: s.comments,
       createdAt: s.createdAt
     })), { headers: CORS_HEADERS });
   } catch (err) {
@@ -58,7 +62,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, phone, subject, service, comments, isWholesale, company, quantity } = body || {};
+    const { name, email, phone, subject, service, comments, isWholesale, company, quantity, destination, country } = body || {};
     if (!name || !email || !phone || !subject || !service || !comments) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400, headers: CORS_HEADERS });
     }
@@ -76,7 +80,18 @@ export async function POST(request) {
       await db.collection('otps').deleteMany({ email });
     }
 
-    const entry = await saveSubmission({ name, email, phone, subject, service, comments, company, quantity });
+    const entry = await saveSubmission({
+      name: (name || '').trim(),
+      email: (email || '').trim(),
+      phone: (phone || '').trim(),
+      subject: (subject || '').trim(),
+      service: (service || '').trim(),
+      comments: (comments || '').trim(),
+      country: (country || '').trim(),
+      quantity: (quantity || '').trim(),
+      destination: (destination || '').trim(),
+      company: (company || '').trim(),
+    });
 
     await logActivity(request, 'contact_submission', name, { email, subject, service });
 
