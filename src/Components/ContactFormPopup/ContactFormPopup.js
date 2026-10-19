@@ -22,6 +22,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
     'Become Our Partner',
     'For Corporates Content',
     'Wholesale Inquiries',
+    ...(preSelectedSubject && !['Select Subject', 'Become Our Partner', 'For Corporates Content', 'Wholesale Inquiries'].includes(preSelectedSubject) ? [preSelectedSubject] : []),
   ];
 
   const [service, setService] = useState('Select Service');

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getDb } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { logActivity } from '@/lib/activity-logger';
@@ -241,6 +242,16 @@ export async function POST(request) {
 
     await logActivity(request, 'update_seo', path || `Route ID: ${routeId}`, { score });
 
+    // Instantly invalidate ISR cache for the updated route
+    const pathToRevalidate = path || (routeId ? (await db.collection('cms_routes').findOne({ _id: ObjectId.isValid(routeId) ? new ObjectId(routeId) : routeId }))?.path : null);
+    if (pathToRevalidate) {
+      try {
+        revalidatePath(pathToRevalidate);
+      } catch (revalErr) {
+        console.error('revalidatePath error in POST /api/cms/seo:', revalErr);
+      }
+    }
+
     return jsonResponse({
       ok: true,
       seoScore: score,
@@ -271,6 +282,14 @@ export async function DELETE(request) {
     await db.collection('cms_seo').deleteOne({ _id: new ObjectId(id) });
 
     await logActivity(request, 'delete_seo', target, { id });
+
+    if (existing?.path) {
+      try {
+        revalidatePath(existing.path);
+      } catch (revalErr) {
+        console.error('revalidatePath error in DELETE /api/cms/seo:', revalErr);
+      }
+    }
 
     return jsonResponse({ ok: true });
   } catch (err) {
