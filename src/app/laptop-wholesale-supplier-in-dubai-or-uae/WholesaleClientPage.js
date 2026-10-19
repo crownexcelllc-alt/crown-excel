@@ -29,18 +29,18 @@ import Img25B36H_89 from '@/Components/Images/25B36H-89.webp';
 import Img83F30082AX from '@/Components/Images/83F30082AX.webp';
 import Img83M4000YGP from '@/Components/Images/83M4000YGP.webp';
 import Img83RR0040PS from '@/Components/Images/83RR0040PS.webp';
-import Img83S0007FUS from '@/Components/Images/83S0007FUS.webp';
+import Img83S0007FUS from '@/Components/Images/83S0007FUS.png';
 import Img90NB10J1_M04TK0 from '@/Components/Images/90NB10J1-M04TK0.webp';
 import Img90NB10J1_M04TL0 from '@/Components/Images/90NB10J1-M04TL0.webp';
 import Img90NB10T1_M01YX0 from '@/Components/Images/90NB10T1-M01YX0.webp';
 import Img90NB10T2_M01YY0 from '@/Components/Images/90NB10T2-M01YY0.webp';
 import Img90NB14Q2_M003W0 from '@/Components/Images/90NB14Q2-M003W0.webp';
-import Img90NB16G2_M00230 from '@/Components/Images/90NB16G2-M00230.webp';
+import Img90NB16G2_M00230 from '@/Components/Images/90NB16G2-M00230.png';
 import Img90NX0801_M04XV0 from '@/Components/Images/90NX0801-M04XV0.webp';
 import ImgD78MQEA_BH5 from '@/Components/Images/D78MQEA_BH5.webp';
-import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.webp';
-import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.webp';
-import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.webp';
+import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.png';
+import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.png';
+import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.png';
 import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.webp';
 import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.webp';
 import ScreenImage from '@/Components/Images/screen.png';
@@ -927,8 +927,7 @@ export default function WholesaleClientPage() {
                 barcode: '90NB16G2-M00230',
                 name: 'ASUS ZENBOOK A14 X3407RA-QD004W',
                 particular: 'ASUS ZENBOOK A14 X3407RA-QD004W, SNAPDRAGON X ELITE X1E-78-100,16GB RAM,1TB SSD, 14 WUXGA OLED, INTEGRATED GRAPHICS,WINDOWS 11 HOME,BACKLIT ENGLISH KEYBOARD, ICELAND GRAY',
-                image: Img90NB16G2_M00230,
-                imageClassName: 'scale-[1.34]'
+                image: Img90NB16G2_M00230
               },
               {
                 brand: 'HP',
@@ -978,11 +977,11 @@ export default function WholesaleClientPage() {
               return (
                 <div
                   key={product.barcode}
-                  className="group relative bg-white p-5 sm:p-6 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
+                  className="group relative bg-white p-3 sm:p-3.5 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden min-h-[350px] sm:min-h-[375px] lg:min-h-[395px]"
                 >
 
-                  {/* Product Image Showcase on Pure White Background with increased height and consistent sizing */}
-                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden mb-3.5 rounded-xl">
+                  {/* Product Image Showcase on Pure White Background */}
+                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden rounded-xl">
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -993,43 +992,46 @@ export default function WholesaleClientPage() {
                     />
                   </div>
 
-                  {/* Content: Exactly 2-Line Product Name & Plain Barcode Text */}
-                  <div className="w-full flex flex-col flex-grow items-center text-center">
-                    {/* Product Name (Strictly 2 lines across all cards, truncated with ellipsis if exceeding) */}
-                    <h3
-                      className="w-full font-montserrat font-bold text-[14px] sm:text-[15px] text-[#171717] leading-[1.35] h-[40px] sm:h-[42px] mb-2 text-center overflow-hidden flex flex-col justify-center"
-                      title={product.particular}
-                    >
-                      <span className="block truncate">{line1}</span>
-                      <span className="block truncate">{line2}</span>
-                    </h3>
+                  {/* Separate container below the image for product text, barcode, and buttons */}
+                  <div className="w-full flex flex-col flex-grow justify-end pt-2 pb-1 px-1 sm:px-1.5">
+                    {/* Content: Exactly 2-Line Product Name & Plain Barcode Text */}
+                    <div className="w-full flex flex-col items-center text-center">
+                      {/* Product Name (Strictly 2 lines across all cards, truncated with ellipsis if exceeding) */}
+                      <h3
+                        className="w-full font-montserrat font-bold text-[14px] sm:text-[15px] text-[#171717] leading-[1.35] h-[40px] sm:h-[42px] mb-1.5 text-center overflow-hidden flex flex-col justify-center"
+                        title={product.particular}
+                      >
+                        <span className="block truncate">{line1}</span>
+                        <span className="block truncate">{line2}</span>
+                      </h3>
 
-                    {/* Plain Simple Barcode / Item Code Text (No badge, no background, no decorative container) */}
-                    <p className="w-full font-mono text-[12px] text-gray-500 tracking-wider mb-3.5 text-center">
-                      {product.barcode}
-                    </p>
-                  </div>
+                      {/* Plain Simple Barcode / Item Code Text (No badge, no background, no decorative container) */}
+                      <p className="w-full font-mono text-[12px] text-gray-500 tracking-wider mb-2.5 text-center">
+                        {product.barcode}
+                      </p>
+                    </div>
 
-                  {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
-                  <div className="w-full mt-auto grid grid-cols-2 gap-2 pt-1">
-                    <button
-                      type="button"
-                      onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
-                    >
-                      <span>Inquire Now</span>
-                      <ArrowRight className="w-3 h-3 shrink-0" />
-                    </button>
+                    {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
+                    <div className="w-full grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
+                        className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      >
+                        <span>Inquire Now</span>
+                        <ArrowRight className="w-3 h-3 shrink-0" />
+                      </button>
 
-                    <a
-                      href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
-                    >
-                      <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
-                      <span>WhatsApp</span>
-                    </a>
+                      <a
+                        href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      >
+                        <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               );
