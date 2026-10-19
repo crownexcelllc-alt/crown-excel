@@ -126,6 +126,49 @@ export default function WholesaleClientPage() {
     setShowContactPopup(true);
   };
 
+  const WHATSAPP_PHONE = '923457811966';
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const checkMobile = () => {
+        const ua = navigator.userAgent || '';
+        setIsMobile(
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ||
+          window.innerWidth < 768
+        );
+      };
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
+
+  const getWhatsAppUrl = (message = '') => {
+    const encoded = message ? encodeURIComponent(message) : '';
+    const base = isMobile ? 'https://api.whatsapp.com/send/' : 'https://web.whatsapp.com/send/';
+    return `${base}?phone=${WHATSAPP_PHONE}${encoded ? `&text=${encoded}` : ''}&type=phone_number&app_absent=0`;
+  };
+
+  const handleWhatsAppRedirect = (e, message = '') => {
+    const encoded = message ? encodeURIComponent(message) : '';
+    const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+    const mobileNow =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ||
+      (typeof window !== 'undefined' && window.innerWidth < 768);
+
+    const targetUrl = mobileNow
+      ? `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}${encoded ? `&text=${encoded}` : ''}&type=phone_number&app_absent=0`
+      : `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}${encoded ? `&text=${encoded}` : ''}&type=phone_number&app_absent=0`;
+
+    if (typeof window !== 'undefined') {
+      const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      if (win) {
+        if (e && e.preventDefault) e.preventDefault();
+      }
+    }
+  };
+
   // =========================================================================
   // Authentic Crown Excel Hero Dynamic Category Animation
   // =========================================================================
@@ -678,7 +721,8 @@ export default function WholesaleClientPage() {
             </button>
 
             <a
-              href={`https://wa.me/97143540566?text=${encodeURIComponent('Hello Crown Excel, I am inquiring about wholesale laptops.')}`}
+              href={getWhatsAppUrl('Hello Crown Excel, I am inquiring about wholesale laptops.')}
+              onClick={(e) => handleWhatsAppRedirect(e, 'Hello Crown Excel, I am inquiring about wholesale laptops.')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm sm:text-[15px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
@@ -1023,7 +1067,8 @@ export default function WholesaleClientPage() {
                       </button>
 
                       <a
-                        href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
+                        href={getWhatsAppUrl(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}
+                        onClick={(e) => handleWhatsAppRedirect(e, `Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
@@ -1244,7 +1289,8 @@ export default function WholesaleClientPage() {
                   </button>
 
                   <a
-                    href="https://wa.me/97143540566"
+                    href={getWhatsAppUrl('Hello Crown Excel, I am inquiring about wholesale laptops and IT equipment.')}
+                    onClick={(e) => handleWhatsAppRedirect(e, 'Hello Crown Excel, I am inquiring about wholesale laptops and IT equipment.')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider hover:shadow-md transform hover:-translate-y-0.5 active:scale-[0.98]"
@@ -1480,7 +1526,8 @@ export default function WholesaleClientPage() {
                 </button>
 
                 <a
-                  href={`https://wa.me/97143540566?text=${encodeURIComponent('Hello Crown Excel, I am inquiring about international wholesale computer equipment export to my country.')}`}
+                  href={getWhatsAppUrl('Hello Crown Excel, I am inquiring about international wholesale computer equipment export to my country.')}
+                  onClick={(e) => handleWhatsAppRedirect(e, 'Hello Crown Excel, I am inquiring about international wholesale computer equipment export to my country.')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-sm font-bold font-montserrat uppercase tracking-wider rounded-xl shadow-sm hover:shadow transition-all cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
