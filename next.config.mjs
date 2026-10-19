@@ -36,6 +36,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/about-us/career',
+        destination: '/company/career',
+        permanent: true,
+      },
+      {
         source: '/company-history',
         destination: '/company/company-history',
         permanent: true,
@@ -68,6 +73,11 @@ const nextConfig = {
       {
         source: '/contact',
         destination: '/contact-us',
+        permanent: true,
+      },
+      {
+        source: '/products',
+        destination: '/products/laptops',
         permanent: true,
       },
       {

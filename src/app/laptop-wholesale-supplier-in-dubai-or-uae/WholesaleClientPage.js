@@ -29,18 +29,18 @@ import Img25B36H_89 from '@/Components/Images/25B36H-89.webp';
 import Img83F30082AX from '@/Components/Images/83F30082AX.webp';
 import Img83M4000YGP from '@/Components/Images/83M4000YGP.webp';
 import Img83RR0040PS from '@/Components/Images/83RR0040PS.webp';
-import Img83S0007FUS from '@/Components/Images/83S0007FUS.webp';
+import Img83S0007FUS from '@/Components/Images/83S0007FUS.png';
 import Img90NB10J1_M04TK0 from '@/Components/Images/90NB10J1-M04TK0.webp';
 import Img90NB10J1_M04TL0 from '@/Components/Images/90NB10J1-M04TL0.webp';
 import Img90NB10T1_M01YX0 from '@/Components/Images/90NB10T1-M01YX0.webp';
 import Img90NB10T2_M01YY0 from '@/Components/Images/90NB10T2-M01YY0.webp';
 import Img90NB14Q2_M003W0 from '@/Components/Images/90NB14Q2-M003W0.webp';
-import Img90NB16G2_M00230 from '@/Components/Images/90NB16G2-M00230.webp';
+import Img90NB16G2_M00230 from '@/Components/Images/90NB16G2-M00230.png';
 import Img90NX0801_M04XV0 from '@/Components/Images/90NX0801-M04XV0.webp';
 import ImgD78MQEA_BH5 from '@/Components/Images/D78MQEA_BH5.webp';
-import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.webp';
-import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.webp';
-import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.webp';
+import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.png';
+import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.png';
+import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.png';
 import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.webp';
 import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.webp';
 import ScreenImage from '@/Components/Images/screen.png';
@@ -813,7 +813,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER ASPIRE LITE AL15-36P-36UJ',
                 particular: 'ACER ASPIRE LITE AL15-36P-36UJ INTEL CORE 3 N350, 8GB RAM, 256GB SSD, INTEL SHARED, 15.6 FHD, DOS, ENGLISH KEYBOARD, SILVER',
                 image: ImgNX_DGJEM_002,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.28]'
               },
               {
                 brand: 'ACER',
@@ -822,7 +822,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER ASPIRE ALITE15-54P',
                 particular: 'ACER ASPIRE ALITE15-54P, INTEL® CORE™ ULTRA 5-115U,8GB RAM,512GB SSD, 15.6" FHD, INTEL® SHARED,DOS,ENGLISH KEYBOARD,SILVER',
                 image: ImgNX_DTGEM_001,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.28]'
               },
               {
                 brand: 'ACER',
@@ -831,7 +831,7 @@ export default function WholesaleClientPage() {
                 name: 'Acer Predator Helios Neo PHN16-73-94ZR',
                 particular: "Acer Predator Helios Neo PHN16-73-94ZR, Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 240Hz, NVIDIA® GeForce® RTX™ 5070 8GB, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
                 image: ImgNH_QX5EM_003,
-                imageClassName: 'scale-[1.30] group-hover:scale-[1.36]'
+                imageClassName: 'scale-[1.38]'
               },
               {
                 brand: 'ACER',
@@ -840,7 +840,7 @@ export default function WholesaleClientPage() {
                 name: 'Predator Helios Neo 16 AI PHN16-73-97BP',
                 particular: "Predator Helios Neo 16 AI PHN16-73-97BP Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 180Hz, 8GB NVIDIA RTX 5060, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
                 image: ImgNH_QVUEM_002,
-                imageClassName: 'scale-[1.30] group-hover:scale-[1.36]'
+                imageClassName: 'scale-[1.38]'
               },
               {
                 brand: 'ACER',
@@ -849,7 +849,7 @@ export default function WholesaleClientPage() {
                 name: 'ACER TRAVELMATE P214-56',
                 particular: 'ACER TRAVELMATE P214-56,INTEL® CORE™ ULTRA 5 225U,8GB RAM,512GB SSD,14” WUXGA IPS, INTEL® SHARED MEMORY,DOS,ENGLISH KEYBOARD,BACKLIT,SILVER',
                 image: ImgNX_BSQEM_001,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.36]'
               },
               {
                 brand: 'AOC',
@@ -874,7 +874,7 @@ export default function WholesaleClientPage() {
                 name: 'ASUS EXPERTBOOK B1503CV',
                 particular: 'ASUS EXPERTBOOK B1503CV, INTEL CORE I3-1315U, 8GB DDR5, 256GB SSD M.2 2280 PCIE 4.0, 15.6" FHD 60HZ, WIN 11 HOME, ENG KEYBOARD, GENTLE GREY',
                 image: Img90NX0801_M04XV0,
-                imageClassName: 'scale-[1.36] group-hover:scale-[1.42]'
+                imageClassName: 'scale-[1.44]'
               },
               {
                 brand: 'ASUS',
@@ -882,7 +882,8 @@ export default function WholesaleClientPage() {
                 barcode: '90NB10J1-M04TL0',
                 name: 'ASUS VIVOBOOK X1504VA-BQ4675 (English)',
                 particular: 'ASUS VIVOBOOK X1504VA-BQ4675 I3-1315U , 8GB RAM, 512GB SSD, 15.6-INCH, FHD , INTEL® UHD GRAPHICS,DOS,ENGLISH KEYBOARD,QUIET BLUE.',
-                image: Img90NB10J1_M04TL0
+                image: Img90NB10J1_M04TL0,
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -890,7 +891,8 @@ export default function WholesaleClientPage() {
                 barcode: '90NB10T1-M01YX0',
                 name: 'ASUS VIVOBOOK A1502VA-BQ1385',
                 particular: 'ASUS VIVOBOOK A1502VA-BQ1385, INTEL CORE I7-13620H, 16GB RAM, 512GB SSD, 15.6 FHD (1920 X 1080), INTEL UHD GRAPHICS, DOS, ENGLISH KEYBOARD, QUIET BLUE',
-                image: Img90NB10T1_M01YX0
+                image: Img90NB10T1_M01YX0,
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -898,7 +900,8 @@ export default function WholesaleClientPage() {
                 barcode: '90NB10J1-M04TK0',
                 name: 'ASUS VIVOBOOK X1504VA-BQ4675 (Arabic)',
                 particular: 'ASUS VIVOBOOK X1504VA-BQ4675 I3-1315U , 8GB RAM, 512GB SSD, 15.6-INCH, FHD , INTEL® UHD GRAPHICS,DOS,ARABIC KEYBOARD,QUIET BLUE',
-                image: Img90NB10J1_M04TK0
+                image: Img90NB10J1_M04TK0,
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -906,7 +909,8 @@ export default function WholesaleClientPage() {
                 barcode: '90NB10T2-M01YY0',
                 name: 'ASUS VIVOBOOK A1502VA-BQ1386',
                 particular: 'ASUS VIVOBOOK A1502VA-BQ1386, INTEL CORE I7-13620H, 16GB RAM, 512GB SSD, 15.6 FHD (1920 X 1080), INTEL UHD GRAPHICS, DOS, ENGLISH KEYBOARD, COOL SILVER',
-                image: Img90NB10T2_M01YY0
+                image: Img90NB10T2_M01YY0,
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -914,7 +918,8 @@ export default function WholesaleClientPage() {
                 barcode: '90NB14Q2-M003W0',
                 name: 'ASUS VIVOBOOK S5507QA-MA007W OLED',
                 particular: 'ASUS VIVOBOOK S5507QA-MA007W SNAPDRAGON X PLUS X1P42100, 16GB RAM, 1TB SSD, 15.6 OLED (2880 X 1620), QUALCOMM ADRENO X1-45, WIN 11 HOME, RGB 1 ZONE BACKLIT ENGLISH KEYBOARD, COOL SILVER',
-                image: Img90NB14Q2_M003W0
+                image: Img90NB14Q2_M003W0,
+                imageClassName: 'scale-[0.92]'
               },
               {
                 brand: 'ASUS',
@@ -922,8 +927,7 @@ export default function WholesaleClientPage() {
                 barcode: '90NB16G2-M00230',
                 name: 'ASUS ZENBOOK A14 X3407RA-QD004W',
                 particular: 'ASUS ZENBOOK A14 X3407RA-QD004W, SNAPDRAGON X ELITE X1E-78-100,16GB RAM,1TB SSD, 14 WUXGA OLED, INTEGRATED GRAPHICS,WINDOWS 11 HOME,BACKLIT ENGLISH KEYBOARD, ICELAND GRAY',
-                image: Img90NB16G2_M00230,
-                imageClassName: 'scale-[1.26] group-hover:scale-[1.32]'
+                image: Img90NB16G2_M00230
               },
               {
                 brand: 'HP',
@@ -932,7 +936,7 @@ export default function WholesaleClientPage() {
                 name: 'HP OmniBook 3 Laptop 16-bu0065nia',
                 particular: 'HP OmniBook 3 Laptop 16-bu0065nia,Intel® Core™ 5 120U,16 GB DDR5-5200,512 GB PCIe® Gen4 NVMe,16" Diagonal 2K (1920 x 1200) IPS,Integrated,Intel® Graphics,DOS 3.0,English Backlit KB,Silver',
                 image: ImgD78MQEA_BH5,
-                imageClassName: 'scale-[1.24] group-hover:scale-[1.30]'
+                imageClassName: 'scale-[1.24]'
               },
               {
                 brand: 'LENOVO',
@@ -941,7 +945,7 @@ export default function WholesaleClientPage() {
                 name: 'LENOVO IDEAPAD SLIM 3I',
                 particular: 'LENOVO IDEAPAD SLIM 3I,INTEL CORE™ 3 304,8GB RAM,512GB SSD, INTEGRATED INTEL® GRAPHICS, 15.3" WUXGA IPS,DOS,BACKLIT, ENGLISH KEYBOARD, LUNA GREY',
                 image: Img83RR0040PS,
-                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
+                imageClassName: 'scale-[1.36]'
               },
               {
                 brand: 'LENOVO',
@@ -966,65 +970,68 @@ export default function WholesaleClientPage() {
                 name: 'Lenovo V15 Gen 6',
                 particular: 'Lenovo V15 Gen 6 ,Intel® N100,8GB SODIMM DDR5-4800,256GB SSD M.2,15.6" FHD (1920x1080),Integrated Intel® UHD Graphics,Dos,Non-backlit English,Business Black',
                 image: Img83M4000YGP,
-                imageClassName: 'scale-[1.26] group-hover:scale-[1.32]'
+                imageClassName: 'scale-[1.26]'
               }
             ].map((product) => {
               const { line1, line2 } = getTwoLineTitle(product.name);
               return (
                 <div
                   key={product.barcode}
-                  className="group relative bg-white p-5 sm:p-6 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
+                  className="group relative bg-white p-3 sm:p-3.5 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden min-h-[350px] sm:min-h-[375px] lg:min-h-[395px]"
                 >
 
-                  {/* Product Image Showcase on Pure White Background with increased height and consistent sizing */}
-                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden mb-3.5 rounded-xl">
+                  {/* Product Image Showcase on Pure White Background */}
+                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden rounded-xl">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className={`object-contain transition-transform duration-500 ease-out ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2 group-hover:scale-105'
+                      className={`object-contain ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2'
                         }`}
                     />
                   </div>
 
-                  {/* Content: Exactly 2-Line Product Name & Plain Barcode Text */}
-                  <div className="w-full flex flex-col flex-grow items-center text-center">
-                    {/* Product Name (Strictly 2 lines across all cards, truncated with ellipsis if exceeding) */}
-                    <h3
-                      className="w-full font-montserrat font-bold text-[14px] sm:text-[15px] text-[#171717] leading-[1.35] h-[40px] sm:h-[42px] mb-2 text-center overflow-hidden flex flex-col justify-center"
-                      title={product.particular}
-                    >
-                      <span className="block truncate">{line1}</span>
-                      <span className="block truncate">{line2}</span>
-                    </h3>
+                  {/* Separate container below the image for product text, barcode, and buttons */}
+                  <div className="w-full flex flex-col flex-grow justify-end pt-2 pb-1 px-1 sm:px-1.5">
+                    {/* Content: Exactly 2-Line Product Name & Plain Barcode Text */}
+                    <div className="w-full flex flex-col items-center text-center">
+                      {/* Product Name (Strictly 2 lines across all cards, truncated with ellipsis if exceeding) */}
+                      <h3
+                        className="w-full font-montserrat font-bold text-[14px] sm:text-[15px] text-[#171717] leading-[1.35] h-[40px] sm:h-[42px] mb-1.5 text-center overflow-hidden flex flex-col justify-center"
+                        title={product.particular}
+                      >
+                        <span className="block truncate">{line1}</span>
+                        <span className="block truncate">{line2}</span>
+                      </h3>
 
-                    {/* Plain Simple Barcode / Item Code Text (No badge, no background, no decorative container) */}
-                    <p className="w-full font-mono text-[12px] text-gray-500 tracking-wider mb-3.5 text-center">
-                      {product.barcode}
-                    </p>
-                  </div>
+                      {/* Plain Simple Barcode / Item Code Text (No badge, no background, no decorative container) */}
+                      <p className="w-full font-mono text-[12px] text-gray-500 tracking-wider mb-2.5 text-center">
+                        {product.barcode}
+                      </p>
+                    </div>
 
-                  {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
-                  <div className="w-full mt-auto grid grid-cols-2 gap-2 pt-1">
-                    <button
-                      type="button"
-                      onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
-                    >
-                      <span>Inquire Now</span>
-                      <ArrowRight className="w-3 h-3 shrink-0" />
-                    </button>
+                    {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
+                    <div className="w-full grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
+                        className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      >
+                        <span>Inquire Now</span>
+                        <ArrowRight className="w-3 h-3 shrink-0" />
+                      </button>
 
-                    <a
-                      href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
-                    >
-                      <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
-                      <span>WhatsApp</span>
-                    </a>
+                      <a
+                        href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      >
+                        <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               );
