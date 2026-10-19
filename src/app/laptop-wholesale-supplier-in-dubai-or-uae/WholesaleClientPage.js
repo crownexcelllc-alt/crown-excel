@@ -83,14 +83,14 @@ import { FaHandshake, FaCreditCard, FaCog, FaWhatsapp } from 'react-icons/fa';
 function getTwoLineTitle(name) {
   const words = name.trim().split(/\s+/);
   if (words.length <= 1) return { line1: name, line2: '\u00A0' };
-  
+
   if (name.startsWith('Lenovo V15')) return { line1: 'Lenovo V15', line2: 'Gen 6' };
   if (name.startsWith('ACER TRAVELMATE')) return { line1: 'ACER TRAVELMATE', line2: 'P214-56' };
   if (name.startsWith('ASUS EXPERTBOOK')) return { line1: 'ASUS EXPERTBOOK', line2: 'B1503CV' };
   if (name.startsWith('LENOVO IDEAPAD')) return { line1: 'LENOVO IDEAPAD', line2: 'SLIM 3I' };
   if (name.startsWith('ACER ASPIRE ALITE15-54P')) return { line1: 'ACER ASPIRE', line2: 'ALITE15-54P' };
   if (name.startsWith('Lenovo Legion Pro 5i')) return { line1: 'Lenovo Legion Pro 5i', line2: '(16", 10)' };
-  
+
   let bestIdx = 1;
   let minDiff = Infinity;
   for (let i = 1; i < words.length; i++) {
@@ -574,7 +574,24 @@ export default function WholesaleClientPage() {
     { name: 'Microsoft', logo: MicrosoftLogo },
   ];
 
-
+  const worldwideServiceMarkets = [
+    { code: 'sa', name: 'Saudi Arabia', region: 'GCC Hub', hub: 'Riyadh, Jeddah, Dammam', freight: 'Daily Overland & Air' },
+    { code: 'ae', name: 'United Arab Emirates', region: 'Domestic Hub', hub: 'Dubai, Abu Dhabi, Sharjah', freight: 'Same-Day Fleet' },
+    { code: 'kw', name: 'Kuwait', region: 'GCC Hub', hub: 'Kuwait City, Hawalli', freight: 'Daily Air Cargo' },
+    { code: 'qa', name: 'Qatar', region: 'GCC Hub', hub: 'Doha, Al Rayyan', freight: 'Direct Air Freight' },
+    { code: 'bh', name: 'Bahrain', region: 'GCC Hub', hub: 'Manama, Riffa', freight: 'Overland & Air' },
+    { code: 'om', name: 'Oman', region: 'GCC Hub', hub: 'Muscat, Sohar, Salalah', freight: 'Next-Day Land Cargo' },
+    { code: 'iq', name: 'Iraq', region: 'Middle East', hub: 'Baghdad, Erbil, Basra', freight: 'Overland & Air Cargo' },
+    { code: 'in', name: 'India', region: 'South Asia', hub: 'Mumbai, Delhi, Bengaluru', freight: 'Direct Air Cargo' },
+    { code: 'pk', name: 'Pakistan', region: 'South Asia', hub: 'Karachi, Lahore, Islamabad', freight: 'Air & Sea Freight' },
+    { code: 'az', name: 'Azerbaijan', region: 'Central Asia', hub: 'Baku, Ganja, Sumqayit', freight: 'Express Air Cargo' },
+    { code: 'uz', name: 'Uzbekistan', region: 'Central Asia', hub: 'Tashkent, Samarkand', freight: 'Scheduled Air Freight' },
+    { code: 'kz', name: 'Kazakhstan', region: 'Central Asia', hub: 'Almaty, Astana, Shymkent', freight: 'Air Cargo Express' },
+    { code: 'eg', name: 'Egypt', region: 'North Africa', hub: 'Cairo, Alexandria', freight: 'Express Air Cargo' },
+    { code: 'ng', name: 'Nigeria', region: 'West Africa', hub: 'Lagos, Abuja, Kano', freight: 'Air Cargo & Sea Freight' },
+    { code: 'ke', name: 'Kenya', region: 'East Africa', hub: 'Nairobi, Mombasa', freight: 'Scheduled Air Freight' },
+    { code: 'tz', name: 'Tanzania', region: 'East Africa', hub: 'Dar es Salaam, Arusha', freight: 'Port & Air Cargo' },
+  ];
 
   return (
     <div className="bg-[#FDFDFE] text-[#2D2D2D] selection:bg-[#147A5F] selection:text-white">
@@ -653,6 +670,16 @@ export default function WholesaleClientPage() {
             </button>
 
             <a
+              href={`https://wa.me/97143540566?text=${encodeURIComponent('Hello Crown Excel, I am inquiring about wholesale laptops.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm sm:text-[15px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              <FaWhatsapp className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
+
+            <a
               href="tel:+97143540566"
               className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-white hover:bg-gray-50 text-gray-800 font-semibold text-sm sm:text-[15px] border border-gray-200/90 shadow-2xs hover:shadow-xs transition-all duration-200 transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
@@ -700,7 +727,7 @@ export default function WholesaleClientPage() {
             </div>
 
             {/* 2. Business Laptops Card */}
-            <div className="bg-[#0B1310] text-white rounded-none p-6 sm:p-7 lg:p-8 shadow-xl border border-white/10 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <div className="bg-white text-[#171717] rounded-none p-6 sm:p-7 lg:p-8 shadow-xl border border-emerald-100/60 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
               <div className="relative w-full h-44 sm:h-48 lg:h-52 mb-5 flex items-center justify-center overflow-hidden">
                 <Image
                   src={BestLaptop1}
@@ -708,16 +735,16 @@ export default function WholesaleClientPage() {
                   className="max-h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-white leading-tight mb-2.5 tracking-tight">
+              <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight">
                 Business Laptops
               </h2>
-              <p className="font-inter text-gray-300 text-xs sm:text-sm lg:text-[14px] leading-relaxed">
+              <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed">
                 Reliable commercial and enterprise laptops engineered for productivity, all-day battery endurance, and business-grade security.
               </p>
             </div>
 
             {/* 3. Personal Laptops Card */}
-            <div className="bg-[#0B4434] text-white rounded-none p-6 sm:p-7 lg:p-8 shadow-xl border border-white/20 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <div className="bg-white text-[#171717] rounded-none p-6 sm:p-7 lg:p-8 shadow-xl border border-emerald-100/60 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
               <div className="relative w-full h-44 sm:h-48 lg:h-52 mb-5 flex items-center justify-center overflow-hidden">
                 <Image
                   src={BestLaptop2}
@@ -725,10 +752,10 @@ export default function WholesaleClientPage() {
                   className="max-h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-white leading-tight mb-2.5 tracking-tight">
+              <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight">
                 Personal Laptops
               </h2>
-              <p className="font-inter text-emerald-50/90 text-xs sm:text-sm lg:text-[14px] leading-relaxed">
+              <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed">
                 Everyday consumer laptops offering responsive performance, crisp displays, and portable designs for home, study, and travel.
               </p>
             </div>
@@ -754,13 +781,13 @@ export default function WholesaleClientPage() {
               }}
             >
               <span className="text-[#171717] block not-italic">
-                Wholesale Laptop Inventory
+                Products Are Ready in Stock For Wholesale
               </span>
               <span
                 className="text-[#147A5F] italic block mt-1 sm:mt-1.5"
                 style={{ fontStyle: 'italic' }}
               >
-                in Dubai &amp; UAE
+                Contact Now
               </span>
             </h2>
             <p className="text-gray-600 font-jakarta text-xs sm:text-sm md:text-base leading-relaxed mt-4 max-w-2xl sm:max-w-3xl mx-auto font-normal">
@@ -777,7 +804,8 @@ export default function WholesaleClientPage() {
                 barcode: 'NX.DGJEM.002',
                 name: 'ACER ASPIRE LITE AL15-36P-36UJ',
                 particular: 'ACER ASPIRE LITE AL15-36P-36UJ INTEL CORE 3 N350, 8GB RAM, 256GB SSD, INTEL SHARED, 15.6 FHD, DOS, ENGLISH KEYBOARD, SILVER',
-                image: ImgNX_DGJEM_002
+                image: ImgNX_DGJEM_002,
+                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
               },
               {
                 brand: 'ACER',
@@ -785,7 +813,8 @@ export default function WholesaleClientPage() {
                 barcode: 'NX.DTGEM.001',
                 name: 'ACER ASPIRE ALITE15-54P',
                 particular: 'ACER ASPIRE ALITE15-54P, INTEL® CORE™ ULTRA 5-115U,8GB RAM,512GB SSD, 15.6" FHD, INTEL® SHARED,DOS,ENGLISH KEYBOARD,SILVER',
-                image: ImgNX_DTGEM_001
+                image: ImgNX_DTGEM_001,
+                imageClassName: 'scale-[1.28] group-hover:scale-[1.34]'
               },
               {
                 brand: 'ACER',
@@ -793,7 +822,8 @@ export default function WholesaleClientPage() {
                 barcode: 'NH.QX5EM.003',
                 name: 'Acer Predator Helios Neo PHN16-73-94ZR',
                 particular: "Acer Predator Helios Neo PHN16-73-94ZR, Intel® Core™ Ultra 9 275HX, 16GB 6400MHZ, 1TB SSD, 16''WQXGA IPS 240Hz, NVIDIA® GeForce® RTX™ 5070 8GB, DOS, RGB 4 ZONE BACKLITE ENGLISH KB, BLACK",
-                image: GamingAcerPredatorHelios
+                image: GamingAcerPredatorHelios,
+                imageClassName: 'scale-[1.30] group-hover:scale-[1.36]'
               },
               {
                 brand: 'ACER',
@@ -928,17 +958,18 @@ export default function WholesaleClientPage() {
               return (
                 <div
                   key={product.barcode}
-                  className="group relative bg-white p-5 sm:p-6 pt-5 sm:pt-6 rounded-t-[48px] sm:rounded-t-[56px] lg:rounded-t-[60px] rounded-b-none border border-[#147A5F] shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
+                  className="group relative bg-white p-5 sm:p-6 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden"
                 >
 
                   {/* Product Image Showcase on Pure White Background with increased height and consistent sizing */}
-                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden mb-3.5">
+                  <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden mb-3.5 rounded-xl">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-contain p-1 group-hover:scale-106 transition-transform duration-500 ease-out"
+                      className={`object-contain transition-transform duration-500 ease-out ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2 group-hover:scale-105'
+                        }`}
                     />
                   </div>
 
@@ -959,30 +990,30 @@ export default function WholesaleClientPage() {
                     </p>
                   </div>
 
-                {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
-                <div className="w-full mt-auto grid grid-cols-2 gap-2 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
-                    className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-none whitespace-nowrap"
-                  >
-                    <span>Inquire Now</span>
-                    <ArrowRight className="w-3 h-3 shrink-0" />
-                  </button>
+                  {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
+                  <div className="w-full mt-auto grid grid-cols-2 gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
+                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                    >
+                      <span>Inquire Now</span>
+                      <ArrowRight className="w-3 h-3 shrink-0" />
+                    </button>
 
-                  <a
-                    href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-none whitespace-nowrap"
-                  >
-                    <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
-                    <span>WhatsApp</span>
-                  </a>
+                    <a
+                      href={`https://wa.me/97143540566?text=${encodeURIComponent(`Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                    >
+                      <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1156,7 +1187,7 @@ export default function WholesaleClientPage() {
               {/* Left Side Content */}
               <div className="lg:col-span-6">
                 <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-3 block font-montserrat">
-                  SECURE YOUR NEXT IT STOCK FROM DUBAI
+                  SECURE YOUR WHOLESALE DEAL FROM CROWNEXCEL
                 </span>
 
                 <h2
@@ -1169,11 +1200,11 @@ export default function WholesaleClientPage() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  <span className="text-[#147A5F] italic block text-base sm:text-lg lg:text-[20px] mb-1" style={{ fontStyle: 'italic' }}>
+                  <span className="text-[#147A5F] italic block text-xl sm:text-2xl lg:text-[26px] tracking-tight mb-1.5" style={{ fontStyle: 'italic' }}>
                     Key Benefits
                   </span>
                   <span className="text-[#171717] block not-italic">
-                    Why Choose Us as Your Laptop Wholesale Supplier
+                    Why Choose Us as Your  Wholesale Supplier
                   </span>
                 </h2>
 
@@ -1190,13 +1221,15 @@ export default function WholesaleClientPage() {
                     REQUEST STOCK LIST
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={() => openInquiryModal('Contact Sales Representative')}
-                    className="bg-transparent hover:bg-white/80 text-[#147A5F] border-2 border-[#147A5F] font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-all cursor-pointer uppercase tracking-wider"
+                  <a
+                    href="https://wa.me/97143540566"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider hover:shadow-md transform hover:-translate-y-0.5 active:scale-[0.98]"
                   >
-                    CONTACT SALES
-                  </button>
+                    <FaWhatsapp className="w-4.5 h-4.5" />
+                    <span>CHAT ON WHATSAPP</span>
+                  </a>
                 </div>
               </div>
 
@@ -1251,6 +1284,188 @@ export default function WholesaleClientPage() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 8. WORLDWIDE SERVICE AREAS: GLOBAL BULK DISTRIBUTION NETWORK */}
+      {/* ========================================================================= */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-[#F8FAFC] via-[#F4F8F6] to-white border-t border-gray-200/80 relative overflow-hidden">
+        {/* Subtle Ambient Radial Glow */}
+        <div
+          aria-hidden="true"
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-emerald-100/35 blur-[120px] rounded-full pointer-events-none -z-0"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-3 block font-montserrat">
+              We Delivered To The Listed Countries & Beyond
+            </span>
+
+            <h2
+              className="font-anton font-normal uppercase text-center text-3xl sm:text-4xl lg:text-[46px] tracking-[-0.035em] leading-[1.05]"
+              style={{
+                fontFamily: "'Anton', Impact, sans-serif",
+                fontWeight: 400,
+                letterSpacing: '-0.035em',
+                lineHeight: 1.05,
+                textTransform: 'uppercase',
+              }}
+            >
+              <span className="text-[#171717] block not-italic">
+                Worldwide Service Areas
+              </span>
+              <span
+                className="text-[#147A5F] italic block mt-1 sm:mt-1.5"
+                style={{ fontStyle: 'italic' }}
+              >
+                16 Most Active International Wholesale Markets
+              </span>
+            </h2>
+
+            <p className="text-gray-600 font-jakarta text-xs sm:text-sm md:text-[15.5px] leading-relaxed mt-4 max-w-3xl mx-auto font-normal">
+              We ship wholesale computer equipment to every corner of the world. Below are our 16 most active markets with continuous orders. Bulk export available to all destinations with VAT &amp; export invoice and full logistics support.
+            </p>
+          </div>
+
+          {/* 16 Active Markets Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4.5 lg:gap-5 items-stretch mb-12 sm:mb-14">
+            {worldwideServiceMarkets.map((country) => (
+              <div
+                key={country.name}
+                className="bg-white rounded-2xl p-4 sm:p-5 border border-gray-300 hover:border-[#147A5F] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Top Row: Flag Alongside Country Name (No Badges) */}
+                  <div className="flex items-center gap-3 mb-2">
+                    {/* Real Vector SVG Flag */}
+                    <div className="relative w-8 h-5.5 rounded-[4px] overflow-hidden border border-gray-200/90 shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-300">
+                      <Image
+                        src={`/flags/${country.code}.svg`}
+                        alt={`${country.name} flag`}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                    <h3
+                      className="font-montserrat font-bold text-gray-900 text-[14.5px] sm:text-[15px] leading-snug group-hover:text-[#147A5F] transition-colors"
+                      title={country.name}
+                    >
+                      {country.name}
+                    </h3>
+                  </div>
+
+                  {/* Delivery Hub Cities */}
+                  <p className="text-[12.5px] text-gray-500 font-inter leading-relaxed mb-3.5" title={country.hub}>
+                    {country.hub}
+                  </p>
+                </div>
+
+                {/* Footer: Freight Route Badge (#084032) */}
+                <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-end">
+                  <span
+                    className="text-white font-medium text-[10.5px] bg-[#084032] px-2.5 py-1 rounded border border-[#084032] truncate min-w-0 text-right"
+                    title={country.freight}
+                  >
+                    {country.freight}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Logistics & Export Documentation Card - Specific #084032 Container */}
+          <div className="bg-[#084032] text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl border border-emerald-900/60 relative overflow-hidden">
+            {/* Ambient Interior Depth Glows */}
+            <div
+              aria-hidden="true"
+              className="absolute -top-24 -right-24 w-80 h-80 bg-white/5 rounded-full blur-2xl pointer-events-none"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-24 -left-24 w-80 h-80 bg-black/20 rounded-full blur-2xl pointer-events-none"
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center mb-8 relative z-10">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                  <FileCheck2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">
+                    VAT &amp; Export Invoicing
+                  </h4>
+                  <p className="font-inter text-emerald-100/80 text-xs sm:text-[13px] leading-relaxed">
+                    Formal commercial invoices, packing lists, and customs documentation tailored for fast cross-border logistics.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                  <Globe2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">
+                    Full Logistics Support
+                  </h4>
+                  <p className="font-inter text-emerald-100/80 text-xs sm:text-[13px] leading-relaxed">
+                    Direct air freight and sea cargo coordinated from Dubai international hubs to your regional ports and warehouses.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">
+                    Authentic Verified Hardware
+                  </h4>
+                  <p className="font-inter text-emerald-100/80 text-xs sm:text-[13px] leading-relaxed">
+                    100% factory-sealed laptops, workstations, and consumer IT equipment with manufacturer serial number verification.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Actions */}
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10 relative z-10">
+              <div className="text-left">
+                <p className="text-white font-montserrat font-bold text-sm sm:text-[15px]">
+                  Need Bulk Computer Equipment Delivered To Your Country?
+                </p>
+                <p className="text-emerald-200/80 font-inter text-xs sm:text-[13px]">
+                  Our international trade desk responds within hours with wholesale FOB/CIF pricing.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => openInquiryModal('Worldwide Wholesale Export Inquiry')}
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white hover:bg-emerald-50 text-[#084032] text-xs sm:text-sm font-bold font-montserrat uppercase tracking-wider rounded-xl shadow-sm hover:shadow transition-all cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Request Export Quote</span>
+                </button>
+
+                <a
+                  href={`https://wa.me/97143540566?text=${encodeURIComponent('Hello Crown Excel, I am inquiring about international wholesale computer equipment export to my country.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-sm font-bold font-montserrat uppercase tracking-wider rounded-xl shadow-sm hover:shadow transition-all cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  <span>WhatsApp Export Desk</span>
+                </a>
               </div>
             </div>
           </div>
