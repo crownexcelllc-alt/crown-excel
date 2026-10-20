@@ -54,42 +54,12 @@ const ContactFormPopup = ({
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimating(true));
       });
-      if (preSelectedSubject) {
-        const matchingSubject = subjects.find(
-          (s) => s.toLowerCase() === preSelectedSubject.toLowerCase()
-        );
-        if (matchingSubject) {
-          setSubject(matchingSubject);
-        } else if (preSelectedSubject.toLowerCase().includes('stock list')) {
-          setSubject('Wholesale Stock List request');
-        } else if (preSelectedSubject.toLowerCase().includes('corporate')) {
-          setSubject('For Corporates Content');
-        } else if (preSelectedSubject.toLowerCase().includes('partner')) {
-          setSubject('Become Our Partner');
-        } else {
-          setSubject('Wholesale Inquiries');
-        }
-
-        if (isProductDropdown) {
-          const list = products || WHOLESALE_PAGE_PRODUCTS;
-          const s = preSelectedSubject.toLowerCase();
-          const matchedProduct = list.find((p) => {
-            const pLower = p.toLowerCase();
-            if (s.includes(pLower) || pLower.includes(s)) return true;
-            const pNorm = pLower.replace(/[^a-z0-9]/g, '');
-            const sNorm = s.replace(/[^a-z0-9]/g, '');
-            if (sNorm.includes(pNorm) || pNorm.includes(sNorm)) return true;
-            const words = p.split(/[\s()\-]+/).filter((w) => w.length >= 4);
-            return words.some((w) => s.includes(w.toLowerCase()));
-          });
-          if (matchedProduct) {
-            setService(matchedProduct);
-          } else {
-            setService('Select Products');
-          }
-        }
-      } else if (isProductDropdown) {
-        setService('Select Products');
+      // Strictly ensure no field is auto-selected or pre-filled when opened
+      setSubject('Select Subject');
+      setService(defaultService);
+      setPhone('');
+      if (formRef.current) {
+        formRef.current.reset();
       }
     } else if (visible) {
       // Close animation
@@ -108,7 +78,7 @@ const ContactFormPopup = ({
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, preSelectedSubject, isProductDropdown, defaultService]);
+  }, [isOpen, defaultService]);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);

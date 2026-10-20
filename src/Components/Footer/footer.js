@@ -617,7 +617,6 @@ const Footer = () => {
       <ContactFormPopup
         isOpen={showContactPopup}
         onClose={() => setShowContactPopup(false)}
-        preSelectedSubject={popupSubject}
       />
     </footer>
   );

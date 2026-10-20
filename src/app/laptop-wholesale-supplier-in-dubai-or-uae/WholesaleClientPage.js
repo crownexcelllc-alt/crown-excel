@@ -117,11 +117,8 @@ function getTwoLineTitle(name) {
 
 export default function WholesaleClientPage() {
   const [showContactPopup, setShowContactPopup] = useState(false);
-  const [popupSubject, setPopupSubject] = useState('Wholesale Inquiries');
 
-
-  const openInquiryModal = (subject = 'Wholesale Inquiries') => {
-    setPopupSubject(subject);
+  const openInquiryModal = () => {
     setShowContactPopup(true);
   };
 
@@ -1554,7 +1551,6 @@ export default function WholesaleClientPage() {
       <ContactFormPopup
         isOpen={showContactPopup}
         onClose={() => setShowContactPopup(false)}
-        preSelectedSubject={popupSubject}
         isProductDropdown={true}
         requireCaptcha={false}
       />
