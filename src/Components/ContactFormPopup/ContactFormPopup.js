@@ -30,7 +30,7 @@ const ContactFormPopup = ({
     'Become Our Partner',
     'For Corporates Content',
     'Wholesale Inquiries',
-    ...(preSelectedSubject && !['Select Subject', 'Become Our Partner', 'For Corporates Content', 'Wholesale Inquiries'].includes(preSelectedSubject) ? [preSelectedSubject] : []),
+    'Wholesale Stock List request',
   ];
 
   const defaultService = isProductDropdown ? 'Select Products' : 'Select Service';
@@ -55,7 +55,21 @@ const ContactFormPopup = ({
         requestAnimationFrame(() => setAnimating(true));
       });
       if (preSelectedSubject) {
-        setSubject(preSelectedSubject);
+        const matchingSubject = subjects.find(
+          (s) => s.toLowerCase() === preSelectedSubject.toLowerCase()
+        );
+        if (matchingSubject) {
+          setSubject(matchingSubject);
+        } else if (preSelectedSubject.toLowerCase().includes('stock list')) {
+          setSubject('Wholesale Stock List request');
+        } else if (preSelectedSubject.toLowerCase().includes('corporate')) {
+          setSubject('For Corporates Content');
+        } else if (preSelectedSubject.toLowerCase().includes('partner')) {
+          setSubject('Become Our Partner');
+        } else {
+          setSubject('Wholesale Inquiries');
+        }
+
         if (isProductDropdown) {
           const list = products || WHOLESALE_PAGE_PRODUCTS;
           const s = preSelectedSubject.toLowerCase();

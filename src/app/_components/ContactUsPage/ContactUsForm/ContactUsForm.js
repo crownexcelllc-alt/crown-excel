@@ -24,6 +24,7 @@ const ContactUsForm = () => {
     "Become Our Partner",
     "For Corporates Content",
     "Wholesale Inquiries",
+    "Wholesale Stock List request",
   ];
 
   const [formData, setFormData] = useState({
