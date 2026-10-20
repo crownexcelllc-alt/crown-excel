@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import React, { useState } from "react";
@@ -175,7 +175,7 @@ const ContactUsForm = () => {
                     style={{ padding: "4px" }}
                   >
                     {countryCodes.map((c) => (
-                      <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
+                      <option key={`${c.iso || c.country}-${c.code}`} value={c.code}>{c.flag} {c.code}</option>
                     ))}
                   </select>
                   <input

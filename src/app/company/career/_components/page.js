@@ -177,7 +177,7 @@ const Career = () => {
                     className="text-[12px] bg-white text-[#084032] outline-0 border-r border-gray-300 w-[90px] shrink-0 cursor-pointer px-2"
                   >
                     {countryCodes.map((c) => (
-                      <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
+                      <option key={`${c.iso || c.country}-${c.code}`} value={c.code}>{c.flag} {c.code}</option>
                     ))}
                   </select>
                   <input

@@ -213,7 +213,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
                   style={{ padding: '4px' }}
                 >
                   {countryCodes.map((c) => (
-                    <option key={c.code} value={c.code}>
+                    <option key={`${c.iso || c.country}-${c.code}`} value={c.code}>
                       {c.flag} {c.code}
                     </option>
                   ))}
