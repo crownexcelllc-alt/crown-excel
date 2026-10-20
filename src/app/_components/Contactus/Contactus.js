@@ -205,7 +205,7 @@ const Contactus = () => {
                     aria-label="Country code"
                   >
                     {countryCodes.map((c) => (
-                      <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
+                      <option key={`${c.iso || c.country}-${c.code}`} value={c.code}>{c.flag} {c.code}</option>
                     ))}
                   </select>
                   <label htmlFor="contact-phone" className="sr-only">Phone number</label>

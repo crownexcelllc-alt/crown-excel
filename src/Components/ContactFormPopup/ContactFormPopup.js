@@ -3,9 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import CaptchaModal from '../CaptchaModal/CaptchaModal';
 import OtpModal from '../OtpModal/OtpModal';
 import countryCodes from '../../data/countryCodes';
+import { WEBSITE_PRODUCT_GROUPS, ALL_WEBSITE_PRODUCTS } from '../../data/websiteProducts';
 import { X } from 'phosphor-react';
 
-const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
+const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdown = false, requireCaptcha = true }) => {
   const services = [
     'Select Service',
     'RMA Facility',
@@ -25,7 +26,8 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
     ...(preSelectedSubject && !['Select Subject', 'Become Our Partner', 'For Corporates Content', 'Wholesale Inquiries'].includes(preSelectedSubject) ? [preSelectedSubject] : []),
   ];
 
-  const [service, setService] = useState('Select Service');
+  const defaultService = isProductDropdown ? 'Select Products' : 'Select Service';
+  const [service, setService] = useState(defaultService);
   const [subject, setSubject] = useState('Select Subject');
   const [countryCode, setCountryCode] = useState('+971');
   const [phone, setPhone] = useState('');
@@ -45,14 +47,29 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimating(true));
       });
-      if (preSelectedSubject) setSubject(preSelectedSubject);
+      if (preSelectedSubject) {
+        setSubject(preSelectedSubject);
+        if (isProductDropdown) {
+          const matchedProduct = ALL_WEBSITE_PRODUCTS.find((p) =>
+            preSelectedSubject.toLowerCase().includes(p.toLowerCase()) ||
+            p.toLowerCase().includes(preSelectedSubject.toLowerCase())
+          );
+          if (matchedProduct) {
+            setService(matchedProduct);
+          } else {
+            setService('Select Products');
+          }
+        }
+      } else if (isProductDropdown) {
+        setService('Select Products');
+      }
     } else if (visible) {
       // Close animation
       setAnimating(false);
       const timer = setTimeout(() => {
         setVisible(false);
         // Reset form after animation
-        setService('Select Service');
+        setService(defaultService);
         setSubject('Select Subject');
         setCountryCode('+971');
         setPhone('');
@@ -63,7 +80,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, preSelectedSubject]);
+  }, [isOpen, preSelectedSubject, isProductDropdown, defaultService]);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);
@@ -86,7 +103,11 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
     const serviceVal = service;
     const commentsVal = f.elements['comments']?.value;
 
-    if (!name || !email || !phoneNum || subject === 'Select Subject' || serviceVal === 'Select Service' || !commentsVal) {
+    const isServiceInvalid = isProductDropdown
+      ? (!serviceVal || serviceVal === 'Select Products')
+      : (!serviceVal || serviceVal === 'Select Service');
+
+    if (!name || !email || !phoneNum || subject === 'Select Subject' || isServiceInvalid || !commentsVal) {
       alert('Please fill all required fields');
       return;
     }
@@ -106,7 +127,11 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
       comments: commentsVal,
     });
 
-    setShowCaptcha(true);
+    if (requireCaptcha) {
+      setShowCaptcha(true);
+    } else {
+      setShowOtp(true);
+    }
   };
 
   const handleCaptchaVerified = () => {
@@ -131,7 +156,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
       }
       alert('Form submitted successfully!');
       formRef.current?.reset();
-      setService('Select Service');
+      setService(defaultService);
       setSubject('Select Subject');
       setCountryCode('+971');
       setPhone('');
@@ -213,7 +238,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
                   style={{ padding: '4px' }}
                 >
                   {countryCodes.map((c) => (
-                    <option key={c.code} value={c.code}>
+                    <option key={`${c.iso || c.country}-${c.code}`} value={c.code}>
                       {c.flag} {c.code}
                     </option>
                   ))}
@@ -250,7 +275,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
               </select>
             </div>
 
-            {/* Service */}
+            {/* Service / Products */}
             <select
               name="service"
               value={service}
@@ -259,11 +284,28 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject }) => {
               required
               style={{ padding: '12px 16px' }}
             >
-              {services.map((item, index) => (
-                <option key={index} value={item} disabled={index === 0} className="text-[13px] text-[#084032]">
-                  {item}
-                </option>
-              ))}
+              {isProductDropdown ? (
+                <>
+                  <option value="Select Products" disabled className="text-[13px] text-[#084032]">
+                    Select Products
+                  </option>
+                  {WEBSITE_PRODUCT_GROUPS.map((group, gIdx) => (
+                    <optgroup key={gIdx} label={group.category} className="font-semibold text-[#084032]">
+                      {group.items.map((prod, pIdx) => (
+                        <option key={pIdx} value={prod} className="text-[13px] text-[#333] font-normal">
+                          {prod}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </>
+              ) : (
+                services.map((item, index) => (
+                  <option key={index} value={item} disabled={index === 0} className="text-[13px] text-[#084032]">
+                    {item}
+                  </option>
+                ))
+              )}
             </select>
 
             {/* Comments */}
