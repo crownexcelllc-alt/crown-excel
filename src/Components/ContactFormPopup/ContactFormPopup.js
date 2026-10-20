@@ -3,10 +3,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import CaptchaModal from '../CaptchaModal/CaptchaModal';
 import OtpModal from '../OtpModal/OtpModal';
 import countryCodes from '../../data/countryCodes';
-import { WEBSITE_PRODUCT_GROUPS, ALL_WEBSITE_PRODUCTS } from '../../data/websiteProducts';
+import { WHOLESALE_PAGE_PRODUCTS } from '../../data/websiteProducts';
 import { X } from 'phosphor-react';
 
-const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdown = false, requireCaptcha = true }) => {
+const ContactFormPopup = ({
+  isOpen,
+  onClose,
+  preSelectedSubject,
+  isProductDropdown = false,
+  requireCaptcha = true,
+  products = WHOLESALE_PAGE_PRODUCTS,
+}) => {
   const services = [
     'Select Service',
     'RMA Facility',
@@ -50,10 +57,17 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
       if (preSelectedSubject) {
         setSubject(preSelectedSubject);
         if (isProductDropdown) {
-          const matchedProduct = ALL_WEBSITE_PRODUCTS.find((p) =>
-            preSelectedSubject.toLowerCase().includes(p.toLowerCase()) ||
-            p.toLowerCase().includes(preSelectedSubject.toLowerCase())
-          );
+          const list = products || WHOLESALE_PAGE_PRODUCTS;
+          const s = preSelectedSubject.toLowerCase();
+          const matchedProduct = list.find((p) => {
+            const pLower = p.toLowerCase();
+            if (s.includes(pLower) || pLower.includes(s)) return true;
+            const pNorm = pLower.replace(/[^a-z0-9]/g, '');
+            const sNorm = s.replace(/[^a-z0-9]/g, '');
+            if (sNorm.includes(pNorm) || pNorm.includes(sNorm)) return true;
+            const words = p.split(/[\s()\-]+/).filter((w) => w.length >= 4);
+            return words.some((w) => s.includes(w.toLowerCase()));
+          });
           if (matchedProduct) {
             setService(matchedProduct);
           } else {
@@ -286,17 +300,13 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
             >
               {isProductDropdown ? (
                 <>
-                  <option value="Select Products" disabled className="text-[13px] text-[#084032]">
+                  <option value="Select Products" disabled className="text-[13px] text-gray-400">
                     Select Products
                   </option>
-                  {WEBSITE_PRODUCT_GROUPS.map((group, gIdx) => (
-                    <optgroup key={gIdx} label={group.category} className="font-semibold text-[#084032]">
-                      {group.items.map((prod, pIdx) => (
-                        <option key={pIdx} value={prod} className="text-[13px] text-[#333] font-normal">
-                          {prod}
-                        </option>
-                      ))}
-                    </optgroup>
+                  {(products || WHOLESALE_PAGE_PRODUCTS).map((item, index) => (
+                    <option key={index} value={item} className="text-[13px] text-[#333] font-normal">
+                      {item}
+                    </option>
                   ))}
                 </>
               ) : (
