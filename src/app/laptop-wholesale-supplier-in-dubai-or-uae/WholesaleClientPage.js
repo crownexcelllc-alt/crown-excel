@@ -840,7 +840,7 @@ export default function WholesaleClientPage() {
               }}
             >
               <span className="text-[#171717] block not-italic">
-                Products Are Ready in Stock For Wholesale
+                Power Your Business With Crown Excel
               </span>
               <span
                 className="text-[#147A5F] italic block mt-1 sm:mt-1.5"
@@ -850,7 +850,7 @@ export default function WholesaleClientPage() {
               </span>
             </h2>
             <p className="text-gray-600 font-jakarta text-xs sm:text-sm md:text-base leading-relaxed mt-4 max-w-2xl sm:max-w-3xl mx-auto font-normal">
-              Authentic wholesale inventory of gaming, business, and personal laptops available for bulk distribution in Dubai and across the UAE.
+               Discover the latest laptops, desktops, all-in-ones, monitors, and tablets for every business need. Explore a wide selection of trusted technology and tailored IT solutions, delivered across Dubai and the UAE. Find your perfect business tech with Crown Excel today!
             </p>
           </div>
 
@@ -1561,7 +1561,7 @@ export default function WholesaleClientPage() {
           setShowContactPopup(false);
           setSelectedProduct(null);
         }}
-        defaultSubject="For Corporates Content"
+        defaultSubject="Wholesale Inquiries"
         showProductFields={true}
         initialProductName={selectedProduct?.name || ''}
         initialProductBarcode={selectedProduct?.barcode || ''}
