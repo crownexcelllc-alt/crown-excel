@@ -7,9 +7,19 @@ async function getSubmissions() {
   return db.collection('contact_submissions').find().sort({ _id: -1 }).toArray();
 }
 
-async function saveSubmission({ name, email, phone, subject, service, comments }) {
+async function saveSubmission({ name, email, phone, subject, service, comments, productName, productBarcode }) {
   const db = await getDb();
-  const doc = { name, email, phone, subject, service, comments, createdAt: new Date().toISOString() };
+  const doc = {
+    name,
+    email,
+    phone,
+    subject,
+    service,
+    productName: productName || null,
+    productBarcode: productBarcode || null,
+    comments,
+    createdAt: new Date().toISOString()
+  };
   const res = await db.collection('contact_submissions').insertOne(doc);
   return { id: res.insertedId.toString(), ...doc };
 }
@@ -27,7 +37,18 @@ export async function OPTIONS() {
 export async function GET() {
   try {
     const subs = await getSubmissions();
-    return NextResponse.json(subs.map(s => ({ id: s._id?.toString?.() || s.id, name: s.name, email: s.email, phone: s.phone, subject: s.subject, service: s.service, comments: s.comments, createdAt: s.createdAt })), { headers: CORS_HEADERS });
+    return NextResponse.json(subs.map(s => ({
+      id: s._id?.toString?.() || s.id,
+      name: s.name,
+      email: s.email,
+      phone: s.phone,
+      subject: s.subject,
+      service: s.service,
+      productName: s.productName,
+      productBarcode: s.productBarcode,
+      comments: s.comments,
+      createdAt: s.createdAt
+    })), { headers: CORS_HEADERS });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: 'Failed to read contact submissions' }, { status: 500, headers: CORS_HEADERS });
@@ -37,7 +58,7 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, phone, subject, service, comments } = body || {};
+    const { name, email, phone, subject, service, comments, productName, productBarcode } = body || {};
     if (!name || !email || !phone || !subject || !service || !comments) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400, headers: CORS_HEADERS });
     }
@@ -49,9 +70,9 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Email not verified. Please verify OTP first.' }, { status: 403, headers: CORS_HEADERS });
     }
 
-    const entry = await saveSubmission({ name, email, phone, subject, service, comments });
+    const entry = await saveSubmission({ name, email, phone, subject, service, comments, productName, productBarcode });
 
-    await logActivity(request, 'contact_submission', name, { email, subject, service });
+    await logActivity(request, 'contact_submission', name, { email, subject, service, productName, productBarcode });
 
     // Clean up used OTP
     await db.collection('otps').deleteMany({ email });

@@ -117,8 +117,15 @@ function getTwoLineTitle(name) {
 
 export default function WholesaleClientPage() {
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const openInquiryModal = () => {
+  const openGeneralInquiryModal = () => {
+    setSelectedProduct(null);
+    setShowContactPopup(true);
+  };
+
+  const openProductInquiryModal = (product) => {
+    setSelectedProduct(product);
     setShowContactPopup(true);
   };
 
@@ -713,7 +720,7 @@ export default function WholesaleClientPage() {
           <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 font-jakarta">
             <button
               type="button"
-              onClick={() => openInquiryModal('Wholesale Inquiries - Request Catalog')}
+              onClick={openGeneralInquiryModal}
               className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#147A5F] hover:bg-[#0f604b] text-white font-semibold text-sm sm:text-[15px] shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               <Send className="w-4 h-4" />
@@ -1059,7 +1066,7 @@ export default function WholesaleClientPage() {
                     <div className="w-full grid grid-cols-2 gap-2">
                       <button
                         type="button"
-                        onClick={() => openInquiryModal(`Wholesale Inquiry: ${product.name} (Barcode: ${product.barcode})`)}
+                        onClick={() => openProductInquiryModal(product)}
                         className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
                       >
                         <span>Inquire Now</span>
@@ -1282,7 +1289,7 @@ export default function WholesaleClientPage() {
                 <div className="flex flex-wrap gap-4">
                   <button
                     type="button"
-                    onClick={() => openInquiryModal('Wholesale Stock List request')}
+                    onClick={openGeneralInquiryModal}
                     className="bg-[#147A5F] hover:bg-[#0f604b] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider hover:shadow-md"
                   >
                     REQUEST STOCK LIST
@@ -1518,7 +1525,7 @@ export default function WholesaleClientPage() {
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => openInquiryModal('Worldwide Wholesale Export Inquiry')}
+                  onClick={openGeneralInquiryModal}
                   className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white hover:bg-emerald-50 text-[#084032] text-xs sm:text-sm font-bold font-montserrat uppercase tracking-wider rounded-xl shadow-sm hover:shadow transition-all cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   <Send className="w-3.5 h-3.5" />
@@ -1550,8 +1557,15 @@ export default function WholesaleClientPage() {
       {/* Official Verified Contact Popup with OTP Flow */}
       <ContactFormPopup
         isOpen={showContactPopup}
-        onClose={() => setShowContactPopup(false)}
-        isProductDropdown={true}
+        onClose={() => {
+          setShowContactPopup(false);
+          setSelectedProduct(null);
+        }}
+        defaultSubject="For Corporates Content"
+        showProductFields={true}
+        initialProductName={selectedProduct?.name || ''}
+        initialProductBarcode={selectedProduct?.barcode || ''}
+        isProductReadOnly={Boolean(selectedProduct)}
         requireCaptcha={false}
       />
     </div>

@@ -9,10 +9,13 @@ import { X } from 'phosphor-react';
 const ContactFormPopup = ({
   isOpen,
   onClose,
+  defaultSubject = 'Select Subject',
   preSelectedSubject,
-  isProductDropdown = false,
+  showProductFields = false,
+  initialProductName = '',
+  initialProductBarcode = '',
+  isProductReadOnly = false,
   requireCaptcha = true,
-  products = WHOLESALE_PAGE_PRODUCTS,
 }) => {
   const services = [
     'Select Service',
@@ -30,12 +33,13 @@ const ContactFormPopup = ({
     'Become Our Partner',
     'For Corporates Content',
     'Wholesale Inquiries',
-    'Wholesale Stock List request',
+    'Stock List request',
   ];
 
-  const defaultService = isProductDropdown ? 'Select Products' : 'Select Service';
-  const [service, setService] = useState(defaultService);
-  const [subject, setSubject] = useState('Select Subject');
+  const [service, setService] = useState('Select Service');
+  const [productName, setProductName] = useState(initialProductName || '');
+  const [productBarcode, setProductBarcode] = useState(initialProductBarcode || '');
+  const [subject, setSubject] = useState(defaultSubject);
   const [countryCode, setCountryCode] = useState('+971');
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
@@ -54,9 +58,10 @@ const ContactFormPopup = ({
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimating(true));
       });
-      // Strictly ensure no field is auto-selected or pre-filled when opened
-      setSubject('Select Subject');
-      setService(defaultService);
+      setSubject(defaultSubject);
+      setService('Select Service');
+      setProductName(initialProductName || '');
+      setProductBarcode(initialProductBarcode || '');
       setPhone('');
       if (formRef.current) {
         formRef.current.reset();
@@ -67,8 +72,10 @@ const ContactFormPopup = ({
       const timer = setTimeout(() => {
         setVisible(false);
         // Reset form after animation
-        setService(defaultService);
-        setSubject('Select Subject');
+        setService('Select Service');
+        setSubject(defaultSubject);
+        setProductName('');
+        setProductBarcode('');
         setCountryCode('+971');
         setPhone('');
         setLoading(false);
@@ -78,7 +85,7 @@ const ContactFormPopup = ({
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, defaultService]);
+  }, [isOpen, defaultSubject, initialProductName, initialProductBarcode]);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);
@@ -95,17 +102,33 @@ const ContactFormPopup = ({
     e.preventDefault();
     const f = e.currentTarget;
 
-    const name = f.elements['name']?.value;
-    const email = f.elements['email']?.value;
-    const phoneNum = phone;
-    const serviceVal = service;
-    const commentsVal = f.elements['comments']?.value;
+    const name = f.elements['name']?.value?.trim();
+    const email = f.elements['email']?.value?.trim();
+    const phoneNum = phone?.trim();
+    const commentsVal = f.elements['comments']?.value?.trim();
 
-    const isServiceInvalid = isProductDropdown
-      ? (!serviceVal || serviceVal === 'Select Products')
-      : (!serviceVal || serviceVal === 'Select Service');
+    let serviceVal = service;
+    const prodNameVal = productName?.trim();
+    const prodBarcodeVal = productBarcode?.trim();
 
-    if (!name || !email || !phoneNum || subject === 'Select Subject' || isServiceInvalid || !commentsVal) {
+    if (showProductFields) {
+      if (!prodNameVal) {
+        alert('Please enter Product Name');
+        return;
+      }
+      if (!prodBarcodeVal) {
+        alert('Please enter Product Barcode');
+        return;
+      }
+      serviceVal = `${prodNameVal} (Barcode: ${prodBarcodeVal})`;
+    } else {
+      if (!serviceVal || serviceVal === 'Select Service') {
+        alert('Please select a service');
+        return;
+      }
+    }
+
+    if (!name || !email || !phoneNum || subject === 'Select Subject' || !commentsVal) {
       alert('Please fill all required fields');
       return;
     }
@@ -122,6 +145,8 @@ const ContactFormPopup = ({
       phone: `${countryCode} ${phoneNum}`,
       subject,
       service: serviceVal,
+      productName: showProductFields ? prodNameVal : undefined,
+      productBarcode: showProductFields ? prodBarcodeVal : undefined,
       comments: commentsVal,
     });
 
@@ -273,39 +298,61 @@ const ContactFormPopup = ({
               </select>
             </div>
 
-            {/* Service / Products */}
-            <select
-              name="service"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className="border text-[13px] bg-white text-[#333] rounded-lg w-full h-[48px] mb-4 cursor-pointer focus:border-[#084032] outline-0 transition-colors"
-              required
-              style={{ padding: '12px 16px' }}
-            >
-              {isProductDropdown ? (
-                <>
-                  <option value="Select Products" disabled className="text-[13px] text-gray-400">
-                    Select Products
-                  </option>
-                  {(products || WHOLESALE_PAGE_PRODUCTS).map((item, index) => (
-                    <option key={index} value={item} className="text-[13px] text-[#333] font-normal">
-                      {item}
-                    </option>
-                  ))}
-                </>
-              ) : (
-                services.map((item, index) => (
+            {/* Service or Product Name & Barcode */}
+            {showProductFields ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <input
+                  className={`border text-[13px] rounded-lg w-full h-[48px] outline-0 transition-colors ${
+                    isProductReadOnly
+                      ? 'bg-gray-100 text-gray-700 cursor-not-allowed border-gray-300'
+                      : 'bg-white text-[#333] focus:border-[#084032]'
+                  }`}
+                  type="text"
+                  name="productName"
+                  placeholder="Product Name *"
+                  value={productName}
+                  onChange={(e) => !isProductReadOnly && setProductName(e.target.value)}
+                  readOnly={isProductReadOnly}
+                  required
+                  style={{ padding: '12px 16px' }}
+                />
+                <input
+                  className={`border text-[13px] rounded-lg w-full h-[48px] outline-0 transition-colors ${
+                    isProductReadOnly
+                      ? 'bg-gray-100 text-gray-700 cursor-not-allowed border-gray-300'
+                      : 'bg-white text-[#333] focus:border-[#084032]'
+                  }`}
+                  type="text"
+                  name="productBarcode"
+                  placeholder="Product Barcode *"
+                  value={productBarcode}
+                  onChange={(e) => !isProductReadOnly && setProductBarcode(e.target.value)}
+                  readOnly={isProductReadOnly}
+                  required
+                  style={{ padding: '12px 16px' }}
+                />
+              </div>
+            ) : (
+              <select
+                name="service"
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                className="border text-[13px] bg-white text-[#333] rounded-lg w-full h-[48px] mb-4 cursor-pointer focus:border-[#084032] outline-0 transition-colors"
+                required
+                style={{ padding: '12px 16px' }}
+              >
+                {services.map((item, index) => (
                   <option key={index} value={item} disabled={index === 0} className="text-[13px] text-[#084032]">
                     {item}
                   </option>
-                ))
-              )}
-            </select>
+                ))}
+              </select>
+            )}
 
             {/* Comments */}
             <textarea
               name="comments"
-              placeholder="Comments *"
+              placeholder="Additional Details *"
               required
               className="border text-[13px] bg-white text-[#333] rounded-lg w-full h-[100px] mb-4 outline-0 focus:border-[#084032] transition-colors resize-none"
               style={{ padding: '12px 16px' }}
