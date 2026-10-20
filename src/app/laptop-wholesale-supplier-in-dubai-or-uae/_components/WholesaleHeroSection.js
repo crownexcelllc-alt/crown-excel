@@ -30,7 +30,7 @@ export default function WholesaleHeroSection({
           }}
         >
           <span className="block not-italic text-[#171717] lg:whitespace-nowrap">
-            Looking For <span className="inline-block bg-[#FFE500] py-2 px-3"> Wholesale </span> Deals In
+            Looking For <span className="inline-block bg-[#FFE500] py-2 px-3"> Wholesale </span> Deals On
           </span>
           {/* Dynamic Animated Category Typewriter */}
           <span
