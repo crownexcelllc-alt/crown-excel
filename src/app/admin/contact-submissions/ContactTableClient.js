@@ -31,13 +31,8 @@ export default function ContactTableClient({ initialData = [], apiBase = process
       (r.name || '').toString().toLowerCase().includes(q) ||
       (r.email || '').toString().toLowerCase().includes(q) ||
       (r.phone || '').toString().toLowerCase().includes(q) ||
-      (r.country || '').toString().toLowerCase().includes(q) ||
       (r.subject || '').toString().toLowerCase().includes(q) ||
-      (r.service || '').toString().toLowerCase().includes(q) ||
-      (r.quantity || '').toString().toLowerCase().includes(q) ||
-      (r.destination || '').toString().toLowerCase().includes(q) ||
-      (r.company || '').toString().toLowerCase().includes(q) ||
-      (r.comments || '').toString().toLowerCase().includes(q)
+      (r.service || '').toString().toLowerCase().includes(q)
     ));
   }, [sorted, query]);
 
@@ -63,22 +58,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['#', 'name', 'email', 'phone', 'country', 'subject', 'service', 'quantity', 'destination', 'company', 'comments', 'createdAt'];
+    const headers = ['#', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
     const csv = [headers.join(',')].concat(rows.map((r, i) => {
-      const vals = [
-        i + 1,
-        r.name,
-        r.email,
-        r.phone,
-        r.country || '',
-        r.subject,
-        r.service,
-        r.quantity || '',
-        r.destination || '',
-        r.company || '',
-        r.comments,
-        r.createdAt ? new Date(r.createdAt).toLocaleString() : ''
-      ];
+      const vals = [i + 1, r.name, r.email, r.phone, r.subject, r.service, r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
       return vals.map(v => {
         const s = ((v ?? '') + '').replace(/"/g, '""');
         return `"${s}"`;
@@ -149,11 +131,8 @@ export default function ContactTableClient({ initialData = [], apiBase = process
               <th className="px-3 py-3 font-semibold text-left">Name</th>
               <th className="px-3 py-3 font-semibold text-left">Email</th>
               <th className="px-3 py-3 font-semibold text-left">Phone</th>
-              <th className="px-3 py-3 font-semibold text-left">Country</th>
               <th className="px-3 py-3 font-semibold text-left">Subject</th>
               <th className="px-3 py-3 font-semibold text-left">Service</th>
-              <th className="px-3 py-3 font-semibold text-left">Quantity</th>
-              <th className="px-3 py-3 font-semibold text-left">Destination</th>
               <th className="px-3 py-3 font-semibold text-left">Comments</th>
               <th className="px-3 py-3 font-semibold text-left">Submitted At</th>
               <th className="px-3 py-3 font-semibold text-left">Action</th>
@@ -163,16 +142,13 @@ export default function ContactTableClient({ initialData = [], apiBase = process
             {pageData.map((s, idx) => (
               <tr key={s.id ?? s._id ?? idx} className="hover:bg-[#e6f9f0] align-top transition-all">
                 <td className="px-4 py-3 border-b border-gray-100 align-top font-semibold text-[#084032]">{getGlobalIndex(idx)}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.name || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.email || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.phone || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.country || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.subject || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.service || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.quantity || ''}</td>
-                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.destination || ''}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.name}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.email}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top">{s.phone}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.subject}</td>
+                <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis">{s.service}</td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top overflow-hidden text-ellipsis whitespace-nowrap">
-                  {(s.comments || '').length > 30 ? s.comments.substring(0, 30) + '...' : (s.comments || '')}
+                  {(s.comments || '').length > 30 ? s.comments.substring(0, 30) + '...' : s.comments}
                 </td>
                 <td className="px-4 py-3 border-b border-gray-100 align-top">
                   {s.createdAt ? new Date(s.createdAt).toLocaleString() : ''}
@@ -237,58 +213,34 @@ export default function ContactTableClient({ initialData = [], apiBase = process
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Name</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.name || ''}</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.name || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</p>
-                  <p className="text-[#084032] font-semibold text-sm break-all">{viewRow.email || ''}</p>
+                  <p className="text-[#084032] font-semibold text-sm break-all">{viewRow.email || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.phone || ''}</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.phone || '—'}</p>
                 </div>
-                {viewRow.country ? (
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Country</p>
-                    <p className="text-[#084032] font-semibold text-sm">{viewRow.country}</p>
-                  </div>
-                ) : null}
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Subject</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.subject || ''}</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.subject || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service / Requirement</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.service || ''}</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.service || '—'}</p>
                 </div>
-                {viewRow.quantity ? (
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Quantity</p>
-                    <p className="text-[#084032] font-semibold text-sm">{viewRow.quantity}</p>
-                  </div>
-                ) : null}
-                {viewRow.destination ? (
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Destination</p>
-                    <p className="text-[#084032] font-semibold text-sm">{viewRow.destination}</p>
-                  </div>
-                ) : null}
-                {viewRow.company ? (
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Company</p>
-                    <p className="text-[#084032] font-semibold text-sm">{viewRow.company}</p>
-                  </div>
-                ) : null}
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
-                  <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : ''}</p>
+                  <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
                 </div>
               </div>
 
               <div>
                 <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Comments</p>
                 <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-700 whitespace-pre-wrap break-words min-h-[80px]">
-                  {viewRow.comments || ''}
+                  {viewRow.comments || '—'}
                 </div>
               </div>
 

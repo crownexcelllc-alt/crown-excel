@@ -7,21 +7,9 @@ async function getSubmissions() {
   return db.collection('contact_submissions').find().sort({ _id: -1 }).toArray();
 }
 
-async function saveSubmission({ name, email, phone, subject, service, comments, country, quantity, destination, company }) {
+async function saveSubmission({ name, email, phone, subject, service, comments }) {
   const db = await getDb();
-  const doc = {
-    name,
-    email,
-    phone,
-    subject,
-    service,
-    comments,
-    ...(country ? { country } : {}),
-    ...(quantity ? { quantity } : {}),
-    ...(destination ? { destination } : {}),
-    ...(company ? { company } : {}),
-    createdAt: new Date().toISOString()
-  };
+  const doc = { name, email, phone, subject, service, comments, createdAt: new Date().toISOString() };
   const res = await db.collection('contact_submissions').insertOne(doc);
   return { id: res.insertedId.toString(), ...doc };
 }
@@ -39,20 +27,7 @@ export async function OPTIONS() {
 export async function GET() {
   try {
     const subs = await getSubmissions();
-    return NextResponse.json(subs.map(s => ({
-      id: s._id?.toString?.() || s.id,
-      name: s.name,
-      email: s.email,
-      phone: s.phone,
-      country: s.country || '',
-      subject: s.subject,
-      service: s.service,
-      quantity: s.quantity || '',
-      destination: s.destination || '',
-      company: s.company || '',
-      comments: s.comments,
-      createdAt: s.createdAt
-    })), { headers: CORS_HEADERS });
+    return NextResponse.json(subs.map(s => ({ id: s._id?.toString?.() || s.id, name: s.name, email: s.email, phone: s.phone, subject: s.subject, service: s.service, comments: s.comments, createdAt: s.createdAt })), { headers: CORS_HEADERS });
   } catch (err) {
     console.error(err);
     return NextResponse.json({ error: 'Failed to read contact submissions' }, { status: 500, headers: CORS_HEADERS });
@@ -62,38 +37,24 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, phone, subject, service, comments, isWholesale, company, quantity, destination, country } = body || {};
+    const { name, email, phone, subject, service, comments } = body || {};
     if (!name || !email || !phone || !subject || !service || !comments) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400, headers: CORS_HEADERS });
     }
 
-    const isWholesaleInquiry = isWholesale === true || (subject && subject.toLowerCase().includes('wholesale'));
+    // Verify that OTP was verified for this email
     const db = await getDb();
-
-    // Verify OTP only for non-wholesale inquiries
-    if (!isWholesaleInquiry) {
-      const otpRecord = await db.collection('otps').findOne({ email, verified: true });
-      if (!otpRecord) {
-        return NextResponse.json({ error: 'Email not verified. Please verify OTP first.' }, { status: 403, headers: CORS_HEADERS });
-      }
-      // Clean up used OTP
-      await db.collection('otps').deleteMany({ email });
+    const otpRecord = await db.collection('otps').findOne({ email, verified: true });
+    if (!otpRecord) {
+      return NextResponse.json({ error: 'Email not verified. Please verify OTP first.' }, { status: 403, headers: CORS_HEADERS });
     }
 
-    const entry = await saveSubmission({
-      name: (name || '').trim(),
-      email: (email || '').trim(),
-      phone: (phone || '').trim(),
-      subject: (subject || '').trim(),
-      service: (service || '').trim(),
-      comments: (comments || '').trim(),
-      country: (country || '').trim(),
-      quantity: (quantity || '').trim(),
-      destination: (destination || '').trim(),
-      company: (company || '').trim(),
-    });
+    const entry = await saveSubmission({ name, email, phone, subject, service, comments });
 
     await logActivity(request, 'contact_submission', name, { email, subject, service });
+
+    // Clean up used OTP
+    await db.collection('otps').deleteMany({ email });
 
     return NextResponse.json({ ok: true, entry }, { status: 201, headers: CORS_HEADERS });
   } catch (err) {
