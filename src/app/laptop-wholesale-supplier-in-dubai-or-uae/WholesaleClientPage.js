@@ -125,7 +125,7 @@ export default function WholesaleClientPage() {
     setShowContactPopup(true);
   };
 
-  const WHATSAPP_PHONE = '923457811966';
+  const WHATSAPP_PHONE = '971505033860';
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -159,6 +159,10 @@ export default function WholesaleClientPage() {
     const targetUrl = mobileNow
       ? `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}${encoded ? `&text=${encoded}` : ''}&type=phone_number&app_absent=0`
       : `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}${encoded ? `&text=${encoded}` : ''}&type=phone_number&app_absent=0`;
+
+    if (e && e.currentTarget) {
+      e.currentTarget.href = targetUrl;
+    }
 
     if (typeof window !== 'undefined') {
       const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
