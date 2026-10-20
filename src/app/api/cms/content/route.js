@@ -24,14 +24,25 @@ function getUserFromRequest(request) {
   const token = request.cookies.get("jwt")?.value;
   if (!token) return null;
   if (token === "demo-jwt-token") {
-    return { role: "super_admin" };
+    return { role: "super_admin", roles: ["super_admin"] };
   }
   try {
     const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
-    return decoded;
+    return {
+      ...decoded,
+      roles: Array.isArray(decoded.roles) ? decoded.roles : (decoded.role ? [decoded.role] : [])
+    };
   } catch (e) {
     return null;
   }
+}
+
+function canModifyContent(user) {
+  if (!user) return false;
+  const userRoles = Array.isArray(user.roles) && user.roles.length > 0
+    ? user.roles
+    : (user.role ? [user.role] : []);
+  return userRoles.some(r => ['super_admin', 'admin', 'editor', 'client'].includes(r));
 }
 
 // Default section templates
@@ -248,8 +259,8 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const user = getUserFromRequest(request);
-    if (user && user.role === 'viewer') {
-      return jsonResponse({ error: 'Access denied. Viewers cannot edit content.' }, 403);
+    if (!canModifyContent(user)) {
+      return jsonResponse({ error: 'Access denied. Content Editor permission required.' }, 403);
     }
     const body = await request.json();
     const { routeId, path, websiteId = 'default', sections, status = 'draft' } = body;
@@ -323,8 +334,8 @@ export async function POST(request) {
 export async function PUT(request) {
   try {
     const user = getUserFromRequest(request);
-    if (user && user.role === 'viewer') {
-      return jsonResponse({ error: 'Access denied. Viewers cannot add content.' }, 403);
+    if (!canModifyContent(user)) {
+      return jsonResponse({ error: 'Access denied. Content Editor permission required.' }, 403);
     }
     const body = await request.json();
     const { routeId, path, websiteId = 'default', templateId, customName } = body;

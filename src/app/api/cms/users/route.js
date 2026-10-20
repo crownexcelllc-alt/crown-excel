@@ -22,14 +22,24 @@ function getUserFromRequest(request) {
   const token = request.cookies.get("jwt")?.value;
   if (!token) return null;
   if (token === "demo-jwt-token") {
-    return { role: "super_admin" };
+    return { role: "super_admin", roles: ["super_admin"] };
   }
   try {
     const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
-    return decoded;
+    return {
+      ...decoded,
+      roles: Array.isArray(decoded.roles) ? decoded.roles : (decoded.role ? [decoded.role] : [])
+    };
   } catch (e) {
     return null;
   }
+}
+
+function isSuperAdmin(user) {
+  if (!user) return false;
+  if (user.role === 'super_admin') return true;
+  if (Array.isArray(user.roles) && user.roles.includes('super_admin')) return true;
+  return false;
 }
 
 // Simple password hashing (in production, use bcrypt)
@@ -54,7 +64,7 @@ const ROLE_PERMISSIONS = {
     canViewActivity: false
   },
   seo: {
-    canEditContent: true, canEditSeo: true, canUploadMedia: false,
+    canEditContent: false, canEditSeo: true, canUploadMedia: false,
     canManageUsers: false, canManageWebsites: false, canScanRoutes: false,
     canViewActivity: false
   },
@@ -76,6 +86,27 @@ const ROLE_PERMISSIONS = {
   },
 };
 
+function mergePermissions(rolesList = []) {
+  const merged = {
+    canEditContent: false,
+    canEditSeo: false,
+    canUploadMedia: false,
+    canManageUsers: false,
+    canManageWebsites: false,
+    canScanRoutes: false,
+    canViewActivity: false,
+  };
+  rolesList.forEach(r => {
+    const p = ROLE_PERMISSIONS[r];
+    if (p) {
+      Object.keys(p).forEach(k => {
+        if (p[k]) merged[k] = true;
+      });
+    }
+  });
+  return merged;
+}
+
 // GET /api/cms/users
 export async function GET() {
   try {
@@ -86,11 +117,19 @@ export async function GET() {
       .project({ passwordHash: 0 }) // Never expose password hash
       .toArray();
 
-    const normalized = users.map(u => ({
-      ...u,
-      _id: u._id.toString(),
-      assignedWebsites: (u.assignedWebsites || []).map(id => id.toString()),
-    }));
+    const normalized = users.map(u => {
+      const uRoles = Array.isArray(u.roles) && u.roles.length > 0
+        ? u.roles
+        : (u.role ? [u.role] : ['editor']);
+      const primaryRole = u.role || uRoles[0];
+      return {
+        ...u,
+        _id: u._id.toString(),
+        role: primaryRole,
+        roles: uRoles,
+        assignedWebsites: (u.assignedWebsites || []).map(id => id.toString()),
+      };
+    });
 
     return jsonResponse({ total: normalized.length, users: normalized });
   } catch (err) {
@@ -103,19 +142,25 @@ export async function GET() {
 export async function POST(request) {
   try {
     const user = getUserFromRequest(request);
-    if (!user || user.role !== 'super_admin') {
+    if (!isSuperAdmin(user)) {
       return jsonResponse({ error: 'Access denied. Only super admin can manage users.' }, 403);
     }
     const body = await request.json();
-    const { name, email, password, role = 'editor', assignedWebsites = [] } = body;
+    const { name, email, password, role = 'editor', roles, assignedWebsites = [] } = body;
 
     if (!name || !email || !password) {
       return jsonResponse({ error: 'name, email, and password are required' }, 400);
     }
 
-    if (!ROLE_PERMISSIONS[role]) {
-      return jsonResponse({ error: 'Invalid role' }, 400);
+    const selectedRoles = Array.isArray(roles) && roles.length > 0
+      ? roles.filter(r => ROLE_PERMISSIONS[r])
+      : (role && ROLE_PERMISSIONS[role] ? [role] : ['editor']);
+
+    if (selectedRoles.length === 0) {
+      return jsonResponse({ error: 'At least one valid role must be selected' }, 400);
     }
+
+    const primaryRole = selectedRoles.includes('super_admin') ? 'super_admin' : selectedRoles[0];
 
     const db = await getDb();
     const collection = db.collection('cms_users');
@@ -130,9 +175,10 @@ export async function POST(request) {
       name,
       email,
       passwordHash: hashPassword(password),
-      role,
+      role: primaryRole,
+      roles: selectedRoles,
       assignedWebsites,
-      permissions: ROLE_PERMISSIONS[role],
+      permissions: mergePermissions(selectedRoles),
       status: 'active',
       lastLoginAt: null,
       createdAt: new Date().toISOString(),
@@ -141,7 +187,7 @@ export async function POST(request) {
 
     const result = await collection.insertOne(doc);
 
-    await logActivity(request, 'create_user', doc.name, { email: doc.email, role: doc.role, id: result.insertedId.toString() });
+    await logActivity(request, 'create_user', doc.name, { email: doc.email, role: doc.role, roles: doc.roles, id: result.insertedId.toString() });
 
     // Don't return passwordHash
     const { passwordHash, ...safeDoc } = doc;
@@ -160,11 +206,11 @@ export async function POST(request) {
 export async function PATCH(request) {
   try {
     const user = getUserFromRequest(request);
-    if (!user || user.role !== 'super_admin') {
+    if (!isSuperAdmin(user)) {
       return jsonResponse({ error: 'Access denied. Only super admin can manage users.' }, 403);
     }
     const body = await request.json();
-    const { id, role, assignedWebsites, status, name, email, password } = body;
+    const { id, role, roles, assignedWebsites, status, name, email, password } = body;
 
     if (!id) return jsonResponse({ error: 'id is required' }, 400);
 
@@ -177,9 +223,19 @@ export async function PATCH(request) {
       updateFields.passwordHash = hashPassword(password.trim());
     }
     if (status !== undefined) updateFields.status = status;
-    if (role !== undefined && ROLE_PERMISSIONS[role]) {
-      updateFields.role = role;
-      updateFields.permissions = ROLE_PERMISSIONS[role];
+    if (roles !== undefined || role !== undefined) {
+      let selectedRoles = [];
+      if (Array.isArray(roles)) {
+        selectedRoles = roles.filter(r => ROLE_PERMISSIONS[r]);
+      } else if (typeof role === 'string' && ROLE_PERMISSIONS[role]) {
+        selectedRoles = [role];
+      }
+      if (selectedRoles.length > 0) {
+        const primaryRole = selectedRoles.includes('super_admin') ? 'super_admin' : selectedRoles[0];
+        updateFields.role = primaryRole;
+        updateFields.roles = selectedRoles;
+        updateFields.permissions = mergePermissions(selectedRoles);
+      }
     }
     if (assignedWebsites !== undefined) updateFields.assignedWebsites = assignedWebsites;
 
@@ -198,7 +254,7 @@ export async function PATCH(request) {
     if (status !== undefined) {
       await logActivity(request, 'toggle_user_status', targetName, { id, status });
     } else {
-      await logActivity(request, 'update_user', targetName, { id, role, name, email });
+      await logActivity(request, 'update_user', targetName, { id, role: updateFields.role, roles: updateFields.roles, name, email });
     }
 
     return jsonResponse({ ok: true });
@@ -212,7 +268,7 @@ export async function PATCH(request) {
 export async function DELETE(request) {
   try {
     const user = getUserFromRequest(request);
-    if (!user || user.role !== 'super_admin') {
+    if (!isSuperAdmin(user)) {
       return jsonResponse({ error: 'Access denied. Only super admin can manage users.' }, 403);
     }
     const url = new URL(request.url);

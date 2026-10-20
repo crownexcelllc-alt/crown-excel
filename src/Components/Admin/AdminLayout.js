@@ -45,12 +45,10 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin/appointments",
   ],
 
-  // ── SEO Specialist: Pages & Routes + SEO Manager + URL Redirects ──────────
+  // ── SEO Specialist: SEO Manager only ──────────────────────────────────────
   seo: [
     "/admin",
-    "/admin/pages",
     "/admin/seo",
-    "/admin/redirects",
   ],
 
   // ── Blog Manager: ONLY Blogs section ─────────────────────────────────────
@@ -72,7 +70,6 @@ const ROLE_ALLOWED_ROUTES = {
     "/admin",
     "/admin/pages",
     "/admin/seo",
-    "/admin/redirects",
   ],
 };
 
@@ -87,14 +84,34 @@ export default function AdminLayout({ children, title = '' }) {
       const userStr = localStorage.getItem("user");
       if (userStr) {
         try {
-          setCurrentUser(JSON.parse(userStr));
+          const parsed = JSON.parse(userStr);
+          setCurrentUser(parsed);
+          // Sync fresh roles from database to keep permissions up to date
+          fetch(`/api/cms/users`)
+            .then(r => r.json())
+            .then(data => {
+              if (data && data.users && parsed.email) {
+                const fresh = data.users.find(u => u.email === parsed.email);
+                if (fresh) {
+                  const updatedUser = {
+                    ...parsed,
+                    name: fresh.name || parsed.name,
+                    role: fresh.role,
+                    roles: Array.isArray(fresh.roles) && fresh.roles.length > 0 ? fresh.roles : [fresh.role],
+                  };
+                  setCurrentUser(updatedUser);
+                  localStorage.setItem("user", JSON.stringify(updatedUser));
+                }
+              }
+            })
+            .catch(() => {});
         } catch (e) {
           console.error("Failed to parse user details:", e);
         }
       } else {
         const token = localStorage.getItem("jwt");
         if (token) {
-          setCurrentUser({ name: "Super Admin", role: "super_admin" });
+          setCurrentUser({ name: "Super Admin", role: "super_admin", roles: ["super_admin"] });
         }
       }
     }
@@ -108,18 +125,26 @@ export default function AdminLayout({ children, title = '' }) {
   }, [pathname]);
 
   // ⚠️ Do NOT default to super_admin — wait for real user data
-  // If currentUser is null (still loading), role is null → no routes shown
+  // If currentUser is null (still loading), roles is empty → no routes shown
   const role = currentUser?.role ?? null;
+  const roles = Array.isArray(currentUser?.roles) && currentUser.roles.length > 0
+    ? currentUser.roles
+    : (currentUser?.role ? [currentUser.role] : []);
 
   const isRouteAllowed = (path) => {
-    if (!role) return false; // Not loaded yet → deny all
-    const allowed = ROLE_ALLOWED_ROUTES[role] || [];
-    if (allowed.includes("*")) return true;
-    return allowed.some(allowedPath => {
-      if (allowedPath === "/admin") {
-        return path === "/admin" || path === "/admin/";
-      }
-      return path.startsWith(allowedPath);
+    if (roles.length === 0 && !role) return false; // Not loaded yet → deny all
+    const effectiveRoles = roles.length > 0 ? roles : (role ? [role] : []);
+    if (effectiveRoles.includes("super_admin")) return true;
+
+    return effectiveRoles.some(r => {
+      const allowed = ROLE_ALLOWED_ROUTES[r] || [];
+      if (allowed.includes("*")) return true;
+      return allowed.some(allowedPath => {
+        if (allowedPath === "/admin") {
+          return path === "/admin" || path === "/admin/";
+        }
+        return path.startsWith(allowedPath);
+      });
     });
   };
 
@@ -150,7 +175,7 @@ export default function AdminLayout({ children, title = '' }) {
     return acc;
   }, {});
 
-  const isAllowed = loading || (role !== null && isRouteAllowed(pathname));
+  const isAllowed = loading || (roles.length > 0 && isRouteAllowed(pathname));
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white text-black relative">
@@ -159,7 +184,7 @@ export default function AdminLayout({ children, title = '' }) {
       <div className="absolute top-4 right-4 z-50 flex items-center gap-3">
         {currentUser && (
           <span className="hidden md:inline-block text-xs text-gray-500 font-medium">
-            Logged in as: <strong className="text-[#084032]">{currentUser.name}</strong> ({role.replace('_', ' ')})
+            Logged in as: <strong className="text-[#084032]">{currentUser.name}</strong> ({roles.map(r => r.replace('_', ' ')).join(', ') || role?.replace('_', ' ') || 'User'})
           </span>
         )}
         <LogoutButton>
@@ -271,13 +296,13 @@ export default function AdminLayout({ children, title = '' }) {
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Access Restricted</h2>
               <p className="text-gray-600 max-w-md mb-8">
-                Your account role <span className="font-semibold text-[#084032] uppercase">({role.replace('_', ' ')})</span> does not have permission to view this section.
+                Your account role <span className="font-semibold text-[#084032] uppercase">({roles.map(r => r.replace('_', ' ')).join(', ') || role?.replace('_', ' ') || 'None'})</span> does not have permission to view this section.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link href="/admin" className="px-5 py-2.5 bg-[#084032] hover:bg-[#0a5c48] text-white font-semibold rounded-md transition shadow-md">
                   Go to Dashboard
                 </Link>
-                {role === 'seo' && (
+                {roles.includes('seo') && (
                   <Link href="/admin/pages" className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-md transition">
                     Go to Pages & Routes
                   </Link>
