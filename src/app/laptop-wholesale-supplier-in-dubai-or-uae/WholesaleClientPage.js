@@ -1561,6 +1561,7 @@ export default function WholesaleClientPage() {
           setShowContactPopup(false);
           setSelectedProduct(null);
         }}
+        defaultSubject="For Corporates Content"
         showProductFields={true}
         initialProductName={selectedProduct?.name || ''}
         initialProductBarcode={selectedProduct?.barcode || ''}

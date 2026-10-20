@@ -9,6 +9,7 @@ import { X } from 'phosphor-react';
 const ContactFormPopup = ({
   isOpen,
   onClose,
+  defaultSubject = 'Select Subject',
   preSelectedSubject,
   showProductFields = false,
   initialProductName = '',
@@ -32,13 +33,13 @@ const ContactFormPopup = ({
     'Become Our Partner',
     'For Corporates Content',
     'Wholesale Inquiries',
-    'Wholesale Stock List request',
+    'Stock List request',
   ];
 
   const [service, setService] = useState('Select Service');
   const [productName, setProductName] = useState(initialProductName || '');
   const [productBarcode, setProductBarcode] = useState(initialProductBarcode || '');
-  const [subject, setSubject] = useState('Select Subject');
+  const [subject, setSubject] = useState(defaultSubject);
   const [countryCode, setCountryCode] = useState('+971');
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
@@ -57,7 +58,7 @@ const ContactFormPopup = ({
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimating(true));
       });
-      setSubject('Select Subject');
+      setSubject(defaultSubject);
       setService('Select Service');
       setProductName(initialProductName || '');
       setProductBarcode(initialProductBarcode || '');
@@ -72,7 +73,7 @@ const ContactFormPopup = ({
         setVisible(false);
         // Reset form after animation
         setService('Select Service');
-        setSubject('Select Subject');
+        setSubject(defaultSubject);
         setProductName('');
         setProductBarcode('');
         setCountryCode('+971');
@@ -84,7 +85,7 @@ const ContactFormPopup = ({
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, initialProductName, initialProductBarcode]);
+  }, [isOpen, defaultSubject, initialProductName, initialProductBarcode]);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);
@@ -351,7 +352,7 @@ const ContactFormPopup = ({
             {/* Comments */}
             <textarea
               name="comments"
-              placeholder="Comments *"
+              placeholder="Additional Details *"
               required
               className="border text-[13px] bg-white text-[#333] rounded-lg w-full h-[100px] mb-4 outline-0 focus:border-[#084032] transition-colors resize-none"
               style={{ padding: '12px 16px' }}
