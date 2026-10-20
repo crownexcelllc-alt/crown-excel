@@ -53,6 +53,7 @@ export default async function PageEditPage({ params }) {
           initialContent={contentData}
           routeId={routeId}
           routePath={routeData?.path || ''}
+          initialRouteStatus={routeData?.status || 'active'}
           apiBase={apiBase}
           templates={templates}
           isNew={isNew}

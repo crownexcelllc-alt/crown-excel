@@ -10,7 +10,7 @@ export async function middleware(request) {
     return NextResponse.redirect(new URL("/admin/login", request.url));
   }
 
-  // 2. SEO URL Redirects Check (skip for admin, api, static files, and paths with extensions)
+  // 2. Client-Side Page Status & URL Redirects Check (skip for admin, api, static files, and paths with extensions)
   if (!pathname.startsWith("/admin") && !pathname.startsWith("/api") && !pathname.startsWith("/_next") && !pathname.includes('.')) {
     try {
       // Query the fast lookup endpoint
@@ -19,6 +19,16 @@ export async function middleware(request) {
       
       if (res.ok) {
         const data = await res.json();
+
+        // 2a. If page is marked Inactive, hide it from client-side website (return 404)
+        if (data && data.inactive) {
+          const isPreview = token && request.nextUrl.searchParams.get("preview") === "true";
+          if (!isPreview) {
+            return NextResponse.rewrite(new URL("/404", request.url), { status: 404 });
+          }
+        }
+
+        // 2b. URL Redirects
         if (data && data.redirect) {
           const destination = data.redirect.toPath;
           const statusCode = data.redirect.type === '302' ? 302 : 301;
@@ -31,7 +41,7 @@ export async function middleware(request) {
         }
       }
     } catch (err) {
-      console.error("Middleware URL redirect lookup failed:", err);
+      console.error("Middleware lookup failed:", err);
     }
   }
 

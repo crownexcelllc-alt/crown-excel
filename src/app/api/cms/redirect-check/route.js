@@ -30,9 +30,29 @@ export async function GET(request) {
     const normalizedPath = path.replace(/\/+$/, '') || '/';
 
     const db = await getDb();
-    const collection = db.collection('cms_redirects');
 
-    // Find an active redirect rule for this path
+    // 1. Check if the page route is marked inactive in cms_routes
+    let routeDoc = await db.collection('cms_routes').findOne({
+      path: normalizedPath,
+      websiteId,
+    });
+
+    if (!routeDoc && normalizedPath.startsWith('/blogs/')) {
+      routeDoc = await db.collection('cms_routes').findOne({
+        path: '/blogs/[slug]',
+        websiteId,
+      });
+    }
+
+    if (routeDoc && routeDoc.status === 'inactive') {
+      return jsonResponse({
+        inactive: true,
+        redirect: null,
+      });
+    }
+
+    // 2. Find an active redirect rule for this path
+    const collection = db.collection('cms_redirects');
     const redirect = await collection.findOne({
       fromPath: normalizedPath,
       websiteId,
@@ -41,6 +61,7 @@ export async function GET(request) {
 
     if (redirect) {
       return jsonResponse({
+        inactive: false,
         redirect: {
           fromPath: redirect.fromPath,
           toPath: redirect.toPath,
@@ -49,7 +70,7 @@ export async function GET(request) {
       });
     }
 
-    return jsonResponse({ redirect: null });
+    return jsonResponse({ inactive: false, redirect: null });
   } catch (err) {
     console.error('GET /api/cms/redirect-check error:', err);
     return jsonResponse({ error: 'Failed to verify redirect' }, 500);

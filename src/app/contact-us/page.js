@@ -35,9 +35,6 @@ const ContactUs = async () => {
   return (
     <div>
       <ContactUsPageBanner />
-      <div className="header text-center">
-        <h1 className="text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]">Contact us</h1>
-      </div>
       <ContactUsForm />
       <AppointmentSection links={appointmentLinks} />
       <ContactUsMap />

@@ -15,8 +15,10 @@ import {
 } from 'phosphor-react';
 import { XLogoIcon } from '@phosphor-icons/react';
 import ContactFormPopup from '../ContactFormPopup/ContactFormPopup';
+import { useRouteStatus } from '@/context/RouteStatusContext';
 
 const Footer = () => {
+  const { isRouteActive } = useRouteStatus();
   const [emailInput, setEmailInput] = useState('');
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [emailMessage, setEmailMessage] = useState('');
@@ -31,6 +33,25 @@ const Footer = () => {
     instagram: '',
     linkedin: ''
   });
+
+  const serviceLinks = [
+    { label: 'Software Solutions', href: '/our-services/software-solutions' },
+    { label: 'Long/Short Term AMC', href: '/our-services/long/short-term-amc' },
+    { label: 'IT Consultancy', href: '/our-services/it-consultancy' },
+    { label: 'Networking Solutions', mobileLabel: 'Networking', href: '/our-services/networking' },
+    { label: 'Storage & Virtualization', href: '/our-services/storage&virtualization' },
+    { label: 'Laptop Wholesale Supplier', href: '/laptop-wholesale-supplier-in-dubai-or-uae' },
+    { label: 'Sitemaps', href: '/sitemap.xml' },
+  ];
+
+  const companyLinks = [
+    { label: 'About Us', href: '/company/about-us' },
+    { label: 'Careers', href: '/company/career' },
+    { label: 'Our History', href: '/company/company-history' },
+    { label: 'Leadership', href: '/our-management' },
+    { label: 'Blogs', href: 'https://www.grabatoz.ae/ae-en/blogs' },
+    { label: 'FAQ', href: '/company/faq' },
+  ];
 
   useEffect(() => {
     // Fetch settings from API
@@ -278,51 +299,18 @@ const Footer = () => {
 
               <div className='flex items-start justify-between  w-full'>
                 {/* Our Services - Takes 3 columns */}
+                {/* Our Services - Takes 3 columns */}
                 <div className="w-[200px]">
                   <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
                   <ul className="space-y-4">
-                    <li>
-                      <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Software Solutions
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Long/Short Term AMC
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/our-services/it-consultancy" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        IT Consultancy
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/our-services/networking" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Networking Solutions
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/our-services/storage&virtualization" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Storage & Virtualization
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/laptop-wholesale-supplier-in-dubai-or-uae" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Laptop Wholesale Supplier
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/sitemap.xml" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Sitemaps
-                      </Link>
-                    </li>
+                    {serviceLinks.filter(item => isRouteActive(item.href)).map(item => (
+                      <li key={item.href}>
+                        <Link href={item.href} className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                          <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -330,42 +318,14 @@ const Footer = () => {
                 <div className="w-[200px]">
                   <h3 className="text-white text-xl font-bold mb-8 pb-2 border-b border-[#4ade80]/30">Company</h3>
                   <ul className="space-y-4">
-                    <li>
-                      <Link href="/company/about-us" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        About Us
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/company/career" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Careers
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/company/company-history" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Our History
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/our-management" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Leadership
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="https://www.grabatoz.ae/ae-en/blogs" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        Blogs
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/company/faq" className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
-                        <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
-                        FAQ
-                      </Link>
-                    </li>
+                    {companyLinks.filter(item => isRouteActive(item.href)).map(item => (
+                      <li key={item.href}>
+                        <Link href={item.href} className="text-gray-300 hover:text-[#4ade80] transition-colors duration-300 flex items-center group">
+                          <span className="w-2 h-2 bg-[#4ade80] rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -417,42 +377,14 @@ const Footer = () => {
               <div>
                 <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30">Our Services</h3>
                 <ul className="space-y-3">
-                  <li>
-                    <Link href="/our-services/software-solutions" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Software Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/long/short-term-amc" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Long/Short Term AMC
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/it-consultancy" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      IT Consultancy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-services/networking" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Networking
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/laptop-wholesale-supplier-in-dubai-or-uae" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Laptop Wholesale Supplier
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/sitemap.xml" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Sitemaps
-                    </Link>
-                  </li>
+                  {serviceLinks.filter(item => isRouteActive(item.href)).map(item => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                        <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
+                        {item.mobileLabel || item.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -460,36 +392,14 @@ const Footer = () => {
               <div>
                 <h3 className="text-white text-lg font-bold mb-6 pb-2 border-b border-[#4ade80]/30">Company</h3>
                 <ul className="space-y-3">
-                  <li>
-                    <Link href="/company/about-us" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/career" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Careers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/company/company-history" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Our History
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/our-management" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Leadership
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.grabatoz.ae/ae-en/blogs" className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
-                      <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
-                      Blogs
-                    </Link>
-                  </li>
+                  {companyLinks.filter(item => isRouteActive(item.href)).map(item => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="text-gray-300 hover:text-[#4ade80] transition-colors text-sm flex items-center group">
+                        <span className="w-1.5 h-1.5 bg-[#4ade80] rounded-full mr-2 group-hover:scale-125 transition-transform"></span>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 

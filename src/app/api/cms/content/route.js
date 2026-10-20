@@ -177,55 +177,58 @@ export async function GET(request) {
       }
     }
 
-    // Merge strategy: populate empty DB fields with static file content
+    // Merge strategy: live client-side page JSX structure is the ground truth for section presence & order
     let mergedSections = [];
-    if (content && Array.isArray(content.sections)) {
-      mergedSections = [...content.sections];
-      for (const parsedSec of parsedSections) {
-        const existingSec = mergedSections.find(
+    if (parsedSections.length > 0) {
+      const existingSections = (content && Array.isArray(content.sections)) ? content.sections : [];
+
+      mergedSections = parsedSections.map((parsedSec, idx) => {
+        const sec = { ...parsedSec, order: idx + 1 };
+        const dbSec = existingSections.find(
           s => s.sectionId === parsedSec.sectionId || 
                s.sectionName?.toLowerCase() === parsedSec.sectionName?.toLowerCase()
         );
 
-        if (!existingSec) {
-          mergedSections.push(parsedSec);
-        } else {
-          existingSec.filePath = parsedSec.filePath;
-          if (!existingSec.fields) existingSec.fields = {};
-          
+        if (dbSec && dbSec.fields) {
+          if (dbSec.sectionName && !dbSec.sectionName.startsWith('Untitled')) {
+            sec.sectionName = dbSec.sectionName;
+          }
+
+          const mergedFields = {};
           for (const [key, parsedField] of Object.entries(parsedSec.fields || {})) {
-            if (!existingSec.fields[key]) {
-              existingSec.fields[key] = { ...parsedField };
+            const dbField = dbSec.fields[key];
+            if (dbField && dbField.value !== undefined && dbField.value !== null) {
+              const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+              const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+              mergedFields[key] = {
+                ...parsedField,
+                value: cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase() ? parsedField.value : dbField.value,
+                originalValue: parsedField.originalValue,
+                alt: dbField.alt || parsedField.alt || '',
+                title: dbField.title || parsedField.title || '',
+              };
             } else {
-                const dbField = existingSec.fields[key];
-                // Use parsed value if DB value is undefined or null
-                if (dbField.value === undefined || dbField.value === null) {
-                  dbField.value = parsedField.value;
-                } else {
-                  // If the clean texts are identical (meaning only HTML tags/links differ),
-                  // sync the DB value with the value parsed from disk (which has the live links)
-                  const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-                  const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-                  if (cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase()) {
-                    dbField.value = parsedField.value;
-                  }
-                }
-               // Always keep originalValue synced with the JSX file
-               dbField.originalValue = parsedField.originalValue;
-              // Sync metadata
-              if (parsedField.isImport) {
-                dbField.isImport = parsedField.isImport;
-                dbField.varName = parsedField.varName;
-              }
-              if (parsedField.isInline) {
-                dbField.isInline = parsedField.isInline;
-              }
+              mergedFields[key] = { ...parsedField };
             }
           }
+          sec.fields = mergedFields;
         }
+
+        return sec;
+      });
+
+      // Preserve any custom sections manually added by the user in the CMS that contain actual content
+      const customDbSections = existingSections.filter(
+        s => !s.filePath && 
+             !parsedSections.some(p => p.sectionId === s.sectionId || p.sectionName?.toLowerCase() === s.sectionName?.toLowerCase()) &&
+             Object.values(s.fields || {}).some(f => f.value && f.value.toString().trim() !== '')
+      );
+      for (const customSec of customDbSections) {
+        mergedSections.push({ ...customSec, order: mergedSections.length + 1 });
       }
-    } else {
-      mergedSections = parsedSections;
+    } else if (content && Array.isArray(content.sections)) {
+      mergedSections = content.sections;
     }
 
     const responseContent = {

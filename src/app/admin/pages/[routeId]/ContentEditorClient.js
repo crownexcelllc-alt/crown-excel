@@ -97,8 +97,10 @@ function ContentEditable({ value, onChange, disabled, id, className, placeholder
   );
 }
 
-export default function ContentEditorClient({ initialContent, routeId, routePath, apiBase, templates = [], isNew }) {
+export default function ContentEditorClient({ initialContent, routeId, routePath, initialRouteStatus = 'active', apiBase, templates = [], isNew }) {
   const [content, setContent] = useState(initialContent || { sections: [], status: 'draft', version: 1 });
+  const [routeStatus, setRouteStatus] = useState(initialRouteStatus);
+  const [updatingRouteStatus, setUpdatingRouteStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
@@ -137,6 +139,40 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
   const role = currentUser?.role || 'super_admin';
   const canEditContent = role !== 'viewer';
+
+  // Toggle page status (Active / Inactive)
+  const handleToggleRouteStatus = async (newStatus) => {
+    if (!canEditContent) return;
+    setUpdatingRouteStatus(true);
+    try {
+      const res = await fetch(`${apiBase}/api/cms/routes`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: routeId, status: newStatus }),
+      });
+      if (res.ok) {
+        setRouteStatus(newStatus);
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('cms-route-status-updated'));
+        }
+        setMessage(`Page status updated to ${newStatus === 'active' ? 'Active' : 'Inactive (hidden from website)'}.`);
+        setMessageType('success');
+        setTimeout(() => {
+          setMessage(prev => prev.includes('Page status updated') ? '' : prev);
+        }, 3500);
+      } else {
+        const data = await res.json();
+        setMessage(data.error || 'Failed to update page status');
+        setMessageType('error');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage('Failed to update page status: ' + err.message);
+      setMessageType('error');
+    } finally {
+      setUpdatingRouteStatus(false);
+    }
+  };
 
   // Direct image upload
   const handleImageUpload = async (e, sectionIndex, fieldKey) => {
@@ -718,12 +754,33 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
       `}} />
       {/* Top Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <Link
-          href="/admin/pages"
-          className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#084032] transition-colors"
-        >
-          <FiArrowLeft /> Back to Pages
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/admin/pages"
+            className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#084032] transition-colors"
+          >
+            <FiArrowLeft /> Back to Pages
+          </Link>
+
+          {/* Page Visibility Status Selector */}
+          <div className="flex items-center gap-2 bg-white border border-gray-300 rounded-md px-3 py-1.5 shadow-sm">
+            <span className="text-xs font-semibold text-gray-700">Status:</span>
+            <select
+              value={routeStatus === 'inactive' ? 'inactive' : 'active'}
+              onChange={(e) => handleToggleRouteStatus(e.target.value)}
+              disabled={!canEditContent || updatingRouteStatus}
+              className={`text-xs font-semibold rounded-full px-2.5 py-0.5 border cursor-pointer focus:outline-none transition-colors ${
+                routeStatus === 'inactive'
+                  ? 'bg-rose-50 text-rose-700 border-rose-300 focus:ring-1 focus:ring-rose-400'
+                  : 'bg-emerald-50 text-emerald-700 border-emerald-300 focus:ring-1 focus:ring-emerald-400'
+              } ${updatingRouteStatus ? 'opacity-60 cursor-wait' : ''}`}
+            >
+              <option value="active">Active (Visible)</option>
+              <option value="inactive">Inactive (Hidden)</option>
+            </select>
+          </div>
+        </div>
+
         <div className="flex items-center gap-2">
           <span className={`px-2 py-1 rounded text-xs font-medium ${
             content.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
@@ -731,7 +788,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
             {content.status} • v{content.version}
           </span>
           <a
-            href={routePath}
+            href={`${routePath}${routeStatus === 'inactive' ? '?preview=true' : ''}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition"
@@ -762,6 +819,25 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
           )}
         </div>
       </div>
+
+      {/* Inactive Notice Banner */}
+      {routeStatus === 'inactive' && (
+        <div className="rounded-md px-4 py-3 text-sm font-medium flex items-center justify-between gap-2 bg-rose-50 text-rose-800 border border-rose-200">
+          <div className="flex items-center gap-2">
+            <FiAlertCircle className="text-rose-600 flex-shrink-0" size={16} />
+            <span>This page is currently <strong>Inactive</strong> and hidden from the client-side website (public visitors receive 404 Not Found).</span>
+          </div>
+          {canEditContent && (
+            <button
+              onClick={() => handleToggleRouteStatus('active')}
+              disabled={updatingRouteStatus}
+              className="text-xs font-semibold bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded shadow-sm transition"
+            >
+              Activate Page
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Message */}
       {message && (

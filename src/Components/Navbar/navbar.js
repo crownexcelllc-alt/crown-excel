@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 // import { ChevronDown } from 'lucide-react';
 import './Navbar.css';
@@ -10,6 +10,7 @@ import mobileLogo from '../Images/Mobile-logo.png'
 import grabLogo from '../Images/admin-logo.svg'
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useRouteStatus } from '@/context/RouteStatusContext';
 import { FaAngleDown } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaLaptop, FaDesktop, FaPrint, FaNetworkWired, FaMouse, FaTools, FaMobileAlt, FaServer, FaUserTie, FaCogs, FaUsers, FaHistory, FaCommentDots, FaQuestionCircle } from "react-icons/fa";
@@ -20,7 +21,7 @@ import { CgSmartphoneChip } from "react-icons/cg";
 import { FaLongArrowAltDown } from "react-icons/fa";
 
 function Navbar() {
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { label: 'Home', href: '/' },
     {
       label: 'Company',
@@ -80,7 +81,36 @@ function Navbar() {
 
     { label: 'Our Management', href: '/our-management' },
     { label: 'Contact Us', href: '/contact-us' },
-  ];
+  ], []);
+
+  const { isRouteActive } = useRouteStatus();
+
+  // Filter links dynamically according to page active/inactive status
+  const visibleNavLinks = useMemo(() => {
+    return navLinks
+      .filter(item => {
+        if (item.href && !item.hasDropdown) {
+          return isRouteActive(item.href);
+        }
+        return true;
+      })
+      .map(item => {
+        if (!item.hasDropdown || !Array.isArray(item.dropdown)) {
+          return item;
+        }
+        const activeDropdown = item.dropdown.filter(sub => isRouteActive(sub.href));
+        return {
+          ...item,
+          dropdown: activeDropdown,
+        };
+      })
+      .filter(item => {
+        if (item.hasDropdown) {
+          return item.dropdown && item.dropdown.length > 0;
+        }
+        return true;
+      });
+  }, [navLinks, isRouteActive]);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const hoverTimeout = useRef(null);
@@ -100,12 +130,8 @@ function Navbar() {
   const [medNav, setMedNav] = useState(false);
   const pathname = usePathname();
 
-
-
-
-
   useEffect(() => {
-    if (hoveredIndex !== null && navLinks[hoveredIndex].label === 'Products') {
+    if (hoveredIndex !== null && visibleNavLinks[hoveredIndex]?.label === 'Products') {
       const el = productsDropdownRef.current;
       if (!el) return;
       const handleScroll = () => {
@@ -117,13 +143,13 @@ function Navbar() {
       return () => el.removeEventListener('scroll', handleScroll);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hoveredIndex]);
+  }, [hoveredIndex, visibleNavLinks]);
 
   const handleMouseEnter = (i) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
     setHoveredIndex(i);
     // Check if Products dropdown needs scroll arrow
-    if (navLinks[i].label === 'Products') {
+    if (visibleNavLinks[i]?.label === 'Products') {
       setTimeout(() => {
         if (productsDropdownRef.current && productsDropdownRef.current.scrollHeight > 320) {
           setShowProductsScroll(true);
@@ -220,7 +246,7 @@ function Navbar() {
       >
         <div className="mx-auto w-11/12 sm:w-10/12 md:w-8/12">
             <ul className="flex flex-col ">
-              {navLinks.map((item, i) => (
+              {visibleNavLinks.map((item, i) => (
                 <li key={i} className="border-b border-gray-100">
                   <div className="flex items-center justify-between px-4 py-3 hover:bg-gray-50">
                     {item.href ? (
@@ -329,7 +355,7 @@ function Navbar() {
 
       <ul className="nav-links flex gap-0 items-center hidden md:flex">
 
-        {navLinks.map((item, i) => (
+        {visibleNavLinks.map((item, i) => (
           <li
             key={i}
             className="relative list-none text-white nav-linkss"
@@ -584,7 +610,7 @@ function Navbar() {
 
             <div className="overflow-y-auto flex-1">
               <ul className="flex flex-col gap-1">
-                {navLinks.map((item, i) => (
+                {visibleNavLinks.map((item, i) => (
                   <li key={i} className="border-b border-gray-100">
                     <div className="flex items-center justify-between px-3 py-3">
                       {item.href ? (
