@@ -32,7 +32,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
       (r.email || '').toString().toLowerCase().includes(q) ||
       (r.phone || '').toString().toLowerCase().includes(q) ||
       (r.subject || '').toString().toLowerCase().includes(q) ||
-      (r.service || '').toString().toLowerCase().includes(q)
+      (r.service || '').toString().toLowerCase().includes(q) ||
+      (r.productName || '').toString().toLowerCase().includes(q) ||
+      (r.productBarcode || '').toString().toLowerCase().includes(q)
     ));
   }, [sorted, query]);
 
@@ -58,9 +60,9 @@ export default function ContactTableClient({ initialData = [], apiBase = process
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return alert('No data');
-    const headers = ['#', 'name', 'email', 'phone', 'subject', 'service', 'comments', 'createdAt'];
+    const headers = ['#', 'name', 'email', 'phone', 'subject', 'service', 'productName', 'productBarcode', 'comments', 'createdAt'];
     const csv = [headers.join(',')].concat(rows.map((r, i) => {
-      const vals = [i + 1, r.name, r.email, r.phone, r.subject, r.service, r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
+      const vals = [i + 1, r.name, r.email, r.phone, r.subject, r.service, r.productName || '', r.productBarcode || '', r.comments, r.createdAt ? new Date(r.createdAt).toLocaleString() : ''];
       return vals.map(v => {
         const s = ((v ?? '') + '').replace(/"/g, '""');
         return `"${s}"`;
@@ -228,13 +230,27 @@ export default function ContactTableClient({ initialData = [], apiBase = process
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.subject || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Service</p>
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                    {viewRow.productName ? 'Product / Service' : 'Service'}
+                  </p>
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.service || '—'}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Submitted At</p>
                   <p className="text-[#084032] font-semibold text-sm">{viewRow.createdAt ? new Date(viewRow.createdAt).toLocaleString() : '—'}</p>
                 </div>
+                {viewRow.productName && (
+                  <div>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Product Name</p>
+                    <p className="text-[#084032] font-semibold text-sm">{viewRow.productName}</p>
+                  </div>
+                )}
+                {viewRow.productBarcode && (
+                  <div>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Product Barcode</p>
+                    <p className="text-[#084032] font-semibold text-sm font-mono">{viewRow.productBarcode}</p>
+                  </div>
+                )}
               </div>
 
               <div>
