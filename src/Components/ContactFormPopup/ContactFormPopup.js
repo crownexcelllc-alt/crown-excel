@@ -3,10 +3,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import CaptchaModal from '../CaptchaModal/CaptchaModal';
 import OtpModal from '../OtpModal/OtpModal';
 import countryCodes from '../../data/countryCodes';
-import { WEBSITE_PRODUCT_GROUPS, ALL_WEBSITE_PRODUCTS } from '../../data/websiteProducts';
+import { WHOLESALE_PAGE_PRODUCTS } from '../../data/websiteProducts';
 import { X } from 'phosphor-react';
 
-const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdown = false, requireCaptcha = true }) => {
+const ContactFormPopup = ({
+  isOpen,
+  onClose,
+  preSelectedSubject,
+  isProductDropdown = false,
+  requireCaptcha = true,
+  products = WHOLESALE_PAGE_PRODUCTS,
+}) => {
   const services = [
     'Select Service',
     'RMA Facility',
@@ -23,7 +30,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
     'Become Our Partner',
     'For Corporates Content',
     'Wholesale Inquiries',
-    ...(preSelectedSubject && !['Select Subject', 'Become Our Partner', 'For Corporates Content', 'Wholesale Inquiries'].includes(preSelectedSubject) ? [preSelectedSubject] : []),
+    'Wholesale Stock List request',
   ];
 
   const defaultService = isProductDropdown ? 'Select Products' : 'Select Service';
@@ -47,21 +54,12 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimating(true));
       });
-      if (preSelectedSubject) {
-        setSubject(preSelectedSubject);
-        if (isProductDropdown) {
-          const matchedProduct = ALL_WEBSITE_PRODUCTS.find((p) =>
-            preSelectedSubject.toLowerCase().includes(p.toLowerCase()) ||
-            p.toLowerCase().includes(preSelectedSubject.toLowerCase())
-          );
-          if (matchedProduct) {
-            setService(matchedProduct);
-          } else {
-            setService('Select Products');
-          }
-        }
-      } else if (isProductDropdown) {
-        setService('Select Products');
+      // Strictly ensure no field is auto-selected or pre-filled when opened
+      setSubject('Select Subject');
+      setService(defaultService);
+      setPhone('');
+      if (formRef.current) {
+        formRef.current.reset();
       }
     } else if (visible) {
       // Close animation
@@ -80,7 +78,7 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, preSelectedSubject, isProductDropdown, defaultService]);
+  }, [isOpen, defaultService]);
 
   const getPhoneRule = () => {
     const found = countryCodes.find((c) => c.code === countryCode);
@@ -286,17 +284,13 @@ const ContactFormPopup = ({ isOpen, onClose, preSelectedSubject, isProductDropdo
             >
               {isProductDropdown ? (
                 <>
-                  <option value="Select Products" disabled className="text-[13px] text-[#084032]">
+                  <option value="Select Products" disabled className="text-[13px] text-gray-400">
                     Select Products
                   </option>
-                  {WEBSITE_PRODUCT_GROUPS.map((group, gIdx) => (
-                    <optgroup key={gIdx} label={group.category} className="font-semibold text-[#084032]">
-                      {group.items.map((prod, pIdx) => (
-                        <option key={pIdx} value={prod} className="text-[13px] text-[#333] font-normal">
-                          {prod}
-                        </option>
-                      ))}
-                    </optgroup>
+                  {(products || WHOLESALE_PAGE_PRODUCTS).map((item, index) => (
+                    <option key={index} value={item} className="text-[13px] text-[#333] font-normal">
+                      {item}
+                    </option>
                   ))}
                 </>
               ) : (

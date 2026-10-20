@@ -124,3 +124,25 @@ export const WEBSITE_PRODUCT_GROUPS = [
 ];
 
 export const ALL_WEBSITE_PRODUCTS = WEBSITE_PRODUCT_GROUPS.flatMap((g) => g.items);
+
+export const WHOLESALE_PAGE_PRODUCTS = [
+  'Acer Aspire Lite AL15-36P-36UJ',
+  'Acer Aspire ALite 15-54P',
+  'Acer Predator Helios Neo PHN16-73-94ZR',
+  'Predator Helios Neo 16 AI PHN16-73-97BP',
+  'Acer TravelMate P214-56',
+  'AOC 23.8" Flat Wide Monitor (24B3HA2-89)',
+  'AOC 25" IPS FHD 100Hz Monitor (25B36H-89)',
+  'ASUS ExpertBook B1503CV',
+  'ASUS VivoBook X1504VA-BQ4675 (English)',
+  'ASUS VivoBook A1502VA-BQ1385',
+  'ASUS VivoBook X1504VA-BQ4675 (Arabic)',
+  'ASUS VivoBook A1502VA-BQ1386',
+  'ASUS VivoBook S5507QA-MA007W OLED',
+  'ASUS ZenBook A14 X3407RA-QD004W',
+  'HP OmniBook 3 Laptop 16-bu0065nia',
+  'Lenovo IdeaPad Slim 3i',
+  'Lenovo Legion Pro 5i (16", 10)',
+  'Lenovo LOQ Gaming Laptop 15.6"',
+  'Lenovo V15 Gen 6',
+];

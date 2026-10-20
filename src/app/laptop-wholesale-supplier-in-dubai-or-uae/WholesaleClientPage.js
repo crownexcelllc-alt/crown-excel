@@ -117,11 +117,8 @@ function getTwoLineTitle(name) {
 
 export default function WholesaleClientPage() {
   const [showContactPopup, setShowContactPopup] = useState(false);
-  const [popupSubject, setPopupSubject] = useState('Wholesale Inquiries');
 
-
-  const openInquiryModal = (subject = 'Wholesale Inquiries') => {
-    setPopupSubject(subject);
+  const openInquiryModal = () => {
     setShowContactPopup(true);
   };
 
@@ -1285,7 +1282,7 @@ export default function WholesaleClientPage() {
                 <div className="flex flex-wrap gap-4">
                   <button
                     type="button"
-                    onClick={() => openInquiryModal('Wholesale Stock List Request')}
+                    onClick={() => openInquiryModal('Wholesale Stock List request')}
                     className="bg-[#147A5F] hover:bg-[#0f604b] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow transition-all cursor-pointer uppercase tracking-wider hover:shadow-md"
                   >
                     REQUEST STOCK LIST
@@ -1554,7 +1551,6 @@ export default function WholesaleClientPage() {
       <ContactFormPopup
         isOpen={showContactPopup}
         onClose={() => setShowContactPopup(false)}
-        preSelectedSubject={popupSubject}
         isProductDropdown={true}
         requireCaptcha={false}
       />

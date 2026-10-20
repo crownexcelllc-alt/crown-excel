@@ -32,7 +32,8 @@ const Contactus = () => {
     'Select Subject',
     'Become Our Partner',
     'For Corporates Content',
-    'Wholesale Inquiries'
+    'Wholesale Inquiries',
+    'Wholesale Stock List request'
   ]
 
   const [service, setService] = useState('Select Service')
