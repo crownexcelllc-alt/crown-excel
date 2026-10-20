@@ -16,6 +16,31 @@ function jsonResponse(data, status = 200) {
   return NextResponse.json(data, { status, headers: CORS_HEADERS });
 }
 
+function getUserFromRequest(request) {
+  const token = request.cookies.get("jwt")?.value;
+  if (!token) return null;
+  if (token === "demo-jwt-token") {
+    return { role: "super_admin", roles: ["super_admin"] };
+  }
+  try {
+    const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
+    return {
+      ...decoded,
+      roles: Array.isArray(decoded.roles) ? decoded.roles : (decoded.role ? [decoded.role] : [])
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+function canManageRedirects(user) {
+  if (!user) return false;
+  const userRoles = Array.isArray(user.roles) && user.roles.length > 0
+    ? user.roles
+    : (user.role ? [user.role] : []);
+  return userRoles.some(r => ['super_admin', 'admin', 'editor', 'client'].includes(r));
+}
+
 // GET /api/cms/redirects → List all redirects
 export async function GET(request) {
   try {
@@ -57,6 +82,10 @@ export async function GET(request) {
 // POST /api/cms/redirects → Create a new redirect
 export async function POST(request) {
   try {
+    const user = getUserFromRequest(request);
+    if (!canManageRedirects(user)) {
+      return jsonResponse({ error: 'Access denied. Content Editor permission required.' }, 403);
+    }
     const body = await request.json();
     const { fromPath, toPath, type = '301', status = 'active', description = '', websiteId = 'default' } = body;
 
@@ -114,6 +143,10 @@ export async function POST(request) {
 // PATCH /api/cms/redirects → Update a redirect
 export async function PATCH(request) {
   try {
+    const user = getUserFromRequest(request);
+    if (!canManageRedirects(user)) {
+      return jsonResponse({ error: 'Access denied. Content Editor permission required.' }, 403);
+    }
     const body = await request.json();
     const { id, fromPath, toPath, type, status, description } = body;
 
@@ -172,6 +205,10 @@ export async function PATCH(request) {
 // DELETE /api/cms/redirects → Delete a redirect
 export async function DELETE(request) {
   try {
+    const user = getUserFromRequest(request);
+    if (!canManageRedirects(user)) {
+      return jsonResponse({ error: 'Access denied. Content Editor permission required.' }, 403);
+    }
     const url = new URL(request.url);
     const id = url.searchParams.get('id');
 

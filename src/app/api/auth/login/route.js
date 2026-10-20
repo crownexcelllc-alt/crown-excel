@@ -42,14 +42,24 @@ export async function POST(request) {
       // Check password
       const calculatedHash = hashPassword(password);
       if (user.passwordHash === calculatedHash) {
-        const token = Buffer.from(JSON.stringify({ userId: user._id.toString(), role: user.role, name: user.name })).toString('base64');
+        const uRoles = Array.isArray(user.roles) && user.roles.length > 0
+          ? user.roles
+          : (user.role ? [user.role] : ['editor']);
+        const primaryRole = user.role || uRoles[0];
+        const token = Buffer.from(JSON.stringify({
+          userId: user._id.toString(),
+          role: primaryRole,
+          roles: uRoles,
+          name: user.name
+        })).toString('base64');
         await logActivity(request, 'login', user.name, {}, { userId: user._id.toString(), userName: user.name });
         const response = NextResponse.json({
           token,
           user: {
             name: user.name,
             email: user.email,
-            role: user.role,
+            role: primaryRole,
+            roles: uRoles,
           }
         });
         response.cookies.set("jwt", token, { httpOnly: true, path: "/" });

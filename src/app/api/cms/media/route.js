@@ -25,6 +25,31 @@ function jsonResponse(data, status = 200) {
   return NextResponse.json(data, { status, headers: CORS_HEADERS });
 }
 
+function getUserFromRequest(request) {
+  const token = request.cookies.get("jwt")?.value;
+  if (!token) return null;
+  if (token === "demo-jwt-token") {
+    return { role: "super_admin", roles: ["super_admin"] };
+  }
+  try {
+    const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
+    return {
+      ...decoded,
+      roles: Array.isArray(decoded.roles) ? decoded.roles : (decoded.role ? [decoded.role] : [])
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+function canManageMedia(user) {
+  if (!user) return false;
+  const userRoles = Array.isArray(user.roles) && user.roles.length > 0
+    ? user.roles
+    : (user.role ? [user.role] : []);
+  return userRoles.some(r => ['super_admin', 'admin', 'editor', 'client', 'blog'].includes(r));
+}
+
 // GET /api/cms/media → List media files
 export async function GET(request) {
   try {
@@ -82,6 +107,10 @@ export async function GET(request) {
 // POST /api/cms/media → Upload media file
 export async function POST(request) {
   try {
+    const user = getUserFromRequest(request);
+    if (!canManageMedia(user)) {
+      return jsonResponse({ error: 'Access denied. Media management permission required.' }, 403);
+    }
     const formData = await request.formData();
     const file = formData.get('file');
     const websiteId = formData.get('websiteId') || 'default';
@@ -186,6 +215,10 @@ export async function PATCH(request) {
 // DELETE /api/cms/media → Delete media file
 export async function DELETE(request) {
   try {
+    const user = getUserFromRequest(request);
+    if (!canManageMedia(user)) {
+      return jsonResponse({ error: 'Access denied. Media management permission required.' }, 403);
+    }
     const url = new URL(request.url);
     const id = url.searchParams.get('id');
 

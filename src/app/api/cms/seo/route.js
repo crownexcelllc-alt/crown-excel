@@ -22,14 +22,25 @@ function getUserFromRequest(request) {
   const token = request.cookies.get("jwt")?.value;
   if (!token) return null;
   if (token === "demo-jwt-token") {
-    return { role: "super_admin" };
+    return { role: "super_admin", roles: ["super_admin"] };
   }
   try {
     const decoded = JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
-    return decoded;
+    return {
+      ...decoded,
+      roles: Array.isArray(decoded.roles) ? decoded.roles : (decoded.role ? [decoded.role] : [])
+    };
   } catch (e) {
     return null;
   }
+}
+
+function hasSeoAccess(user) {
+  if (!user) return false;
+  const userRoles = Array.isArray(user.roles) && user.roles.length > 0
+    ? user.roles
+    : (user.role ? [user.role] : []);
+  return userRoles.some(r => ['super_admin', 'admin', 'seo', 'client'].includes(r));
 }
 
 /**
@@ -164,7 +175,7 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const user = getUserFromRequest(request);
-    if (!user || !['super_admin', 'admin', 'seo', 'client'].includes(user.role)) {
+    if (!hasSeoAccess(user)) {
       return jsonResponse({ error: 'Access denied. You do not have permissions to manage SEO.' }, 403);
     }
     const body = await request.json();
@@ -267,7 +278,7 @@ export async function POST(request) {
 export async function DELETE(request) {
   try {
     const user = getUserFromRequest(request);
-    if (!user || !['super_admin', 'admin', 'seo', 'client'].includes(user.role)) {
+    if (!hasSeoAccess(user)) {
       return jsonResponse({ error: 'Access denied. You do not have permissions to manage SEO.' }, 403);
     }
     const url = new URL(request.url);
