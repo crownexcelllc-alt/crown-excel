@@ -31,7 +31,7 @@ const ContactFormPopup = ({
   const subjects = [
     'Select Subject',
     'Become Our Partner',
-    'For Corporates Content',
+    'For Corporates Inquiries',
     'Wholesale Inquiries',
     'Stock List request',
   ];
