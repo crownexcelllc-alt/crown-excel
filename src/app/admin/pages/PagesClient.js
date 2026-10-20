@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { FiSearch, FiRefreshCw, FiEdit, FiEye, FiGlobe, FiLayers, FiChevronRight, FiChevronDown, FiCheckCircle, FiAlertCircle, FiCopy, FiCheck } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiEdit, FiEye, FiEyeOff, FiGlobe, FiLayers, FiChevronRight, FiChevronDown, FiCheckCircle, FiAlertCircle, FiCopy, FiCheck } from 'react-icons/fi';
 
 export default function PagesClient({ initialRoutes = [], apiBase, initialError }) {
   const [routes, setRoutes] = useState(initialRoutes);
@@ -16,6 +16,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
   const [currentUser, setCurrentUser] = useState(null);
   const [copiedText, setCopiedText] = useState('');
   const [activeDropdownId, setActiveDropdownId] = useState(null);
+  const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -98,9 +99,10 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
     }
   };
 
-  // Update route status
+  // Update route status (Active / Inactive)
   const handleStatusChange = async (id, newStatus) => {
     if (!canEditPages) return;
+    setUpdatingStatusId(id);
     try {
       const res = await fetch(`${apiBase}/api/cms/routes`, {
         method: 'PATCH',
@@ -112,9 +114,26 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
         setRoutes(prev =>
           prev.map(r => r._id === id ? { ...r, status: newStatus } : r)
         );
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('cms-route-status-updated'));
+        }
+        const targetRoute = routes.find(r => r._id === id);
+        setMessage(`Page "${targetRoute?.path || 'Route'}" marked as ${newStatus === 'active' ? 'Active' : 'Inactive (hidden from website)'}.`);
+        setMessageType('success');
+        setTimeout(() => {
+          setMessage(prev => prev.includes('marked as') ? '' : prev);
+        }, 3500);
+      } else {
+        const data = await res.json();
+        setMessage(data.error || 'Failed to update page status');
+        setMessageType('error');
       }
     } catch (err) {
       console.error('Failed to update status:', err);
+      setMessage('Failed to update status: ' + err.message);
+      setMessageType('error');
+    } finally {
+      setUpdatingStatusId(null);
     }
   };
 
@@ -122,7 +141,8 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
   const filteredRoutes = useMemo(() => {
     return routes.filter(route => {
       const matchesSearch = !search || route.path.toLowerCase().includes(search.toLowerCase());
-      const matchesStatus = statusFilter === 'all' || route.status === statusFilter;
+      const routeStatus = route.status === 'inactive' ? 'inactive' : 'active';
+      const matchesStatus = statusFilter === 'all' || routeStatus === statusFilter;
       const matchesType = typeFilter === 'all' || route.type === typeFilter;
       return matchesSearch && matchesStatus && matchesType;
     });
@@ -131,7 +151,8 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
   // Stats
   const stats = useMemo(() => ({
     total: routes.length,
-    active: routes.filter(r => r.status === 'active').length,
+    active: routes.filter(r => r.status === 'active' || !r.status).length,
+    inactive: routes.filter(r => r.status === 'inactive').length,
     static: routes.filter(r => r.type === 'static').length,
     dynamic: routes.filter(r => r.type === 'dynamic').length,
   }), [routes]);
@@ -205,9 +226,9 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
           <p className="text-sm text-gray-500">Active</p>
           <p className="text-2xl font-bold text-green-600">{stats.active}</p>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow border-l-4 border-blue-500">
-          <p className="text-sm text-gray-500">Static</p>
-          <p className="text-2xl font-bold text-blue-600">{stats.static}</p>
+        <div className="bg-white p-4 rounded-lg shadow border-l-4 border-rose-500">
+          <p className="text-sm text-gray-500">Inactive (Hidden)</p>
+          <p className="text-2xl font-bold text-rose-600">{stats.inactive}</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow border-l-4 border-purple-500">
           <p className="text-sm text-gray-500">Dynamic</p>
@@ -239,7 +260,7 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
-              <option value="draft">Draft</option>
+              <option value="inactive">Inactive</option>
             </select>
             <select
               value={typeFilter}
@@ -353,7 +374,30 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
                         <TypeBadge type={route.type} />
                       </td>
                       <td className="px-4 py-2">
-                        <StatusBadge status={route.status} />
+                        {canEditPages ? (
+                          <div className="relative inline-flex items-center">
+                            <select
+                              value={route.status === 'inactive' ? 'inactive' : 'active'}
+                              onChange={(e) => handleStatusChange(route._id, e.target.value)}
+                              disabled={updatingStatusId === route._id}
+                              className={`appearance-none text-xs font-semibold pl-2.5 pr-6 py-1 rounded-full border transition-all cursor-pointer shadow-sm focus:outline-none focus:ring-2 ${
+                                route.status === 'inactive'
+                                  ? 'bg-rose-50 text-rose-700 border-rose-300 hover:bg-rose-100 focus:ring-rose-400'
+                                  : 'bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100 focus:ring-emerald-400'
+                              } ${updatingStatusId === route._id ? 'opacity-60 cursor-wait' : ''}`}
+                            >
+                              <option value="active">Active</option>
+                              <option value="inactive">Inactive</option>
+                            </select>
+                            <span
+                              className={`pointer-events-none absolute right-2 w-2 h-2 rounded-full ${
+                                route.status === 'inactive' ? 'bg-rose-500' : 'bg-emerald-500 animate-pulse'
+                              }`}
+                            />
+                          </div>
+                        ) : (
+                          <StatusBadge status={route.status} />
+                        )}
                       </td>
                       <td className="px-4 py-2">
                         <div className="flex items-center gap-1.5 min-w-0 max-w-[110px] sm:max-w-[150px] md:max-w-[180px]">
@@ -431,6 +475,30 @@ export default function PagesClient({ initialRoutes = [], apiBase, initialError 
                                   View Page
                                 </a>
                               </div>
+
+                              {canEditPages && (
+                                <div className="py-1">
+                                  <button
+                                    onClick={() => {
+                                      handleStatusChange(route._id, route.status === 'inactive' ? 'active' : 'inactive');
+                                      setActiveDropdownId(null);
+                                    }}
+                                    className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                                  >
+                                    {route.status === 'inactive' ? (
+                                      <>
+                                        <FiEye className="text-emerald-600" size={14} />
+                                        <span className="text-emerald-700 font-medium">Activate Page</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <FiEyeOff className="text-rose-600" size={14} />
+                                        <span className="text-rose-700 font-medium">Deactivate Page</span>
+                                      </>
+                                    )}
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>

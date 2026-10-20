@@ -26,11 +26,16 @@ export const metadata = {
     "Crown Excel provides IT hardware, infrastructure, networking, and managed technology solutions for businesses in Dubai and the UAE.",
 };
 
+export const revalidate = 0;
+
 export default async function RootLayout({ children }) {
   let settings = null;
+  let inactiveRoutes = [];
   try {
     const db = await getDb();
     settings = await db.collection("settings").findOne({ _id: "website_settings" });
+    const inactiveDocs = await db.collection("cms_routes").find({ status: "inactive" }, { projection: { path: 1 } }).toArray();
+    inactiveRoutes = inactiveDocs.map(d => d.path).filter(Boolean);
   } catch (err) {
     console.error("Failed to load settings in RootLayout:", err);
   }
@@ -76,7 +81,7 @@ export default async function RootLayout({ children }) {
         {/* Client side custom head & body scripts injector */}
         <CustomScripts settings={settings} />
 
-        <LayoutShell>{children}</LayoutShell>
+        <LayoutShell initialInactiveRoutes={inactiveRoutes}>{children}</LayoutShell>
       </body>
     </html>
   );

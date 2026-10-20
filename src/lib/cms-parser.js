@@ -55,50 +55,137 @@ export function cleanText(text) {
   // Extract default text from {var || "default"} patterns
   text = text.replace(/\{[^}]*\|\|\s*"([^"]+)"\s*\}/g, '$1');
   text = text.replace(/\{[^}]*\|\|\s*'([^']+)'\s*\}/g, '$1');
+  // Extract default text from safeRender(..., "default") and getField(..., "default") patterns
+  text = text.replace(/safeRender\([^,]+,\s*["']([^"']+)["']\)/gi, '$1');
+  text = text.replace(/getField\([^,]+,\s*["']([^"']+)["']\)/gi, '$1');
   // Strip remaining curly braces and variables (e.g. {icon1})
   text = text.replace(/\{[\s\S]*?\}/g, '');
+  // Decode common HTML entities
+  text = text
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
   // Clean whitespace
   text = text.replace(/\s+/g, ' ').trim();
   return text;
 }
 
+const IGNORED_COMPONENTS = new Set([
+  'CaptchaModal',
+  'OtpModal',
+  'ContactFormPopup',
+  'TestimonialCard',
+  'ReCAPTCHA',
+  'Link',
+  'Image',
+  'AnimatedText',
+  'motion',
+  'AnimatePresence',
+  'Script',
+]);
+
 /**
- * Recursively parses a page file and its local imports to extract static text content and images.
- * Groups findings into sections based on the components they were found in.
+ * Recursively parses a page file and its child components in their EXACT visual JSX render order.
+ * Groups findings into sections based on the components rendered on the client side.
  * 
  * @param {string} pageFilePath - Absolute path to the page file
- * @returns {Array} List of sections suitable for cms_page_content
+ * @returns {Array} List of sections suitable for cms_page_content in exact client-side order
  */
 export function parsePageContent(pageFilePath) {
   const sections = [];
   const visited = new Set();
 
-  function parseFile(filePath, componentName) {
+  function parseComponent(filePath, componentName) {
     if (visited.has(filePath)) return;
     visited.add(filePath);
 
     if (!existsSync(filePath)) return;
     const rawContent = readFileSync(filePath, 'utf-8');
-    // Strip comments to ignore commented-out code
-    const content = rawContent.replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm, '$1');
 
+    // Strip comments to inspect only active code & JSX
+    const content = rawContent
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
+      .replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm, '$1');
+
+    // 1. Discover all local component imports
+    const importMap = new Map();
+
+    // Standard imports
+    const importRegex = /import\s+([A-Z]\w*)\s+from\s+['"]([^'"]+)['"]/g;
+    let match;
+    while ((match = importRegex.exec(content)) !== null) {
+      const name = match[1];
+      const impPath = match[2];
+      if (IGNORED_COMPONENTS.has(name)) continue;
+      if (impPath.startsWith('.') || impPath.startsWith('@/')) {
+        const resolved = resolveImportPath(impPath, filePath);
+        const actualFile = findFile(resolved);
+        if (actualFile && actualFile.includes('src')) {
+          importMap.set(name, { name, file: actualFile });
+        }
+      }
+    }
+
+    // Dynamic imports: const Name = dynamic(() => import('...'))
+    const dynamicRegex = /(?:const|let|var)\s+([A-Z]\w*)\s*=\s*(?:dynamic\(\s*\(\s*\)\s*=>\s*)?import\(\s*['"]([^'"]+)['"]\s*\)/g;
+    while ((match = dynamicRegex.exec(content)) !== null) {
+      const name = match[1];
+      const impPath = match[2];
+      if (IGNORED_COMPONENTS.has(name)) continue;
+      if (impPath.startsWith('.') || impPath.startsWith('@/')) {
+        const resolved = resolveImportPath(impPath, filePath);
+        const actualFile = findFile(resolved);
+        if (actualFile && actualFile.includes('src')) {
+          if (!importMap.has(name)) {
+            importMap.set(name, { name, file: actualFile });
+          }
+        }
+      }
+    }
+
+    // 2. Determine ordered list of child components actually rendered in JSX
+    const renderedChildComponents = [];
+    const seenTags = new Set();
+    const jsxTagRegex = /<([A-Z]\w*)(?:[\s>/]|$)/g;
+    let firstHeadingIndex = Infinity;
+    let firstChildIndex = Infinity;
+
+    // Check where the first heading appears in content
+    const firstHMatch = content.match(/<(h[1-4])[^>]*>/i);
+    if (firstHMatch) {
+      firstHeadingIndex = firstHMatch.index;
+    }
+
+    while ((match = jsxTagRegex.exec(content)) !== null) {
+      const tag = match[1];
+      if (importMap.has(tag) && !seenTags.has(tag)) {
+        seenTags.add(tag);
+        renderedChildComponents.push({ ...importMap.get(tag), index: match.index });
+        if (match.index < firstChildIndex) {
+          firstChildIndex = match.index;
+        }
+      }
+    }
+
+    // 3. Extract static fields for this file itself
     const headings = [];
     const paragraphs = [];
     const sectionFields = {};
 
-    // Find headings (h1, h2, h3, h4)
+    // Headings
     const headingRegex = /<(h[1-4])[^>]*>([\s\S]*?)<\/h[1-4]>/gi;
-    let match;
     while ((match = headingRegex.exec(content)) !== null) {
       const tag = match[1].toLowerCase();
       const rawText = match[2];
       const text = cleanText(rawText);
-      if (text && text.length > 2) {
+      if (text && text.length > 1) {
         headings.push({ tag, text });
       }
     }
 
-    // Find paragraphs (p) - use (?!\w) to avoid matching <path, <polygon, etc.
+    // Paragraphs
     const pRegex = /<p(?!\w)[^>]*>([\s\S]*?)<\/p>/gi;
     while ((match = pRegex.exec(content)) !== null) {
       const rawText = match[1];
@@ -108,23 +195,30 @@ export function parsePageContent(pageFilePath) {
       }
     }
 
-    // Find image imports
-    const imgImportRegex = /import\s+(\w+)\s+from\s+['"]([^'"]+\.(?:png|jpe?g|webp|gif|svg|avif))['"]/gi;
-    while ((match = imgImportRegex.exec(content)) !== null) {
-      const varName = match[1];
-      const impPath = match[2];
-      const fieldKey = `image_${varName.toLowerCase()}`;
-      sectionFields[fieldKey] = {
-        type: 'image',
-        value: impPath,
-        originalValue: impPath,
-        varName: varName,
-        isImport: true,
-        label: `Image (${varName})`,
+    // Headings first in fields order so admin UI displays headings at top
+    headings.forEach((h, idx) => {
+      const key = idx === 0 ? 'heading' : `heading_${idx + 1}`;
+      sectionFields[key] = {
+        type: 'text',
+        value: h.text,
+        originalValue: h.text,
+        tag: h.tag,
+        label: `Heading ${idx + 1}`
       };
-    }
+    });
 
-    // Find replaced image constants (const VarName = { src: '...' })
+    // Paragraphs second
+    paragraphs.forEach((p, idx) => {
+      const key = idx === 0 ? 'paragraph' : `paragraph_${idx + 1}`;
+      sectionFields[key] = {
+        type: 'richtext',
+        value: p,
+        originalValue: p,
+        label: `Paragraph ${idx + 1}`
+      };
+    });
+
+    // Replaced image constants (const VarName = { src: '...' })
     const imgConstRegex = /const\s+(\w+)\s*=\s*\{\s*[^}]*src:\s*['"]([^'"]+)['"][^}]*\};?/gi;
     while ((match = imgConstRegex.exec(content)) !== null) {
       const varName = match[1];
@@ -140,7 +234,27 @@ export function parsePageContent(pageFilePath) {
       };
     }
 
-    // Find inline images in JSX
+    // Image imports that are actually used in code
+    const imgImportRegex = /import\s+(\w+)\s+from\s+['"]([^'"]+\.(?:png|jpe?g|webp|gif|svg|avif))['"]/gi;
+    while ((match = imgImportRegex.exec(content)) !== null) {
+      const varName = match[1];
+      const impPath = match[2];
+      const usageRegex = new RegExp(`\\b${varName}\\b`, 'g');
+      const matches = content.match(usageRegex) || [];
+      if (matches.length > 1) { // 1 for import line, > 1 for usage in JSX/code
+        const fieldKey = `image_${varName.toLowerCase()}`;
+        sectionFields[fieldKey] = {
+          type: 'image',
+          value: impPath,
+          originalValue: impPath,
+          varName: varName,
+          isImport: true,
+          label: `Image (${varName})`,
+        };
+      }
+    }
+
+    // Inline images
     const inlineImgRegex = /<(?:img|Image)[^>]*src=['"]([^'"]+)['"]/gi;
     let imgIdx = 1;
     while ((match = inlineImgRegex.exec(content)) !== null) {
@@ -156,82 +270,44 @@ export function parsePageContent(pageFilePath) {
       };
     }
 
-    // Set heading and paragraph fields
-    headings.forEach((h, idx) => {
-      const key = idx === 0 ? 'heading' : `heading_${idx + 1}`;
-      sectionFields[key] = { 
-        type: 'text', 
-        value: h.text, 
-        originalValue: h.text,
-        tag: h.tag, 
-        label: `Heading ${idx + 1}` 
-      };
-    });
+    const hasFields = Object.keys(sectionFields).length > 0;
+    const selfSection = hasFields ? {
+      sectionId: componentName.toLowerCase().replace(/[^a-z0-9]/g, '_'),
+      sectionName: componentName,
+      filePath: path.relative(process.cwd(), filePath).replace(/\\/g, '/'),
+      fields: sectionFields,
+    } : null;
 
-    paragraphs.forEach((p, idx) => {
-      const key = idx === 0 ? 'paragraph' : `paragraph_${idx + 1}`;
-      sectionFields[key] = { 
-        type: 'richtext', 
-        value: p, 
-        originalValue: p,
-        label: `Paragraph ${idx + 1}` 
-      };
-    });
-
-    // If we found any fields, add the section
-    if (Object.keys(sectionFields).length > 0) {
-      const relativePath = path.relative(process.cwd(), filePath).replace(/\\/g, '/');
-      sections.push({
-        sectionId: componentName.toLowerCase().replace(/[^a-z0-9]/g, '_'),
-        sectionName: componentName,
-        filePath: relativePath,
-        order: sections.length + 1,
-        fields: sectionFields,
-      });
+    // 4. Sequencing: parent vs children
+    if (selfSection && firstHeadingIndex < firstChildIndex) {
+      selfSection.order = sections.length + 1;
+      sections.push(selfSection);
     }
 
-    // Find local imports in this file using dynamically constructed regex to bypass static bundler AST tracing
-    const importRegex = new RegExp('import' + '\\s+(\\w+)\\s+from\\s+[\'\"]([^\'\"]+)[\'\"]', 'g');
-    const imports = [];
-    while ((match = importRegex.exec(content)) !== null) {
-      const name = match[1];
-      const impPath = match[2];
-      
-      if (impPath.startsWith('.') || impPath.startsWith('@/')) {
-        const resolved = resolveImportPath(impPath, filePath);
-        const actualFile = findFile(resolved);
-        if (actualFile && actualFile.includes('src')) {
-          imports.push({ name, file: actualFile });
-        }
-      }
+    // Recurse into child components in JSX render order
+    for (const child of renderedChildComponents) {
+      parseComponent(child.file, child.name);
     }
 
-    // Find dynamic imports (e.g. const Name = dynamic(() => import('...')))
-    const dynamicImportRegex = new RegExp('(?:const|let|var)\\s+(\\w+)\\s*=\\s*(?:dynamic\\(\\s*\\(\\s*\\)\\s*=>\\s*)?' + 'import' + '\\(\\s*[\'\"]([^\'\"]+)[\'\"]\\s*\\)', 'g');
-    while ((match = dynamicImportRegex.exec(content)) !== null) {
-      const name = match[1];
-      const impPath = match[2];
-      
-      if (impPath.startsWith('.') || impPath.startsWith('@/')) {
-        const resolved = resolveImportPath(impPath, filePath);
-        const actualFile = findFile(resolved);
-        if (actualFile && actualFile.includes('src')) {
-          if (!imports.some(imp => imp.file === actualFile)) {
-            imports.push({ name, file: actualFile });
-          }
-        }
-      }
-    }
-
-    // Recurse into imported files
-    for (const imp of imports) {
-      parseFile(imp.file, imp.name);
+    if (selfSection && firstHeadingIndex >= firstChildIndex) {
+      selfSection.order = sections.length + 1;
+      sections.push(selfSection);
     }
   }
 
-  // Start with the page file
   const baseComponentName = path.basename(pageFilePath, path.extname(pageFilePath));
-  parseFile(pageFilePath, baseComponentName === 'page' ? 'Main' : baseComponentName);
+  let rootName = baseComponentName;
+  if (baseComponentName === 'page') {
+    const parentDir = path.basename(path.dirname(pageFilePath));
+    rootName = parentDir.replace(/[^a-zA-Z0-9]/g, '');
+    rootName = rootName.charAt(0).toUpperCase() + rootName.slice(1);
+  }
+  parseComponent(pageFilePath, rootName || 'Main');
+
+  // Ensure 1-based sequential order
+  sections.forEach((s, idx) => {
+    s.order = idx + 1;
+  });
 
   return sections;
 }
@@ -419,7 +495,7 @@ export function updatePageFiles(sections) {
       }
     }
 
-  if (contentChanged) {
+    if (contentChanged) {
       writeFileSync(absolutePath, fileContent, 'utf-8');
       console.log(`Successfully updated file: ${section.filePath}`);
     }
