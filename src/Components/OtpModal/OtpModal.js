@@ -95,7 +95,7 @@ const OtpModal = ({ isOpen, email, onVerified, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div className="fixed inset-0 z-[10000] md:z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
       <div className="bg-white rounded-xl p-6 w-[90%] max-w-[420px] shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <h3 className="text-xl font-bold text-[#084032] mb-2 text-center">Email Verification</h3>
         <p className="text-sm text-gray-500 text-center mb-1">We've sent a 6-digit code to</p>
