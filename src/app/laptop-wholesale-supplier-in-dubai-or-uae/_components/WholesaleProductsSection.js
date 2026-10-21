@@ -21,8 +21,8 @@ import ImgD78MQEA_BH5 from '@/Components/Images/D78MQEA_BH5.webp';
 import ImgNH_QVUEM_002 from '@/Components/Images/NH.QVUEM.002.png';
 import ImgNH_QX5EM_003 from '@/Components/Images/NH.QX5EM.003.png';
 import ImgNX_BSQEM_001 from '@/Components/Images/NX.BSQEM.001.png';
-import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.webp';
-import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.webp';
+import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.png';
+import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.png';
 
 function getTwoLineTitle(name) {
   const words = name.trim().split(/\s+/);
@@ -251,7 +251,7 @@ export default function WholesaleProductsSection({
               image: Img83M4000YGP,
               imageClassName: 'scale-[1.26]'
             }
-          ].map((product) => {
+          ].map((product, index) => {
             const { line1, line2 } = getTwoLineTitle(product.name);
             return (
               <div
@@ -264,6 +264,7 @@ export default function WholesaleProductsSection({
                     src={product.image}
                     alt={product.name}
                     fill
+                    priority={index < 4}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className={`object-contain ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2'
                       }`}
