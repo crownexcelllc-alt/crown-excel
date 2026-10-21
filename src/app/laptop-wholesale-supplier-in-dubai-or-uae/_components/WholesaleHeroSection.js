@@ -28,7 +28,7 @@ export default function WholesaleHeroSection({
           }}
         >
           {/* Line 1: Desktop single line, Mobile clean 2-tier wrap */}
-          <span className="block not-italic text-[#171717] text-[26px] sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[84px] lg:whitespace-nowrap">
+          <span className="block not-italic text-[#171717] text-[28px] sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[84px] lg:whitespace-nowrap">
             <span className="block md:inline">Looking For </span>
             <span className="inline-block mt-0.5 md:mt-0">
               <span className="inline-block bg-[#FFE500] text-[#171717] px-2 py-0.5 sm:px-3 sm:py-1.5 md:py-2 md:px-3 rounded-[3px] sm:rounded-none shadow-xs sm:shadow-none align-baseline">
@@ -46,7 +46,7 @@ export default function WholesaleHeroSection({
             <span className="inline-flex items-center justify-center min-h-[1.2em] sm:min-h-[1.15em] align-middle px-1">
               {/* Animated Typing Text */}
               <span className="inline-flex items-center text-[#147A5F]">
-                <span>{typedHeroText  }</span>
+                <span>{typedHeroText}</span>
                 {/* Blinking Cursor */}
                 {!prefersReducedMotion && (
                   <span
@@ -73,7 +73,10 @@ export default function WholesaleHeroSection({
         </h1>
 
         {/* Subtitle Paragraph (Plus Jakarta Sans) */}
-        <p className="text-[13.5px] sm:text-base md:text-[17px] text-gray-600 leading-relaxed font-jakarta font-normal mt-3.5 sm:mt-7 mb-5 sm:mb-9 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto px-2 sm:px-0">
+        <p
+          className="text-[13px] sm:text-base md:text-[17px] text-gray-600 leading-[1.6] sm:leading-relaxed font-jakarta font-normal mt-3 sm:mt-7 mb-5 sm:mb-9 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto px-0 sm:px-0 text-center text-pretty"
+          style={{ textWrap: 'pretty' }}
+        >
           Crown Excel is a trusted wholesale supplier of commercial, gaming, and business laptops in Dubai and across the UAE. We deliver authentic factory-sealed inventory, competitive bulk rates, and fast local fulfillment to IT resellers and corporate clients.
         </p>
 

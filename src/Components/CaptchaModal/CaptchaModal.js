@@ -53,7 +53,7 @@ const CaptchaModal = ({ isOpen, onVerified, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={handleClose}>
+    <div className="fixed inset-0 z-[10000] md:z-50 flex items-center justify-center bg-black/50" onClick={handleClose}>
       <div className="bg-white rounded-xl p-6 w-[90%] max-w-[400px] shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <h3 className="text-xl font-bold text-[#084032] mb-4 text-center">Verify You&apos;re Human</h3>
 

@@ -125,10 +125,10 @@ export default function WholesaleWorldwideAreasSection({
             className="absolute -bottom-24 -left-24 w-80 h-80 bg-black/20 rounded-full blur-2xl pointer-events-none"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center mb-8 relative z-10">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
-                <FileCheck2 className="w-6 h-6" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start mb-8 relative z-10">
+            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                <FileCheck2 className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
               </div>
               <div>
                 <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">
@@ -140,9 +140,9 @@ export default function WholesaleWorldwideAreasSection({
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
-                <Globe2 className="w-6 h-6" />
+            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                <Globe2 className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
               </div>
               <div>
                 <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">
@@ -154,9 +154,9 @@ export default function WholesaleWorldwideAreasSection({
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-6 h-6" />
+            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/10 text-emerald-300 border border-white/10 flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
               </div>
               <div>
                 <h4 className="font-montserrat font-bold text-white text-sm sm:text-[15px] mb-1">

@@ -198,7 +198,7 @@ const ContactFormPopup = ({
     <>
       {/* Popup Overlay */}
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 z-[9999] md:z-50 flex items-center justify-center p-4"
         style={{
           backgroundColor: animating ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0)',
           pointerEvents: animating ? 'auto' : 'none',
