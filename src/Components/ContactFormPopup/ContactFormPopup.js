@@ -207,7 +207,7 @@ const ContactFormPopup = ({
         onClick={onClose}
       >
         <div
-          className="bg-white rounded-2xl shadow-2xl w-full max-w-[560px] max-h-[90vh] overflow-y-auto relative"
+          className="bg-white text-[#333] rounded-2xl shadow-2xl w-full max-w-[560px] max-h-[90vh] overflow-y-auto relative"
           style={{
             opacity: animating ? 1 : 0,
             transform: animating ? 'scale(1)' : 'scale(0.5)',
@@ -253,7 +253,7 @@ const ContactFormPopup = ({
 
             {/* Phone & Subject */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div className="flex border rounded-lg w-full h-[48px] bg-white overflow-hidden focus-within:border-[#084032] transition-colors">
+              <div className="flex border border-[#333] rounded-lg w-full h-[48px] bg-white overflow-hidden focus-within:border-[#084032] transition-colors">
                 <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}

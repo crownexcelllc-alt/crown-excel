@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import ContactFormPopup from '@/Components/ContactFormPopup/ContactFormPopup';
 
 // Product Images
 // Laptops
@@ -573,6 +574,14 @@ const productsByCategory = {
 
 const AllProducts = () => {
     const [active, setActive] = useState(categories[0].slug);
+    const [showContactPopup, setShowContactPopup] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const openProductInquiryModal = (product) => {
+        setSelectedProduct(product);
+        setShowContactPopup(true);
+    };
+
     const activeProducts = productsByCategory[active] || [];
     const activeCategory = categories.find((c) => c.slug === active);
     const activeCategoryPage = categoryPages[active] || '/products/laptops';
@@ -641,13 +650,14 @@ const AllProducts = () => {
 
                                 {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
                                 <div className="w-full grid grid-cols-2 gap-2 mt-auto pt-2 border-t border-gray-100">
-                                    <Link
-                                        href={`/contact-us?product=${encodeURIComponent(product.title)}`}
-                                        className="w-full py-2 px-1.5 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 transition-all rounded-lg text-center"
+                                    <button
+                                        type="button"
+                                        onClick={() => openProductInquiryModal(product)}
+                                        className="w-full py-2 px-1.5 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 transition-all rounded-lg text-center cursor-pointer"
                                     >
                                         <span>Inquire</span>
                                         <ArrowRight className="w-3 h-3 shrink-0" />
-                                    </Link>
+                                    </button>
                                     <a
                                         href={`https://api.whatsapp.com/send/?phone=971505033860&text=${encodeURIComponent(
                                             `Hello Crown Excel, I am inquiring about ${product.title}.`
@@ -676,6 +686,21 @@ const AllProducts = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Inquiry Form Modal */}
+            <ContactFormPopup
+                isOpen={showContactPopup}
+                onClose={() => {
+                    setShowContactPopup(false);
+                    setSelectedProduct(null);
+                }}
+                defaultSubject="Wholesale Inquiries"
+                showProductFields={true}
+                initialProductName={selectedProduct?.title || selectedProduct?.name || ''}
+                initialProductBarcode={selectedProduct?.barcode || selectedProduct?.brand || 'N/A'}
+                isProductReadOnly={Boolean(selectedProduct)}
+                requireCaptcha={false}
+            />
         </div>
     );
 };
