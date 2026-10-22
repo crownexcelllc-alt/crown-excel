@@ -23,12 +23,12 @@ const AllinOneBanner = () => {
              <Image src={Stars} width={94} height={100} alt="Stars" className="lg:w-[94px] lg:h-[100px] md:w-[50px] md:left-10 md:-bottom-3 lg:left-15 lg:top-2  absolute" />
              <Image src={Stars} width={51} height={50} alt="Stars" className="md:right-10 md:top-1 lg:right-45 lg:top-2 absolute" />
            </div>
-           <div className="text flex flex-col items-center mb-4">
-             <h1 className="text-white font-montserrat w-[600px] font-extrabold sm:text-2xl md:text-[30px] lg:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-             <h1 className='sm:text-2xl md:text-[30px] lg:text-5xl font-montserrat font-[900] text-[#147d61]'>ALL-IN-ONE DEVICES</h1>
-             <h1 className="text-white font-montserrat w-[600px] font-extrabold sm:text-2xl md:text-[30px] lg:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
-             </h1>
-           </div>
+           <h1 className="text flex flex-col items-center mb-4">
+             <span className="text-white font-montserrat w-[600px] font-extrabold sm:text-2xl md:text-[30px] lg:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+             <span className='sm:text-2xl md:text-[30px] lg:text-5xl font-montserrat font-[900] text-[#147d61]'>ALL-IN-ONE DEVICES</span>
+             <span className="text-white font-montserrat w-[600px] font-extrabold sm:text-2xl md:text-[30px] lg:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
+             </span>
+           </h1>
            <p className="text-gray-200 text-sm md:text-[16px] lg:text-lg font-medium max-w-xl mx-auto mb-2 md:mb-4">
              From an array of high-quality products, Crown Excel presents you with the best desktop PCs and their accessories from world-class manufacturers like Dell, HP, Lenovo, and many more.
            </p>
@@ -50,10 +50,10 @@ const AllinOneBanner = () => {
              </div> */}
              <div className="text relative text-center flex flex-col items-center mb-4 leading-tight">
                <Image src={Stars} width={20} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
-               <h1 className="text-white font-montserrat  font-[700] text-[40px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-               <h1 className='text-[40px] font-montserrat font-[700] text-[#147d61]'>ALL-IN-ONE DEVICES</h1>
-               <h1 className="text-white font-montserrat  font-[700] text-[40px] leading-tight tracking-tight ">FOR EVERY NEED
-               </h1>
+               <span className="text-white font-montserrat  font-[700] text-[40px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+               <span className='text-[40px] font-montserrat font-[700] text-[#147d61]'>ALL-IN-ONE DEVICES</span>
+               <span className="text-white font-montserrat  font-[700] text-[40px] leading-tight tracking-tight ">FOR EVERY NEED
+               </span>
                <Image src={Stars} width={21} height={50} alt="Stars" className="right-0 -top-5 absolute" />
              </div>
              <p className="text-gray-200 text-[12px] text-center font-light">

@@ -170,10 +170,10 @@ export default function ServerSmart() {
                 STORAGE & VIRTUALIZATION
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Modern Storage &
                 <span className="block text-[#16CA9A]">Virtualization Solutions</span>
-              </h1>
+              </h2>
 
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Transform your IT infrastructure with enterprise-grade storage and virtualization solutions.
@@ -232,7 +232,7 @@ export default function ServerSmart() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {storageServices.map((service, index) => (
               <div key={index} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <Image src={service.Image} alt={service.title} width={800} className='w-full h-[200px] rounded-[10px] mb-5'/>
+                <Image src={service.Image} alt={service.title} width={800} className='w-full h-[200px] rounded-[10px] mb-5' />
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
 
@@ -296,7 +296,7 @@ export default function ServerSmart() {
         </div>
       </section>
 
-      
+
 
       {/* Implementation Process */}
       <section className="py-20 bg-white">

@@ -22,12 +22,11 @@ const RoutersBanner = () => {
             <Image src={Stars} width={94} height={100} alt="Stars" className="left-20 top-2  absolute" />
             <Image src={Stars} width={51} height={50} alt="Stars" className="right-45 top-2 absolute" />
           </div>
-          <div className="text flex flex-col items-center mb-4">
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='text-[60px] font-montserrat font-[900] text-[#147d61]'>NOTCH BRANDS</h1>
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
-            </h1>
-          </div>
+          <h1 className="text flex flex-col items-center mb-4">
+            <span className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+            <span className='text-[60px] font-montserrat font-[900] text-[#147d61]'>NOTCH BRANDS</span>
+            <span className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight ">FOR EVERY NEED</span>
+          </h1>
           <p className="text-gray-200 text-sm md:text-lg font-medium max-w-xl mx-auto mb-2 md:mb-4 w-[510px]">
             Stay seamlessly connected with high-performance routers and access points from trusted brands. Whether you’re upgrading your home network, ensuring a smooth office connection, or improving enterprise-level Wi-Fi coverage, we have the solutions to match every need. From blazing-fast speeds to secure, reliable connectivity, explore a range of devices designed to keep you ahead in today’s digital world.
           </p>
@@ -48,10 +47,9 @@ const RoutersBanner = () => {
             </div> */}
             <div className="text relative flex flex-col items-center mb-4 leading-tight">
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-              <h1 className='text-[30px] font-montserrat font-[900] text-[#147d61]'>LAPTOPS BRANDS</h1>
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED
-              </h1>
+              <span className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+              <span className='text-[30px] font-montserrat font-[900] text-[#147d61]'>LAPTOPS BRANDS</span>
+              <span className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED</span>
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">

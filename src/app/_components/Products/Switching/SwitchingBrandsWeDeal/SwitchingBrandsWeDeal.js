@@ -20,9 +20,9 @@ const SwitchingBrandsWeDeal = () => {
   return (
     <div className="w-full  bg-white mt-20">
       {/* Heading */}
-      <h1 className="text-center text-[30px] lg:text-[40px] md:text-[3rem] font-[700] leading-[40px] text-[#16806b] uppercase  mb-8 font-montserrat">
+      <h2 className="text-center text-[30px] lg:text-[40px] md:text-[3rem] font-[700] leading-[40px] text-[#16806b] uppercase  mb-8 font-montserrat">
         BRANDS WE DEAL
-      </h1>
+      </h2>
       <div
         className="w-full mb-21 min-h-[220px] md:min-h-[202px] relative flex flex-col lg:flex-row items-center justify-center overflow-visible"
         style={{

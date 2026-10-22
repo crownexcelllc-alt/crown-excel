@@ -12,7 +12,7 @@ const UnlimitedGamingKeyboards = () => {
         background: 'linear-gradient(135deg, #3d3f3f 30%, #232323 100%)'
       }}>
         <Image alt='' width={50} height={50} src={Stars} className='absolute right-20 top-18 lg:top-6 lg:right-50 '/>
-        <h1 className='text-[#ffd900] font-montserrat text-[20px] lg:text-[34px] font-[700] leading-[30px] lg:leading-[40px]'>UNLIMITED GAMING KEYBOARDS AND<br className='hidden lg:block'/> MICE FOR UNMATCHED PERFORMANCE</h1>
+        <h2 className='text-[#ffd900] font-montserrat text-[20px] lg:text-[34px] font-[700] leading-[30px] lg:leading-[40px]'>UNLIMITED GAMING KEYBOARDS AND<br className='hidden lg:block'/> MICE FOR UNMATCHED PERFORMANCE</h2>
         <p className='text-[14px] lg:text-[16px] leading-[27px] font-montserrat mt-5'>Our gaming keyboards and mice are crafted to deliver exceptional precision and responsiveness. Equipped with customizable RGB lighting, high-DPI sensors, and ergonomic designs, these peripherals enhance your gaming experience with unmatched accuracy and comfort. With durable switches, programmable keys, and efficient build quality, our gaming keyboards and mice are designed to handle even the most demanding games, offering ultimate control and performance in one package.</p>
         <div className="eclipse absolute bottom-0 left-0 w-[150px] lg:w-[350px]">
             <Image alt='' width={323} height={180} src={Eclipse}/>

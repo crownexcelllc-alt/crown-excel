@@ -32,9 +32,9 @@ const carouselData = [
 const BestSellingPhones = () => {
     return (
         <div className="w-full py-8 relative lg:mt-10">
-            <h1 className="text-center text-3xl md:text-[40px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-[800] text-[#16795e] mb-8">
+            <h2 className="text-center text-3xl md:text-[40px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-[800] text-[#16795e] mb-8">
                 OUR BEST-SELLING PHONES & CCTV
-            </h1>
+            </h2>
 
             {/* Desktop Swiper */}
             <div className="hidden md:block relative overflow-hidden max-w-full  mx-auto lg:mt-30">

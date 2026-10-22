@@ -58,7 +58,7 @@ const HardwareEmpowering = () => {
         "Annual business technology consultation"
       ],
       benefits: "Ideal for enterprises, retail, and those who want total peace of mind",
-      icon: <MdSecurity/>,
+      icon: <MdSecurity />,
       color: "from-[#13745a] to-[#084032]",
       uptime: "99.9%",
       response: "2 Hours"
@@ -72,42 +72,42 @@ const HardwareEmpowering = () => {
       title: "Business & IT Experts",
       desc: "Specialists in business operations, POS, billing, and software management",
       metric: "200+ Certified Engineers",
-      Image : ITservice
+      Image: ITservice
     },
     {
       icon: "⏰",
       title: "24/7 Priority Support",
       desc: "Round-the-clock help for any business, POS, or software issue",
       metric: "2-4 Hour Response",
-      Image : Support
+      Image: Support
     },
     {
       icon: "📊",
       title: "Proactive Monitoring",
       desc: "Real-time tracking of business systems, POS, and software updates",
       metric: "99.9% Uptime Guarantee",
-      Image : Proactive
+      Image: Proactive
     },
     {
       icon: "💰",
       title: "Cost Optimization",
       desc: "Reduce expenses and improve business efficiency with smart management",
       metric: "40% Cost Reduction",
-      Image : Cost
+      Image: Cost
     },
     {
       icon: "🚀",
       title: "Rapid Deployment",
       desc: "Quick setup and integration for your business and POS systems",
       metric: "24 Hour Setup",
-      Image : Rapid
+      Image: Rapid
     },
     {
       icon: "🔒",
       title: "Security & Compliance",
       desc: "We keep your business data and software secure and compliant",
       metric: "100% Compliant",
-      Image : Security,
+      Image: Security,
     }
   ];
 
@@ -182,7 +182,7 @@ const HardwareEmpowering = () => {
                   <div className="h-1 w-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
+                <h2 className="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
                   <span className="block">Hand Over All Your Business Work</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
                     We Handle Everything
@@ -190,7 +190,7 @@ const HardwareEmpowering = () => {
                   <span className="block text-4xl md:text-5xl font-medium text-gray-700">
                     POS, Software, Operations—No Worries!
                   </span>
-                </h1>
+                </h2>
 
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
                   With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.

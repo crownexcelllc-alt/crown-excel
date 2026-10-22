@@ -20,7 +20,7 @@ const products = [
 
 const KeyboardLatest = () => (
     <div className="mt-10 flex flex-col items-center">
-        <h1 className="text-[#147d61] text-center text-[26px] md:text-[50px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h1>
+        <h2 className="text-[#147d61] text-center text-[26px] md:text-[50px] lg:text-[60px] font-[800] font-montserrat">OUR LATEST PRODUCT</h2>
         <div className="relative flex items-center justify-center mt-8 w-full">
             <Swiper
                 modules={[Navigation]}

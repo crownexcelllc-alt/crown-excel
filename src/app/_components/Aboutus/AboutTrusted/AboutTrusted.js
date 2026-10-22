@@ -18,11 +18,11 @@ const AboutTrusted = () => {
       <div className="mobile md:hidden lg:hidden py-8 px-7">
         <div className="mobile-top flex items-start gap-3">
           <div className="mobile-top-left flex flex-col justify-between">
-            <h1 className='text-[23px] text-[#084032] font-[600] leading-[23px] font-roboto'>Your Trusted Technology Partner</h1>
+            <h2 className='text-[23px] text-[#084032] font-[600] leading-[23px] font-roboto'>Your Trusted Technology Partner</h2>
             <p className='text-[10px] font-lucida mt-5  leading-[15px] text-black font-montserrat'>At Crown Excel, we are passionate about delivering high-quality IT solutions.</p>
           </div>
           <div className="mobile-top-right  ">
-            <Image src={MobileImage} alt='' className='w-[450px] h-[150px] rounded-[20px]' width={450} height={150}/>
+            <Image src={MobileImage} alt='' className='w-[450px] h-[150px] rounded-[20px]' width={450} height={150} />
           </div>
         </div>
         <div className="mobile-bottom">

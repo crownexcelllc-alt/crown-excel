@@ -39,31 +39,31 @@ const brands = [
 const Brands = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-[#e6f0ee] py-0">
-      <h1 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
+      <h2 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
         BRANDS WE DEAL
-      </h1>
+      </h2>
 
       {/* Infinite marquee */}
       <div className="relative w-full overflow-hidden">
         <div className="marquee w-full">
           {/* First sequence */}
-            <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-0 pl-10 pr-10">
-              {brands.map((brand, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-center transition-all duration-300 p-2 hover:-translate-y-1"
-                >
-                  <Image
-                    src={brand}
-                    alt={`Brand logo ${i + 1}`}
-                    width={160}
-                    height={160}
-                    className="object-contain w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] transition-transform duration-500 hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="w-full grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 px-0 pl-10 pr-10">
+            {brands.map((brand, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center transition-all duration-300 p-2 hover:-translate-y-1"
+              >
+                <Image
+                  src={brand}
+                  alt={`Brand logo ${i + 1}`}
+                  width={160}
+                  height={160}
+                  className="object-contain w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Edge fade */}

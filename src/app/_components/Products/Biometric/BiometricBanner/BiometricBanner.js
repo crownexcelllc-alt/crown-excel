@@ -22,12 +22,12 @@ const BiometricBanner = () => {
             <Image src={Stars} width={94} height={100} alt="Stars" className="left-20 -top-2  absolute" />
             <Image src={Stars} width={51} height={50} alt="Stars" className="right-45 top-2 absolute" />
           </div>
-          <div className="text flex flex-col items-center mb-4">
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-            <h1 className='text-[60px] font-montserrat font-[900] text-[#147d61]'>BIOMETRIC BRANDS</h1>
-            <h1 className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
-            </h1>
-          </div>
+          <h1 className="text flex flex-col items-center mb-4">
+            <span className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+            <span className='text-[60px] font-montserrat font-[900] text-[#147d61]'>BIOMETRIC BRANDS</span>
+            <span className="text-white font-montserrat w-[600px] font-extrabold text-2xl md:text-5xl leading-tight tracking-tight ">FOR EVERY NEED
+            </span>
+          </h1>
           <p className="text-gray-200 text-sm md:text-lg font-medium max-w-xl mx-auto mb-2 md:mb-4 w-[510px]">
             Crown Excel offers a comprehensive selection of premium biometric systems from industry-leading brands. Our range includes advanced fingerprint scanners, facial recognition devices, and smart access control solutions.
           </p>
@@ -48,10 +48,10 @@ const BiometricBanner = () => {
             </div> */}
             <div className="text relative flex flex-col items-center mb-4 leading-tight">
               <Image src={Stars} width={50} height={50} alt="Stars" className="left-0 bottom-0  absolute" />
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</h1>
-              <h1 className='text-[30px] font-montserrat font-[900] text-[#147d61]'>BIOMETRIC BRANDS</h1>
-              <h1 className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED
-              </h1>
+              <span className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight mb-0  " style={{ fontFamily: '' }}>DISCOVER TOP</span>
+              <span className='text-[30px] font-montserrat font-[900] text-[#147d61]'>BIOMETRIC BRANDS</span>
+              <span className="text-white font-montserrat  font-extrabold text-[30px] leading-tight tracking-tight ">FOR EVERY NEED
+              </span>
               <Image src={Stars} width={51} height={50} alt="Stars" className="right-10 -top-5 absolute" />
             </div>
             <p className="text-gray-200 text-[14px] text-center font-light">
