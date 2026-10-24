@@ -5,6 +5,12 @@ import IaaSIcon from '../../../../../Components/Images/iaas.png';
 import PaaSIcon from '../../../../../Components/Images/paas.png';
 import SaaSIcon from '../../../../../Components/Images/saas.png';
 import SecurityIcon from '../../../../../Components/Images/cloud-security.png';
+import HealthcareIcon from '../../../../../Components/Images/healthcare.png';
+import ManufacturingIcon from '../../../../../Components/Images/manufacturing.png';
+import FinancialIcon from '../../../../../Components/Images/financial.png';
+import EducationIcon from '../../../../../Components/Images/education.png';
+import EcommerceIcon from '../../../../../Components/Images/ecommerce.png';
+import GamingIcon from '../../../../../Components/Images/gaming.png';
 
 const RMAEmpowering = () => {
   const cloudFeatures = [
@@ -15,7 +21,7 @@ const RMAEmpowering = () => {
       highlight: "99% Success Rate"
     },
     {
-      number: "02", 
+      number: "02",
       title: "Multi-Cloud Architecture",
       description: "Design and implement robust multi-cloud solutions across AWS, Azure, and Google Cloud for optimal performance and cost efficiency.",
       highlight: "40% Cost Reduction"
@@ -121,7 +127,7 @@ const RMAEmpowering = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        
+
         {/* Hero Section with Unique Layout */}
         <div className="grid lg:grid-cols-12 gap-8 items-center mb-20">
           {/* Content Column */}
@@ -132,14 +138,14 @@ const RMAEmpowering = () => {
                 <span className="inline-block px-4 py-2 bg-[#16CA9A]/10 text-[#084032] text-sm font-semibold rounded-lg mb-4">
                   ☁️ Cloud Computing Excellence
                 </span>
-                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
                   Enterprise
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
                     Cloud Solutions
                   </span>
-                </h1>
+                </h2>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Transform your business with cutting-edge cloud computing solutions. We deliver scalable infrastructure, 
+                  Transform your business with cutting-edge cloud computing solutions. We deliver scalable infrastructure,
                   seamless migration, and comprehensive cloud management services for modern enterprises.
                 </p>
               </div>
@@ -157,7 +163,7 @@ const RMAEmpowering = () => {
 
             {/* CTA Button */}
             <div className="pl-8">
-              <a 
+              <a
                 href="/contact-us"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
               >
@@ -292,13 +298,13 @@ const RMAEmpowering = () => {
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#16CA9A] to-[#084032] rounded-full transform md:-translate-x-0.5"></div>
-            
+
             <div className="space-y-12">
               {cloudFeatures.map((feature, index) => (
                 <div key={index} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:gap-16`}>
                   {/* Timeline Node */}
                   <div className="absolute left-6 md:left-1/2 w-6 h-6 bg-white border-4 border-[#16CA9A] rounded-full transform md:-translate-x-3 z-10"></div>
-                  
+
                   {/* Content Card */}
                   <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${index % 2 === 0 ? '' : 'md:text-right'}`}>
                     <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
@@ -314,7 +320,7 @@ const RMAEmpowering = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Spacer for alternating layout */}
                   <div className="hidden md:block w-5/12"></div>
                 </div>
@@ -325,125 +331,125 @@ const RMAEmpowering = () => {
 
         {/* Industry Solutions */}
         <div className="mb-20">
-  <div className="text-center mb-16">
-    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-      Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Solutions</span>
-    </h2>
-    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-      Tailored cloud computing solutions designed for specific industry requirements and compliance standards
-    </p>
-  </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Cloud Solutions</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tailored cloud computing solutions designed for specific industry requirements and compliance standards
+            </p>
+          </div>
 
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {/* Healthcare */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/healthcare.png')} alt="Healthcare Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Healthcare */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={HealthcareIcon} alt="Healthcare Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>HIPAA-compliant cloud solutions for patient data management</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Electronic Health Records (EHR) integration and support</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Telemedicine platforms with secure video consultation features</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Medical imaging storage and high-speed data access</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Healthcare analytics and reporting tools</li>
       </ul> */}
-    </div>
+            </div>
 
-    {/* Manufacturing */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/manufacturing.png')} alt="Manufacturing Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel supports manufacturers in the UAE with robust IT infrastructure, advanced networking, and automation-ready software solutions designed to optimize production, enhance connectivity, and drive innovation across factory operations.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+            {/* Manufacturing */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={ManufacturingIcon} alt="Manufacturing Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Manufacturing</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel supports manufacturers in the UAE with robust IT infrastructure, advanced networking, and automation-ready software solutions designed to optimize production, enhance connectivity, and drive innovation across factory operations.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Industrial networking and factory floor connectivity</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Real-time production monitoring systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>IoT integration for smart manufacturing</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Hardware for rugged environments and automation control</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Data collection and analytics for operational efficiency</li>
       </ul> */}
-    </div>
+            </div>
 
-    {/* Financial Services */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/financial.png')} alt="Financial Services Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+            {/* Financial Services */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={FinancialIcon} alt="Financial Services Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>High-security network infrastructure for banks and fintech</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Core banking and transaction system support</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Cloud-based disaster recovery and data backup</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Endpoint protection and cybersecurity solutions</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Compliance-ready data handling and encryption</li>
       </ul> */}
-    </div>
+            </div>
 
-    {/* Education */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/education.png')} alt="Education Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel empowers schools and universities in the UAE with innovative IT hardware, secure networking, and digital learning platforms that foster collaboration, streamline campus management, and support academic achievement.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+            {/* Education */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={EducationIcon} alt="Education Icon" width={48} height={48} style={{ filter: 'brightness(100)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Education</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel empowers schools and universities in the UAE with innovative IT hardware, secure networking, and digital learning platforms that foster collaboration, streamline campus management, and support academic achievement.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Smart classroom and e-learning infrastructure</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Campus-wide secure Wi-Fi and network management</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Learning Management System (LMS) integration</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Device management for student and faculty hardware</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Cloud-based collaboration and content sharing tools</li>
       </ul> */}
-    </div>
+            </div>
 
-    {/* Retail */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/ecommerce.png')} alt="Retail Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Retail</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+            {/* Retail */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={EcommerceIcon} alt="Retail Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Retail</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Scalable infrastructure for online storefronts</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Secure payment gateway integrations</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Inventory and logistics management systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>CRM and customer engagement tools</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Real-time analytics and reporting dashboards</li>
       </ul> */}
-    </div>
+            </div>
 
-    {/* Gaming & Media */}
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-      <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
-        <Image src={require('../../../../../Components/Images/gaming.png')} alt="Gaming & Media Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
-      </div>
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
-      <p className="text-gray-600 mb-4">
-        Crown Excel enables media and gaming companies in the UAE to deliver immersive experiences with high-performance IT infrastructure, ultra-fast networking, and scalable cloud platforms designed for creative workflows, live streaming, and digital content delivery.
-      </p>
-      {/* <ul className="space-y-2 text-sm text-gray-700">
+            {/* Gaming & Media */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-xl flex items-center justify-center mb-6">
+                <Image src={GamingIcon} alt="Gaming & Media Icon" width={48} height={48} style={{ filter: 'brightness(1) invert(1)' }} />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Gaming & Media</h3>
+              <p className="text-gray-600 mb-4">
+                Crown Excel enables media and gaming companies in the UAE to deliver immersive experiences with high-performance IT infrastructure, ultra-fast networking, and scalable cloud platforms designed for creative workflows, live streaming, and digital content delivery.
+              </p>
+              {/* <ul className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>High-speed data transfer and storage for large media files</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Post-production and editing suite optimization</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Broadcast-ready infrastructure and network reliability</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Live streaming and content delivery systems</li>
         <li className="flex items-center"><div className="w-2 h-2 bg-[#16CA9A] rounded-full mr-3"></div>Collaborative cloud platforms for media teams</li>
       </ul> */}
-    </div>
-  </div>
-</div>
+            </div>
+          </div>
+        </div>
 
 
         {/* Bottom CTA Section */}
@@ -455,13 +461,13 @@ const RMAEmpowering = () => {
               Join hundreds of companies who have successfully migrated to the cloud with our expert guidance and support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <a
                 href="/contact-us"
                 className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300"
               >
                 Start Cloud Journey
               </a>
-              <a 
+              <a
                 href="/our-services"
                 className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
               >

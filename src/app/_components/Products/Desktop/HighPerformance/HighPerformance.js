@@ -9,7 +9,7 @@ const HighPerformance = () => {
         <Image alt='' src={HighPerformanceImage} width={727} height={416}/>
       </div>
       <div className="highperformance-right basis-[40%] flex flex-col lg:mt-o mt-5">
-        <h1 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE DESKTOP FOR CREATIVE PROFESSIONAL</h1>
+        <h2 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE DESKTOP FOR CREATIVE PROFESSIONAL</h2>
         <Image className='mt-7 mb-7' alt='' src={Comma} width={150} height={75}/>
         <p className='text-[16px] leading-[27px] text-black font-montserrat '>we also offer an assortment of  computer accessories designed to enhance your configuration, for example, monitors, keyboards, mice, etc.</p>
       </div>

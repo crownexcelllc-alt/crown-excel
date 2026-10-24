@@ -35,7 +35,6 @@ function Navbar() {
         { label: 'Director Message', href: '/company/director-message' },
         { label: 'Events', href: '/company/events' },
         { label: 'Career', href: '/company/career' },
-        { label: 'FAQ', href: '/company/faq' },
 
         // { label: 'Leader Team', href: '/company/leader-team' },
       ],

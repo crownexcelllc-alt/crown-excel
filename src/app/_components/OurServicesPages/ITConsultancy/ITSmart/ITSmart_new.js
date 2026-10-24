@@ -16,42 +16,42 @@ const ITSmart = () => {
       title: "Digital Transformation Strategy",
       description: "Comprehensive roadmaps for modernizing legacy systems, adopting cloud technologies, and implementing digital-first processes that drive competitive advantage.",
       benefits: ["30% faster time-to-market", "50% operational efficiency", "25% cost reduction", "Future-ready architecture"],
-      icon: <AiOutlineRobot/>,
+      icon: <AiOutlineRobot />,
       category: "Strategy"
     },
     {
       title: "Technology Architecture Review",
       description: "Deep analysis of current IT architecture, identifying bottlenecks, security gaps, and optimization opportunities for scalable growth.",
       benefits: ["Performance optimization", "Security enhancement", "Scalability planning", "Risk mitigation"],
-      icon: <GrTechnology/>,
+      icon: <GrTechnology />,
       category: "Architecture"
     },
     {
       title: "Cloud Migration Planning",
       description: "Strategic cloud adoption plans with vendor selection, migration timelines, and risk management for seamless transition to cloud platforms.",
       benefits: ["60% cost savings", "99.9% uptime", "Instant scalability", "Global accessibility"],
-      icon: <AiOutlineCloudServer/>,
+      icon: <AiOutlineCloudServer />,
       category: "Cloud"
     },
     {
       title: "Vendor Selection & Management",
       description: "Expert guidance in technology vendor evaluation, procurement strategy, contract negotiation, and ongoing relationship management.",
       benefits: ["Best-fit solutions", "Cost optimization", "Quality assurance", "Long-term partnerships"],
-      icon: <AiOutlineShop/>,
+      icon: <AiOutlineShop />,
       category: "Procurement"
     },
     {
       title: "IT Governance & Compliance",
       description: "Establishing robust IT governance frameworks, compliance management, and risk assessment processes for regulatory adherence.",
       benefits: ["Regulatory compliance", "Risk reduction", "Process standardization", "Audit readiness"],
-      icon: <GrCompliance/>,
+      icon: <GrCompliance />,
       category: "Governance"
     },
     {
       title: "Innovation Strategy",
       description: "Technology innovation roadmaps incorporating emerging technologies like AI, IoT, and blockchain for competitive differentiation.",
       benefits: ["Innovation acceleration", "Market leadership", "Competitive advantage", "Future readiness"],
-      icon: <IoBulbOutline/>,
+      icon: <IoBulbOutline />,
       category: "Innovation"
     }
   ];
@@ -68,7 +68,7 @@ const ITSmart = () => {
       phase: "DESIGN",
       title: "Strategy Development",
       description: "Creation of detailed strategic roadmap with prioritized initiatives and implementation timelines.",
-      duration: "3-4 weeks", 
+      duration: "3-4 weeks",
       deliverables: ["Strategic roadmap", "Technology recommendations", "Implementation plan", "ROI projections"]
     },
     {
@@ -101,7 +101,7 @@ const ITSmart = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
+
         {/* Unique Staggered Hero Layout */}
         <div className="mb-20">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -119,8 +119,8 @@ const ITSmart = () => {
                       <span className="text-[#16CA9A] font-semibold">Strategic Excellence</span>
                     </div>
                   </div>
-                  
-                  <h1 className="text-6xl md:text-7xl font-black text-gray-900 leading-none mb-6">
+
+                  <h2 className="text-6xl md:text-7xl font-black text-gray-900 leading-none mb-6">
                     TRANSFORM
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032] italic">
                       Strategy
@@ -128,15 +128,15 @@ const ITSmart = () => {
                     <span className="block text-4xl md:text-5xl font-medium text-gray-700">
                       into Technology Success
                     </span>
-                  </h1>
-                  
+                  </h2>
+
                   <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl border-l-4 border-[#16CA9A] shadow-xl">
                     <p className="text-xl text-gray-700 leading-relaxed mb-6">
-                      Expert IT consultancy transforming business strategy into measurable technology outcomes. 
+                      Expert IT consultancy transforming business strategy into measurable technology outcomes.
                       We bridge the gap between vision and execution with data-driven insights and proven methodologies.
                     </p>
                     <div className="flex flex-wrap gap-4">
-                      <Link 
+                      <Link
                         href="/contact-us"
                         className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
                       >
@@ -145,7 +145,7 @@ const ITSmart = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </Link>
-                      <Link 
+                      <Link
                         href="/our-services"
                         className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300"
                       >
@@ -201,14 +201,14 @@ const ITSmart = () => {
               <div key={index} className="group relative">
                 {/* Main Card */}
                 <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 hover:border-[#16CA9A]/50 transform hover:-translate-y-4 hover:scale-[1.02]">
-                  
+
                   {/* Top Gradient Strip */}
                   <div className="h-2 bg-gradient-to-r from-[#16CA9A] via-[#119472] to-[#084032]"></div>
-                  
+
                   {/* Floating Background Elements */}
                   <div className="absolute top-6 right-6 w-16 h-16 bg-gradient-to-br from-[#16CA9A]/10 to-[#084032]/10 rounded-full blur-xl"></div>
                   <div className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-tr from-[#084032]/5 to-[#16CA9A]/5 rounded-full blur-lg"></div>
-                  
+
                   <div className="relative p-6">
                     {/* Icon & Category Badge */}
                     <div className="flex items-center justify-between mb-4">
@@ -223,17 +223,17 @@ const ITSmart = () => {
                         {service.category}
                       </div>
                     </div>
-                    
+
                     {/* Title */}
                     <h3 className="text-xl font-black text-gray-900 mb-3 leading-tight group-hover:text-[#16CA9A] transition-colors duration-300">
                       {service.title}
                     </h3>
-                    
+
                     {/* Description */}
                     <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
                       {service.description}
                     </p>
-                    
+
                     {/* Benefits Tags */}
                     <div className="mb-5">
                       <div className="flex flex-wrap gap-2">
@@ -245,7 +245,7 @@ const ITSmart = () => {
                         ))}
                       </div>
                     </div>
-                    
+
                     {/* Action Buttons */}
                     <div className="flex gap-3">
                       <button className="flex-1 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:shadow-lg hover:shadow-[#16CA9A]/25 transition-all duration-300 transform hover:scale-105 group/btn">
@@ -261,15 +261,15 @@ const ITSmart = () => {
                       </button>
                     </div>
                   </div>
-                  
+
                   {/* Hover Shine Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 translate-x-full group-hover:-translate-x-full transition-all duration-1000 pointer-events-none"></div>
-                  
+
                   {/* Corner Decoration */}
                   <div className="absolute top-0 right-0 w-8 h-8 bg-[#16CA9A]/20 rounded-bl-2xl"></div>
                   <div className="absolute bottom-0 left-0 w-6 h-6 bg-[#084032]/20 rounded-tr-2xl"></div>
                 </div>
-                
+
                 {/* Floating Shadow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#16CA9A]/5 to-[#084032]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500 -z-10 transform translate-y-2"></div>
               </div>
@@ -296,9 +296,9 @@ const ITSmart = () => {
                     <span>{area.expertise}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-[#16CA9A] to-[#084032] h-3 rounded-full transition-all duration-1000 ease-out"
-                      style={{width: area.expertise}}
+                      style={{ width: area.expertise }}
                     ></div>
                   </div>
                 </div>
@@ -344,7 +344,7 @@ const ITSmart = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   {/* Connector Arrow */}
                   {index < consultancyProcess.length - 1 && (
                     <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 z-10">
@@ -366,17 +366,17 @@ const ITSmart = () => {
               <div className="lg:col-span-2 p-12 text-white">
                 <h3 className="text-4xl font-black mb-6">Ready to Transform Your IT Strategy?</h3>
                 <p className="text-xl mb-8 opacity-90">
-                  Get expert consultancy tailored to your business objectives. Our strategic approach delivers measurable results 
+                  Get expert consultancy tailored to your business objectives. Our strategic approach delivers measurable results
                   and sustainable technology transformation.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
+                  <Link
                     href="/contact-us"
                     className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300"
                   >
                     Schedule Strategy Session
                   </Link>
-                  <Link 
+                  <Link
                     href="/our-services"
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
                   >

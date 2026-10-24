@@ -58,7 +58,7 @@ const HardwareRepairEmpowering = () => {
                   <div className="h-1 w-24 bg-gradient-to-r from-[#16CA9A] to-[#084032] transform skew-x-12"></div>
                   <span className="text-[#16CA9A] font-bold uppercase tracking-widest text-sm">SECURITY SOLUTIONS</span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-black leading-none">
+                <h2 className="text-5xl md:text-6xl font-black leading-none">
                   <span className="block text-gray-900">Complete Security,</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] via-[#32a987] to-[#084032] animate-pulse">
                     Protecting Your Business
@@ -66,7 +66,7 @@ const HardwareRepairEmpowering = () => {
                   <span className="block text-3xl md:text-4xl font-medium text-gray-700 mt-4">
                     Peace of Mind, 24/7 Protection
                   </span>
-                </h1>
+                </h2>
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
                   Crown Excel delivers advanced security solutions for your business. From network security, endpoint protection, firewalls, and surveillance to compliance and risk management—our experts keep your data, devices, and people safe. Focus on growth, knowing your business is protected by the latest technology and proactive support.
                 </p>

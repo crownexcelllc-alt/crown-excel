@@ -9,7 +9,7 @@ const AllinOneHighPerformance = () => {
           <Image alt='' src={HighPerformanceImage} width={727} height={416}/>
         </div>
         <div className="highperformance-right basis-[40%] flex flex-col lg:mt-o mt-5">
-          <h1 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE ALL-IN-ONE FOR CREATIVE PROFESSIONALS</h1>
+          <h2 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE ALL-IN-ONE FOR CREATIVE PROFESSIONALS</h2>
           <Image className='mt-7 mb-7' alt='' src={Comma} width={150} height={75}/>
           <p className='text-[16px] leading-[27px] text-[#687799] font-montserrat '>We offer high-performance all-in-one systems ideal for creative professionals, combining sleek design with powerful features. </p>
         </div>

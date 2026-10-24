@@ -21,10 +21,10 @@ const Individuals = [
 const ScannerPopular = () => {
     return (
         <div className='mt-5 lg:mt-10'>
-            <h1 className='bg-[#ffd900] font-[700] flex items-center justify-center w-full h-[90px] text-center text-black text-[24px] lg:text-[50px] font-montserrat uppercase'>Popular all-in-one solutions</h1>
+            <h2 className='bg-[#ffd900] font-[700] flex items-center justify-center w-full h-[90px] text-center text-black text-[24px] lg:text-[50px] font-montserrat uppercase'>Popular all-in-one solutions</h2>
             <div className="for- mt-5 lg:mt-10">
                 <div className="text-button flex md:flex-row lg:flex-row flex-col items-center justify-between px-20 py-7">
-                    <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Businesses:</h1>
+                    <h3 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Businesses:</h3>
                     <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
                 </div>
                 <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between lg:px-20 py-7" style={{
@@ -34,7 +34,7 @@ const ScannerPopular = () => {
                     {Business.map((item, i) => (
                         <div className="product-item flex flex-col items-center   w-[285px] h-[400px]" key={i}>
                             {item.Image  && <Image className='w-full h-[285px]' src={item.Image} alt={item.Title} width={285} height={285} />}
-                            {item.Title && <h1 className='text-[26px] font-[700] mt-5 w-[285px] text-center '>{item.Title}</h1>}
+                            {item.Title && <h4 className='text-[26px] font-[700] mt-5 w-[285px] text-center '>{item.Title}</h4>}
                         </div>
                     ))}
                 </div>
@@ -42,7 +42,7 @@ const ScannerPopular = () => {
             
             <div className="for- mt-10">
                 <div className="text-button flex lg:flex-row flex-col items-center justify-between px-20 py-7">
-                    <h1 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Individuals:</h1>
+                    <h3 className='text-[#147d61] text-[27px] lg:text-[50px] font-[600]'>For Individuals:</h3>
                     <button className='p-[5px] lg:p-[10px] mt-5 lg:mt-0 bg-[#147d61] text-white flex items-center justify-center text-[18px] lg:text-[20px] font-[500] w-[166px] h-[40px] rounded-[10px]'>Visit Our Store</button>
                 </div>
                 <div className="products flex flex-col md:flex-row lg:flex-row items-center justify-between lg:px-20 py-7" style={{
@@ -52,7 +52,7 @@ const ScannerPopular = () => {
                     {Individuals.map((item, i) => (
                         <div className="product-item flex flex-col items-center   w-[285px] h-[400px]" key={i}>
                             {item.Image  && <Image className='w-full h-[285px]' src={item.Image} alt={item.Title} width={285} height={285} />}
-                            {item.Title && <h1 className='text-[26px] font-[700] mt-5 w-[285px] text-center '>{item.Title}</h1>}
+                            {item.Title && <h4 className='text-[26px] font-[700] mt-5 w-[285px] text-center '>{item.Title}</h4>}
                         </div>
                     ))}
                 </div>

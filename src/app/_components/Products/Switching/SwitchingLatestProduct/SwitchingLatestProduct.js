@@ -55,9 +55,9 @@ const SwitchingLatestProduct = () => {
   return (
   <div className="w-full  overflow-x-hidden bg-white py-12">
     {/* Heading */}
-    <h1 className="text-center text-[24px] md:text-[60px] leading-[60px] font-[800] text-[#16806b] uppercase font-montserrat mb-14">
+    <h2 className="text-center text-[24px] md:text-[60px] leading-[60px] font-[800] text-[#16806b] uppercase font-montserrat mb-14">
       Our Latest Product
-    </h1>
+    </h2>
 
     {/* Desktop View */}
     <div className="hidden md:flex items-center justify-center max-w-7xl mx-auto relative min-h-[500px] overflow-x-hidden">

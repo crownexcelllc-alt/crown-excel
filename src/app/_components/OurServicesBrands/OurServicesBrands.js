@@ -42,8 +42,8 @@ const OurServicesBrands = () => {
         <Image alt='' src={ServicesBrandImage} width={245} height={428} className='w-[150px] lg:w-[245px] lg:h-[428px]' />
       </div>
       <div className="brands-container flex flex-col items-center justify-center bg-[#cac5a9]">
-        <h1 className='text-[32px] mt-10 font-montserrat leading-[32px] font-[700] text-black'>BRANDS WE DEAL </h1>
-       <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
+        <h2 className='text-[32px] mt-10 font-montserrat leading-[32px] font-[700] text-black'>BRANDS WE DEAL </h2>
+        <div className="flex items-center gap-1 px-10 shrink-0 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
           {/* <Image className='lg:w-[136px] lg:h-[136px]' src={Intel} width={136} height={136} alt=''/>
         <Image src={Dell} width={136} height={136} alt=''/>
         <Image src={Acer} width={136} height={136} alt=''/>

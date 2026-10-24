@@ -9,7 +9,7 @@ const HighPerformancePrinters = () => {
         <Image alt='' src={HighPerformanceImage} width={726} height={416}/>
       </div>
       <div className="highperformance-right basis-[35%] flex flex-col lg:mt-o mt-5">
-        <h1 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE PRINTERS FOR CREATIVE PROFESSIONALS</h1>
+        <h2 className='text-[30px] md:leading-[32px] leading-[30px] lg:text-[44px] font-[700] font-montserrat lg:leading-[52px] text-black'>HIGH-PERFORMANCE PRINTERS FOR CREATIVE PROFESSIONALS</h2>
         <Image className='mt-7 mb-7' alt='' src={Comma} width={150} height={75}/>
         <p className='text-[16px] leading-[27px] text-[#657799] font-montserrat '>We provide high-performance printers designed to meet the needs of creative professionals.</p>
       </div>

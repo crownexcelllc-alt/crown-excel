@@ -135,7 +135,7 @@ const ContactUsForm = () => {
   return (
     <>
       <div className="header text-center">
-        <h1 className="text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]">Contact us</h1>
+        <h2 className="text-[32px] text-black mt-5 lg:text-[32px] font-montserrat font-[600]">Contact us</h2>
       </div>
       <div className="contact-us h-[auto] text-black flex flex-col items-center w-full mt-10 justify-center gap-10">
         <div className="contact-details flex flex-col-reverse md:flex-row items-center justify-center w-full px-4 gap-10">
