@@ -70,6 +70,27 @@ export async function GET(request) {
       });
     }
 
+    // 3. Fallback: If path matches a published blog post slug (e.g. /my-slug -> /blogs/my-slug)
+    if (!normalizedPath.startsWith('/blogs')) {
+      const cleanSlug = normalizedPath.replace(/^\/+/, '');
+      if (cleanSlug && !cleanSlug.includes('/')) {
+        const blogMatch = await db.collection('cms_blogs').findOne({
+          slug: cleanSlug,
+          published: true,
+        });
+        if (blogMatch) {
+          return jsonResponse({
+            inactive: false,
+            redirect: {
+              fromPath: normalizedPath,
+              toPath: `/blogs/${blogMatch.slug}`,
+              type: '301',
+            }
+          });
+        }
+      }
+    }
+
     return jsonResponse({ inactive: false, redirect: null });
   } catch (err) {
     console.error('GET /api/cms/redirect-check error:', err);

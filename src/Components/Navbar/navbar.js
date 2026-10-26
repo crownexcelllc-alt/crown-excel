@@ -35,6 +35,7 @@ function Navbar() {
         { label: 'Director Message', href: '/company/director-message' },
         { label: 'Events', href: '/company/events' },
         { label: 'Career', href: '/company/career' },
+        { label: 'Blogs', href: '/blogs' },
 
         // { label: 'Leader Team', href: '/company/leader-team' },
       ],
@@ -314,6 +315,7 @@ function Navbar() {
                             'Director Message': { icon: <FaCommentDots size={20} className="text-green-900" />, desc: 'A message from leadership' },
                             'Events': { icon: <FaCommentDots size={20} className="text-green-900" />, desc: 'Recent company activities' },
                             'Career': { icon: <FaUserTie size={20} className="text-green-900" />, desc: 'Join our growing team' },
+                            'Blogs': { icon: <FaCommentDots size={20} className="text-green-900" />, desc: 'Insights & technology articles' },
                             'FAQ': { icon: <FaQuestionCircle size={20} className="text-green-900" />, desc: 'Frequently asked questions' },
                             'Our Management': { icon: <FaUserTie size={20} className="text-green-900" />, desc: 'Leadership team profiles' },
                             'Contact Us': { icon: <FaCommentDots size={20} className="text-green-900" />, desc: 'Get in touch with us' },
@@ -504,6 +506,10 @@ function Navbar() {
                           icon: <FaUserTie size={24} className="text-green-900" />,
                           desc: "Join our growing team"
                         },
+                        'Blogs': {
+                          icon: <FaCommentDots size={24} className="text-green-900" />,
+                          desc: "Insights & technology articles"
+                        },
                         'FAQ': {
                           icon: <FaQuestionCircle size={24} className="text-green-900" />,
                           desc: "Frequently asked questions"
@@ -673,6 +679,7 @@ function Navbar() {
                                 'Director Message': { icon: <FaCommentDots size={18} className="text-green-900" />, desc: 'A message from leadership' },
                                 'Events': { icon: <FaCommentDots size={18} className="text-green-900" />, desc: 'Recent company activities' },
                                 'Career': { icon: <FaUserTie size={18} className="text-green-900" />, desc: 'Join our growing team' },
+                                'Blogs': { icon: <FaCommentDots size={18} className="text-green-900" />, desc: 'Insights & technology articles' },
                                 'FAQ': { icon: <FaQuestionCircle size={18} className="text-green-900" />, desc: 'Frequently asked questions' },
                                 'Our Management': { icon: <FaUserTie size={18} className="text-green-900" />, desc: 'Leadership team profiles' },
                                 'Contact Us': { icon: <FaCommentDots size={18} className="text-green-900" />, desc: 'Get in touch with us' },

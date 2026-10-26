@@ -296,15 +296,25 @@ export default function BlogFormClient({
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
-              Slug (URL suffix)
+              Slug (URL path)
             </label>
-            <input
-              type="text"
-              value={slug}
-              onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9\-]+/g, ''))}
-              placeholder="e.g. my-first-blog"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all bg-gray-50"
-            />
+            <div className="flex rounded-lg border border-gray-300 focus-within:ring-2 focus-within:ring-[#084032] focus-within:border-[#084032] overflow-hidden bg-gray-50">
+              <span className="px-3 py-2 text-gray-500 bg-gray-100 border-r border-gray-200 text-xs font-mono select-none flex items-center">
+                /blogs/
+              </span>
+              <input
+                type="text"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9\-]+/g, ''))}
+                placeholder="e.g. my-first-blog"
+                className="w-full px-3 py-2 text-sm outline-none bg-transparent"
+              />
+            </div>
+            {slug && (
+              <p className="text-[11px] text-gray-400 mt-1 font-mono truncate">
+                Full URL: /blogs/{slug}
+              </p>
+            )}
           </div>
         </div>
 

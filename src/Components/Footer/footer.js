@@ -49,7 +49,7 @@ const Footer = () => {
     { label: 'Careers', href: '/company/career' },
     { label: 'Our History', href: '/company/company-history' },
     { label: 'Leadership', href: '/our-management' },
-    { label: 'Blogs', href: 'https://www.grabatoz.ae/ae-en/blogs' },
+    { label: 'Blogs', href: '/blogs' },
   ];
 
   useEffect(() => {
