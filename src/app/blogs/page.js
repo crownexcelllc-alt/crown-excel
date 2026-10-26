@@ -2,6 +2,7 @@ import React from 'react';
 import { getDb } from '@/lib/mongodb';
 import BlogListingClient from './BlogListingClient';
 import { generateCmsMetadata } from '@/lib/cms-fetch';
+import './blog-content.css';
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/blogs', {
