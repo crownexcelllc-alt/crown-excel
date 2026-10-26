@@ -154,8 +154,17 @@ export default function BlogsListClient({ initialData = [], apiBase = '' }) {
                     <div className="font-bold text-gray-800 truncate" title={blog.title}>
                       {blog.title}
                     </div>
-                    <div className="text-xs text-gray-400 truncate font-mono">
-                      /{blog.slug}
+                    <div className="truncate">
+                      <Link
+                        href={`/blogs/${blog.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-emerald-700 hover:text-emerald-900 hover:underline font-mono inline-flex items-center gap-1"
+                        title="View published article"
+                      >
+                        /blogs/{blog.slug}
+                        <span className="text-[10px]">↗</span>
+                      </Link>
                     </div>
                     {blog.createdAt && (
                       <div className="text-[10px] text-gray-400 mt-0.5">
@@ -218,6 +227,15 @@ export default function BlogsListClient({ initialData = [], apiBase = '' }) {
                   {/* Actions */}
                   <td className="px-4 py-3 align-middle text-right">
                     <div className="flex items-center justify-end gap-2">
+                      <Link
+                        href={`/blogs/${blog.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-xs font-semibold transition-all inline-flex items-center gap-0.5"
+                        title="View live blog article"
+                      >
+                        View <span className="text-[10px]">↗</span>
+                      </Link>
                       <Link
                         href={`/admin/blogs/edit/${blog._id}`}
                         className="px-3 py-1 bg-[#084032] hover:bg-[#00a63e] text-white rounded text-xs font-semibold shadow-xs transition-all"

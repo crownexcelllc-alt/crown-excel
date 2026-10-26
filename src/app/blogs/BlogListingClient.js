@@ -24,7 +24,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
       const params = new URLSearchParams();
       if (category) params.set('category', category);
       if (search) params.set('search', search);
-      
+
       const newRelativePathQuery = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
       window.history.pushState(null, '', newRelativePathQuery);
     }
@@ -33,14 +33,17 @@ export default function BlogListingClient({ initialBlogs = [] }) {
   // Filter blogs list in real-time
   const filteredBlogs = initialBlogs.filter((blog) => {
     if (category) {
-      if (blog.category?.trim().toLowerCase() !== category.trim().toLowerCase()) {
+      if ((blog.category || '').trim().toLowerCase() !== category.trim().toLowerCase()) {
         return false;
       }
     }
     if (search) {
       const q = search.trim().toLowerCase();
-      const titleLower = blog.title?.trim().toLowerCase() || '';
-      if (!titleLower.startsWith(q)) {
+      const titleMatch = (blog.title || '').toLowerCase().includes(q);
+      const excerptMatch = (blog.excerpt || '').toLowerCase().includes(q);
+      const authorMatch = (blog.author || '').toLowerCase().includes(q);
+      const tagsMatch = Array.isArray(blog.tags) && blog.tags.some(t => t.toLowerCase().includes(q));
+      if (!titleMatch && !excerptMatch && !authorMatch && !tagsMatch) {
         return false;
       }
     }
@@ -66,17 +69,35 @@ export default function BlogListingClient({ initialBlogs = [] }) {
       {/* Main Listing Column (9/12) */}
       <div className="lg:col-span-9 space-y-8">
         
-        {/* Search Input Bar (types in real-time) */}
+        {/* Search Input Bar & Active Filters */}
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-gray-200 pb-6">
-          <h2 className="text-xl font-bold text-gray-900">Articles & Insights</h2>
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">Articles & Insights</h2>
+            {(category || search) && (
+              <div className="flex items-center gap-2 mt-1">
+                <span className="text-xs text-gray-500">
+                  Showing {filteredBlogs.length} {filteredBlogs.length === 1 ? 'article' : 'articles'}
+                  {category ? ` in "${category}"` : ''}
+                  {search ? ` matching "${search}"` : ''}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => { setCategory(''); setSearch(''); }}
+                  className="text-xs text-[#084032] font-semibold hover:underline cursor-pointer"
+                >
+                  Reset filters
+                </button>
+              </div>
+            )}
+          </div>
           
           <div className="relative w-full sm:w-80">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search articles in real-time..."
-              className="w-full pl-9 pr-4 py-2 text-xs border border-gray-300 rounded-lg focus:ring-1 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all bg-white"
+              placeholder="Search articles by title, topic, or tag..."
+              className="w-full pl-9 pr-8 py-2 text-xs border border-gray-300 rounded-lg focus:ring-1 focus:ring-[#084032] focus:border-[#084032] outline-none transition-all bg-white"
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg className="h-3.5 w-3.5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -88,7 +109,8 @@ export default function BlogListingClient({ initialBlogs = [] }) {
               <button
                 type="button"
                 onClick={() => setSearch('')}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-black font-bold text-sm"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-black font-bold text-sm cursor-pointer"
+                title="Clear search"
               >
                 &times;
               </button>
@@ -96,27 +118,36 @@ export default function BlogListingClient({ initialBlogs = [] }) {
           </div>
         </div>
 
-
-
         {/* Blog Cards Grid */}
         {filteredBlogs.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
+          <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto p-8">
             <div className="w-16 h-16 bg-green-50 text-[#084032] rounded-full flex items-center justify-center text-3xl mx-auto mb-6">
               📰
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">No Articles Found</h2>
-            <p className="text-gray-500 max-w-md mx-auto px-4 text-sm">
-              We couldn't find any articles matching your search query or selected category.
+            <p className="text-gray-500 max-w-md mx-auto px-4 text-sm mb-6">
+              {search || category 
+                ? "We couldn't find any articles matching your search query or selected category." 
+                : "No published blog articles yet. Check back soon for the latest updates and tech guides!"}
             </p>
+            {(search || category) && (
+              <button
+                type="button"
+                onClick={() => { setCategory(''); setSearch(''); }}
+                className="px-4 py-2 bg-[#084032] hover:bg-[#0b5c48] text-white rounded-lg text-xs font-semibold shadow transition-all cursor-pointer"
+              >
+                Show All Articles
+              </button>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredBlogs.map((blog) => (
               <article
                 key={blog._id}
-                className="bg-white rounded-2xl overflow-hidden shadow-xs border border-gray-150 flex flex-col"
+                className="bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col hover:shadow-lg transition-all duration-300 group"
               >
-                {/* Cover Image Wrapper */}
+                {/* 1. Top Image */}
                 <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
                   {blog.coverImage ? (
                     <img
@@ -125,54 +156,51 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-[#084032]/5 flex items-center justify-center text-5xl">
+                    <div className="w-full h-full bg-gradient-to-br from-[#084032]/10 to-[#0b5c48]/20 flex items-center justify-center text-5xl">
                       👑
                     </div>
                   )}
                 </Link>
 
-                {/* Article Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                {/* Card Body */}
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
-                    {/* Meta Info */}
-                    <div className="flex justify-between items-center text-xs text-gray-500 font-semibold w-full">
-                      <span className="text-gray-700">By {blog.author || 'Admin'}</span>
+
+
+                    {/* 3. Blog Title */}
+                    <h2 className="text-xl font-bold text-gray-900 hover:text-[#00a63e] leading-snug line-clamp-2 transition-colors">
+                      <Link href={`/blogs/${blog.slug}`}>
+                        {blog.title}
+                      </Link>
+                    </h2>
+
+                    {/* 4. Publisher Name + Publication Date */}
+                    <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
+                      <span className="text-[#00a63e] font-semibold">{blog.author || 'Crown Excel'}</span>
+                      <span className="text-gray-300">•</span>
                       <span>
-                        {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString(undefined, {
-                          month: 'short',
+                        {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-US', {
+                          month: 'long',
                           day: 'numeric',
                           year: 'numeric'
                         }) : 'N/A'}
                       </span>
                     </div>
 
-                    {/* Title */}
-                    <h2 className="text-xl font-bold text-[#00a63e] leading-snug line-clamp-1">
-                      <Link href={`/blogs/${blog.slug}`}>
-                        {blog.title}
-                      </Link>
-                    </h2>
-
-                    {/* Excerpt */}
-                    <p className="text-gray-550 text-sm leading-relaxed line-clamp-2">
+                    {/* 5. Blog Description (show only 3 lines) */}
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
                       {blog.excerpt || 'Read this article to learn more about this topic from our tech experts...'}
                     </p>
                   </div>
 
-                  {/* Footer links on card */}
-                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-sm">
+                  {/* 6. Read More button/link */}
+                  <div className="pt-2">
                     <Link
                       href={`/blogs/${blog.slug}`}
-                      className="font-bold text-[#084032] flex items-center gap-1 hover:text-[#00a63e] transition-colors"
+                      className="text-[#00a63e] hover:text-[#084032] font-semibold text-sm inline-flex items-center gap-1.5 transition-colors group/link"
                     >
-                      Read Article <span className="text-base">→</span>
+                      Read More <span className="group-hover/link:translate-x-1 transition-transform duration-200">→</span>
                     </Link>
-                    
-                    {blog.readMinutes && (
-                      <span className="text-xs text-gray-400 font-semibold flex items-center gap-1">
-                        ⏱ {blog.readMinutes} min read
-                      </span>
-                    )}
                   </div>
                 </div>
               </article>
@@ -195,7 +223,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
               <button
                 type="button"
                 onClick={() => setCategory('')}
-                className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
+                className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full cursor-pointer ${
                   !category ? 'text-[#00a63e]' : 'text-gray-800 hover:text-[#00a63e]'
                 }`}
               >
@@ -208,7 +236,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                     key={cat}
                     type="button"
                     onClick={() => setCategory(isActive ? '' : cat)}
-                    className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full ${
+                    className={`block text-xs font-bold text-left uppercase tracking-wider transition-colors w-full cursor-pointer ${
                       isActive ? 'text-[#00a63e]' : 'text-gray-800 hover:text-[#00a63e]'
                     }`}
                   >
@@ -233,12 +261,12 @@ export default function BlogListingClient({ initialBlogs = [] }) {
             <div className="space-y-4 pt-2">
               {recentPosts.map((b) => (
                 <div key={b._id} className="flex gap-3 group">
-                  <Link href={`/blogs/${b.slug}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-55 border border-gray-100 shrink-0 relative">
+                  <Link href={`/blogs/${b.slug}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
                     {b.coverImage ? (
                       <img 
                         src={b.coverImage} 
                         alt={b.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform" 
+                        className="w-full h-full object-cover" 
                       />
                     ) : (
                       <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xs">👑</div>
@@ -247,7 +275,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                   <div className="min-w-0 space-y-0.5">
                     <Link 
                       href={`/blogs/${b.slug}`}
-                      className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-tight"
+                      className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-tight transition-colors"
                     >
                       {b.title}
                     </Link>
@@ -283,7 +311,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
             </a>
             <a 
               href="mailto:contact@crownexcel.com"
-              className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 hover:bg-gray-55 rounded-lg text-gray-700 font-semibold transition-all bg-white w-full"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 hover:bg-gray-50 rounded-lg text-gray-700 font-semibold transition-all bg-white w-full"
             >
               ✉ contact@crownexcel.com
             </a>
