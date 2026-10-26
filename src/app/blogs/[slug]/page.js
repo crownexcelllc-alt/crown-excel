@@ -3,6 +3,7 @@ import { getDb } from '@/lib/mongodb';
 import Link from 'next/link';
 import BlogCommentsSection from './BlogCommentsSection';
 import { generateCmsMetadata, getCmsSeo } from '@/lib/cms-fetch';
+import '../blog-content.css';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

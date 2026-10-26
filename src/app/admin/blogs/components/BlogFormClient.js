@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import './editor.css';
 
 export default function BlogFormClient({ 
   initialData = null, 
@@ -32,6 +33,8 @@ export default function BlogFormClient({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('visual'); // 'visual' | 'code'
+  const [currentFormat, setCurrentFormat] = useState('p');
+  const [currentFontSize, setCurrentFontSize] = useState('');
   
   // Media Library Modal states
   const [showMediaModal, setShowMediaModal] = useState(false);
@@ -50,8 +53,15 @@ export default function BlogFormClient({
   const saveSelection = () => {
     if (typeof window !== 'undefined') {
       const sel = window.getSelection();
-      if (sel.rangeCount > 0) {
-        savedRangeRef.current = sel.getRangeAt(0);
+      if (sel && sel.rangeCount > 0) {
+        const range = sel.getRangeAt(0);
+        if (
+          editorRef.current &&
+          (editorRef.current.contains(range.commonAncestorContainer) ||
+           editorRef.current === range.commonAncestorContainer)
+        ) {
+          savedRangeRef.current = range.cloneRange();
+        }
       }
     }
   };
@@ -59,9 +69,33 @@ export default function BlogFormClient({
   const restoreSelection = () => {
     if (typeof window !== 'undefined' && savedRangeRef.current) {
       const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(savedRangeRef.current);
+      if (sel) {
+        sel.removeAllRanges();
+        sel.addRange(savedRangeRef.current);
+      }
     }
+  };
+
+  const updateCurrentFormat = () => {
+    saveSelection();
+    if (typeof window === 'undefined') return;
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return;
+
+    let node = sel.anchorNode;
+    if (!node) return;
+    if (node.nodeType === 3) node = node.parentNode;
+
+    let tag = 'p';
+    while (node && node !== editorRef.current) {
+      const name = node.tagName?.toLowerCase();
+      if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote'].includes(name)) {
+        tag = name;
+        break;
+      }
+      node = node.parentNode;
+    }
+    setCurrentFormat(tag);
   };
 
   const handleEditorBlur = () => {
@@ -124,14 +158,94 @@ export default function BlogFormClient({
   // Run document formatting commands
   const executeCommand = (command, value = null) => {
     if (typeof document !== 'undefined') {
-      restoreSelection();
       if (editorRef.current) {
         editorRef.current.focus();
       }
+      restoreSelection();
       document.execCommand(command, false, value);
       handleEditorChange();
       saveSelection();
     }
+  };
+
+  // Format block elements (h1-h6, p) reliably across browsers
+  const applyBlockFormat = (tag) => {
+    if (typeof document === 'undefined') return;
+    if (editorRef.current) {
+      editorRef.current.focus();
+    }
+    restoreSelection();
+
+    const cleanTag = tag.replace(/[<>]/g, '').toLowerCase();
+
+    let success = false;
+    try {
+      success = document.execCommand('formatBlock', false, `<${cleanTag}>`);
+    } catch (e) {
+      success = false;
+    }
+    if (!success) {
+      try {
+        success = document.execCommand('formatBlock', false, cleanTag);
+      } catch (e) {
+        success = false;
+      }
+    }
+    if (!success) {
+      try {
+        success = document.execCommand('formatBlock', false, cleanTag.toUpperCase());
+      } catch (e) {
+        success = false;
+      }
+    }
+
+    handleEditorChange();
+    saveSelection();
+    updateCurrentFormat();
+  };
+
+  // Apply font size to selection or enclosing block
+  const applyFontSize = (size) => {
+    if (typeof document === 'undefined') return;
+    if (editorRef.current) {
+      editorRef.current.focus();
+    }
+    restoreSelection();
+
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return;
+    const range = sel.getRangeAt(0);
+
+    if (range.collapsed) {
+      let node = range.startContainer;
+      if (node.nodeType === 3) node = node.parentNode;
+      if (node && node !== editorRef.current) {
+        node.style.fontSize = size;
+      }
+    } else {
+      try {
+        document.execCommand('fontSize', false, '7');
+        const fontTags = editorRef.current?.querySelectorAll('font[size="7"]');
+        if (fontTags && fontTags.length > 0) {
+          fontTags.forEach((font) => {
+            const span = document.createElement('span');
+            span.style.fontSize = size;
+            span.innerHTML = font.innerHTML;
+            font.parentNode?.replaceChild(span, font);
+          });
+        } else {
+          const span = document.createElement('span');
+          span.style.fontSize = size;
+          span.appendChild(range.extractContents());
+          range.insertNode(span);
+        }
+      } catch (e) {
+        console.error('Error applying font size:', e);
+      }
+    }
+
+    handleEditorChange();
+    saveSelection();
   };
 
   // Handle visual vs HTML editor tab change
@@ -406,17 +520,50 @@ export default function BlogFormClient({
               <div className="bg-gray-50 border-b border-gray-200 p-2.5 flex flex-wrap gap-1.5 items-center">
                 {/* Style Dropdown */}
                 <select
+                  value={currentFormat}
+                  onMouseDown={saveSelection}
+                  onFocus={saveSelection}
                   onChange={(e) => {
-                    executeCommand('formatBlock', e.target.value);
+                    const val = e.target.value;
+                    applyBlockFormat(val);
+                    setCurrentFormat(val);
                   }}
-                  defaultValue="<p>"
                   className="bg-white border border-gray-300 rounded px-2.5 py-1.5 text-xs font-semibold outline-none cursor-pointer text-gray-700 hover:bg-gray-50 focus:ring-1 focus:ring-[#084032] mr-1"
+                  title="Heading / Style"
                 >
-                  <option value="<p>">Normal Text</option>
-                  <option value="<h1>">Heading 1</option>
-                  <option value="<h2>">Heading 2</option>
-                  <option value="<h3>">Heading 3</option>
-                  <option value="<h4>">Heading 4</option>
+                  <option value="p">Normal Text</option>
+                  <option value="h1">Heading 1</option>
+                  <option value="h2">Heading 2</option>
+                  <option value="h3">Heading 3</option>
+                  <option value="h4">Heading 4</option>
+                  <option value="h5">Heading 5</option>
+                  <option value="h6">Heading 6</option>
+                </select>
+
+                {/* Font Size Dropdown */}
+                <select
+                  value={currentFontSize}
+                  onMouseDown={saveSelection}
+                  onFocus={saveSelection}
+                  onChange={(e) => {
+                    const size = e.target.value;
+                    if (size) {
+                      applyFontSize(size);
+                    }
+                    setCurrentFontSize(size);
+                  }}
+                  className="bg-white border border-gray-300 rounded px-2.5 py-1.5 text-xs font-semibold outline-none cursor-pointer text-gray-700 hover:bg-gray-50 focus:ring-1 focus:ring-[#084032] mr-1"
+                  title="Font Size"
+                >
+                  <option value="">Font Size</option>
+                  <option value="12px">12px</option>
+                  <option value="14px">14px</option>
+                  <option value="16px">16px (Normal)</option>
+                  <option value="18px">18px</option>
+                  <option value="20px">20px</option>
+                  <option value="24px">24px (Large)</option>
+                  <option value="28px">28px</option>
+                  <option value="32px">32px (Huge)</option>
                 </select>
 
                 <div className="h-5 w-px bg-gray-300 mx-1" />
@@ -600,9 +747,12 @@ export default function BlogFormClient({
                 ref={editorRef}
                 contentEditable
                 onBlur={handleEditorBlur}
-                onInput={handleEditorChange}
-                onKeyUp={saveSelection}
-                onMouseUp={saveSelection}
+                onInput={() => {
+                  handleEditorChange();
+                  updateCurrentFormat();
+                }}
+                onKeyUp={updateCurrentFormat}
+                onMouseUp={updateCurrentFormat}
                 className="w-full p-4 min-h-[350px] outline-none prose max-w-none focus:ring-0 overflow-y-auto"
                 style={{ direction: 'left', textAlign: 'left' }}
               />
