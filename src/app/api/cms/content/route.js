@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getDb } from '@/lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { parsePageContent, updatePageFiles, cleanText } from '@/lib/cms-parser';
@@ -186,7 +187,8 @@ export async function GET(request) {
         const sec = { ...parsedSec, order: idx + 1 };
         const dbSec = existingSections.find(
           s => s.sectionId === parsedSec.sectionId || 
-               s.sectionName?.toLowerCase() === parsedSec.sectionName?.toLowerCase()
+               s.sectionName?.toLowerCase() === parsedSec.sectionName?.toLowerCase() ||
+               (parsedSec.sectionId === 'smartsolutions' && (s.sectionId === 'hero' || s.sectionName?.toLowerCase().includes('hero')))
         );
 
         if (dbSec && dbSec.fields) {
@@ -196,14 +198,35 @@ export async function GET(request) {
 
           const mergedFields = {};
           for (const [key, parsedField] of Object.entries(parsedSec.fields || {})) {
-            const dbField = dbSec.fields[key];
+            let dbField = dbSec.fields[key];
+
+            // Image matching fallback: if key not directly in dbSec.fields, find matching image field
+            if (!dbField && parsedField.type === 'image') {
+              const dbImgKey = Object.keys(dbSec.fields).find(k => 
+                (k === 'image_banner' || k === 'image_smartsolutionsbanner' || k === 'image' || k.startsWith('image')) &&
+                dbSec.fields[k]?.value
+              );
+              if (dbImgKey) {
+                dbField = dbSec.fields[dbImgKey];
+              }
+            }
+
             if (dbField && dbField.value !== undefined && dbField.value !== null) {
               const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
               const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 
+              // For homepage static sections, file content on disk is always the ground truth
+              const isHomepageStaticSec = (route?.path === '/' || filter.path === '/' || parsedSec.filePath?.includes('src/app/_components')) && 
+                                          parsedSec.sectionId !== 'smartsolutions' && 
+                                          parsedSec.sectionId !== 'hero';
+
+              const resolvedValue = isHomepageStaticSec 
+                ? parsedField.value 
+                : (cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase() ? parsedField.value : dbField.value);
+
               mergedFields[key] = {
                 ...parsedField,
-                value: cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase() ? parsedField.value : dbField.value,
+                value: resolvedValue,
                 originalValue: parsedField.originalValue,
                 alt: dbField.alt || parsedField.alt || '',
                 title: dbField.title || parsedField.title || '',
@@ -212,7 +235,36 @@ export async function GET(request) {
               mergedFields[key] = { ...parsedField };
             }
           }
+
+          // Preserve any extra fields from dbSec (excluding unwanted artificial fields)
+          for (const [dbKey, dbField] of Object.entries(dbSec.fields || {})) {
+            if (['subheading', 'buttonText', 'buttonLink', 'button2Text', 'button2Link'].includes(dbKey)) {
+              continue;
+            }
+            if (!mergedFields[dbKey] && dbField && dbField.value !== undefined) {
+              mergedFields[dbKey] = { ...dbField };
+            }
+          }
+
           sec.fields = mergedFields;
+        }
+
+        // Special handling for Homepage Hero section (smartsolutions / hero)
+        if (sec.sectionId === 'smartsolutions' || sec.sectionId === 'hero') {
+          sec.sectionName = 'Hero Section (Smart Solutions)';
+
+          // Deduplicate image keys in hero section so admin sees only one Hero Banner Image input
+          if (sec.fields.image_smartsolutionsbanner && sec.fields.image_banner) {
+            sec.fields.image_banner.value = sec.fields.image_smartsolutionsbanner.value || sec.fields.image_banner.value;
+            sec.fields.image_banner.alt = sec.fields.image_smartsolutionsbanner.alt || sec.fields.image_banner.alt || '';
+            delete sec.fields.image_smartsolutionsbanner;
+          }
+
+          // Find the image field and label it clearly
+          const imgKey = Object.keys(sec.fields).find(k => k.startsWith('image'));
+          if (imgKey) {
+            sec.fields[imgKey].label = 'Hero Banner Image';
+          }
         }
 
         return sec;
@@ -290,8 +342,24 @@ export async function POST(request) {
     const existing = await collection.findOne(filter);
     const version = existing ? (existing.version || 1) + 1 : 1;
 
-    // Update JSX files on disk with the new values
-    if (Array.isArray(sections)) {
+    let finalPath = path;
+    if (!finalPath && routeId) {
+      try {
+        const routeDoc = await db.collection('cms_routes').findOne({
+          _id: ObjectId.isValid(routeId) ? new ObjectId(routeId) : routeId
+        });
+        if (routeDoc?.path) {
+          finalPath = routeDoc.path;
+        }
+      } catch (rErr) {
+        console.error('Failed to resolve route path:', rErr);
+      }
+    }
+
+    const isHomepage = finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94';
+
+    // Update JSX files on disk with the new values (never for the homepage, which is dynamically rendered)
+    if (Array.isArray(sections) && !isHomepage) {
       try {
         updatePageFiles(sections);
         
@@ -308,7 +376,7 @@ export async function POST(request) {
 
     const contentData = {
       routeId: routeId || null,
-      path: path || null,
+      path: finalPath || null,
       websiteId,
       sections: Array.isArray(sections) ? sections : [],
       status,
@@ -324,7 +392,19 @@ export async function POST(request) {
       { upsert: true }
     );
 
-    await logActivity(request, 'update_content', path || `Route ID: ${routeId}`, { status, version });
+    await logActivity(request, 'update_content', finalPath || `Route ID: ${routeId}`, { status, version });
+
+    // Trigger on-demand cache revalidation
+    if (finalPath) {
+      try {
+        revalidatePath(finalPath);
+        if (finalPath !== '/') {
+          revalidatePath('/');
+        }
+      } catch (revalErr) {
+        console.error('revalidatePath error in POST /api/cms/content:', revalErr);
+      }
+    }
 
     return jsonResponse({ ok: true, version });
   } catch (err) {

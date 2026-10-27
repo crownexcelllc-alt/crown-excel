@@ -76,28 +76,82 @@ export async function getCmsSeo(path, websiteId = 'default') {
  */
 export async function getCmsContent(path, websiteId = 'default') {
   try {
+    if (!path && path !== '') return null;
     const db = await getDb();
-    const content = await db.collection('cms_page_content').findOne({
-      path,
+    const cleanPath = path ? path.trim() : '/';
+    const withoutTrailing = cleanPath.length > 1 && cleanPath.endsWith('/') ? cleanPath.slice(0, -1) : cleanPath;
+    const withTrailing = withoutTrailing === '/' ? '/' : withoutTrailing + '/';
+
+    // 1. Search directly by path
+    let content = await db.collection('cms_page_content').findOne({
+      path: { $in: [cleanPath, withoutTrailing, withTrailing] },
       websiteId,
       status: 'published', // Only fetch published content
     });
+
+    if (!content) {
+      // 2. Search via routeId in cms_routes
+      const route = await db.collection('cms_routes').findOne({
+        path: { $in: [cleanPath, withoutTrailing, withTrailing] },
+        websiteId,
+      });
+
+      if (route) {
+        const routeIdStr = route._id.toString();
+        content = await db.collection('cms_page_content').findOne({
+          $or: [
+            { routeId: routeIdStr },
+            { routeId: route._id }
+          ],
+          websiteId,
+          status: 'published',
+        });
+
+        // Fallback to any content if not explicitly marked published
+        if (!content) {
+          content = await db.collection('cms_page_content').findOne({
+            $or: [
+              { routeId: routeIdStr },
+              { routeId: route._id },
+              { path: { $in: [cleanPath, withoutTrailing, withTrailing] } }
+            ],
+            websiteId,
+          });
+        }
+      } else {
+        // Fallback search without published restriction
+        content = await db.collection('cms_page_content').findOne({
+          path: { $in: [cleanPath, withoutTrailing, withTrailing] },
+          websiteId,
+        });
+      }
+    }
 
     if (!content) return null;
 
     // Convert sections array to a keyed object for easy access
     const sections = {};
     for (const section of content.sections || []) {
-      const key = section.sectionId?.split('_')[0] || section.sectionName?.toLowerCase().replace(/\s+/g, '_') || `section_${section.order}`;
+      const key = section.sectionId?.split('_')[0]?.toLowerCase() || 
+                  section.sectionName?.toLowerCase().replace(/\s+/g, '_') || 
+                  `section_${section.order}`;
       const fields = {};
       for (const [fieldKey, field] of Object.entries(section.fields || {})) {
-        fields[fieldKey] = field.value || field;
+        fields[fieldKey] = (field && typeof field === 'object' && field.value !== undefined) ? field.value : field;
       }
-      sections[key] = {
+      const secObj = {
         name: section.sectionName,
         fields,
         raw: section.fields,
       };
+      sections[key] = secObj;
+
+      // Smart hero aliases
+      if (key === 'smartsolutions' && !sections.hero) {
+        sections.hero = secObj;
+      } else if (key === 'hero' && !sections.smartsolutions) {
+        sections.smartsolutions = secObj;
+      }
     }
 
     return {

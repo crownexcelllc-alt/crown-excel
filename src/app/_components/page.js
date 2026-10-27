@@ -10,11 +10,12 @@ const Testimonials = dynamic(() => import("./Testimonials/Testimonials"));
 const Contactus = dynamic(() => import("./Contactus/Contactus"));
 const Globe = dynamic(() => import("./Globe/Globe"));
 
-function Page() {
+function Page({ cmsContent }) {
+  const heroSection = cmsContent?.sections?.smartsolutions || cmsContent?.sections?.hero;
   return (
     <main className="bg-gray-50 min-h-screen flex flex-col">
       <section>
-        <SmartSolutions />
+        <SmartSolutions cmsHero={heroSection} />
       </section>
       <section>
         <TrustedPartner />

@@ -582,7 +582,7 @@ const AllProducts = () => {
         setShowContactPopup(true);
     };
 
-    const activeProducts = productsByCategory[active] || [];
+    const activeProducts = (productsByCategory[active] || []).slice(0, 4);
     const activeCategory = categories.find((c) => c.slug === active);
     const activeCategoryPage = categoryPages[active] || '/products/laptops';
 
