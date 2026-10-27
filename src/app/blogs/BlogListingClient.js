@@ -3,6 +3,31 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+// Helper to extract clean plain-text description for each blog post
+function getBlogDescription(blog) {
+  if (blog?.excerpt && typeof blog.excerpt === 'string' && blog.excerpt.trim()) {
+    return blog.excerpt.trim();
+  }
+
+  if (blog?.content && typeof blog.content === 'string') {
+    return blog.content
+      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/&apos;/gi, "'")
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  return '';
+}
+
 export default function BlogListingClient({ initialBlogs = [] }) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
@@ -41,9 +66,10 @@ export default function BlogListingClient({ initialBlogs = [] }) {
       const q = search.trim().toLowerCase();
       const titleMatch = (blog.title || '').toLowerCase().includes(q);
       const excerptMatch = (blog.excerpt || '').toLowerCase().includes(q);
+      const descMatch = getBlogDescription(blog).toLowerCase().includes(q);
       const authorMatch = (blog.author || '').toLowerCase().includes(q);
       const tagsMatch = Array.isArray(blog.tags) && blog.tags.some(t => t.toLowerCase().includes(q));
-      if (!titleMatch && !excerptMatch && !authorMatch && !tagsMatch) {
+      if (!titleMatch && !excerptMatch && !descMatch && !authorMatch && !tagsMatch) {
         return false;
       }
     }
@@ -142,69 +168,74 @@ export default function BlogListingClient({ initialBlogs = [] }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredBlogs.map((blog) => (
-              <article
-                key={blog._id}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col hover:shadow-lg transition-all duration-300 group"
-              >
-                {/* 1. Top Image */}
-                <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
-                  {blog.coverImage ? (
-                    <img
-                      src={blog.coverImage}
-                      alt={blog.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#084032]/10 to-[#0b5c48]/20 flex items-center justify-center text-5xl">
-                      👑
+            {filteredBlogs.map((blog) => {
+              const description = getBlogDescription(blog);
+              return (
+                <article
+                  key={blog._id}
+                  className="bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col hover:shadow-lg transition-all duration-300 group"
+                >
+                  {/* 1. Top Image */}
+                  <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
+                    {blog.coverImage ? (
+                      <img
+                        src={blog.coverImage}
+                        alt={blog.title}
+                        className="w-full h-full bg-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#084032]/10 to-[#0b5c48]/20 flex items-center justify-center text-5xl">
+                        👑
+                      </div>
+                    )}
+                  </Link>
+
+                  {/* Card Body */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+
+
+                      {/* 3. Blog Title */}
+                      <h2 className="text-xl sm:text-[1.28rem] font-bold font-montserrat tracking-tight text-gray-900 group-hover:text-[#00a63e] hover:text-[#00a63e] leading-[1.35] line-clamp-2 transition-colors duration-200">
+                        <Link href={`/blogs/${blog.slug}`}>
+                          {blog.title}
+                        </Link>
+                      </h2>
+
+                      {/* 4. Publisher Name + Publication Date */}
+                      <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
+                        <span className="text-[#00a63e] font-semibold">{blog.author || 'Crown Excel'}</span>
+                        <span className="text-gray-300">•</span>
+                        <span>
+                          {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric'
+                          }) : 'N/A'}
+                        </span>
+                      </div>
+
+                      {/* 5. Blog Description (show only 3 lines) */}
+                      {description && (
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                          {description}
+                        </p>
+                      )}
                     </div>
-                  )}
-                </Link>
 
-                {/* Card Body */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-
-
-                    {/* 3. Blog Title */}
-                    <h2 className="text-xl font-bold text-gray-900 hover:text-[#00a63e] leading-snug line-clamp-2 transition-colors">
-                      <Link href={`/blogs/${blog.slug}`}>
-                        {blog.title}
+                    {/* 6. Read More button/link */}
+                    <div className="pt-2">
+                      <Link
+                        href={`/blogs/${blog.slug}`}
+                        className="text-[#00a63e] hover:text-[#084032] font-semibold text-sm inline-flex items-center gap-1.5 transition-colors group/link"
+                      >
+                        Read More <span className="group-hover/link:translate-x-1 transition-transform duration-200">→</span>
                       </Link>
-                    </h2>
-
-                    {/* 4. Publisher Name + Publication Date */}
-                    <div className="flex items-center gap-2 text-xs font-medium text-gray-500">
-                      <span className="text-[#00a63e] font-semibold">{blog.author || 'Crown Excel'}</span>
-                      <span className="text-gray-300">•</span>
-                      <span>
-                        {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-US', {
-                          month: 'long',
-                          day: 'numeric',
-                          year: 'numeric'
-                        }) : 'N/A'}
-                      </span>
                     </div>
-
-                    {/* 5. Blog Description (show only 3 lines) */}
-                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-                      {blog.excerpt || 'Read this article to learn more about this topic from our tech experts...'}
-                    </p>
                   </div>
-
-                  {/* 6. Read More button/link */}
-                  <div className="pt-2">
-                    <Link
-                      href={`/blogs/${blog.slug}`}
-                      className="text-[#00a63e] hover:text-[#084032] font-semibold text-sm inline-flex items-center gap-1.5 transition-colors group/link"
-                    >
-                      Read More <span className="group-hover/link:translate-x-1 transition-transform duration-200">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         )}
       </div>
@@ -275,7 +306,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                   <div className="min-w-0 space-y-0.5">
                     <Link 
                       href={`/blogs/${b.slug}`}
-                      className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-tight transition-colors"
+                      className="text-xs font-bold font-montserrat tracking-tight text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-snug transition-colors duration-200"
                     >
                       {b.title}
                     </Link>
