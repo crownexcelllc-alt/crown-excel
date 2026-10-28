@@ -12,6 +12,7 @@ const Globe = dynamic(() => import("./Globe/Globe"));
 
 function Page({ cmsContent }) {
   const heroSection = cmsContent?.sections?.smartsolutions || cmsContent?.sections?.hero;
+  const allProductsSection = cmsContent?.sections?.allproducts;
   return (
     <main className="bg-gray-50 min-h-screen flex flex-col">
       <section>
@@ -24,7 +25,7 @@ function Page({ cmsContent }) {
         <Services />
       </section>
       <section>
-        <AllProducts />
+        <AllProducts cmsCatalog={allProductsSection} />
       </section>
       <section>
         <Brands />
