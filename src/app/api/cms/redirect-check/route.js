@@ -39,7 +39,7 @@ export async function GET(request) {
 
     if (!routeDoc && normalizedPath.startsWith('/blogs/')) {
       routeDoc = await db.collection('cms_routes').findOne({
-        path: '/blogs/[slug]',
+        path: { $in: ['/blogs/[...slug]', '/blogs/[slug]'] },
         websiteId,
       });
     }
@@ -72,18 +72,19 @@ export async function GET(request) {
 
     // 3. Fallback: If path matches a published blog post slug (e.g. /my-slug -> /blogs/my-slug)
     if (!normalizedPath.startsWith('/blogs')) {
-      const cleanSlug = normalizedPath.replace(/^\/+/, '');
-      if (cleanSlug && !cleanSlug.includes('/')) {
+      const cleanSlug = normalizedPath.replace(/^\/+|\/+$/g, '');
+      if (cleanSlug) {
         const blogMatch = await db.collection('cms_blogs').findOne({
-          slug: cleanSlug,
+          slug: { $in: [cleanSlug, `${cleanSlug}/`] },
           published: true,
         });
         if (blogMatch) {
+          const matchSlug = (blogMatch.slug || '').replace(/^\/+|\/+$/g, '');
           return jsonResponse({
             inactive: false,
             redirect: {
               fromPath: normalizedPath,
-              toPath: `/blogs/${blogMatch.slug}`,
+              toPath: `/blogs/${matchSlug}`,
               type: '301',
             }
           });

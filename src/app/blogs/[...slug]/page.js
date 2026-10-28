@@ -10,7 +10,10 @@ export const revalidate = 0;
 
 // Dynamic SEO Metadata Generator
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const rawParams = await params;
+  const rawSlug = rawParams?.slug;
+  const slugPath = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug || '');
+  const slug = decodeURIComponent(slugPath).replace(/^\/+|\/+$/g, '');
   const routePath = `/blogs/${slug}`;
 
   try {
@@ -20,7 +23,10 @@ export async function generateMetadata({ params }) {
     }
 
     const db = await getDb();
-    const blog = await db.collection('cms_blogs').findOne({ slug, published: true });
+    const blog = await db.collection('cms_blogs').findOne({
+      slug: { $in: [slug, `${slug}/`, `/${slug}`, `/${slug}/`] },
+      published: true,
+    });
     if (blog) {
       return await generateCmsMetadata(routePath, {
         title: blog.metaTitle || `${blog.title} | Crown Excel Blog`,
@@ -36,7 +42,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetailsPage({ params }) {
-  const { slug } = await params;
+  const rawParams = await params;
+  const rawSlug = rawParams?.slug;
+  const slugPath = Array.isArray(rawSlug) ? rawSlug.join('/') : (rawSlug || '');
+  const slug = decodeURIComponent(slugPath).replace(/^\/+|\/+$/g, '');
 
   let blog = null;
   let comments = [];
@@ -49,7 +58,10 @@ export default async function BlogDetailsPage({ params }) {
     const db = await getDb();
 
     // 1. Fetch Blog Data directly from DB
-    const blogDoc = await db.collection('cms_blogs').findOne({ slug, published: true });
+    const blogDoc = await db.collection('cms_blogs').findOne({
+      slug: { $in: [slug, `${slug}/`, `/${slug}`, `/${slug}/`] },
+      published: true,
+    });
     if (blogDoc) {
       blog = {
         ...blogDoc,
@@ -295,7 +307,7 @@ export default async function BlogDetailsPage({ params }) {
               <div className="space-y-4 pt-2">
                 {recentBlogs.map((b) => (
                   <div key={b._id} className="flex gap-3 group">
-                    <Link href={`/blogs/${b.slug}`} className="w-20 aspect-video rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
+                    <Link href={`/blogs/${(b.slug || '').replace(/^\/+|\/+$/g, '')}`} className="w-20 aspect-video rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
                       {b.coverImage ? (
                         <img 
                           src={b.coverImage} 
@@ -308,7 +320,7 @@ export default async function BlogDetailsPage({ params }) {
                     </Link>
                     <div className="min-w-0 space-y-0.5">
                       <Link 
-                        href={`/blogs/${b.slug}`}
+                        href={`/blogs/${(b.slug || '').replace(/^\/+|\/+$/g, '')}`}
                         className="text-xs font-bold text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-tight"
                       >
                         {b.title}

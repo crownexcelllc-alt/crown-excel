@@ -15,6 +15,7 @@ export default function BlogFormClient({
   // Basic states
   const [title, setTitle] = useState(initialData?.title || '');
   const [slug, setSlug] = useState(initialData?.slug || '');
+  const [slugTouched, setSlugTouched] = useState(false);
   const [excerpt, setExcerpt] = useState(initialData?.excerpt || '');
   const [content, setContent] = useState(initialData?.content || '');
   const [coverImage, setCoverImage] = useState(initialData?.coverImage || '');
@@ -139,13 +140,38 @@ export default function BlogFormClient({
   const handleTitleChange = (e) => {
     const val = e.target.value;
     setTitle(val);
-    if (!isEdit) {
+    if (!isEdit && !slugTouched) {
       const generatedSlug = val
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
       setSlug(generatedSlug);
     }
+  };
+
+  // Handle slug change allowing forward slashes without adding hyphens
+  const handleSlugChange = (e) => {
+    setSlugTouched(true);
+    // Allow user to freely enter letters, numbers, hyphens, underscores, and forward slashes.
+    // Strip only invalid characters without inserting any unwanted hyphens.
+    const val = e.target.value.toLowerCase().replace(/[^a-z0-9\-_/]/g, '');
+    setSlug(val);
+  };
+
+  // Preview the full URL based on what user entered
+  const getFullUrlPreview = (rawSlug) => {
+    if (!rawSlug) return '';
+    const s = rawSlug.trim().toLowerCase();
+    if (s.startsWith('/blogs/')) {
+      return s;
+    }
+    if (s.startsWith('blogs/')) {
+      return '/' + s;
+    }
+    if (s.startsWith('/')) {
+      return '/blogs' + s;
+    }
+    return '/blogs/' + s;
   };
 
   // Sync contenteditable text with content state
@@ -334,9 +360,29 @@ export default function BlogFormClient({
       .map(tag => tag.trim())
       .filter(tag => tag.length > 0);
 
+    let cleanSlug = (slug || title).toString().trim().toLowerCase();
+    if (cleanSlug.startsWith('/blogs/')) cleanSlug = cleanSlug.slice(7);
+    else if (cleanSlug.startsWith('blogs/')) cleanSlug = cleanSlug.slice(6);
+    else if (cleanSlug === '/blogs' || cleanSlug === 'blogs') cleanSlug = '';
+
+    cleanSlug = cleanSlug.replace(/^\/+|\/+$/g, '');
+
+    cleanSlug = cleanSlug
+      .split('/')
+      .map(seg => seg.replace(/[^a-z0-9\-_]/g, '').replace(/^-+|-+$/g, ''))
+      .filter(Boolean)
+      .join('/');
+
+    if (!cleanSlug) {
+      cleanSlug = title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
     const payload = {
       title,
-      slug: slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+      slug: cleanSlug,
       excerpt,
       content,
       coverImage,
@@ -419,14 +465,14 @@ export default function BlogFormClient({
               <input
                 type="text"
                 value={slug}
-                onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9\-]+/g, ''))}
-                placeholder="e.g. my-first-blog"
-                className="w-full px-3 py-2 text-sm outline-none bg-transparent"
+                onChange={handleSlugChange}
+                placeholder="e.g. consumer-electronics/computer"
+                className="w-full px-3 py-2 text-sm outline-none bg-transparent font-mono"
               />
             </div>
             {slug && (
               <p className="text-[11px] text-gray-400 mt-1 font-mono truncate">
-                Full URL: /blogs/{slug}
+                Full URL: {getFullUrlPreview(slug)}
               </p>
             )}
           </div>

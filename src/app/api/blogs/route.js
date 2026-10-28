@@ -17,6 +17,31 @@ function jsonResponse(data, status = 200) {
   return NextResponse.json(data, { status, headers: CORS_HEADERS });
 }
 
+function normalizeBlogSlug(rawSlug, fallbackTitle = '') {
+  let val = (rawSlug || '').toString().trim().toLowerCase();
+  if (val.startsWith('/blogs/')) val = val.slice(7);
+  else if (val.startsWith('blogs/')) val = val.slice(6);
+  else if (val === '/blogs' || val === 'blogs') val = '';
+
+  val = val.replace(/^\/+|\/+$/g, '');
+
+  let slug = val
+    .split('/')
+    .map(seg => seg.replace(/[^a-z0-9\-_]/g, '').replace(/^-+|-+$/g, ''))
+    .filter(Boolean)
+    .join('/');
+
+  if (!slug && fallbackTitle) {
+    slug = fallbackTitle
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+  return slug;
+}
+
 // GET /api/blogs -> list all or get single by id or slug
 export async function GET(req) {
   try {
@@ -45,7 +70,10 @@ export async function GET(req) {
 
     // Single item by slug
     if (slug) {
-      const blog = await col.findOne({ slug });
+      const cleanSlug = normalizeBlogSlug(slug);
+      const blog = await col.findOne({
+        slug: { $in: [cleanSlug, `${cleanSlug}/`, `/${cleanSlug}`, `/${cleanSlug}/`, slug] }
+      });
       if (!blog) {
         return jsonResponse({ error: 'Blog not found' }, 404);
       }
@@ -90,7 +118,7 @@ export async function POST(req) {
   try {
     const body = await req.json();
     const title = (body.title || '').toString().trim();
-    let slug = (body.slug || '').toString().trim().toLowerCase();
+    let slug = normalizeBlogSlug(body.slug, title);
     const excerpt = (body.excerpt || '').toString().trim();
     const content = (body.content || '').toString().trim();
     const coverImage = (body.coverImage || '').toString().trim();
@@ -109,16 +137,13 @@ export async function POST(req) {
       return jsonResponse({ error: 'Title and content are required' }, 400);
     }
 
-    // Generate slug if empty
-    if (!slug) {
-      slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    }
-
     const db = await getDb();
     const col = db.collection('cms_blogs');
 
     // Check if slug is unique
-    const existing = await col.findOne({ slug });
+    const existing = await col.findOne({
+      slug: { $in: [slug, `${slug}/`, `/${slug}`, `/${slug}/`] }
+    });
     if (existing) {
       // Append unique timestamp suffix to make slug unique
       slug = `${slug}-${Date.now().toString().slice(-4)}`;
@@ -170,10 +195,14 @@ export async function PATCH(req) {
     
     if (body.title !== undefined) updateFields.title = body.title.toString().trim();
     if (body.slug !== undefined) {
-      let newSlug = body.slug.toString().trim().toLowerCase();
+      let newSlug = normalizeBlogSlug(body.slug, body.title || existing.title);
+      const normalizedExisting = normalizeBlogSlug(existing.slug);
       // Ensure slug uniqueness if changed
-      if (newSlug !== existing.slug) {
-        const slugConflict = await col.findOne({ slug: newSlug });
+      if (newSlug !== normalizedExisting) {
+        const slugConflict = await col.findOne({
+          _id: { $ne: new ObjectId(id) },
+          slug: { $in: [newSlug, `${newSlug}/`, `/${newSlug}`, `/${newSlug}/`] }
+        });
         if (slugConflict) {
           newSlug = `${newSlug}-${Date.now().toString().slice(-4)}`;
         }

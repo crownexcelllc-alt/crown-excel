@@ -176,7 +176,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                   className="bg-white rounded-2xl overflow-hidden border border-gray-200 flex flex-col hover:shadow-lg transition-all duration-300 group"
                 >
                   {/* 1. Top Image */}
-                  <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
+                  <Link href={`/blogs/${(blog.slug || '').replace(/^\/+|\/+$/g, '')}`} className="block relative aspect-[16/10] bg-gray-100 overflow-hidden">
                     {blog.coverImage ? (
                       <img
                         src={blog.coverImage}
@@ -197,7 +197,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
 
                       {/* 3. Blog Title */}
                       <h2 className="text-xl sm:text-[1.28rem] font-bold font-montserrat tracking-tight text-gray-900 group-hover:text-[#00a63e] hover:text-[#00a63e] leading-[1.35] line-clamp-2 transition-colors duration-200">
-                        <Link href={`/blogs/${blog.slug}`}>
+                        <Link href={`/blogs/${(blog.slug || '').replace(/^\/+|\/+$/g, '')}`}>
                           {blog.title}
                         </Link>
                       </h2>
@@ -226,7 +226,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                     {/* 6. Read More button/link */}
                     <div className="pt-2">
                       <Link
-                        href={`/blogs/${blog.slug}`}
+                        href={`/blogs/${(blog.slug || '').replace(/^\/+|\/+$/g, '')}`}
                         className="text-[#00a63e] hover:text-[#084032] font-semibold text-sm inline-flex items-center gap-1.5 transition-colors group/link"
                       >
                         Read More <span className="group-hover/link:translate-x-1 transition-transform duration-200">→</span>
@@ -292,7 +292,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
             <div className="space-y-4 pt-2">
               {recentPosts.map((b) => (
                 <div key={b._id} className="flex gap-3 group">
-                  <Link href={`/blogs/${b.slug}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
+                  <Link href={`/blogs/${(b.slug || '').replace(/^\/+|\/+$/g, '')}`} className="w-20 aspect-[16/10] rounded-md overflow-hidden bg-gray-50 border border-gray-100 shrink-0 relative">
                     {b.coverImage ? (
                       <img 
                         src={b.coverImage} 
@@ -305,7 +305,7 @@ export default function BlogListingClient({ initialBlogs = [] }) {
                   </Link>
                   <div className="min-w-0 space-y-0.5">
                     <Link 
-                      href={`/blogs/${b.slug}`}
+                      href={`/blogs/${(b.slug || '').replace(/^\/+|\/+$/g, '')}`}
                       className="text-xs font-bold font-montserrat tracking-tight text-gray-800 hover:text-[#00a63e] line-clamp-2 leading-snug transition-colors duration-200"
                     >
                       {b.title}
