@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { FiArrowLeft, FiSave, FiPlus, FiTrash2, FiChevronUp, FiChevronDown, FiEye, FiCheckCircle, FiAlertCircle, FiImage, FiType, FiLink, FiFileText, FiX } from 'react-icons/fi';
+import ProductCatalogSelector from './components/ProductCatalogSelector';
 
 // Standalone Custom ContentEditable Component for safe rich-text rendering & editing
 function ContentEditable({ value, onChange, disabled, id, className, placeholder, isSingleLine }) {
@@ -561,6 +562,18 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
 
   // Render field editor based on type
   const renderField = (sectionIndex, fieldKey, field) => {
+    if (field.type === 'product_catalog_selection' || fieldKey === 'selected_products') {
+      return (
+        <div key={fieldKey} className="mb-6">
+          <ProductCatalogSelector
+            value={field.value}
+            onChange={(newVal) => updateField(sectionIndex, fieldKey, 'value', newVal)}
+            disabled={!canEditContent}
+          />
+        </div>
+      );
+    }
+
     const label = field.label || fieldKey.charAt(0).toUpperCase() + fieldKey.slice(1);
 
     return (

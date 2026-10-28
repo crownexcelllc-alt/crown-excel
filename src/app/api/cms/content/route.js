@@ -267,6 +267,31 @@ export async function GET(request) {
           }
         }
 
+        // Special handling for Homepage Product Catalog (allproducts)
+        if (sec.sectionId === 'allproducts') {
+          sec.sectionName = 'Our Product Catalog (AllProducts)';
+
+          const cleanedFields = {};
+          const headingVal = dbSec?.fields?.heading?.value || dbSec?.fields?.heading_2?.value || sec.fields?.heading?.value || 'Our Product Catalog';
+          cleanedFields.heading = {
+            type: 'text',
+            value: headingVal === 'All Products' ? 'Our Product Catalog' : headingVal,
+            originalValue: 'Our Product Catalog',
+            tag: 'h2',
+            label: 'Catalog Section Heading'
+          };
+
+          // Ensure selected_products field is preserved and structured for the UI
+          const dbSelection = dbSec?.fields?.selected_products?.value || dbSec?.fields?.selected_products;
+          cleanedFields.selected_products = {
+            type: 'product_catalog_selection',
+            value: (dbSelection && typeof dbSelection === 'object') ? dbSelection : {},
+            label: 'Homepage Featured Products'
+          };
+
+          sec.fields = cleanedFields;
+        }
+
         return sec;
       });
 
