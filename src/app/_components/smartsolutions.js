@@ -2,12 +2,34 @@ import Image from 'next/image'
 import React from 'react'
 import smartSolutionsBanner from '@/Components/Images/smartsolutionsbanner.png'
 
-function SmartSolutions() {
+function SmartSolutions({ cmsHero }) {
+  // Only make the hero section banner image dynamic from the admin panel
+  const bannerField =
+    cmsHero?.fields?.image_banner ||
+    cmsHero?.fields?.image_smartsolutionsbanner ||
+    cmsHero?.fields?.image;
+
+  const customBannerUrl =
+    typeof bannerField === 'object' && bannerField?.value
+      ? bannerField.value
+      : typeof bannerField === 'string'
+      ? bannerField
+      : null;
+
+  const bannerSrc =
+    customBannerUrl &&
+    typeof customBannerUrl === 'string' &&
+    (customBannerUrl.startsWith('http://') ||
+      customBannerUrl.startsWith('https://') ||
+      customBannerUrl.startsWith('/'))
+      ? customBannerUrl
+      : smartSolutionsBanner;
+
   return (
     <div className="relative w-full min-h-[480px] sm:min-h-[500px] md:min-h-[520px] lg:min-h-[560px] xl:min-h-[600px] flex items-start overflow-hidden">
       {/* Background Banner Image without text */}
       <Image
-        src={smartSolutionsBanner}
+        src={bannerSrc}
         alt="Crown Excel technology solutions banner"
         fill
         className="object-cover w-full h-full object-right md:object-center"

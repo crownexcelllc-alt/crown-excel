@@ -326,7 +326,18 @@ export function updatePageFiles(sections) {
       continue;
     }
 
+    const normalizedFilePath = (section.filePath || '').replace(/\\/g, '/');
+    // Strictly protect static homepage components and components in src/app/_components from being modified on disk
+    if (normalizedFilePath.includes('src/app/_components')) {
+      continue;
+    }
+
     let fileContent = readFileSync(absolutePath, 'utf-8');
+    // Dynamic components driven by CMS data do not rewrite source code on disk
+    if (fileContent.includes('cmsHero') || fileContent.includes('cmsData') || fileContent.includes('cmsContent')) {
+      continue;
+    }
+
     let contentChanged = false;
     let freshParsedSec = null;
 
@@ -349,6 +360,8 @@ export function updatePageFiles(sections) {
       const { value, originalValue, type, isImport, varName, isInline } = field;
 
       if (originalValue === undefined || originalValue === null) continue;
+      // If user hasn't edited the field, skip it to prevent accidental rewrites
+      if (value === originalValue) continue;
 
       // Check current value on disk. If it's already equal to value, skip!
       const freshVal = getFreshOriginalValue(fieldKey);
@@ -358,6 +371,11 @@ export function updatePageFiles(sections) {
 
       if (type === 'image') {
         if (isImport && varName) {
+          // Only replace if value is a valid URL or path (http://, https://, or /)
+          const isValidUrl = typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://') || value.startsWith('/'));
+          if (!isValidUrl) {
+            continue;
+          }
           // Replace standard import with a constant declaration
           const importRegex = new RegExp(`import\\s+${varName}\\s+from\\s+['"][^'"]+['"];?`, 'g');
           if (importRegex.test(fileContent)) {

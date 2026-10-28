@@ -663,7 +663,7 @@ export default function ContentEditorClient({ initialContent, routeId, routePath
                            focus:border-[#084032] focus:ring-2 focus:ring-[#00a63e] focus:outline-none transition ${!canEditContent ? 'bg-gray-50 cursor-not-allowed' : ''}`}
               />
             </div>
-            {field.value && (
+            {field.value && (field.value.startsWith('http://') || field.value.startsWith('https://') || field.value.startsWith('/')) && (
               <div className="border border-gray-200 rounded-md p-2 bg-gray-50">
                 <img
                   src={field.value}
