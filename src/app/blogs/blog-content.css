@@ -113,3 +113,158 @@
   margin-top: 0.25rem !important;
   margin-bottom: 0.25rem !important;
 }
+
+/* ==========================================================================
+   Blog Table Styling & Mobile Responsiveness
+   ========================================================================== */
+
+/* Responsive scroll wrapper */
+.blog-table-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.75rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Sleek custom scrollbar */
+.blog-table-container::-webkit-scrollbar {
+  height: 6px;
+}
+.blog-table-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+.blog-table-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.blog-table-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Base table element */
+.prose table,
+.blog-table-container table {
+  width: 100% !important;
+  min-width: 540px !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  text-align: left !important;
+  font-size: 0.9375rem !important; /* 15px */
+  line-height: 1.6 !important;
+  color: #374151 !important;
+  margin: 0 !important;
+}
+
+/* Standalone fallback if table is outside .blog-table-container */
+.prose > table,
+.prose table:not(.blog-table-container table) {
+  display: block !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.75rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Table Header */
+.prose table thead,
+.blog-table-container table thead,
+.prose table tr:first-child:has(th) {
+  background-color: #f8fafc !important;
+}
+
+.prose table th,
+.blog-table-container table th {
+  background-color: #f8fafc !important;
+  color: #084032 !important; /* Crown Excel primary green */
+  font-weight: 700 !important;
+  font-size: 0.8125rem !important; /* 13px */
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  padding: 0.875rem 1.25rem !important; /* Generous breathing room */
+  border-bottom: 2px solid #084032 !important;
+  border-right: 1px solid #e2e8f0 !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+}
+
+.prose table th:last-child,
+.blog-table-container table th:last-child {
+  border-right: none !important;
+}
+
+/* Table Body Rows */
+.prose table tbody tr,
+.blog-table-container table tbody tr,
+.prose table tr:not(:first-child) {
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+/* Zebra striping for readability */
+.prose table tbody tr:nth-child(even),
+.blog-table-container table tbody tr:nth-child(even),
+.prose table tr:nth-child(even) {
+  background-color: #fafbfc !important;
+}
+
+.prose table tbody tr:nth-child(odd),
+.blog-table-container table tbody tr:nth-child(odd),
+.prose table tr:nth-child(odd):not(:first-child) {
+  background-color: #ffffff !important;
+}
+
+/* Row Hover */
+.prose table tbody tr:hover,
+.blog-table-container table tbody tr:hover,
+.prose table tr:not(:first-child):hover {
+  background-color: #f0fdf4 !important; /* Subtle emerald hover */
+}
+
+/* Table Data Cells */
+.prose table td,
+.blog-table-container table td {
+  padding: 0.875rem 1.25rem !important; /* Generous 20px horizontal space to prevent cell text collision */
+  border-bottom: 1px solid #eef2f6 !important;
+  border-right: 1px solid #f1f5f9 !important;
+  color: #374151 !important;
+  font-size: 0.9375rem !important; /* 15px */
+  line-height: 1.625 !important;
+  vertical-align: top !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.prose table td:last-child,
+.blog-table-container table td:last-child {
+  border-right: none !important;
+}
+
+/* First Column Emphasis (Feature / Spec key column) */
+.prose table td:first-child,
+.blog-table-container table td:first-child {
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  min-width: 130px !important;
+}
+
+/* Remove bottom border on last row */
+.prose table tbody tr:last-child td,
+.blog-table-container table tbody tr:last-child td,
+.prose table tr:last-child td {
+  border-bottom: none !important;
+}
+

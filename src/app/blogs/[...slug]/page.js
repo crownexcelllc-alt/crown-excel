@@ -8,6 +8,19 @@ import '../blog-content.css';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+/**
+ * Wraps un-wrapped HTML tables in a responsive, scrollable container
+ * so tables never overflow the viewport on mobile or small screens.
+ */
+function formatBlogContent(html) {
+  if (!html || typeof html !== 'string') return '';
+  if (html.includes('blog-table-container')) return html;
+  return html.replace(
+    /(<table[\s\S]*?<\/table>)/gi,
+    '<div class="blog-table-container">$1</div>'
+  );
+}
+
 // Dynamic SEO Metadata Generator
 export async function generateMetadata({ params }) {
   const rawParams = await params;
@@ -243,7 +256,7 @@ export default async function BlogDetailsPage({ params }) {
                 direction: 'left',
                 textAlign: 'left'
               }}
-              dangerouslySetInnerHTML={{ __html: blog.content }}
+              dangerouslySetInnerHTML={{ __html: formatBlogContent(blog.content) }}
             />
           </article>
 

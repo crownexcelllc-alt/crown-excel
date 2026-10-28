@@ -106,3 +106,80 @@
 .prose li, [contenteditable].prose li {
   margin: 0.25rem 0 !important;
 }
+
+/* ==========================================================================
+   Blog Table Styling in Rich Text Editor
+   ========================================================================== */
+
+.prose table, [contenteditable].prose table {
+  width: 100% !important;
+  min-width: 500px !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  text-align: left !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+  color: #374151 !important;
+  margin: 1.5rem 0 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 0.5rem !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+  display: table !important;
+}
+
+.prose table th, [contenteditable].prose table th {
+  background-color: #f8fafc !important;
+  color: #084032 !important;
+  font-weight: 700 !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 2px solid #084032 !important;
+  border-right: 1px solid #e2e8f0 !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+}
+
+.prose table th:last-child, [contenteditable].prose table th:last-child {
+  border-right: none !important;
+}
+
+.prose table td, [contenteditable].prose table td {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid #eef2f6 !important;
+  border-right: 1px solid #f1f5f9 !important;
+  color: #374151 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.625 !important;
+  vertical-align: top !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.prose table td:last-child, [contenteditable].prose table td:last-child {
+  border-right: none !important;
+}
+
+.prose table td:first-child, [contenteditable].prose table td:first-child {
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  min-width: 120px !important;
+}
+
+.prose table tbody tr:nth-child(even), [contenteditable].prose table tbody tr:nth-child(even),
+.prose table tr:nth-child(even) {
+  background-color: #fafbfc !important;
+}
+
+.prose table tbody tr:hover, [contenteditable].prose table tbody tr:hover,
+.prose table tr:not(:first-child):hover {
+  background-color: #f0fdf4 !important;
+}
+
+.prose table tbody tr:last-child td, [contenteditable].prose table tbody tr:last-child td,
+.prose table tr:last-child td {
+  border-bottom: none !important;
+}
+
