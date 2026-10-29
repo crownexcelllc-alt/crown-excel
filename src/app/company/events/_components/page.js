@@ -86,18 +86,20 @@ function Events() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Professional Header */}
-      <div className="bg-gradient-to-r from-[#084032] to-[#16806b] py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight">
-              Our Events
-            </h1>
-            <div className="w-24 h-1 bg-[#61ce70] mx-auto mb-6"></div>
-            <p className="text-xl text-white/90 font-muli max-w-2xl mx-auto">
-              Discover our upcoming events, conferences, and community initiatives that shape the future of financial services
-            </p>
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section className="relative w-full max-w-[1536px] mx-auto bg-[#0B4E3E] py-16 overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <h1 className="text-5xl md:text-6xl font-bold text-white font-montserrat mb-4 tracking-tight">
+                Our Events
+              </h1>
+              <div className="w-24 h-1 bg-[#61ce70] mx-auto mb-6"></div>
+              <p className="text-xl text-white/90 font-muli max-w-2xl mx-auto">
+                Discover our upcoming events, conferences, and community initiatives that shape the future of financial services
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
 
       {/* Main Content */}

@@ -31,22 +31,23 @@ export default async function ClientBlogsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-800">
+    <main className="min-h-screen bg-[#FFFFFF] text-gray-800">
       {/* Premium Hero Banner */}
-      <section className="bg-gradient-to-br from-[#084032] via-[#0b5c48] to-[#04241c] text-white pt-36 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(74,222,128,0.1),transparent)] pointer-events-none" />
-        <div className="max-w-6xl mx-auto text-center relative z-10 space-y-4">
-          <span className="inline-block px-4 py-1.5 bg-[#4ade80]/10 border border-[#4ade80]/30 text-[#4ade80] rounded-full text-xs font-bold uppercase tracking-wider">
-            Our Insights
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
-            The Crown Excel Blog
-          </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-            Expert opinions, technical guides, and business insights on IT hardware, infrastructure, cloud systems, and technology solutions.
-          </p>
-        </div>
-      </section>
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section className="relative w-full max-w-[1536px] mx-auto bg-[#0F5B42] text-white pt-24 sm:pt-28 md:pt-36 pb-16 md:pb-20 px-6 overflow-hidden">
+          <div className="max-w-6xl mx-auto text-center relative z-10 space-y-4">
+            <span className="inline-block px-4 py-1.5 bg-[#4ade80]/15 border border-[#4ade80]/30 text-[#4ade80] rounded-full text-xs font-bold uppercase tracking-wider">
+              Our Insights
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto">
+              The Crown Excel Blog
+            </h1>
+            <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              Expert opinions, technical guides, and business insights on IT hardware, infrastructure, cloud systems, and technology solutions.
+            </p>
+          </div>
+        </section>
+      </div>
 
       {/* Real-time Client-side Blog Listing & Sidebar Widgets */}
       <BlogListingClient initialBlogs={blogs} />
