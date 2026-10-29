@@ -348,9 +348,15 @@ export default function LaptopProductsGridSection({
 
   const filteredProducts = useMemo(() => {
     return LAPTOP_PRODUCTS.filter((prod) => {
+      // Exclude SKU: DELL-P3581-PRO from 'All' category filter so it only appears under 'Workstations'
+      const isDellPrecision =
+        prod.barcode === 'DELL-P3581-PRO' || prod.id === 'WS-DELL-PRECISION';
+
       const matchCat =
-        activeCategory === 'All' ||
-        prod.category.toLowerCase() === activeCategory.toLowerCase();
+        activeCategory === 'All'
+          ? !isDellPrecision
+          : prod.category.toLowerCase() === activeCategory.toLowerCase();
+
       const matchSearch =
         !searchQuery ||
         prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
