@@ -367,6 +367,42 @@ export default function LaptopProductsGridSection({
     });
   }, [LAPTOP_PRODUCTS, activeCategory, searchQuery]);
 
+  const WHATSAPP_PHONE = '971505033860';
+
+  const getProductWhatsAppMessage = (prod) => {
+    return `Hello Crown Excel, I am inquiring about wholesale pricing for ${prod.name} (Barcode: ${prod.barcode}).`;
+  };
+
+  const getProductWhatsAppUrl = (prod) => {
+    const msg = getProductWhatsAppMessage(prod);
+    if (typeof getWhatsAppUrl === 'function') {
+      return getWhatsAppUrl(msg);
+    }
+    const encoded = encodeURIComponent(msg);
+    return `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`;
+  };
+
+  const handleProductWhatsAppClick = (e, prod) => {
+    const msg = getProductWhatsAppMessage(prod);
+    if (typeof handleWhatsAppRedirect === 'function') {
+      handleWhatsAppRedirect(e, msg);
+      return;
+    }
+    const encoded = encodeURIComponent(msg);
+    const isMob =
+      typeof window !== 'undefined' &&
+      (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || '') ||
+        window.innerWidth < 768);
+    const targetUrl = isMob
+      ? `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`
+      : `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`;
+    if (e && e.currentTarget) e.currentTarget.href = targetUrl;
+    if (typeof window !== 'undefined') {
+      const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      if (win && e && e.preventDefault) e.preventDefault();
+    }
+  };
+
   return (
     <div className="relative w-full bg-[#FFFFFF] overflow-hidden">
       <section id="laptop-products-grid" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-12 sm:py-16 lg:py-18 xl:py-20 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
@@ -504,14 +540,12 @@ export default function LaptopProductsGridSection({
                   </button>
 
                   <a
-                    href={getWhatsAppUrl(`Hello Crown Excel, I am inquiring about wholesale pricing for: ${product.name} (SKU: ${product.barcode})`)}
-                    onClick={(e) =>
-                      handleWhatsAppRedirect(
-                        e,
-                        `Hello Crown Excel, I am inquiring about wholesale pricing for: ${product.name} (SKU: ${product.barcode})`
-                      )
-                    }
-                    title="WhatsApp Inquire"
+                    href={getProductWhatsAppUrl(product)}
+                    onClick={(e) => handleProductWhatsAppClick(e, product)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Inquire about ${product.name} (Barcode: ${product.barcode}) on WhatsApp`}
+                    aria-label={`Inquire about ${product.name} (Barcode: ${product.barcode}) on WhatsApp`}
                     className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 flex items-center justify-center transition-all duration-200 cursor-pointer flex-shrink-0"
                   >
                     <FaWhatsapp className="w-4 h-4" />

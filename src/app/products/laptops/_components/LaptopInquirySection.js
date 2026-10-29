@@ -11,6 +11,38 @@ export default function LaptopInquirySection({
 }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
+  const WHATSAPP_PHONE = '971505033860';
+  const inquiryWhatsAppMessage =
+    'Hello Crown Excel, I would like to request wholesale laptop availability and the latest price sheet.';
+
+  const getInquiryWhatsAppUrl = () => {
+    if (typeof getWhatsAppUrl === 'function') {
+      return getWhatsAppUrl(inquiryWhatsAppMessage);
+    }
+    const encoded = encodeURIComponent(inquiryWhatsAppMessage);
+    return `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`;
+  };
+
+  const handleInquiryWhatsAppClick = (e) => {
+    if (typeof handleWhatsAppRedirect === 'function') {
+      handleWhatsAppRedirect(e, inquiryWhatsAppMessage);
+      return;
+    }
+    const encoded = encodeURIComponent(inquiryWhatsAppMessage);
+    const isMob =
+      typeof window !== 'undefined' &&
+      (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || '') ||
+        window.innerWidth < 768);
+    const targetUrl = isMob
+      ? `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`
+      : `https://web.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encoded}&type=phone_number&app_absent=0`;
+    if (e && e.currentTarget) e.currentTarget.href = targetUrl;
+    if (typeof window !== 'undefined') {
+      const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      if (win && e && e.preventDefault) e.preventDefault();
+    }
+  };
+
   const faqs = [
     {
       q: 'What is the Minimum Order Quantity (MOQ) for wholesale laptop pricing?',
@@ -80,13 +112,11 @@ export default function LaptopInquirySection({
                 </button>
 
                 <a
-                  href={getWhatsAppUrl('Hello Crown Excel, I would like to request wholesale laptop availability and the latest price sheet.')}
-                  onClick={(e) =>
-                    handleWhatsAppRedirect(
-                      e,
-                      'Hello Crown Excel, I would like to request wholesale laptop availability and the latest price sheet.'
-                    )
-                  }
+                  href={getInquiryWhatsAppUrl()}
+                  onClick={handleInquiryWhatsAppClick}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat on WhatsApp with Crown Excel at +971 50 503 3860"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold text-xs sm:text-sm backdrop-blur-md transition-all duration-200 cursor-pointer transform hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   <FaWhatsapp className="w-4.5 h-4.5 text-emerald-400" />
