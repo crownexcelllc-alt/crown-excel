@@ -69,16 +69,16 @@ export default function WholesaleWorldwideAreasSection({
         </div>
 
         {/* 16 Active Markets Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-4.5 lg:gap-5 items-stretch mb-12 sm:mb-14">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 xs:gap-3 sm:gap-4.5 lg:gap-5 items-stretch mb-12 sm:mb-14">
           {worldwideServiceMarkets.map((country) => (
             <div
               key={country.name}
-              className="bg-white rounded-2xl p-4 sm:p-5 border border-gray-300 hover:border-[#147A5F] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
+              className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 border border-gray-300 hover:border-[#147A5F] shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group"
             >
               <div>
                 {/* Top Row: Flag Alongside Country Name (No Badges) */}
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="relative w-8 h-5.5 rounded-[4px] overflow-hidden border border-gray-200/90 shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
+                  <div className="relative w-6 h-4 sm:w-8 sm:h-5.5 rounded-[3px] sm:rounded-[4px] overflow-hidden border border-gray-200/90 shadow-2xs shrink-0 group-hover:scale-105 transition-transform duration-300">
                     <Image
                       src={`/flags/${country.code}.svg`}
                       alt={`${country.name} flag`}
@@ -88,7 +88,7 @@ export default function WholesaleWorldwideAreasSection({
                     />
                   </div>
                   <h3
-                    className="font-montserrat font-bold text-gray-900 text-[14.5px] sm:text-[15px] leading-snug group-hover:text-[#147A5F] transition-colors"
+                    className="font-montserrat font-bold text-gray-900 text-[13px] sm:text-[15px] leading-tight sm:leading-snug group-hover:text-[#147A5F] transition-colors"
                     title={country.name}
                   >
                     {country.name}
@@ -96,15 +96,15 @@ export default function WholesaleWorldwideAreasSection({
                 </div>
 
                 {/* Delivery Hub Cities */}
-                <p className="text-[12.5px] text-gray-500 font-inter leading-relaxed mb-3.5" title={country.hub}>
+                <p className="text-[11px] sm:text-[12.5px] text-gray-500 font-inter leading-relaxed mb-2.5 sm:mb-3.5" title={country.hub}>
                   {country.hub}
                 </p>
               </div>
 
               {/* Footer: Freight Route Badge (#084032) */}
-              <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-end">
+              <div className="mt-auto pt-2.5 sm:pt-3 border-t border-gray-100 flex items-center justify-end">
                 <span
-                  className="text-white font-medium text-[10.5px] bg-[#084032] px-2.5 py-1 rounded border border-[#084032] truncate min-w-0 text-right"
+                  className="text-white font-medium text-[9.5px] sm:text-[10.5px] bg-[#084032] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded border border-[#084032] truncate min-w-0 text-right"
                   title={country.freight}
                 >
                   {country.freight}

@@ -55,7 +55,7 @@ export default function WholesaleProductsSection({
 }) {
   return (
     <section className="py-12 sm:py-16 bg-[#F8FAFC] border-t border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
           <h2
             className="font-anton font-normal uppercase text-center text-3xl sm:text-4xl lg:text-[46px] tracking-[-0.035em] leading-[1.05]"
@@ -68,7 +68,8 @@ export default function WholesaleProductsSection({
             }}
           >
             <span className="text-[#171717] block not-italic">
-              Power Your Business With Crown Excel
+              <span className="block sm:inline">Power Your Business With</span>{' '}
+              <span className="block sm:inline">Crown Excel</span>
             </span>
             <span
               className="text-[#147A5F] italic block mt-1 sm:mt-1.5"
@@ -82,8 +83,8 @@ export default function WholesaleProductsSection({
           </p>
         </div>
 
-        {/* 19 Product Cards in a Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-stretch">
+        {/* 19 Product Cards in a Responsive Grid: 2 columns on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 lg:gap-6 items-stretch">
           {[
             {
               brand: 'ACER',
@@ -256,47 +257,50 @@ export default function WholesaleProductsSection({
             return (
               <div
                 key={product.barcode}
-                className="group relative bg-white p-3 sm:p-3.5 rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden min-h-[350px] sm:min-h-[375px] lg:min-h-[395px]"
+                className="group relative bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-[#147A5F] shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden min-h-[295px] sm:min-h-[375px] lg:min-h-[395px]"
               >
                 {/* Product Image Showcase on Pure White Background */}
-                <div className="relative w-full h-44 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden rounded-xl">
+                <div className="relative w-full h-28 xs:h-32 sm:h-48 lg:h-52 bg-white flex items-center justify-center overflow-hidden rounded-lg sm:rounded-xl">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
                     priority={index < 4}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className={`object-contain ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-2'
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                    className={`object-contain ${product.imageClassName ? `p-0 ${product.imageClassName}` : 'p-1 sm:p-2'
                       }`}
                   />
                 </div>
 
                 {/* Separate container below the image for product text, barcode, and buttons */}
-                <div className="w-full flex flex-col flex-grow justify-end pt-2 pb-1 px-1 sm:px-1.5">
+                <div className="w-full flex flex-col flex-grow justify-end pt-2 pb-0.5 sm:pb-1 px-0.5 sm:px-1.5">
                   {/* Content: Exactly 2-Line Product Name & Plain Barcode Text */}
                   <div className="w-full flex flex-col items-center text-center">
                     <h3
-                      className="w-full font-montserrat font-bold text-[14px] sm:text-[15px] text-[#171717] leading-[1.35] h-[40px] sm:h-[42px] mb-1.5 text-center overflow-hidden flex flex-col justify-center"
+                      className="w-full font-montserrat font-bold text-[11.5px] xs:text-[13px] sm:text-[15px] text-[#171717] leading-[1.3] sm:leading-[1.35] h-[32px] xs:h-[35px] sm:h-[42px] mb-1 sm:mb-1.5 text-center overflow-hidden flex flex-col justify-center"
                       title={product.particular}
                     >
                       <span className="block truncate">{line1}</span>
                       <span className="block truncate">{line2}</span>
                     </h3>
 
-                    <p className="w-full font-mono text-[12px] text-gray-500 tracking-wider mb-2.5 text-center">
+                    <p className="w-full font-mono text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-gray-500 tracking-tight sm:tracking-wider mb-2 sm:mb-2.5 text-center truncate">
                       {product.barcode}
                     </p>
                   </div>
 
                   {/* Action Buttons: Inquire Now & WhatsApp Inline Side-by-Side */}
-                  <div className="w-full grid grid-cols-2 gap-2">
+                  <div className="w-full grid grid-cols-2 gap-1 xs:gap-1.5 sm:gap-2">
                     <button
                       type="button"
                       onClick={() => openProductInquiryModal(product)}
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      className="w-full py-1.5 sm:py-2.5 px-1 sm:px-2 bg-[#147A5F] hover:bg-[#0f5f4a] text-white text-[9px] xs:text-[10px] sm:text-xs font-bold font-montserrat tracking-tight sm:tracking-wide uppercase flex items-center justify-center gap-0.5 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-md sm:rounded-lg whitespace-nowrap"
                     >
-                      <span>Inquire Now</span>
-                      <ArrowRight className="w-3 h-3 shrink-0" />
+                      <span>
+                        <span className="hidden xs:inline">Inquire Now</span>
+                        <span className="xs:hidden">Inquire</span>
+                      </span>
+                      <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
                     </button>
 
                     <a
@@ -304,9 +308,9 @@ export default function WholesaleProductsSection({
                       onClick={(e) => handleWhatsAppRedirect(e, `Hello Crown Excel, I am inquiring about wholesale pricing for ${product.name} (Barcode: ${product.barcode}).`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-2.5 px-1.5 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[11px] sm:text-xs font-bold font-montserrat tracking-wide uppercase flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-lg whitespace-nowrap"
+                      className="w-full py-1.5 sm:py-2.5 px-1 sm:px-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[9px] xs:text-[10px] sm:text-xs font-bold font-montserrat tracking-tight sm:tracking-wide uppercase flex items-center justify-center gap-0.5 sm:gap-1.5 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md active:scale-[0.99] rounded-md sm:rounded-lg whitespace-nowrap"
                     >
-                      <FaWhatsapp className="w-3.5 h-3.5 shrink-0" />
+                      <FaWhatsapp className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 shrink-0" />
                       <span>WhatsApp</span>
                     </a>
                   </div>

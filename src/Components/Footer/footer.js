@@ -126,7 +126,7 @@ const Footer = () => {
       {/* Partnership & Business Section ("Become Our Partner") */}
       <div className="w-full bg-[#FFFFFF] overflow-hidden">
         <section id="become-partner" className="become-partner-section relative w-full max-w-[1536px] mx-auto bg-[#084032] border-b border-[#4ade80]/20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-16">
             {/* Desktop View */}
             <div className="hidden lg:flex justify-between items-stretch">
             {topButtons.map((item, index) => (
@@ -165,16 +165,16 @@ const Footer = () => {
 
           {/* Mobile & Tablet View */}
           <div className="lg:hidden">
-            <div className="flex justify-between items-stretch min-h-[280px] px-2">
+            <div className="flex justify-between items-stretch min-h-[190px] sm:min-h-[240px] lg:min-h-[280px] px-2">
               {topButtons.map((item, index) => (
                 <div key={index} className="flex-1 text-center relative group max-w-[33%]">
                   {/* Divider */}
                   {index < topButtons.length - 1 && (
-                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-40 bg-[#4ade80]/30"></div>
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-28 sm:h-36 bg-[#4ade80]/30"></div>
                   )}
 
-                  <div className="px-1 py-8 flex flex-col justify-center items-center h-full">
-                    <div className="w-16 h-16 mx-auto mb-4 p-2 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
+                  <div className="px-1 py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center h-full">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 p-2 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
                       <Image
                         src={item.imgSrc}
                         alt={item.title}
@@ -184,7 +184,7 @@ const Footer = () => {
                       />
                     </div>
 
-                    <h3 className="text-xs font-semibold mb-4 text-white leading-tight text-center">
+                    <h3 className="text-xs font-semibold mb-3 sm:mb-4 text-white leading-tight text-center">
                       {item.title}
                     </h3>
 

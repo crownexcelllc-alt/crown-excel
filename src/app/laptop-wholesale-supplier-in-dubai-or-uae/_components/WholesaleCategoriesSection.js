@@ -31,10 +31,10 @@ export default function WholesaleCategoriesSection() {
                 priority
               />
             </div>
-            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight">
+            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight text-center md:text-left">
               Gaming Laptops
             </h2>
-            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed">
+            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed text-center md:text-left">
               High-performance wholesale gaming laptops equipped with dedicated NVIDIA RTX graphics, multi-core processors, and high-refresh displays.
             </p>
           </div>
@@ -48,10 +48,10 @@ export default function WholesaleCategoriesSection() {
                 className="max-h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
-            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight">
+            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight text-center md:text-left">
               Business Laptops
             </h2>
-            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed">
+            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed text-center md:text-left">
               Reliable commercial and enterprise laptops engineered for productivity, all-day battery endurance, and business-grade security.
             </p>
           </div>
@@ -65,10 +65,10 @@ export default function WholesaleCategoriesSection() {
                 className="max-h-full w-auto object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
-            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight">
+            <h2 className="font-montserrat font-bold text-xl sm:text-2xl lg:text-[24px] text-[#171717] leading-tight mb-2.5 tracking-tight text-center md:text-left">
               Personal Laptops
             </h2>
-            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed">
+            <p className="font-inter text-[#4B5563] text-xs sm:text-sm lg:text-[14px] leading-relaxed text-center md:text-left">
               Everyday consumer laptops offering responsive performance, crisp displays, and portable designs for home, study, and travel.
             </p>
           </div>
