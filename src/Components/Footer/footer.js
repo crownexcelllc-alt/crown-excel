@@ -122,12 +122,13 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-[#084032] text-white">
-      {/* Partnership & Business Section */}
-      <div className="border-b border-[#4ade80]/20">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          {/* Desktop View */}
-          <div className="hidden lg:flex justify-between items-stretch">
+    <footer className="text-white">
+      {/* Partnership & Business Section ("Become Our Partner") */}
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section id="become-partner" className="become-partner-section relative w-full max-w-[1536px] mx-auto bg-[#084032] border-b border-[#4ade80]/20 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 py-16">
+            {/* Desktop View */}
+            <div className="hidden lg:flex justify-between items-stretch">
             {topButtons.map((item, index) => (
               <div key={index} className="flex-1 text-center relative group">
                 {/* Divider */}
@@ -200,11 +201,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
+    </div>
 
       {/* Main Footer Content */}
-      <div className="bg-[#003b2f]">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section id="footer-content" className="footer-content-section relative w-full max-w-[1536px] mx-auto bg-[#084032] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 py-16">
 
           {/* Desktop Layout */}
           <div className="hidden md:block">
@@ -213,16 +216,18 @@ const Footer = () => {
               {/* Company Info - Takes 4 columns */}
               <div className="">
                 <div className="mb-0">
-                  <Image
-                    src={logo}
-                    alt="Crown Excel Logo"
-                    width={180}
-                    height={90}
-                    className="object-contain mb-1"
-                  />
-                  <p className="text-gray-300 text-lg leading-relaxed mb-4">
-                    Let&apos;s Embrace Technology
-                  </p>
+                  <Link href="https://www.crownexcel.ae/" className="inline-block" aria-label="Crown Excel Homepage">
+                    <Image
+                      src={logo}
+                      alt="Crown Excel Logo"
+                      width={180}
+                      height={90}
+                      className="object-contain mb-1"
+                    />
+                    <p className="text-gray-300 text-lg leading-relaxed mb-4">
+                      Let&apos;s Embrace Technology
+                    </p>
+                  </Link>
                 </div>
 
                 {/* Social Media */}
@@ -359,14 +364,16 @@ const Footer = () => {
           <div className="md:hidden">
             {/* Logo and Company Info */}
             <div className="text-center mb-12">
-              <Image
-                src={logo}
-                alt="Crown Excel Logo"
-                width={140}
-                height={70}
-                className="mx-auto object-contain mb-4"
-              />
-              <p className="text-gray-300 text-base mb-6">Let&apos;s Embrace Technology</p>
+              <Link href="https://www.crownexcel.ae/" className="inline-block" aria-label="Crown Excel Homepage">
+                <Image
+                  src={logo}
+                  alt="Crown Excel Logo"
+                  width={140}
+                  height={70}
+                  className="mx-auto object-contain mb-4"
+                />
+                <p className="text-gray-300 text-base mb-6">Let&apos;s Embrace Technology</p>
+              </Link>
             </div>
 
             {/* Services and Company Links */}
@@ -499,28 +506,32 @@ const Footer = () => {
 
           </div>
         </div>
-      </div>
 
-      {/* Copyright Section */}
-      <div className="bg-[#003b2f] border-t border-[#4ade80]/30 py-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p className="text-gray-300 text-sm mb-4 md:mb-0">
-              (c) 2024 Crown Excel. All Rights Reserved.
-            </p>
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
-              <p className="text-gray-300">
-                Developed
-                by{' '}
-                <span className="text-[#4ade80] font-semibold hover:text-[#22c55e] transition-colors">
-                  Tech Solutionor
-                </span>
+        {/* Copyright Section */}
+        <div className="border-t border-[#4ade80]/30 py-6 bg-[#084032]">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+              <p className="text-gray-300 text-sm mb-4 md:mb-0">
+                (c) 2024 Crown Excel. All Rights Reserved.
               </p>
-
+              <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+                <p className="text-gray-300">
+                  Developed by{' '}
+                  <a
+                    href="https://techsolutionor.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#4ade80] font-semibold hover:text-[#22c55e] transition-colors"
+                  >
+                    Tech Solutionor
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+    </div>
 
       {/* Contact Form Popup */}
       <ContactFormPopup

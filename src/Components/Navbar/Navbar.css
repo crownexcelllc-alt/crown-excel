@@ -13,17 +13,50 @@ ul.hide-scrollbar {
 .navbar{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 80px;
+    justify-content: center;
+    padding: 0;
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 77.45px;
-    /* background: transparent; */
     background: linear-gradient(87deg, #2D2D2D 35%, #147D61 100%);
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .navbar-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    padding-left: 53px;
+    padding-right: 53px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .navbar-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 .navbar .logo{
     background: transparent;
@@ -238,12 +271,10 @@ ul.hide-scrollbar {
   .navbar{
     display: flex;
     align-items: center;
-    gap: 40px;
-    padding: 10px 20px;
+    padding: 0;
   }
   .nav-links{
     gap: 10px;
-
   }
   .med-screen-links{
     display: block;
@@ -255,16 +286,15 @@ ul.hide-scrollbar {
   .nav-links{
     display: none;
   }
-.button-ico{
-  display: flex;
-  /* color: black; */
-  font-size: 24px;
-}
+  .button-ico{
+    display: flex;
+    font-size: 24px;
+  }
 }
 @media (max-width: 768px) {
   .navbar{
     background: white;
-
+    padding: 0;
   }
   .nav-links{
     display: none;
@@ -274,9 +304,8 @@ ul.hide-scrollbar {
     height: 40px;
   }
   .button-ico{
-  display: none;
-
-}
+    display: none;
+  }
   .nav-button{
     display: none;
   }

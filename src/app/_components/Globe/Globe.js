@@ -4,13 +4,30 @@ import Global from '../../../Components/Images/globeimage.png'
 
 const Globe = () => {
   return (
-    <div className='flex flex-col items-center justify-center w-full   text-black relative overflow-hidden'>
-      <div className="header h-[130px] w-full bg-[#084032] flex flex-col items-center justify-center text-white">
-        <h2 className='text-[30px] text-center leading-[30px] text-[#f7a539] font-montserrat font-[600]'>We are in the Heart of Globe</h2>
-        <h3 className='text-[30px] font-montserrat font-[600]'>Dubai UAE</h3>
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      {/* Text Section with #084032 background, constrained on large screens with pure white on left & right */}
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section id="globe" className="globe-section relative w-full max-w-[1536px] mx-auto bg-[#084032] h-[130px] flex flex-col items-center justify-center text-white overflow-hidden px-4">
+          <h2 className="text-[24px] sm:text-[30px] text-center leading-[30px] text-[#f7a539] font-montserrat font-[600]">
+            We are in the Heart of Globe
+          </h2>
+          <h3 className="text-[24px] sm:text-[30px] font-montserrat font-[600] mt-1">
+            Dubai UAE
+          </h3>
+        </section>
       </div>
-      <div className="globe-image mt-5">
-        <Image className='w-[793px]' src={Global} alt='Global location map highlighting Dubai UAE' width={793} height={231}/>
+
+      {/* Map Image Section with pure white (#FFFFFF) background */}
+      <div className="w-full bg-[#FFFFFF] flex justify-center py-6 sm:py-8 overflow-hidden">
+        <div className="globe-image w-full max-w-[1536px] flex justify-center px-4">
+          <Image
+            className="w-full max-w-[793px] h-auto object-contain"
+            src={Global}
+            alt="Global location map highlighting Dubai UAE"
+            width={793}
+            height={231}
+          />
+        </div>
       </div>
     </div>
   )

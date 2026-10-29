@@ -38,10 +38,11 @@ const brands = [
 
 const Brands = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#e6f0ee] py-0">
-      <h2 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
-        BRANDS WE DEAL
-      </h2>
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section id="brands" className="brands-section relative w-full max-w-[1536px] mx-auto bg-[#E6F0EE] flex flex-col items-center justify-center py-0 overflow-hidden">
+        <h2 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
+          BRANDS WE DEAL
+        </h2>
 
       {/* Infinite marquee */}
       <div className="relative w-full overflow-hidden">
@@ -84,6 +85,7 @@ const Brands = () => {
           .marquee { animation: none; }
         }
       `}</style> */}
+      </section>
     </div>
   )
 }

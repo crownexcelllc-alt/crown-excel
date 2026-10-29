@@ -40,9 +40,10 @@ const AllProducts = ({ cmsCatalog }) => {
     const sectionHeading = cmsCatalog?.fields?.heading || cmsCatalog?.fields?.heading_2 || 'Our Product Catalog';
 
     return (
-        <div className="w-full py-8 font-montserrat">
-            {/* Filter Buttons Header - Exactly as existing design */}
-            <div className="links-tab py-6 text-center">
+        <div className="w-full bg-[#FFFFFF] overflow-hidden">
+            <section id="product-catalog" className="product-catalog-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] py-8 font-montserrat overflow-hidden">
+                {/* Filter Buttons Header - Exactly as existing design */}
+                <div className="links-tab py-6 text-center">
                 <h2 className="text-2xl font-bold text-green-900 mb-4">{sectionHeading || 'Our Product Catalog'}</h2>
                 <div className="flex flex-wrap justify-center gap-2 px-1">
                     {categories.map((item, index) => (
@@ -154,6 +155,7 @@ const AllProducts = ({ cmsCatalog }) => {
                 isProductReadOnly={Boolean(selectedProduct)}
                 requireCaptcha={false}
             />
+            </section>
         </div>
     );
 };
