@@ -65,8 +65,9 @@ export default function Testimonials() {
   }, [])
 
   return (
-    <div className="w-full mx-auto px-4 sm:px-6 lg:px-0 mt-5">
-      <div className="text-center mb-12">
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section id="testimonials" className="testimonials-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="text-center mb-12">
         <div className="inline-block bg-gradient-to-r from-[#16CA9A] to-[#084032] bg-clip-text text-transparent">
           <h2 className="text-4xl font-montserrat font-bold mb-4 text-[#084032]">What Our Clients Say</h2>
         </div>
@@ -159,6 +160,7 @@ export default function Testimonials() {
           </Link>
         </div>
       </div>
+      </section>
     </div>
   )
 }

@@ -176,12 +176,13 @@ const Contactus = () => {
 
   return (
     <>
-      <div className='contact-us h-[900px] lg:h-[700px] text-black flex flex-col items-center justify-center gap-10'>
-        <div className="header text-center">
-          <h2 className='text-[32px] lg:text-[47px] font-roboto font-bold'>Get In Touch</h2>
-          <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we&apos;ll be happy to assist you.</p>
-        </div>
-        <div className="contact-details flex flex-col md:flex-row lg:flex-row items-center justify-between w-full px-[50px]">
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section id="contact-us" className="contact-us-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] min-h-[700px] lg:h-[700px] py-12 lg:py-0 text-black flex flex-col items-center justify-center gap-10 overflow-hidden">
+          <div className="header text-center">
+            <h2 className='text-[32px] lg:text-[47px] font-roboto font-bold'>Get In Touch</h2>
+            <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we&apos;ll be happy to assist you.</p>
+          </div>
+          <div className="contact-details flex flex-col md:flex-row lg:flex-row items-center justify-between w-full px-4 sm:px-8 md:px-[50px] max-w-7xl mx-auto">
           <div className="contact-details-left w-full max-w-[560px] bg-[#f8f8f8] rounded shadow-2xl" style={{ padding: '20px 20px 20px 20px' }}>
             <form className='flex w-full flex-col items-stretch' onSubmit={handleFormSubmit}>
               <div className="name-email flex w-full flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-5">
@@ -317,6 +318,7 @@ const Contactus = () => {
             {renderAnimation ? <LottieAnimation /> : null}
           </div>
         </div>
+        </section>
       </div>
 
       {showCaptcha ? (

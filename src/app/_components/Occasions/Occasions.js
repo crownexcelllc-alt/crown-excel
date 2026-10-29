@@ -28,11 +28,12 @@ const occasions = [
 
 const Occasions = () => {
   return (
-    <div className="w-full flex flex-col items-center pt-12 mb-10">
-      <h2 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
-        Transforming Occasions <br /> into Great Memories
-      </h2>
-      <div className={`grid gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35 ${occasions.length === 1 ? 'grid-cols-1' : occasions.length === 2 ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section id="occasions" className="occasions-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] flex flex-col items-center pt-12 pb-12 overflow-hidden">
+        <h2 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
+          Transforming Occasions <br /> into Great Memories
+        </h2>
+        <div className={`grid gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35 ${occasions.length === 1 ? 'grid-cols-1' : occasions.length === 2 ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
         {occasions.map((item, idx) => (
           <div
             key={idx}
@@ -88,6 +89,7 @@ const Occasions = () => {
           </div>
         ))}
       </div>
+      </section>
     </div>
   )
 }

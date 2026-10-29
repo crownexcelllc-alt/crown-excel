@@ -156,13 +156,13 @@ export default function BlogsListClient({ initialData = [], apiBase = '' }) {
                     </div>
                     <div className="truncate">
                       <Link
-                        href={`/blogs/${blog.slug}`}
+                        href={`/blogs/${(blog.slug || '').replace(/^\/+|\/+$/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs text-emerald-700 hover:text-emerald-900 hover:underline font-mono inline-flex items-center gap-1"
                         title="View published article"
                       >
-                        /blogs/{blog.slug}
+                        /blogs/{(blog.slug || '').replace(/^\/+|\/+$/g, '')}
                         <span className="text-[10px]">↗</span>
                       </Link>
                     </div>
@@ -228,7 +228,7 @@ export default function BlogsListClient({ initialData = [], apiBase = '' }) {
                   <td className="px-4 py-3 align-middle text-right">
                     <div className="flex items-center justify-end gap-2">
                       <Link
-                        href={`/blogs/${blog.slug}`}
+                        href={`/blogs/${(blog.slug || '').replace(/^\/+|\/+$/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-2.5 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded text-xs font-semibold transition-all inline-flex items-center gap-0.5"

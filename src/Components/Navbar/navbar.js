@@ -203,8 +203,9 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar font-muli px-20 py-2 overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full flex items-center justify-between z-50">
-      <div className="logo hidden md:flex">
+    <div className="navbar font-muli overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full z-50">
+      <div className="navbar-container">
+        <div className="logo hidden md:flex">
         <Link href="/">
           <img
             src={logo.src}
@@ -587,6 +588,7 @@ function Navbar() {
       >
         <FaBarsStaggered className='font-extrabold text-[30px] text-green-950' />
       </button>
+      </div>
       {/* Mobile NavLinks Drawer (slide in from left or right, smooth open/close) */}
       {mobileMenuShown && <div className={`mobile-navbar fixed inset-0 z-50 flex flex-col md:hidden pointer-events-auto`}>
          {/* Overlay to prevent scrolling behind and close on click */}
