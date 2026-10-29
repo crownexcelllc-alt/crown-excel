@@ -369,17 +369,17 @@ export default function LaptopProductsGridSection({
 
   return (
     <div className="relative w-full bg-[#FFFFFF] overflow-hidden">
-      <section id="laptop-products-grid" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24 xl:py-28 2xl:py-32 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
+      <section id="laptop-products-grid" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-12 sm:py-16 lg:py-18 xl:py-20 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
         <div className="relative z-10 w-full">
           
           {/* Section Header */}
-          <div className="text-center max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto mb-10 sm:mb-12 xl:mb-16">
-            <span className="text-xs sm:text-sm xl:text-base font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 xl:mb-4 block font-montserrat">
+          <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-8 sm:mb-10 xl:mb-12">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-2.5 block font-montserrat">
               READY WAREHOUSE STOCK IN DUBAI
             </span>
 
             <h2
-              className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] tracking-[-0.035em] leading-[1.08] xl:leading-[1.05] text-[#171717]"
+              className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-[#171717]"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
               <span className="block not-italic">Available Wholesale Laptop Models</span>
@@ -388,13 +388,13 @@ export default function LaptopProductsGridSection({
               </span>
             </h2>
 
-            <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg xl:text-xl leading-relaxed mt-4 xl:mt-5 max-w-2xl sm:max-w-3xl xl:max-w-4xl mx-auto font-normal text-pretty">
+            <p className="font-jakarta text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto font-normal text-pretty">
               Browse our current catalog of factory-sealed laptops available for immediate bulk dispatch across Dubai, the UAE, and GCC export hubs. Filter by series or search by SKU barcode.
             </p>
           </div>
 
           {/* Filter Tabs & Search Controls */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 sm:mb-10 xl:mb-12 font-jakarta">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 font-jakarta">
             {/* Category Filter Pills */}
             <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
               {categories.map((cat) => {
@@ -408,7 +408,7 @@ export default function LaptopProductsGridSection({
                         onSelectCategory(cat);
                       }
                     }}
-                    className={`px-4 py-2 xl:px-5 xl:py-2.5 rounded-xl xl:rounded-2xl text-xs sm:text-sm xl:text-[15px] font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                    className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                       isActive
                         ? 'bg-[#147A5F] text-white shadow-xs'
                         : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -421,71 +421,71 @@ export default function LaptopProductsGridSection({
             </div>
 
             {/* Search Input Box */}
-            <div className="relative w-full md:w-72 xl:w-80">
-              <Search className="w-4 h-4 xl:w-5 xl:h-5 text-gray-400 absolute left-3.5 xl:left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <div className="relative w-full md:w-64 xl:w-72">
+              <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by model, SKU or CPU..."
-                className="w-full pl-10 xl:pl-12 pr-4 py-2.5 xl:py-3 rounded-xl xl:rounded-2xl bg-white border border-gray-200 text-xs sm:text-sm xl:text-[15px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#147A5F] focus:ring-1 focus:ring-[#147A5F] transition-all shadow-2xs"
+                className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#147A5F] focus:ring-1 focus:ring-[#147A5F] transition-all shadow-2xs"
               />
             </div>
           </div>
 
           {/* Product Count Indicator */}
-          <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 font-jakarta mb-6 xl:mb-8">
+          <div className="flex items-center justify-between text-xs text-gray-500 font-jakarta mb-5 sm:mb-6">
             <span>Showing <strong className="text-gray-900">{filteredProducts.length}</strong> available laptop configurations</span>
             <span>MOQ: 5-10 units for wholesale pricing</span>
           </div>
 
           {/* Product Cards Responsive Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 xl:gap-7 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 items-stretch">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-2xl xl:rounded-3xl border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                className="bg-white rounded-2xl border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
               >
                 <div>
                   {/* Product Image Canvas */}
-                  <div className="relative w-full h-44 sm:h-48 xl:h-52 p-4 flex items-center justify-center bg-gradient-to-b from-gray-50/50 to-white overflow-hidden">
+                  <div className="relative w-full h-40 sm:h-44 p-3.5 flex items-center justify-center bg-gradient-to-b from-gray-50/50 to-white overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={320}
-                      height={220}
+                      width={300}
+                      height={200}
                       className="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
                   {/* Product Details */}
-                  <div className="p-4 sm:p-5 xl:p-6 pt-2 xl:pt-3">
+                  <div className="p-4 pt-2">
                     {/* SKU Barcode Pill */}
-                    <div className="inline-block px-2 xl:px-2.5 py-0.5 xl:py-1 rounded-md bg-gray-100 text-gray-600 text-[11px] xl:text-xs font-mono mb-2 xl:mb-2.5">
+                    <div className="inline-block px-2 py-0.5 rounded bg-gray-100 text-gray-600 text-[10px] sm:text-[11px] font-mono mb-1.5">
                       SKU: {product.barcode}
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold font-montserrat text-[#171717] text-sm sm:text-[15px] xl:text-base leading-snug mb-3 line-clamp-2 group-hover:text-[#147A5F] transition-colors">
+                    <h3 className="font-bold font-montserrat text-[#171717] text-xs sm:text-sm leading-snug mb-2.5 line-clamp-2 group-hover:text-[#147A5F] transition-colors">
                       {product.name}
                     </h3>
 
                     {/* Key Specs Pills */}
-                    <div className="space-y-1.5 xl:space-y-2 text-xs xl:text-[13px] text-gray-600 font-jakarta border-t border-gray-100 pt-3 xl:pt-3.5 mb-2">
-                      <div className="flex items-center gap-2">
-                        <Cpu className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                    <div className="space-y-1 text-[11px] sm:text-xs text-gray-600 font-jakarta border-t border-gray-100 pt-2.5 mb-2">
+                      <div className="flex items-center gap-1.5">
+                        <Cpu className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
                         <span className="truncate">{product.specs.cpu}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Layers className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                      <div className="flex items-center gap-1.5">
+                        <Layers className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
                         <span className="truncate">{product.specs.ram}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <HardDrive className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                      <div className="flex items-center gap-1.5">
+                        <HardDrive className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
                         <span className="truncate">{product.specs.storage}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Monitor className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                      <div className="flex items-center gap-1.5">
+                        <Monitor className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
                         <span className="truncate">{product.specs.display}</span>
                       </div>
                     </div>
@@ -493,13 +493,13 @@ export default function LaptopProductsGridSection({
                 </div>
 
                 {/* Card Footer CTAs: Inquire Now Modal + WhatsApp */}
-                <div className="p-4 xl:p-5 pt-0 xl:pt-0 flex items-center gap-2 xl:gap-2.5 font-jakarta">
+                <div className="p-4 pt-0 flex items-center gap-2 font-jakarta">
                   <button
                     type="button"
                     onClick={() => openProductInquiryModal({ name: product.name, barcode: product.barcode })}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 xl:py-3 px-3 xl:px-4 rounded-xl xl:rounded-2xl bg-[#147A5F] hover:bg-[#0f604b] text-white text-xs xl:text-sm font-bold transition-all duration-200 cursor-pointer shadow-2xs active:scale-[0.98]"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#147A5F] hover:bg-[#0f604b] text-white text-xs font-bold transition-all duration-200 cursor-pointer shadow-2xs active:scale-[0.98]"
                   >
-                    <Send className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
+                    <Send className="w-3.5 h-3.5" />
                     <span>Inquire Now</span>
                   </button>
 
@@ -512,9 +512,9 @@ export default function LaptopProductsGridSection({
                       )
                     }
                     title="WhatsApp Inquire"
-                    className="w-10 h-10 xl:w-11 xl:h-11 rounded-xl xl:rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 flex items-center justify-center transition-all duration-200 cursor-pointer flex-shrink-0"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 flex items-center justify-center transition-all duration-200 cursor-pointer flex-shrink-0"
                   >
-                    <FaWhatsapp className="w-4 h-4 xl:w-5 xl:h-5" />
+                    <FaWhatsapp className="w-4 h-4" />
                   </a>
                 </div>
               </div>
