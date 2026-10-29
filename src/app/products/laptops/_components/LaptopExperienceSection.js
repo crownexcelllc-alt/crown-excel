@@ -35,8 +35,8 @@ export default function LaptopExperienceSection() {
       description: 'Pioneering IT hardware distribution across UAE & GCC since 2010.',
     },
     {
-      value: '50,000+',
-      label: 'Laptops Delivered',
+      value: '200M+',
+      label: 'Orders Delivered',
       description: 'Trusted by corporations, government entities, and retail chains.',
     },
     {
