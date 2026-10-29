@@ -329,7 +329,7 @@ function Navbar() {
                               <Link
                                 href={subItem.href}
                                 onClick={() => { setHoveredIndex(null); setOpenDropdownIndex(null); }}
-                                className={`flex items-start p-2 gap-2 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
+                                className={`flex items-start p-2 gap-2 ${pathname === subItem.href && subItem.href !== '/products/laptops' ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
                               >
                                 <div className="flex-shrink-0">
                                   <div className="w-10 h-10 flex items-center justify-center bg-[#f1f5f9] rounded-lg group-hover:bg-[#084032]">
@@ -537,7 +537,7 @@ function Navbar() {
                           <Link
                             href={subItem.href}
                             onClick={() => { setHoveredIndex(null); setOpenDropdownIndex(null); }}
-                            className={`flex items-start p-2 gap-2 ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
+                            className={`flex items-start p-2 gap-2 ${pathname === subItem.href && subItem.href !== '/products/laptops' ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : ''}`}
                           >
                             <div className="flex-shrink-0">
                               {/* Icon container with the specified color */}
@@ -694,7 +694,7 @@ function Navbar() {
                                   <Link
                                     href={subItem.href}
                                     onClick={() => closeMobileMenu()}
-                                    className={`flex items-center gap-3 p-2 rounded ${pathname === subItem.href ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : 'hover:bg-gray-50'}`}
+                                    className={`flex items-center gap-3 p-2 rounded ${pathname === subItem.href && subItem.href !== '/products/laptops' ? 'bg-[hsl(165deg_77.78%_14.12%/0.1)]' : 'hover:bg-gray-50'}`}
                                   >
                                     <div className="w-9 h-9 flex items-center justify-center bg-[#f1f5f9] rounded-md">
                                       {menuItem.icon}
