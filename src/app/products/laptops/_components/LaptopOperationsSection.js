@@ -69,17 +69,17 @@ export default function LaptopOperationsSection() {
 
   return (
     <div className="relative w-full bg-[#FFFFFF] overflow-hidden">
-      <section id="laptop-operations" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24 xl:py-28 2xl:py-32 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
+      <section id="laptop-operations" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-12 sm:py-16 lg:py-18 xl:py-20 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
         <div className="relative z-10 w-full">
           
           {/* Section Header */}
-          <div className="text-center max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto mb-14 sm:mb-16 xl:mb-20">
-            <span className="text-xs sm:text-sm xl:text-base font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 xl:mb-4 block font-montserrat">
+          <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-10 sm:mb-12 xl:mb-14">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-2.5 block font-montserrat">
               RELIABLE END-TO-END SUPPLY CHAIN EXECUTION
             </span>
 
             <h2
-              className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] tracking-[-0.035em] leading-[1.08] xl:leading-[1.05] text-[#171717]"
+              className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-[#171717]"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
               <span className="block not-italic">Laptop Handling, Delivery &amp;</span>
@@ -88,45 +88,45 @@ export default function LaptopOperationsSection() {
               </span>
             </h2>
 
-            <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg xl:text-xl leading-relaxed mt-4 xl:mt-5 max-w-3xl xl:max-w-4xl mx-auto font-normal text-pretty">
+            <p className="font-jakarta text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto font-normal text-pretty">
               Wholesale IT procurement demands precision, integrity, and swift logistical delivery. Here is how Crown Excel safeguards your orders from dock intake to customer handoff.
             </p>
           </div>
 
           {/* 3 Process Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
             {operationalPillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-6 sm:p-8 xl:p-9 2xl:p-10 border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Header Icon + Step Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-5 xl:mb-6">
-                    <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:scale-105 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
-                      {pillar.icon}
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:scale-105 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
+                      {React.cloneElement(pillar.icon, { className: 'w-6 h-6 text-[#147A5F]' })}
                     </div>
-                    <span className="text-[11px] xl:text-xs font-bold px-3 xl:px-3.5 py-1 xl:py-1.5 rounded-full bg-gray-100 text-gray-700 font-montserrat uppercase tracking-wider">
+                    <span className="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 font-montserrat uppercase tracking-wider">
                       {pillar.badge}
                     </span>
                   </div>
 
-                  <h3 className="font-anton uppercase text-2xl xl:text-3xl text-[#171717] tracking-tight leading-tight mb-1">
+                  <h3 className="font-anton uppercase text-xl sm:text-2xl text-[#171717] tracking-tight leading-tight mb-1">
                     {pillar.title}
                   </h3>
-                  <span className="text-xs sm:text-sm xl:text-[15px] font-semibold text-[#147A5F] font-jakarta block mb-6 xl:mb-8">
+                  <span className="text-xs sm:text-sm font-semibold text-[#147A5F] font-jakarta block mb-5">
                     {pillar.subtitle}
                   </span>
 
                   {/* Points List */}
-                  <div className="space-y-4 xl:space-y-5 font-jakarta">
+                  <div className="space-y-3 font-jakarta">
                     {pillar.points.map((pt, pIdx) => (
-                      <div key={pIdx} className="p-3.5 xl:p-4 rounded-xl bg-gray-50/70 border border-gray-100">
-                        <h4 className="font-bold text-xs sm:text-sm xl:text-base text-gray-900 mb-1 flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                      <div key={pIdx} className="p-3 rounded-xl bg-gray-50/70 border border-gray-100">
+                        <h4 className="font-bold text-xs sm:text-sm text-gray-900 mb-0.5 flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
                           <span>{pt.heading}</span>
                         </h4>
-                        <p className="text-xs sm:text-[13px] xl:text-sm text-gray-600 leading-relaxed pl-5">
+                        <p className="text-xs text-gray-600 leading-relaxed pl-5">
                           {pt.detail}
                         </p>
                       </div>
