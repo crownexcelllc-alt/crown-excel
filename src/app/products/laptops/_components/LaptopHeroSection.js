@@ -56,14 +56,15 @@ export default function LaptopHeroSection({
 
         <div className="relative z-10 w-full">
           {/* Hero Headline & Value Proposition */}
-          <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-7 sm:mb-9 xl:mb-11">
+          <div className="text-center max-w-5xl xl:max-w-6xl mx-auto mb-7 sm:mb-9 xl:mb-11">
             <h1 className="font-anton uppercase tracking-[-0.03em] leading-[1.08] sm:leading-[1.02] text-3xl sm:text-4xl md:text-5xl lg:text-[66px] xl:text-[74px] mb-3.5 sm:mb-4.5 xl:mb-5">
               <span className="block text-white">Direct Wholesale &amp; Bulk</span>
               <span className="block text-[#ffd900] italic">
                 Laptops &amp; Workstations
               </span>
-              <span className="block text-white text-xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] mt-2 sm:mt-2.5 font-montserrat font-bold tracking-normal uppercase">
-                For Resellers, Corporates &amp; Global Export
+              <span className="block text-white text-[13px] xs:text-[15px] sm:text-xl md:text-2xl lg:text-[30px] xl:text-[34px] mt-2 sm:mt-2.5 font-montserrat font-bold tracking-normal uppercase leading-snug">
+                <span className="block">Looking for a reliable wholesale supplier</span>
+                <span className="block mt-0.5 sm:mt-1">of Laptops &amp; Workstations</span>
               </span>
             </h1>
 
