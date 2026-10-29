@@ -54,53 +54,53 @@ export default function WholesaleWhyCrownExcelSection() {
           </div>
 
           {/* 4 Feature Items */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 relative z-10 text-center h-auto lg:h-[280px]">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 sm:gap-x-4 gap-y-8 sm:gap-10 lg:gap-0 relative z-10 text-center h-auto lg:h-[280px]">
             {/* Item 1 - Arch over top */}
-            <div className="flex flex-col items-center justify-center px-4">
+            <div className="flex flex-col items-center justify-center px-1 sm:px-4">
               <svg
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-12 h-12 text-[#147A5F] mb-4 transition-transform duration-300 hover:scale-110"
+                className="w-10 h-10 sm:w-12 sm:h-12 text-[#147A5F] mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110"
               >
                 <path d="M12 2C8.69 2 6 4.69 6 8c0 2.21 1.2 4.15 2.97 5.19L6.5 21.5l5.5-2.5 5.5 2.5-2.47-8.31C16.8 12.15 18 10.21 18 8c0-3.31-2.69-6-6-6zm0 9c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
               </svg>
-              <h3 className="text-lg sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-2">
+              <h3 className="text-[15px] sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-1.5 sm:mb-2">
                 15+ Years of<br />Expertise
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[200px] mx-auto">
+              <p className="text-[11.5px] sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[170px] sm:max-w-[200px] mx-auto">
                 Providing trusted IT support and tailored business solutions.
               </p>
             </div>
 
             {/* Item 2 - Bowl under bottom */}
-            <div className="flex flex-col items-center justify-center px-4">
-              <FaHandshake className="w-12 h-12 text-[#147A5F] mb-4 transition-transform duration-300 hover:scale-110" />
-              <h3 className="text-lg sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-2">
+            <div className="flex flex-col items-center justify-center px-1 sm:px-4">
+              <FaHandshake className="w-10 h-10 sm:w-12 sm:h-12 text-[#147A5F] mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110" />
+              <h3 className="text-[15px] sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-1.5 sm:mb-2">
                 Fast &amp; Reliable IT<br />Supply
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[200px] mx-auto">
+              <p className="text-[11.5px] sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[170px] sm:max-w-[200px] mx-auto">
                 Ensuring large stock availability and immediate product delivery.
               </p>
             </div>
 
             {/* Item 3 - Arch over top */}
-            <div className="flex flex-col items-center justify-center px-4">
-              <FaCreditCard className="w-12 h-12 text-[#147A5F] mb-4 transition-transform duration-300 hover:scale-110" />
-              <h3 className="text-lg sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-2">
+            <div className="flex flex-col items-center justify-center px-1 sm:px-4">
+              <FaCreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-[#147A5F] mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110" />
+              <h3 className="text-[15px] sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-1.5 sm:mb-2">
                 Flexible Payment<br />Options
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[200px] mx-auto">
+              <p className="text-[11.5px] sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[170px] sm:max-w-[200px] mx-auto">
                 Offering custom payment plans to fit your budget.
               </p>
             </div>
 
             {/* Item 4 - Bowl under bottom */}
-            <div className="flex flex-col items-center justify-center px-4">
-              <FaCog className="w-12 h-12 text-[#147A5F] mb-4 transition-transform duration-300 hover:scale-110" />
-              <h3 className="text-lg sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-2">
+            <div className="flex flex-col items-center justify-center px-1 sm:px-4">
+              <FaCog className="w-10 h-10 sm:w-12 sm:h-12 text-[#147A5F] mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110" />
+              <h3 className="text-[15px] sm:text-[19px] font-bold font-montserrat text-[#2D2D2D] leading-snug mb-1.5 sm:mb-2">
                 Tailored IT<br className="hidden sm:inline" /> Hardware
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[200px] mx-auto">
+              <p className="text-[11.5px] sm:text-[13px] text-[#6b7280] font-inter leading-relaxed max-w-[170px] sm:max-w-[200px] mx-auto">
                 Delivering customized hardware solutions for business needs.
               </p>
             </div>
