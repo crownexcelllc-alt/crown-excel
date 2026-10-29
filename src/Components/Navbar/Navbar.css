@@ -10,6 +10,13 @@ ul.hide-scrollbar {
   scroll-behavior: smooth;
 }
 
+.navbar-wrapper {
+    width: 100%;
+    background-color: #FFFFFF;
+    position: relative;
+    z-index: 50;
+}
+
 .navbar{
     display: flex;
     align-items: center;
@@ -19,6 +26,9 @@ ul.hide-scrollbar {
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 1536px;
+    margin-left: auto;
+    margin-right: auto;
     height: 77.45px;
     background: linear-gradient(87deg, #2D2D2D 35%, #147D61 100%);
     z-index: 100;

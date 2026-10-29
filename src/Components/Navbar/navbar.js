@@ -203,8 +203,9 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar font-muli overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible absolute w-full z-50">
-      <div className="navbar-container">
+    <header className="navbar-wrapper w-full bg-[#FFFFFF] relative z-50">
+      <div className="navbar font-muli overflow-x-hidden md:overflow-x-visible lg:overflow-x-visible relative w-full max-w-[1536px] mx-auto">
+        <div className="navbar-container">
         <div className="logo hidden md:flex">
         <Link href="/">
           <img
@@ -746,6 +747,7 @@ function Navbar() {
         </div>
          </div>}
        </div>
+    </header>
   );
 }
 
