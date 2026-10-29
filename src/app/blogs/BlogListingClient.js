@@ -90,7 +90,9 @@ export default function BlogListingClient({ initialBlogs = [] }) {
   const recentPosts = initialBlogs.slice(0, 4);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
       
       {/* Main Listing Column (9/12) */}
       <div className="lg:col-span-9 space-y-8">
@@ -350,6 +352,8 @@ export default function BlogListingClient({ initialBlogs = [] }) {
         </div>
 
       </aside>
-    </section>
+    </div>
+  </section>
+</div>
   );
 }
