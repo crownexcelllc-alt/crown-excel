@@ -69,8 +69,7 @@ export default function LaptopHeroSection({
             </h1>
 
             <p className="font-jakarta text-gray-200 text-xs sm:text-sm md:text-base xl:text-[17px] leading-relaxed max-w-2xl sm:max-w-3xl xl:max-w-4xl mx-auto font-light text-pretty">
-              Crown Excel delivers authentic factory-sealed laptops from <span className="text-white font-medium">Lenovo, HP, Dell, ASUS, Acer &amp; Apple</span>. 
-              Enjoy competitive bulk margins, massive ready warehouse stock in Dubai, and reliable same-day UAE &amp; GCC express delivery.
+              Crown Excel is among the leading wholesale suppliers of laptops in Dubai, UAE, providing 100% genuine products and the best after-sales support. We cover almost all major laptop brands, including <span className="text-white font-medium">Lenovo, HP, Dell, ASUS, Acer, and Apple</span>, with competitive bulk pricing and extensive ready stock available in our Dubai warehouse.
             </p>
           </div>
 
