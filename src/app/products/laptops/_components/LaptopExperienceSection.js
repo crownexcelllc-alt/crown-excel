@@ -79,112 +79,114 @@ export default function LaptopExperienceSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-14 sm:mb-16">
-          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 block font-montserrat">
-            PROVEN TRACK RECORD IN WHOLESALE &amp; ENTERPRISE COMPUTING
-          </span>
-
-          <h2
-            className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] tracking-[-0.035em] leading-[1.08] text-[#171717]"
-            style={{ fontFamily: "'Anton', Impact, sans-serif" }}
-          >
-            <span className="block not-italic">Crown Excel’s Experience &amp;</span>
-            <span className="block text-[#147A5F] italic mt-1">
-              Market Expertise in Laptops
+    <div className="relative w-full bg-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-white py-16 sm:py-20 lg:py-24 xl:py-28 2xl:py-32 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
+        <div className="relative z-10 w-full">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto mb-14 sm:mb-16 xl:mb-20">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 block font-montserrat">
+              PROVEN TRACK RECORD IN WHOLESALE &amp; ENTERPRISE COMPUTING
             </span>
-          </h2>
 
-          <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed mt-4 max-w-3xl mx-auto font-normal text-pretty">
-            Over the past decade and a half, Crown Excel has solidified its reputation as Dubai’s premier laptop wholesale distributor. 
-            We bridge global PC manufacturers with regional resellers, corporations, educational institutions, and international export channels.
-          </p>
-        </div>
-
-        {/* 4 Experience Metric Counters */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20">
-          {experienceMetrics.map((metric, idx) => (
-            <div
-              key={idx}
-              className="bg-gradient-to-b from-[#F8FAF9] to-white p-6 sm:p-7 rounded-2xl border border-emerald-100 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex flex-col text-center"
+            <h2
+              className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] tracking-[-0.035em] leading-[1.08] xl:leading-[1.05] text-[#171717]"
+              style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#147A5F] font-montserrat tracking-tight mb-2">
-                {metric.value}
-              </div>
-              <h3 className="font-bold font-jakarta text-[#171717] text-base sm:text-lg mb-2">
-                {metric.label}
-              </h3>
-              <p className="font-jakarta text-gray-500 text-xs sm:text-sm leading-relaxed">
-                {metric.description}
-              </p>
-            </div>
-          ))}
-        </div>
+              <span className="block not-italic">Crown Excel’s Experience &amp;</span>
+              <span className="block text-[#147A5F] italic mt-1">
+                Market Expertise in Laptops
+              </span>
+            </h2>
 
-        {/* Deep Business Expertise 4-Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16 sm:mb-20">
-          {businessCapabilities.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-7 sm:p-8 rounded-2xl bg-[#FDFDFE] border border-gray-200/80 hover:border-[#147A5F]/40 shadow-xs hover:shadow-lg transition-all duration-300 flex items-start gap-4 sm:gap-5 group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
-                {item.icon}
-              </div>
-              <div className="flex-1">
-                <h3 className="font-bold font-montserrat text-lg sm:text-xl text-[#171717] mb-2 leading-snug group-hover:text-[#147A5F] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="font-jakarta text-gray-600 text-xs sm:text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Authorized Brands We Deal In Ribbon */}
-        <div className="bg-[#101b17] rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-xl">
-          {/* Subtle gold/emerald background ambient glow */}
-          <div
-            aria-hidden="true"
-            className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
-          />
-
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 relative z-10">
-            <span className="text-[#ffd900] text-xs font-bold uppercase tracking-wider font-montserrat block mb-1">
-              AUTHORIZED HARDWARE SUPPLY
-            </span>
-            <h3 className="font-anton uppercase text-2xl sm:text-3xl text-white tracking-tight">
-              Leading Laptop Brands Available in Volume
-            </h3>
-            <p className="font-jakarta text-gray-300 text-xs sm:text-sm mt-2">
-              Authentic original stock with manufacturer global warranties and full compliance certificates.
+            <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg xl:text-xl leading-relaxed mt-4 max-w-3xl xl:max-w-4xl mx-auto font-normal text-pretty">
+              Over the past decade and a half, Crown Excel has solidified its reputation as Dubai’s premier laptop wholesale distributor. 
+              We bridge global PC manufacturers with regional resellers, corporations, educational institutions, and international export channels.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-4 sm:gap-6 items-center justify-center relative z-10">
-            {brandLogos.map((brand, idx) => (
+          {/* 4 Experience Metric Counters */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 mb-16 sm:mb-20 xl:mb-24">
+            {experienceMetrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="h-14 sm:h-16 rounded-xl bg-white/5 border border-white/10 hover:border-[#ffd900]/50 hover:bg-white/10 flex items-center justify-center p-2.5 transition-all duration-300 group"
+                className="bg-gradient-to-b from-[#F8FAF9] to-white p-6 sm:p-7 xl:p-8 rounded-2xl border border-emerald-100 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex flex-col text-center"
               >
-                <Image
-                  src={brand.image}
-                  alt={brand.name}
-                  width={80}
-                  height={45}
-                  className="max-h-8 w-auto object-contain brightness-0 invert opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-                />
+                <div className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#147A5F] font-montserrat tracking-tight mb-2">
+                  {metric.value}
+                </div>
+                <h3 className="font-bold font-jakarta text-[#171717] text-base sm:text-lg xl:text-xl mb-2">
+                  {metric.label}
+                </h3>
+                <p className="font-jakarta text-gray-500 text-xs sm:text-sm xl:text-base leading-relaxed">
+                  {metric.description}
+                </p>
               </div>
             ))}
           </div>
-        </div>
 
-      </div>
-    </section>
+          {/* Deep Business Expertise 4-Card Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 xl:gap-10 mb-16 sm:mb-20 xl:mb-24">
+            {businessCapabilities.map((item, idx) => (
+              <div
+                key={idx}
+                className="p-7 sm:p-8 xl:p-9 rounded-2xl bg-[#FDFDFE] border border-gray-200/80 hover:border-[#147A5F]/40 shadow-xs hover:shadow-lg transition-all duration-300 flex items-start gap-4 sm:gap-5 group"
+              >
+                <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
+                  {item.icon}
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold font-montserrat text-lg sm:text-xl xl:text-2xl text-[#171717] mb-2 leading-snug group-hover:text-[#147A5F] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="font-jakarta text-gray-600 text-xs sm:text-sm xl:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Authorized Brands We Deal In Ribbon */}
+          <div className="bg-[#101b17] rounded-3xl p-6 sm:p-10 lg:p-12 xl:p-14 relative overflow-hidden shadow-xl">
+            {/* Subtle gold/emerald background ambient glow */}
+            <div
+              aria-hidden="true"
+              className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
+            />
+
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 relative z-10">
+              <span className="text-[#ffd900] text-xs font-bold uppercase tracking-wider font-montserrat block mb-1">
+                AUTHORIZED HARDWARE SUPPLY
+              </span>
+              <h3 className="font-anton uppercase text-2xl sm:text-3xl xl:text-4xl text-white tracking-tight">
+                Leading Laptop Brands Available in Volume
+              </h3>
+              <p className="font-jakarta text-gray-300 text-xs sm:text-sm xl:text-base mt-2">
+                Authentic original stock with manufacturer global warranties and full compliance certificates.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-4 sm:gap-6 xl:gap-8 items-center justify-center relative z-10">
+              {brandLogos.map((brand, idx) => (
+                <div
+                  key={idx}
+                  className="h-14 sm:h-16 xl:h-20 rounded-xl bg-white/5 border border-white/10 hover:border-[#ffd900]/50 hover:bg-white/10 flex items-center justify-center p-2.5 transition-all duration-300 group"
+                >
+                  <Image
+                    src={brand.image}
+                    alt={brand.name}
+                    width={80}
+                    height={45}
+                    className="max-h-8 xl:max-h-10 w-auto object-contain brightness-0 invert opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
   );
 }

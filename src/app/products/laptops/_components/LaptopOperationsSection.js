@@ -68,75 +68,77 @@ export default function LaptopOperationsSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] border-t border-gray-200 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-14 sm:mb-16">
-          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 block font-montserrat">
-            RELIABLE END-TO-END SUPPLY CHAIN EXECUTION
-          </span>
-
-          <h2
-            className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] tracking-[-0.035em] leading-[1.08] text-[#171717]"
-            style={{ fontFamily: "'Anton', Impact, sans-serif" }}
-          >
-            <span className="block not-italic">Laptop Handling, Delivery &amp;</span>
-            <span className="block text-[#147A5F] italic mt-1">
-              Support Expertise
+    <div className="relative w-full bg-[#FFFFFF] overflow-hidden">
+      <section id="laptop-operations" className="relative w-full max-w-[1536px] mx-auto overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24 xl:py-28 2xl:py-32 px-5 sm:px-8 md:px-[53px] lg:px-[53px] xl:px-16">
+        <div className="relative z-10 w-full">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto mb-14 sm:mb-16 xl:mb-20">
+            <span className="text-xs sm:text-sm xl:text-base font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-3 xl:mb-4 block font-montserrat">
+              RELIABLE END-TO-END SUPPLY CHAIN EXECUTION
             </span>
-          </h2>
 
-          <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed mt-4 max-w-3xl mx-auto font-normal text-pretty">
-            Wholesale IT procurement demands precision, integrity, and swift logistical delivery. Here is how Crown Excel safeguards your orders from dock intake to customer handoff.
-          </p>
-        </div>
-
-        {/* 3 Process Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {operationalPillars.map((pillar, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between group"
+            <h2
+              className="font-anton uppercase text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] tracking-[-0.035em] leading-[1.08] xl:leading-[1.05] text-[#171717]"
+              style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <div>
-                {/* Header Icon + Step Badge */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:scale-105 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
-                    {pillar.icon}
-                  </div>
-                  <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-montserrat uppercase tracking-wider">
-                    {pillar.badge}
-                  </span>
-                </div>
+              <span className="block not-italic">Laptop Handling, Delivery &amp;</span>
+              <span className="block text-[#147A5F] italic mt-1">
+                Support Expertise
+              </span>
+            </h2>
 
-                <h3 className="font-anton uppercase text-2xl text-[#171717] tracking-tight leading-tight mb-1">
-                  {pillar.title}
-                </h3>
-                <span className="text-xs font-semibold text-[#147A5F] font-jakarta block mb-6">
-                  {pillar.subtitle}
-                </span>
+            <p className="font-jakarta text-gray-600 text-sm sm:text-base md:text-lg xl:text-xl leading-relaxed mt-4 xl:mt-5 max-w-3xl xl:max-w-4xl mx-auto font-normal text-pretty">
+              Wholesale IT procurement demands precision, integrity, and swift logistical delivery. Here is how Crown Excel safeguards your orders from dock intake to customer handoff.
+            </p>
+          </div>
 
-                {/* Points List */}
-                <div className="space-y-4 font-jakarta">
-                  {pillar.points.map((pt, pIdx) => (
-                    <div key={pIdx} className="p-3.5 rounded-xl bg-gray-50/70 border border-gray-100">
-                      <h4 className="font-bold text-xs sm:text-sm text-gray-900 mb-1 flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#147A5F] flex-shrink-0" />
-                        <span>{pt.heading}</span>
-                      </h4>
-                      <p className="text-xs text-gray-600 leading-relaxed pl-5">
-                        {pt.detail}
-                      </p>
+          {/* 3 Process Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10">
+            {operationalPillars.map((pillar, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl p-6 sm:p-8 xl:p-9 2xl:p-10 border border-gray-200/90 shadow-xs hover:shadow-xl hover:border-[#147A5F]/40 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Header Icon + Step Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-5 xl:mb-6">
+                    <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:scale-105 group-hover:bg-[#147A5F] transition-all duration-300 [&>svg]:group-hover:text-white">
+                      {pillar.icon}
                     </div>
-                  ))}
+                    <span className="text-[11px] xl:text-xs font-bold px-3 xl:px-3.5 py-1 xl:py-1.5 rounded-full bg-gray-100 text-gray-700 font-montserrat uppercase tracking-wider">
+                      {pillar.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="font-anton uppercase text-2xl xl:text-3xl text-[#171717] tracking-tight leading-tight mb-1">
+                    {pillar.title}
+                  </h3>
+                  <span className="text-xs sm:text-sm xl:text-[15px] font-semibold text-[#147A5F] font-jakarta block mb-6 xl:mb-8">
+                    {pillar.subtitle}
+                  </span>
+
+                  {/* Points List */}
+                  <div className="space-y-4 xl:space-y-5 font-jakarta">
+                    {pillar.points.map((pt, pIdx) => (
+                      <div key={pIdx} className="p-3.5 xl:p-4 rounded-xl bg-gray-50/70 border border-gray-100">
+                        <h4 className="font-bold text-xs sm:text-sm xl:text-base text-gray-900 mb-1 flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#147A5F] flex-shrink-0" />
+                          <span>{pt.heading}</span>
+                        </h4>
+                        <p className="text-xs sm:text-[13px] xl:text-sm text-gray-600 leading-relaxed pl-5">
+                          {pt.detail}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }
