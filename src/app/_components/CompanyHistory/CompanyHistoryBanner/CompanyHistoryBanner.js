@@ -6,7 +6,8 @@ import Background from '@/Components/Images/company-history.webp'
 
 const CompanyHistoryBanner = () => {
   return (
-    <section className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[430px] overflow-hidden ">
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full max-w-[1536px] mx-auto h-[260px] sm:h-[320px] md:h-[380px] lg:h-[430px] overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -62,6 +63,7 @@ const CompanyHistoryBanner = () => {
         }
       `}</style> */}
     </section>
+    </div>
   )
 }
 

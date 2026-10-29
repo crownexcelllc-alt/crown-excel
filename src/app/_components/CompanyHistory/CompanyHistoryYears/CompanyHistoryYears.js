@@ -26,29 +26,33 @@ const CompanyHistoryYears = () => {
   ];
 
   return (
-       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
-                Our Journey
-              </h2>
-              <div className="w-16 h-1 bg-[#61ce70] mx-auto"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="text-center group">
-                  <div className="bg-gradient-to-br from-[#16806b] to-[#084032] rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-2xl font-bold text-white font-montserrat">{milestone.year}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#16806b] font-montserrat mb-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-gray-600 font-muli text-sm">
-                    {milestone.description}
-                  </p>
+    <div className="w-full bg-[#FFFFFF] overflow-hidden">
+      <section className="relative w-full max-w-[1536px] mx-auto bg-[#FFFFFF] px-4 sm:px-6 md:px-8 py-4 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#16806b] font-montserrat mb-4">
+              Our Journey
+            </h2>
+            <div className="w-16 h-1 bg-[#61ce70] mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {milestones.map((milestone, index) => (
+              <div key={index} className="text-center group">
+                <div className="bg-gradient-to-br from-[#16806b] to-[#084032] rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl font-bold text-white font-montserrat">{milestone.year}</span>
                 </div>
-              ))}
-            </div>
-          </div> 
+                <h3 className="text-lg font-bold text-[#16806b] font-montserrat mb-2">
+                  {milestone.title}
+                </h3>
+                <p className="text-gray-600 font-muli text-sm">
+                  {milestone.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div> 
     // <div className="relative bg-gray-50">
     //   {/* Vertical line */}
     //   <div className="absolute left-1/2 top-0 h-full w-[2px] bg-green-600 transform -translate-x-1/2 z-0" />
