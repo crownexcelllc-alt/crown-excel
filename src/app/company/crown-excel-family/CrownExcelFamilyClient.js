@@ -72,30 +72,32 @@ export default function CrownExcelFamilyClient() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative w-full h-[280px] sm:h-[180px] md:h-[260px] lg:h-[540px] overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${FamilyPhoto.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center right'
-          }}
-        />
-        <div className="absolute" />
-        <div className="pointer-events-none absolute -left-24 w-[340px] h-[340px]" />
-        <div className="relative h-full flex items-center justify-start">
-          <div className="w-full max-w-5xl px-6 sm:px-8 md:px-12">
-            <div className="max-w-2xl ml-0 text-left">
-              <h1 className="font-montserrat text-white text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-tight mb-4 drop-shadow-lg tracking-tight text-left">
-                {safeRender(getField('Main', 'heading'), "CROWN EXCEL FAMILY")}
-              </h1>
-              <p className="font-muli text-white/90 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed max-w-xl mb-2 text-left">
-                {safeRender(getField('Main', 'paragraph'), "More than just a company, we are a family united by values, driven by excellence, and committed to serving our customers with integrity and care.")}
-              </p>
+      <div className="w-full bg-[#FFFFFF] overflow-hidden">
+        <section className="relative w-full max-w-[1536px] mx-auto h-[280px] sm:h-[180px] md:h-[260px] lg:h-[540px] overflow-hidden">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${FamilyPhoto.src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center right'
+            }}
+          />
+          <div className="absolute" />
+          <div className="pointer-events-none absolute -left-24 w-[340px] h-[340px]" />
+          <div className="relative h-full flex items-center justify-start">
+            <div className="w-full max-w-5xl px-6 sm:px-8 md:px-12">
+              <div className="max-w-2xl ml-0 text-left">
+                <h1 className="font-montserrat text-white text-[32px] sm:text-[44px] lg:text-[56px] font-extrabold leading-tight mb-4 drop-shadow-lg tracking-tight text-left">
+                  {safeRender(getField('Main', 'heading'), "CROWN EXCEL FAMILY")}
+                </h1>
+                <p className="font-muli text-white/90 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed max-w-xl mb-2 text-left">
+                  {safeRender(getField('Main', 'paragraph'), "More than just a company, we are a family united by values, driven by excellence, and committed to serving our customers with integrity and care.")}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
