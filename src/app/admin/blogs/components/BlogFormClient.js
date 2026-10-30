@@ -74,6 +74,7 @@ export default function BlogFormClient({
   const [imageEditWrap, setImageEditWrap] = useState(true);
 
   const editorRef = useRef(null);
+  const toolbarRef = useRef(null);
   const savedRangeRef = useRef(null);
 
   // Selection range saving and restoring helpers
@@ -174,15 +175,33 @@ export default function BlogFormClient({
     }
 
     const top = imgRect.top - editorRect.top;
-    const left = (imgRect.left - editorRect.left) + (imgRect.width / 2);
+    const imgCenter = (imgRect.left - editorRect.left) + (imgRect.width / 2);
 
-    // Toolbar height is ~44px. Position with 10px spacing directly above the image
-    const clampedTop = Math.max(6, top - 52);
-    const clampedLeft = Math.max(190, Math.min(left, editorRect.width - 190));
+    // Get exact rendered toolbar width or fallback
+    const tbWidth = toolbarRef.current?.offsetWidth || 490;
+    const halfWidth = tbWidth / 2;
+    const margin = 16; // 16px safe margin from editor edge
+
+    // Clamp toolbar center so it never overflows past left or right boundaries
+    let clampedLeft = imgCenter;
+    if (editorRect.width > tbWidth + margin * 2) {
+      const minCenter = halfWidth + margin;
+      const maxCenter = editorRect.width - halfWidth - margin;
+      clampedLeft = Math.max(minCenter, Math.min(imgCenter, maxCenter));
+    } else {
+      clampedLeft = editorRect.width / 2;
+    }
+
+    const tbHeight = toolbarRef.current?.offsetHeight || 42;
+    const clampedTop = Math.max(6, top - (tbHeight + 10));
+
+    // Pointer arrow position relative to toolbar
+    const arrowX = Math.max(20, Math.min(imgCenter - (clampedLeft - halfWidth), tbWidth - 20));
 
     setImageToolbarPos({
       top: clampedTop,
       left: clampedLeft,
+      arrowLeft: arrowX,
     });
   };
 
@@ -253,6 +272,16 @@ export default function BlogFormClient({
       window.removeEventListener('resize', handleScrollOrResize);
     };
   }, [selectedImageNode]);
+
+  // Recalculate toolbar clamp when image size, alignment, or wrap changes
+  useEffect(() => {
+    if (selectedImageNode) {
+      const timer = setTimeout(() => {
+        updateToolbarPosition(selectedImageNode);
+      }, 30);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedImageNode, imageEditWidth, imageEditAlign, imageEditWrap]);
 
   // Easily increase or decrease size: 25% -> 50% -> 75% -> 100%
   const handleStepImageSize = (direction) => {
@@ -1206,14 +1235,16 @@ export default function BlogFormClient({
                 {/* Image Management Toolbar directly above selected image */}
                 {selectedImageNode && imageToolbarPos && (
                   <div
+                    ref={toolbarRef}
                     style={{
                       position: 'absolute',
                       top: `${imageToolbarPos.top}px`,
                       left: `${imageToolbarPos.left}px`,
                       transform: 'translateX(-50%)',
                       zIndex: 30,
+                      maxWidth: 'calc(100% - 24px)',
                     }}
-                    className="bg-gray-900/95 text-white backdrop-blur-md px-2.5 py-1.5 rounded-xl shadow-2xl flex items-center gap-1.5 text-xs border border-gray-700/80 animate-fadeInToolbar pointer-events-auto select-none"
+                    className="bg-gray-900/95 text-white backdrop-blur-md px-2 py-1 rounded-xl shadow-2xl flex items-center gap-1 text-xs border border-gray-700/80 animate-fadeInToolbar pointer-events-auto select-none"
                     onMouseDown={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -1352,7 +1383,12 @@ export default function BlogFormClient({
                     </button>
 
                     {/* Small bottom caret pointing to image */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-900/95 pointer-events-none" />
+                    <div
+                      style={{
+                        left: imageToolbarPos.arrowLeft !== undefined ? `${imageToolbarPos.arrowLeft}px` : '50%',
+                      }}
+                      className="absolute top-full -translate-x-1/2 -mt-px w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-900/95 pointer-events-none transition-all duration-150"
+                    />
                   </div>
                 )}
 
