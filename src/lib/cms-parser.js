@@ -56,8 +56,8 @@ export function cleanText(text) {
   text = text.replace(/\{[^}]*\|\|\s*"([^"]+)"\s*\}/g, '$1');
   text = text.replace(/\{[^}]*\|\|\s*'([^']+)'\s*\}/g, '$1');
   // Extract default text from safeRender(..., "default") and getField(..., "default") patterns
-  text = text.replace(/safeRender\([^,]+,\s*["']([^"']+)["']\)/gi, '$1');
-  text = text.replace(/getField\([^,]+,\s*["']([^"']+)["']\)/gi, '$1');
+  text = text.replace(/\{?\s*safeRender\([^,]+,\s*["']([^"']+)["']\)\s*\}?/gi, '$1');
+  text = text.replace(/\{?\s*getField\([^,]+,\s*["']([^"']+)["']\)\s*\}?/gi, '$1');
   // Strip remaining curly braces and variables (e.g. {icon1})
   text = text.replace(/\{[\s\S]*?\}/g, '');
   // Decode common HTML entities

@@ -32,16 +32,20 @@ import lenovo from '@/Components/Images/lenovo (1).png'
 import Asus from '@/Components/Images/asus (1).png'
 import apple from '@/Components/Images/apple (3).png'
 
+import { safeRender } from '@/lib/safe-html';
+
 const brands = [
   Intel, Dell, Acer, Amd, Hp, Dragon, Asus, Xerox, ViewSonic, Optoma, ricoh, meetion, logitech, lexar, Kingston, epson, crucial, canon, brother, benq, aoc, alienware, adhua, tplink, samsung, razor, microsof, lg, lenovo, apple
 ]
 
-const Brands = () => {
+const Brands = ({ cmsData }) => {
+  const heading = cmsData?.fields?.heading || cmsData?.heading;
+
   return (
     <div className="w-full bg-[#FFFFFF] overflow-hidden">
       <section id="brands" className="brands-section relative w-full max-w-[1536px] mx-auto bg-[#E6F0EE] flex flex-col items-center justify-center py-0 overflow-hidden">
         <h2 className="text-[32px] mb-4 font-montserrat leading-[32px] mt-5 font-[700] text-black">
-          BRANDS WE DEAL
+          {safeRender(heading, 'BRANDS WE DEAL')}
         </h2>
 
       {/* Infinite marquee */}

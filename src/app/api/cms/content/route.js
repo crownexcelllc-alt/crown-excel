@@ -212,21 +212,9 @@ export async function GET(request) {
             }
 
             if (dbField && dbField.value !== undefined && dbField.value !== null) {
-              const cleanDbVal = (dbField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-              const cleanParsedVal = (parsedField.value || '').toString().replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-
-              // For homepage static sections, file content on disk is always the ground truth
-              const isHomepageStaticSec = (route?.path === '/' || filter.path === '/' || parsedSec.filePath?.includes('src/app/_components')) && 
-                                          parsedSec.sectionId !== 'smartsolutions' && 
-                                          parsedSec.sectionId !== 'hero';
-
-              const resolvedValue = isHomepageStaticSec 
-                ? parsedField.value 
-                : (cleanDbVal.toLowerCase() === cleanParsedVal.toLowerCase() ? parsedField.value : dbField.value);
-
               mergedFields[key] = {
                 ...parsedField,
-                value: resolvedValue,
+                value: dbField.value,
                 originalValue: parsedField.originalValue,
                 alt: dbField.alt || parsedField.alt || '',
                 title: dbField.title || parsedField.title || '',
