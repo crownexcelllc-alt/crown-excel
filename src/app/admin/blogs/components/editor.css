@@ -183,3 +183,139 @@
   border-bottom: none !important;
 }
 
+/* ==========================================================================
+   Inserted Image Management & Selection Styling in Rich Text Editor
+   ========================================================================== */
+
+[contenteditable].prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: outline 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  user-select: all;
+}
+
+[contenteditable].prose img:hover {
+  outline: 2px dashed #147A5F !important;
+  outline-offset: 3px !important;
+}
+
+[contenteditable].prose img.selected-editor-image {
+  outline: 3px solid #147A5F !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(20, 122, 95, 0.25) !important;
+}
+
+@keyframes fadeInToolbar {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-fadeInToolbar {
+  animation: fadeInToolbar 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Image Alignment, Text-Wrapping & Independent Positioning in Editor
+   ========================================================================== */
+
+/* Base image styling */
+[contenteditable].prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: outline 0.15s ease, box-shadow 0.15s ease;
+  user-select: all;
+  clear: both !important; /* Prevents multiple images from colliding or floating side-by-side */
+}
+
+/* Left-aligned image with text wrapping */
+[contenteditable].prose img[style*="float: left"] {
+  float: left !important;
+  display: block !important;
+  margin-right: 2.25rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-left: 0 !important;
+  max-width: calc(100% - 2.5rem) !important;
+  clear: both !important;
+}
+
+/* Right-aligned image with text wrapping */
+[contenteditable].prose img[style*="float: right"] {
+  float: right !important;
+  display: block !important;
+  margin-left: 2.25rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-right: 0 !important;
+  max-width: calc(100% - 2.5rem) !important;
+  clear: both !important;
+}
+
+/* Left-aligned block image (Wrap OFF: full-width break) */
+[contenteditable].prose img[style*="margin-right: auto"]:not([style*="margin-left: auto"]):not([style*="float: left"]),
+[contenteditable].prose img[style*="margin-left: 0"]:not([style*="float: left"]),
+[contenteditable].prose img[style*="margin-left: 0px"]:not([style*="float: left"]) {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  float: none !important;
+  clear: both !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Center-aligned block image */
+[contenteditable].prose img[style*="margin-left: auto"][style*="margin-right: auto"],
+[contenteditable].prose img[style*="margin: 0px auto"],
+[contenteditable].prose img[style*="margin: 1rem auto"],
+[contenteditable].prose img[style*="margin: 1.25rem auto"] {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+  clear: both !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Right-aligned block image (Wrap OFF: full-width break) */
+[contenteditable].prose img[style*="margin-left: auto"][style*="margin-right: 0"]:not([style*="float: right"]),
+[contenteditable].prose img[style*="margin-left: auto"][style*="margin-right: 0px"]:not([style*="float: right"]) {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  float: none !important;
+  clear: both !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Headings and tables automatically clear floats and return to full width */
+.prose h1, [contenteditable].prose h1,
+.prose h2, [contenteditable].prose h2,
+.prose h3, [contenteditable].prose h3,
+.prose h4, [contenteditable].prose h4,
+.prose h5, [contenteditable].prose h5,
+.prose h6, [contenteditable].prose h6,
+.prose table, [contenteditable].prose table,
+.prose hr, [contenteditable].prose hr {
+  clear: both !important;
+}
+
+/* Clearfix for rich text container */
+[contenteditable].prose::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+

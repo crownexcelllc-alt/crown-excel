@@ -3,6 +3,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import {
+  Trash2,
+  RefreshCw,
+  Edit3,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  Maximize2,
+  X,
+  Check,
+  Upload,
+  Image as ImageIcon,
+  Minus,
+  Plus,
+  WrapText,
+} from 'lucide-react';
 import './editor.css';
 
 export default function BlogFormClient({ 
@@ -43,9 +59,19 @@ export default function BlogFormClient({
   const [loadingMedia, setLoadingMedia] = useState(false);
   const [mediaSearch, setMediaSearch] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
-  const [mediaTarget, setMediaTarget] = useState('cover'); // 'cover' | 'editor'
+  const [mediaTarget, setMediaTarget] = useState('cover'); // 'cover' | 'editor' | 'replace-image'
   const [mediaModalTab, setMediaModalTab] = useState('library'); // 'library' | 'url'
   const [inputUrl, setInputUrl] = useState('');
+
+  // Inserted Image Management states
+  const [selectedImageNode, setSelectedImageNode] = useState(null);
+  const [imageToolbarPos, setImageToolbarPos] = useState(null);
+  const [showImageEditModal, setShowImageEditModal] = useState(false);
+  const [imageEditSrc, setImageEditSrc] = useState('');
+  const [imageEditAlt, setImageEditAlt] = useState('');
+  const [imageEditWidth, setImageEditWidth] = useState('100%');
+  const [imageEditAlign, setImageEditAlign] = useState('center');
+  const [imageEditWrap, setImageEditWrap] = useState(true);
 
   const editorRef = useRef(null);
   const savedRangeRef = useRef(null);
@@ -99,15 +125,403 @@ export default function BlogFormClient({
     setCurrentFormat(tag);
   };
 
+  // Helper to extract clean HTML from editor without temporary selection classes
+  const getCleanHtml = () => {
+    if (!editorRef.current) return '';
+    const clone = editorRef.current.cloneNode(true);
+    const selectedImgs = clone.querySelectorAll('.selected-editor-image');
+    selectedImgs.forEach((img) => {
+      img.classList.remove('selected-editor-image');
+      if (img.classList.length === 0) {
+        img.removeAttribute('class');
+      }
+    });
+    return clone.innerHTML;
+  };
+
+  // Sync contenteditable text with content state
+  const handleEditorChange = () => {
+    const clean = getCleanHtml();
+    setContent(clean);
+  };
+
   const handleEditorBlur = () => {
     saveSelection();
     handleEditorChange();
   };
 
+  const deselectImage = () => {
+    if (editorRef.current) {
+      const prevs = editorRef.current.querySelectorAll('.selected-editor-image');
+      prevs.forEach((p) => p.classList.remove('selected-editor-image'));
+    }
+    setSelectedImageNode(null);
+    setImageToolbarPos(null);
+  };
+
+  const updateToolbarPosition = (imgNode) => {
+    if (!imgNode || !editorRef.current) {
+      setImageToolbarPos(null);
+      return;
+    }
+    const editorRect = editorRef.current.getBoundingClientRect();
+    const imgRect = imgNode.getBoundingClientRect();
+
+    // Hide toolbar if image is scrolled out of editor view
+    if (imgRect.bottom < editorRect.top || imgRect.top > editorRect.bottom) {
+      setImageToolbarPos(null);
+      return;
+    }
+
+    const top = imgRect.top - editorRect.top;
+    const left = (imgRect.left - editorRect.left) + (imgRect.width / 2);
+
+    // Toolbar height is ~44px. Position with 10px spacing directly above the image
+    const clampedTop = Math.max(6, top - 52);
+    const clampedLeft = Math.max(190, Math.min(left, editorRect.width - 190));
+
+    setImageToolbarPos({
+      top: clampedTop,
+      left: clampedLeft,
+    });
+  };
+
+  const selectImage = (imgNode) => {
+    if (!imgNode) return;
+    if (editorRef.current) {
+      const prevs = editorRef.current.querySelectorAll('.selected-editor-image');
+      prevs.forEach((p) => p.classList.remove('selected-editor-image'));
+    }
+
+    imgNode.classList.add('selected-editor-image');
+    setSelectedImageNode(imgNode);
+    setImageEditSrc(imgNode.getAttribute('src') || '');
+    setImageEditAlt(imgNode.getAttribute('alt') || '');
+
+    // Detect current width
+    const currentWidth = imgNode.style.width || imgNode.getAttribute('width') || '100%';
+    setImageEditWidth(currentWidth || '100%');
+
+    // Detect alignment and wrap
+    let align = 'center';
+    let wrap = true;
+    const floatVal = imgNode.style.float;
+    const marginL = imgNode.style.marginLeft;
+    const marginR = imgNode.style.marginRight;
+
+    if (floatVal === 'left') {
+      align = 'left';
+      wrap = true;
+    } else if (floatVal === 'right') {
+      align = 'right';
+      wrap = true;
+    } else if (marginL === 'auto' && marginR === 'auto') {
+      align = 'center';
+      wrap = false;
+    } else if ((marginL === '0px' || marginL === '0') && marginR === 'auto') {
+      align = 'left';
+      wrap = false;
+    } else if (marginL === 'auto' && (marginR === '0px' || marginR === '0')) {
+      align = 'right';
+      wrap = false;
+    } else if (marginR === 'auto') {
+      align = 'left';
+      wrap = false;
+    }
+    setImageEditAlign(align);
+    setImageEditWrap(wrap);
+
+    updateToolbarPosition(imgNode);
+  };
+
+  // Keep floating toolbar anchored on scroll/resize
+  useEffect(() => {
+    const handleScrollOrResize = () => {
+      if (selectedImageNode) {
+        updateToolbarPosition(selectedImageNode);
+      }
+    };
+    const editorEl = editorRef.current;
+    if (editorEl) {
+      editorEl.addEventListener('scroll', handleScrollOrResize, { passive: true });
+    }
+    window.addEventListener('scroll', handleScrollOrResize, { passive: true });
+    window.addEventListener('resize', handleScrollOrResize);
+    return () => {
+      if (editorEl) editorEl.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('scroll', handleScrollOrResize);
+      window.removeEventListener('resize', handleScrollOrResize);
+    };
+  }, [selectedImageNode]);
+
+  // Easily increase or decrease size: 25% -> 50% -> 75% -> 100%
+  const handleStepImageSize = (direction) => {
+    if (!selectedImageNode) return;
+    const current = (imageEditWidth || '100%').trim();
+    let newWidth = '100%';
+
+    if (current === 'auto') {
+      newWidth = direction === 'decrease' ? '75%' : '100%';
+    } else {
+      const match = current.match(/^(\d+)%$/);
+      if (match) {
+        const val = parseInt(match[1], 10);
+        if (direction === 'decrease') {
+          if (val > 75) newWidth = '75%';
+          else if (val > 50) newWidth = '50%';
+          else if (val > 25) newWidth = '25%';
+          else newWidth = '25%';
+        } else {
+          if (val < 50) newWidth = '50%';
+          else if (val < 75) newWidth = '75%';
+          else if (val < 100) newWidth = '100%';
+          else newWidth = '100%';
+        }
+      } else {
+        newWidth = direction === 'decrease' ? '50%' : '100%';
+      }
+    }
+    applyImageWidth(newWidth);
+  };
+
+  // Delete / Remove Image
+  const handleDeleteSelectedImage = () => {
+    if (!selectedImageNode) return;
+    selectedImageNode.remove();
+    deselectImage();
+    handleEditorChange();
+    if (showImageEditModal) setShowImageEditModal(false);
+  };
+
+  // Replace Image
+  const handleOpenReplaceMedia = () => {
+    if (!selectedImageNode) return;
+    setMediaTarget('replace-image');
+    setMediaModalTab('library');
+    setInputUrl('');
+    setShowMediaModal(true);
+  };
+
+  // Quick Alignment with Independent Positioning & Text-Wrapping Control
+  const applyImageAlignment = (alignType, overrideWrap = null) => {
+    if (!selectedImageNode) return;
+
+    let wrap = overrideWrap !== null
+      ? overrideWrap
+      : (alignType === 'center' ? false : (imageEditWrap !== undefined ? imageEditWrap : true));
+
+    if (alignType === 'center') {
+      wrap = false;
+    }
+
+    selectedImageNode.style.maxWidth = '100%';
+    selectedImageNode.style.height = 'auto';
+
+    if (alignType === 'center') {
+      selectedImageNode.style.display = 'block';
+      selectedImageNode.style.float = 'none';
+      selectedImageNode.style.clear = 'both';
+      selectedImageNode.style.marginLeft = 'auto';
+      selectedImageNode.style.marginRight = 'auto';
+      selectedImageNode.style.marginTop = '1.25rem';
+      selectedImageNode.style.marginBottom = '1.25rem';
+    } else if (alignType === 'left') {
+      if (wrap) {
+        selectedImageNode.style.display = 'block';
+        selectedImageNode.style.float = 'left';
+        selectedImageNode.style.clear = 'both'; // Clears any preceding images so each image remains independent
+        selectedImageNode.style.marginLeft = '0';
+        selectedImageNode.style.marginRight = '2.25rem';
+        selectedImageNode.style.marginTop = '0.5rem';
+        selectedImageNode.style.marginBottom = '1.5rem';
+      } else {
+        selectedImageNode.style.display = 'block';
+        selectedImageNode.style.float = 'none';
+        selectedImageNode.style.clear = 'both';
+        selectedImageNode.style.marginLeft = '0';
+        selectedImageNode.style.marginRight = 'auto';
+        selectedImageNode.style.marginTop = '1.25rem';
+        selectedImageNode.style.marginBottom = '1.25rem';
+      }
+    } else if (alignType === 'right') {
+      if (wrap) {
+        selectedImageNode.style.display = 'block';
+        selectedImageNode.style.float = 'right';
+        selectedImageNode.style.clear = 'both'; // Clears any preceding images so each image remains independent
+        selectedImageNode.style.marginLeft = '2.25rem';
+        selectedImageNode.style.marginRight = '0';
+        selectedImageNode.style.marginTop = '0.5rem';
+        selectedImageNode.style.marginBottom = '1.5rem';
+      } else {
+        selectedImageNode.style.display = 'block';
+        selectedImageNode.style.float = 'none';
+        selectedImageNode.style.clear = 'both';
+        selectedImageNode.style.marginLeft = 'auto';
+        selectedImageNode.style.marginRight = '0';
+        selectedImageNode.style.marginTop = '1.25rem';
+        selectedImageNode.style.marginBottom = '1.25rem';
+      }
+    } else if (alignType === 'full') {
+      wrap = false;
+      selectedImageNode.style.display = 'block';
+      selectedImageNode.style.float = 'none';
+      selectedImageNode.style.clear = 'both';
+      selectedImageNode.style.width = '100%';
+      selectedImageNode.style.maxWidth = '100%';
+      selectedImageNode.style.marginLeft = 'auto';
+      selectedImageNode.style.marginRight = 'auto';
+      selectedImageNode.style.marginTop = '1.25rem';
+      selectedImageNode.style.marginBottom = '1.25rem';
+    }
+
+    setImageEditAlign(alignType);
+    setImageEditWrap(wrap);
+    handleEditorChange();
+    setTimeout(() => updateToolbarPosition(selectedImageNode), 20);
+  };
+
+  const handleToggleWrap = () => {
+    if (!selectedImageNode) return;
+    const currentAlign = imageEditAlign === 'center' ? 'left' : imageEditAlign;
+    const newWrap = !imageEditWrap;
+    applyImageAlignment(currentAlign, newWrap);
+  };
+
+  // Quick Width
+  const applyImageWidth = (widthVal) => {
+    if (!selectedImageNode) return;
+    if (widthVal === 'auto') {
+      selectedImageNode.style.width = '';
+    } else {
+      selectedImageNode.style.width = widthVal;
+    }
+    selectedImageNode.style.maxWidth = '100%';
+    selectedImageNode.style.height = 'auto';
+    setImageEditWidth(widthVal);
+    handleEditorChange();
+    setTimeout(() => updateToolbarPosition(selectedImageNode), 20);
+  };
+
+  // Save Changes from Image Edit Modal
+  const handleSaveImageModal = (e) => {
+    e?.preventDefault();
+    if (!selectedImageNode) return;
+
+    if (imageEditSrc && imageEditSrc !== selectedImageNode.src) {
+      selectedImageNode.src = imageEditSrc;
+    }
+    if (imageEditAlt) {
+      selectedImageNode.setAttribute('alt', imageEditAlt);
+    } else {
+      selectedImageNode.removeAttribute('alt');
+    }
+
+    if (imageEditWidth === 'auto') {
+      selectedImageNode.style.width = '';
+    } else {
+      selectedImageNode.style.width = imageEditWidth;
+    }
+    selectedImageNode.style.maxWidth = '100%';
+    selectedImageNode.style.height = 'auto';
+
+    applyImageAlignment(imageEditAlign, imageEditWrap);
+    handleEditorChange();
+    setShowImageEditModal(false);
+    setTimeout(() => updateToolbarPosition(selectedImageNode), 30);
+  };
+
+  // Editor Interaction Listeners
+  const handleEditorClick = (e) => {
+    const target = e.target;
+    if (target && target.tagName === 'IMG') {
+      e.stopPropagation();
+      selectImage(target);
+    } else {
+      deselectImage();
+    }
+  };
+
+  const handleEditorDoubleClick = (e) => {
+    const target = e.target;
+    if (target && target.tagName === 'IMG') {
+      e.stopPropagation();
+      selectImage(target);
+    }
+  };
+
+  const handleEditorKeyDown = (e) => {
+    if (selectedImageNode) {
+      if (e.key === 'Delete' || e.key === 'Backspace') {
+        e.preventDefault();
+        handleDeleteSelectedImage();
+      } else if (e.key === 'Escape') {
+        deselectImage();
+      }
+    }
+  };
+
   const handleMediaSelect = (url) => {
-    if (mediaTarget === 'editor') {
+    if (mediaTarget === 'replace-image') {
+      if (selectedImageNode) {
+        selectedImageNode.src = url;
+        setImageEditSrc(url);
+        handleEditorChange();
+        setTimeout(() => updateToolbarPosition(selectedImageNode), 50);
+      }
+    } else if (mediaTarget === 'editor') {
       restoreSelection();
       executeCommand('insertImage', url);
+      setTimeout(() => {
+        if (editorRef.current) {
+          const imgs = editorRef.current.querySelectorAll(`img[src="${url}"]`);
+          if (imgs.length > 0) {
+            const newlyInserted = imgs[imgs.length - 1];
+            newlyInserted.style.maxWidth = '100%';
+            newlyInserted.style.height = 'auto';
+            newlyInserted.style.display = 'block';
+            newlyInserted.style.marginLeft = 'auto';
+            newlyInserted.style.marginRight = 'auto';
+            newlyInserted.style.marginTop = '1.25rem';
+            newlyInserted.style.marginBottom = '1.25rem';
+            newlyInserted.style.clear = 'both';
+            newlyInserted.style.float = 'none';
+
+            // If image was inserted inside a paragraph with other content, isolate it
+            const parent = newlyInserted.parentElement;
+            if (parent && parent.tagName === 'P' && parent.childNodes.length > 1) {
+              const nextNodes = [];
+              let sib = newlyInserted.nextSibling;
+              while (sib) {
+                const next = sib.nextSibling;
+                nextNodes.push(sib);
+                sib = next;
+              }
+              if (nextNodes.length > 0) {
+                const newP = document.createElement('p');
+                nextNodes.forEach((node) => newP.appendChild(node));
+                if (parent.nextSibling) {
+                  parent.parentNode.insertBefore(newP, parent.nextSibling);
+                } else {
+                  parent.parentNode.appendChild(newP);
+                }
+              }
+            }
+
+            // Ensure an editable line exists below the image so user can easily click and type
+            const parentBlock = newlyInserted.closest('p, div, blockquote, li') || newlyInserted;
+            if (!parentBlock.nextSibling && editorRef.current) {
+              const nextP = document.createElement('p');
+              nextP.innerHTML = '<br>';
+              if (parentBlock.parentNode) {
+                parentBlock.parentNode.insertBefore(nextP, parentBlock.nextSibling);
+              }
+            }
+
+            selectImage(newlyInserted);
+            handleEditorChange();
+          }
+        }
+      }, 50);
     } else {
       setCoverImage(url);
     }
@@ -174,12 +588,6 @@ export default function BlogFormClient({
     return '/blogs/' + s;
   };
 
-  // Sync contenteditable text with content state
-  const handleEditorChange = () => {
-    if (editorRef.current) {
-      setContent(editorRef.current.innerHTML);
-    }
-  };
 
   // Run document formatting commands
   const executeCommand = (command, value = null) => {
@@ -285,6 +693,8 @@ export default function BlogFormClient({
         }
       }, 50);
     } else {
+      deselectImage();
+      handleEditorChange();
       setActiveTab('code');
     }
   };
@@ -346,11 +756,14 @@ export default function BlogFormClient({
     e.preventDefault();
     setError('');
     
+    // Ensure content has latest clean editor HTML without temporary selection classes
+    const finalContent = activeTab === 'visual' ? (getCleanHtml() || content) : content;
+
     if (!title) {
       setError('Title is required');
       return;
     }
-    if (!content || content === '<br>' || content === '<div><br></div>') {
+    if (!finalContent || finalContent === '<br>' || finalContent === '<div><br></div>') {
       setError('Content is required');
       return;
     }
@@ -384,7 +797,7 @@ export default function BlogFormClient({
       title,
       slug: cleanSlug,
       excerpt,
-      content,
+      content: finalContent,
       coverImage,
       author,
       tags: tagsArray,
@@ -789,19 +1202,177 @@ export default function BlogFormClient({
                 </button>
               </div>
 
-              <div
-                ref={editorRef}
-                contentEditable
-                onBlur={handleEditorBlur}
-                onInput={() => {
-                  handleEditorChange();
-                  updateCurrentFormat();
-                }}
-                onKeyUp={updateCurrentFormat}
-                onMouseUp={updateCurrentFormat}
-                className="w-full p-4 min-h-[350px] outline-none prose max-w-none focus:ring-0 overflow-y-auto"
-                style={{ direction: 'left', textAlign: 'left' }}
-              />
+              <div className="relative w-full">
+                {/* Image Management Toolbar directly above selected image */}
+                {selectedImageNode && imageToolbarPos && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: `${imageToolbarPos.top}px`,
+                      left: `${imageToolbarPos.left}px`,
+                      transform: 'translateX(-50%)',
+                      zIndex: 30,
+                    }}
+                    className="bg-gray-900/95 text-white backdrop-blur-md px-2.5 py-1.5 rounded-xl shadow-2xl flex items-center gap-1.5 text-xs border border-gray-700/80 animate-fadeInToolbar pointer-events-auto select-none"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                  >
+                    {/* Size Selector with Decrease [-] / Increase [+] buttons */}
+                    <div className="flex items-center bg-gray-800/90 rounded-lg border border-gray-700/80 p-0.5 shadow-inner">
+                      <button
+                        type="button"
+                        onClick={() => handleStepImageSize('decrease')}
+                        className="p-1 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors cursor-pointer"
+                        title="Decrease Size (-)"
+                      >
+                        <Minus className="w-3.5 h-3.5" />
+                      </button>
+
+                      <div className="relative flex items-center px-1">
+                        <select
+                          value={imageEditWidth}
+                          onChange={(e) => applyImageWidth(e.target.value)}
+                          className="bg-transparent text-white text-xs font-semibold px-1 py-0.5 outline-none cursor-pointer border-none text-center appearance-none pr-3"
+                          title="Select Image Size"
+                        >
+                          <option value="100%" className="bg-gray-800 text-white">100%</option>
+                          <option value="75%" className="bg-gray-800 text-white">75%</option>
+                          <option value="50%" className="bg-gray-800 text-white">50%</option>
+                          <option value="25%" className="bg-gray-800 text-white">25%</option>
+                          <option value="auto" className="bg-gray-800 text-white">Original</option>
+                        </select>
+                        <span className="pointer-events-none absolute right-0.5 text-gray-400 text-[9px]">▼</span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => handleStepImageSize('increase')}
+                        className="p-1 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors cursor-pointer"
+                        title="Increase Size (+)"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <div className="h-4 w-px bg-gray-700 mx-0.5" />
+
+                    {/* Replace Button */}
+                    <button
+                      type="button"
+                      onClick={handleOpenReplaceMedia}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/10 hover:bg-emerald-600 transition-colors font-medium cursor-pointer"
+                      title="Replace selected image with another"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Replace</span>
+                    </button>
+
+                    <div className="h-4 w-px bg-gray-700 mx-0.5" />
+
+                    {/* Alignment Shortcuts */}
+                    <div className="flex items-center gap-0.5 bg-gray-800/80 rounded-lg p-0.5 border border-gray-700/60">
+                      <button
+                        type="button"
+                        onClick={() => applyImageAlignment('left', true)}
+                        className={`p-1 rounded transition-colors cursor-pointer ${
+                          imageEditAlign === 'left' ? 'bg-emerald-600 text-white' : 'hover:bg-gray-700 text-gray-300'
+                        }`}
+                        title="Align Left (Wrap text on right)"
+                      >
+                        <AlignLeft className="w-3.5 h-3.5" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => applyImageAlignment('center', false)}
+                        className={`p-1 rounded transition-colors cursor-pointer ${
+                          imageEditAlign === 'center' ? 'bg-emerald-600 text-white' : 'hover:bg-gray-700 text-gray-300'
+                        }`}
+                        title="Align Center (Full-width block)"
+                      >
+                        <AlignCenter className="w-3.5 h-3.5" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => applyImageAlignment('right', true)}
+                        className={`p-1 rounded transition-colors cursor-pointer ${
+                          imageEditAlign === 'right' ? 'bg-emerald-600 text-white' : 'hover:bg-gray-700 text-gray-300'
+                        }`}
+                        title="Align Right (Wrap text on left)"
+                      >
+                        <AlignRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <div className="h-4 w-px bg-gray-700 mx-0.5" />
+
+                    {/* Text Wrap Toggle */}
+                    <button
+                      type="button"
+                      onClick={handleToggleWrap}
+                      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-lg transition-colors font-medium cursor-pointer ${
+                        imageEditWrap && imageEditAlign !== 'center'
+                          ? 'bg-emerald-600 text-white shadow-xs'
+                          : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                      }`}
+                      title={
+                        imageEditWrap && imageEditAlign !== 'center'
+                          ? 'Text Wrap: ON (Text flows beside image). Click to disable wrapping.'
+                          : 'Text Wrap: OFF (Content stays below image). Click to allow text wrapping.'
+                      }
+                    >
+                      <WrapText className="w-3.5 h-3.5" />
+                      <span>{imageEditWrap && imageEditAlign !== 'center' ? 'Wrap: ON' : 'Wrap: OFF'}</span>
+                    </button>
+
+                    <div className="h-4 w-px bg-gray-700 mx-0.5" />
+
+                    {/* Delete Button */}
+                    <button
+                      type="button"
+                      onClick={handleDeleteSelectedImage}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white transition-colors font-medium cursor-pointer shadow-xs"
+                      title="Remove / Delete selected image"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Delete</span>
+                    </button>
+
+                    {/* Deselect Button */}
+                    <button
+                      type="button"
+                      onClick={deselectImage}
+                      className="p-1 rounded-md hover:bg-white/15 text-gray-400 hover:text-white transition-colors cursor-pointer ml-0.5"
+                      title="Deselect image"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+
+                    {/* Small bottom caret pointing to image */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-900/95 pointer-events-none" />
+                  </div>
+                )}
+
+                <div
+                  ref={editorRef}
+                  contentEditable
+                  onClick={handleEditorClick}
+                  onDoubleClick={handleEditorDoubleClick}
+                  onKeyDown={handleEditorKeyDown}
+                  onBlur={handleEditorBlur}
+                  onInput={() => {
+                    handleEditorChange();
+                    updateCurrentFormat();
+                  }}
+                  onKeyUp={updateCurrentFormat}
+                  onMouseUp={updateCurrentFormat}
+                  className="w-full p-4 pt-10 min-h-[350px] outline-none prose max-w-none focus:ring-0 overflow-y-auto"
+                  style={{ direction: 'left', textAlign: 'left' }}
+                />
+              </div>
             </div>
           ) : (
             <textarea
@@ -952,9 +1523,20 @@ export default function BlogFormClient({
           <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-gray-100">
             {/* Modal Header */}
             <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-800">
-                {mediaTarget === 'editor' ? 'Insert Image' : 'Select Cover Image'}
-              </h3>
+              <div>
+                <h3 className="text-lg font-bold text-gray-800">
+                  {mediaTarget === 'editor'
+                    ? 'Insert Image'
+                    : mediaTarget === 'replace-image'
+                    ? 'Replace Selected Image'
+                    : 'Select Cover Image'}
+                </h3>
+                {mediaTarget === 'replace-image' && (
+                  <p className="text-xs text-[#147A5F] mt-0.5 font-medium">
+                    Select an image from the library, upload a new file, or enter a URL to replace the current image in-place.
+                  </p>
+                )}
+              </div>
               <button
                 type="button"
                 onClick={() => setShowMediaModal(false)}
@@ -986,14 +1568,16 @@ export default function BlogFormClient({
                     : 'border-transparent text-gray-550 hover:text-[#084032]'
                 }`}
               >
-                Insert from URL
+                {mediaTarget === 'replace-image' ? 'Replace by URL' : 'Insert from URL'}
               </button>
             </div>
 
             {mediaModalTab === 'url' ? (
               <div className="flex-1 overflow-y-auto p-8 bg-gray-50 flex items-center justify-center min-h-[350px]">
                 <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm max-w-lg w-full space-y-4">
-                  <h4 className="text-sm font-bold text-gray-800">Insert Image from External URL</h4>
+                  <h4 className="text-sm font-bold text-gray-800">
+                    {mediaTarget === 'replace-image' ? 'Replace Image with External URL' : 'Insert Image from External URL'}
+                  </h4>
                   <div>
                     <label className="block text-xs font-semibold text-gray-600 mb-1">Image Link (HTTPS)</label>
                     <input
@@ -1023,7 +1607,7 @@ export default function BlogFormClient({
                       }}
                       className="px-5 py-2 bg-[#084032] hover:bg-[#00a63e] disabled:opacity-50 text-white font-semibold rounded-lg text-sm shadow transition-all cursor-pointer"
                     >
-                      Insert Image
+                      {mediaTarget === 'replace-image' ? 'Replace Image' : 'Insert Image'}
                     </button>
                   </div>
                 </div>
@@ -1044,7 +1628,7 @@ export default function BlogFormClient({
 
                   <div className="flex gap-2 w-full sm:w-auto justify-end">
                     <label className="cursor-pointer px-4 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-sm transition-all text-center">
-                      {uploadingImage ? 'Uploading...' : 'Upload New Image'}
+                      {uploadingImage ? 'Uploading...' : mediaTarget === 'replace-image' ? 'Upload Replacement' : 'Upload New Image'}
                       <input
                         type="file"
                         accept="image/*"
@@ -1105,6 +1689,298 @@ export default function BlogFormClient({
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Manage & Update Inserted Image Modal */}
+      {showImageEditModal && selectedImageNode && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-xl w-full flex flex-col overflow-hidden border border-gray-200 animate-fadeIn">
+            {/* Modal Header */}
+            <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-emerald-100 text-[#084032] rounded-lg">
+                  <ImageIcon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-gray-900 leading-tight">
+                    Manage Inserted Image
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    Replace, update attributes, resize, or delete this image
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowImageEditModal(false)}
+                className="text-gray-400 hover:text-gray-700 font-bold text-xl p-1 rounded-md hover:bg-gray-150 transition-colors cursor-pointer"
+              >
+                &times;
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <form onSubmit={handleSaveImageModal} className="p-6 space-y-5 overflow-y-auto max-h-[calc(85vh-130px)]">
+              {/* Image Preview & Quick Actions */}
+              <div className="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100 flex flex-col sm:flex-row gap-4 items-center">
+                <div className="w-28 h-24 rounded-lg border border-emerald-300 bg-white overflow-hidden shrink-0 flex items-center justify-center shadow-xs">
+                  <img
+                    src={imageEditSrc || selectedImageNode.getAttribute('src') || ''}
+                    alt={imageEditAlt || 'Preview'}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex-1 space-y-2 text-center sm:text-left w-full">
+                  <div className="text-xs font-semibold text-gray-700">Quick Image Actions:</div>
+                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowImageEditModal(false);
+                        handleOpenReplaceMedia();
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[#084032] hover:bg-[#062e24] text-white rounded-lg shadow-xs transition-colors cursor-pointer"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" />
+                      Replace / Change
+                    </button>
+                    <label className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-white hover:bg-gray-100 text-[#084032] border border-emerald-300 rounded-lg shadow-xs transition-colors cursor-pointer">
+                      <Upload className="w-3.5 h-3.5" />
+                      Upload New
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          try {
+                            setUploadingImage(true);
+                            const formData = new FormData();
+                            formData.append('file', file);
+                            formData.append('websiteId', 'default');
+                            formData.append('folder', 'blogs');
+                            const res = await fetch(`${apiBase}/api/cms/media`, {
+                              method: 'POST',
+                              body: formData,
+                            });
+                            if (!res.ok) throw new Error('Upload failed');
+                            const data = await res.json();
+                            if (data.media?.url) {
+                              setImageEditSrc(data.media.url);
+                              if (selectedImageNode) {
+                                selectedImageNode.src = data.media.url;
+                                handleEditorChange();
+                              }
+                            }
+                          } catch (err) {
+                            alert('Upload failed: ' + err.message);
+                          } finally {
+                            setUploadingImage(false);
+                          }
+                        }}
+                        disabled={uploadingImage}
+                        className="hidden"
+                      />
+                    </label>
+                    <button
+                      type="button"
+                      onClick={handleDeleteSelectedImage}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg transition-colors cursor-pointer"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      Delete
+                    </button>
+                  </div>
+                  {uploadingImage && (
+                    <p className="text-xs text-emerald-700 animate-pulse font-medium">Uploading replacement image...</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Image Source URL */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">
+                  Image Source URL
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    value={imageEditSrc}
+                    onChange={(e) => setImageEditSrc(e.target.value)}
+                    placeholder="https://example.com/image.jpg"
+                    className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
+                  />
+                </div>
+                <p className="text-[11px] text-gray-500 mt-1">
+                  Direct image URL or CDN link. You can also paste an external image URL here.
+                </p>
+              </div>
+
+              {/* Alt Text */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">
+                  Alt Text (Alternative Description)
+                </label>
+                <input
+                  type="text"
+                  value={imageEditAlt}
+                  onChange={(e) => setImageEditAlt(e.target.value)}
+                  placeholder="e.g. Lenovo ThinkPad laptop wholesale supplier in Dubai"
+                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
+                />
+                <p className="text-[11px] text-gray-500 mt-1">
+                  Important for SEO and screen readers. Accurately describe what is shown in the image.
+                </p>
+              </div>
+
+              {/* Alignment */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  Alignment & Positioning
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setImageEditAlign('center')}
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
+                      imageEditAlign === 'center'
+                        ? 'border-[#084032] bg-emerald-50 text-[#084032] ring-1 ring-[#084032]'
+                        : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                    }`}
+                  >
+                    <AlignCenter className="w-4 h-4 mb-1" />
+                    Center
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setImageEditAlign('left')}
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
+                      imageEditAlign === 'left'
+                        ? 'border-[#084032] bg-emerald-50 text-[#084032] ring-1 ring-[#084032]'
+                        : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                    }`}
+                  >
+                    <AlignLeft className="w-4 h-4 mb-1" />
+                    Left
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setImageEditAlign('right')}
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
+                      imageEditAlign === 'right'
+                        ? 'border-[#084032] bg-emerald-50 text-[#084032] ring-1 ring-[#084032]'
+                        : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                    }`}
+                  >
+                    <AlignRight className="w-4 h-4 mb-1" />
+                    Right
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setImageEditAlign('full')}
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer ${
+                      imageEditAlign === 'full'
+                        ? 'border-[#084032] bg-emerald-50 text-[#084032] ring-1 ring-[#084032]'
+                        : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                    }`}
+                  >
+                    <Maximize2 className="w-4 h-4 mb-1" />
+                    Full Width
+                  </button>
+                </div>
+              </div>
+
+              {/* Text Wrapping Option in Modal */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  Text Wrapping
+                </label>
+                <div className="flex items-center gap-3">
+                  <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-semibold text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={imageEditWrap && imageEditAlign !== 'center'}
+                      disabled={imageEditAlign === 'center'}
+                      onChange={(e) => setImageEditWrap(e.target.checked)}
+                      className="w-4 h-4 text-[#084032] border-gray-300 rounded focus:ring-[#084032]"
+                    />
+                    <span>Allow text to flow alongside image (Left / Right)</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Display Size / Width */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1.5">
+                  Display Width
+                </label>
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {[
+                    { label: 'Full (100%)', val: '100%' },
+                    { label: 'Large (75%)', val: '75%' },
+                    { label: 'Medium (50%)', val: '50%' },
+                    { label: 'Small (25%)', val: '25%' },
+                    { label: 'Original Size', val: 'auto' },
+                  ].map((sz) => (
+                    <button
+                      key={sz.val}
+                      type="button"
+                      onClick={() => setImageEditWidth(sz.val)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
+                        imageEditWidth === sz.val
+                          ? 'border-[#084032] bg-emerald-50 text-[#084032] ring-1 ring-[#084032]'
+                          : 'border-gray-200 hover:bg-gray-50 text-gray-700'
+                      }`}
+                    >
+                      {sz.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500 font-medium">Custom width:</span>
+                  <input
+                    type="text"
+                    value={imageEditWidth}
+                    onChange={(e) => setImageEditWidth(e.target.value)}
+                    placeholder="e.g. 600px, 80%, auto"
+                    className="w-36 px-2.5 py-1 text-xs border border-gray-300 rounded-md focus:ring-1 focus:ring-[#084032] outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="pt-4 border-t border-gray-200 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={handleDeleteSelectedImage}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Delete Image
+                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowImageEditModal(false)}
+                    className="px-4 py-2 border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1.5 px-5 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-sm shadow transition-all cursor-pointer"
+                  >
+                    <Check className="w-4 h-4" />
+                    Save & Update
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       )}
