@@ -1,57 +1,97 @@
-'use client';
-
 import React from 'react';
 import { Boxes, Store, Building2, CheckCircle2, ArrowRight, ShieldCheck, DollarSign, Clock, FileText } from 'lucide-react';
+import { safeRender } from '@/lib/safe-html';
 
-export default function LaptopSolutionsSection({ openGeneralInquiryModal }) {
+export default function LaptopSolutionsSection({ cmsData, openGeneralInquiryModal }) {
+  const fields = cmsData?.fields || cmsData || {};
+  const headingVal = fields.heading;
+  const paragraphVal = fields.paragraph;
+  const heading2Val = fields.heading_2;
+  const paragraph2Val = fields.paragraph_2;
+
+  const defaultHeading = (
+    <>
+      <span className="block not-italic">Wholesale, Retail &amp;</span>
+      <span className="block text-[#147A5F] italic mt-1">
+        B2B Enterprise Solutions
+      </span>
+    </>
+  );
+
+  let renderedHeading = headingVal;
+  if (typeof renderedHeading === 'object' && renderedHeading?.value !== undefined) {
+    renderedHeading = renderedHeading.value;
+  }
+  if (
+    typeof renderedHeading === 'string' &&
+    (renderedHeading.replace(/\s+/g, ' ').trim() === 'Wholesale, Retail & B2B Enterprise Solutions' ||
+      renderedHeading.replace(/\s+/g, ' ').trim() === 'Procurement Solutions for Every Commercial Scale')
+  ) {
+    renderedHeading = defaultHeading;
+  }
   const segments = [
     {
       id: 'wholesale',
-      title: 'Wholesale & Volume Traders',
-      badge: 'High Volume / Export',
+      title: safeRender(fields.segment_1_title, 'Wholesale & Volume Traders'),
+      badge: safeRender(fields.segment_1_badge, 'High Volume / Export'),
       icon: <Boxes className="w-7 h-7 text-[#147A5F]" />,
-      summary:
-        'Engineered for large-scale IT importers, cross-border traders, and GCC regional distributors requiring continuous pallet and container volumes.',
+      summary: safeRender(
+        fields.segment_1_summary,
+        'Engineered for large-scale IT importers, cross-border traders, and GCC regional distributors requiring continuous pallet and container volumes.'
+      ),
       features: [
-        'Aggressive tiered discounts on 20, 50, 100+ unit consignments',
-        'Direct factory allocations from Lenovo, HP, Dell, ASUS & Acer',
-        'Customs-ready export packing & airway/sea cargo manifests',
-        'Bonded warehouse transit across JAFZA, DAFZA & Dubai Cargo Village',
-        'Multi-currency invoicing with verified certificate of origin (COO)',
+        safeRender(fields.segment_1_feat_1, 'Aggressive tiered discounts on 20, 50, 100+ unit consignments'),
+        safeRender(fields.segment_1_feat_2, 'Direct factory allocations from Lenovo, HP, Dell, ASUS & Acer'),
+        safeRender(fields.segment_1_feat_3, 'Customs-ready export packing & airway/sea cargo manifests'),
+        safeRender(fields.segment_1_feat_4, 'Bonded warehouse transit across JAFZA, DAFZA & Dubai Cargo Village'),
+        safeRender(fields.segment_1_feat_5, 'Multi-currency invoicing with verified certificate of origin (COO)'),
       ],
-      idealFor: 'Regional distributors, national wholesalers, export-import companies in GCC, Africa & CIS.',
+      idealFor: safeRender(
+        fields.segment_1_audience,
+        'Regional distributors, national wholesalers, export-import companies in GCC, Africa & CIS.'
+      ),
     },
     {
       id: 'retailers',
-      title: 'Retailers & Computer Resellers',
-      badge: 'High Margins / Fast Turnaround',
+      title: safeRender(fields.segment_2_title, 'Retailers & Computer Resellers'),
+      badge: safeRender(fields.segment_2_badge, 'High Margins / Fast Turnaround'),
       icon: <Store className="w-7 h-7 text-[#147A5F]" />,
-      summary:
-        'Designed to help brick-and-mortar computer shops, showroom owners, and e-commerce merchants maintain healthy profitability and fast stock turnover.',
+      summary: safeRender(
+        fields.segment_2_summary,
+        'Designed to help brick-and-mortar computer shops, showroom owners, and e-commerce merchants maintain healthy profitability and fast stock turnover.'
+      ),
       features: [
-        'Flexible Low MOQs (from 5–10 units per order)',
-        'Immediate same-day pickup from Dubai central showroom/warehouse',
-        'High-demand consumer & gaming laptops that sell fast',
-        'Price drop buffer protections on recurring wholesale accounts',
-        'Official brand promotional materials and digital collateral',
+        safeRender(fields.segment_2_feat_1, 'Flexible Low MOQs (from 5–10 units per order)'),
+        safeRender(fields.segment_2_feat_2, 'Immediate same-day pickup from Dubai central showroom/warehouse'),
+        safeRender(fields.segment_2_feat_3, 'High-demand consumer & gaming laptops that sell fast'),
+        safeRender(fields.segment_2_feat_4, 'Price drop buffer protections on recurring wholesale accounts'),
+        safeRender(fields.segment_2_feat_5, 'Official brand promotional materials and digital collateral'),
       ],
-      idealFor: 'Computer retail shops, electronics showroom chains, online market merchants, IT boutique vendors.',
+      idealFor: safeRender(
+        fields.segment_2_audience,
+        'Computer retail shops, electronics showroom chains, online market merchants, IT boutique vendors.'
+      ),
     },
     {
       id: 'corporate',
-      title: 'B2B Clients & Enterprise Procurement',
-      badge: 'Turnkey IT Fleet Deployment',
+      title: safeRender(fields.segment_3_title, 'B2B Clients & Enterprise Procurement'),
+      badge: safeRender(fields.segment_3_badge, 'Turnkey IT Fleet Deployment'),
       icon: <Building2 className="w-7 h-7 text-[#147A5F]" />,
-      summary:
-        'Comprehensive computing solutions for corporate offices, financial institutions, educational academies, and healthcare networks.',
+      summary: safeRender(
+        fields.segment_3_summary,
+        'Comprehensive computing solutions for corporate offices, financial institutions, educational academies, and healthcare networks.'
+      ),
       features: [
-        'Standardized multi-tier laptop fleets (Executive, Staff & Technical)',
-        'Custom OS staging, BIOS configurations, and corporate asset tagging',
-        'Flexible credit terms (PDC, LC, 30-day corporate facility upon approval)',
-        'Consolidated multi-branch delivery across all 7 UAE Emirates',
-        'Post-procurement warranty facilitation and optional AMC maintenance',
+        safeRender(fields.segment_3_feat_1, 'Standardized multi-tier laptop fleets (Executive, Staff & Technical)'),
+        safeRender(fields.segment_3_feat_2, 'Custom OS staging, BIOS configurations, and corporate asset tagging'),
+        safeRender(fields.segment_3_feat_3, 'Flexible credit terms (PDC, LC, 30-day corporate facility upon approval)'),
+        safeRender(fields.segment_3_feat_4, 'Consolidated multi-branch delivery across all 7 UAE Emirates'),
+        safeRender(fields.segment_3_feat_5, 'Post-procurement warranty facilitation and optional AMC maintenance'),
       ],
-      idealFor: 'Enterprises, banks, universities, hospitals, call centers, and expanding UAE startups.',
+      idealFor: safeRender(
+        fields.segment_3_audience,
+        'Enterprises, banks, universities, hospitals, call centers, and expanding UAE startups.'
+      ),
     },
   ];
 
@@ -63,21 +103,18 @@ export default function LaptopSolutionsSection({ openGeneralInquiryModal }) {
           {/* Section Header */}
           <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-10 sm:mb-12 xl:mb-14">
             <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-2.5 block font-montserrat">
-              TAILORED PURCHASING &amp; COMMERCIAL SOLUTIONS
+              {safeRender(fields.badge, "TAILORED PURCHASING & COMMERCIAL SOLUTIONS")}
             </span>
 
             <h2
               className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-[#171717]"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <span className="block not-italic">Wholesale, Retail &amp;</span>
-              <span className="block text-[#147A5F] italic mt-1">
-                B2B Enterprise Solutions
-              </span>
+              {safeRender(renderedHeading, defaultHeading) || 'Procurement Solutions for Every Commercial Scale'}
             </h2>
 
             <p className="font-jakarta text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto text-pretty">
-              Crown Excel structures tailored commercial terms, volume discount matrices, and operational workflows matching the exact purchasing requirements of your business tier.
+              {safeRender(paragraphVal, "Crown Excel structures tailored commercial terms, volume discount matrices, and operational workflows matching the exact purchasing requirements of your business tier.")}
             </p>
           </div>
 
@@ -136,13 +173,13 @@ export default function LaptopSolutionsSection({ openGeneralInquiryModal }) {
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
               <div className="max-w-2xl text-center lg:text-left">
                 <span className="text-[#ffd900] text-xs font-bold uppercase tracking-wider font-montserrat block mb-1.5">
-                  FLEXIBLE PROCUREMENT ENGAGEMENTS
+                  {safeRender(fields.cta_badge, "FLEXIBLE PROCUREMENT ENGAGEMENTS")}
                 </span>
                 <h3 className="font-anton uppercase text-xl sm:text-2xl lg:text-3xl leading-tight">
-                  Need a Custom Corporate IT Procurement Plan?
+                  {safeRender(heading2Val, "Need a Custom Corporate IT Procurement Plan?")}
                 </h3>
                 <p className="font-jakarta text-emerald-100 text-xs sm:text-sm mt-2 leading-relaxed">
-                  Connect with our commercial sales desk to set up a credit application, review specialized batch quotations, or organize a customized pilot deployment for your company.
+                  {safeRender(paragraph2Val, "Connect with our commercial sales desk to set up a credit application, review specialized batch quotations, or organize a customized pilot deployment for your company.")}
                 </p>
               </div>
 
@@ -151,7 +188,7 @@ export default function LaptopSolutionsSection({ openGeneralInquiryModal }) {
                 onClick={openGeneralInquiryModal}
                 className="px-6 sm:px-7 py-3 rounded-xl bg-[#ffd900] hover:bg-[#e6c400] text-gray-950 font-bold text-xs sm:text-sm font-jakarta shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer flex-shrink-0 transform hover:-translate-y-0.5 active:scale-[0.98]"
               >
-                Consult with B2B Sales
+                {safeRender(fields.cta_button_text, "Consult with B2B Sales")}
               </button>
             </div>
           </div>

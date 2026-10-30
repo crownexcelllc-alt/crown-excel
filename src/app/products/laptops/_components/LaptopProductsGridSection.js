@@ -25,14 +25,38 @@ import ImgNX_DGJEM_002 from '@/Components/Images/NX.DGJEM.002.webp';
 import ImgNX_DTGEM_001 from '@/Components/Images/NX.DTGEM.001.webp';
 import ImgWorkstation1 from '@/Components/Images/BestLaptop3.png';
 import ImgWorkstation2 from '@/Components/Images/UnleashLaptop.png';
+import { safeRender } from '@/lib/safe-html';
 
 export default function LaptopProductsGridSection({
+  cmsData,
   activeCategory = 'All',
   onSelectCategory,
   openProductInquiryModal,
   getWhatsAppUrl,
   handleWhatsAppRedirect,
 }) {
+  const fields = cmsData?.fields || cmsData || {};
+  const headingVal = fields.heading;
+  const paragraphVal = fields.paragraph;
+
+  const defaultHeading = (
+    <>
+      <span className="block not-italic">Available Wholesale Laptop Models</span>
+      <span className="block text-[#147A5F] italic mt-1">
+        &amp; Bulk Inventory
+      </span>
+    </>
+  );
+
+  let renderedHeading = headingVal;
+  if (
+    typeof renderedHeading === 'string' &&
+    (renderedHeading.replace(/\s+/g, ' ').trim() === 'Available Wholesale Laptop Models & Bulk Inventory' ||
+      renderedHeading.replace(/\s+/g, ' ').trim() === 'Factory-Sealed Laptop Inventory Available for Dispatch')
+  ) {
+    renderedHeading = defaultHeading;
+  }
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const LAPTOP_PRODUCTS = useMemo(() => [
@@ -411,21 +435,18 @@ export default function LaptopProductsGridSection({
           {/* Section Header */}
           <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-8 sm:mb-10 xl:mb-12">
             <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-2.5 block font-montserrat">
-              READY WAREHOUSE STOCK IN DUBAI
+              {safeRender(fields.badge, "READY WAREHOUSE STOCK IN DUBAI")}
             </span>
 
             <h2
               className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-[#171717]"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <span className="block not-italic">Available Wholesale Laptop Models</span>
-              <span className="block text-[#147A5F] italic mt-1">
-                &amp; Bulk Inventory
-              </span>
+              {safeRender(renderedHeading, defaultHeading) || 'Factory-Sealed Laptop Inventory Available for Dispatch'}
             </h2>
 
             <p className="font-jakarta text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto font-normal text-pretty">
-              Browse our current catalog of factory-sealed laptops available for immediate bulk dispatch across Dubai, the UAE, and GCC export hubs. Filter by series or search by SKU barcode.
+              {safeRender(paragraphVal, "Browse our current catalog of factory-sealed laptops available for immediate bulk dispatch across Dubai, the UAE, and GCC export hubs. Filter by series or search by SKU barcode.")}
             </p>
           </div>
 
@@ -463,7 +484,7 @@ export default function LaptopProductsGridSection({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by model, SKU or CPU..."
+                placeholder={fields.search_placeholder?.value || (typeof fields.search_placeholder === 'string' ? fields.search_placeholder : "Search by model, SKU or CPU...")}
                 className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-gray-200 text-xs sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#147A5F] focus:ring-1 focus:ring-[#147A5F] transition-all shadow-2xs"
               />
             </div>
@@ -472,7 +493,7 @@ export default function LaptopProductsGridSection({
           {/* Product Count Indicator */}
           <div className="flex items-center justify-between text-xs text-gray-500 font-jakarta mb-5 sm:mb-6">
             <span>Showing <strong className="text-gray-900">{filteredProducts.length}</strong> available laptop configurations</span>
-            <span>MOQ: 5-10 units for wholesale pricing</span>
+            <span>{safeRender(fields.moq_note, "MOQ: 5-10 units for wholesale pricing")}</span>
           </div>
 
           {/* Product Cards Responsive Grid */}
@@ -536,7 +557,7 @@ export default function LaptopProductsGridSection({
                     className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#147A5F] hover:bg-[#0f604b] text-white text-xs font-bold transition-all duration-200 cursor-pointer shadow-2xs active:scale-[0.98]"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>Inquire Now</span>
+                    <span>{safeRender(fields.inquire_button_text, "Inquire Now")}</span>
                   </button>
 
                   <a
@@ -558,7 +579,9 @@ export default function LaptopProductsGridSection({
         {/* Empty Search Result Fallback */}
         {filteredProducts.length === 0 && (
           <div className="text-center py-16 bg-white rounded-2xl border border-gray-200 max-w-md mx-auto font-jakarta">
-            <p className="text-gray-500 text-sm mb-3">No laptop models match your current filter or search query.</p>
+            <p className="text-gray-500 text-sm mb-3">
+              {safeRender(fields.empty_message, "No laptop models match your current filter or search query.")}
+            </p>
             <button
               type="button"
               onClick={() => {
@@ -567,7 +590,7 @@ export default function LaptopProductsGridSection({
               }}
               className="text-xs font-bold text-[#147A5F] hover:underline"
             >
-              Reset Filters
+              {safeRender(fields.reset_button_text, "Reset Filters")}
             </button>
           </div>
         )}

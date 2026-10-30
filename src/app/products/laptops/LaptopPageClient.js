@@ -12,11 +12,20 @@ import LaptopSolutionsSection from './_components/LaptopSolutionsSection';
 import LaptopOperationsSection from './_components/LaptopOperationsSection';
 import LaptopInquirySection from './_components/LaptopInquirySection';
 
-export default function LaptopPageClient() {
+export default function LaptopPageClient({ cmsContent }) {
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
   const [isMobile, setIsMobile] = useState(false);
+
+  const sections = cmsContent?.sections || {};
+  const heroSection = sections.laptopherosection || sections.hero;
+  const experienceSection = sections.laptopexperiencesection;
+  const categoriesSection = sections.laptopcategoriessection;
+  const productsGridSection = sections.laptopproductsgridsection;
+  const solutionsSection = sections.laptopsolutionssection;
+  const operationsSection = sections.laptopoperationssection;
+  const inquirySection = sections.laptopinquirysection;
 
   const WHATSAPP_PHONE = '971505033860';
 
@@ -87,6 +96,7 @@ export default function LaptopPageClient() {
     <main className="bg-white text-[#171717] selection:bg-[#147A5F] selection:text-white">
       {/* 1. Laptop Hero Section */}
       <LaptopHeroSection
+        cmsData={heroSection}
         openGeneralInquiryModal={openGeneralInquiryModal}
         getWhatsAppUrl={getWhatsAppUrl}
         handleWhatsAppRedirect={handleWhatsAppRedirect}
@@ -94,13 +104,17 @@ export default function LaptopPageClient() {
       />
 
       {/* 2. Laptop Business Experience & Expertise */}
-      <LaptopExperienceSection />
+      <LaptopExperienceSection cmsData={experienceSection} />
 
       {/* 3. Laptop Categories */}
-      <LaptopCategoriesSection onSelectCategory={handleSelectCategory} />
+      <LaptopCategoriesSection
+        cmsData={categoriesSection}
+        onSelectCategory={handleSelectCategory}
+      />
 
       {/* 4. Laptop Product Cards */}
       <LaptopProductsGridSection
+        cmsData={productsGridSection}
         activeCategory={activeCategory}
         onSelectCategory={setActiveCategory}
         openProductInquiryModal={openProductInquiryModal}
@@ -109,13 +123,17 @@ export default function LaptopPageClient() {
       />
 
       {/* 5. Wholesale, Retail & B2B Solutions */}
-      <LaptopSolutionsSection openGeneralInquiryModal={openGeneralInquiryModal} />
+      <LaptopSolutionsSection
+        cmsData={solutionsSection}
+        openGeneralInquiryModal={openGeneralInquiryModal}
+      />
 
       {/* 6. Laptop Handling, Delivery & Support Expertise */}
-      <LaptopOperationsSection />
+      <LaptopOperationsSection cmsData={operationsSection} />
 
       {/* 7. Final Inquiry Section */}
       <LaptopInquirySection
+        cmsData={inquirySection}
         openGeneralInquiryModal={openGeneralInquiryModal}
         getWhatsAppUrl={getWhatsAppUrl}
         handleWhatsAppRedirect={handleWhatsAppRedirect}

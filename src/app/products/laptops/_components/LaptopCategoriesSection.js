@@ -1,44 +1,75 @@
-'use client';
-
 import React from 'react';
 import { Gamepad2, Laptop, Briefcase, Cpu, ArrowRight } from 'lucide-react';
+import { safeRender } from '@/lib/safe-html';
 
-export default function LaptopCategoriesSection({ onSelectCategory }) {
+export default function LaptopCategoriesSection({ cmsData, onSelectCategory }) {
+  const fields = cmsData?.fields || cmsData || {};
+  const headingVal = fields.heading;
+  const paragraphVal = fields.paragraph;
+
+  const defaultHeading = (
+    <>
+      <span className="block not-italic">Explore Main Laptop</span>
+      <span className="block text-[#ffd900] italic mt-1">
+        Categories &amp; Configurations
+      </span>
+    </>
+  );
+
+  let renderedHeading = headingVal;
+  if (typeof renderedHeading === 'object' && renderedHeading?.value !== undefined) {
+    renderedHeading = renderedHeading.value;
+  }
+  if (
+    typeof renderedHeading === 'string' &&
+    (renderedHeading.replace(/\s+/g, ' ').trim() === 'Explore Main Laptop Categories & Configurations' ||
+      renderedHeading.replace(/\s+/g, ' ').trim() === 'Comprehensive Laptop Categories for Resellers & Enterprises')
+  ) {
+    renderedHeading = defaultHeading;
+  }
   const categories = [
     {
       id: 'gaming',
-      title: 'Gaming Laptops',
+      title: safeRender(fields.cat_1_title, 'Gaming Laptops'),
       icon: <Gamepad2 className="w-6 h-6 text-[#ffd900]" />,
-      tagline: 'High Performance & Graphics',
-      description:
-        'Engineered for competitive gaming, 3D graphics rendering, and heavy multitasking with high-refresh displays and advanced cooling.',
+      tagline: safeRender(fields.cat_1_tagline, 'High Performance & Graphics'),
+      description: safeRender(
+        fields.cat_1_desc,
+        'Engineered for competitive gaming, 3D graphics rendering, and heavy multitasking with high-refresh displays and advanced cooling.'
+      ),
       categoryKey: 'Gaming',
     },
     {
       id: 'personal',
-      title: 'Personal Laptops',
+      title: safeRender(fields.cat_2_title, 'Personal Laptops'),
       icon: <Laptop className="w-6 h-6 text-[#ffd900]" />,
-      tagline: 'Portability & Everyday Tasks',
-      description:
-        'Sleek, lightweight notebooks crafted for everyday productivity, study, remote work, and all-day mobile battery endurance.',
+      tagline: safeRender(fields.cat_2_tagline, 'Portability & Everyday Tasks'),
+      description: safeRender(
+        fields.cat_2_desc,
+        'Sleek, lightweight notebooks crafted for everyday productivity, study, remote work, and all-day mobile battery endurance.'
+      ),
       categoryKey: 'Personal',
     },
     {
       id: 'business',
-      title: 'Business Laptops',
+      title: safeRender(fields.cat_3_title, 'Business Laptops'),
       icon: <Briefcase className="w-6 h-6 text-[#ffd900]" />,
-      tagline: 'Enterprise Security & Reliability',
-      description:
-        'Commercial workhorses built with hardware-level security, durable mil-spec construction, and business-grade operating systems.',
+      tagline: safeRender(fields.cat_3_tagline, 'Enterprise Security & Reliability'),
+      description: safeRender(
+        fields.cat_3_desc,
+        'Commercial workhorses built with hardware-level security, durable mil-spec construction, and business-grade operating systems.'
+      ),
       categoryKey: 'Business',
     },
     {
       id: 'workstations',
-      title: 'Workstations',
+      title: safeRender(fields.cat_4_title, 'Workstations'),
       icon: <Cpu className="w-6 h-6 text-[#ffd900]" />,
-      tagline: 'Heavy Computing & ISV Power',
-      description:
-        'Certified mobile workstations designed for architectural CAD, engineering simulations, data science, and demanding creative workflows.',
+      tagline: safeRender(fields.cat_4_tagline, 'Heavy Computing & ISV Power'),
+      description: safeRender(
+        fields.cat_4_desc,
+        'Certified mobile workstations designed for architectural CAD, engineering simulations, data science, and demanding creative workflows.'
+      ),
       categoryKey: 'Workstations',
     },
   ];
@@ -61,21 +92,18 @@ export default function LaptopCategoriesSection({ onSelectCategory }) {
           {/* Section Header */}
           <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-10 sm:mb-12 xl:mb-14">
             <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#ffd900] mb-2 sm:mb-2.5 block font-montserrat">
-              CORE COMPUTING CATEGORIES
+              {safeRender(fields.badge, "CORE COMPUTING CATEGORIES")}
             </span>
 
             <h2
               className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-white"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <span className="block not-italic">Explore Main Laptop</span>
-              <span className="block text-[#ffd900] italic mt-1">
-                Categories &amp; Configurations
-              </span>
+              {safeRender(renderedHeading, defaultHeading) || 'Comprehensive Laptop Categories for Resellers & Enterprises'}
             </h2>
 
             <p className="font-jakarta text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto font-light text-pretty">
-              Discover our core laptop categories structured for wholesale and enterprise requirements, from high-performance gaming to mission-critical mobile workstations.
+              {safeRender(paragraphVal, "Discover our core laptop categories structured for wholesale and enterprise requirements, from high-performance gaming to mission-critical mobile workstations.")}
             </p>
           </div>
 
