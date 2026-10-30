@@ -501,6 +501,208 @@ export async function GET(request) {
             paragraph_7: getFld('paragraph_7', "Managing Director & CEO", "Executive Designation", 'text'),
             paragraph_8: getFld('paragraph_8', "Crown Excel General Trading LLC", "Company Name", 'text'),
           };
+        } else if (sec.sectionId === 'desktopbanner') {
+          sec.sectionName = 'Hero Banner (Desktop Banner)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'DISCOVER TOP', 'Banner Top Line'),
+            heading_2: getFld('heading_2', 'DESKTOP BRANDS', 'Banner Highlighted Line'),
+            heading_3: getFld('heading_3', 'FOR EVERY NEED', 'Banner Bottom Line'),
+            paragraph: getFld('paragraph', 'From an array of high-quality products, Crown Excel presents you with the best desktop PCs and their accessories from world-class manufacturers like Dell, HP, Lenovo, and many more.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_desktopimage1) sec.fields.image_desktopimage1.label = 'Left Desktop PC Image';
+          if (sec.fields.image_desktopimage2) sec.fields.image_desktopimage2.label = 'Right Desktop PC Image';
+          if (sec.fields.image_stars) sec.fields.image_stars.label = 'Decorative Stars Graphic';
+        } else if (sec.sectionId === 'desktopbestselling') {
+          sec.sectionName = 'Latest Products Carousel';
+          const bestImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = { ...bestImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Our Latest Product', 'Section Heading'),
+            card_1_title: getFld('card_1_title', 'Dell Alienware', 'Product 1 Title'),
+            card_1_desc: getFld('card_1_desc', 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.', 'Product 1 Description', 'richtext'),
+            card_2_title: getFld('card_2_title', 'Asus Expert', 'Product 2 Title'),
+            card_2_desc: getFld('card_2_desc', 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.', 'Product 2 Description', 'richtext'),
+            ...bestImgs,
+          };
+          if (sec.fields.image_desktopbestproduct1) sec.fields.image_desktopbestproduct1.label = 'Product 1 Image (Dell Alienware)';
+          if (sec.fields.image_desktopbestproduct2) sec.fields.image_desktopbestproduct2.label = 'Product 2 Image (Asus Expert)';
+          if (sec.fields.image_buttonbackground) sec.fields.image_buttonbackground.label = 'Carousel Button Background Graphic';
+        } else if (sec.sectionId === 'unleasepowerdesktop') {
+          sec.sectionName = 'Performance Solutions Banner';
+          const unleaseImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) unleaseImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) unleaseImgs[k] = { ...unleaseImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'UNLEASH POWER AND PERFORMANCE IN ONE DESKTOP SOLUTIONS', 'Top Banner Heading'),
+            heading_2: getFld('heading_2', 'GET MORE WITH EFFICIENT DESKTOP SOLUTIONS', 'Main Feature Heading'),
+            paragraph: getFld('paragraph', 'All these from powerful workstations for your business to perfect gaming PCs and affordable desktops for everyday use, Crown Excel has the right product to suit your needs. Other than desktop computers,', 'Feature Description', 'richtext'),
+            ...unleaseImgs,
+          };
+          if (sec.fields.image_computers) sec.fields.image_computers.label = 'Desktop Computer Showcase Image';
+          if (sec.fields.image_backgroundimage) sec.fields.image_backgroundimage.label = 'Background Graphic';
+        } else if (sec.sectionId === 'highperformance') {
+          sec.sectionName = 'Creative Professionals Desktop';
+          const hpImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) hpImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) hpImgs[k] = { ...hpImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'HIGH-PERFORMANCE DESKTOP FOR CREATIVE PROFESSIONAL', 'Section Heading'),
+            paragraph: getFld('paragraph', 'we also offer an assortment of computer accessories designed to enhance your configuration, for example, monitors, keyboards, mice, etc.', 'Section Description', 'richtext'),
+            ...hpImgs,
+          };
+          if (sec.fields.image_highperformanceimage) sec.fields.image_highperformanceimage.label = 'High Performance Desktop Image';
+          if (sec.fields.image_comma) sec.fields.image_comma.label = 'Decorative Quote/Comma Graphic';
+        } else if (sec.sectionId === 'heavycomputing') {
+          sec.sectionName = 'Heavy Computing Solutions';
+          const hcImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) hcImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) hcImgs[k] = { ...hcImgs[k], ...v };
+          }
+          const getHcTitle = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'text', value: val, originalValue: def, label: lbl };
+          };
+          const getHcDesc = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'richtext', value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'THE ULTIMATE SOLUTION FOR HEAVY COMPUTING', 'Main Section Heading'),
+            card_1_title: getHcTitle('card_1_title', 'heading_2', 'Exceptional Processing Power', 'Card 1 Title'),
+            card_1_desc: getHcDesc('card_1_desc', 'paragraph', 'Unleash unparalleled speed with cutting-edge processors built for multitasking and high-performance tasks. Designed to handle demanding applications with efficiency and reliability.', 'Card 1 Description'),
+            card_2_title: getHcTitle('card_2_title', 'heading_3', 'Advanced Graphics Capabilities', 'Card 2 Title'),
+            card_2_desc: getHcDesc('card_2_desc', 'paragraph_2', 'Experience stunning visuals and superior rendering with state-of-the-art graphics technology. Ideal for gamers, creators, and professionals seeking immersive and detailed displays.', 'Card 2 Description'),
+            card_3_title: getHcTitle('card_3_title', 'heading_4', 'Ample RAM and Storage', 'Card 3 Title'),
+            card_3_desc: getHcDesc('card_3_desc', 'paragraph_3', 'Seamlessly multitask and store more with high-capacity drives and ample RAM. Optimized for speed, ensuring smooth and efficient performance for all tasks.', 'Card 3 Description'),
+            card_4_title: getHcTitle('card_4_title', 'heading_5', 'Customizable and Scalable', 'Card 4 Title'),
+            card_4_desc: getHcDesc('card_4_desc', 'paragraph_4', 'Build your perfect system with customizable and upgradeable options. Future-proof your investment with scalable features tailored to your needs.', 'Card 4 Description'),
+            ...hcImgs,
+          };
+          if (sec.fields.image_computingimage) sec.fields.image_computingimage.label = 'Computing Center Showcase Graphic';
+        } else if (sec.sectionId === 'allinonedesktops') {
+          sec.sectionName = 'All-in-One Desktops';
+          const aioImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) aioImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) aioImgs[k] = { ...aioImgs[k], ...v };
+          }
+          const getAioVal = (key, fallbackKey, def, lbl, type = 'text') => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type, value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'The Best All-in-one Desktops For Space-Saving Power', 'Section Main Heading'),
+            subheading_1: getAioVal('subheading_1', 'heading_2', 'For Businesses:', 'Business Group Subheading'),
+            button_1_text: getFld('button_1_text', 'Visit Our Store', 'Business Group Button Label'),
+            card_1_title: getFld('card_1_title', 'ASUS EXPERT CENTER D700 SC', 'Business Model 1 Title'),
+            card_1_desc: getFld('card_1_desc', 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.', 'Business Model 1 Description', 'richtext'),
+            card_2_title: getFld('card_2_title', 'Lenovo M70q G4 Tiny', 'Business Model 2 Title'),
+            card_2_desc: getFld('card_2_desc', 'The Lenovo M70q G4 Tiny is a compact yet powerful desktop computer designed for optimal performance and space-saving efficiency.', 'Business Model 2 Description', 'richtext'),
+            card_3_title: getFld('card_3_title', 'Acer Veriton VS', 'Business Model 3 Title'),
+            card_3_desc: getFld('card_3_desc', 'The Acer Veriton VS2690G Desktop Tower is the perfect choice for anyone in need of a reliable and efficient computer.', 'Business Model 3 Description', 'richtext'),
+            subheading_2: getAioVal('subheading_2', 'heading_3', 'For Individuals:', 'Individuals Group Subheading'),
+            button_2_text: getFld('button_2_text', 'Visit Our Store', 'Individuals Group Button Label'),
+            card_4_title: getFld('card_4_title', 'DELL OPTIPLEX 3000', 'Individual Model 1 Title'),
+            card_4_desc: getFld('card_4_desc', 'Introducing the Dell OptiPlex 3000 MT (DTDELLOPT3000I54256GBD), a dependable desktop solution.', 'Individual Model 1 Description', 'richtext'),
+            card_5_title: getFld('card_5_title', 'HP 290 G3 Small', 'Individual Model 2 Title'),
+            card_5_desc: getFld('card_5_desc', 'Introducing the HP 290 G3 Small Form Factor PC Bundle, the perfect choice for all your computing needs.', 'Individual Model 2 Description', 'richtext'),
+            card_6_title: getFld('card_6_title', 'Dell Alienware Aurora', 'Individual Model 3 Title'),
+            card_6_desc: getFld('card_6_desc', 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.', 'Individual Model 3 Description', 'richtext'),
+            ...aioImgs,
+          };
+          if (sec.fields.image_allinone1) sec.fields.image_allinone1.label = 'Business Model 1 Image (ASUS Expert Center)';
+          if (sec.fields.image_allinone2) sec.fields.image_allinone2.label = 'Business Model 2 Image (Lenovo M70q Tiny)';
+          if (sec.fields.image_allinone3) sec.fields.image_allinone3.label = 'Business Model 3 Image (Acer Veriton VS)';
+          if (sec.fields.image_allinone4) sec.fields.image_allinone4.label = 'Individual Model 1 Image (Dell OptiPlex 3000)';
+          if (sec.fields.image_allinone5) sec.fields.image_allinone5.label = 'Individual Model 2 Image (HP 290 G3 Small)';
+          if (sec.fields.image_allinone6) sec.fields.image_allinone6.label = 'Individual Model 3 Image (Dell Alienware Aurora)';
+        } else if (sec.sectionId === 'whybuyfromus') {
+          sec.sectionName = 'Why Buy Desktops From Us';
+          const wImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) wImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) wImgs[k] = { ...wImgs[k], ...v };
+          }
+          const getWTitle = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'text', value: val, originalValue: def, label: lbl };
+          };
+          const getWDesc = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'richtext', value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'Why Buy Desktops From Us?', 'Section Main Heading'),
+            paragraph: getFld('paragraph', 'Our desktop PCs are built to provide good performance for work, gaming, or personal purposes. Here’s why Crown Excel is your best bet for desktops:', 'Section Main Description', 'richtext'),
+            feature_1_title: getWTitle('feature_1_title', 'heading_2', 'Top Brands', 'Feature 1 Title'),
+            feature_1_desc: getWDesc('feature_1_desc', 'paragraph_2', 'We provide desktop PCs from leading manufacturers like Dell, HP, Lenovo, and many others, promising peak quality and dependability.', 'Feature 1 Description'),
+            feature_2_title: getWTitle('feature_2_title', 'heading_3', 'Latest Technology', 'Feature 2 Title'),
+            feature_2_desc: getWDesc('feature_2_desc', 'paragraph_3', 'Desktops have incorporated the latest in processors, high-capacity storage, and top-of-the-line graphics cards to ensure superb performance to clients.', 'Feature 2 Description'),
+            feature_3_title: getWTitle('feature_3_title', 'heading_4', 'Customization & Upgrades', 'Feature 3 Title'),
+            feature_3_desc: getWDesc('feature_3_desc', 'paragraph_4', 'Need specific configurations? We can provide customization services so that the desktop PC is tailored specifically to your needs-whether business or game-related.', 'Feature 3 Description'),
+            feature_4_title: getWTitle('feature_4_title', 'heading_5', 'Warranty & After-Sales Support', 'Feature 4 Title'),
+            feature_4_desc: getWDesc('feature_4_desc', 'paragraph_5', 'All our products carry warranties and offer technical support, which keeps your system up and running.', 'Feature 4 Description'),
+            ...wImgs,
+          };
+          if (sec.fields.image_yellobckground) sec.fields.image_yellobckground.label = 'Left Graphic Banner (Yellow Background)';
+        } else if (sec.sectionId === 'desktopbrands') {
+          sec.sectionName = 'Desktop Brands We Deal';
+          const brandImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = { ...brandImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'BRANDS WE DEAL', 'Section Heading'),
+            ...brandImgs,
+          };
+          if (sec.fields.image_lenovo) sec.fields.image_lenovo.label = 'Lenovo Brand Logo';
+          if (sec.fields.image_hp) sec.fields.image_hp.label = 'HP Brand Logo';
+          if (sec.fields.image_accer) sec.fields.image_accer.label = 'Acer Brand Logo';
+          if (sec.fields.image_asus) sec.fields.image_asus.label = 'ASUS Brand Logo';
+          if (sec.fields.image_dell) sec.fields.image_dell.label = 'Dell Brand Logo';
+          if (sec.fields.image_background) sec.fields.image_background.label = 'Background Texture Graphic';
+          if (sec.fields.image_eclipse) sec.fields.image_eclipse.label = 'Eclipse Accent Graphic';
         }
 
         return sec;
@@ -594,7 +796,9 @@ export async function POST(request) {
 
     const isDynamicPage = 
       finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94' ||
-      finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead';
+      finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
+      finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
+      finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)
     if (Array.isArray(sections) && !isDynamicPage) {

@@ -6,25 +6,69 @@ import Allinone4 from '../../../../../Components/Images/allinonedesktop4.png'
 import Allinone5 from '../../../../../Components/Images/allinonedesktop5.png'
 import Allinone6 from '../../../../../Components/Images/allinonedesktop6.png'
 import Image from 'next/image'
-const AllinOneDesktops = () => {
+import { safeRender, safeImage } from '@/lib/safe-html'
+
+const AllinOneDesktops = ({ cmsData }) => {
+    const fields = cmsData?.fields || cmsData || {};
+    const headingText = safeRender(fields.heading, <>The Best All-in-one Desktops <br /> For Space-Saving Power</>);
+
+    const sub1 = safeRender(fields.subheading_1 || fields.heading_2, "For Businesses:");
+    const btn1 = safeRender(fields.button_1_text, "Visit Our Store");
+
+    const sub2 = safeRender(fields.subheading_2 || fields.heading_3, "For Individuals:");
+    const btn2 = safeRender(fields.button_2_text, "Visit Our Store");
+
+    const img1 = safeImage(fields.image_allinone1, Allinone1);
+    const img2 = safeImage(fields.image_allinone2, Allinone2);
+    const img3 = safeImage(fields.image_allinone3, Allinone3);
+    const img4 = safeImage(fields.image_allinone4, Allinone4);
+    const img5 = safeImage(fields.image_allinone5, Allinone5);
+    const img6 = safeImage(fields.image_allinone6, Allinone6);
+
     const Business = [
-        { Image: Allinone1, title: 'ASUS EXPERT CENTER D700 SC', desc: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.' },
-        { Image: Allinone2, title: 'Lenovo M70q G4 Tiny', desc: 'The Lenovo M70q G4 Tiny is a compact yet powerful desktop computer designed for optimal performance and space-saving efficiency.' },
-        { Image: Allinone3, title: 'Acer Veriton VS', desc: 'The Acer Veriton VS2690G Desktop Tower is the perfect choice for anyone in need of a reliable and efficient computer.' },
-    ]
+        { 
+            Image: img1, 
+            title: safeRender(fields.card_1_title, 'ASUS EXPERT CENTER D700 SC'), 
+            desc: safeRender(fields.card_1_desc, 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.') 
+        },
+        { 
+            Image: img2, 
+            title: safeRender(fields.card_2_title, 'Lenovo M70q G4 Tiny'), 
+            desc: safeRender(fields.card_2_desc, 'The Lenovo M70q G4 Tiny is a compact yet powerful desktop computer designed for optimal performance and space-saving efficiency.') 
+        },
+        { 
+            Image: img3, 
+            title: safeRender(fields.card_3_title, 'Acer Veriton VS'), 
+            desc: safeRender(fields.card_3_desc, 'The Acer Veriton VS2690G Desktop Tower is the perfect choice for anyone in need of a reliable and efficient computer.') 
+        },
+    ];
+
     const Individuals = [
-        { Image: Allinone4,title: 'DELL OPTIPLEX 3000', desc: 'Introducing the Dell OptiPlex 3000 MT (DTDELLOPT3000I54256GBD), a dependable desktop solution.'},
-        { Image: Allinone5,title: 'HP 290 G3 Small', desc: 'Introducing the HP 290 G3 Small Form Factor PC Bundle, the perfect choice for all your computing needs.'},
-        { Image: Allinone6,title: 'Dell Alienware Aurora', desc: 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.'},
-    ]
+        { 
+            Image: img4, 
+            title: safeRender(fields.card_4_title, 'DELL OPTIPLEX 3000'), 
+            desc: safeRender(fields.card_4_desc, 'Introducing the Dell OptiPlex 3000 MT (DTDELLOPT3000I54256GBD), a dependable desktop solution.') 
+        },
+        { 
+            Image: img5, 
+            title: safeRender(fields.card_5_title, 'HP 290 G3 Small'), 
+            desc: safeRender(fields.card_5_desc, 'Introducing the HP 290 G3 Small Form Factor PC Bundle, the perfect choice for all your computing needs.') 
+        },
+        { 
+            Image: img6, 
+            title: safeRender(fields.card_6_title, 'Dell Alienware Aurora'), 
+            desc: safeRender(fields.card_6_desc, 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.') 
+        },
+    ];
+
     return (
         <div className='mt-20 lg:mt-0 '>
-            <h2 className='text-[24px] md:text-[50px] md:leading-[60px] lg:text-[50px] leading-[30px] lg:leading-[60px] font-[700] text-black text-montserrat text-center'>The Best All-in-one Desktops <br /> For Space-Saving Power</h2>
+            <h2 className='text-[24px] md:text-[50px] md:leading-[60px] lg:text-[50px] leading-[30px] lg:leading-[60px] font-[700] text-black text-montserrat text-center'>{headingText}</h2>
             <div className="allinone-bottom">
                 <div className="allinone-bottom-top mt-10">
                     <div className="title-button flex flex-col md:flex-row lg:flex-row items-center justify-between px-5 mt-10">
-                        <h3 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>For Businesses:</h3>
-                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Our Store</button>
+                        <h3 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>{sub1}</h3>
+                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>{btn1}</button>
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Business.map((item, i) => (
@@ -42,8 +86,8 @@ const AllinOneDesktops = () => {
                 </div>
                 <div className="allinone-bottom-bottom mt-20">
                     <div className="title-button flex flex-col md:flex-row lg:flex-row items-center justify-between px-5 mt-10">
-                        <h3 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>For Individuals:</h3>
-                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>Visit Our Store</button>
+                        <h3 className='text-[30px] md:text-[50px] lg:text-[50px] leading-[30px] lg:leading-[50px] font-[600] font-montserrat text-[#147d61]'>{sub2}</h3>
+                        <button className='bg-[#ffd900] mt-5 lg:mt-0 p-[10px] rounded-[10px] text-black text-[20px] font-[500] leading-[20px] font-montserrat' style={{ boxShadow: '4px 5px 10px 0px rgba(0, 0, 0, 0.5)' }}>{btn2}</button>
                     </div>
                     <div className="cards flex flex-col md:flex-row lg:flex-row items-center justify-center gap-25 md:gap-15 lg:gap-15 mt-30 px-3 lg:px-0">
                         {Individuals.map((item, i) => (
@@ -65,3 +109,4 @@ const AllinOneDesktops = () => {
 }
 
 export default AllinOneDesktops
+

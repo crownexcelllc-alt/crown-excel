@@ -11,21 +11,35 @@ import 'swiper/css/navigation'
 import ButtonBackground from '../../../../../Components/Images/ButtonBackground.png'
 import DesktopBestProduct1 from '../../../../../Components/Images/DesktopBestProduct1.png'
 import DesktopBestProduct2 from '../../../../../Components/Images/DesktopBestProduct2.png'
+import { safeRender, safeImage } from '@/lib/safe-html'
 
-const carouselData = [
-  {
-    title: 'Dell Alienware',
-    description: 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.',
-    image: DesktopBestProduct1,
-  },
-  {
-    title: 'Asus Expert',
-    description: 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.',
-    image: DesktopBestProduct2,
-  },
-]
+const DesktopBestSelling = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+  const headingText = safeRender(fields.heading, 'Our Latest Product');
 
-const DesktopBestSelling = () => {
+  const p1Title = safeRender(fields.card_1_title, 'Dell Alienware');
+  const p1Desc = safeRender(fields.card_1_desc, 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.');
+  const p1Img = safeImage(fields.image_desktopbestproduct1, DesktopBestProduct1);
+
+  const p2Title = safeRender(fields.card_2_title, 'Asus Expert');
+  const p2Desc = safeRender(fields.card_2_desc, 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.');
+  const p2Img = safeImage(fields.image_desktopbestproduct2, DesktopBestProduct2);
+
+  const btnBg = safeImage(fields.image_buttonbackground, ButtonBackground);
+
+  const carouselData = [
+    {
+      title: p1Title,
+      description: p1Desc,
+      image: p1Img,
+    },
+    {
+      title: p2Title,
+      description: p2Desc,
+      image: p2Img,
+    },
+  ];
+
   // Desktop Swiper refs
   const prevRef = useRef(null)
   const nextRef = useRef(null)
@@ -44,7 +58,7 @@ const DesktopBestSelling = () => {
   <div className="w-full  overflow-x-hidden bg-white py-12">
     {/* Heading */}
     <h2 className="text-center text-4xl md:text-[60px] leading-[60px] font-[800] text-[#16806b] uppercase font-montserrat mb-14">
-      Our Latest Product
+      {headingText}
     </h2>
 
     {/* Desktop View */}
@@ -52,7 +66,7 @@ const DesktopBestSelling = () => {
       {/* Left Button */}
       <div className="absolute left-[-170px] top-1/2 -translate-y-1/2 z-20 md:w-[250px] md:h-[250px] lg:w-[328px] lg:h-[328px]">
         <Image
-          src={ButtonBackground}
+          src={btnBg}
           alt="Left Button Background"
           fill
           className="object-contain"
@@ -120,7 +134,7 @@ const DesktopBestSelling = () => {
       {/* Right Button */}
       <div className="absolute right-[-170px] top-1/2 -translate-y-1/2 z-20 md:w-[250px] md:h-[250px] lg:w-[328px] lg:h-[328px]">
         <Image
-          src={ButtonBackground}
+          src={btnBg}
           alt="Right Button Background"
           fill
           className="object-contain"
@@ -142,7 +156,7 @@ const DesktopBestSelling = () => {
       {/* Left Button */}
       <div className="-ml-25 left-[-170px] top-1/2 -translate-y-1/2 z-20 w-[208px] h-[100px]">
         <Image
-          src={ButtonBackground}
+          src={btnBg}
           alt="Left Button Background"
           fill
           className="object-contain"
@@ -198,7 +212,7 @@ const DesktopBestSelling = () => {
       {/* Right Button */}
       <div className="overflow-hidden -mr-25 right-[-170px] top-1/2 -translate-y-1/2 z-20 w-[200px] h-[100px]">
         <Image
-          src={ButtonBackground}
+          src={btnBg}
           alt="Right Button Background"
           fill
           className="object-contain"
