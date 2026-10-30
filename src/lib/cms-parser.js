@@ -52,9 +52,9 @@ export function cleanText(text) {
   // Strip JSX curly braces around string literals
   text = text.replace(/\{"([\s\S]*?)"\}/g, '$1');
   text = text.replace(/\{'([\s\S]*?)'\}/g, '$1');
+  text = text.replace(/\{`([\s\S]*?)`\}/g, '$1');
   // Extract default text from {var || "default"} patterns
-  text = text.replace(/\{[^}]*\|\|\s*"([^"]+)"\s*\}/g, '$1');
-  text = text.replace(/\{[^}]*\|\|\s*'([^']+)'\s*\}/g, '$1');
+  text = text.replace(/\{[^}]*\|\|\s*["'`]([^"'`]+)["'`]\s*\}/g, '$1');
   // Extract default text from safeRender(..., "default") and getField(..., "default") patterns
   text = text.replace(/\{?\s*safeRender\([^,]+,\s*["']([^"']+)["']\)\s*\}?/gi, '$1');
   text = text.replace(/\{?\s*getField\([^,]+,\s*["']([^"']+)["']\)\s*\}?/gi, '$1');

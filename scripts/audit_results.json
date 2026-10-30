@@ -1,0 +1,4673 @@
+[
+  {
+    "index": 1,
+    "routeId": "6a2016a8a0608271b7524e94",
+    "path": "/",
+    "name": "/",
+    "status": "active",
+    "filePath": "src/app/page.js",
+    "fileExists": true,
+    "fileLines": 21,
+    "feStatus": 200,
+    "cmsSectionCount": 9,
+    "cmsSections": [
+      {
+        "id": "smartsolutions",
+        "name": "Hero Section (Smart Solutions)",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_banner"
+        ]
+      },
+      {
+        "id": "trustedpartner",
+        "name": "TrustedPartner",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_imgone",
+          "image_imgtwo",
+          "image_imgthree",
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3"
+        ]
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "fieldCount": 7,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "allproducts",
+        "name": "Our Product Catalog (AllProducts)",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "selected_products"
+        ]
+      },
+      {
+        "id": "brands",
+        "name": "Brands",
+        "fieldCount": 31,
+        "fieldKeys": [
+          "heading",
+          "image_dragon",
+          "image_intel",
+          "image_dell",
+          "image_acer",
+          "image_xerox",
+          "image_amd",
+          "image_hp",
+          "image_viewsonic",
+          "image_optoma",
+          "image_ricoh",
+          "image_meetion",
+          "image_logitech",
+          "image_lexar",
+          "image_kingston",
+          "image_epson",
+          "image_crucial",
+          "image_canon",
+          "image_brother",
+          "image_benq",
+          "image_aoc",
+          "image_alienware",
+          "image_adhua",
+          "image_tplink",
+          "image_samsung",
+          "image_razor",
+          "image_microsof",
+          "image_lg",
+          "image_lenovo",
+          "image_asus",
+          "image_apple"
+        ]
+      },
+      {
+        "id": "occasions",
+        "name": "Occasions",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_meeting1",
+          "image_meeting2",
+          "image_meeting3",
+          "image_dotsbg",
+          "heading"
+        ]
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "image_user1",
+          "image_user2",
+          "image_user3",
+          "paragraph",
+          "paragraph_2",
+          "image_avatar"
+        ]
+      },
+      {
+        "id": "contactus",
+        "name": "Contactus",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "globe",
+        "name": "Globe",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "image_global"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 9,
+    "dbSections": [
+      {
+        "id": "smartsolutions",
+        "name": "Hero Section (Smart Solutions)",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_banner"
+        ]
+      },
+      {
+        "id": "trustedpartner",
+        "name": "TrustedPartner",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_imgone",
+          "image_imgtwo",
+          "image_imgthree",
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3"
+        ]
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "fieldCount": 7,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "allproducts",
+        "name": "Our Product Catalog (AllProducts)",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "selected_products"
+        ]
+      },
+      {
+        "id": "brands",
+        "name": "Brands",
+        "fieldCount": 31,
+        "fieldKeys": [
+          "heading",
+          "image_dragon",
+          "image_intel",
+          "image_dell",
+          "image_acer",
+          "image_xerox",
+          "image_amd",
+          "image_hp",
+          "image_viewsonic",
+          "image_optoma",
+          "image_ricoh",
+          "image_meetion",
+          "image_logitech",
+          "image_lexar",
+          "image_kingston",
+          "image_epson",
+          "image_crucial",
+          "image_canon",
+          "image_brother",
+          "image_benq",
+          "image_aoc",
+          "image_alienware",
+          "image_adhua",
+          "image_tplink",
+          "image_samsung",
+          "image_razor",
+          "image_microsof",
+          "image_lg",
+          "image_lenovo",
+          "image_asus",
+          "image_apple"
+        ]
+      },
+      {
+        "id": "occasions",
+        "name": "Occasions",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_meeting1",
+          "image_meeting2",
+          "image_meeting3",
+          "image_dotsbg",
+          "heading"
+        ]
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "image_user1",
+          "image_user2",
+          "image_user3",
+          "paragraph",
+          "paragraph_2",
+          "image_avatar"
+        ]
+      },
+      {
+        "id": "contactus",
+        "name": "Contactus",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "globe",
+        "name": "Globe",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "image_global"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "routeId": "6ad36ed5a31875b6e0e116b7",
+    "path": "/appointments",
+    "name": "/appointments",
+    "status": "active",
+    "filePath": "src/app/appointments/page.js",
+    "fileExists": true,
+    "fileLines": 32,
+    "feStatus": 200,
+    "cmsSectionCount": 1,
+    "cmsSections": [
+      {
+        "id": "appointmentlinksview",
+        "name": "AppointmentLinksView",
+        "fieldCount": 7,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 3,
+    "routeId": "6ad36ed5a31875b6e0e116b8",
+    "path": "/blogs",
+    "name": "/blogs",
+    "status": "active",
+    "filePath": "src/app/blogs/page.js",
+    "fileExists": true,
+    "fileLines": 57,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "blogs",
+        "name": "Blogs",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "bloglistingclient",
+        "name": "BlogListingClient",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "paragraph",
+          "paragraph_2"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 4,
+    "routeId": "6ae461dba94788d09d658ddd",
+    "path": "/blogs/[...slug]",
+    "name": "/blogs/[...slug]",
+    "status": "active",
+    "filePath": "src/app/blogs/[...slug]/page.js",
+    "fileExists": true,
+    "fileLines": 407,
+    "feStatus": "dynamic-pattern",
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "slug",
+        "name": "Slug",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "blogcommentssection",
+        "name": "BlogCommentsSection",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 5,
+    "routeId": "6ad36ed5a31875b6e0e116b9",
+    "path": "/blogs/[slug]",
+    "name": "/blogs/[slug]",
+    "status": "archived",
+    "filePath": "src/app/blogs/[slug]/page.js",
+    "fileExists": false,
+    "fileLines": 0,
+    "feStatus": "dynamic-pattern",
+    "cmsSectionCount": 0,
+    "cmsSections": [],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 6,
+    "routeId": "6a2016a9a0608271b7524e95",
+    "path": "/company/about-us",
+    "name": "/company/about-us",
+    "status": "active",
+    "filePath": "src/app/company/about-us/page.js",
+    "fileExists": true,
+    "fileLines": 19,
+    "feStatus": 200,
+    "cmsSectionCount": 4,
+    "cmsSections": [
+      {
+        "id": "header",
+        "name": "Header",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_background"
+        ]
+      },
+      {
+        "id": "abouttrusted",
+        "name": "AboutTrusted",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_trustedimage",
+          "image_mobileimage"
+        ]
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2",
+          "image_businessimage"
+        ]
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "image_user1",
+          "image_user2",
+          "image_user3",
+          "image_avatar",
+          "paragraph",
+          "paragraph_2"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 5,
+    "dbSections": [
+      {
+        "id": "abouttrusted",
+        "name": "AboutTrusted",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_trustedimage",
+          "image_mobileimage",
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_businessimage",
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2"
+        ]
+      },
+      {
+        "id": "header",
+        "name": "Header",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "image_background",
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_avatar",
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2"
+        ]
+      },
+      {
+        "id": "testimonialcard",
+        "name": "TestimonialCard",
+        "fieldCount": 1,
+        "fieldKeys": [
+          "image_google"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "routeId": "6a2016a9a0608271b7524e96",
+    "path": "/company/career",
+    "name": "/company/career",
+    "status": "active",
+    "filePath": "src/app/company/career/page.js",
+    "fileExists": true,
+    "fileLines": 19,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "careerheader",
+        "name": "CareerHeader",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_background"
+        ]
+      },
+      {
+        "id": "career",
+        "name": "Career",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "heading_2"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 8,
+    "routeId": "6a2016a9a0608271b7524e97",
+    "path": "/company/company-history",
+    "name": "/company/company-history",
+    "status": "active",
+    "filePath": "src/app/company/company-history/page.js",
+    "fileExists": true,
+    "fileLines": 22,
+    "feStatus": 200,
+    "cmsSectionCount": 3,
+    "cmsSections": [
+      {
+        "id": "companyhistorybanner",
+        "name": "CompanyHistoryBanner",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "image_background"
+        ]
+      },
+      {
+        "id": "companyhistroybackground",
+        "name": "CompanyHistroyBackground",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6"
+        ]
+      },
+      {
+        "id": "companyhistoryyears",
+        "name": "CompanyHistoryYears",
+        "fieldCount": 1,
+        "fieldKeys": [
+          "heading"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 9,
+    "routeId": "6a2016a9a0608271b7524e98",
+    "path": "/company/crown-excel-family",
+    "name": "/company/crown-excel-family",
+    "status": "active",
+    "filePath": "src/app/company/crown-excel-family/page.js",
+    "fileExists": true,
+    "fileLines": 15,
+    "feStatus": 200,
+    "cmsSectionCount": 30,
+    "cmsSections": [
+      {
+        "id": "crownexcelfamilyclient",
+        "name": "CrownExcelFamilyClient",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_familyphoto"
+        ]
+      },
+      {
+        "id": "valuetrust",
+        "name": "ValueTrust",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuecompanyfirst",
+        "name": "ValueCompanyFirst",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valueexcellence",
+        "name": "ValueExcellence",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valueinternalmatters",
+        "name": "ValueInternalMatters",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuecontinuousgrowth",
+        "name": "ValueContinuousGrowth",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuesustainability",
+        "name": "ValueSustainability",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "memberilyas",
+        "name": "MemberIlyas",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_ilyaskhan"
+        ]
+      },
+      {
+        "id": "memberwais",
+        "name": "MemberWais",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_waiskhan"
+        ]
+      },
+      {
+        "id": "membersaqib",
+        "name": "MemberSaqib",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_saqib"
+        ]
+      },
+      {
+        "id": "membervishal",
+        "name": "MemberVishal",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_vishal"
+        ]
+      },
+      {
+        "id": "memberkhurram",
+        "name": "MemberKhurram",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_sirkhurram"
+        ]
+      },
+      {
+        "id": "memberjunaids",
+        "name": "MemberJunaidS",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_etc5"
+        ]
+      },
+      {
+        "id": "memberabdullah",
+        "name": "MemberAbdullah",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_abdullah"
+        ]
+      },
+      {
+        "id": "membernadeem",
+        "name": "MemberNadeem",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_etc4"
+        ]
+      },
+      {
+        "id": "memberibad",
+        "name": "MemberIbad",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_ibad"
+        ]
+      },
+      {
+        "id": "memberrauf",
+        "name": "MemberRauf",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_etc3"
+        ]
+      },
+      {
+        "id": "memberbrian",
+        "name": "MemberBrian",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_etc1"
+        ]
+      },
+      {
+        "id": "membershammry",
+        "name": "MemberShammry",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_shammry"
+        ]
+      },
+      {
+        "id": "memberjubair",
+        "name": "MemberJubair",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_jhubar"
+        ]
+      },
+      {
+        "id": "memberfazal",
+        "name": "MemberFazal",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_fazal"
+        ]
+      },
+      {
+        "id": "memberafreed",
+        "name": "MemberAfreed",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_defaultavatar"
+        ]
+      },
+      {
+        "id": "membernafees",
+        "name": "MemberNafees",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_defaultavatar"
+        ]
+      },
+      {
+        "id": "memberlavina",
+        "name": "MemberLavina",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_lavina"
+        ]
+      },
+      {
+        "id": "membersaeed",
+        "name": "MemberSaeed",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_saeed"
+        ]
+      },
+      {
+        "id": "memberaslam",
+        "name": "MemberAslam",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_aslam"
+        ]
+      },
+      {
+        "id": "membersaleem",
+        "name": "MemberSaleem",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_defaultavatar"
+        ]
+      },
+      {
+        "id": "membersalman",
+        "name": "MemberSalman",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_defaultavatar"
+        ]
+      },
+      {
+        "id": "membertarun",
+        "name": "MemberTarun",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_tarun"
+        ]
+      },
+      {
+        "id": "membersafeel",
+        "name": "MemberSafeel",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_defaultavatar"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 30,
+    "dbSections": [
+      {
+        "id": "main",
+        "name": "Main",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_familyphoto",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3"
+        ]
+      },
+      {
+        "id": "valuetrust",
+        "name": "ValueTrust",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuecompanyfirst",
+        "name": "ValueCompanyFirst",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valueexcellence",
+        "name": "ValueExcellence",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valueinternalmatters",
+        "name": "ValueInternalMatters",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuecontinuousgrowth",
+        "name": "ValueContinuousGrowth",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "valuesustainability",
+        "name": "ValueSustainability",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "memberilyas",
+        "name": "MemberIlyas",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_ilyaskhan",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberwais",
+        "name": "MemberWais",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_waiskhan",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membersaqib",
+        "name": "MemberSaqib",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_saqib",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membervishal",
+        "name": "MemberVishal",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_vishal",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberkhurram",
+        "name": "MemberKhurram",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_sirkhurram",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberbrian",
+        "name": "MemberBrian",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_etc1",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberrauf",
+        "name": "MemberRauf",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_etc3",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membernadeem",
+        "name": "MemberNadeem",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_etc4",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membertarun",
+        "name": "MemberTarun",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_tarun",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberibad",
+        "name": "MemberIbad",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_ibad",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberabdullah",
+        "name": "MemberAbdullah",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_abdullah",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberjunaids",
+        "name": "MemberJunaidS",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_etc5",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membershammry",
+        "name": "MemberShammry",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_shammry",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberjubair",
+        "name": "MemberJubair",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_jhubar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberfazal",
+        "name": "MemberFazal",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_fazal",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberlavina",
+        "name": "MemberLavina",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_lavina",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberafreed",
+        "name": "MemberAfreed",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_defaultavatar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membernafees",
+        "name": "MemberNafees",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_defaultavatar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membersaeed",
+        "name": "MemberSaeed",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_saeed",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "memberaslam",
+        "name": "MemberAslam",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_aslam",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membersaleem",
+        "name": "MemberSaleem",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_defaultavatar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membersalman",
+        "name": "MemberSalman",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_defaultavatar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "membersafeel",
+        "name": "MemberSafeel",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "image_defaultavatar",
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "routeId": "6a2016a9a0608271b7524e99",
+    "path": "/company/director-message",
+    "name": "/company/director-message",
+    "status": "active",
+    "filePath": "src/app/company/director-message/page.js",
+    "fileExists": true,
+    "fileLines": 79,
+    "feStatus": 200,
+    "cmsSectionCount": 1,
+    "cmsSections": [
+      {
+        "id": "directormessage",
+        "name": "Directormessage",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "image_director",
+          "image_directorbg"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 1,
+    "dbSections": [
+      {
+        "id": "main",
+        "name": "Main",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "image_director",
+          "image_directorbg",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "routeId": "6a2016a9a0608271b7524e9a",
+    "path": "/company/events",
+    "name": "/company/events",
+    "status": "active",
+    "filePath": "src/app/company/events/page.js",
+    "fileExists": true,
+    "fileLines": 19,
+    "feStatus": 200,
+    "cmsSectionCount": 1,
+    "cmsSections": [
+      {
+        "id": "events",
+        "name": "Events",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "paragraph_2"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 12,
+    "routeId": "6a2016a9a0608271b7524e9b",
+    "path": "/company/faq",
+    "name": "/company/faq",
+    "status": "archived",
+    "filePath": "src/app/company/faq/page.js",
+    "fileExists": false,
+    "fileLines": 0,
+    "feStatus": 404,
+    "cmsSectionCount": 0,
+    "cmsSections": [],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 13,
+    "routeId": "6a2016aaa0608271b7524e9c",
+    "path": "/company/leader-team",
+    "name": "/company/leader-team",
+    "status": "archived",
+    "filePath": "src/app/company/leader-team/page.js",
+    "fileExists": false,
+    "fileLines": 0,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "hero_1780492132335",
+        "name": "Hero Section",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "buttonText",
+          "buttonLink",
+          "image"
+        ]
+      },
+      {
+        "id": "hero_1780492133271",
+        "name": "Hero Section",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "buttonText",
+          "buttonLink",
+          "image"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 2,
+    "dbSections": [
+      {
+        "id": "hero_1780492132335",
+        "name": "Hero Section",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "buttonText",
+          "buttonLink",
+          "image"
+        ]
+      },
+      {
+        "id": "hero_1780492133271",
+        "name": "Hero Section",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "buttonText",
+          "buttonLink",
+          "image"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "routeId": "6a2016aaa0608271b7524e9d",
+    "path": "/contact-us",
+    "name": "/contact-us",
+    "status": "active",
+    "filePath": "src/app/contact-us/page.js",
+    "fileExists": true,
+    "fileLines": 46,
+    "feStatus": 200,
+    "cmsSectionCount": 4,
+    "cmsSections": [
+      {
+        "id": "contactuspagebanner",
+        "name": "ContactUsPageBanner",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_background"
+        ]
+      },
+      {
+        "id": "contactusform",
+        "name": "ContactUsForm",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "image_contactus"
+        ]
+      },
+      {
+        "id": "appointmentsection",
+        "name": "AppointmentSection",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "contactusmap",
+        "name": "ContactUsMap",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 15,
+    "routeId": "6ad36ed7a31875b6e0e116ba",
+    "path": "/laptop-wholesale-supplier-in-dubai-or-uae",
+    "name": "/laptop-wholesale-supplier-in-dubai-or-uae",
+    "status": "active",
+    "filePath": "src/app/laptop-wholesale-supplier-in-dubai-or-uae/page.js",
+    "fileExists": true,
+    "fileLines": 226,
+    "feStatus": 200,
+    "cmsSectionCount": 7,
+    "cmsSections": [
+      {
+        "id": "wholesaleherosection",
+        "name": "WholesaleHeroSection",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "wholesalecategoriessection",
+        "name": "WholesaleCategoriesSection",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_bannerlaptop1",
+          "image_bestlaptop1",
+          "image_bestlaptop2"
+        ]
+      },
+      {
+        "id": "wholesaleproductssection",
+        "name": "WholesaleProductsSection",
+        "fieldCount": 21,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_img24b3ha2_89",
+          "image_img25b36h_89",
+          "image_img83f30082ax",
+          "image_img83m4000ygp",
+          "image_img83rr0040ps",
+          "image_img83s0007fus",
+          "image_img90nb10j1_m04tk0",
+          "image_img90nb10j1_m04tl0",
+          "image_img90nb10t1_m01yx0",
+          "image_img90nb10t2_m01yy0",
+          "image_img90nb14q2_m003w0",
+          "image_img90nb16g2_m00230",
+          "image_img90nx0801_m04xv0",
+          "image_imgd78mqea_bh5",
+          "image_imgnh_qvuem_002",
+          "image_imgnh_qx5em_003",
+          "image_imgnx_bsqem_001",
+          "image_imgnx_dgjem_002",
+          "image_imgnx_dtgem_001"
+        ]
+      },
+      {
+        "id": "wholesalewhycrownexcelsection",
+        "name": "WholesaleWhyCrownExcelSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "wholesalebrandssection",
+        "name": "WholesaleBrandsSection",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "image_delllogo",
+          "image_hplogo",
+          "image_lenovologo",
+          "image_applelogo",
+          "image_asuslogo",
+          "image_acerlogo",
+          "image_msilogo",
+          "image_microsoftlogo"
+        ]
+      },
+      {
+        "id": "wholesalekeybenefitssection",
+        "name": "WholesaleKeyBenefitsSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "wholesaleworldwideareassection",
+        "name": "WholesaleWorldwideAreasSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 7,
+    "dbSections": [
+      {
+        "id": "wholesaleherosection",
+        "name": "WholesaleHeroSection",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "wholesalecategoriessection",
+        "name": "WholesaleCategoriesSection",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_bannerlaptop1",
+          "image_bestlaptop1",
+          "image_bestlaptop2"
+        ]
+      },
+      {
+        "id": "wholesaleproductssection",
+        "name": "WholesaleProductsSection",
+        "fieldCount": 21,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_img24b3ha2_89",
+          "image_img25b36h_89",
+          "image_img83f30082ax",
+          "image_img83m4000ygp",
+          "image_img83rr0040ps",
+          "image_img83s0007fus",
+          "image_img90nb10j1_m04tk0",
+          "image_img90nb10j1_m04tl0",
+          "image_img90nb10t1_m01yx0",
+          "image_img90nb10t2_m01yy0",
+          "image_img90nb14q2_m003w0",
+          "image_img90nb16g2_m00230",
+          "image_img90nx0801_m04xv0",
+          "image_imgd78mqea_bh5",
+          "image_imgnh_qvuem_002",
+          "image_imgnh_qx5em_003",
+          "image_imgnx_bsqem_001",
+          "image_imgnx_dgjem_002",
+          "image_imgnx_dtgem_001"
+        ]
+      },
+      {
+        "id": "wholesalewhycrownexcelsection",
+        "name": "WholesaleWhyCrownExcelSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "wholesalebrandssection",
+        "name": "WholesaleBrandsSection",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "image_delllogo",
+          "image_hplogo",
+          "image_lenovologo",
+          "image_applelogo",
+          "image_asuslogo",
+          "image_acerlogo",
+          "image_msilogo",
+          "image_microsoftlogo"
+        ]
+      },
+      {
+        "id": "wholesalekeybenefitssection",
+        "name": "WholesaleKeyBenefitsSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "wholesaleworldwideareassection",
+        "name": "WholesaleWorldwideAreasSection",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "routeId": "6a2016aaa0608271b7524e9e",
+    "path": "/our-management",
+    "name": "/our-management",
+    "status": "active",
+    "filePath": "src/app/our-management/page.js",
+    "fileExists": true,
+    "fileLines": 27,
+    "feStatus": 200,
+    "cmsSectionCount": 4,
+    "cmsSections": [
+      {
+        "id": "ourmanagementbanner",
+        "name": "OurManagementBanner",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "ourmanagementknowmore",
+        "name": "OurManagementKnowmore",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "paragraph",
+          "paragraph_2",
+          "image_exploremore"
+        ]
+      },
+      {
+        "id": "ourmanagementteam",
+        "name": "OurManagementTeam",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3"
+        ]
+      },
+      {
+        "id": "ourmanagementprocess",
+        "name": "OurManagementProcess",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 17,
+    "routeId": "6a2016aaa0608271b7524e9f",
+    "path": "/our-services",
+    "name": "/our-services",
+    "status": "active",
+    "filePath": "src/app/our-services/page.js",
+    "fileExists": true,
+    "fileLines": 15,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "ourservicesclient",
+        "name": "OurServicesClient",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "paragraph",
+          "image_servicebackground"
+        ]
+      },
+      {
+        "id": "ourservicesbrands",
+        "name": "OurServicesBrands",
+        "fieldCount": 33,
+        "fieldKeys": [
+          "heading",
+          "image_dragon",
+          "image_noc",
+          "image_intel",
+          "image_dell",
+          "image_acer",
+          "image_xerox",
+          "image_amd",
+          "image_hp",
+          "image_viewsonic",
+          "image_optoma",
+          "image_ricoh",
+          "image_meetion",
+          "image_logitech",
+          "image_lexar",
+          "image_kingston",
+          "image_epson",
+          "image_crucial",
+          "image_canon",
+          "image_brother",
+          "image_benq",
+          "image_aoc",
+          "image_alienware",
+          "image_adhua",
+          "image_tplink",
+          "image_samsung",
+          "image_razor",
+          "image_microsof",
+          "image_lg",
+          "image_lenovo",
+          "image_asus",
+          "image_apple",
+          "image_servicesbrandimage"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 18,
+    "routeId": "6a2016aaa0608271b7524ea0",
+    "path": "/our-services/cloud-computing",
+    "name": "/our-services/cloud-computing",
+    "status": "active",
+    "filePath": "src/app/our-services/cloud-computing/page.js",
+    "fileExists": true,
+    "fileLines": 28,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "rmabanner",
+        "name": "RMABanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "rmaempowering",
+        "name": "RMAEmpowering",
+        "fieldCount": 37,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "heading_8",
+          "heading_9",
+          "heading_10",
+          "heading_11",
+          "heading_12",
+          "heading_13",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "paragraph_9",
+          "paragraph_10",
+          "paragraph_11",
+          "paragraph_12",
+          "paragraph_13",
+          "image_networkit",
+          "image_iaasicon",
+          "image_paasicon",
+          "image_saasicon",
+          "image_securityicon",
+          "image_healthcareicon",
+          "image_manufacturingicon",
+          "image_financialicon",
+          "image_educationicon",
+          "image_ecommerceicon",
+          "image_gamingicon"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 19,
+    "routeId": "6a2016aaa0608271b7524ea1",
+    "path": "/our-services/it-consultancy",
+    "name": "/our-services/it-consultancy",
+    "status": "active",
+    "filePath": "src/app/our-services/it-consultancy/page.js",
+    "fileExists": true,
+    "fileLines": 33,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "itconsultancybanner",
+        "name": "ITConsultancyBanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "itsmart",
+        "name": "ITSmart",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_networkingsmartimage",
+          "image_signaltower"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 20,
+    "routeId": "6a2016aaa0608271b7524ea2",
+    "path": "/our-services/it-infrastructure",
+    "name": "/our-services/it-infrastructure",
+    "status": "active",
+    "filePath": "src/app/our-services/it-infrastructure/page.js",
+    "fileExists": true,
+    "fileLines": 33,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "manageditbanner",
+        "name": "ManagedITBanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "manageditsmart",
+        "name": "ManagedITSmart",
+        "fieldCount": 54,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "image_networkingsmartimage",
+          "image_signaltower",
+          "image_storage",
+          "image_network",
+          "image_monitoring",
+          "image_security",
+          "image_virtualization",
+          "image_server",
+          "image_dragon",
+          "image_intel",
+          "image_dell",
+          "image_accer",
+          "image_xerox",
+          "image_amd",
+          "image_hp",
+          "image_viewsonic",
+          "image_optoma",
+          "image_ricoh",
+          "image_meetion",
+          "image_logitech",
+          "image_lexar",
+          "image_kingston",
+          "image_epson",
+          "image_crucial",
+          "image_canon",
+          "image_brother",
+          "image_benq",
+          "image_aoc",
+          "image_alienware",
+          "image_adhua",
+          "image_tplink",
+          "image_samsung",
+          "image_razor",
+          "image_microsof",
+          "image_lg",
+          "image_lenovo",
+          "image_asus",
+          "image_apple",
+          "image_enterprise",
+          "image_virtualization2",
+          "image_disaster"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 21,
+    "routeId": "6a2016aba0608271b7524ea3",
+    "path": "/our-services/long/short-term-amc",
+    "name": "/our-services/long/short-term-amc",
+    "status": "active",
+    "filePath": "src/app/our-services/long/short-term-amc/page.js",
+    "fileExists": true,
+    "fileLines": 33,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "hardwareamcbanner",
+        "name": "HardwareAmcBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage",
+          "image_icon1"
+        ]
+      },
+      {
+        "id": "hardwareempowering",
+        "name": "HardwareEmpowering",
+        "fieldCount": 19,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_empoweringimage",
+          "image_networkit",
+          "image_dirham",
+          "image_itservice",
+          "image_support",
+          "image_proactive",
+          "image_cost",
+          "image_rapid",
+          "image_security",
+          "paragraph_5"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 7,
+    "dbSections": [
+      {
+        "id": "hardwareamcbanner",
+        "name": "HardwareAmcBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_icon1",
+          "image_icon2",
+          "image_bannerimage",
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "hardwareempowering",
+        "name": "HardwareEmpowering",
+        "fieldCount": 19,
+        "fieldKeys": [
+          "image_empoweringimage",
+          "image_networkit",
+          "image_dirham",
+          "image_itservice",
+          "image_support",
+          "image_proactive",
+          "image_cost",
+          "image_rapid",
+          "image_security",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "hardwarefaq",
+        "name": "HardwareFaq",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "hardwareservices",
+        "name": "HardwareServices",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "hardwaresmart",
+        "name": "HardwareSmart",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "image_networkingsmartimage",
+          "image_signaltower",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "hardwarewearebest",
+        "name": "HardwareWeAreBest",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_background",
+          "image_semitop",
+          "image_semibottom",
+          "heading"
+        ]
+      },
+      {
+        "id": "hardwarewhychooseus",
+        "name": "HardwareWhyChooseUS",
+        "fieldCount": 15,
+        "fieldKeys": [
+          "image_core1",
+          "image_core2",
+          "image_core3",
+          "image_core4",
+          "image_borderimage",
+          "image_networkit",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "routeId": "6a2016aba0608271b7524ea4",
+    "path": "/our-services/networking",
+    "name": "/our-services/networking",
+    "status": "active",
+    "filePath": "src/app/our-services/networking/page.js",
+    "fileExists": true,
+    "fileLines": 36,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "networkingbanner",
+        "name": "NetworkingBanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "networkempowering",
+        "name": "NetworkEmpowering",
+        "fieldCount": 53,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "heading_8",
+          "heading_9",
+          "heading_10",
+          "heading_11",
+          "heading_12",
+          "heading_13",
+          "heading_14",
+          "heading_15",
+          "heading_16",
+          "heading_17",
+          "heading_18",
+          "heading_19",
+          "heading_20",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "paragraph_9",
+          "paragraph_10",
+          "paragraph_11",
+          "paragraph_12",
+          "paragraph_13",
+          "paragraph_14",
+          "paragraph_15",
+          "paragraph_16",
+          "paragraph_17",
+          "paragraph_18",
+          "paragraph_19",
+          "paragraph_20",
+          "image_networkit",
+          "image_infraicon",
+          "image_wirelessicon",
+          "image_securityicon",
+          "image_monitoringicon",
+          "image_icon5g",
+          "image_iconcloud",
+          "image_iconai",
+          "image_iconhealthcare",
+          "image_iconeducation",
+          "image_iconmanufacturing",
+          "image_iconretail",
+          "image_iconcheck"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 23,
+    "routeId": "6a2016aba0608271b7524ea5",
+    "path": "/our-services/security-solutions",
+    "name": "/our-services/security-solutions",
+    "status": "active",
+    "filePath": "src/app/our-services/security-solutions/page.js",
+    "fileExists": true,
+    "fileLines": 34,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "hardwarerepairbanner",
+        "name": "HardwareRepairBanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "securitysolutionsempowering",
+        "name": "SecuritySolutionsEmpowering",
+        "fieldCount": 19,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "heading_8",
+          "heading_9",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "image_empoweringimage",
+          "image_networkit"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 24,
+    "routeId": "6a2016aba0608271b7524ea6",
+    "path": "/our-services/software-solutions",
+    "name": "/our-services/software-solutions",
+    "status": "active",
+    "filePath": "src/app/our-services/software-solutions/page.js",
+    "fileExists": true,
+    "fileLines": 28,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "softwarebanner",
+        "name": "SoftwareBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon2",
+          "image_bannerimage",
+          "image_icon1"
+        ]
+      },
+      {
+        "id": "softwaresmart",
+        "name": "SoftwareSmart",
+        "fieldCount": 43,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "heading_8",
+          "heading_9",
+          "heading_10",
+          "heading_11",
+          "heading_12",
+          "heading_13",
+          "heading_14",
+          "heading_15",
+          "heading_16",
+          "heading_17",
+          "heading_18",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "paragraph_9",
+          "paragraph_10",
+          "paragraph_11",
+          "paragraph_12",
+          "paragraph_13",
+          "paragraph_14",
+          "paragraph_15",
+          "paragraph_16",
+          "image_thunder",
+          "image_rocket",
+          "image_lock",
+          "image_design",
+          "image_backend",
+          "image_appdevelopment",
+          "image_cloud",
+          "image_devops",
+          "image_uiux"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 2,
+    "dbSections": [
+      {
+        "id": "softwarebanner",
+        "name": "SoftwareBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_icon1",
+          "image_icon2",
+          "image_bannerimage",
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "softwaresmart",
+        "name": "SoftwareSmart",
+        "fieldCount": 43,
+        "fieldKeys": [
+          "image_thunder",
+          "image_rocket",
+          "image_lock",
+          "image_design",
+          "image_backend",
+          "image_appdevelopment",
+          "image_cloud",
+          "image_devops",
+          "image_uiux",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "heading_7",
+          "heading_8",
+          "heading_9",
+          "heading_10",
+          "heading_11",
+          "heading_12",
+          "heading_13",
+          "heading_14",
+          "heading_15",
+          "heading_16",
+          "heading_17",
+          "heading_18",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6",
+          "paragraph_7",
+          "paragraph_8",
+          "paragraph_9",
+          "paragraph_10",
+          "paragraph_11",
+          "paragraph_12",
+          "paragraph_13",
+          "paragraph_14",
+          "paragraph_15",
+          "paragraph_16"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "routeId": "6a2016aba0608271b7524ea7",
+    "path": "/our-services/storage&virtualization",
+    "name": "/our-services/storage&virtualization",
+    "status": "active",
+    "filePath": "src/app/our-services/storage&virtualization/page.js",
+    "fileExists": true,
+    "fileLines": 28,
+    "feStatus": 200,
+    "cmsSectionCount": 2,
+    "cmsSections": [
+      {
+        "id": "serversupportbanner",
+        "name": "ServerSupportBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_icon1",
+          "image_icon2",
+          "image_bannerimage"
+        ]
+      },
+      {
+        "id": "serversmart",
+        "name": "ServerSmart",
+        "fieldCount": 48,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_networkingsmartimage",
+          "image_signaltower",
+          "image_dragon",
+          "image_intel",
+          "image_dell",
+          "image_accer",
+          "image_xerox",
+          "image_amd",
+          "image_hp",
+          "image_viewsonic",
+          "image_optoma",
+          "image_ricoh",
+          "image_meetion",
+          "image_logitech",
+          "image_lexar",
+          "image_kingston",
+          "image_epson",
+          "image_crucial",
+          "image_canon",
+          "image_brother",
+          "image_benq",
+          "image_aoc",
+          "image_alienware",
+          "image_adhua",
+          "image_tplink",
+          "image_samsung",
+          "image_razor",
+          "image_microsof",
+          "image_lg",
+          "image_lenovo",
+          "image_asus",
+          "image_apple",
+          "image_enterprise",
+          "image_cloudstorage",
+          "image_virtualization",
+          "image_datamanagement",
+          "image_disaster",
+          "image_computing"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 26,
+    "routeId": "6a2016aba0608271b7524ea8",
+    "path": "/products",
+    "name": "/products",
+    "status": "archived",
+    "filePath": "src/app/products/page.js",
+    "fileExists": false,
+    "fileLines": 0,
+    "feStatus": 200,
+    "cmsSectionCount": 0,
+    "cmsSections": [],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 27,
+    "routeId": "6a2016aba0608271b7524ea9",
+    "path": "/products/accessories",
+    "name": "/products/accessories",
+    "status": "active",
+    "filePath": "src/app/products/accessories/page.js",
+    "fileExists": true,
+    "fileLines": 31,
+    "feStatus": 200,
+    "cmsSectionCount": 6,
+    "cmsSections": [
+      {
+        "id": "accessoriesbanner",
+        "name": "AccessoriesBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "accessoriesbestselling",
+        "name": "AccessoriesBestSelling",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2",
+          "image_bestproduct3"
+        ]
+      },
+      {
+        "id": "accessoriesultimatesolution",
+        "name": "AccessoriesUltimateSolution",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "accessoriesallinone",
+        "name": "AccessoriesAllinOne",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_popular1",
+          "image_popular2",
+          "image_popular3",
+          "image_popular4",
+          "image_popular5",
+          "image_popular6"
+        ]
+      },
+      {
+        "id": "accessorieswhyfromus",
+        "name": "AccessoriesWhyFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "paragraph_6"
+        ]
+      },
+      {
+        "id": "accessoriesbrandwedeal",
+        "name": "AccessoriesBrandWeDeal",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 28,
+    "routeId": "6a2016aca0608271b7524eaa",
+    "path": "/products/all-in-one",
+    "name": "/products/all-in-one",
+    "status": "active",
+    "filePath": "src/app/products/all-in-one/page.js",
+    "fileExists": true,
+    "fileLines": 35,
+    "feStatus": 200,
+    "cmsSectionCount": 8,
+    "cmsSections": [
+      {
+        "id": "allinonebanner",
+        "name": "AllinOneBanner",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_desktopimage1",
+          "image_desktopimage2",
+          "image_stars",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6"
+        ]
+      },
+      {
+        "id": "allinonelatestproduct",
+        "name": "AllinOneLatestProduct",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2"
+        ]
+      },
+      {
+        "id": "allinoneunlease",
+        "name": "AllinOneUnlease",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "image_backgroundimage",
+          "image_computers"
+        ]
+      },
+      {
+        "id": "allinonehighperformance",
+        "name": "AllinOneHighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_highperformanceimage",
+          "image_comma"
+        ]
+      },
+      {
+        "id": "allinoneheavycomputing",
+        "name": "AllinOneHeavyComputing",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "oneinallproducts",
+        "name": "OneinAllProducts",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6"
+        ]
+      },
+      {
+        "id": "allinonefromus",
+        "name": "AllinOneFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "allinonebrandswedeal",
+        "name": "AllinOneBrandsWeDeal",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 8,
+    "dbSections": [
+      {
+        "id": "allinonebanner",
+        "name": "AllinOneBanner",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "image_desktopimage1",
+          "image_desktopimage2",
+          "image_stars",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "paragraph",
+          "paragraph_2"
+        ]
+      },
+      {
+        "id": "allinonelatestproduct",
+        "name": "AllinOneLatestProduct",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2",
+          "heading"
+        ]
+      },
+      {
+        "id": "allinoneunlease",
+        "name": "AllinOneUnlease",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_backgroundimage",
+          "image_computers",
+          "heading",
+          "heading_2",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "allinonehighperformance",
+        "name": "AllinOneHighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_highperformanceimage",
+          "image_comma",
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "allinoneheavycomputing",
+        "name": "AllinOneHeavyComputing",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "image_computingimage",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "oneinallproducts",
+        "name": "OneinAllProducts",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6",
+          "heading",
+          "heading_2",
+          "heading_3"
+        ]
+      },
+      {
+        "id": "allinonefromus",
+        "name": "AllinOneFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "image_yellobckground",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "allinonebrandswedeal",
+        "name": "AllinOneBrandsWeDeal",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse",
+          "heading"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "routeId": "6a2016aca0608271b7524eab",
+    "path": "/products/biometrics",
+    "name": "/products/biometrics",
+    "status": "active",
+    "filePath": "src/app/products/biometrics/page.js",
+    "fileExists": true,
+    "fileLines": 31,
+    "feStatus": 200,
+    "cmsSectionCount": 6,
+    "cmsSections": [
+      {
+        "id": "biometricbanner",
+        "name": "BiometricBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "biometricbestselling",
+        "name": "BiometricBestSelling",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2"
+        ]
+      },
+      {
+        "id": "biometricultimatesolutions",
+        "name": "BiometricUltimateSolutions",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "biometricallinone",
+        "name": "BiometricAllinOne",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_popular1",
+          "image_popular2",
+          "image_popular3",
+          "image_popular4",
+          "image_popular5",
+          "image_popular6"
+        ]
+      },
+      {
+        "id": "biometricwhyfromus",
+        "name": "BiometricWhyFromUs",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "biometricbrands",
+        "name": "BiometricBrands",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 30,
+    "routeId": "6a2016aca0608271b7524eac",
+    "path": "/products/keyboard-mouse",
+    "name": "/products/keyboard-mouse",
+    "status": "active",
+    "filePath": "src/app/products/keyboard-mouse/page.js",
+    "fileExists": true,
+    "fileLines": 39,
+    "feStatus": 200,
+    "cmsSectionCount": 10,
+    "cmsSections": [
+      {
+        "id": "keyboardmousebanner",
+        "name": "KeyboardMouseBanner",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_desktopimage1",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "bestsellingmice",
+        "name": "BestSellingMice",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2",
+          "image_bestproduct3"
+        ]
+      },
+      {
+        "id": "keyboardunleash",
+        "name": "KeyboardUnleash",
+        "fieldCount": 3,
+        "fieldKeys": [
+          "heading",
+          "image_greenpart",
+          "image_laptop"
+        ]
+      },
+      {
+        "id": "keyboardperformance",
+        "name": "KeyboardPerformance",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_background"
+        ]
+      },
+      {
+        "id": "keyboardlatest",
+        "name": "KeyboardLatest",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_latestproduct1",
+          "image_latestproduct2",
+          "image_latestproduct3"
+        ]
+      },
+      {
+        "id": "unlimitedgamingkeyboards",
+        "name": "UnlimitedGamingKeyboards",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_gaminglaptop1",
+          "image_gaminglaptop2",
+          "image_eclipse",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "bestkeyboards",
+        "name": "BestKeyboards",
+        "fieldCount": 2,
+        "fieldKeys": [
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "popularkeyboard",
+        "name": "PopularKeyboard",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_popular1",
+          "image_popular2",
+          "image_popular3",
+          "image_popular4",
+          "image_popular5",
+          "image_popular6"
+        ]
+      },
+      {
+        "id": "whybuykeyboardfromus",
+        "name": "WhyBuyKeyboardFromUs",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "keyboardbrands",
+        "name": "KeyboardBrands",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 31,
+    "routeId": "6a2016aca0608271b7524ead",
+    "path": "/products/laptops",
+    "name": "/products/laptops",
+    "status": "active",
+    "filePath": "src/app/products/laptops/page.js",
+    "fileExists": true,
+    "fileLines": 178,
+    "feStatus": 200,
+    "cmsSectionCount": 7,
+    "cmsSections": [
+      {
+        "id": "laptopherosection",
+        "name": "Hero Section (Wholesale Laptops)",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "button_primary_text",
+          "button_secondary_text"
+        ]
+      },
+      {
+        "id": "laptopexperiencesection",
+        "name": "Experience & Market Expertise",
+        "fieldCount": 35,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "metric_1_val",
+          "metric_1_label",
+          "metric_1_desc",
+          "metric_2_val",
+          "metric_2_label",
+          "metric_2_desc",
+          "metric_3_val",
+          "metric_3_label",
+          "metric_3_desc",
+          "metric_4_val",
+          "metric_4_label",
+          "metric_4_desc",
+          "capability_1_title",
+          "capability_1_desc",
+          "capability_2_title",
+          "capability_2_desc",
+          "capability_3_title",
+          "capability_3_desc",
+          "capability_4_title",
+          "capability_4_desc",
+          "brands_badge",
+          "heading_2",
+          "paragraph_2",
+          "image_lenovologo",
+          "image_hplogo",
+          "image_delllogo",
+          "image_asuslogo",
+          "image_acerlogo",
+          "image_applelogo",
+          "image_msilogo",
+          "image_intellogo",
+          "image_amdlogo"
+        ]
+      },
+      {
+        "id": "laptopcategoriessection",
+        "name": "Core Laptop Categories",
+        "fieldCount": 15,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "cat_1_title",
+          "cat_1_tagline",
+          "cat_1_desc",
+          "cat_2_title",
+          "cat_2_tagline",
+          "cat_2_desc",
+          "cat_3_title",
+          "cat_3_tagline",
+          "cat_3_desc",
+          "cat_4_title",
+          "cat_4_tagline",
+          "cat_4_desc"
+        ]
+      },
+      {
+        "id": "laptopproductsgridsection",
+        "name": "Available Laptop Models (Product Grid)",
+        "fieldCount": 25,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "search_placeholder",
+          "moq_note",
+          "inquire_button_text",
+          "empty_message",
+          "reset_button_text",
+          "image_img83f30082ax",
+          "image_img83m4000ygp",
+          "image_img83rr0040ps",
+          "image_img83s0007fus",
+          "image_img90nb10j1_m04tk0",
+          "image_img90nb10t1_m01yx0",
+          "image_img90nb14q2_m003w0",
+          "image_img90nb16g2_m00230",
+          "image_img90nx0801_m04xv0",
+          "image_imgd78mqea_bh5",
+          "image_imgnh_qvuem_002",
+          "image_imgnh_qx5em_003",
+          "image_imgnx_bsqem_001",
+          "image_imgnx_dgjem_002",
+          "image_imgnx_dtgem_001",
+          "image_imgworkstation1",
+          "image_imgworkstation2"
+        ]
+      },
+      {
+        "id": "laptopsolutionssection",
+        "name": "Wholesale, Retail & B2B Solutions",
+        "fieldCount": 34,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "segment_1_title",
+          "segment_1_badge",
+          "segment_1_summary",
+          "segment_1_feat_1",
+          "segment_1_feat_2",
+          "segment_1_feat_3",
+          "segment_1_feat_4",
+          "segment_1_feat_5",
+          "segment_1_audience",
+          "segment_2_title",
+          "segment_2_badge",
+          "segment_2_summary",
+          "segment_2_feat_1",
+          "segment_2_feat_2",
+          "segment_2_feat_3",
+          "segment_2_feat_4",
+          "segment_2_feat_5",
+          "segment_2_audience",
+          "segment_3_title",
+          "segment_3_badge",
+          "segment_3_summary",
+          "segment_3_feat_1",
+          "segment_3_feat_2",
+          "segment_3_feat_3",
+          "segment_3_feat_4",
+          "segment_3_feat_5",
+          "segment_3_audience",
+          "cta_badge",
+          "heading_2",
+          "paragraph_2",
+          "cta_button_text"
+        ]
+      },
+      {
+        "id": "laptopoperationssection",
+        "name": "Laptop Handling & Logistical Operations",
+        "fieldCount": 30,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "pillar_1_badge",
+          "pillar_1_title",
+          "pillar_1_subtitle",
+          "pillar_1_pt_1_heading",
+          "pillar_1_pt_1_detail",
+          "pillar_1_pt_2_heading",
+          "pillar_1_pt_2_detail",
+          "pillar_1_pt_3_heading",
+          "pillar_1_pt_3_detail",
+          "pillar_2_badge",
+          "pillar_2_title",
+          "pillar_2_subtitle",
+          "pillar_2_pt_1_heading",
+          "pillar_2_pt_1_detail",
+          "pillar_2_pt_2_heading",
+          "pillar_2_pt_2_detail",
+          "pillar_2_pt_3_heading",
+          "pillar_2_pt_3_detail",
+          "pillar_3_badge",
+          "pillar_3_title",
+          "pillar_3_subtitle",
+          "pillar_3_pt_1_heading",
+          "pillar_3_pt_1_detail",
+          "pillar_3_pt_2_heading",
+          "pillar_3_pt_2_detail",
+          "pillar_3_pt_3_heading",
+          "pillar_3_pt_3_detail"
+        ]
+      },
+      {
+        "id": "laptopinquirysection",
+        "name": "Inquiry Banner & FAQs",
+        "fieldCount": 20,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "button_submit_text",
+          "button_whatsapp_text",
+          "perk_1",
+          "perk_2",
+          "perk_3",
+          "faq_badge",
+          "heading_2",
+          "faq_1_q",
+          "faq_1_a",
+          "faq_2_q",
+          "faq_2_a",
+          "faq_3_q",
+          "faq_3_a",
+          "faq_4_q",
+          "faq_4_a",
+          "faq_5_q",
+          "faq_5_a"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 7,
+    "dbSections": [
+      {
+        "id": "laptopherosection",
+        "name": "Hero Section (Wholesale Laptops)",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "subheading",
+          "paragraph",
+          "button_primary_text",
+          "button_secondary_text"
+        ]
+      },
+      {
+        "id": "laptopexperiencesection",
+        "name": "Experience & Market Expertise",
+        "fieldCount": 35,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "metric_1_val",
+          "metric_1_label",
+          "metric_1_desc",
+          "metric_2_val",
+          "metric_2_label",
+          "metric_2_desc",
+          "metric_3_val",
+          "metric_3_label",
+          "metric_3_desc",
+          "metric_4_val",
+          "metric_4_label",
+          "metric_4_desc",
+          "capability_1_title",
+          "capability_1_desc",
+          "capability_2_title",
+          "capability_2_desc",
+          "capability_3_title",
+          "capability_3_desc",
+          "capability_4_title",
+          "capability_4_desc",
+          "brands_badge",
+          "heading_2",
+          "paragraph_2",
+          "image_lenovologo",
+          "image_hplogo",
+          "image_delllogo",
+          "image_asuslogo",
+          "image_acerlogo",
+          "image_applelogo",
+          "image_msilogo",
+          "image_intellogo",
+          "image_amdlogo"
+        ]
+      },
+      {
+        "id": "laptopcategoriessection",
+        "name": "Core Laptop Categories",
+        "fieldCount": 15,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "cat_1_title",
+          "cat_1_tagline",
+          "cat_1_desc",
+          "cat_2_title",
+          "cat_2_tagline",
+          "cat_2_desc",
+          "cat_3_title",
+          "cat_3_tagline",
+          "cat_3_desc",
+          "cat_4_title",
+          "cat_4_tagline",
+          "cat_4_desc"
+        ]
+      },
+      {
+        "id": "laptopproductsgridsection",
+        "name": "Available Laptop Models (Product Grid)",
+        "fieldCount": 25,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "search_placeholder",
+          "moq_note",
+          "inquire_button_text",
+          "empty_message",
+          "reset_button_text",
+          "image_img83f30082ax",
+          "image_img83m4000ygp",
+          "image_img83rr0040ps",
+          "image_img83s0007fus",
+          "image_img90nb10j1_m04tk0",
+          "image_img90nb10t1_m01yx0",
+          "image_img90nb14q2_m003w0",
+          "image_img90nb16g2_m00230",
+          "image_img90nx0801_m04xv0",
+          "image_imgd78mqea_bh5",
+          "image_imgnh_qvuem_002",
+          "image_imgnh_qx5em_003",
+          "image_imgnx_bsqem_001",
+          "image_imgnx_dgjem_002",
+          "image_imgnx_dtgem_001",
+          "image_imgworkstation1",
+          "image_imgworkstation2"
+        ]
+      },
+      {
+        "id": "laptopsolutionssection",
+        "name": "Wholesale, Retail & B2B Solutions",
+        "fieldCount": 19,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "segment_1_title",
+          "segment_1_badge",
+          "segment_1_summary",
+          "segment_1_audience",
+          "segment_2_title",
+          "segment_2_badge",
+          "segment_2_summary",
+          "segment_2_audience",
+          "segment_3_title",
+          "segment_3_badge",
+          "segment_3_summary",
+          "segment_3_audience",
+          "cta_badge",
+          "heading_2",
+          "paragraph_2",
+          "cta_button_text"
+        ]
+      },
+      {
+        "id": "laptopoperationssection",
+        "name": "Laptop Handling & Logistical Operations",
+        "fieldCount": 12,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "pillar_1_badge",
+          "pillar_1_title",
+          "pillar_1_subtitle",
+          "pillar_2_badge",
+          "pillar_2_title",
+          "pillar_2_subtitle",
+          "pillar_3_badge",
+          "pillar_3_title",
+          "pillar_3_subtitle"
+        ]
+      },
+      {
+        "id": "laptopinquirysection",
+        "name": "Inquiry Banner & FAQs",
+        "fieldCount": 20,
+        "fieldKeys": [
+          "badge",
+          "heading",
+          "paragraph",
+          "button_submit_text",
+          "button_whatsapp_text",
+          "perk_1",
+          "perk_2",
+          "perk_3",
+          "faq_badge",
+          "heading_2",
+          "faq_1_q",
+          "faq_1_a",
+          "faq_2_q",
+          "faq_2_a",
+          "faq_3_q",
+          "faq_3_a",
+          "faq_4_q",
+          "faq_4_a",
+          "faq_5_q",
+          "faq_5_a"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 32,
+    "routeId": "6a2016aca0608271b7524eae",
+    "path": "/products/pc",
+    "name": "/products/pc",
+    "status": "active",
+    "filePath": "src/app/products/pc/page.js",
+    "fileExists": true,
+    "fileLines": 37,
+    "feStatus": 200,
+    "cmsSectionCount": 8,
+    "cmsSections": [
+      {
+        "id": "desktopbanner",
+        "name": "DesktopBanner",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_desktopimage1",
+          "image_desktopimage2",
+          "image_stars",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6"
+        ]
+      },
+      {
+        "id": "desktopbestselling",
+        "name": "DesktopBestSelling",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2"
+        ]
+      },
+      {
+        "id": "unleasepowerdesktop",
+        "name": "UnleasePowerDesktop",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "image_backgroundimage",
+          "image_computers"
+        ]
+      },
+      {
+        "id": "highperformance",
+        "name": "HighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_highperformanceimage",
+          "image_comma"
+        ]
+      },
+      {
+        "id": "heavycomputing",
+        "name": "HeavyComputing",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "allinonedesktops",
+        "name": "AllinOneDesktops",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6"
+        ]
+      },
+      {
+        "id": "whybuyfromus",
+        "name": "WhyBuyFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "desktopbrands",
+        "name": "DesktopBrands",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 9,
+    "dbSections": [
+      {
+        "id": "desktopbanner",
+        "name": "DesktopBanner",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "image_desktopimage1",
+          "image_desktopimage2",
+          "image_stars",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "heading_6",
+          "paragraph",
+          "paragraph_2"
+        ]
+      },
+      {
+        "id": "desktoplatestproduct",
+        "name": "DesktopLatestProduct",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_desktoplatestproduct1",
+          "image_desktoplatestproduct2",
+          "image_desktoplatestproduct3",
+          "heading"
+        ]
+      },
+      {
+        "id": "desktopbestselling",
+        "name": "DesktopBestSelling",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2",
+          "heading"
+        ]
+      },
+      {
+        "id": "unleasepowerdesktop",
+        "name": "UnleasePowerDesktop",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "image_backgroundimage",
+          "image_computers",
+          "heading",
+          "heading_2",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "highperformance",
+        "name": "HighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "image_highperformanceimage",
+          "image_comma",
+          "heading",
+          "paragraph"
+        ]
+      },
+      {
+        "id": "heavycomputing",
+        "name": "HeavyComputing",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "image_computingimage",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4"
+        ]
+      },
+      {
+        "id": "allinonedesktops",
+        "name": "AllinOneDesktops",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6",
+          "heading",
+          "heading_2",
+          "heading_3"
+        ]
+      },
+      {
+        "id": "whybuyfromus",
+        "name": "WhyBuyFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "image_yellobckground",
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5"
+        ]
+      },
+      {
+        "id": "desktopbrands",
+        "name": "DesktopBrands",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse",
+          "heading"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 33,
+    "routeId": "6a2016aca0608271b7524eaf",
+    "path": "/products/phones-cctv",
+    "name": "/products/phones-cctv",
+    "status": "active",
+    "filePath": "src/app/products/phones-cctv/page.js",
+    "fileExists": true,
+    "fileLines": 29,
+    "feStatus": 200,
+    "cmsSectionCount": 5,
+    "cmsSections": [
+      {
+        "id": "phonesbanner",
+        "name": "PhonesBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "bestsellingphones",
+        "name": "BestSellingPhones",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2",
+          "image_bestproduct3"
+        ]
+      },
+      {
+        "id": "ultimatephones",
+        "name": "UltimatePhones",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "allinonephones",
+        "name": "AllinOnePhones",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_popular1",
+          "image_popular2",
+          "image_popular3",
+          "image_popular4",
+          "image_popular5",
+          "image_popular6"
+        ]
+      },
+      {
+        "id": "phonesbrand",
+        "name": "PhonesBrand",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 34,
+    "routeId": "6a2016aca0608271b7524eb0",
+    "path": "/products/printers",
+    "name": "/products/printers",
+    "status": "active",
+    "filePath": "src/app/products/printers/page.js",
+    "fileExists": true,
+    "fileLines": 35,
+    "feStatus": 200,
+    "cmsSectionCount": 8,
+    "cmsSections": [
+      {
+        "id": "printerbanner",
+        "name": "PrinterBanner",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "bestsellingprinters",
+        "name": "BestSellingPrinters",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2",
+          "image_bestproduct3"
+        ]
+      },
+      {
+        "id": "unleaseprinters",
+        "name": "UnleasePrinters",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "image_backgroundimage",
+          "image_computers"
+        ]
+      },
+      {
+        "id": "highperformanceprinters",
+        "name": "HighPerformancePrinters",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_highperformanceimage",
+          "image_comma"
+        ]
+      },
+      {
+        "id": "performanceprinters",
+        "name": "PerformancePrinters",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_background"
+        ]
+      },
+      {
+        "id": "allinoneprinters",
+        "name": "AllinOnePrinters",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6"
+        ]
+      },
+      {
+        "id": "whybuyfromusprinters",
+        "name": "WhyBuyFromUsPrinters",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "brandswedealprinters",
+        "name": "BrandsWeDealPrinters",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": true,
+    "dbSectionCount": 1,
+    "dbSections": [
+      {
+        "id": "custom_1780660504807",
+        "name": "Custom Section",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image",
+          "buttonText",
+          "buttonLink"
+        ]
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "routeId": "6a2016ada0608271b7524eb1",
+    "path": "/products/routers-access-points",
+    "name": "/products/routers-access-points",
+    "status": "active",
+    "filePath": "src/app/products/routers-access-points/page.js",
+    "fileExists": true,
+    "fileLines": 35,
+    "feStatus": 200,
+    "cmsSectionCount": 8,
+    "cmsSections": [
+      {
+        "id": "routersbanner",
+        "name": "RoutersBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "routerlatestproducts",
+        "name": "RouterLatestProducts",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2",
+          "image_desktopbestproduct3"
+        ]
+      },
+      {
+        "id": "routersunlease",
+        "name": "RoutersUnlease",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "image_backgroundimage",
+          "image_computers"
+        ]
+      },
+      {
+        "id": "routershighperformance",
+        "name": "RoutersHighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_highperformanceimage",
+          "image_comma"
+        ]
+      },
+      {
+        "id": "routersseamlessconnectivity",
+        "name": "RoutersSeamlessConnectivity",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "toprouters",
+        "name": "TopRouters",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6"
+        ]
+      },
+      {
+        "id": "routerswhybuyfromus",
+        "name": "RoutersWhyBuyFromUs",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "routersbrandwedeal",
+        "name": "RoutersBrandWeDeal",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 36,
+    "routeId": "6a2016ada0608271b7524eb2",
+    "path": "/products/scanners-copier",
+    "name": "/products/scanners-copier",
+    "status": "active",
+    "filePath": "src/app/products/scanners-copier/page.js",
+    "fileExists": true,
+    "fileLines": 31,
+    "feStatus": 200,
+    "cmsSectionCount": 6,
+    "cmsSections": [
+      {
+        "id": "scannercopierbanner",
+        "name": "ScannerCopierBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "scannerbestselling",
+        "name": "ScannerBestSelling",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "image_bestproduct1",
+          "image_bestproduct2",
+          "image_bestproduct3"
+        ]
+      },
+      {
+        "id": "scannerperformance",
+        "name": "ScannerPerformance",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "image_background"
+        ]
+      },
+      {
+        "id": "scannerpopular",
+        "name": "ScannerPopular",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_popular1",
+          "image_popular2",
+          "image_popular3",
+          "image_popular4",
+          "image_popular5",
+          "image_popular6"
+        ]
+      },
+      {
+        "id": "scannerswhybuyfromus",
+        "name": "ScannersWhyBuyFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "scannerbrandswedeal",
+        "name": "ScannerBrandsWeDeal",
+        "fieldCount": 14,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_apple",
+          "image_xiomi",
+          "image_dell",
+          "image_accer",
+          "image_asus2",
+          "image_intel",
+          "image_amd",
+          "image_microsft",
+          "image_msi"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  },
+  {
+    "index": 37,
+    "routeId": "6a2016ada0608271b7524eb3",
+    "path": "/products/switching",
+    "name": "/products/switching",
+    "status": "active",
+    "filePath": "src/app/products/switching/page.js",
+    "fileExists": true,
+    "fileLines": 35,
+    "feStatus": 200,
+    "cmsSectionCount": 8,
+    "cmsSections": [
+      {
+        "id": "switchingbanner",
+        "name": "SwitchingBanner",
+        "fieldCount": 6,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "paragraph_2",
+          "image_laptopimage1",
+          "image_laptopimage2",
+          "image_stars"
+        ]
+      },
+      {
+        "id": "switchinglatestproduct",
+        "name": "SwitchingLatestProduct",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "image_buttonbackground",
+          "image_desktopbestproduct1",
+          "image_desktopbestproduct2",
+          "image_desktopbestproduct3"
+        ]
+      },
+      {
+        "id": "switchingunlease",
+        "name": "SwitchingUnlease",
+        "fieldCount": 5,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "paragraph",
+          "image_backgroundimage",
+          "image_computers"
+        ]
+      },
+      {
+        "id": "switchinghighperformance",
+        "name": "SwitchingHighPerformance",
+        "fieldCount": 4,
+        "fieldKeys": [
+          "heading",
+          "paragraph",
+          "image_highperformanceimage",
+          "image_comma"
+        ]
+      },
+      {
+        "id": "switchingheavycomputing",
+        "name": "SwitchingHeavyComputing",
+        "fieldCount": 10,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "image_computingimage"
+        ]
+      },
+      {
+        "id": "bestnetworkswitches",
+        "name": "BestNetworkSwitches",
+        "fieldCount": 9,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "image_allinone1",
+          "image_allinone2",
+          "image_allinone3",
+          "image_allinone4",
+          "image_allinone5",
+          "image_allinone6"
+        ]
+      },
+      {
+        "id": "switchingwhybuyfromus",
+        "name": "SwitchingWhyBuyFromUs",
+        "fieldCount": 11,
+        "fieldKeys": [
+          "heading",
+          "heading_2",
+          "heading_3",
+          "heading_4",
+          "heading_5",
+          "paragraph",
+          "paragraph_2",
+          "paragraph_3",
+          "paragraph_4",
+          "paragraph_5",
+          "image_yellobckground"
+        ]
+      },
+      {
+        "id": "switchingbrandswedeal",
+        "name": "SwitchingBrandsWeDeal",
+        "fieldCount": 8,
+        "fieldKeys": [
+          "heading",
+          "image_background",
+          "image_lenovo",
+          "image_hp",
+          "image_asus",
+          "image_dell",
+          "image_accer",
+          "image_eclipse"
+        ]
+      }
+    ],
+    "hasDbDoc": false,
+    "dbSectionCount": 0,
+    "dbSections": []
+  }
+]

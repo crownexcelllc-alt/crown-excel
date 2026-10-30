@@ -151,6 +151,10 @@ export async function getCmsContent(path, websiteId = 'default') {
         sections.hero = secObj;
       } else if (key === 'hero' && !sections.smartsolutions) {
         sections.smartsolutions = secObj;
+      } else if (key === 'directormessage' && !sections.main) {
+        sections.main = secObj;
+      } else if (key === 'main' && !sections.directormessage) {
+        sections.directormessage = secObj;
       }
     }
 

@@ -40,106 +40,139 @@ import lg from '../../../../../Components/Images/lg.png'
 import lenovo from '../../../../../Components/Images/lenovo (1).png'
 import Asus from '../../../../../Components/Images/asus (1).png'
 import apple from '../../../../../Components/Images/apple (3).png'
-import Enterprise from '../../../../../Components/Images/optimizedstorage.jpg'
-import CloudStorage from '../../../../../Components/Images/cloudstorage.jpg'
-import Virtualization2 from '../../../../../Components/Images/virtualization.jpg'
-import DataManagement from '../../../../../Components/Images/Datamanagement.jpg'
-import Disaster from '../../../../../Components/Images/Disaster.png'
-import Computing from '../../../../../Components/Images/HighComputing.jpg'
 import { MdManageAccounts } from "react-icons/md";
 import { FaUniversalAccess } from "react-icons/fa";
 import { GrDeploy } from "react-icons/gr";
 import { SlCalender } from "react-icons/sl";
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const ManagedITSmart = () => {
-  const technologyPartners = [
-    { name: "Dragon", Image: Dragon },
-    { name: "Intel", Image: Intel },
-    { name: "Dell", Image: Dell },
-    { name: "Acer", Image: Accer },
-    { name: "Xerox", Image: Xerox },
-    { name: "AMD", Image: Amd },
-    { name: "HP", Image: HP },
-    { name: "ViewSonic", Image: ViewSonic },
-    { name: "Optoma", Image: Optoma },
-    { name: "Ricoh", Image: ricoh },
-    { name: "Meetion", Image: meetion },
-    { name: "Logitech", Image: logitech },
-    { name: "Lexar", Image: lexar },
-    { name: "Kingston", Image: Kingston },
-    { name: "Epson", Image: epson },
-    { name: "Crucial", Image: crucial },
-    { name: "Canon", Image: canon },
-    { name: "Brother", Image: brother },
-    { name: "BenQ", Image: benq },
-    { name: "AOC", Image: aoc },
-    { name: "Alienware", Image: alienware },
-    { name: "Dahua", Image: adhua },
-    { name: "TP-Link", Image: tplink },
-    { name: "Samsung", Image: samsung },
-    { name: "Razer", Image: razor },
-    { name: "Microsoft", Image: microsof },
-    { name: "LG", Image: lg },
-    { name: "Lenovo", Image: lenovo },
-    { name: "Asus", Image: Asus },
-    { name: "Apple", Image: apple }
-  ];
+const ManagedITSmart = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+
+  // Hero section fields
+  const headingAccent = safeRender(fields.heading, <>IT<span className="text-[#16CA9A]">.</span></>);
+  const headingTitle = safeRender(fields.heading_2, "Infrastructure");
+  const heroSubtitle = safeRender(fields.paragraph, "Excellence Redefined");
+  const heroDescCard = safeRender(fields.paragraph_2, "Revolutionary IT infrastructure management combining cutting-edge technology, enterprise security, and 24/7 operational excellence for unstoppable business growth.");
+  const btn1Text = safeRender(fields.button_1_text, "Transform My Infrastructure");
+  const btn1Link = fields.button_1_link || "/contact-us";
+  const btn2Text = safeRender(fields.button_2_text, "Watch Demo");
+  const signalTowerImg = safeImage(fields.image_signaltower, SignalTower);
+  const netSmartImg = safeImage(fields.image_networkingsmartimage, NetworkingSmartImage);
+
+  // Core Infrastructure section fields
+  const coreHeading = safeRender(fields.heading_3, <><span className="text-[#16CA9A]">CORE</span> INFRASTRUCTURE</>);
+  const coreSubtitle = safeRender(fields.paragraph_3, "Six pillars of excellence forming the foundation of modern enterprise infrastructure");
+
   const infrastructureServices = [
     {
-      title: "Server Infrastructure",
-      description: "Enterprise-grade server solutions with high availability, load balancing, and redundancy for mission-critical applications.",
+      title: safeRender(fields.pillar_1_title, "Server Infrastructure"),
+      description: safeRender(fields.pillar_1_desc, "Enterprise-grade server solutions with high availability, load balancing, and redundancy for mission-critical applications."),
       features: ["Physical & Virtual Servers", "Load Balancing", "High Availability Clusters", "Server Monitoring"],
-      Image: Server,
-      metric: "99.9%",
-      metricLabel: "Uptime"
+      Image: safeImage(fields.image_server, Server),
+      metric: safeRender(fields.pillar_1_metric, "99.9%"),
+      metricLabel: safeRender(fields.pillar_1_metric_label, "Uptime")
     },
     {
-      title: "Network Infrastructure",
-      description: "Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations.",
+      title: safeRender(fields.pillar_2_title, "Network Infrastructure"),
+      description: safeRender(fields.pillar_2_desc, "Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations."),
       features: ["Network Design", "Firewall Configuration", "VPN Setup", "Bandwidth Optimization"],
-      Image: Network,
-      metric: "24/7",
-      metricLabel: "Monitoring"
+      Image: safeImage(fields.image_network, Network),
+      metric: safeRender(fields.pillar_2_metric, "24/7"),
+      metricLabel: safeRender(fields.pillar_2_metric_label, "Monitoring")
     },
     {
-      title: "Storage Solutions",
-      description: "Scalable storage systems with automated backup, disaster recovery, and data protection for business continuity.",
+      title: safeRender(fields.pillar_3_title, "Storage Solutions"),
+      description: safeRender(fields.pillar_3_desc, "Scalable storage systems with automated backup, disaster recovery, and data protection for business continuity."),
       features: ["SAN/NAS Storage", "Backup Solutions", "Disaster Recovery", "Data Archiving"],
-      Image: Storage,
-      metric: "100%",
-      metricLabel: "Data Security"
+      Image: safeImage(fields.image_storage, Storage),
+      metric: safeRender(fields.pillar_3_metric, "100%"),
+      metricLabel: safeRender(fields.pillar_3_metric_label, "Data Security")
     },
     {
-      title: "Virtualization",
-      description: "Complete virtualization solutions to maximize resource utilization, reduce costs, and improve system flexibility.",
+      title: safeRender(fields.pillar_4_title, "Virtualization"),
+      description: safeRender(fields.pillar_4_desc, "Complete virtualization solutions to maximize resource utilization, reduce costs, and improve system flexibility."),
       features: ["VMware Solutions", "Hyper-V Implementation", "Virtual Desktop Infrastructure", "Container Solutions"],
-      Image: Virtualization,
-      metric: "60%",
-      metricLabel: "Cost Savings"
+      Image: safeImage(fields.image_virtualization, Virtualization),
+      metric: safeRender(fields.pillar_4_metric, "60%"),
+      metricLabel: safeRender(fields.pillar_4_metric_label, "Cost Savings")
     },
     {
-      title: "Security Infrastructure",
-      description: "Multi-layered security framework protecting your IT assets from cyber threats and ensuring compliance.",
+      title: safeRender(fields.pillar_5_title, "Security Infrastructure"),
+      description: safeRender(fields.pillar_5_desc, "Multi-layered security framework protecting your IT assets from cyber threats and ensuring compliance."),
       features: ["Endpoint Protection", "Network Security", "Identity Management", "Compliance Monitoring"],
-      Image: Security,
-      metric: "Zero",
-      metricLabel: "Breaches"
+      Image: safeImage(fields.image_security, Security),
+      metric: safeRender(fields.pillar_5_metric, "Zero"),
+      metricLabel: safeRender(fields.pillar_5_metric_label, "Breaches")
     },
     {
-      title: "Monitoring & Management",
-      description: "24/7 proactive monitoring with real-time alerts, performance optimization, and automated maintenance.",
+      title: safeRender(fields.pillar_6_title, "Monitoring & Management"),
+      description: safeRender(fields.pillar_6_desc, "24/7 proactive monitoring with real-time alerts, performance optimization, and automated maintenance."),
       features: ["Real-time Monitoring", "Performance Analytics", "Automated Alerts", "Remote Management"],
-      Image: Monitoring,
-      metric: "15min",
-      metricLabel: "Response Time"
+      Image: safeImage(fields.image_monitoring, Monitoring),
+      metric: safeRender(fields.pillar_6_metric, "15min"),
+      metricLabel: safeRender(fields.pillar_6_metric_label, "Response Time")
     }
   ];
 
+  // Management Cycle fields
+  const cycleHeading = safeRender(fields.heading_4, <>MANAGEMENT <span className="text-[#16CA9A]">CYCLE</span></>);
+  const cycleCenter1 = safeRender(fields.cycle_center_1, "IT");
+  const cycleCenter2 = safeRender(fields.cycle_center_2, "EXCELLENCE");
+
   const managementPhases = [
-    { phase: "ACCESS", title: "Infrastructure Analysis", icon: <FaUniversalAccess />, color: "from-[#16CA9A] to-[#119472]" },
-    { phase: "PLAN", title: "Strategic Roadmap", icon: <SlCalender />, color: "from-[#119472] to-[#13745a]" },
-    { phase: "DEPLOY", title: "Implementation", icon: <GrDeploy />, color: "from-[#13745a] to-[#0d5c47]" },
-    { phase: "MANAGE", title: "Ongoing Support", icon: <MdManageAccounts />, color: "from-[#0d5c47] to-[#084032]" }
+    { phase: safeRender(fields.phase_1_name, "ACCESS"), title: safeRender(fields.phase_1_title, "Infrastructure Analysis"), icon: <FaUniversalAccess />, color: "from-[#16CA9A] to-[#119472]" },
+    { phase: safeRender(fields.phase_2_name, "PLAN"), title: safeRender(fields.phase_2_title, "Strategic Roadmap"), icon: <SlCalender />, color: "from-[#119472] to-[#13745a]" },
+    { phase: safeRender(fields.phase_3_name, "DEPLOY"), title: safeRender(fields.phase_3_title, "Implementation"), icon: <GrDeploy />, color: "from-[#13745a] to-[#0d5c47]" },
+    { phase: safeRender(fields.phase_4_name, "MANAGE"), title: safeRender(fields.phase_4_title, "Ongoing Support"), icon: <MdManageAccounts />, color: "from-[#0d5c47] to-[#084032]" }
+  ];
+
+  // Split CTA fields
+  const cta1Heading = safeRender(fields.heading_5, "Ready to Transform?");
+  const cta1Desc = safeRender(fields.paragraph_4, "Join the infrastructure revolution with enterprise-grade solutions that scale with your ambitions.");
+  const cta1BtnText = safeRender(fields.cta_1_button_text, "Start Revolution");
+  const cta1BtnLink = fields.cta_1_button_link || "/contact-us";
+
+  const cta2Heading = safeRender(fields.heading_6, "Need Consultation?");
+  const cta2Desc = safeRender(fields.paragraph_5, "Expert guidance for complex infrastructure challenges and strategic technology decisions.");
+  const cta2BtnText = safeRender(fields.cta_2_button_text, "Book Consultation");
+  const cta2BtnLink = fields.cta_2_button_link || "/our-services";
+
+  // Technology Partners fields
+  const partnersHeading = safeRender(fields.heading_7, "Technology Partners");
+  const partnersDesc = safeRender(fields.paragraph_6, "We work with industry-leading technology partners to deliver best-in-class solutions");
+
+  const technologyPartners = [
+    { name: "Dragon", Image: safeImage(fields.image_dragon, Dragon) },
+    { name: "Intel", Image: safeImage(fields.image_intel, Intel) },
+    { name: "Dell", Image: safeImage(fields.image_dell, Dell) },
+    { name: "Acer", Image: safeImage(fields.image_accer, Accer) },
+    { name: "Xerox", Image: safeImage(fields.image_xerox, Xerox) },
+    { name: "AMD", Image: safeImage(fields.image_amd, Amd) },
+    { name: "HP", Image: safeImage(fields.image_hp, HP) },
+    { name: "ViewSonic", Image: safeImage(fields.image_viewsonic, ViewSonic) },
+    { name: "Optoma", Image: safeImage(fields.image_optoma, Optoma) },
+    { name: "Ricoh", Image: safeImage(fields.image_ricoh, ricoh) },
+    { name: "Meetion", Image: safeImage(fields.image_meetion, meetion) },
+    { name: "Logitech", Image: safeImage(fields.image_logitech, logitech) },
+    { name: "Lexar", Image: safeImage(fields.image_lexar, lexar) },
+    { name: "Kingston", Image: safeImage(fields.image_kingston, Kingston) },
+    { name: "Epson", Image: safeImage(fields.image_epson, epson) },
+    { name: "Crucial", Image: safeImage(fields.image_crucial, crucial) },
+    { name: "Canon", Image: safeImage(fields.image_canon, canon) },
+    { name: "Brother", Image: safeImage(fields.image_brother, brother) },
+    { name: "BenQ", Image: safeImage(fields.image_benq, benq) },
+    { name: "AOC", Image: safeImage(fields.image_aoc, aoc) },
+    { name: "Alienware", Image: safeImage(fields.image_alienware, alienware) },
+    { name: "Dahua", Image: safeImage(fields.image_adhua, adhua) },
+    { name: "TP-Link", Image: safeImage(fields.image_tplink, tplink) },
+    { name: "Samsung", Image: safeImage(fields.image_samsung, samsung) },
+    { name: "Razer", Image: safeImage(fields.image_razor, razor) },
+    { name: "Microsoft", Image: safeImage(fields.image_microsof, microsof) },
+    { name: "LG", Image: safeImage(fields.image_lg, lg) },
+    { name: "Lenovo", Image: safeImage(fields.image_lenovo, lenovo) },
+    { name: "Asus", Image: safeImage(fields.image_asus, Asus) },
+    { name: "Apple", Image: safeImage(fields.image_apple, apple) }
   ];
 
   return (
@@ -171,35 +204,34 @@ const ManagedITSmart = () => {
                 <div className="w-2 h-20 bg-gradient-to-b from-[#16CA9A] to-[#084032] rounded-full"></div>
                 <div>
                   <h2 className="text-6xl md:text-7xl font-black text-gray-900 leading-none tracking-tight">
-                    IT<span className="text-[#16CA9A]">.</span>
+                    {headingAccent}
                   </h2>
                   <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
-                    Infrastructure
+                    {headingTitle}
                   </h2>
-                  <p className="text-xl text-gray-600 mt-2">Excellence Redefined</p>
+                  <p className="text-xl text-gray-600 mt-2">{heroSubtitle}</p>
                 </div>
               </div>
 
               <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200 shadow-lg">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Revolutionary IT infrastructure management combining cutting-edge technology,
-                  enterprise security, and 24/7 operational excellence for unstoppable business growth.
+                  {heroDescCard}
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/contact-us"
+                  href={btn1Link}
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
                 >
-                  <Image src={SignalTower} width={20} height={20} alt="" className="mr-3" />
-                  Transform My Infrastructure
+                  <Image src={signalTowerImg} width={20} height={20} alt="" className="mr-3" />
+                  {btn1Text}
                   <svg className="w-5 h-5 ml-3 transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
                 <button className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-2xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300">
-                  Watch Demo
+                  {btn2Text}
                 </button>
               </div>
             </div>
@@ -209,7 +241,7 @@ const ManagedITSmart = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-3xl transform rotate-2"></div>
                 <div className="relative bg-white p-4 rounded-3xl shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-700">
                   <Image
-                    src={NetworkingSmartImage}
+                    src={netSmartImg}
                     width={500}
                     height={400}
                     alt="IT Infrastructure Excellence"
@@ -228,11 +260,11 @@ const ManagedITSmart = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              <span className="text-[#16CA9A]">CORE</span> INFRASTRUCTURE
+              {coreHeading}
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
-              Six pillars of excellence forming the foundation of modern enterprise infrastructure
+              {coreSubtitle}
             </p>
           </div>
 
@@ -287,7 +319,7 @@ const ManagedITSmart = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              MANAGEMENT <span className="text-[#16CA9A]">CYCLE</span>
+              {cycleHeading}
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6"></div>
           </div>
@@ -297,8 +329,8 @@ const ManagedITSmart = () => {
               {/* Center Circle */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center shadow-2xl">
                 <div className="text-white text-center">
-                  <div className="text-2xl font-black">IT</div>
-                  <div className="text-sm font-semibold">EXCELLENCE</div>
+                  <div className="text-2xl font-black">{cycleCenter1}</div>
+                  <div className="text-sm font-semibold">{cycleCenter2}</div>
                 </div>
               </div>
 
@@ -337,30 +369,30 @@ const ManagedITSmart = () => {
               <div className="absolute top-0 right-0 w-32 h-32 opacity-20" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
                 <div className="w-full h-full bg-white"></div>
               </div>
-              <h3 className="text-4xl font-black mb-6">Ready to Transform?</h3>
+              <h3 className="text-4xl font-black mb-6">{cta1Heading}</h3>
               <p className="text-xl mb-8 opacity-90">
-                Join the infrastructure revolution with enterprise-grade solutions that scale with your ambitions.
+                {cta1Desc}
               </p>
               <Link
-                href="/contact-us"
+                href={cta1BtnLink}
                 className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg"
               >
-                Start Revolution
+                {cta1BtnText}
               </Link>
             </div>
             <div className="bg-gray-900 p-12 text-white relative">
               <div className="absolute bottom-0 left-0 w-28 h-28 opacity-20" style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' }}>
                 <div className="w-full h-full bg-[#16CA9A]"></div>
               </div>
-              <h3 className="text-4xl font-black mb-6">Need Consultation?</h3>
+              <h3 className="text-4xl font-black mb-6">{cta2Heading}</h3>
               <p className="text-xl mb-8 opacity-90">
-                Expert guidance for complex infrastructure challenges and strategic technology decisions.
+                {cta2Desc}
               </p>
               <Link
-                href="/our-services"
+                href={cta2BtnLink}
                 className="inline-flex items-center px-8 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-colors duration-300"
               >
-                Book Consultation
+                {cta2BtnText}
               </Link>
             </div>
           </div>
@@ -370,10 +402,10 @@ const ManagedITSmart = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Technology Partners
+                {partnersHeading}
               </h2>
               <p className="text-xl text-gray-600">
-                We work with industry-leading technology partners to deliver best-in-class solutions
+                {partnersDesc}
               </p>
             </div>
 

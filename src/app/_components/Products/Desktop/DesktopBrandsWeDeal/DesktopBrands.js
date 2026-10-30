@@ -7,21 +7,35 @@ import Asus from '../../../../../Components/Images/Asus2.png'
 import Dell from '../../../../../Components/Images/Dell2.png'
 import Accer from '../../../../../Components/Images/Acer2.png'
 import Eclipse from '../../../../../Components/Images/Eclipse4.png'
-const DesktopBrands = () => {
+import { safeRender, safeImage } from '@/lib/safe-html'
+
+const DesktopBrands = ({ cmsData }) => {
+    const fields = cmsData?.fields || cmsData || {};
+    const headingText = safeRender(fields.heading, "BRANDS WE DEAL");
+
+    const lenovoImg = safeImage(fields.image_lenovo, Lenovo);
+    const hpImg = safeImage(fields.image_hp, Hp);
+    const acerImg = safeImage(fields.image_accer, Accer);
+    const asusImg = safeImage(fields.image_asus, Asus);
+    const dellImg = safeImage(fields.image_dell, Dell);
+    const bgImg = safeImage(fields.image_background, Background);
+    const eclipseImg = safeImage(fields.image_eclipse, Eclipse);
+
     const BrandIconsTop = [
-        {Image: Lenovo, alt: 'Lenovo', width: 149, height: 31},
-        {Image: Hp, alt: 'HP', width: 81, height: 80},
-        {Image: Accer, alt: 'Accer', width: 144, height: 34},      
-      ]
-      const BrandIconsBottom = [
-        {Image: Asus, alt: 'Asus', width: 167, height: 42},
-        {Image: Dell, alt: 'Dell', width: 135, height: 42}  
-      ]
-  return (
+        { Image: lenovoImg, alt: 'Lenovo', width: 149, height: 31 },
+        { Image: hpImg, alt: 'HP', width: 81, height: 80 },
+        { Image: acerImg, alt: 'Accer', width: 144, height: 34 },      
+    ];
+    const BrandIconsBottom = [
+        { Image: asusImg, alt: 'Asus', width: 167, height: 42 },
+        { Image: dellImg, alt: 'Dell', width: 135, height: 42 }  
+    ];
+
+    return (
     <div className="w-full  bg-white mt-20">
       {/* Heading */}
       <h2 className="text-center text-[30px] lg:text-[40px] md:text-[3rem] font-[700] leading-[40px] text-[#16806b] uppercase  mb-8 font-montserrat">
-        BRANDS WE DEAL
+        {headingText}
       </h2>
       <div
         className="w-full mb-21 min-h-[220px] md:min-h-[202px] relative flex flex-col lg:flex-row items-center justify-center overflow-visible"
@@ -31,11 +45,11 @@ const DesktopBrands = () => {
       >
         {/* Yellow Eclipse on the left */}
         <div className="absolute hidden lg:block left-0 top-1/2 -translate-y-1/2 z-10 w-[130px] h-[470px] pointer-events-none select-none">
-          <Image src={Eclipse} alt="Eclipse" fill style={{objectFit: 'contain'}} />
+          <Image src={eclipseImg} alt="Eclipse" fill style={{objectFit: 'contain'}} />
         </div>
         {/* Overlay background image with blend for dots/stars */}
         <div className="absolute z-0 right-0 top-0 w-full h-full pointer-events-none select-none" style={{mixBlendMode: 'screen', opacity: 0.7}}>
-          <Image alt='' src={Background} fill style={{objectFit: 'cover', objectPosition: 'right'}}/>
+          <Image alt='' src={bgImg} fill style={{objectFit: 'cover', objectPosition: 'right'}}/>
         </div>
         {/* Brand Icons Grid */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full max-w-[1200px] px-4 py-8">
@@ -60,3 +74,4 @@ const DesktopBrands = () => {
 }
 
 export default DesktopBrands
+

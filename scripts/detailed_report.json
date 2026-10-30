@@ -1,0 +1,2053 @@
+[
+  {
+    "index": 1,
+    "routeId": "6a2016a8a0608271b7524e94",
+    "path": "/",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "Page",
+        "file": "src\\app\\_components\\page.js"
+      },
+      {
+        "name": "SmartSolutions",
+        "file": "src\\app\\_components\\smartsolutions.js"
+      },
+      {
+        "name": "TrustedPartner",
+        "file": "src\\app\\_components\\Trusted Partner\\TrustedPartner.js"
+      },
+      {
+        "name": "Services",
+        "file": "src\\app\\_components\\Services\\Services.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "smartsolutions",
+        "name": "Hero Section (Smart Solutions)",
+        "fields": 4
+      },
+      {
+        "id": "trustedpartner",
+        "name": "TrustedPartner",
+        "fields": 8
+      },
+      {
+        "id": "services",
+        "name": "Services",
+        "fields": 7
+      },
+      {
+        "id": "allproducts",
+        "name": "Our Product Catalog (AllProducts)",
+        "fields": 2
+      },
+      {
+        "id": "brands",
+        "name": "Brands",
+        "fields": 31
+      },
+      {
+        "id": "occasions",
+        "name": "Occasions",
+        "fields": 5
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fields": 8
+      },
+      {
+        "id": "contactus",
+        "name": "Contactus",
+        "fields": 2
+      },
+      {
+        "id": "globe",
+        "name": "Globe",
+        "fields": 3
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "routeId": "6ad36ed5a31875b6e0e116b7",
+    "path": "/appointments",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/appointments/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AppointmentLinksView",
+        "file": "src\\app\\appointments\\AppointmentLinksView.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "appointmentlinksview",
+        "name": "AppointmentLinksView",
+        "fields": 7
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "routeId": "6ad36ed5a31875b6e0e116b8",
+    "path": "/blogs",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/blogs/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "BlogListingClient",
+        "file": "src\\app\\blogs\\BlogListingClient.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "blogs",
+        "name": "Blogs",
+        "fields": 2
+      },
+      {
+        "id": "bloglistingclient",
+        "name": "BlogListingClient",
+        "fields": 8
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "routeId": "6ae461dba94788d09d658ddd",
+    "path": "/blogs/[...slug]",
+    "status": "active",
+    "feStatus": "dynamic-pattern",
+    "filePath": "src/app/blogs/[...slug]/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "BlogCommentsSection",
+        "file": "src\\app\\blogs\\[...slug]\\BlogCommentsSection.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "slug",
+        "name": "Slug",
+        "fields": 10
+      },
+      {
+        "id": "blogcommentssection",
+        "name": "BlogCommentsSection",
+        "fields": 4
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "routeId": "6ad36ed5a31875b6e0e116b9",
+    "path": "/blogs/[slug]",
+    "status": "archived",
+    "feStatus": "dynamic-pattern",
+    "filePath": "src/app/blogs/[slug]/page.js",
+    "fileExists": false,
+    "feSections": [],
+    "cmsSections": []
+  },
+  {
+    "index": 6,
+    "routeId": "6a2016a9a0608271b7524e95",
+    "path": "/company/about-us",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/about-us/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AboutUs",
+        "file": "src\\app\\company\\about-us\\_components\\page.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "header",
+        "name": "Header",
+        "fields": 3
+      },
+      {
+        "id": "abouttrusted",
+        "name": "AboutTrusted",
+        "fields": 8
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "fields": 5
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials",
+        "fields": 8
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "routeId": "6a2016a9a0608271b7524e96",
+    "path": "/company/career",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/career/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "Career",
+        "file": "src\\app\\company\\career\\_components\\page.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "careerheader",
+        "name": "CareerHeader",
+        "fields": 3
+      },
+      {
+        "id": "career",
+        "name": "Career",
+        "fields": 2
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "routeId": "6a2016a9a0608271b7524e97",
+    "path": "/company/company-history",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/company-history/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "CompanyHistoryBanner",
+        "file": "src\\app\\_components\\CompanyHistory\\CompanyHistoryBanner\\CompanyHistoryBanner.js"
+      },
+      {
+        "name": "CompanyHistoryYears",
+        "file": "src\\app\\_components\\CompanyHistory\\CompanyHistoryYears\\CompanyHistoryYears.js"
+      },
+      {
+        "name": "CompanyHistroyBackground",
+        "file": "src\\app\\_components\\CompanyHistory\\CompanyHistroyBackground\\CompanyHistroyBackground.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "companyhistorybanner",
+        "name": "CompanyHistoryBanner",
+        "fields": 2
+      },
+      {
+        "id": "companyhistroybackground",
+        "name": "CompanyHistroyBackground",
+        "fields": 6
+      },
+      {
+        "id": "companyhistoryyears",
+        "name": "CompanyHistoryYears",
+        "fields": 1
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "routeId": "6a2016a9a0608271b7524e98",
+    "path": "/company/crown-excel-family",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/crown-excel-family/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "CrownExcelFamilyClient",
+        "file": "src\\app\\company\\crown-excel-family\\CrownExcelFamilyClient.js"
+      },
+      {
+        "name": "ValueTrust",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueTrust.js"
+      },
+      {
+        "name": "ValueCompanyFirst",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueCompanyFirst.js"
+      },
+      {
+        "name": "ValueExcellence",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueExcellence.js"
+      },
+      {
+        "name": "ValueInternalMatters",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueInternalMatters.js"
+      },
+      {
+        "name": "ValueContinuousGrowth",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueContinuousGrowth.js"
+      },
+      {
+        "name": "ValueSustainability",
+        "file": "src\\app\\company\\crown-excel-family\\components\\ValueSustainability.js"
+      },
+      {
+        "name": "MemberIlyas",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberIlyas.js"
+      },
+      {
+        "name": "MemberWais",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberWais.js"
+      },
+      {
+        "name": "MemberSaqib",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberSaqib.js"
+      },
+      {
+        "name": "MemberVishal",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberVishal.js"
+      },
+      {
+        "name": "MemberKhurram",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberKhurram.js"
+      },
+      {
+        "name": "MemberBrian",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberBrian.js"
+      },
+      {
+        "name": "MemberRauf",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberRauf.js"
+      },
+      {
+        "name": "MemberNadeem",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberNadeem.js"
+      },
+      {
+        "name": "MemberIbad",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberIbad.js"
+      },
+      {
+        "name": "MemberAbdullah",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberAbdullah.js"
+      },
+      {
+        "name": "MemberJunaidS",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberJunaidS.js"
+      },
+      {
+        "name": "MemberShammry",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberShammry.js"
+      },
+      {
+        "name": "MemberJubair",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberJubair.js"
+      },
+      {
+        "name": "MemberFazal",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberFazal.js"
+      },
+      {
+        "name": "MemberLavina",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberLavina.js"
+      },
+      {
+        "name": "MemberAfreed",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberAfreed.js"
+      },
+      {
+        "name": "MemberNafees",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberNafees.js"
+      },
+      {
+        "name": "MemberSaeed",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberSaeed.js"
+      },
+      {
+        "name": "MemberAslam",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberAslam.js"
+      },
+      {
+        "name": "MemberSaleem",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberSaleem.js"
+      },
+      {
+        "name": "MemberSalman",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberSalman.js"
+      },
+      {
+        "name": "MemberTarun",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberTarun.js"
+      },
+      {
+        "name": "MemberSafeel",
+        "file": "src\\app\\company\\crown-excel-family\\components\\MemberSafeel.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "crownexcelfamilyclient",
+        "name": "CrownExcelFamilyClient",
+        "fields": 8
+      },
+      {
+        "id": "valuetrust",
+        "name": "ValueTrust",
+        "fields": 2
+      },
+      {
+        "id": "valuecompanyfirst",
+        "name": "ValueCompanyFirst",
+        "fields": 2
+      },
+      {
+        "id": "valueexcellence",
+        "name": "ValueExcellence",
+        "fields": 2
+      },
+      {
+        "id": "valueinternalmatters",
+        "name": "ValueInternalMatters",
+        "fields": 2
+      },
+      {
+        "id": "valuecontinuousgrowth",
+        "name": "ValueContinuousGrowth",
+        "fields": 2
+      },
+      {
+        "id": "valuesustainability",
+        "name": "ValueSustainability",
+        "fields": 2
+      },
+      {
+        "id": "memberilyas",
+        "name": "MemberIlyas",
+        "fields": 6
+      },
+      {
+        "id": "memberwais",
+        "name": "MemberWais",
+        "fields": 6
+      },
+      {
+        "id": "membersaqib",
+        "name": "MemberSaqib",
+        "fields": 6
+      },
+      {
+        "id": "membervishal",
+        "name": "MemberVishal",
+        "fields": 6
+      },
+      {
+        "id": "memberkhurram",
+        "name": "MemberKhurram",
+        "fields": 6
+      },
+      {
+        "id": "memberjunaids",
+        "name": "MemberJunaidS",
+        "fields": 6
+      },
+      {
+        "id": "memberabdullah",
+        "name": "MemberAbdullah",
+        "fields": 6
+      },
+      {
+        "id": "membernadeem",
+        "name": "MemberNadeem",
+        "fields": 6
+      },
+      {
+        "id": "memberibad",
+        "name": "MemberIbad",
+        "fields": 6
+      },
+      {
+        "id": "memberrauf",
+        "name": "MemberRauf",
+        "fields": 6
+      },
+      {
+        "id": "memberbrian",
+        "name": "MemberBrian",
+        "fields": 6
+      },
+      {
+        "id": "membershammry",
+        "name": "MemberShammry",
+        "fields": 6
+      },
+      {
+        "id": "memberjubair",
+        "name": "MemberJubair",
+        "fields": 6
+      },
+      {
+        "id": "memberfazal",
+        "name": "MemberFazal",
+        "fields": 6
+      },
+      {
+        "id": "memberafreed",
+        "name": "MemberAfreed",
+        "fields": 6
+      },
+      {
+        "id": "membernafees",
+        "name": "MemberNafees",
+        "fields": 6
+      },
+      {
+        "id": "memberlavina",
+        "name": "MemberLavina",
+        "fields": 6
+      },
+      {
+        "id": "membersaeed",
+        "name": "MemberSaeed",
+        "fields": 6
+      },
+      {
+        "id": "memberaslam",
+        "name": "MemberAslam",
+        "fields": 6
+      },
+      {
+        "id": "membersaleem",
+        "name": "MemberSaleem",
+        "fields": 6
+      },
+      {
+        "id": "membersalman",
+        "name": "MemberSalman",
+        "fields": 6
+      },
+      {
+        "id": "membertarun",
+        "name": "MemberTarun",
+        "fields": 6
+      },
+      {
+        "id": "membersafeel",
+        "name": "MemberSafeel",
+        "fields": 6
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "routeId": "6a2016a9a0608271b7524e99",
+    "path": "/company/director-message",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/director-message/page.js",
+    "fileExists": true,
+    "feSections": [],
+    "cmsSections": [
+      {
+        "id": "directormessage",
+        "name": "Directormessage",
+        "fields": 10
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "routeId": "6a2016a9a0608271b7524e9a",
+    "path": "/company/events",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/company/events/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "Events",
+        "file": "src\\app\\company\\events\\_components\\page.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "events",
+        "name": "Events",
+        "fields": 4
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "routeId": "6a2016a9a0608271b7524e9b",
+    "path": "/company/faq",
+    "status": "archived",
+    "feStatus": 404,
+    "filePath": "src/app/company/faq/page.js",
+    "fileExists": false,
+    "feSections": [],
+    "cmsSections": []
+  },
+  {
+    "index": 13,
+    "routeId": "6a2016aaa0608271b7524e9c",
+    "path": "/company/leader-team",
+    "status": "archived",
+    "feStatus": 200,
+    "filePath": "src/app/company/leader-team/page.js",
+    "fileExists": false,
+    "feSections": [],
+    "cmsSections": [
+      {
+        "id": "hero_1780492132335",
+        "name": "Hero Section",
+        "fields": 6
+      },
+      {
+        "id": "hero_1780492133271",
+        "name": "Hero Section",
+        "fields": 6
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "routeId": "6a2016aaa0608271b7524e9d",
+    "path": "/contact-us",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/contact-us/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ContactUsPageBanner",
+        "file": "src\\app\\_components\\ContactUsPage\\ContactUsPageBanner\\ContactUsPageBanner.js"
+      },
+      {
+        "name": "ContactUsForm",
+        "file": "src\\app\\_components\\ContactUsPage\\ContactUsForm\\ContactUsForm.js"
+      },
+      {
+        "name": "ContactUsMap",
+        "file": "src\\app\\_components\\ContactUsPage\\ContactUsMap\\ContactUsMap.js"
+      },
+      {
+        "name": "AppointmentSection",
+        "file": "src\\app\\_components\\ContactUsPage\\AppointmentSection\\AppointmentSection.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "contactuspagebanner",
+        "name": "ContactUsPageBanner",
+        "fields": 3
+      },
+      {
+        "id": "contactusform",
+        "name": "ContactUsForm",
+        "fields": 2
+      },
+      {
+        "id": "appointmentsection",
+        "name": "AppointmentSection",
+        "fields": 2
+      },
+      {
+        "id": "contactusmap",
+        "name": "ContactUsMap",
+        "fields": 2
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "routeId": "6ad36ed7a31875b6e0e116ba",
+    "path": "/laptop-wholesale-supplier-in-dubai-or-uae",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/laptop-wholesale-supplier-in-dubai-or-uae/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "WholesaleClientPage",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\WholesaleClientPage.js"
+      },
+      {
+        "name": "WholesaleHeroSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleHeroSection.js"
+      },
+      {
+        "name": "WholesaleCategoriesSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleCategoriesSection.js"
+      },
+      {
+        "name": "WholesaleProductsSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleProductsSection.js"
+      },
+      {
+        "name": "WholesaleWhyCrownExcelSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleWhyCrownExcelSection.js"
+      },
+      {
+        "name": "WholesaleBrandsSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleBrandsSection.js"
+      },
+      {
+        "name": "WholesaleKeyBenefitsSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleKeyBenefitsSection.js"
+      },
+      {
+        "name": "WholesaleWorldwideAreasSection",
+        "file": "src\\app\\laptop-wholesale-supplier-in-dubai-or-uae\\_components\\WholesaleWorldwideAreasSection.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "wholesaleherosection",
+        "name": "WholesaleHeroSection",
+        "fields": 2
+      },
+      {
+        "id": "wholesalecategoriessection",
+        "name": "WholesaleCategoriesSection",
+        "fields": 9
+      },
+      {
+        "id": "wholesaleproductssection",
+        "name": "WholesaleProductsSection",
+        "fields": 21
+      },
+      {
+        "id": "wholesalewhycrownexcelsection",
+        "name": "WholesaleWhyCrownExcelSection",
+        "fields": 10
+      },
+      {
+        "id": "wholesalebrandssection",
+        "name": "WholesaleBrandsSection",
+        "fields": 9
+      },
+      {
+        "id": "wholesalekeybenefitssection",
+        "name": "WholesaleKeyBenefitsSection",
+        "fields": 10
+      },
+      {
+        "id": "wholesaleworldwideareassection",
+        "name": "WholesaleWorldwideAreasSection",
+        "fields": 10
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "routeId": "6a2016aaa0608271b7524e9e",
+    "path": "/our-management",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-management/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "OurManagementBanner",
+        "file": "src\\app\\_components\\OurManagement\\OurManagementBanner\\OurManagementBanner.js"
+      },
+      {
+        "name": "OurManagementKnowmore",
+        "file": "src\\app\\_components\\OurManagement\\OurManagementKnowmore\\OurManagementKnowmore.js"
+      },
+      {
+        "name": "OurManagementTeam",
+        "file": "src\\app\\_components\\OurManagement\\OurManagementTeam\\OurManagementTeam.js"
+      },
+      {
+        "name": "OurManagementProcess",
+        "file": "src\\app\\_components\\OurManagement\\OurManagementProcess\\OurManagementProcess.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "ourmanagementbanner",
+        "name": "OurManagementBanner",
+        "fields": 3
+      },
+      {
+        "id": "ourmanagementknowmore",
+        "name": "OurManagementKnowmore",
+        "fields": 3
+      },
+      {
+        "id": "ourmanagementteam",
+        "name": "OurManagementTeam",
+        "fields": 8
+      },
+      {
+        "id": "ourmanagementprocess",
+        "name": "OurManagementProcess",
+        "fields": 9
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "routeId": "6a2016aaa0608271b7524e9f",
+    "path": "/our-services",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "OurServicesClient",
+        "file": "src\\app\\our-services\\OurServicesClient.js"
+      },
+      {
+        "name": "ServicesCard",
+        "file": "src\\app\\_components\\OurServices\\ServicesCard\\ServicesCard.js"
+      },
+      {
+        "name": "OurServicesBrands",
+        "file": "src\\app\\_components\\OurServicesBrands\\OurServicesBrands.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "ourservicesclient",
+        "name": "OurServicesClient",
+        "fields": 2
+      },
+      {
+        "id": "ourservicesbrands",
+        "name": "OurServicesBrands",
+        "fields": 33
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "routeId": "6a2016aaa0608271b7524ea0",
+    "path": "/our-services/cloud-computing",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/cloud-computing/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "RMABanner",
+        "file": "src\\app\\_components\\OurServicesPages\\RMA\\RMABanner\\RMABanner.js"
+      },
+      {
+        "name": "RMAEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\RMA\\RMAEmpowering\\RMAEmpowering.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "rmabanner",
+        "name": "RMABanner",
+        "fields": 4
+      },
+      {
+        "id": "rmaempowering",
+        "name": "RMAEmpowering",
+        "fields": 37
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "routeId": "6a2016aaa0608271b7524ea1",
+    "path": "/our-services/it-consultancy",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/it-consultancy/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ITConsultancyBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITConsultancyBanner\\ITConsultancyBanner.js"
+      },
+      {
+        "name": "ITEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITEmpowering\\ITEmpowering.js"
+      },
+      {
+        "name": "ITFaq",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITFaq\\ITFaq.js"
+      },
+      {
+        "name": "ITService",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITService\\ITService.js"
+      },
+      {
+        "name": "ITSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITSmart\\ITSmart_new.js"
+      },
+      {
+        "name": "ITWeareBest",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITWeareBest\\ITWeareBest.js"
+      },
+      {
+        "name": "ITWhyChooseUs",
+        "file": "src\\app\\_components\\OurServicesPages\\ITConsultancy\\ITWhyChooseUs\\ITWhyChooseUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "itconsultancybanner",
+        "name": "ITConsultancyBanner",
+        "fields": 4
+      },
+      {
+        "id": "itsmart",
+        "name": "ITSmart",
+        "fields": 11
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "routeId": "6a2016aaa0608271b7524ea2",
+    "path": "/our-services/it-infrastructure",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/it-infrastructure/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ManagedITBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITBanner\\ManagedITBanner.js"
+      },
+      {
+        "name": "ManagedITCabling",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITCabling\\ManagedITCabling.js"
+      },
+      {
+        "name": "ManagedITEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITEmpowering\\ManagedITEmpowering.js"
+      },
+      {
+        "name": "ManagedITFaq",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITFaq\\ManagedITFaq.js"
+      },
+      {
+        "name": "ManagedITSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITSmart\\ManagedITSmart.js"
+      },
+      {
+        "name": "ManagedITWeareBest",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITWeareBest\\ManagedITWeareBest.js"
+      },
+      {
+        "name": "ManagedITWhyChooseUs",
+        "file": "src\\app\\_components\\OurServicesPages\\ManagedIT\\ManagedITWhyChooseUs\\ManagedITWhyChooseUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "manageditbanner",
+        "name": "ManagedITBanner",
+        "fields": 4
+      },
+      {
+        "id": "manageditsmart",
+        "name": "ManagedITSmart",
+        "fields": 54
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "routeId": "6a2016aba0608271b7524ea3",
+    "path": "/our-services/long/short-term-amc",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/long/short-term-amc/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "HardwareAmcBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareAmcBanner\\HardwareAmcBanner.js"
+      },
+      {
+        "name": "HardwareEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareEmpowering\\HardwareEmpowering_new.js"
+      },
+      {
+        "name": "HardwareFaq",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareFaq\\HardwareFaq.js"
+      },
+      {
+        "name": "HardwareServices",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareServices\\HardwareServices.js"
+      },
+      {
+        "name": "HardwareSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareSmart\\HardwareSmart.js"
+      },
+      {
+        "name": "HardwareWeAreBest",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareWeAreBest\\HardwareWeAreBest.js"
+      },
+      {
+        "name": "HardwareWhyChooseUS",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareAMC\\HardwareWhyChooseUS\\HardwareWhyChooseUS.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "hardwareamcbanner",
+        "name": "HardwareAmcBanner",
+        "fields": 5
+      },
+      {
+        "id": "hardwareempowering",
+        "name": "HardwareEmpowering",
+        "fields": 19
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "routeId": "6a2016aba0608271b7524ea4",
+    "path": "/our-services/networking",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/networking/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ContactUsForm",
+        "file": "src\\app\\_components\\ContactUsPage\\ContactUsForm\\ContactUsForm.js"
+      },
+      {
+        "name": "NetworkCoreAreas",
+        "file": "src\\app\\_components\\OurServicesPages\\Networking\\NetworkCoreAreas\\NetworkCoreAreas.js"
+      },
+      {
+        "name": "NetworkEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\Networking\\NetworkEmpowering\\NetworkEmpowering_new.js"
+      },
+      {
+        "name": "NetworkingBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\Networking\\NetworkingBanner\\NetworkingBanner.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "networkingbanner",
+        "name": "NetworkingBanner",
+        "fields": 4
+      },
+      {
+        "id": "networkempowering",
+        "name": "NetworkEmpowering",
+        "fields": 53
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "routeId": "6a2016aba0608271b7524ea5",
+    "path": "/our-services/security-solutions",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/security-solutions/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "HardwareRepairBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairBanner\\HardwareRepairBanner.js"
+      },
+      {
+        "name": "SecuritySolutionsEmpowering",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairEmpowering\\HardwareRepairEmpowering.js"
+      },
+      {
+        "name": "HardwareRepairFaq",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairFaq\\HardwareRepairFaq.js"
+      },
+      {
+        "name": "HardwareRepairServices",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairServices\\HardwareRepairServices.js"
+      },
+      {
+        "name": "HardwareRepairSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairSmart\\HardwareRepairSmart.js"
+      },
+      {
+        "name": "HardwareRepairWeAreBest",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairWeAreBest\\HardwareRepairWeAreBest.js"
+      },
+      {
+        "name": "HardwareRepairWhyChooseUs",
+        "file": "src\\app\\_components\\OurServicesPages\\HardwareRepair\\HardwareRepairWhyChooseUs\\HardwareRepairWhyChooseUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "hardwarerepairbanner",
+        "name": "HardwareRepairBanner",
+        "fields": 4
+      },
+      {
+        "id": "securitysolutionsempowering",
+        "name": "SecuritySolutionsEmpowering",
+        "fields": 19
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "routeId": "6a2016aba0608271b7524ea6",
+    "path": "/our-services/software-solutions",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/software-solutions/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "SoftwareBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\SoftwareAMC\\SoftwareBanner\\SoftwareBanner.js"
+      },
+      {
+        "name": "SoftwareSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\SoftwareAMC\\SoftwareSmart\\SoftwareSmart.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "softwarebanner",
+        "name": "SoftwareBanner",
+        "fields": 5
+      },
+      {
+        "id": "softwaresmart",
+        "name": "SoftwareSmart",
+        "fields": 43
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "routeId": "6a2016aba0608271b7524ea7",
+    "path": "/our-services/storage&virtualization",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/our-services/storage&virtualization/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ServerSmart",
+        "file": "src\\app\\_components\\OurServicesPages\\ServerSupport\\ServerSmart\\ServerSmart.js"
+      },
+      {
+        "name": "ServerSupportBanner",
+        "file": "src\\app\\_components\\OurServicesPages\\ServerSupport\\ServerSupportBanner\\ServerSupportBanner.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "serversupportbanner",
+        "name": "ServerSupportBanner",
+        "fields": 5
+      },
+      {
+        "id": "serversmart",
+        "name": "ServerSmart",
+        "fields": 48
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "routeId": "6a2016aba0608271b7524ea8",
+    "path": "/products",
+    "status": "archived",
+    "feStatus": 200,
+    "filePath": "src/app/products/page.js",
+    "fileExists": false,
+    "feSections": [],
+    "cmsSections": []
+  },
+  {
+    "index": 27,
+    "routeId": "6a2016aba0608271b7524ea9",
+    "path": "/products/accessories",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/accessories/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AccessoriesAllinOne",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesAllinOne\\AccessoriesAllinOne.js"
+      },
+      {
+        "name": "AccessoriesBanner",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesBanner\\AccessoriesBanner.js"
+      },
+      {
+        "name": "AccessoriesBestSelling",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesBestSelling\\AccessoriesBestSelling.js"
+      },
+      {
+        "name": "AccessoriesBrandWeDeal",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesBrandWeDeal\\AccessoriesBrandWeDeal.js"
+      },
+      {
+        "name": "AccessoriesUltimateSolution",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesUltimateSolution\\AccessoriesUltimateSolution.js"
+      },
+      {
+        "name": "AccessoriesWhyFromUs",
+        "file": "src\\app\\_components\\Products\\Accessories\\AccessoriesWhyFromUs\\AccessoriesWhyFromUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "accessoriesbanner",
+        "name": "AccessoriesBanner",
+        "fields": 6
+      },
+      {
+        "id": "accessoriesbestselling",
+        "name": "AccessoriesBestSelling",
+        "fields": 4
+      },
+      {
+        "id": "accessoriesultimatesolution",
+        "name": "AccessoriesUltimateSolution",
+        "fields": 10
+      },
+      {
+        "id": "accessoriesallinone",
+        "name": "AccessoriesAllinOne",
+        "fields": 9
+      },
+      {
+        "id": "accessorieswhyfromus",
+        "name": "AccessoriesWhyFromUs",
+        "fields": 11
+      },
+      {
+        "id": "accessoriesbrandwedeal",
+        "name": "AccessoriesBrandWeDeal",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 28,
+    "routeId": "6a2016aca0608271b7524eaa",
+    "path": "/products/all-in-one",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/all-in-one/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AllinOneBanner",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneBanner\\AllinOneBanner.js"
+      },
+      {
+        "name": "AllinOneLatestProduct",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneLatestProduct\\AllinOneLatestProduct.js"
+      },
+      {
+        "name": "AllinOneUnlease",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneUnlease\\AllinOneUnlease.js"
+      },
+      {
+        "name": "AllinOneHighPerformance",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneHighPerformance\\AllinOneHighPerformance.js"
+      },
+      {
+        "name": "AllinOneHeavyComputing",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneHighComputing\\AllinOneHeavyComputing.js"
+      },
+      {
+        "name": "OneinAllProducts",
+        "file": "src\\app\\_components\\Products\\AllinOne\\OneinAllProducts\\OneinAllProducts.js"
+      },
+      {
+        "name": "AllinOneFromUs",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneFromUs\\AllinOneFromUs.js"
+      },
+      {
+        "name": "AllinOneBrandsWeDeal",
+        "file": "src\\app\\_components\\Products\\AllinOne\\AllinOneBrandsWeDeal\\AllinOneBrandsWeDeal.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "allinonebanner",
+        "name": "AllinOneBanner",
+        "fields": 11
+      },
+      {
+        "id": "allinonelatestproduct",
+        "name": "AllinOneLatestProduct",
+        "fields": 4
+      },
+      {
+        "id": "allinoneunlease",
+        "name": "AllinOneUnlease",
+        "fields": 5
+      },
+      {
+        "id": "allinonehighperformance",
+        "name": "AllinOneHighPerformance",
+        "fields": 4
+      },
+      {
+        "id": "allinoneheavycomputing",
+        "name": "AllinOneHeavyComputing",
+        "fields": 10
+      },
+      {
+        "id": "oneinallproducts",
+        "name": "OneinAllProducts",
+        "fields": 9
+      },
+      {
+        "id": "allinonefromus",
+        "name": "AllinOneFromUs",
+        "fields": 11
+      },
+      {
+        "id": "allinonebrandswedeal",
+        "name": "AllinOneBrandsWeDeal",
+        "fields": 8
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "routeId": "6a2016aca0608271b7524eab",
+    "path": "/products/biometrics",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/biometrics/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "BiometricAllinOne",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricAllinOne\\BiometricAllinOne.js"
+      },
+      {
+        "name": "BiometricBanner",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricBanner\\BiometricBanner.js"
+      },
+      {
+        "name": "BiometricBestSelling",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricBestSelling\\BiometricBestSelling.js"
+      },
+      {
+        "name": "BiometricBrands",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricBrands\\BiometricBrands..js"
+      },
+      {
+        "name": "BiometricUltimateSolutions",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricUltimateSolutions\\BiometricUltimateSolutions.js"
+      },
+      {
+        "name": "BiometricWhyFromUs",
+        "file": "src\\app\\_components\\Products\\Biometric\\BiometricWhyFromUs\\BiometricWhyFromUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "biometricbanner",
+        "name": "BiometricBanner",
+        "fields": 6
+      },
+      {
+        "id": "biometricbestselling",
+        "name": "BiometricBestSelling",
+        "fields": 3
+      },
+      {
+        "id": "biometricultimatesolutions",
+        "name": "BiometricUltimateSolutions",
+        "fields": 10
+      },
+      {
+        "id": "biometricallinone",
+        "name": "BiometricAllinOne",
+        "fields": 9
+      },
+      {
+        "id": "biometricwhyfromus",
+        "name": "BiometricWhyFromUs",
+        "fields": 10
+      },
+      {
+        "id": "biometricbrands",
+        "name": "BiometricBrands",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 30,
+    "routeId": "6a2016aca0608271b7524eac",
+    "path": "/products/keyboard-mouse",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/keyboard-mouse/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "BestKeyboards",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\BestKeyboards\\BestKeyboards.js"
+      },
+      {
+        "name": "BestSellingMice",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\BestSellingMice\\BestSellingMice.js"
+      },
+      {
+        "name": "KeyboardBrands",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\KeyboardBrands\\KeyboardBrands.js"
+      },
+      {
+        "name": "KeyboardLatest",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\KeyboardLatest\\KeyboardLatest.js"
+      },
+      {
+        "name": "KeyboardMouseBanner",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\KeyboardMouseBanner\\KeyboardMouseBanner.js"
+      },
+      {
+        "name": "KeyboardPerformance",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\KeyboardPerformance\\KeyboardPerformance.js"
+      },
+      {
+        "name": "KeyboardUnleash",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\KeyboardUnleash\\KeyboardUnleash.js"
+      },
+      {
+        "name": "PopularKeyboard",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\PopularKeyboard\\PopularKeyboard.js"
+      },
+      {
+        "name": "UnlimitedGamingKeyboards",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\UnlimitedGamingKeyboards\\UnlimitedGamingKeyboards.js"
+      },
+      {
+        "name": "WhyBuyKeyboardFromUs",
+        "file": "src\\app\\_components\\Products\\KeyboardMouse\\WhyBuyKeyboardFromUs\\WhyBuyKeyboardFromUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "keyboardmousebanner",
+        "name": "KeyboardMouseBanner",
+        "fields": 5
+      },
+      {
+        "id": "bestsellingmice",
+        "name": "BestSellingMice",
+        "fields": 4
+      },
+      {
+        "id": "keyboardunleash",
+        "name": "KeyboardUnleash",
+        "fields": 3
+      },
+      {
+        "id": "keyboardperformance",
+        "name": "KeyboardPerformance",
+        "fields": 8
+      },
+      {
+        "id": "keyboardlatest",
+        "name": "KeyboardLatest",
+        "fields": 4
+      },
+      {
+        "id": "unlimitedgamingkeyboards",
+        "name": "UnlimitedGamingKeyboards",
+        "fields": 6
+      },
+      {
+        "id": "bestkeyboards",
+        "name": "BestKeyboards",
+        "fields": 2
+      },
+      {
+        "id": "popularkeyboard",
+        "name": "PopularKeyboard",
+        "fields": 9
+      },
+      {
+        "id": "whybuykeyboardfromus",
+        "name": "WhyBuyKeyboardFromUs",
+        "fields": 10
+      },
+      {
+        "id": "keyboardbrands",
+        "name": "KeyboardBrands",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "routeId": "6a2016aca0608271b7524ead",
+    "path": "/products/laptops",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/laptops/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "LaptopPageClient",
+        "file": "src\\app\\products\\laptops\\LaptopPageClient.js"
+      },
+      {
+        "name": "LaptopHeroSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopHeroSection.js"
+      },
+      {
+        "name": "LaptopExperienceSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopExperienceSection.js"
+      },
+      {
+        "name": "LaptopCategoriesSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopCategoriesSection.js"
+      },
+      {
+        "name": "LaptopProductsGridSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopProductsGridSection.js"
+      },
+      {
+        "name": "LaptopSolutionsSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopSolutionsSection.js"
+      },
+      {
+        "name": "LaptopOperationsSection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopOperationsSection.js"
+      },
+      {
+        "name": "LaptopInquirySection",
+        "file": "src\\app\\products\\laptops\\_components\\LaptopInquirySection.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "laptopherosection",
+        "name": "Hero Section (Wholesale Laptops)",
+        "fields": 5
+      },
+      {
+        "id": "laptopexperiencesection",
+        "name": "Experience & Market Expertise",
+        "fields": 35
+      },
+      {
+        "id": "laptopcategoriessection",
+        "name": "Core Laptop Categories",
+        "fields": 15
+      },
+      {
+        "id": "laptopproductsgridsection",
+        "name": "Available Laptop Models (Product Grid)",
+        "fields": 25
+      },
+      {
+        "id": "laptopsolutionssection",
+        "name": "Wholesale, Retail & B2B Solutions",
+        "fields": 34
+      },
+      {
+        "id": "laptopoperationssection",
+        "name": "Laptop Handling & Logistical Operations",
+        "fields": 30
+      },
+      {
+        "id": "laptopinquirysection",
+        "name": "Inquiry Banner & FAQs",
+        "fields": 20
+      }
+    ]
+  },
+  {
+    "index": 32,
+    "routeId": "6a2016aca0608271b7524eae",
+    "path": "/products/pc",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/pc/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "DesktopBanner",
+        "file": "src\\app\\_components\\Products\\Desktop\\DesktopBanner\\DesktopBanner.js"
+      },
+      {
+        "name": "DesktopLatestProduct",
+        "file": "src\\app\\_components\\Products\\Desktop\\LatestProduct\\DesktopLatestProduct.js"
+      },
+      {
+        "name": "DesktopBestSelling",
+        "file": "src\\app\\_components\\Products\\Desktop\\BestSelling\\DesktopBestSelling.js"
+      },
+      {
+        "name": "UnleasePowerDesktop",
+        "file": "src\\app\\_components\\Products\\Desktop\\UnleasePowerDesktop\\UnleasePowerDesktop.js"
+      },
+      {
+        "name": "HighPerformance",
+        "file": "src\\app\\_components\\Products\\Desktop\\HighPerformance\\HighPerformance.js"
+      },
+      {
+        "name": "HeavyComputing",
+        "file": "src\\app\\_components\\Products\\Desktop\\HeavyComputing\\HeavyComputing.js"
+      },
+      {
+        "name": "AllinOneDesktops",
+        "file": "src\\app\\_components\\Products\\Desktop\\AllinOneDesktops\\AllinOneDesktops.js"
+      },
+      {
+        "name": "WhyBuyFromUs",
+        "file": "src\\app\\_components\\Products\\Desktop\\WhyBuyFromUs\\WhyBuyFromUs.js"
+      },
+      {
+        "name": "DesktopBrands",
+        "file": "src\\app\\_components\\Products\\Desktop\\DesktopBrandsWeDeal\\DesktopBrands.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "desktopbanner",
+        "name": "DesktopBanner",
+        "fields": 11
+      },
+      {
+        "id": "desktopbestselling",
+        "name": "DesktopBestSelling",
+        "fields": 4
+      },
+      {
+        "id": "unleasepowerdesktop",
+        "name": "UnleasePowerDesktop",
+        "fields": 5
+      },
+      {
+        "id": "highperformance",
+        "name": "HighPerformance",
+        "fields": 4
+      },
+      {
+        "id": "heavycomputing",
+        "name": "HeavyComputing",
+        "fields": 10
+      },
+      {
+        "id": "allinonedesktops",
+        "name": "AllinOneDesktops",
+        "fields": 9
+      },
+      {
+        "id": "whybuyfromus",
+        "name": "WhyBuyFromUs",
+        "fields": 11
+      },
+      {
+        "id": "desktopbrands",
+        "name": "DesktopBrands",
+        "fields": 8
+      }
+    ]
+  },
+  {
+    "index": 33,
+    "routeId": "6a2016aca0608271b7524eaf",
+    "path": "/products/phones-cctv",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/phones-cctv/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AllinOnePhones",
+        "file": "src\\app\\_components\\Products\\PhonesCCTV\\AllinOnePhones\\AllinOnePhones.js"
+      },
+      {
+        "name": "BestSellingPhones",
+        "file": "src\\app\\_components\\Products\\PhonesCCTV\\BestSellingPhones\\BestSellingPhones.js"
+      },
+      {
+        "name": "PhonesBanner",
+        "file": "src\\app\\_components\\Products\\PhonesCCTV\\PhonesBanner\\PhonesBanner.js"
+      },
+      {
+        "name": "PhonesBrand",
+        "file": "src\\app\\_components\\Products\\PhonesCCTV\\PhonesBrand\\PhonesBrand.js"
+      },
+      {
+        "name": "UltimatePhones",
+        "file": "src\\app\\_components\\Products\\PhonesCCTV\\UltimatePhones\\UltimatePhones.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "phonesbanner",
+        "name": "PhonesBanner",
+        "fields": 6
+      },
+      {
+        "id": "bestsellingphones",
+        "name": "BestSellingPhones",
+        "fields": 4
+      },
+      {
+        "id": "ultimatephones",
+        "name": "UltimatePhones",
+        "fields": 10
+      },
+      {
+        "id": "allinonephones",
+        "name": "AllinOnePhones",
+        "fields": 9
+      },
+      {
+        "id": "phonesbrand",
+        "name": "PhonesBrand",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 34,
+    "routeId": "6a2016aca0608271b7524eb0",
+    "path": "/products/printers",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/printers/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "AllinOnePrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\AllinOnePrinters\\AllinOnePrinters.js"
+      },
+      {
+        "name": "BestSellingPrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\BestSellingPrinters\\BestSellingPrinters.js"
+      },
+      {
+        "name": "BrandsWeDealPrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\BrandsWeDealPrinters\\BrandsWeDealPrinters.js"
+      },
+      {
+        "name": "HighPerformancePrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\HighPerformancePrinters\\HighPerformancePrinters.js"
+      },
+      {
+        "name": "PerformancePrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\PerformancePrinters\\PerformancePrinters.js"
+      },
+      {
+        "name": "PrinterBanner",
+        "file": "src\\app\\_components\\Products\\Printers\\PrinterBanner\\PrinterBanner.js"
+      },
+      {
+        "name": "UnleasePrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\UnleasePrinters\\UnleasePrinters.js"
+      },
+      {
+        "name": "WhyBuyFromUsPrinters",
+        "file": "src\\app\\_components\\Products\\Printers\\WhyBuyFromUsPrinters\\WhyBuyFromUsPrinters.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "printerbanner",
+        "name": "PrinterBanner",
+        "fields": 4
+      },
+      {
+        "id": "bestsellingprinters",
+        "name": "BestSellingPrinters",
+        "fields": 4
+      },
+      {
+        "id": "unleaseprinters",
+        "name": "UnleasePrinters",
+        "fields": 5
+      },
+      {
+        "id": "highperformanceprinters",
+        "name": "HighPerformancePrinters",
+        "fields": 4
+      },
+      {
+        "id": "performanceprinters",
+        "name": "PerformancePrinters",
+        "fields": 8
+      },
+      {
+        "id": "allinoneprinters",
+        "name": "AllinOnePrinters",
+        "fields": 9
+      },
+      {
+        "id": "whybuyfromusprinters",
+        "name": "WhyBuyFromUsPrinters",
+        "fields": 11
+      },
+      {
+        "id": "brandswedealprinters",
+        "name": "BrandsWeDealPrinters",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "routeId": "6a2016ada0608271b7524eb1",
+    "path": "/products/routers-access-points",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/routers-access-points/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "RouterLatestProducts",
+        "file": "src\\app\\_components\\Products\\Routers\\RouterLatestProducts\\RouterLatestProducts.js"
+      },
+      {
+        "name": "RoutersBanner",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersBanner\\RoutersBanner.js"
+      },
+      {
+        "name": "RoutersBrandWeDeal",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersBrandWeDeal\\RoutersBrandWeDeal.js"
+      },
+      {
+        "name": "RoutersHighPerformance",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersHighPerformance\\RoutersHighPerformance.js"
+      },
+      {
+        "name": "RoutersSeamlessConnectivity",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersSeamlessConnectivity\\RoutersSeamlessConnectivity.js"
+      },
+      {
+        "name": "RoutersUnlease",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersUnlease\\RoutersUnlease.js"
+      },
+      {
+        "name": "RoutersWhyBuyFromUs",
+        "file": "src\\app\\_components\\Products\\Routers\\RoutersWhyBuyFromUs\\RoutersWhyBuyFromUs.js"
+      },
+      {
+        "name": "TopRouters",
+        "file": "src\\app\\_components\\Products\\Routers\\TopRouters\\TopRouters.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "routersbanner",
+        "name": "RoutersBanner",
+        "fields": 6
+      },
+      {
+        "id": "routerlatestproducts",
+        "name": "RouterLatestProducts",
+        "fields": 5
+      },
+      {
+        "id": "routersunlease",
+        "name": "RoutersUnlease",
+        "fields": 5
+      },
+      {
+        "id": "routershighperformance",
+        "name": "RoutersHighPerformance",
+        "fields": 4
+      },
+      {
+        "id": "routersseamlessconnectivity",
+        "name": "RoutersSeamlessConnectivity",
+        "fields": 10
+      },
+      {
+        "id": "toprouters",
+        "name": "TopRouters",
+        "fields": 9
+      },
+      {
+        "id": "routerswhybuyfromus",
+        "name": "RoutersWhyBuyFromUs",
+        "fields": 10
+      },
+      {
+        "id": "routersbrandwedeal",
+        "name": "RoutersBrandWeDeal",
+        "fields": 8
+      }
+    ]
+  },
+  {
+    "index": 36,
+    "routeId": "6a2016ada0608271b7524eb2",
+    "path": "/products/scanners-copier",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/scanners-copier/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "ScannerBestSelling",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannerBestSelling\\ScannerBestSelling.js"
+      },
+      {
+        "name": "ScannerBrandsWeDeal",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannerBrandsWeDeal\\ScannerBrandsWeDeal.js"
+      },
+      {
+        "name": "ScannerCopierBanner",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannerCopierBanner\\ScannerCopierBanner.js"
+      },
+      {
+        "name": "ScannerPerformance",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannerPerformance\\ScannerPerformance.js"
+      },
+      {
+        "name": "ScannerPopular",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannerPopular\\ScannerPopular.js"
+      },
+      {
+        "name": "ScannersWhyBuyFromUs",
+        "file": "src\\app\\_components\\Products\\ScannerCopier\\ScannersWhyBuyFromUs\\ScannersWhyBuyFromUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "scannercopierbanner",
+        "name": "ScannerCopierBanner",
+        "fields": 6
+      },
+      {
+        "id": "scannerbestselling",
+        "name": "ScannerBestSelling",
+        "fields": 4
+      },
+      {
+        "id": "scannerperformance",
+        "name": "ScannerPerformance",
+        "fields": 8
+      },
+      {
+        "id": "scannerpopular",
+        "name": "ScannerPopular",
+        "fields": 9
+      },
+      {
+        "id": "scannerswhybuyfromus",
+        "name": "ScannersWhyBuyFromUs",
+        "fields": 11
+      },
+      {
+        "id": "scannerbrandswedeal",
+        "name": "ScannerBrandsWeDeal",
+        "fields": 14
+      }
+    ]
+  },
+  {
+    "index": 37,
+    "routeId": "6a2016ada0608271b7524eb3",
+    "path": "/products/switching",
+    "status": "active",
+    "feStatus": 200,
+    "filePath": "src/app/products/switching/page.js",
+    "fileExists": true,
+    "feSections": [
+      {
+        "name": "BestNetworkSwitches",
+        "file": "src\\app\\_components\\Products\\Switching\\BestNetworkSwitches\\BestNetworkSwitches.js"
+      },
+      {
+        "name": "SwitchingBanner",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingBanner\\SwitchingBanner.js"
+      },
+      {
+        "name": "SwitchingBrandsWeDeal",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingBrandsWeDeal\\SwitchingBrandsWeDeal.js"
+      },
+      {
+        "name": "SwitchingHeavyComputing",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingHeavyComputing\\SwitchingHeavyComputing.js"
+      },
+      {
+        "name": "SwitchingHighPerformance",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingHighPerformance\\SwitchingHighPerformance.js"
+      },
+      {
+        "name": "SwitchingLatestProduct",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingLatestProduct\\SwitchingLatestProduct.js"
+      },
+      {
+        "name": "SwitchingUnlease",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingUnlease\\SwitchingUnlease.js"
+      },
+      {
+        "name": "SwitchingWhyBuyFromUs",
+        "file": "src\\app\\_components\\Products\\Switching\\SwitchingWhyBuyFromUs\\SwitchingWhyBuyFromUs.js"
+      }
+    ],
+    "cmsSections": [
+      {
+        "id": "switchingbanner",
+        "name": "SwitchingBanner",
+        "fields": 6
+      },
+      {
+        "id": "switchinglatestproduct",
+        "name": "SwitchingLatestProduct",
+        "fields": 5
+      },
+      {
+        "id": "switchingunlease",
+        "name": "SwitchingUnlease",
+        "fields": 5
+      },
+      {
+        "id": "switchinghighperformance",
+        "name": "SwitchingHighPerformance",
+        "fields": 4
+      },
+      {
+        "id": "switchingheavycomputing",
+        "name": "SwitchingHeavyComputing",
+        "fields": 10
+      },
+      {
+        "id": "bestnetworkswitches",
+        "name": "BestNetworkSwitches",
+        "fields": 9
+      },
+      {
+        "id": "switchingwhybuyfromus",
+        "name": "SwitchingWhyBuyFromUs",
+        "fields": 11
+      },
+      {
+        "id": "switchingbrandswedeal",
+        "name": "SwitchingBrandsWeDeal",
+        "fields": 8
+      }
+    ]
+  }
+]

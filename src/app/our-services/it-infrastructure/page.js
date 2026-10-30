@@ -6,7 +6,10 @@ import ManagedITSmart from '@/app/_components/OurServicesPages/ManagedIT/Managed
 import ManagedITWeareBest from '@/app/_components/OurServicesPages/ManagedIT/ManagedITWeareBest/ManagedITWeareBest'
 import ManagedITWhyChooseUs from '@/app/_components/OurServicesPages/ManagedIT/ManagedITWhyChooseUs/ManagedITWhyChooseUs'
 import React from 'react'
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/our-services/it-infrastructure', {
@@ -15,18 +18,22 @@ export async function generateMetadata() {
   });
 }
 
-const ManagedIT = () => {
+const ManagedIT = async () => {
+  const { content: cmsContent } = await getCmsData('/our-services/it-infrastructure');
+  const sections = cmsContent?.sections || {};
+
   return (
     <div>
-      <ManagedITBanner/>
-      <ManagedITSmart/>
+      <ManagedITBanner cmsData={sections.manageditbanner} />
+      <ManagedITSmart cmsData={sections.manageditsmart} />
       {/* <ManagedITEmpowering/>
       <ManagedITWhyChooseUs/>
       <ManagedITCabling/>
       <ManagedITWeareBest/>
       <ManagedITFaq/> */}
     </div>
-  )
-}
+  );
+};
 
 export default ManagedIT
+

@@ -8,7 +8,10 @@ import HeavyComputing from '@/app/_components/Products/Desktop/HeavyComputing/He
 import AllinOneDesktops from '@/app/_components/Products/Desktop/AllinOneDesktops/AllinOneDesktops'
 import WhyBuyFromUs from '@/app/_components/Products/Desktop/WhyBuyFromUs/WhyBuyFromUs'
 import DesktopBrands from '@/app/_components/Products/Desktop/DesktopBrandsWeDeal/DesktopBrands'
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/products/pc', {
@@ -17,20 +20,23 @@ export async function generateMetadata() {
   });
 }
 
-const page = () => {
+const page = async () => {
+  const { content: cmsContent } = await getCmsData('/products/pc');
+  const sections = cmsContent?.sections || {};
+
   return (
     <div>
-      <DesktopBanner/>
-      {/* <DesktopLatestProduct/> */}
-      <DesktopBestSelling/>
-      <UnleasePowerDesktop/>
-      <HighPerformance/>
-      <HeavyComputing/>
-      <AllinOneDesktops/>
-      <WhyBuyFromUs/>
-      <DesktopBrands/>
+      <DesktopBanner cmsData={sections.desktopbanner} />
+      {/* <DesktopLatestProduct cmsData={sections.desktoplatestproduct} /> */}
+      <DesktopBestSelling cmsData={sections.desktopbestselling} />
+      <UnleasePowerDesktop cmsData={sections.unleasepowerdesktop} />
+      <HighPerformance cmsData={sections.highperformance} />
+      <HeavyComputing cmsData={sections.heavycomputing} />
+      <AllinOneDesktops cmsData={sections.allinonedesktops} />
+      <WhyBuyFromUs cmsData={sections.whybuyfromus} />
+      <DesktopBrands cmsData={sections.desktopbrands} />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

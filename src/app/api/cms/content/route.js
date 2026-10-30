@@ -188,7 +188,8 @@ export async function GET(request) {
         const dbSec = existingSections.find(
           s => s.sectionId === parsedSec.sectionId || 
                s.sectionName?.toLowerCase() === parsedSec.sectionName?.toLowerCase() ||
-               (parsedSec.sectionId === 'smartsolutions' && (s.sectionId === 'hero' || s.sectionName?.toLowerCase().includes('hero')))
+               (parsedSec.sectionId === 'smartsolutions' && (s.sectionId === 'hero' || s.sectionName?.toLowerCase().includes('hero'))) ||
+               ((parsedSec.sectionId === 'directormessage' || parsedSec.sectionId === 'main') && (s.sectionId === 'directormessage' || s.sectionId === 'main'))
         );
 
         if (dbSec && dbSec.fields) {
@@ -479,6 +480,502 @@ export async function GET(request) {
             faq_5_q: getFld('faq_5_q', 'What payment terms are available for corporate and reseller accounts?', 'FAQ 5 Question'),
             faq_5_a: getFld('faq_5_a', 'We accept wire transfers (AED/USD), corporate cheques (PDC), company credit cards, and cash on delivery for established clients. Formal corporate credit facilities (30-day billing) are available for verified businesses subject to credit assessment.', 'FAQ 5 Answer', 'richtext')
           };
+        } else if (sec.sectionId === 'directormessage' || sec.sectionId === 'main') {
+          sec.sectionName = "Director's Message";
+          sec.fields = {
+            heading: getFld('heading', "Director's Message", "Main Page Heading (h1)", 'text'),
+            image_director: {
+              type: 'image',
+              value: dbSec?.fields?.image_director?.value || dbSec?.fields?.image?.value || "@/Components/Images/director.png",
+              originalValue: "@/Components/Images/director.png",
+              varName: 'director',
+              isImport: true,
+              label: "Director's Photo"
+            },
+            paragraph: getFld('paragraph', "Together, let’s embrace technology and build a better tomorrow.", "Subheading / Quote", 'richtext'),
+            paragraph_2: getFld('paragraph_2', "At Crown Excel General Trading LLC, our journey has always been guided by innovation, integrity, and an unwavering commitment to excellence. From our humble beginnings in 2009, in one of the world’s most vibrant and adaptable modern hubs, we embarked on our mission. Today, after two decades, we have grown into a trusted name in the market, it was never been easy or not by chance, but through a clear vision and relentless dedication to delivering value to our customers and partners and I believe if we do our best, we will surely get success by the grace of Allah.", "Story & Mission (Paragraph 1)", 'richtext'),
+            paragraph_3: getFld('paragraph_3', "I still remember the early days when we started with just a few products and limited experience. By the grace of the Almighty, today we proudly offer a wide range of products and services to meet the diverse needs of our customers and clients. Our mission goes far beyond products; we strive to build lasting relationships, provide tailored IT and business solutions, and contribute to the sustainable growth of the communities we serve. In today’s fast-paced and ever-changing world, adaptability is our strength, and customer satisfaction is our ultimate reward.", "Company Growth & Purpose (Paragraph 2)", 'richtext'),
+            paragraph_4: getFld('paragraph_4', "I believe in empowering our team, fostering a culture of trust, and embracing emerging technologies to stay ahead. As we look to the future, we will continue to expand our horizons, explore new markets, and enhance our services to meet the evolving needs of our clients.", "Team & Future Vision (Paragraph 3)", 'richtext'),
+            paragraph_5: getFld('paragraph_5', "Together, with the dedication of our people and the trust of our partners, we will not just keep pace with change — we will lead it.", "Closing Statement (Paragraph 4)", 'richtext'),
+            paragraph_6: getFld('paragraph_6', "Muhammad Qais", "Managing Director Name", 'text'),
+            paragraph_7: getFld('paragraph_7', "Managing Director & CEO", "Executive Designation", 'text'),
+            paragraph_8: getFld('paragraph_8', "Crown Excel General Trading LLC", "Company Name", 'text'),
+          };
+        } else if (sec.sectionId === 'desktopbanner') {
+          sec.sectionName = 'Hero Banner (Desktop Banner)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'DISCOVER TOP', 'Banner Top Line'),
+            heading_2: getFld('heading_2', 'DESKTOP BRANDS', 'Banner Highlighted Line'),
+            heading_3: getFld('heading_3', 'FOR EVERY NEED', 'Banner Bottom Line'),
+            paragraph: getFld('paragraph', 'From an array of high-quality products, Crown Excel presents you with the best desktop PCs and their accessories from world-class manufacturers like Dell, HP, Lenovo, and many more.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_desktopimage1) sec.fields.image_desktopimage1.label = 'Left Desktop PC Image';
+          if (sec.fields.image_desktopimage2) sec.fields.image_desktopimage2.label = 'Right Desktop PC Image';
+          if (sec.fields.image_stars) sec.fields.image_stars.label = 'Decorative Stars Graphic';
+        } else if (sec.sectionId === 'desktopbestselling') {
+          sec.sectionName = 'Latest Products Carousel';
+          const bestImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = { ...bestImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Our Latest Product', 'Section Heading'),
+            card_1_title: getFld('card_1_title', 'Dell Alienware', 'Product 1 Title'),
+            card_1_desc: getFld('card_1_desc', 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.', 'Product 1 Description', 'richtext'),
+            card_2_title: getFld('card_2_title', 'Asus Expert', 'Product 2 Title'),
+            card_2_desc: getFld('card_2_desc', 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.', 'Product 2 Description', 'richtext'),
+            ...bestImgs,
+          };
+          if (sec.fields.image_desktopbestproduct1) sec.fields.image_desktopbestproduct1.label = 'Product 1 Image (Dell Alienware)';
+          if (sec.fields.image_desktopbestproduct2) sec.fields.image_desktopbestproduct2.label = 'Product 2 Image (Asus Expert)';
+          if (sec.fields.image_buttonbackground) sec.fields.image_buttonbackground.label = 'Carousel Button Background Graphic';
+        } else if (sec.sectionId === 'unleasepowerdesktop') {
+          sec.sectionName = 'Performance Solutions Banner';
+          const unleaseImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) unleaseImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) unleaseImgs[k] = { ...unleaseImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'UNLEASH POWER AND PERFORMANCE IN ONE DESKTOP SOLUTIONS', 'Top Banner Heading'),
+            heading_2: getFld('heading_2', 'GET MORE WITH EFFICIENT DESKTOP SOLUTIONS', 'Main Feature Heading'),
+            paragraph: getFld('paragraph', 'All these from powerful workstations for your business to perfect gaming PCs and affordable desktops for everyday use, Crown Excel has the right product to suit your needs. Other than desktop computers,', 'Feature Description', 'richtext'),
+            ...unleaseImgs,
+          };
+          if (sec.fields.image_computers) sec.fields.image_computers.label = 'Desktop Computer Showcase Image';
+          if (sec.fields.image_backgroundimage) sec.fields.image_backgroundimage.label = 'Background Graphic';
+        } else if (sec.sectionId === 'highperformance') {
+          sec.sectionName = 'Creative Professionals Desktop';
+          const hpImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) hpImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) hpImgs[k] = { ...hpImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'HIGH-PERFORMANCE DESKTOP FOR CREATIVE PROFESSIONAL', 'Section Heading'),
+            paragraph: getFld('paragraph', 'we also offer an assortment of computer accessories designed to enhance your configuration, for example, monitors, keyboards, mice, etc.', 'Section Description', 'richtext'),
+            ...hpImgs,
+          };
+          if (sec.fields.image_highperformanceimage) sec.fields.image_highperformanceimage.label = 'High Performance Desktop Image';
+          if (sec.fields.image_comma) sec.fields.image_comma.label = 'Decorative Quote/Comma Graphic';
+        } else if (sec.sectionId === 'heavycomputing') {
+          sec.sectionName = 'Heavy Computing Solutions';
+          const hcImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) hcImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) hcImgs[k] = { ...hcImgs[k], ...v };
+          }
+          const getHcTitle = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'text', value: val, originalValue: def, label: lbl };
+          };
+          const getHcDesc = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'richtext', value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'THE ULTIMATE SOLUTION FOR HEAVY COMPUTING', 'Main Section Heading'),
+            card_1_title: getHcTitle('card_1_title', 'heading_2', 'Exceptional Processing Power', 'Card 1 Title'),
+            card_1_desc: getHcDesc('card_1_desc', 'paragraph', 'Unleash unparalleled speed with cutting-edge processors built for multitasking and high-performance tasks. Designed to handle demanding applications with efficiency and reliability.', 'Card 1 Description'),
+            card_2_title: getHcTitle('card_2_title', 'heading_3', 'Advanced Graphics Capabilities', 'Card 2 Title'),
+            card_2_desc: getHcDesc('card_2_desc', 'paragraph_2', 'Experience stunning visuals and superior rendering with state-of-the-art graphics technology. Ideal for gamers, creators, and professionals seeking immersive and detailed displays.', 'Card 2 Description'),
+            card_3_title: getHcTitle('card_3_title', 'heading_4', 'Ample RAM and Storage', 'Card 3 Title'),
+            card_3_desc: getHcDesc('card_3_desc', 'paragraph_3', 'Seamlessly multitask and store more with high-capacity drives and ample RAM. Optimized for speed, ensuring smooth and efficient performance for all tasks.', 'Card 3 Description'),
+            card_4_title: getHcTitle('card_4_title', 'heading_5', 'Customizable and Scalable', 'Card 4 Title'),
+            card_4_desc: getHcDesc('card_4_desc', 'paragraph_4', 'Build your perfect system with customizable and upgradeable options. Future-proof your investment with scalable features tailored to your needs.', 'Card 4 Description'),
+            ...hcImgs,
+          };
+          if (sec.fields.image_computingimage) sec.fields.image_computingimage.label = 'Computing Center Showcase Graphic';
+        } else if (sec.sectionId === 'allinonedesktops') {
+          sec.sectionName = 'All-in-One Desktops';
+          const aioImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) aioImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) aioImgs[k] = { ...aioImgs[k], ...v };
+          }
+          const getAioVal = (key, fallbackKey, def, lbl, type = 'text') => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type, value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'The Best All-in-one Desktops For Space-Saving Power', 'Section Main Heading'),
+            subheading_1: getAioVal('subheading_1', 'heading_2', 'For Businesses:', 'Business Group Subheading'),
+            button_1_text: getFld('button_1_text', 'Visit Our Store', 'Business Group Button Label'),
+            card_1_title: getFld('card_1_title', 'ASUS EXPERT CENTER D700 SC', 'Business Model 1 Title'),
+            card_1_desc: getFld('card_1_desc', 'ASUS EXPERT CENTER D700 SC best for business use with optimized speed.', 'Business Model 1 Description', 'richtext'),
+            card_2_title: getFld('card_2_title', 'Lenovo M70q G4 Tiny', 'Business Model 2 Title'),
+            card_2_desc: getFld('card_2_desc', 'The Lenovo M70q G4 Tiny is a compact yet powerful desktop computer designed for optimal performance and space-saving efficiency.', 'Business Model 2 Description', 'richtext'),
+            card_3_title: getFld('card_3_title', 'Acer Veriton VS', 'Business Model 3 Title'),
+            card_3_desc: getFld('card_3_desc', 'The Acer Veriton VS2690G Desktop Tower is the perfect choice for anyone in need of a reliable and efficient computer.', 'Business Model 3 Description', 'richtext'),
+            subheading_2: getAioVal('subheading_2', 'heading_3', 'For Individuals:', 'Individuals Group Subheading'),
+            button_2_text: getFld('button_2_text', 'Visit Our Store', 'Individuals Group Button Label'),
+            card_4_title: getFld('card_4_title', 'DELL OPTIPLEX 3000', 'Individual Model 1 Title'),
+            card_4_desc: getFld('card_4_desc', 'Introducing the Dell OptiPlex 3000 MT (DTDELLOPT3000I54256GBD), a dependable desktop solution.', 'Individual Model 1 Description', 'richtext'),
+            card_5_title: getFld('card_5_title', 'HP 290 G3 Small', 'Individual Model 2 Title'),
+            card_5_desc: getFld('card_5_desc', 'Introducing the HP 290 G3 Small Form Factor PC Bundle, the perfect choice for all your computing needs.', 'Individual Model 2 Description', 'richtext'),
+            card_6_title: getFld('card_6_title', 'Dell Alienware Aurora', 'Individual Model 3 Title'),
+            card_6_desc: getFld('card_6_desc', 'The Dell Alienware Aurora R15 Gaming Desktop is the ultimate choice for any gaming enthusiast.', 'Individual Model 3 Description', 'richtext'),
+            ...aioImgs,
+          };
+          if (sec.fields.image_allinone1) sec.fields.image_allinone1.label = 'Business Model 1 Image (ASUS Expert Center)';
+          if (sec.fields.image_allinone2) sec.fields.image_allinone2.label = 'Business Model 2 Image (Lenovo M70q Tiny)';
+          if (sec.fields.image_allinone3) sec.fields.image_allinone3.label = 'Business Model 3 Image (Acer Veriton VS)';
+          if (sec.fields.image_allinone4) sec.fields.image_allinone4.label = 'Individual Model 1 Image (Dell OptiPlex 3000)';
+          if (sec.fields.image_allinone5) sec.fields.image_allinone5.label = 'Individual Model 2 Image (HP 290 G3 Small)';
+          if (sec.fields.image_allinone6) sec.fields.image_allinone6.label = 'Individual Model 3 Image (Dell Alienware Aurora)';
+        } else if (sec.sectionId === 'whybuyfromus') {
+          sec.sectionName = 'Why Buy Desktops From Us';
+          const wImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) wImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) wImgs[k] = { ...wImgs[k], ...v };
+          }
+          const getWTitle = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'text', value: val, originalValue: def, label: lbl };
+          };
+          const getWDesc = (key, fallbackKey, def, lbl) => {
+            const dbVal = dbSec?.fields?.[key]?.value || dbSec?.fields?.[fallbackKey]?.value;
+            const secVal = sec.fields?.[key]?.value || sec.fields?.[fallbackKey]?.value;
+            const val = (dbVal !== undefined && dbVal !== null && dbVal !== '') ? dbVal : ((secVal !== undefined && secVal !== null && secVal !== '') ? secVal : def);
+            return { type: 'richtext', value: val, originalValue: def, label: lbl };
+          };
+          sec.fields = {
+            heading: getFld('heading', 'Why Buy Desktops From Us?', 'Section Main Heading'),
+            paragraph: getFld('paragraph', 'Our desktop PCs are built to provide good performance for work, gaming, or personal purposes. Here’s why Crown Excel is your best bet for desktops:', 'Section Main Description', 'richtext'),
+            feature_1_title: getWTitle('feature_1_title', 'heading_2', 'Top Brands', 'Feature 1 Title'),
+            feature_1_desc: getWDesc('feature_1_desc', 'paragraph_2', 'We provide desktop PCs from leading manufacturers like Dell, HP, Lenovo, and many others, promising peak quality and dependability.', 'Feature 1 Description'),
+            feature_2_title: getWTitle('feature_2_title', 'heading_3', 'Latest Technology', 'Feature 2 Title'),
+            feature_2_desc: getWDesc('feature_2_desc', 'paragraph_3', 'Desktops have incorporated the latest in processors, high-capacity storage, and top-of-the-line graphics cards to ensure superb performance to clients.', 'Feature 2 Description'),
+            feature_3_title: getWTitle('feature_3_title', 'heading_4', 'Customization & Upgrades', 'Feature 3 Title'),
+            feature_3_desc: getWDesc('feature_3_desc', 'paragraph_4', 'Need specific configurations? We can provide customization services so that the desktop PC is tailored specifically to your needs-whether business or game-related.', 'Feature 3 Description'),
+            feature_4_title: getWTitle('feature_4_title', 'heading_5', 'Warranty & After-Sales Support', 'Feature 4 Title'),
+            feature_4_desc: getWDesc('feature_4_desc', 'paragraph_5', 'All our products carry warranties and offer technical support, which keeps your system up and running.', 'Feature 4 Description'),
+            ...wImgs,
+          };
+          if (sec.fields.image_yellobckground) sec.fields.image_yellobckground.label = 'Left Graphic Banner (Yellow Background)';
+        } else if (sec.sectionId === 'desktopbrands') {
+          sec.sectionName = 'Desktop Brands We Deal';
+          const brandImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = { ...brandImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'BRANDS WE DEAL', 'Section Heading'),
+            ...brandImgs,
+          };
+          if (sec.fields.image_lenovo) sec.fields.image_lenovo.label = 'Lenovo Brand Logo';
+          if (sec.fields.image_hp) sec.fields.image_hp.label = 'HP Brand Logo';
+          if (sec.fields.image_accer) sec.fields.image_accer.label = 'Acer Brand Logo';
+          if (sec.fields.image_asus) sec.fields.image_asus.label = 'ASUS Brand Logo';
+          if (sec.fields.image_dell) sec.fields.image_dell.label = 'Dell Brand Logo';
+          if (sec.fields.image_background) sec.fields.image_background.label = 'Background Texture Graphic';
+          if (sec.fields.image_eclipse) sec.fields.image_eclipse.label = 'Eclipse Accent Graphic';
+        } else if (sec.sectionId === 'manageditbanner') {
+          sec.sectionName = 'Hero Banner (Managed IT Infrastructure)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'IT Infrastructure & Managed Services', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'Our managed IT services offer 24/7 monitoring, proactive maintenance, patching and performance tuning to keep your systems secure and available, helping reduce downtime and operational risk.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+        } else if (sec.sectionId === 'manageditsmart') {
+          sec.sectionName = 'Infrastructure Core, Services & Partners';
+          const smartImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) smartImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) smartImgs[k] = { ...smartImgs[k], ...v };
+          }
+          sec.fields = {
+            // Hero Subsection
+            heading: getFld('heading', 'IT.', 'Hero Accent Title (Top)'),
+            heading_2: getFld('heading_2', 'Infrastructure', 'Hero Main Title'),
+            paragraph: getFld('paragraph', 'Excellence Redefined', 'Hero Subtitle'),
+            paragraph_2: getFld('paragraph_2', 'Revolutionary IT infrastructure management combining cutting-edge technology, enterprise security, and 24/7 operational excellence for unstoppable business growth.', 'Hero Description Card', 'richtext'),
+            button_1_text: getFld('button_1_text', 'Transform My Infrastructure', 'Primary CTA Button Label'),
+            button_1_link: getFld('button_1_link', '/contact-us', 'Primary CTA Button Link', 'url'),
+            button_2_text: getFld('button_2_text', 'Watch Demo', 'Secondary Button Label'),
+
+            // Core Infrastructure Subsection
+            heading_3: getFld('heading_3', 'CORE INFRASTRUCTURE', 'Core Infrastructure Heading'),
+            paragraph_3: getFld('paragraph_3', 'Six pillars of excellence forming the foundation of modern enterprise infrastructure', 'Core Infrastructure Subtitle', 'richtext'),
+
+            // 6 Pillars
+            pillar_1_title: getFld('pillar_1_title', 'Server Infrastructure', 'Pillar 1 Title'),
+            pillar_1_desc: getFld('pillar_1_desc', 'Enterprise-grade server solutions with high availability, load balancing, and redundancy for mission-critical applications.', 'Pillar 1 Description', 'richtext'),
+            pillar_1_metric: getFld('pillar_1_metric', '99.9%', 'Pillar 1 Metric Value'),
+            pillar_1_metric_label: getFld('pillar_1_metric_label', 'Uptime', 'Pillar 1 Metric Label'),
+
+            pillar_2_title: getFld('pillar_2_title', 'Network Infrastructure', 'Pillar 2 Title'),
+            pillar_2_desc: getFld('pillar_2_desc', 'Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations.', 'Pillar 2 Description', 'richtext'),
+            pillar_2_metric: getFld('pillar_2_metric', '24/7', 'Pillar 2 Metric Value'),
+            pillar_2_metric_label: getFld('pillar_2_metric_label', 'Monitoring', 'Pillar 2 Metric Label'),
+
+            pillar_3_title: getFld('pillar_3_title', 'Storage Solutions', 'Pillar 3 Title'),
+            pillar_3_desc: getFld('pillar_3_desc', 'Scalable storage systems with automated backup, disaster recovery, and data protection for business continuity.', 'Pillar 3 Description', 'richtext'),
+            pillar_3_metric: getFld('pillar_3_metric', '100%', 'Pillar 3 Metric Value'),
+            pillar_3_metric_label: getFld('pillar_3_metric_label', 'Data Security', 'Pillar 3 Metric Label'),
+
+            pillar_4_title: getFld('pillar_4_title', 'Virtualization', 'Pillar 4 Title'),
+            pillar_4_desc: getFld('pillar_4_desc', 'Complete virtualization solutions to maximize resource utilization, reduce costs, and improve system flexibility.', 'Pillar 4 Description', 'richtext'),
+            pillar_4_metric: getFld('pillar_4_metric', '60%', 'Pillar 4 Metric Value'),
+            pillar_4_metric_label: getFld('pillar_4_metric_label', 'Cost Savings', 'Pillar 4 Metric Label'),
+
+            pillar_5_title: getFld('pillar_5_title', 'Security Infrastructure', 'Pillar 5 Title'),
+            pillar_5_desc: getFld('pillar_5_desc', 'Multi-layered security framework protecting your IT assets from cyber threats and ensuring compliance.', 'Pillar 5 Description', 'richtext'),
+            pillar_5_metric: getFld('pillar_5_metric', 'Zero', 'Pillar 5 Metric Value'),
+            pillar_5_metric_label: getFld('pillar_5_metric_label', 'Breaches', 'Pillar 5 Metric Label'),
+
+            pillar_6_title: getFld('pillar_6_title', 'Monitoring & Management', 'Pillar 6 Title'),
+            pillar_6_desc: getFld('pillar_6_desc', '24/7 proactive monitoring with real-time alerts, performance optimization, and automated maintenance.', 'Pillar 6 Description', 'richtext'),
+            pillar_6_metric: getFld('pillar_6_metric', '15min', 'Pillar 6 Metric Value'),
+            pillar_6_metric_label: getFld('pillar_6_metric_label', 'Response Time', 'Pillar 6 Metric Label'),
+
+            // Management Cycle Subsection
+            heading_4: getFld('heading_4', 'MANAGEMENT CYCLE', 'Management Cycle Heading'),
+            cycle_center_1: getFld('cycle_center_1', 'IT', 'Cycle Center Top Word'),
+            cycle_center_2: getFld('cycle_center_2', 'EXCELLENCE', 'Cycle Center Bottom Word'),
+            phase_1_name: getFld('phase_1_name', 'ACCESS', 'Phase 1 Name'),
+            phase_1_title: getFld('phase_1_title', 'Infrastructure Analysis', 'Phase 1 Title'),
+            phase_2_name: getFld('phase_2_name', 'PLAN', 'Phase 2 Name'),
+            phase_2_title: getFld('phase_2_title', 'Strategic Roadmap', 'Phase 2 Title'),
+            phase_3_name: getFld('phase_3_name', 'DEPLOY', 'Phase 3 Name'),
+            phase_3_title: getFld('phase_3_title', 'Implementation', 'Phase 3 Title'),
+            phase_4_name: getFld('phase_4_name', 'MANAGE', 'Phase 4 Name'),
+            phase_4_title: getFld('phase_4_title', 'Ongoing Support', 'Phase 4 Title'),
+
+            // Split CTA Subsection
+            heading_5: getFld('heading_5', 'Ready to Transform?', 'Transform CTA Heading'),
+            paragraph_4: getFld('paragraph_4', 'Join the infrastructure revolution with enterprise-grade solutions that scale with your ambitions.', 'Transform CTA Description', 'richtext'),
+            cta_1_button_text: getFld('cta_1_button_text', 'Start Revolution', 'Transform CTA Button Label'),
+            cta_1_button_link: getFld('cta_1_button_link', '/contact-us', 'Transform CTA Button Link', 'url'),
+
+            heading_6: getFld('heading_6', 'Need Consultation?', 'Consultation CTA Heading'),
+            paragraph_5: getFld('paragraph_5', 'Expert guidance for complex infrastructure challenges and strategic technology decisions.', 'Consultation CTA Description', 'richtext'),
+            cta_2_button_text: getFld('cta_2_button_text', 'Book Consultation', 'Consultation CTA Button Label'),
+            cta_2_button_link: getFld('cta_2_button_link', '/our-services', 'Consultation CTA Button Link', 'url'),
+
+            // Technology Partners Subsection
+            heading_7: getFld('heading_7', 'Technology Partners', 'Technology Partners Heading'),
+            paragraph_6: getFld('paragraph_6', 'We work with industry-leading technology partners to deliver best-in-class solutions', 'Technology Partners Subtitle', 'richtext'),
+
+            // Partner & feature images
+            ...smartImgs,
+          };
+          if (sec.fields.image_networkingsmartimage) sec.fields.image_networkingsmartimage.label = 'Hero Feature Image (Networking Smart)';
+          if (sec.fields.image_signaltower) sec.fields.image_signaltower.label = 'Hero Signal Tower Icon';
+          if (sec.fields.image_server) sec.fields.image_server.label = 'Pillar 1 Image (Server)';
+          if (sec.fields.image_network) sec.fields.image_network.label = 'Pillar 2 Image (Network)';
+          if (sec.fields.image_storage) sec.fields.image_storage.label = 'Pillar 3 Image (Storage)';
+          if (sec.fields.image_virtualization) sec.fields.image_virtualization.label = 'Pillar 4 Image (Virtualization)';
+          if (sec.fields.image_security) sec.fields.image_security.label = 'Pillar 5 Image (Security)';
+          if (sec.fields.image_monitoring) sec.fields.image_monitoring.label = 'Pillar 6 Image (Monitoring)';
+        } else if (sec.sectionId === 'hardwareamcbanner') {
+          sec.sectionName = 'Hero Banner (Hardware AMC)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Hardware', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'We offer both short-term and long-term AMC (Annual Maintenance Contract) plans — short-term contracts for immediate, limited-period support, and long-term plans for continued proactive maintenance, priority response, and minimized downtime.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+          if (sec.fields.image_icon1) sec.fields.image_icon1.label = 'Banner Accent Icon';
+        } else if (sec.sectionId === 'hardwareempowering') {
+          sec.sectionName = 'Business AMC Plans & Services';
+          const empImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = { ...empImgs[k], ...v };
+          }
+          sec.fields = {
+            // Hero Subsection
+            badge: getFld('badge', 'BUSINESS MANAGEMENT SERVICES', 'Hero Badge'),
+            heading: getFld('heading', 'Hand Over All Your Business Work', 'Hero Main Title (Part 1)'),
+            heading_2: getFld('heading_2', 'We Handle Everything', 'Hero Highlighted Title (Part 2)'),
+            heading_3: getFld('heading_3', 'POS, Software, Operations—No Worries!', 'Hero Sub-title (Part 3)'),
+            paragraph: getFld('paragraph', 'With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.', 'Hero Overview Description', 'richtext'),
+            button_1_text: getFld('button_1_text', 'Get AMC Quote', 'Hero Primary Button Label'),
+            button_1_link: getFld('button_1_link', '/contact-us', 'Hero Primary Button Link', 'url'),
+            button_2_text: getFld('button_2_text', 'Emergency Support', 'Hero Secondary Button Label'),
+
+            // Key Industry Stats
+            stat_1_number: getFld('stat_1_number', '500+', 'Stat 1 Number'),
+            stat_1_label: getFld('stat_1_label', 'Ongoing AMC Contracts', 'Stat 1 Label'),
+            stat_1_sublabel: getFld('stat_1_sublabel', 'Across all business types', 'Stat 1 Sublabel'),
+            stat_2_number: getFld('stat_2_number', '99.9%', 'Stat 2 Number'),
+            stat_2_label: getFld('stat_2_label', 'Average Uptime', 'Stat 2 Label'),
+            stat_2_sublabel: getFld('stat_2_sublabel', 'Business systems managed', 'Stat 2 Sublabel'),
+            stat_3_number: getFld('stat_3_number', '30 mins', 'Stat 3 Number'),
+            stat_3_label: getFld('stat_3_label', 'Avg. Response', 'Stat 3 Label'),
+            stat_3_sublabel: getFld('stat_3_sublabel', 'Emergency support', 'Stat 3 Sublabel'),
+            stat_4_number: getFld('stat_4_number', '50%+', 'Stat 4 Number'),
+            stat_4_label: getFld('stat_4_label', 'Cost Savings', 'Stat 4 Label'),
+            stat_4_sublabel: getFld('stat_4_sublabel', 'Annual client savings', 'Stat 4 Sublabel'),
+
+            // AMC Plans Section
+            heading_4: getFld('heading_4', 'AMC PLANS', 'AMC Plans Section Heading'),
+            paragraph_2: getFld('paragraph_2', 'Short or long term—choose the AMC that fits your business. We handle everything for you!', 'AMC Plans Section Subtitle', 'richtext'),
+            plan_1_type: getFld('plan_1_type', 'Short Term AMC', 'Plan 1 Type Name'),
+            plan_1_duration: getFld('plan_1_duration', '1-6 Months', 'Plan 1 Duration'),
+            plan_1_title: getFld('plan_1_title', 'Quick Business & IT Support', 'Plan 1 Title'),
+            plan_1_subtitle: getFld('plan_1_subtitle', 'Immediate help for your business systems, software, POS, and more', 'Plan 1 Subtitle', 'richtext'),
+            plan_1_uptime: getFld('plan_1_uptime', '99.5%', 'Plan 1 Uptime SLA'),
+            plan_1_response: getFld('plan_1_response', '4 Hours', 'Plan 1 Response Time'),
+            plan_1_benefits: getFld('plan_1_benefits', 'Best for startups, shops, and urgent business needs', 'Plan 1 Benefits'),
+            plan_1_button_text: getFld('plan_1_button_text', 'Request Short Term AMC Consultation', 'Plan 1 Button Label'),
+            plan_1_feat_1: getFld('plan_1_feat_1', 'Rapid troubleshooting for business systems', 'Plan 1 Feature 1'),
+            plan_1_feat_2: getFld('plan_1_feat_2', 'Emergency support for POS, billing, and software', 'Plan 1 Feature 2'),
+            plan_1_feat_3: getFld('plan_1_feat_3', 'Software installation, updates & bug fixes', 'Plan 1 Feature 3'),
+            plan_1_feat_4: getFld('plan_1_feat_4', 'Basic preventive maintenance schedules', 'Plan 1 Feature 4'),
+            plan_1_feat_5: getFld('plan_1_feat_5', '24/7 technical support hotline', 'Plan 1 Feature 5'),
+            plan_1_feat_6: getFld('plan_1_feat_6', 'On-site visits for business operations (monthly)', 'Plan 1 Feature 6'),
+            plan_1_feat_7: getFld('plan_1_feat_7', 'System health monitoring reports', 'Plan 1 Feature 7'),
+
+            plan_2_type: getFld('plan_2_type', 'Long Term AMC', 'Plan 2 Type Name'),
+            plan_2_duration: getFld('plan_2_duration', '6 Months - 3 Years', 'Plan 2 Duration'),
+            plan_2_title: getFld('plan_2_title', 'Complete Business & IT Management', 'Plan 2 Title'),
+            plan_2_subtitle: getFld('plan_2_subtitle', 'We handle all your business operations, software, POS, and IT needs', 'Plan 2 Subtitle', 'richtext'),
+            plan_2_uptime: getFld('plan_2_uptime', '99.9%', 'Plan 2 Uptime SLA'),
+            plan_2_response: getFld('plan_2_response', '2 Hours', 'Plan 2 Response Time'),
+            plan_2_benefits: getFld('plan_2_benefits', 'Ideal for enterprises, retail, and those who want total peace of mind', 'Plan 2 Benefits'),
+            plan_2_button_text: getFld('plan_2_button_text', 'Request Long Term AMC Consultation', 'Plan 2 Button Label'),
+            plan_2_feat_1: getFld('plan_2_feat_1', 'Full system maintenance & upgrades', 'Plan 2 Feature 1'),
+            plan_2_feat_2: getFld('plan_2_feat_2', 'POS & billing software management', 'Plan 2 Feature 2'),
+            plan_2_feat_3: getFld('plan_2_feat_3', 'Regular check-ups for business operations', 'Plan 2 Feature 3'),
+            plan_2_feat_4: getFld('plan_2_feat_4', 'Software license management & renewals', 'Plan 2 Feature 4'),
+            plan_2_feat_5: getFld('plan_2_feat_5', 'Priority support & rapid issue resolution', 'Plan 2 Feature 5'),
+            plan_2_feat_6: getFld('plan_2_feat_6', 'Advanced monitoring & reporting dashboards', 'Plan 2 Feature 6'),
+            plan_2_feat_7: getFld('plan_2_feat_7', 'Dedicated account manager & technical team', 'Plan 2 Feature 7'),
+            plan_2_feat_8: getFld('plan_2_feat_8', 'Annual business technology consultation', 'Plan 2 Feature 8'),
+
+            // Why Choose AMC Section
+            heading_5: getFld('heading_5', 'WHY CHOOSE CROWN EXCEL AMC?', 'Why Choose AMC Heading'),
+            feature_1_title: getFld('feature_1_title', 'Business & IT Experts', 'Feature 1 Title'),
+            feature_1_desc: getFld('feature_1_desc', 'Specialists in business operations, POS, billing, and software management', 'Feature 1 Description', 'richtext'),
+            feature_1_metric: getFld('feature_1_metric', '200+ Certified Engineers', 'Feature 1 Metric'),
+
+            feature_2_title: getFld('feature_2_title', '24/7 Priority Support', 'Feature 2 Title'),
+            feature_2_desc: getFld('feature_2_desc', 'Round-the-clock help for any business, POS, or software issue', 'Feature 2 Description', 'richtext'),
+            feature_2_metric: getFld('feature_2_metric', '2-4 Hour Response', 'Feature 2 Metric'),
+
+            feature_3_title: getFld('feature_3_title', 'Proactive Monitoring', 'Feature 3 Title'),
+            feature_3_desc: getFld('feature_3_desc', 'Real-time tracking of business systems, POS, and software updates', 'Feature 3 Description', 'richtext'),
+            feature_3_metric: getFld('feature_3_metric', '99.9% Uptime Guarantee', 'Feature 3 Metric'),
+
+            feature_4_title: getFld('feature_4_title', 'Cost Optimization', 'Feature 4 Title'),
+            feature_4_desc: getFld('feature_4_desc', 'Reduce expenses and improve business efficiency with smart management', 'Feature 4 Description', 'richtext'),
+            feature_4_metric: getFld('feature_4_metric', '40% Cost Reduction', 'Feature 4 Metric'),
+
+            feature_5_title: getFld('feature_5_title', 'Rapid Deployment', 'Feature 5 Title'),
+            feature_5_desc: getFld('feature_5_desc', 'Quick setup and integration for your business and POS systems', 'Feature 5 Description', 'richtext'),
+            feature_5_metric: getFld('feature_5_metric', '24 Hour Setup', 'Feature 5 Metric'),
+
+            feature_6_title: getFld('feature_6_title', 'Security & Compliance', 'Feature 6 Title'),
+            feature_6_desc: getFld('feature_6_desc', 'We keep your business data and software secure and compliant', 'Feature 6 Description', 'richtext'),
+            feature_6_metric: getFld('feature_6_metric', '100% Compliant', 'Feature 6 Metric'),
+
+            // Coverage Areas Section
+            heading_6: getFld('heading_6', 'WHAT WE HANDLE FOR YOU', 'Coverage Section Heading'),
+            paragraph_3: getFld('paragraph_3', 'Hardware, software, support, and more—just hand over your IT work and be worry-free!', 'Coverage Section Subtitle', 'richtext'),
+            category_1_name: getFld('category_1_name', 'What We Manage', 'Category 1 Title'),
+            cat_1_item_1: getFld('cat_1_item_1', 'Business Operations', 'Cat 1 Item 1'),
+            cat_1_item_2: getFld('cat_1_item_2', 'POS & Billing Software', 'Cat 1 Item 2'),
+            cat_1_item_3: getFld('cat_1_item_3', 'Inventory & CRM Systems', 'Cat 1 Item 3'),
+            cat_1_item_4: getFld('cat_1_item_4', 'Cloud Services', 'Cat 1 Item 4'),
+            cat_1_item_5: getFld('cat_1_item_5', 'Software Licensing', 'Cat 1 Item 5'),
+            cat_1_item_6: getFld('cat_1_item_6', 'Data Backup & Security', 'Cat 1 Item 6'),
+            cat_1_item_7: getFld('cat_1_item_7', 'Multi-location Management', 'Cat 1 Item 7'),
+
+            category_2_name: getFld('category_2_name', 'Service Locations', 'Category 2 Title'),
+            cat_2_item_1: getFld('cat_2_item_1', 'On-site Support', 'Cat 2 Item 1'),
+            cat_2_item_2: getFld('cat_2_item_2', 'Remote Monitoring', 'Cat 2 Item 2'),
+            cat_2_item_3: getFld('cat_2_item_3', 'Multi-location Coverage', 'Cat 2 Item 3'),
+            cat_2_item_4: getFld('cat_2_item_4', 'Emergency Call-outs', 'Cat 2 Item 4'),
+            cat_2_item_5: getFld('cat_2_item_5', 'Planned Maintenance', 'Cat 2 Item 5'),
+
+            category_3_name: getFld('category_3_name', 'Industry Expertise', 'Category 3 Title'),
+            cat_3_item_1: getFld('cat_3_item_1', 'Retail & E-commerce', 'Cat 3 Item 1'),
+            cat_3_item_2: getFld('cat_3_item_2', 'Healthcare', 'Cat 3 Item 2'),
+            cat_3_item_3: getFld('cat_3_item_3', 'Manufacturing', 'Cat 3 Item 3'),
+            cat_3_item_4: getFld('cat_3_item_4', 'Financial Services', 'Cat 3 Item 4'),
+            cat_3_item_5: getFld('cat_3_item_5', 'Education', 'Cat 3 Item 5'),
+            cat_3_item_6: getFld('cat_3_item_6', 'Government', 'Cat 3 Item 6'),
+
+            // Bottom CTA Section
+            heading_7: getFld('heading_7', 'Be Worry-Free—Let Us Handle Everything!', 'Bottom CTA Heading'),
+            paragraph_4: getFld('paragraph_4', 'With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!', 'Bottom CTA Description', 'richtext'),
+            cta_benefit_1: getFld('cta_benefit_1', 'Full responsibility for your IT & hardware', 'CTA Benefit 1'),
+            cta_benefit_2: getFld('cta_benefit_2', 'Software management & updates', 'CTA Benefit 2'),
+            cta_benefit_3: getFld('cta_benefit_3', '24/7 support & rapid response', 'CTA Benefit 3'),
+            cta_button_1_text: getFld('cta_button_1_text', 'Start Free Assessment', 'CTA Button 1 Label'),
+            cta_button_2_text: getFld('cta_button_2_text', 'Contact Support', 'CTA Button 2 Label'),
+            cta_stat_1_number: getFld('cta_stat_1_number', '500+', 'CTA Overlay Stat 1 Number'),
+            cta_stat_1_label: getFld('cta_stat_1_label', 'Active Contracts', 'CTA Overlay Stat 1 Label'),
+            cta_stat_2_number: getFld('cta_stat_2_number', '24/7', 'CTA Overlay Stat 2 Number'),
+            cta_stat_2_label: getFld('cta_stat_2_label', 'Expert Support', 'CTA Overlay Stat 2 Label'),
+
+            ...empImgs,
+          };
+          if (sec.fields.image_empoweringimage) sec.fields.image_empoweringimage.label = 'Hero Feature Image (Network Empower)';
+          if (sec.fields.image_networkit) sec.fields.image_networkit.label = 'Bottom CTA Feature Image (Hardware Maintenance)';
+          if (sec.fields.image_dirham) sec.fields.image_dirham.label = 'Dirham Currency Symbol Icon';
+          if (sec.fields.image_itservice) sec.fields.image_itservice.label = 'Feature 1 Image (IT Service)';
+          if (sec.fields.image_support) sec.fields.image_support.label = 'Feature 2 Image (Support)';
+          if (sec.fields.image_proactive) sec.fields.image_proactive.label = 'Feature 3 Image (Proactive)';
+          if (sec.fields.image_cost) sec.fields.image_cost.label = 'Feature 4 Image (Cost)';
+          if (sec.fields.image_rapid) sec.fields.image_rapid.label = 'Feature 5 Image (Rapid)';
+          if (sec.fields.image_security) sec.fields.image_security.label = 'Feature 6 Image (Security)';
         }
 
         return sec;
@@ -572,7 +1069,11 @@ export async function POST(request) {
 
     const isDynamicPage = 
       finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94' ||
-      finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead';
+      finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
+      finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
+      finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
+      finalPath === '/our-services/long/short-term-amc' || path === '/our-services/long/short-term-amc' || routeId === '6a2016aba0608271b7524ea3' ||
+      finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)
     if (Array.isArray(sections) && !isDynamicPage) {
