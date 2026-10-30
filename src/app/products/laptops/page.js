@@ -1,5 +1,5 @@
 import React from 'react';
-import { generateCmsMetadata, getCmsSeo } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
 import LaptopPageClient from './LaptopPageClient';
 
 export async function generateMetadata() {
@@ -52,11 +52,12 @@ export async function generateMetadata() {
   });
 }
 
-// Enable Incremental Static Regeneration (ISR)
-export const revalidate = 300;
+// Force dynamic rendering so CMS edits reflect immediately
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function LaptopsPage() {
-  const cmsSeo = await getCmsSeo('/products/laptops');
+  const { content: cmsContent, seo: cmsSeo } = await getCmsData('/products/laptops');
   let customSchemaObj = null;
   if (cmsSeo?.schema?.customSchema && typeof cmsSeo.schema.customSchema === 'string') {
     try {
@@ -170,7 +171,7 @@ export default async function LaptopsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(customSchemaObj || jsonLdData) }}
       />
 
-      <LaptopPageClient />
+      <LaptopPageClient cmsContent={cmsContent} />
     </>
   );
 }

@@ -1,67 +1,113 @@
-'use client';
-
 import React from 'react';
 import { ShieldCheck, Truck, Headphones, CheckCircle2 } from 'lucide-react';
+import { safeRender } from '@/lib/safe-html';
 
-export default function LaptopOperationsSection() {
+export default function LaptopOperationsSection({ cmsData }) {
+  const fields = cmsData?.fields || cmsData || {};
+  const headingVal = fields.heading;
+  const paragraphVal = fields.paragraph;
+
+  const defaultHeading = (
+    <>
+      <span className="block not-italic">Laptop Handling, Delivery &amp;</span>
+      <span className="block text-[#147A5F] italic mt-1">
+        Support Expertise
+      </span>
+    </>
+  );
+
+  let renderedHeading = headingVal;
+  if (typeof renderedHeading === 'object' && renderedHeading?.value !== undefined) {
+    renderedHeading = renderedHeading.value;
+  }
+  if (typeof renderedHeading === 'string' && renderedHeading.replace(/\s+/g, ' ').trim() === 'Laptop Handling, Delivery & Support Expertise') {
+    renderedHeading = defaultHeading;
+  }
   const operationalPillars = [
     {
       icon: <ShieldCheck className="w-8 h-8 text-[#147A5F]" />,
-      badge: 'Step 1: Verification',
-      title: 'Laptop Handling & Quality Checks',
-      subtitle: 'Zero Compromise on Factory Authenticity',
+      badge: safeRender(fields.pillar_1_badge, 'Step 1: Verification'),
+      title: safeRender(fields.pillar_1_title, 'Laptop Handling & Quality Checks'),
+      subtitle: safeRender(fields.pillar_1_subtitle, 'Zero Compromise on Factory Authenticity'),
       points: [
         {
-          heading: 'Tamper-Evident Factory Seal Audit',
-          detail: 'Every laptop master carton and individual packaging box is audited upon intake to guarantee untouched, 100% factory-sealed integrity.',
+          heading: safeRender(fields.pillar_1_pt_1_heading, 'Tamper-Evident Factory Seal Audit'),
+          detail: safeRender(
+            fields.pillar_1_pt_1_detail,
+            'Every laptop master carton and individual packaging box is audited upon intake to guarantee untouched, 100% factory-sealed integrity.'
+          ),
         },
         {
-          heading: 'Serial Number & Barcode Serialization',
-          detail: 'Every unit is scanned into our enterprise ERP with manufacturer serial tracking, preventing grey-market cross-contamination.',
+          heading: safeRender(fields.pillar_1_pt_2_heading, 'Serial Number & Barcode Serialization'),
+          detail: safeRender(
+            fields.pillar_1_pt_2_detail,
+            'Every unit is scanned into our enterprise ERP with manufacturer serial tracking, preventing grey-market cross-contamination.'
+          ),
         },
         {
-          heading: 'ESD-Safe Climate-Controlled Storage',
-          detail: 'Warehoused in humidity-regulated, anti-static facility in Dubai, protecting sensitive high-refresh screens and microprocessors.',
+          heading: safeRender(fields.pillar_1_pt_3_heading, 'ESD-Safe Climate-Controlled Storage'),
+          detail: safeRender(
+            fields.pillar_1_pt_3_detail,
+            'Warehoused in humidity-regulated, anti-static facility in Dubai, protecting sensitive high-refresh screens and microprocessors.'
+          ),
         },
       ],
     },
     {
       icon: <Truck className="w-8 h-8 text-[#147A5F]" />,
-      badge: 'Step 2: Fulfillment',
-      title: 'Order Processing & Express Delivery',
-      subtitle: 'Fast Turnaround Across UAE & Regional Hubs',
+      badge: safeRender(fields.pillar_2_badge, 'Step 2: Fulfillment'),
+      title: safeRender(fields.pillar_2_title, 'Order Processing & Express Delivery'),
+      subtitle: safeRender(fields.pillar_2_subtitle, 'Fast Turnaround Across UAE & Regional Hubs'),
       points: [
         {
-          heading: 'Same-Day Dispatch in Central UAE',
-          detail: 'Orders confirmed before 1:00 PM are dispatched same-day via Crown Excel’s dedicated delivery fleet across Dubai, Sharjah & Ajman.',
+          heading: safeRender(fields.pillar_2_pt_1_heading, 'Same-Day Dispatch in Central UAE'),
+          detail: safeRender(
+            fields.pillar_2_pt_1_detail,
+            'Orders confirmed before 1:00 PM are dispatched same-day via Crown Excel’s dedicated delivery fleet across Dubai, Sharjah & Ajman.'
+          ),
         },
         {
-          heading: 'Next-Day Delivery Across All Emirates',
-          detail: 'Overnight ground fulfillment servicing Abu Dhabi, Al Ain, Ras Al Khaimah, Fujairah, and Umm Al Quwain.',
+          heading: safeRender(fields.pillar_2_pt_2_heading, 'Next-Day Delivery Across All Emirates'),
+          detail: safeRender(
+            fields.pillar_2_pt_2_detail,
+            'Overnight ground fulfillment servicing Abu Dhabi, Al Ain, Ras Al Khaimah, Fujairah, and Umm Al Quwain.'
+          ),
         },
         {
-          heading: 'Cross-Border GCC & Cargo Logistical Links',
-          detail: 'Daily road and air cargo shipments to Saudi Arabia, Oman, Qatar, Bahrain, Kuwait, Africa, and Central Asia with full customs clearance support.',
+          heading: safeRender(fields.pillar_2_pt_3_heading, 'Cross-Border GCC & Cargo Logistical Links'),
+          detail: safeRender(
+            fields.pillar_2_pt_3_detail,
+            'Daily road and air cargo shipments to Saudi Arabia, Oman, Qatar, Bahrain, Kuwait, Africa, and Central Asia with full customs clearance support.'
+          ),
         },
       ],
     },
     {
       icon: <Headphones className="w-8 h-8 text-[#147A5F]" />,
-      badge: 'Step 3: Post-Sales',
-      title: 'Customer Support & Warranty Assistance',
-      subtitle: 'Dedicated Partnership Beyond the Sale',
+      badge: safeRender(fields.pillar_3_badge, 'Step 3: Post-Sales'),
+      title: safeRender(fields.pillar_3_title, 'Customer Support & Warranty Assistance'),
+      subtitle: safeRender(fields.pillar_3_subtitle, 'Dedicated Partnership Beyond the Sale'),
       points: [
         {
-          heading: 'Direct Manufacturer Warranty Liaison',
-          detail: 'We coordinate authorized brand warranty assistance for Lenovo, HP, Dell, ASUS, and Acer, eliminating administrative friction for clients.',
+          heading: safeRender(fields.pillar_3_pt_1_heading, 'Direct Manufacturer Warranty Liaison'),
+          detail: safeRender(
+            fields.pillar_3_pt_1_detail,
+            'We coordinate authorized brand warranty assistance for Lenovo, HP, Dell, ASUS, and Acer, eliminating administrative friction for clients.'
+          ),
         },
         {
-          heading: 'Dead-On-Arrival (DOA) Rapid Protocol',
-          detail: 'Expedited replacement procedures for any verified defective hardware on initial unboxing to protect business continuity.',
+          heading: safeRender(fields.pillar_3_pt_2_heading, 'Dead-On-Arrival (DOA) Rapid Protocol'),
+          detail: safeRender(
+            fields.pillar_3_pt_2_detail,
+            'Expedited replacement procedures for any verified defective hardware on initial unboxing to protect business continuity.'
+          ),
         },
         {
-          heading: 'Dedicated B2B Account Representatives',
-          detail: 'Direct phone, email, and WhatsApp line with a named logistics executive for stock reservations, invoices, and tracking updates.',
+          heading: safeRender(fields.pillar_3_pt_3_heading, 'Dedicated B2B Account Representatives'),
+          detail: safeRender(
+            fields.pillar_3_pt_3_detail,
+            'Direct phone, email, and WhatsApp line with a named logistics executive for stock reservations, invoices, and tracking updates.'
+          ),
         },
       ],
     },
@@ -75,21 +121,18 @@ export default function LaptopOperationsSection() {
           {/* Section Header */}
           <div className="text-center max-w-4xl xl:max-w-5xl mx-auto mb-10 sm:mb-12 xl:mb-14">
             <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#147A5F] mb-2 sm:mb-2.5 block font-montserrat">
-              RELIABLE END-TO-END SUPPLY CHAIN EXECUTION
+              {safeRender(fields.badge, "RELIABLE END-TO-END SUPPLY CHAIN EXECUTION")}
             </span>
 
             <h2
               className="font-anton uppercase text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] tracking-[-0.03em] leading-[1.08] text-[#171717]"
               style={{ fontFamily: "'Anton', Impact, sans-serif" }}
             >
-              <span className="block not-italic">Laptop Handling, Delivery &amp;</span>
-              <span className="block text-[#147A5F] italic mt-1">
-                Support Expertise
-              </span>
+              {safeRender(renderedHeading, defaultHeading) || 'Laptop Handling, Delivery & Support Expertise'}
             </h2>
 
             <p className="font-jakarta text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mt-3 max-w-2xl sm:max-w-3xl mx-auto font-normal text-pretty">
-              Wholesale IT procurement demands precision, integrity, and swift logistical delivery. Here is how Crown Excel safeguards your orders from dock intake to customer handoff.
+              {safeRender(paragraphVal, 'Wholesale IT procurement demands precision, integrity, and swift logistical delivery. Here is how Crown Excel safeguards your orders from dock intake to customer handoff.')}
             </p>
           </div>
 
