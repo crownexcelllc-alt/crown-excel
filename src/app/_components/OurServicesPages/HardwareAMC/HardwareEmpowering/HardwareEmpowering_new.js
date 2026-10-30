@@ -1,161 +1,212 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import empoweringImage from '../../../../../Components/Images/networkempower.png';
 import NetworkIT from '../../../../../Components/Images/hardwareempowering.png';
 import Dirham from '../../../../../Components/Images/dirham.png';
-import ITservice from '../../../../../Components/Images/serviceIt.png'
-import Support from '../../../../../Components/Images/support.png'
-import Proactive from '../../../../../Components/Images/proacitve.png'
-import Cost from '../../../../../Components/Images/cost.png'
-import Rapid from '../../../../../Components/Images/rapid.png'
-import Security from '../../../../../Components/Images/security3.png'
+import ITservice from '../../../../../Components/Images/serviceIt.png';
+import Support from '../../../../../Components/Images/support.png';
+import Proactive from '../../../../../Components/Images/proacitve.png';
+import Cost from '../../../../../Components/Images/cost.png';
+import Rapid from '../../../../../Components/Images/rapid.png';
+import Security from '../../../../../Components/Images/security3.png';
 import { BsLightningChargeFill } from "react-icons/bs";
 import { MdSecurity } from "react-icons/md";
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const HardwareEmpowering = () => {
+const HardwareEmpowering = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+
   // Get quote function
   const getQuote = () => {
-    // You can add form popup or redirect to contact page
-    window.location.href = '/contact-us';
+    window.location.href = fields.button_1_link || '/contact-us';
   };
 
-  // Update AMC plans to remove hardware focus and add business/software/POS content
+  // Hero Section
+  const heroBadge = safeRender(fields.badge, "BUSINESS MANAGEMENT SERVICES");
+  const heroHeading1 = safeRender(fields.heading, "Hand Over All Your Business Work");
+  const heroHeading2 = safeRender(fields.heading_2, "We Handle Everything");
+  const heroHeading3 = safeRender(fields.heading_3, "POS, Software, Operations—No Worries!");
+  const heroDesc = safeRender(fields.paragraph, "With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.");
+  const heroBtn1Text = safeRender(fields.button_1_text, "Get AMC Quote");
+  const heroBtn1Link = fields.button_1_link || "/contact-us";
+  const heroBtn2Text = safeRender(fields.button_2_text, "Emergency Support");
+  const heroImage = safeImage(fields.image_empoweringimage, empoweringImage);
+
+  // Key Stats
+  const industryStats = [
+    {
+      number: safeRender(fields.stat_1_number, "500+"),
+      label: safeRender(fields.stat_1_label, "Ongoing AMC Contracts"),
+      sublabel: safeRender(fields.stat_1_sublabel, "Across all business types"),
+      useDirham: false
+    },
+    {
+      number: safeRender(fields.stat_2_number, "99.9%"),
+      label: safeRender(fields.stat_2_label, "Average Uptime"),
+      sublabel: safeRender(fields.stat_2_sublabel, "Business systems managed"),
+      useDirham: false
+    },
+    {
+      number: safeRender(fields.stat_3_number, "30 mins"),
+      label: safeRender(fields.stat_3_label, "Avg. Response"),
+      sublabel: safeRender(fields.stat_3_sublabel, "Emergency support"),
+      useDirham: false
+    },
+    {
+      number: safeRender(fields.stat_4_number, "50%+"),
+      label: safeRender(fields.stat_4_label, "Cost Savings"),
+      sublabel: safeRender(fields.stat_4_sublabel, "Annual client savings"),
+      useDirham: true
+    }
+  ];
+
+  // AMC Plans Section
+  const plansHeading = safeRender(fields.heading_4, <>AMC <span className="text-[#16CA9A]">PLANS</span></>);
+  const plansSubtitle = safeRender(fields.paragraph_2, "Short or long term—choose the AMC that fits your business. We handle everything for you!");
+
   const amcPlans = [
     {
-      type: "Short Term AMC",
-      duration: "1-6 Months",
-      title: "Quick Business & IT Support",
-      subtitle: "Immediate help for your business systems, software, POS, and more",
+      type: safeRender(fields.plan_1_type, "Short Term AMC"),
+      duration: safeRender(fields.plan_1_duration, "1-6 Months"),
+      title: safeRender(fields.plan_1_title, "Quick Business & IT Support"),
+      subtitle: safeRender(fields.plan_1_subtitle, "Immediate help for your business systems, software, POS, and more"),
       features: [
-        "Rapid troubleshooting for business systems",
-        "Emergency support for POS, billing, and software",
-        "Software installation, updates & bug fixes",
-        "Basic preventive maintenance schedules",
-        "24/7 technical support hotline",
-        "On-site visits for business operations (monthly)",
-        "System health monitoring reports"
+        safeRender(fields.plan_1_feat_1, "Rapid troubleshooting for business systems"),
+        safeRender(fields.plan_1_feat_2, "Emergency support for POS, billing, and software"),
+        safeRender(fields.plan_1_feat_3, "Software installation, updates & bug fixes"),
+        safeRender(fields.plan_1_feat_4, "Basic preventive maintenance schedules"),
+        safeRender(fields.plan_1_feat_5, "24/7 technical support hotline"),
+        safeRender(fields.plan_1_feat_6, "On-site visits for business operations (monthly)"),
+        safeRender(fields.plan_1_feat_7, "System health monitoring reports")
       ],
-      benefits: "Best for startups, shops, and urgent business needs",
+      benefits: safeRender(fields.plan_1_benefits, "Best for startups, shops, and urgent business needs"),
+      buttonText: safeRender(fields.plan_1_button_text, "Request Short Term AMC Consultation"),
       icon: <BsLightningChargeFill />,
       color: "from-[#16CA9A] to-[#119472]",
-      uptime: "99.5%",
-      response: "4 Hours"
+      uptime: safeRender(fields.plan_1_uptime, "99.5%"),
+      response: safeRender(fields.plan_1_response, "4 Hours")
     },
     {
-      type: "Long Term AMC",
-      duration: "6 Months - 3 Years",
-      title: "Complete Business & IT Management",
-      subtitle: "We handle all your business operations, software, POS, and IT needs",
+      type: safeRender(fields.plan_2_type, "Long Term AMC"),
+      duration: safeRender(fields.plan_2_duration, "6 Months - 3 Years"),
+      title: safeRender(fields.plan_2_title, "Complete Business & IT Management"),
+      subtitle: safeRender(fields.plan_2_subtitle, "We handle all your business operations, software, POS, and IT needs"),
       features: [
-        "Full system maintenance & upgrades",
-        "POS & billing software management",
-        "Regular check-ups for business operations",
-        "Software license management & renewals",
-        "Priority support & rapid issue resolution",
-        "Advanced monitoring & reporting dashboards",
-        "Dedicated account manager & technical team",
-        "Annual business technology consultation"
+        safeRender(fields.plan_2_feat_1, "Full system maintenance & upgrades"),
+        safeRender(fields.plan_2_feat_2, "POS & billing software management"),
+        safeRender(fields.plan_2_feat_3, "Regular check-ups for business operations"),
+        safeRender(fields.plan_2_feat_4, "Software license management & renewals"),
+        safeRender(fields.plan_2_feat_5, "Priority support & rapid issue resolution"),
+        safeRender(fields.plan_2_feat_6, "Advanced monitoring & reporting dashboards"),
+        safeRender(fields.plan_2_feat_7, "Dedicated account manager & technical team"),
+        safeRender(fields.plan_2_feat_8, "Annual business technology consultation")
       ],
-      benefits: "Ideal for enterprises, retail, and those who want total peace of mind",
+      benefits: safeRender(fields.plan_2_benefits, "Ideal for enterprises, retail, and those who want total peace of mind"),
+      buttonText: safeRender(fields.plan_2_button_text, "Request Long Term AMC Consultation"),
       icon: <MdSecurity />,
       color: "from-[#13745a] to-[#084032]",
-      uptime: "99.9%",
-      response: "2 Hours"
+      uptime: safeRender(fields.plan_2_uptime, "99.9%"),
+      response: safeRender(fields.plan_2_response, "2 Hours")
     }
   ];
 
-  // Update service features for business/software/POS
+  // Service Features (Why Choose Crown Excel AMC?)
+  const whyHeading = safeRender(fields.heading_5, <>WHY CHOOSE <span className="text-[#16CA9A]">CROWN EXCEL AMC?</span></>);
+
   const serviceFeatures = [
     {
-      icon: "🧑‍💻",
-      title: "Business & IT Experts",
-      desc: "Specialists in business operations, POS, billing, and software management",
-      metric: "200+ Certified Engineers",
-      Image: ITservice
+      title: safeRender(fields.feature_1_title, "Business & IT Experts"),
+      desc: safeRender(fields.feature_1_desc, "Specialists in business operations, POS, billing, and software management"),
+      metric: safeRender(fields.feature_1_metric, "200+ Certified Engineers"),
+      Image: safeImage(fields.image_itservice, ITservice)
     },
     {
-      icon: "⏰",
-      title: "24/7 Priority Support",
-      desc: "Round-the-clock help for any business, POS, or software issue",
-      metric: "2-4 Hour Response",
-      Image: Support
+      title: safeRender(fields.feature_2_title, "24/7 Priority Support"),
+      desc: safeRender(fields.feature_2_desc, "Round-the-clock help for any business, POS, or software issue"),
+      metric: safeRender(fields.feature_2_metric, "2-4 Hour Response"),
+      Image: safeImage(fields.image_support, Support)
     },
     {
-      icon: "📊",
-      title: "Proactive Monitoring",
-      desc: "Real-time tracking of business systems, POS, and software updates",
-      metric: "99.9% Uptime Guarantee",
-      Image: Proactive
+      title: safeRender(fields.feature_3_title, "Proactive Monitoring"),
+      desc: safeRender(fields.feature_3_desc, "Real-time tracking of business systems, POS, and software updates"),
+      metric: safeRender(fields.feature_3_metric, "99.9% Uptime Guarantee"),
+      Image: safeImage(fields.image_proactive, Proactive)
     },
     {
-      icon: "💰",
-      title: "Cost Optimization",
-      desc: "Reduce expenses and improve business efficiency with smart management",
-      metric: "40% Cost Reduction",
-      Image: Cost
+      title: safeRender(fields.feature_4_title, "Cost Optimization"),
+      desc: safeRender(fields.feature_4_desc, "Reduce expenses and improve business efficiency with smart management"),
+      metric: safeRender(fields.feature_4_metric, "40% Cost Reduction"),
+      Image: safeImage(fields.image_cost, Cost)
     },
     {
-      icon: "🚀",
-      title: "Rapid Deployment",
-      desc: "Quick setup and integration for your business and POS systems",
-      metric: "24 Hour Setup",
-      Image: Rapid
+      title: safeRender(fields.feature_5_title, "Rapid Deployment"),
+      desc: safeRender(fields.feature_5_desc, "Quick setup and integration for your business and POS systems"),
+      metric: safeRender(fields.feature_5_metric, "24 Hour Setup"),
+      Image: safeImage(fields.image_rapid, Rapid)
     },
     {
-      icon: "🔒",
-      title: "Security & Compliance",
-      desc: "We keep your business data and software secure and compliant",
-      metric: "100% Compliant",
-      Image: Security,
+      title: safeRender(fields.feature_6_title, "Security & Compliance"),
+      desc: safeRender(fields.feature_6_desc, "We keep your business data and software secure and compliant"),
+      metric: safeRender(fields.feature_6_metric, "100% Compliant"),
+      Image: safeImage(fields.image_security, Security)
     }
   ];
 
-  // Update coverage areas for business/software/POS
+  // Coverage Areas (What We Handle For You)
+  const handleHeading = safeRender(fields.heading_6, <>WHAT WE HANDLE <span className="text-[#16CA9A]">FOR YOU</span></>);
+  const handleSubtitle = safeRender(fields.paragraph_3, "Hardware, software, support, and more—just hand over your IT work and be worry-free!");
+
   const coverageAreas = [
     {
-      category: "What We Manage",
+      category: safeRender(fields.category_1_name, "What We Manage"),
       items: [
-        "Business Operations",
-        "POS & Billing Software",
-        "Inventory & CRM Systems",
-        "Cloud Services",
-        "Software Licensing",
-        "Data Backup & Security",
-        "Multi-location Management"
+        safeRender(fields.cat_1_item_1, "Business Operations"),
+        safeRender(fields.cat_1_item_2, "POS & Billing Software"),
+        safeRender(fields.cat_1_item_3, "Inventory & CRM Systems"),
+        safeRender(fields.cat_1_item_4, "Cloud Services"),
+        safeRender(fields.cat_1_item_5, "Software Licensing"),
+        safeRender(fields.cat_1_item_6, "Data Backup & Security"),
+        safeRender(fields.cat_1_item_7, "Multi-location Management")
       ]
     },
     {
-      category: "Service Locations",
+      category: safeRender(fields.category_2_name, "Service Locations"),
       items: [
-        "On-site Support",
-        "Remote Monitoring",
-        "Multi-location Coverage",
-        "Emergency Call-outs",
-        "Planned Maintenance"
+        safeRender(fields.cat_2_item_1, "On-site Support"),
+        safeRender(fields.cat_2_item_2, "Remote Monitoring"),
+        safeRender(fields.cat_2_item_3, "Multi-location Coverage"),
+        safeRender(fields.cat_2_item_4, "Emergency Call-outs"),
+        safeRender(fields.cat_2_item_5, "Planned Maintenance")
       ]
     },
     {
-      category: "Industry Expertise",
+      category: safeRender(fields.category_3_name, "Industry Expertise"),
       items: [
-        "Retail & E-commerce",
-        "Healthcare",
-        "Manufacturing",
-        "Financial Services",
-        "Education",
-        "Government"
+        safeRender(fields.cat_3_item_1, "Retail & E-commerce"),
+        safeRender(fields.cat_3_item_2, "Healthcare"),
+        safeRender(fields.cat_3_item_3, "Manufacturing"),
+        safeRender(fields.cat_3_item_4, "Financial Services"),
+        safeRender(fields.cat_3_item_5, "Education"),
+        safeRender(fields.cat_3_item_6, "Government")
       ]
     }
   ];
 
-  const industryStats = [
-    { number: "500+", label: "Ongoing AMC Contracts", sublabel: "Across all business types" },
-    { number: "99.9%", label: "Average Uptime", sublabel: "Business systems managed" },
-    { number: "30 mins", label: "Avg. Response", sublabel: "Emergency support" },
-    { number: "50%+", label: "Cost Savings", sublabel: "Annual client savings", useDirham: true }
-  ];
-
-
+  // Bottom CTA
+  const ctaHeading = safeRender(fields.heading_7, "Be Worry-Free—Let Us Handle Everything!");
+  const ctaDesc = safeRender(fields.paragraph_4, "With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!");
+  const ctaBenefit1 = safeRender(fields.cta_benefit_1, "Full responsibility for your IT & hardware");
+  const ctaBenefit2 = safeRender(fields.cta_benefit_2, "Software management & updates");
+  const ctaBenefit3 = safeRender(fields.cta_benefit_3, "24/7 support & rapid response");
+  const ctaBtn1Text = safeRender(fields.cta_button_1_text, "Start Free Assessment");
+  const ctaBtn2Text = safeRender(fields.cta_button_2_text, "Contact Support");
+  const ctaImage = safeImage(fields.image_networkit, NetworkIT);
+  const ctaOverlayStat1Num = safeRender(fields.cta_stat_1_number, "500+");
+  const ctaOverlayStat1Label = safeRender(fields.cta_stat_1_label, "Active Contracts");
+  const ctaOverlayStat2Num = safeRender(fields.cta_stat_2_number, "24/7");
+  const ctaOverlayStat2Label = safeRender(fields.cta_stat_2_label, "Expert Support");
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
@@ -177,23 +228,23 @@ const HardwareEmpowering = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white px-6 py-3 rounded-2xl text-sm font-bold uppercase tracking-wide shadow-lg">
-                    BUSINESS MANAGEMENT SERVICES
+                    {heroBadge}
                   </div>
                   <div className="h-1 w-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full"></div>
                 </div>
 
                 <h2 className="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
-                  <span className="block">Hand Over All Your Business Work</span>
+                  <span className="block">{heroHeading1}</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">
-                    We Handle Everything
+                    {heroHeading2}
                   </span>
                   <span className="block text-4xl md:text-5xl font-medium text-gray-700">
-                    POS, Software, Operations—No Worries!
+                    {heroHeading3}
                   </span>
                 </h2>
 
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
-                  With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.
+                  {heroDesc}
                 </p>
 
                 {/* Key Stats */}
@@ -218,19 +269,21 @@ const HardwareEmpowering = () => {
                   ))}
                 </div>
 
-
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button
-                    onClick={getQuote}
+                  <Link
+                    href={heroBtn1Link}
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
                   >
-                    Get AMC Quote
+                    {heroBtn1Text}
                     <svg className="w-5 h-5 ml-3 transform transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
-                  <button className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300">
-                    Emergency Support
+                  </Link>
+                  <button
+                    onClick={getQuote}
+                    className="inline-flex items-center px-6 py-4 border-2 border-[#16CA9A] text-[#16CA9A] font-bold rounded-xl hover:bg-[#16CA9A] hover:text-white transition-all duration-300"
+                  >
+                    {heroBtn2Text}
                   </button>
                 </div>
               </div>
@@ -242,7 +295,7 @@ const HardwareEmpowering = () => {
                 <div className="absolute -inset-4 bg-gradient-to-br from-[#16CA9A]/20 to-[#084032]/20 rounded-3xl blur-2xl"></div>
                 <div className="relative bg-white p-4 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
                   <Image
-                    src={empoweringImage}
+                    src={heroImage}
                     width={500}
                     height={350}
                     alt="AMC Services"
@@ -261,11 +314,11 @@ const HardwareEmpowering = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              AMC <span className="text-[#16CA9A]">PLANS</span>
+              {plansHeading}
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Short or long term—choose the AMC that fits your business. We handle everything for you!
+              {plansSubtitle}
             </p>
           </div>
 
@@ -326,7 +379,7 @@ const HardwareEmpowering = () => {
                         className={`w-full mt-6 py-4 bg-gradient-to-r ${plan.color} text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden`}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2">
-                          <span>Request {plan.type} Consultation</span>
+                          <span>{plan.buttonText || `Request ${plan.type} Consultation`}</span>
                           <svg className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -341,12 +394,11 @@ const HardwareEmpowering = () => {
           </div>
         </div>
 
-        {/* Service Features - Hexagonal Grid */}
         {/* Service Features - Image Cards (Reference Style) */}
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              WHY CHOOSE <span className="text-[#16CA9A]">CROWN EXCEL AMC?</span>
+              {whyHeading}
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
           </div>
@@ -357,19 +409,16 @@ const HardwareEmpowering = () => {
                 key={index}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 group"
               >
-                {/* Replace emoji with image */}
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
-                    src={feature.Image} // 👈 you add your own images here
+                    src={feature.Image}
                     alt={feature.title}
                     fill
                     className="object-cover transform group-hover:scale-110 transition duration-700"
                   />
-                  {/* Optional gradient overlay with your colors */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#084032]/70 via-transparent to-transparent"></div>
                 </div>
 
-                {/* Text content */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#16CA9A] transition-colors">
                     {feature.title}
@@ -392,11 +441,11 @@ const HardwareEmpowering = () => {
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black text-gray-900 mb-4">
-              WHAT WE HANDLE <span className="text-[#16CA9A]">FOR YOU</span>
+              {handleHeading}
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#16CA9A] to-[#084032] mx-auto mb-6 transform skew-x-12"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hardware, software, support, and more—just hand over your IT work and be worry-free!
+              {handleSubtitle}
             </p>
           </div>
 
@@ -426,38 +475,36 @@ const HardwareEmpowering = () => {
           <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-3xl overflow-hidden shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="p-12 text-white">
-                <h3 className="text-4xl font-black mb-6">Be Worry-Free—Let Us Handle Everything!</h3>
+                <h3 className="text-4xl font-black mb-6">{ctaHeading}</h3>
                 <p className="text-xl mb-6 opacity-90">
-                  With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!
+                  {ctaDesc}
                 </p>
 
                 {/* Benefits List */}
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">Full responsibility for your IT & hardware</span>
+                    <span className="text-lg">{ctaBenefit1}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">Software management & updates</span>
+                    <span className="text-lg">{ctaBenefit2}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-lg">24/7 support & rapid response</span>
+                    <span className="text-lg">{ctaBenefit3}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="inline-flex items-center px-8 py-4 bg-white text-[#084032] font-bold rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-lg">
-                    {/* <span className="mr-2">🔍</span> */}
-                    Start Free Assessment
+                    {ctaBtn1Text}
                   </button>
                   <button
                     onClick={getQuote}
                     className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#084032] transition-colors duration-300"
                   >
-                    {/* <span className="mr-2">📞</span> */}
-                    Contact Support
+                    {ctaBtn2Text}
                   </button>
                 </div>
               </div>
@@ -465,7 +512,7 @@ const HardwareEmpowering = () => {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-white/20 rounded-2xl blur-xl"></div>
                   <Image
-                    src={NetworkIT}
+                    src={ctaImage}
                     width={400}
                     height={300}
                     alt="Professional Hardware Maintenance Services"
@@ -475,12 +522,12 @@ const HardwareEmpowering = () => {
                   <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
                     <div className="grid grid-cols-2 gap-2 text-center">
                       <div>
-                        <div className="text-lg font-black text-[#16CA9A]">500+</div>
-                        <div className="text-xs text-gray-600">Active Contracts</div>
+                        <div className="text-lg font-black text-[#16CA9A]">{ctaOverlayStat1Num}</div>
+                        <div className="text-xs text-gray-600">{ctaOverlayStat1Label}</div>
                       </div>
                       <div>
-                        <div className="text-lg font-black text-[#16CA9A]">24/7</div>
-                        <div className="text-xs text-gray-600">Expert Support</div>
+                        <div className="text-lg font-black text-[#16CA9A]">{ctaOverlayStat2Num}</div>
+                        <div className="text-xs text-gray-600">{ctaOverlayStat2Label}</div>
                       </div>
                     </div>
                   </div>

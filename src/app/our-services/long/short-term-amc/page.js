@@ -5,8 +5,11 @@ import HardwareServices from '@/app/_components/OurServicesPages/HardwareAMC/Har
 import HardwareSmart from '@/app/_components/OurServicesPages/HardwareAMC/HardwareSmart/HardwareSmart'
 import HardwareWeAreBest from '@/app/_components/OurServicesPages/HardwareAMC/HardwareWeAreBest/HardwareWeAreBest'
 import HardwareWhyChooseUS from '@/app/_components/OurServicesPages/HardwareAMC/HardwareWhyChooseUS/HardwareWhyChooseUS'
-import React from 'react'
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import React from 'react';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/our-services/long/short-term-amc', {
@@ -15,18 +18,21 @@ export async function generateMetadata() {
   });
 }
 
-const HardwareAMC = () => {
+const HardwareAMC = async () => {
+  const { content: cmsContent } = await getCmsData('/our-services/long/short-term-amc');
+  const sections = cmsContent?.sections || {};
+
   return (
     <div>
-      <HardwareAmcBanner/>
+      <HardwareAmcBanner cmsData={sections.hardwareamcbanner} />
       {/* <HardwareSmart/> */}
-      <HardwareEmpowering/>
+      <HardwareEmpowering cmsData={sections.hardwareempowering} />
       {/* <HardwareWhyChooseUS/>
       <HardwareServices/>
       <HardwareWeAreBest/>
       <HardwareFaq/> */}
     </div>
-  )
-}
+  );
+};
 
-export default HardwareAMC
+export default HardwareAMC;

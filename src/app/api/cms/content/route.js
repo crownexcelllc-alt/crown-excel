@@ -812,6 +812,170 @@ export async function GET(request) {
           if (sec.fields.image_virtualization) sec.fields.image_virtualization.label = 'Pillar 4 Image (Virtualization)';
           if (sec.fields.image_security) sec.fields.image_security.label = 'Pillar 5 Image (Security)';
           if (sec.fields.image_monitoring) sec.fields.image_monitoring.label = 'Pillar 6 Image (Monitoring)';
+        } else if (sec.sectionId === 'hardwareamcbanner') {
+          sec.sectionName = 'Hero Banner (Hardware AMC)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Hardware', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'We offer both short-term and long-term AMC (Annual Maintenance Contract) plans — short-term contracts for immediate, limited-period support, and long-term plans for continued proactive maintenance, priority response, and minimized downtime.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+          if (sec.fields.image_icon1) sec.fields.image_icon1.label = 'Banner Accent Icon';
+        } else if (sec.sectionId === 'hardwareempowering') {
+          sec.sectionName = 'Business AMC Plans & Services';
+          const empImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = { ...empImgs[k], ...v };
+          }
+          sec.fields = {
+            // Hero Subsection
+            badge: getFld('badge', 'BUSINESS MANAGEMENT SERVICES', 'Hero Badge'),
+            heading: getFld('heading', 'Hand Over All Your Business Work', 'Hero Main Title (Part 1)'),
+            heading_2: getFld('heading_2', 'We Handle Everything', 'Hero Highlighted Title (Part 2)'),
+            heading_3: getFld('heading_3', 'POS, Software, Operations—No Worries!', 'Hero Sub-title (Part 3)'),
+            paragraph: getFld('paragraph', 'With Crown Excel, you don’t need to worry about your business systems, POS, or software. We take full responsibility for your operations—maintenance, repairs, upgrades, software management, and support. Just hand over your business work and relax. We’ll keep everything running, secure, and up-to-date, so you can focus on growth.', 'Hero Overview Description', 'richtext'),
+            button_1_text: getFld('button_1_text', 'Get AMC Quote', 'Hero Primary Button Label'),
+            button_1_link: getFld('button_1_link', '/contact-us', 'Hero Primary Button Link', 'url'),
+            button_2_text: getFld('button_2_text', 'Emergency Support', 'Hero Secondary Button Label'),
+
+            // Key Industry Stats
+            stat_1_number: getFld('stat_1_number', '500+', 'Stat 1 Number'),
+            stat_1_label: getFld('stat_1_label', 'Ongoing AMC Contracts', 'Stat 1 Label'),
+            stat_1_sublabel: getFld('stat_1_sublabel', 'Across all business types', 'Stat 1 Sublabel'),
+            stat_2_number: getFld('stat_2_number', '99.9%', 'Stat 2 Number'),
+            stat_2_label: getFld('stat_2_label', 'Average Uptime', 'Stat 2 Label'),
+            stat_2_sublabel: getFld('stat_2_sublabel', 'Business systems managed', 'Stat 2 Sublabel'),
+            stat_3_number: getFld('stat_3_number', '30 mins', 'Stat 3 Number'),
+            stat_3_label: getFld('stat_3_label', 'Avg. Response', 'Stat 3 Label'),
+            stat_3_sublabel: getFld('stat_3_sublabel', 'Emergency support', 'Stat 3 Sublabel'),
+            stat_4_number: getFld('stat_4_number', '50%+', 'Stat 4 Number'),
+            stat_4_label: getFld('stat_4_label', 'Cost Savings', 'Stat 4 Label'),
+            stat_4_sublabel: getFld('stat_4_sublabel', 'Annual client savings', 'Stat 4 Sublabel'),
+
+            // AMC Plans Section
+            heading_4: getFld('heading_4', 'AMC PLANS', 'AMC Plans Section Heading'),
+            paragraph_2: getFld('paragraph_2', 'Short or long term—choose the AMC that fits your business. We handle everything for you!', 'AMC Plans Section Subtitle', 'richtext'),
+            plan_1_type: getFld('plan_1_type', 'Short Term AMC', 'Plan 1 Type Name'),
+            plan_1_duration: getFld('plan_1_duration', '1-6 Months', 'Plan 1 Duration'),
+            plan_1_title: getFld('plan_1_title', 'Quick Business & IT Support', 'Plan 1 Title'),
+            plan_1_subtitle: getFld('plan_1_subtitle', 'Immediate help for your business systems, software, POS, and more', 'Plan 1 Subtitle', 'richtext'),
+            plan_1_uptime: getFld('plan_1_uptime', '99.5%', 'Plan 1 Uptime SLA'),
+            plan_1_response: getFld('plan_1_response', '4 Hours', 'Plan 1 Response Time'),
+            plan_1_benefits: getFld('plan_1_benefits', 'Best for startups, shops, and urgent business needs', 'Plan 1 Benefits'),
+            plan_1_button_text: getFld('plan_1_button_text', 'Request Short Term AMC Consultation', 'Plan 1 Button Label'),
+            plan_1_feat_1: getFld('plan_1_feat_1', 'Rapid troubleshooting for business systems', 'Plan 1 Feature 1'),
+            plan_1_feat_2: getFld('plan_1_feat_2', 'Emergency support for POS, billing, and software', 'Plan 1 Feature 2'),
+            plan_1_feat_3: getFld('plan_1_feat_3', 'Software installation, updates & bug fixes', 'Plan 1 Feature 3'),
+            plan_1_feat_4: getFld('plan_1_feat_4', 'Basic preventive maintenance schedules', 'Plan 1 Feature 4'),
+            plan_1_feat_5: getFld('plan_1_feat_5', '24/7 technical support hotline', 'Plan 1 Feature 5'),
+            plan_1_feat_6: getFld('plan_1_feat_6', 'On-site visits for business operations (monthly)', 'Plan 1 Feature 6'),
+            plan_1_feat_7: getFld('plan_1_feat_7', 'System health monitoring reports', 'Plan 1 Feature 7'),
+
+            plan_2_type: getFld('plan_2_type', 'Long Term AMC', 'Plan 2 Type Name'),
+            plan_2_duration: getFld('plan_2_duration', '6 Months - 3 Years', 'Plan 2 Duration'),
+            plan_2_title: getFld('plan_2_title', 'Complete Business & IT Management', 'Plan 2 Title'),
+            plan_2_subtitle: getFld('plan_2_subtitle', 'We handle all your business operations, software, POS, and IT needs', 'Plan 2 Subtitle', 'richtext'),
+            plan_2_uptime: getFld('plan_2_uptime', '99.9%', 'Plan 2 Uptime SLA'),
+            plan_2_response: getFld('plan_2_response', '2 Hours', 'Plan 2 Response Time'),
+            plan_2_benefits: getFld('plan_2_benefits', 'Ideal for enterprises, retail, and those who want total peace of mind', 'Plan 2 Benefits'),
+            plan_2_button_text: getFld('plan_2_button_text', 'Request Long Term AMC Consultation', 'Plan 2 Button Label'),
+            plan_2_feat_1: getFld('plan_2_feat_1', 'Full system maintenance & upgrades', 'Plan 2 Feature 1'),
+            plan_2_feat_2: getFld('plan_2_feat_2', 'POS & billing software management', 'Plan 2 Feature 2'),
+            plan_2_feat_3: getFld('plan_2_feat_3', 'Regular check-ups for business operations', 'Plan 2 Feature 3'),
+            plan_2_feat_4: getFld('plan_2_feat_4', 'Software license management & renewals', 'Plan 2 Feature 4'),
+            plan_2_feat_5: getFld('plan_2_feat_5', 'Priority support & rapid issue resolution', 'Plan 2 Feature 5'),
+            plan_2_feat_6: getFld('plan_2_feat_6', 'Advanced monitoring & reporting dashboards', 'Plan 2 Feature 6'),
+            plan_2_feat_7: getFld('plan_2_feat_7', 'Dedicated account manager & technical team', 'Plan 2 Feature 7'),
+            plan_2_feat_8: getFld('plan_2_feat_8', 'Annual business technology consultation', 'Plan 2 Feature 8'),
+
+            // Why Choose AMC Section
+            heading_5: getFld('heading_5', 'WHY CHOOSE CROWN EXCEL AMC?', 'Why Choose AMC Heading'),
+            feature_1_title: getFld('feature_1_title', 'Business & IT Experts', 'Feature 1 Title'),
+            feature_1_desc: getFld('feature_1_desc', 'Specialists in business operations, POS, billing, and software management', 'Feature 1 Description', 'richtext'),
+            feature_1_metric: getFld('feature_1_metric', '200+ Certified Engineers', 'Feature 1 Metric'),
+
+            feature_2_title: getFld('feature_2_title', '24/7 Priority Support', 'Feature 2 Title'),
+            feature_2_desc: getFld('feature_2_desc', 'Round-the-clock help for any business, POS, or software issue', 'Feature 2 Description', 'richtext'),
+            feature_2_metric: getFld('feature_2_metric', '2-4 Hour Response', 'Feature 2 Metric'),
+
+            feature_3_title: getFld('feature_3_title', 'Proactive Monitoring', 'Feature 3 Title'),
+            feature_3_desc: getFld('feature_3_desc', 'Real-time tracking of business systems, POS, and software updates', 'Feature 3 Description', 'richtext'),
+            feature_3_metric: getFld('feature_3_metric', '99.9% Uptime Guarantee', 'Feature 3 Metric'),
+
+            feature_4_title: getFld('feature_4_title', 'Cost Optimization', 'Feature 4 Title'),
+            feature_4_desc: getFld('feature_4_desc', 'Reduce expenses and improve business efficiency with smart management', 'Feature 4 Description', 'richtext'),
+            feature_4_metric: getFld('feature_4_metric', '40% Cost Reduction', 'Feature 4 Metric'),
+
+            feature_5_title: getFld('feature_5_title', 'Rapid Deployment', 'Feature 5 Title'),
+            feature_5_desc: getFld('feature_5_desc', 'Quick setup and integration for your business and POS systems', 'Feature 5 Description', 'richtext'),
+            feature_5_metric: getFld('feature_5_metric', '24 Hour Setup', 'Feature 5 Metric'),
+
+            feature_6_title: getFld('feature_6_title', 'Security & Compliance', 'Feature 6 Title'),
+            feature_6_desc: getFld('feature_6_desc', 'We keep your business data and software secure and compliant', 'Feature 6 Description', 'richtext'),
+            feature_6_metric: getFld('feature_6_metric', '100% Compliant', 'Feature 6 Metric'),
+
+            // Coverage Areas Section
+            heading_6: getFld('heading_6', 'WHAT WE HANDLE FOR YOU', 'Coverage Section Heading'),
+            paragraph_3: getFld('paragraph_3', 'Hardware, software, support, and more—just hand over your IT work and be worry-free!', 'Coverage Section Subtitle', 'richtext'),
+            category_1_name: getFld('category_1_name', 'What We Manage', 'Category 1 Title'),
+            cat_1_item_1: getFld('cat_1_item_1', 'Business Operations', 'Cat 1 Item 1'),
+            cat_1_item_2: getFld('cat_1_item_2', 'POS & Billing Software', 'Cat 1 Item 2'),
+            cat_1_item_3: getFld('cat_1_item_3', 'Inventory & CRM Systems', 'Cat 1 Item 3'),
+            cat_1_item_4: getFld('cat_1_item_4', 'Cloud Services', 'Cat 1 Item 4'),
+            cat_1_item_5: getFld('cat_1_item_5', 'Software Licensing', 'Cat 1 Item 5'),
+            cat_1_item_6: getFld('cat_1_item_6', 'Data Backup & Security', 'Cat 1 Item 6'),
+            cat_1_item_7: getFld('cat_1_item_7', 'Multi-location Management', 'Cat 1 Item 7'),
+
+            category_2_name: getFld('category_2_name', 'Service Locations', 'Category 2 Title'),
+            cat_2_item_1: getFld('cat_2_item_1', 'On-site Support', 'Cat 2 Item 1'),
+            cat_2_item_2: getFld('cat_2_item_2', 'Remote Monitoring', 'Cat 2 Item 2'),
+            cat_2_item_3: getFld('cat_2_item_3', 'Multi-location Coverage', 'Cat 2 Item 3'),
+            cat_2_item_4: getFld('cat_2_item_4', 'Emergency Call-outs', 'Cat 2 Item 4'),
+            cat_2_item_5: getFld('cat_2_item_5', 'Planned Maintenance', 'Cat 2 Item 5'),
+
+            category_3_name: getFld('category_3_name', 'Industry Expertise', 'Category 3 Title'),
+            cat_3_item_1: getFld('cat_3_item_1', 'Retail & E-commerce', 'Cat 3 Item 1'),
+            cat_3_item_2: getFld('cat_3_item_2', 'Healthcare', 'Cat 3 Item 2'),
+            cat_3_item_3: getFld('cat_3_item_3', 'Manufacturing', 'Cat 3 Item 3'),
+            cat_3_item_4: getFld('cat_3_item_4', 'Financial Services', 'Cat 3 Item 4'),
+            cat_3_item_5: getFld('cat_3_item_5', 'Education', 'Cat 3 Item 5'),
+            cat_3_item_6: getFld('cat_3_item_6', 'Government', 'Cat 3 Item 6'),
+
+            // Bottom CTA Section
+            heading_7: getFld('heading_7', 'Be Worry-Free—Let Us Handle Everything!', 'Bottom CTA Heading'),
+            paragraph_4: getFld('paragraph_4', 'With Crown Excel AMC, you can focus on your business while we take care of all your hardware, software, and IT support. No stress, no downtime—just hand over your work and relax!', 'Bottom CTA Description', 'richtext'),
+            cta_benefit_1: getFld('cta_benefit_1', 'Full responsibility for your IT & hardware', 'CTA Benefit 1'),
+            cta_benefit_2: getFld('cta_benefit_2', 'Software management & updates', 'CTA Benefit 2'),
+            cta_benefit_3: getFld('cta_benefit_3', '24/7 support & rapid response', 'CTA Benefit 3'),
+            cta_button_1_text: getFld('cta_button_1_text', 'Start Free Assessment', 'CTA Button 1 Label'),
+            cta_button_2_text: getFld('cta_button_2_text', 'Contact Support', 'CTA Button 2 Label'),
+            cta_stat_1_number: getFld('cta_stat_1_number', '500+', 'CTA Overlay Stat 1 Number'),
+            cta_stat_1_label: getFld('cta_stat_1_label', 'Active Contracts', 'CTA Overlay Stat 1 Label'),
+            cta_stat_2_number: getFld('cta_stat_2_number', '24/7', 'CTA Overlay Stat 2 Number'),
+            cta_stat_2_label: getFld('cta_stat_2_label', 'Expert Support', 'CTA Overlay Stat 2 Label'),
+
+            ...empImgs,
+          };
+          if (sec.fields.image_empoweringimage) sec.fields.image_empoweringimage.label = 'Hero Feature Image (Network Empower)';
+          if (sec.fields.image_networkit) sec.fields.image_networkit.label = 'Bottom CTA Feature Image (Hardware Maintenance)';
+          if (sec.fields.image_dirham) sec.fields.image_dirham.label = 'Dirham Currency Symbol Icon';
+          if (sec.fields.image_itservice) sec.fields.image_itservice.label = 'Feature 1 Image (IT Service)';
+          if (sec.fields.image_support) sec.fields.image_support.label = 'Feature 2 Image (Support)';
+          if (sec.fields.image_proactive) sec.fields.image_proactive.label = 'Feature 3 Image (Proactive)';
+          if (sec.fields.image_cost) sec.fields.image_cost.label = 'Feature 4 Image (Cost)';
+          if (sec.fields.image_rapid) sec.fields.image_rapid.label = 'Feature 5 Image (Rapid)';
+          if (sec.fields.image_security) sec.fields.image_security.label = 'Feature 6 Image (Security)';
         }
 
         return sec;
@@ -908,6 +1072,7 @@ export async function POST(request) {
       finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
       finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
       finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
+      finalPath === '/our-services/long/short-term-amc' || path === '/our-services/long/short-term-amc' || routeId === '6a2016aba0608271b7524ea3' ||
       finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)
