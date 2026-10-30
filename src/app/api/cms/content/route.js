@@ -703,6 +703,115 @@ export async function GET(request) {
           if (sec.fields.image_dell) sec.fields.image_dell.label = 'Dell Brand Logo';
           if (sec.fields.image_background) sec.fields.image_background.label = 'Background Texture Graphic';
           if (sec.fields.image_eclipse) sec.fields.image_eclipse.label = 'Eclipse Accent Graphic';
+        } else if (sec.sectionId === 'manageditbanner') {
+          sec.sectionName = 'Hero Banner (Managed IT Infrastructure)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'IT Infrastructure & Managed Services', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'Our managed IT services offer 24/7 monitoring, proactive maintenance, patching and performance tuning to keep your systems secure and available, helping reduce downtime and operational risk.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+        } else if (sec.sectionId === 'manageditsmart') {
+          sec.sectionName = 'Infrastructure Core, Services & Partners';
+          const smartImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) smartImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) smartImgs[k] = { ...smartImgs[k], ...v };
+          }
+          sec.fields = {
+            // Hero Subsection
+            heading: getFld('heading', 'IT.', 'Hero Accent Title (Top)'),
+            heading_2: getFld('heading_2', 'Infrastructure', 'Hero Main Title'),
+            paragraph: getFld('paragraph', 'Excellence Redefined', 'Hero Subtitle'),
+            paragraph_2: getFld('paragraph_2', 'Revolutionary IT infrastructure management combining cutting-edge technology, enterprise security, and 24/7 operational excellence for unstoppable business growth.', 'Hero Description Card', 'richtext'),
+            button_1_text: getFld('button_1_text', 'Transform My Infrastructure', 'Primary CTA Button Label'),
+            button_1_link: getFld('button_1_link', '/contact-us', 'Primary CTA Button Link', 'url'),
+            button_2_text: getFld('button_2_text', 'Watch Demo', 'Secondary Button Label'),
+
+            // Core Infrastructure Subsection
+            heading_3: getFld('heading_3', 'CORE INFRASTRUCTURE', 'Core Infrastructure Heading'),
+            paragraph_3: getFld('paragraph_3', 'Six pillars of excellence forming the foundation of modern enterprise infrastructure', 'Core Infrastructure Subtitle', 'richtext'),
+
+            // 6 Pillars
+            pillar_1_title: getFld('pillar_1_title', 'Server Infrastructure', 'Pillar 1 Title'),
+            pillar_1_desc: getFld('pillar_1_desc', 'Enterprise-grade server solutions with high availability, load balancing, and redundancy for mission-critical applications.', 'Pillar 1 Description', 'richtext'),
+            pillar_1_metric: getFld('pillar_1_metric', '99.9%', 'Pillar 1 Metric Value'),
+            pillar_1_metric_label: getFld('pillar_1_metric_label', 'Uptime', 'Pillar 1 Metric Label'),
+
+            pillar_2_title: getFld('pillar_2_title', 'Network Infrastructure', 'Pillar 2 Title'),
+            pillar_2_desc: getFld('pillar_2_desc', 'Robust network architecture design with advanced security, optimal performance, and seamless connectivity across all locations.', 'Pillar 2 Description', 'richtext'),
+            pillar_2_metric: getFld('pillar_2_metric', '24/7', 'Pillar 2 Metric Value'),
+            pillar_2_metric_label: getFld('pillar_2_metric_label', 'Monitoring', 'Pillar 2 Metric Label'),
+
+            pillar_3_title: getFld('pillar_3_title', 'Storage Solutions', 'Pillar 3 Title'),
+            pillar_3_desc: getFld('pillar_3_desc', 'Scalable storage systems with automated backup, disaster recovery, and data protection for business continuity.', 'Pillar 3 Description', 'richtext'),
+            pillar_3_metric: getFld('pillar_3_metric', '100%', 'Pillar 3 Metric Value'),
+            pillar_3_metric_label: getFld('pillar_3_metric_label', 'Data Security', 'Pillar 3 Metric Label'),
+
+            pillar_4_title: getFld('pillar_4_title', 'Virtualization', 'Pillar 4 Title'),
+            pillar_4_desc: getFld('pillar_4_desc', 'Complete virtualization solutions to maximize resource utilization, reduce costs, and improve system flexibility.', 'Pillar 4 Description', 'richtext'),
+            pillar_4_metric: getFld('pillar_4_metric', '60%', 'Pillar 4 Metric Value'),
+            pillar_4_metric_label: getFld('pillar_4_metric_label', 'Cost Savings', 'Pillar 4 Metric Label'),
+
+            pillar_5_title: getFld('pillar_5_title', 'Security Infrastructure', 'Pillar 5 Title'),
+            pillar_5_desc: getFld('pillar_5_desc', 'Multi-layered security framework protecting your IT assets from cyber threats and ensuring compliance.', 'Pillar 5 Description', 'richtext'),
+            pillar_5_metric: getFld('pillar_5_metric', 'Zero', 'Pillar 5 Metric Value'),
+            pillar_5_metric_label: getFld('pillar_5_metric_label', 'Breaches', 'Pillar 5 Metric Label'),
+
+            pillar_6_title: getFld('pillar_6_title', 'Monitoring & Management', 'Pillar 6 Title'),
+            pillar_6_desc: getFld('pillar_6_desc', '24/7 proactive monitoring with real-time alerts, performance optimization, and automated maintenance.', 'Pillar 6 Description', 'richtext'),
+            pillar_6_metric: getFld('pillar_6_metric', '15min', 'Pillar 6 Metric Value'),
+            pillar_6_metric_label: getFld('pillar_6_metric_label', 'Response Time', 'Pillar 6 Metric Label'),
+
+            // Management Cycle Subsection
+            heading_4: getFld('heading_4', 'MANAGEMENT CYCLE', 'Management Cycle Heading'),
+            cycle_center_1: getFld('cycle_center_1', 'IT', 'Cycle Center Top Word'),
+            cycle_center_2: getFld('cycle_center_2', 'EXCELLENCE', 'Cycle Center Bottom Word'),
+            phase_1_name: getFld('phase_1_name', 'ACCESS', 'Phase 1 Name'),
+            phase_1_title: getFld('phase_1_title', 'Infrastructure Analysis', 'Phase 1 Title'),
+            phase_2_name: getFld('phase_2_name', 'PLAN', 'Phase 2 Name'),
+            phase_2_title: getFld('phase_2_title', 'Strategic Roadmap', 'Phase 2 Title'),
+            phase_3_name: getFld('phase_3_name', 'DEPLOY', 'Phase 3 Name'),
+            phase_3_title: getFld('phase_3_title', 'Implementation', 'Phase 3 Title'),
+            phase_4_name: getFld('phase_4_name', 'MANAGE', 'Phase 4 Name'),
+            phase_4_title: getFld('phase_4_title', 'Ongoing Support', 'Phase 4 Title'),
+
+            // Split CTA Subsection
+            heading_5: getFld('heading_5', 'Ready to Transform?', 'Transform CTA Heading'),
+            paragraph_4: getFld('paragraph_4', 'Join the infrastructure revolution with enterprise-grade solutions that scale with your ambitions.', 'Transform CTA Description', 'richtext'),
+            cta_1_button_text: getFld('cta_1_button_text', 'Start Revolution', 'Transform CTA Button Label'),
+            cta_1_button_link: getFld('cta_1_button_link', '/contact-us', 'Transform CTA Button Link', 'url'),
+
+            heading_6: getFld('heading_6', 'Need Consultation?', 'Consultation CTA Heading'),
+            paragraph_5: getFld('paragraph_5', 'Expert guidance for complex infrastructure challenges and strategic technology decisions.', 'Consultation CTA Description', 'richtext'),
+            cta_2_button_text: getFld('cta_2_button_text', 'Book Consultation', 'Consultation CTA Button Label'),
+            cta_2_button_link: getFld('cta_2_button_link', '/our-services', 'Consultation CTA Button Link', 'url'),
+
+            // Technology Partners Subsection
+            heading_7: getFld('heading_7', 'Technology Partners', 'Technology Partners Heading'),
+            paragraph_6: getFld('paragraph_6', 'We work with industry-leading technology partners to deliver best-in-class solutions', 'Technology Partners Subtitle', 'richtext'),
+
+            // Partner & feature images
+            ...smartImgs,
+          };
+          if (sec.fields.image_networkingsmartimage) sec.fields.image_networkingsmartimage.label = 'Hero Feature Image (Networking Smart)';
+          if (sec.fields.image_signaltower) sec.fields.image_signaltower.label = 'Hero Signal Tower Icon';
+          if (sec.fields.image_server) sec.fields.image_server.label = 'Pillar 1 Image (Server)';
+          if (sec.fields.image_network) sec.fields.image_network.label = 'Pillar 2 Image (Network)';
+          if (sec.fields.image_storage) sec.fields.image_storage.label = 'Pillar 3 Image (Storage)';
+          if (sec.fields.image_virtualization) sec.fields.image_virtualization.label = 'Pillar 4 Image (Virtualization)';
+          if (sec.fields.image_security) sec.fields.image_security.label = 'Pillar 5 Image (Security)';
+          if (sec.fields.image_monitoring) sec.fields.image_monitoring.label = 'Pillar 6 Image (Monitoring)';
         }
 
         return sec;
@@ -798,6 +907,7 @@ export async function POST(request) {
       finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94' ||
       finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
       finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
+      finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
       finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)
