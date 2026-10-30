@@ -268,3 +268,92 @@
   border-bottom: none !important;
 }
 
+/* ==========================================================================
+   Blog Image Styling, Text-Wrapping & Independent Positioning
+   ========================================================================== */
+
+.prose img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.5rem;
+  clear: both !important; /* Never overlaps or collides with preceding images */
+}
+
+/* Left-aligned image with text wrapping */
+.prose img[style*="float: left"] {
+  float: left !important;
+  display: block !important;
+  margin-right: 2.25rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-left: 0 !important;
+  max-width: calc(100% - 2.5rem) !important;
+  clear: both !important;
+}
+
+/* Right-aligned image with text wrapping */
+.prose img[style*="float: right"] {
+  float: right !important;
+  display: block !important;
+  margin-left: 2.25rem !important;
+  margin-bottom: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-right: 0 !important;
+  max-width: calc(100% - 2.5rem) !important;
+  clear: both !important;
+}
+
+/* Left-aligned block image (Wrap OFF: full-width break) */
+.prose img[style*="margin-right: auto"]:not([style*="margin-left: auto"]):not([style*="float: left"]),
+.prose img[style*="margin-left: 0"]:not([style*="float: left"]),
+.prose img[style*="margin-left: 0px"]:not([style*="float: left"]) {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  clear: both !important;
+  float: none !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Center-aligned block image */
+.prose img[style*="margin-left: auto"][style*="margin-right: auto"],
+.prose img[style*="margin: 0px auto"],
+.prose img[style*="margin: 1rem auto"],
+.prose img[style*="margin: 1.25rem auto"],
+.prose img[style*="margin: 1.5rem auto"] {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  clear: both !important;
+  float: none !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Right-aligned block image (Wrap OFF: full-width break) */
+.prose img[style*="margin-left: auto"][style*="margin-right: 0"]:not([style*="float: right"]),
+.prose img[style*="margin-left: auto"][style*="margin-right: 0px"]:not([style*="float: right"]) {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  clear: both !important;
+  float: none !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Headings, tables, and horizontal rules always clear floats and return to full width */
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+.prose table, .blog-table-container, .prose hr {
+  clear: both !important;
+}
+
+/* Clearfix for blog content prose container */
+.prose::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
