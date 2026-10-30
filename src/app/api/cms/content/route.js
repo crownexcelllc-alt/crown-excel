@@ -188,7 +188,8 @@ export async function GET(request) {
         const dbSec = existingSections.find(
           s => s.sectionId === parsedSec.sectionId || 
                s.sectionName?.toLowerCase() === parsedSec.sectionName?.toLowerCase() ||
-               (parsedSec.sectionId === 'smartsolutions' && (s.sectionId === 'hero' || s.sectionName?.toLowerCase().includes('hero')))
+               (parsedSec.sectionId === 'smartsolutions' && (s.sectionId === 'hero' || s.sectionName?.toLowerCase().includes('hero'))) ||
+               ((parsedSec.sectionId === 'directormessage' || parsedSec.sectionId === 'main') && (s.sectionId === 'directormessage' || s.sectionId === 'main'))
         );
 
         if (dbSec && dbSec.fields) {
@@ -478,6 +479,27 @@ export async function GET(request) {
             faq_4_a: getFld('faq_4_a', 'Yes. We provide comprehensive export services including daily road and air cargo dispatch to Saudi Arabia (Riyadh, Jeddah, Dammam), Oman, Qatar, Bahrain, Kuwait, and African markets with complete customs documentation, COO, and export packing.', 'FAQ 4 Answer', 'richtext'),
             faq_5_q: getFld('faq_5_q', 'What payment terms are available for corporate and reseller accounts?', 'FAQ 5 Question'),
             faq_5_a: getFld('faq_5_a', 'We accept wire transfers (AED/USD), corporate cheques (PDC), company credit cards, and cash on delivery for established clients. Formal corporate credit facilities (30-day billing) are available for verified businesses subject to credit assessment.', 'FAQ 5 Answer', 'richtext')
+          };
+        } else if (sec.sectionId === 'directormessage' || sec.sectionId === 'main') {
+          sec.sectionName = "Director's Message";
+          sec.fields = {
+            heading: getFld('heading', "Director's Message", "Main Page Heading (h1)", 'text'),
+            image_director: {
+              type: 'image',
+              value: dbSec?.fields?.image_director?.value || dbSec?.fields?.image?.value || "@/Components/Images/director.png",
+              originalValue: "@/Components/Images/director.png",
+              varName: 'director',
+              isImport: true,
+              label: "Director's Photo"
+            },
+            paragraph: getFld('paragraph', "Together, let’s embrace technology and build a better tomorrow.", "Subheading / Quote", 'richtext'),
+            paragraph_2: getFld('paragraph_2', "At Crown Excel General Trading LLC, our journey has always been guided by innovation, integrity, and an unwavering commitment to excellence. From our humble beginnings in 2009, in one of the world’s most vibrant and adaptable modern hubs, we embarked on our mission. Today, after two decades, we have grown into a trusted name in the market, it was never been easy or not by chance, but through a clear vision and relentless dedication to delivering value to our customers and partners and I believe if we do our best, we will surely get success by the grace of Allah.", "Story & Mission (Paragraph 1)", 'richtext'),
+            paragraph_3: getFld('paragraph_3', "I still remember the early days when we started with just a few products and limited experience. By the grace of the Almighty, today we proudly offer a wide range of products and services to meet the diverse needs of our customers and clients. Our mission goes far beyond products; we strive to build lasting relationships, provide tailored IT and business solutions, and contribute to the sustainable growth of the communities we serve. In today’s fast-paced and ever-changing world, adaptability is our strength, and customer satisfaction is our ultimate reward.", "Company Growth & Purpose (Paragraph 2)", 'richtext'),
+            paragraph_4: getFld('paragraph_4', "I believe in empowering our team, fostering a culture of trust, and embracing emerging technologies to stay ahead. As we look to the future, we will continue to expand our horizons, explore new markets, and enhance our services to meet the evolving needs of our clients.", "Team & Future Vision (Paragraph 3)", 'richtext'),
+            paragraph_5: getFld('paragraph_5', "Together, with the dedication of our people and the trust of our partners, we will not just keep pace with change — we will lead it.", "Closing Statement (Paragraph 4)", 'richtext'),
+            paragraph_6: getFld('paragraph_6', "Muhammad Qais", "Managing Director Name", 'text'),
+            paragraph_7: getFld('paragraph_7', "Managing Director & CEO", "Executive Designation", 'text'),
+            paragraph_8: getFld('paragraph_8', "Crown Excel General Trading LLC", "Company Name", 'text'),
           };
         }
 
