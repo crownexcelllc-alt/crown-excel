@@ -11,36 +11,45 @@ const Contactus = dynamic(() => import("./Contactus/Contactus"));
 const Globe = dynamic(() => import("./Globe/Globe"));
 
 function Page({ cmsContent }) {
-  const heroSection = cmsContent?.sections?.smartsolutions || cmsContent?.sections?.hero;
-  const allProductsSection = cmsContent?.sections?.allproducts;
+  const sections = cmsContent?.sections || {};
+  const heroSection = sections.smartsolutions || sections.hero;
+  const trustedPartnerSection = sections.trustedpartner;
+  const servicesSection = sections.services;
+  const allProductsSection = sections.allproducts;
+  const brandsSection = sections.brands;
+  const occasionsSection = sections.occasions;
+  const testimonialsSection = sections.testimonials;
+  const contactusSection = sections.contactus;
+  const globeSection = sections.globe;
+
   return (
     <main className="bg-gray-50 min-h-screen flex flex-col">
       <section>
-        <SmartSolutions cmsHero={heroSection} />
+        <SmartSolutions cmsHero={heroSection} cmsData={heroSection} />
       </section>
       <section>
-        <TrustedPartner />
+        <TrustedPartner cmsData={trustedPartnerSection} />
       </section>
       <section>
-        <Services />
+        <Services cmsData={servicesSection} />
       </section>
       <section>
-        <AllProducts cmsCatalog={allProductsSection} />
+        <AllProducts cmsCatalog={allProductsSection} cmsData={allProductsSection} />
       </section>
       <section>
-        <Brands />
+        <Brands cmsData={brandsSection} />
       </section>
       <section>
-        <Occasions />
+        <Occasions cmsData={occasionsSection} />
       </section>
       <section>
-        <Testimonials />
+        <Testimonials cmsData={testimonialsSection} />
       </section>
       <section>
-        <Contactus />
+        <Contactus cmsData={contactusSection} />
       </section>
       <section>
-        <Globe />
+        <Globe cmsData={globeSection} />
       </section>
     </main>
   );

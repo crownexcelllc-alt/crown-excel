@@ -7,7 +7,10 @@ import { FaWhatsapp } from 'react-icons/fa';
 import ContactFormPopup from '@/Components/ContactFormPopup/ContactFormPopup';
 import { categories, categoryPages, productsByCategory } from './catalogData';
 
-const AllProducts = ({ cmsCatalog }) => {
+import { safeRender } from '@/lib/safe-html';
+
+const AllProducts = ({ cmsCatalog, cmsData }) => {
+    const catalog = cmsCatalog || cmsData;
     const [active, setActive] = useState(categories[0].slug);
     const [showContactPopup, setShowContactPopup] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -18,8 +21,8 @@ const AllProducts = ({ cmsCatalog }) => {
     };
 
     // Selected products mapping from CMS admin panel
-    const selectedProductsMap = cmsCatalog?.fields?.selected_products?.value || 
-                                cmsCatalog?.fields?.selected_products || {};
+    const selectedProductsMap = catalog?.fields?.selected_products?.value || 
+                                catalog?.fields?.selected_products || {};
 
     const selectedTitles = selectedProductsMap[active];
     let activeProducts = [];
@@ -37,14 +40,14 @@ const AllProducts = ({ cmsCatalog }) => {
 
     const activeCategory = categories.find((c) => c.slug === active);
     const activeCategoryPage = categoryPages[active] || '/products/laptops';
-    const sectionHeading = cmsCatalog?.fields?.heading || cmsCatalog?.fields?.heading_2 || 'Our Product Catalog';
+    const sectionHeading = catalog?.fields?.heading || catalog?.fields?.heading_2 || catalog?.heading || 'Our Product Catalog';
 
     return (
         <div className="w-full bg-[#FFFFFF] overflow-hidden">
             <section id="product-catalog" className="product-catalog-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] py-8 font-montserrat overflow-hidden">
                 {/* Filter Buttons Header - Exactly as existing design */}
                 <div className="links-tab py-6 text-center">
-                <h2 className="text-2xl font-bold text-green-900 mb-4">{sectionHeading || 'Our Product Catalog'}</h2>
+                <h2 className="text-2xl font-bold text-green-900 mb-4">{safeRender(sectionHeading, 'Our Product Catalog')}</h2>
                 <div className="flex flex-wrap justify-center gap-2 px-1">
                     {categories.map((item, index) => (
                         <button

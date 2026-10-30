@@ -11,6 +11,7 @@ import TestimonialCard from "./TestimonialCard"
 import user1 from "../../../Components/Images/user1.jpg"
 import user2 from "../../../Components/Images/user2.jpg"
 import user3 from "../../../Components/Images/user3.jpg"
+import { safeRender } from "@/lib/safe-html"
 
 const sampleTestimonials = [
   {
@@ -43,8 +44,13 @@ const sampleTestimonials = [
   },
 ]
 
-export default function Testimonials() {
+export default function Testimonials({ cmsData }) {
   const [reviews, setReviews] = useState(sampleTestimonials)
+  const fields = cmsData?.fields || cmsData || {}
+  const heading = fields.heading
+  const heading2 = fields.heading_2
+  const paragraph = fields.paragraph
+  const paragraph2 = fields.paragraph_2
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -69,16 +75,20 @@ export default function Testimonials() {
       <section id="testimonials" className="testimonials-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="text-center mb-12">
         <div className="inline-block bg-gradient-to-r from-[#16CA9A] to-[#084032] bg-clip-text text-transparent">
-          <h2 className="text-4xl font-montserrat font-bold mb-4 text-[#084032]">What Our Clients Say</h2>
+          <h2 className="text-4xl font-montserrat font-bold mb-4 text-[#084032]">
+            {safeRender(heading, "What Our Clients Say")}
+          </h2>
         </div>
         <p className="text-xl text-[#084032] max-w-2xl mx-auto mb-0 font-montserrat">
-          Don&apos;t just take our word for it. Here&apos;s what our satisfied customers have to say about their experience.
+          {safeRender(paragraph, "Don't just take our word for it. Here's what our satisfied customers have to say about their experience.")}
         </p>
 
         <div className="flex flex-col items-center justify-center space-y-4 mb-[-37]">
           <div className="rounded-lg p-6 max-w-sm mx-auto">
             <div className="text-center">
-              <h3 className="text-2xl leading-[24px] font-semibold text-black mb-2">Excellent</h3>
+              <h3 className="text-2xl leading-[24px] font-semibold text-black mb-2">
+                {safeRender(heading2, "Excellent")}
+              </h3>
               <div className="flex justify-center mb-2">
                 <div className="flex space-x-1" aria-label="4.5 out of 5 stars">
                   {[1, 2, 3, 4].map((star) => (
@@ -88,7 +98,7 @@ export default function Testimonials() {
                 </div>
               </div>
               <p className="text-gray-600 mb-3">
-                Based on <span className="font-bold">500+ Reviews</span>
+                {safeRender(paragraph2, <>Based on <span className="font-bold">500+ Reviews</span></>)}
               </p>
               <div className="flex items-center justify-center" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 92" width="80px">

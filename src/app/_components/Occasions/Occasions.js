@@ -26,12 +26,28 @@ const occasions = [
   }
 ]
 
-const Occasions = () => {
+import { safeRender } from '@/lib/safe-html';
+
+const Occasions = ({ cmsData }) => {
+  let heading = cmsData?.fields?.heading || cmsData?.heading;
+  if (typeof heading === 'object' && heading?.value !== undefined) {
+    heading = heading.value;
+  }
+  // Ensure the heading displays on exactly 2 lines as originally designed
+  if (typeof heading === 'string' && heading.replace(/\s+/g, ' ').trim() === 'Transforming Occasions into Great Memories') {
+    heading = 'Transforming Occasions <br /> into Great Memories';
+  }
+  const defaultHeading = (
+    <>
+      Transforming Occasions <br /> into Great Memories
+    </>
+  );
+
   return (
     <div className="w-full bg-[#FFFFFF] overflow-hidden">
       <section id="occasions" className="occasions-section relative w-full max-w-[1536px] mx-auto bg-[#F9FAFB] flex flex-col items-center pt-12 pb-12 overflow-hidden">
-        <h2 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8">
-          Transforming Occasions <br /> into Great Memories
+        <h2 className="text-[25px] lg:text-[47px] font-[600] text-black text-center font-sans leading-[30px] lg:leading-[47px] font-montserrat mb-8 max-w-[640px] mx-auto">
+          {safeRender(heading, defaultHeading)}
         </h2>
         <div className={`grid gap-6 md:gap-3 w-full max-w-7xl px-6 md:px-35 ${occasions.length === 1 ? 'grid-cols-1' : occasions.length === 2 ? 'grid-cols-1 md:grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
         {occasions.map((item, idx) => (
