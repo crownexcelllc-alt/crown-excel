@@ -115,6 +115,58 @@
 }
 
 /* ==========================================================================
+   Links & Hyperlinks Styling (Text, Headings, Lists, Images)
+   ========================================================================== */
+
+.prose a {
+  color: #084032;
+  text-decoration: underline;
+  text-decoration-color: rgba(8, 64, 50, 0.4);
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  cursor: pointer;
+}
+
+.prose a:hover {
+  color: #00a63e;
+  text-decoration-color: #00a63e;
+}
+
+/* Headings with links retain heading weight and inherit heading color */
+.prose h1 a, .prose h2 a, .prose h3 a,
+.prose h4 a, .prose h5 a, .prose h6 a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  text-decoration-color: #084032 !important;
+}
+
+.prose h1 a:hover, .prose h2 a:hover, .prose h3 a:hover,
+.prose h4 a:hover, .prose h5 a:hover, .prose h6 a:hover {
+  color: #00a63e !important;
+  text-decoration-color: #00a63e !important;
+}
+
+/* Image Link Wrapper:
+   Using display: contents so the <a> tag generates no box and causes ZERO interference
+   with image float, alignment, margins, text wrapping, and spacing! */
+.prose a.blog-image-link,
+.prose a:has(> img) {
+  display: contents !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.prose a img {
+  cursor: pointer;
+}
+
+.prose a:hover img {
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+/* ==========================================================================
    Blog Table Styling & Mobile Responsiveness
    ========================================================================== */
 

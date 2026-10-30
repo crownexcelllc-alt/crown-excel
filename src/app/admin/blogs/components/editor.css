@@ -108,6 +108,64 @@
 }
 
 /* ==========================================================================
+   Links & Hyperlinks Styling in Rich Text Editor
+   ========================================================================== */
+
+.prose a, [contenteditable].prose a {
+  color: #084032;
+  text-decoration: underline;
+  text-decoration-color: rgba(8, 64, 50, 0.4);
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  cursor: pointer;
+}
+
+.prose a:hover, [contenteditable].prose a:hover {
+  color: #00a63e;
+  text-decoration-color: #00a63e;
+}
+
+/* Headings with links retain heading weight and inherit heading color */
+.prose h1 a, [contenteditable].prose h1 a,
+.prose h2 a, [contenteditable].prose h2 a,
+.prose h3 a, [contenteditable].prose h3 a,
+.prose h4 a, [contenteditable].prose h4 a,
+.prose h5 a, [contenteditable].prose h5 a,
+.prose h6 a, [contenteditable].prose h6 a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  text-decoration-color: #084032 !important;
+}
+
+.prose h1 a:hover, [contenteditable].prose h1 a:hover,
+.prose h2 a:hover, [contenteditable].prose h2 a:hover,
+.prose h3 a:hover, [contenteditable].prose h3 a:hover,
+.prose h4 a:hover, [contenteditable].prose h4 a:hover,
+.prose h5 a:hover, [contenteditable].prose h5 a:hover,
+.prose h6 a:hover, [contenteditable].prose h6 a:hover {
+  color: #00a63e !important;
+  text-decoration-color: #00a63e !important;
+}
+
+/* Image Link Wrapper:
+   Using display: contents so the <a> tag generates no box and causes ZERO interference
+   with image float, alignment, margins, text wrapping, and spacing! */
+.prose a.blog-image-link,
+[contenteditable].prose a.blog-image-link,
+.prose a:has(> img),
+[contenteditable].prose a:has(> img) {
+  display: contents !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.prose a img,
+[contenteditable].prose a img {
+  cursor: pointer;
+}
+
+/* ==========================================================================
    Blog Table Styling in Rich Text Editor
    ========================================================================== */
 

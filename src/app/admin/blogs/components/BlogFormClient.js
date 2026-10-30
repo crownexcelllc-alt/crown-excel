@@ -18,6 +18,10 @@ import {
   Minus,
   Plus,
   WrapText,
+  Link as LinkIcon,
+  Link2,
+  Unlink,
+  ExternalLink,
 } from 'lucide-react';
 import './editor.css';
 
@@ -72,6 +76,16 @@ export default function BlogFormClient({
   const [imageEditWidth, setImageEditWidth] = useState('100%');
   const [imageEditAlign, setImageEditAlign] = useState('center');
   const [imageEditWrap, setImageEditWrap] = useState(true);
+  const [imageEditLink, setImageEditLink] = useState('');
+  const [imageEditLinkNewTab, setImageEditLinkNewTab] = useState(true);
+
+  // Link Modal states (for text and images)
+  const [showLinkModal, setShowLinkModal] = useState(false);
+  const [linkUrl, setLinkUrl] = useState('');
+  const [linkText, setLinkText] = useState('');
+  const [linkOpenNewTab, setLinkOpenNewTab] = useState(true);
+  const [isLinkingImage, setIsLinkingImage] = useState(false);
+  const [activeLinkNode, setActiveLinkNode] = useState(null);
 
   const editorRef = useRef(null);
   const toolbarRef = useRef(null);
@@ -217,6 +231,16 @@ export default function BlogFormClient({
     setImageEditSrc(imgNode.getAttribute('src') || '');
     setImageEditAlt(imgNode.getAttribute('alt') || '');
 
+    // Detect if image is currently wrapped inside an anchor link
+    const parentA = imgNode.closest('a');
+    if (parentA) {
+      setImageEditLink(parentA.getAttribute('href') || '');
+      setImageEditLinkNewTab(parentA.getAttribute('target') === '_blank');
+    } else {
+      setImageEditLink('');
+      setImageEditLinkNewTab(true);
+    }
+
     // Detect current width
     const currentWidth = imgNode.style.width || imgNode.getAttribute('width') || '100%';
     setImageEditWidth(currentWidth || '100%');
@@ -316,7 +340,12 @@ export default function BlogFormClient({
   // Delete / Remove Image
   const handleDeleteSelectedImage = () => {
     if (!selectedImageNode) return;
-    selectedImageNode.remove();
+    const parentA = selectedImageNode.closest('a');
+    if (parentA && parentA.childNodes.length === 1) {
+      parentA.remove();
+    } else {
+      selectedImageNode.remove();
+    }
     deselectImage();
     handleEditorChange();
     if (showImageEditModal) setShowImageEditModal(false);
@@ -431,6 +460,23 @@ export default function BlogFormClient({
     setTimeout(() => updateToolbarPosition(selectedImageNode), 20);
   };
 
+  // Helper to ensure clean URLs with protocol
+  const cleanLinkUrl = (raw) => {
+    const trimmed = (raw || '').trim();
+    if (!trimmed) return '';
+    if (
+      trimmed.startsWith('http://') ||
+      trimmed.startsWith('https://') ||
+      trimmed.startsWith('mailto:') ||
+      trimmed.startsWith('tel:') ||
+      trimmed.startsWith('/') ||
+      trimmed.startsWith('#')
+    ) {
+      return trimmed;
+    }
+    return `https://${trimmed}`;
+  };
+
   // Save Changes from Image Edit Modal
   const handleSaveImageModal = (e) => {
     e?.preventDefault();
@@ -443,6 +489,35 @@ export default function BlogFormClient({
       selectedImageNode.setAttribute('alt', imageEditAlt);
     } else {
       selectedImageNode.removeAttribute('alt');
+    }
+
+    // Save Image Link Destination
+    const cleanedImgLink = cleanLinkUrl(imageEditLink);
+    let parentA = selectedImageNode.closest('a');
+    if (cleanedImgLink) {
+      if (parentA) {
+        parentA.setAttribute('href', cleanedImgLink);
+        if (imageEditLinkNewTab) {
+          parentA.setAttribute('target', '_blank');
+          parentA.setAttribute('rel', 'noopener noreferrer');
+        } else {
+          parentA.removeAttribute('target');
+          parentA.removeAttribute('rel');
+        }
+      } else {
+        const a = document.createElement('a');
+        a.setAttribute('href', cleanedImgLink);
+        a.className = 'blog-image-link';
+        if (imageEditLinkNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+        selectedImageNode.parentNode.insertBefore(a, selectedImageNode);
+        a.appendChild(selectedImageNode);
+      }
+    } else if (parentA) {
+      parentA.parentNode.insertBefore(selectedImageNode, parentA);
+      parentA.remove();
     }
 
     if (imageEditWidth === 'auto') {
@@ -459,9 +534,207 @@ export default function BlogFormClient({
     setTimeout(() => updateToolbarPosition(selectedImageNode), 30);
   };
 
+  // Open Link Modal from Top Toolbar (for text selection or selected image)
+  const handleOpenTopToolbarLink = (e) => {
+    e?.preventDefault();
+    if (selectedImageNode) {
+      handleOpenImageLinkModal();
+      return;
+    }
+
+    saveSelection();
+    if (typeof window === 'undefined') return;
+    const sel = window.getSelection();
+    let existingA = null;
+    let selectedStr = '';
+
+    if (sel && sel.rangeCount > 0) {
+      const range = sel.getRangeAt(0);
+      selectedStr = range.toString().trim();
+      let node = range.commonAncestorContainer;
+      if (node.nodeType === 3) node = node.parentNode;
+      existingA = node ? node.closest('a') : null;
+    }
+
+    if (existingA) {
+      setActiveLinkNode(existingA);
+      setLinkUrl(existingA.getAttribute('href') || '');
+      setLinkText(existingA.textContent || '');
+      setLinkOpenNewTab(existingA.getAttribute('target') === '_blank');
+    } else {
+      setActiveLinkNode(null);
+      setLinkUrl('');
+      setLinkText(selectedStr);
+      setLinkOpenNewTab(true);
+    }
+
+    setIsLinkingImage(false);
+    setShowLinkModal(true);
+  };
+
+  // Open Link Modal directly for the currently selected image
+  const handleOpenImageLinkModal = () => {
+    if (!selectedImageNode) return;
+    const parentA = selectedImageNode.closest('a');
+    if (parentA) {
+      setActiveLinkNode(parentA);
+      setLinkUrl(parentA.getAttribute('href') || '');
+      setLinkOpenNewTab(parentA.getAttribute('target') === '_blank');
+    } else {
+      setActiveLinkNode(null);
+      setLinkUrl('');
+      setLinkOpenNewTab(true);
+    }
+    setLinkText('');
+    setIsLinkingImage(true);
+    setShowLinkModal(true);
+  };
+
+  // Apply Link (Text or Image)
+  const handleApplyLink = (e) => {
+    e?.preventDefault();
+    const finalUrl = cleanLinkUrl(linkUrl);
+    if (!finalUrl) {
+      alert('Please enter a destination URL');
+      return;
+    }
+
+    if (isLinkingImage && selectedImageNode) {
+      let a = selectedImageNode.closest('a');
+      if (a) {
+        a.setAttribute('href', finalUrl);
+        if (linkOpenNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        } else {
+          a.removeAttribute('target');
+          a.removeAttribute('rel');
+        }
+      } else {
+        a = document.createElement('a');
+        a.setAttribute('href', finalUrl);
+        a.className = 'blog-image-link';
+        if (linkOpenNewTab) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+        selectedImageNode.parentNode.insertBefore(a, selectedImageNode);
+        a.appendChild(selectedImageNode);
+      }
+      setImageEditLink(finalUrl);
+      setImageEditLinkNewTab(linkOpenNewTab);
+      handleEditorChange();
+      setShowLinkModal(false);
+      setTimeout(() => updateToolbarPosition(selectedImageNode), 20);
+      return;
+    }
+
+    // Text / Content Element Linking
+    if (activeLinkNode) {
+      activeLinkNode.setAttribute('href', finalUrl);
+      if (linkOpenNewTab) {
+        activeLinkNode.setAttribute('target', '_blank');
+        activeLinkNode.setAttribute('rel', 'noopener noreferrer');
+      } else {
+        activeLinkNode.removeAttribute('target');
+        activeLinkNode.removeAttribute('rel');
+      }
+      if (linkText && linkText.trim() && linkText !== activeLinkNode.textContent) {
+        activeLinkNode.textContent = linkText;
+      }
+      handleEditorChange();
+      setShowLinkModal(false);
+      return;
+    }
+
+    restoreSelection();
+    if (typeof window !== 'undefined') {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        const range = sel.getRangeAt(0);
+
+        if (range.collapsed) {
+          const a = document.createElement('a');
+          a.setAttribute('href', finalUrl);
+          a.textContent = linkText.trim() || finalUrl;
+          if (linkOpenNewTab) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+          }
+          range.insertNode(a);
+          range.setStartAfter(a);
+          range.setEndAfter(a);
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } else {
+          document.execCommand('createLink', false, finalUrl);
+          if (editorRef.current) {
+            const allLinks = editorRef.current.querySelectorAll(`a[href="${finalUrl}"]`);
+            allLinks.forEach((link) => {
+              if (linkOpenNewTab) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+              } else {
+                link.removeAttribute('target');
+                link.removeAttribute('rel');
+              }
+              if (linkText && linkText.trim() && allLinks.length === 1 && link.textContent !== linkText) {
+                link.textContent = linkText;
+              }
+            });
+          }
+        }
+      }
+    }
+
+    handleEditorChange();
+    saveSelection();
+    setShowLinkModal(false);
+  };
+
+  // Remove Link / Unlink (Text or Image)
+  const handleRemoveLink = () => {
+    if (isLinkingImage && selectedImageNode) {
+      const parentA = selectedImageNode.closest('a');
+      if (parentA) {
+        parentA.parentNode.insertBefore(selectedImageNode, parentA);
+        parentA.remove();
+        setImageEditLink('');
+        handleEditorChange();
+        setTimeout(() => updateToolbarPosition(selectedImageNode), 20);
+      }
+      setShowLinkModal(false);
+      return;
+    }
+
+    if (activeLinkNode) {
+      const parent = activeLinkNode.parentNode;
+      if (parent) {
+        while (activeLinkNode.firstChild) {
+          parent.insertBefore(activeLinkNode.firstChild, activeLinkNode);
+        }
+        parent.removeChild(activeLinkNode);
+      }
+    } else {
+      restoreSelection();
+      document.execCommand('unlink', false, null);
+    }
+
+    handleEditorChange();
+    saveSelection();
+    setShowLinkModal(false);
+  };
+
   // Editor Interaction Listeners
   const handleEditorClick = (e) => {
     const target = e.target;
+
+    // Prevent accidental link navigation inside editor while authoring content unless Ctrl/Cmd is held
+    const linkEl = target.closest('a');
+    if (linkEl && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+    }
+
     if (target && target.tagName === 'IMG') {
       e.stopPropagation();
       selectImage(target);
@@ -1207,18 +1480,22 @@ export default function BlogFormClient({
                 </button>
                 <button
                   type="button"
+                  onMouseDown={handleOpenTopToolbarLink}
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Insert or Edit Link (Ctrl+K or click)"
+                >
+                  <LinkIcon className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
                   onMouseDown={(e) => {
                     e.preventDefault();
-                    const url = prompt('Enter link URL:');
-                    if (url) executeCommand('createLink', url);
+                    handleRemoveLink();
                   }}
-                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-gray-100 text-[#084032] shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
-                  title="Insert Link"
+                  className="p-1.5 bg-white border border-gray-200 rounded hover:bg-red-50 text-red-600 shadow-xs cursor-pointer flex items-center justify-center w-8 h-8"
+                  title="Remove Link (Unlink)"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                  </svg>
+                  <Unlink className="w-4 h-4" />
                 </button>
 
                 <button
@@ -1357,6 +1634,27 @@ export default function BlogFormClient({
                     >
                       <WrapText className="w-3.5 h-3.5" />
                       <span>{imageEditWrap && imageEditAlign !== 'center' ? 'Wrap: ON' : 'Wrap: OFF'}</span>
+                    </button>
+
+                    <div className="h-4 w-px bg-gray-700 mx-0.5" />
+
+                    {/* Image Link Button */}
+                    <button
+                      type="button"
+                      onClick={handleOpenImageLinkModal}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition-colors font-medium cursor-pointer ${
+                        imageEditLink
+                          ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                          : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                      }`}
+                      title={
+                        imageEditLink
+                          ? `Linked to: ${imageEditLink} (Click to edit or remove link)`
+                          : 'Add hyperlink to this image'
+                      }
+                    >
+                      <Link2 className="w-3.5 h-3.5" />
+                      <span>{imageEditLink ? 'Linked' : 'Link'}</span>
                     </button>
 
                     <div className="h-4 w-px bg-gray-700 mx-0.5" />
@@ -1871,6 +2169,34 @@ export default function BlogFormClient({
                 </p>
               </div>
 
+              {/* Hyperlink Destination URL */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">
+                  Hyperlink Destination URL (Optional)
+                </label>
+                <input
+                  type="text"
+                  value={imageEditLink}
+                  onChange={(e) => setImageEditLink(e.target.value)}
+                  placeholder="e.g. https://crownexcel.ae/products or /blogs/your-post"
+                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
+                />
+                <div className="flex items-center gap-2 mt-2">
+                  <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={imageEditLinkNewTab}
+                      onChange={(e) => setImageEditLinkNewTab(e.target.checked)}
+                      className="w-4 h-4 text-[#084032] border-gray-300 rounded focus:ring-[#084032]"
+                    />
+                    <span>Open link in new tab (target="_blank")</span>
+                  </label>
+                </div>
+                <p className="text-[11px] text-gray-500 mt-1">
+                  When visitors click this image on your published blog, they will open this URL.
+                </p>
+              </div>
+
               {/* Alignment */}
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-1.5">
@@ -2013,6 +2339,145 @@ export default function BlogFormClient({
                   >
                     <Check className="w-4 h-4" />
                     Save & Update
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {/* Dedicated Hyperlink Modal for Text and Images */}
+      {showLinkModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full flex flex-col overflow-hidden border border-gray-200 animate-fadeIn">
+            {/* Modal Header */}
+            <div className="px-6 py-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-emerald-100 text-[#084032] rounded-lg">
+                  <Link2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-gray-900 leading-tight">
+                    {isLinkingImage
+                      ? (imageEditLink ? 'Edit Image Link' : 'Add Link to Image')
+                      : (activeLinkNode ? 'Edit Hyperlink' : 'Insert Hyperlink')}
+                  </h3>
+                  <p className="text-xs text-gray-500">
+                    {isLinkingImage
+                      ? 'Destination URL when visitors click this image'
+                      : 'Create or update a clickable hyperlink'}
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowLinkModal(false)}
+                className="text-gray-400 hover:text-gray-700 font-bold text-xl p-1 rounded-md hover:bg-gray-150 transition-colors cursor-pointer"
+              >
+                &times;
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <form onSubmit={handleApplyLink} className="p-6 space-y-4">
+              {/* Linked Image Thumbnail Preview */}
+              {isLinkingImage && selectedImageNode && (
+                <div className="p-3 bg-emerald-50/50 rounded-lg border border-emerald-150 flex items-center gap-3">
+                  <div className="w-16 h-14 rounded-md border border-emerald-300 bg-white overflow-hidden shrink-0 flex items-center justify-center">
+                    <img
+                      src={selectedImageNode.getAttribute('src') || ''}
+                      alt="Thumbnail"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    <span className="font-semibold text-gray-900 block">Selected Image</span>
+                    <span>Clicking this image on the published blog will open the link below.</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Text to Display (Only for Text Links) */}
+              {!isLinkingImage && (
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Display Text
+                  </label>
+                  <input
+                    type="text"
+                    value={linkText}
+                    onChange={(e) => setLinkText(e.target.value)}
+                    placeholder="e.g. Learn more about laptop wholesale"
+                    className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
+                  />
+                  <p className="text-[11px] text-gray-500 mt-1">
+                    The text that will appear hyperlinked in your blog post.
+                  </p>
+                </div>
+              )}
+
+              {/* Destination URL */}
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">
+                  Destination URL <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  autoFocus
+                  required
+                  value={linkUrl}
+                  onChange={(e) => setLinkUrl(e.target.value)}
+                  placeholder="e.g. https://crownexcel.ae/products or /blogs/post-slug"
+                  className="w-full px-3.5 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#084032] focus:border-[#084032] outline-none"
+                />
+                <p className="text-[11px] text-gray-500 mt-1">
+                  Supports external websites (https://...), internal paths (/blogs/...), or mailto:.
+                </p>
+              </div>
+
+              {/* Target New Tab Option */}
+              <div className="pt-1">
+                <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={linkOpenNewTab}
+                    onChange={(e) => setLinkOpenNewTab(e.target.checked)}
+                    className="w-4 h-4 text-[#084032] border-gray-300 rounded focus:ring-[#084032]"
+                  />
+                  <span>Open link in new tab (target="_blank")</span>
+                </label>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="pt-4 border-t border-gray-200 flex items-center justify-between gap-3">
+                {((isLinkingImage && imageEditLink) || (!isLinkingImage && activeLinkNode)) ? (
+                  <button
+                    type="button"
+                    onClick={handleRemoveLink}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-semibold rounded-lg text-xs transition-all cursor-pointer"
+                    title="Remove Link"
+                  >
+                    <Unlink className="w-3.5 h-3.5" />
+                    Remove Link
+                  </button>
+                ) : (
+                  <div />
+                )}
+
+                <div className="flex items-center gap-2 ml-auto">
+                  <button
+                    type="button"
+                    onClick={() => setShowLinkModal(false)}
+                    className="px-4 py-2 border border-gray-300 hover:bg-gray-100 text-gray-700 font-semibold rounded-lg text-xs transition-all cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#084032] hover:bg-[#00a63e] text-white font-semibold rounded-lg text-xs shadow-xs transition-all cursor-pointer"
+                  >
+                    <Check className="w-3.5 h-3.5" />
+                    {activeLinkNode || (isLinkingImage && imageEditLink) ? 'Save Link' : 'Add Link'}
                   </button>
                 </div>
               </div>
