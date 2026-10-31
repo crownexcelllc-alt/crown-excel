@@ -5,8 +5,13 @@ import { safeRender, safeImage } from '@/lib/safe-html';
 
 const UltimateCCTV = ({ cmsData }) => {
     const fields = cmsData?.fields || cmsData || {};
-    const headingTop = safeRender(fields.heading, 'THE ULTIMATE SOLUTION FOR');
+    let headingTop = safeRender(fields.heading, 'THE ULTIMATE SOLUTION FOR');
     const headingHighlight = safeRender(fields.heading_highlight, 'CCTV & SURVEILLANCE SYSTEMS');
+
+    // Prevent duplicate text if full heading was accidentally stored in headingTop
+    if (headingTop && headingHighlight && headingTop.includes(headingHighlight)) {
+        headingTop = headingTop.replace(headingHighlight, '').replace(/\s+/g, ' ').trim();
+    }
 
     const card1Title = safeRender(fields.card1_title, 'High-Definition Clarity & Night Vision');
     const card1Desc = safeRender(

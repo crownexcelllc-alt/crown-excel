@@ -1312,10 +1312,16 @@ export async function GET(request) {
           if (sec.fields.image_microsft) sec.fields.image_microsft.label = 'Brand Logo 8 (Microsoft)';
         } else if (sec.sectionId === 'phoneswhyfromus') {
           sec.sectionName = 'Why Buy Wholesale Phones From Us';
+          const pWhyTop = getFld('heading', 'Why Buy', 'Heading Prefix');
+          const pWhyHighlight = getFld('heading_highlight', 'Phones in Wholesale', 'Heading Highlighted (Yellow)');
+          const pWhyEnd = getFld('heading_end', 'From Us?', 'Heading Suffix');
+          if (pWhyTop.value && pWhyHighlight.value && pWhyTop.value.includes(pWhyHighlight.value)) {
+            pWhyTop.value = pWhyTop.value.replace(pWhyHighlight.value, '').replace(pWhyEnd.value || '', '').replace(/\s+/g, ' ').trim();
+          }
           sec.fields = {
-            heading: getFld('heading', 'Why Buy', 'Heading Prefix'),
-            heading_highlight: getFld('heading_highlight', 'Phones in Wholesale', 'Heading Highlighted (Yellow)'),
-            heading_end: getFld('heading_end', 'From Us?', 'Heading Suffix'),
+            heading: pWhyTop,
+            heading_highlight: pWhyHighlight,
+            heading_end: pWhyEnd,
             paragraph: getFld('paragraph', 'Crown Excel is Dubai’s reputable supplier for wholesale smartphones and enterprise mobile communications. Here is why corporations, retailers, and traders partner with us:', 'Overview Description', 'richtext'),
             feature1_title: getFld('feature1_title', '100% Original & Brand New', 'Feature 1 Title'),
             feature1_desc: getFld('feature1_desc', 'All mobile phones and accessories are factory sealed, genuine, and sourced directly from official global supply chains.', 'Feature 1 Description', 'richtext'),
@@ -1335,10 +1341,16 @@ export async function GET(request) {
           for (const [k, v] of Object.entries(dbSec?.fields || {})) {
             if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
           }
+          const cctvTop = getFld('heading', 'ADVANCED CCTV &', 'Banner Top Line');
+          const cctvHighlight = getFld('heading_highlight', 'SECURITY CAMERAS', 'Banner Highlighted Line');
+          const cctvEnd = getFld('heading_end', 'FOR TOTAL SECURITY', 'Banner Bottom Line');
+          if (cctvTop.value && cctvHighlight.value && cctvTop.value.includes(cctvHighlight.value)) {
+            cctvTop.value = cctvTop.value.replace(cctvHighlight.value, '').replace(cctvEnd.value || '', '').replace(/\s+/g, ' ').trim();
+          }
           sec.fields = {
-            heading: getFld('heading', 'ADVANCED CCTV &', 'Banner Top Line'),
-            heading_highlight: getFld('heading_highlight', 'SECURITY CAMERAS', 'Banner Highlighted Line'),
-            heading_end: getFld('heading_end', 'FOR TOTAL SECURITY', 'Banner Bottom Line'),
+            heading: cctvTop,
+            heading_highlight: cctvHighlight,
+            heading_end: cctvEnd,
             paragraph: getFld('paragraph', 'Crown Excel is Dubai’s premier CCTV wholesale supplier. We supply high-resolution IP security cameras, night-vision outdoor bullet cameras, PTZ domes, and complete DVR/NVR surveillance packages from Hikvision, Dahua, and leading global security brands.', 'Banner Description', 'richtext'),
             ...bannerImgs,
           };
@@ -1379,9 +1391,14 @@ export async function GET(request) {
           for (const [k, v] of Object.entries(dbSec?.fields || {})) {
             if (k.startsWith('image')) ultImgs[k] = { ...ultImgs[k], ...v };
           }
+          const ultTop = getFld('heading', 'THE ULTIMATE SOLUTION FOR', 'Section Heading');
+          const ultHighlight = getFld('heading_highlight', 'CCTV & SURVEILLANCE SYSTEMS', 'Highlighted Ribbon Heading');
+          if (ultTop.value && ultHighlight.value && ultTop.value.includes(ultHighlight.value)) {
+            ultTop.value = ultTop.value.replace(ultHighlight.value, '').replace(/\s+/g, ' ').trim();
+          }
           sec.fields = {
-            heading: getFld('heading', 'THE ULTIMATE SOLUTION FOR', 'Section Heading'),
-            heading_highlight: getFld('heading_highlight', 'CCTV & SURVEILLANCE SYSTEMS', 'Highlighted Ribbon Heading'),
+            heading: ultTop,
+            heading_highlight: ultHighlight,
             card1_title: getFld('card1_title', 'High-Definition Clarity & Night Vision', 'Card 1 Title'),
             card1_desc: getFld('card1_desc', 'Safeguard your commercial properties, offices, and warehouses with industry-leading CCTV security cameras. Featuring 4K resolution, ultra-low-light night vision, smart motion detection, and wide-angle surveillance.', 'Card 1 Description', 'richtext'),
             card2_title: getFld('card2_title', 'IP67 Weatherproof Durability', 'Card 2 Title'),
@@ -1447,10 +1464,16 @@ export async function GET(request) {
           if (sec.fields.image_microsoft) sec.fields.image_microsoft.label = 'Brand Logo 8 (Microsoft Azure IoT)';
         } else if (sec.sectionId === 'cctvwhyfromus') {
           sec.sectionName = 'Why Buy Wholesale CCTV From Us';
+          const cWhyTop = getFld('heading', 'Why Buy', 'Heading Prefix');
+          const cWhyHighlight = getFld('heading_highlight', 'CCTV Systems in Wholesale', 'Heading Highlighted (Yellow)');
+          const cWhyEnd = getFld('heading_end', 'From Us?', 'Heading Suffix');
+          if (cWhyTop.value && cWhyHighlight.value && cWhyTop.value.includes(cWhyHighlight.value)) {
+            cWhyTop.value = cWhyTop.value.replace(cWhyHighlight.value, '').replace(cWhyEnd.value || '', '').replace(/\s+/g, ' ').trim();
+          }
           sec.fields = {
-            heading: getFld('heading', 'Why Buy', 'Heading Prefix'),
-            heading_highlight: getFld('heading_highlight', 'CCTV Systems in Wholesale', 'Heading Highlighted (Yellow)'),
-            heading_end: getFld('heading_end', 'From Us?', 'Heading Suffix'),
+            heading: cWhyTop,
+            heading_highlight: cWhyHighlight,
+            heading_end: cWhyEnd,
             paragraph: getFld('paragraph', 'Crown Excel is a leading supplier of professional video surveillance equipment in Dubai. We supply security contractors, system integrators, and businesses across the UAE:', 'Overview Description', 'richtext'),
             feature1_title: getFld('feature1_title', 'High-Definition IP Security', 'Feature 1 Title'),
             feature1_desc: getFld('feature1_desc', 'Access crystal-clear 2MP, 4MP, and 4K cameras with advanced night vision, wide dynamic range, and smart AI tracking.', 'Feature 1 Description', 'richtext'),

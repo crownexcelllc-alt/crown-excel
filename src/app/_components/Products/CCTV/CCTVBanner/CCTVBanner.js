@@ -8,9 +8,14 @@ import { safeRender, safeImage } from '@/lib/safe-html';
 const CCTVBanner = ({ cmsData }) => {
   const fields = cmsData?.fields || cmsData || {};
 
-  const headingTop = safeRender(fields.heading, 'ADVANCED CCTV &');
+  let headingTop = safeRender(fields.heading, 'ADVANCED CCTV &');
   const headingHighlight = safeRender(fields.heading_highlight, 'SECURITY CAMERAS');
   const headingEnd = safeRender(fields.heading_end, 'FOR TOTAL SECURITY');
+
+  // Prevent duplicate text if full heading was accidentally stored in headingTop
+  if (headingTop && headingHighlight && headingTop.includes(headingHighlight)) {
+    headingTop = headingTop.replace(headingHighlight, '').replace(headingEnd || '', '').replace(/\s+/g, ' ').trim();
+  }
 
   const paragraphText = safeRender(
     fields.paragraph,
