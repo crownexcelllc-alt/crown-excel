@@ -4,9 +4,14 @@ import { safeRender } from '@/lib/safe-html';
 const PhonesWhyFromUs = ({ cmsData }) => {
   const fields = cmsData?.fields || cmsData || {};
 
-  const headingTop = safeRender(fields.heading, 'Why Buy');
+  let headingTop = safeRender(fields.heading, 'Why Buy');
   const headingHighlight = safeRender(fields.heading_highlight, 'Phones in Wholesale');
   const headingEnd = safeRender(fields.heading_end, 'From Us?');
+
+  // Prevent duplicate text if full heading was accidentally stored in headingTop
+  if (headingTop && headingHighlight && headingTop.includes(headingHighlight)) {
+    headingTop = headingTop.replace(headingHighlight, '').replace(headingEnd || '', '').replace(/\s+/g, ' ').trim();
+  }
 
   const paragraphText = safeRender(
     fields.paragraph,
