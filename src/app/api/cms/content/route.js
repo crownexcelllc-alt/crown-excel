@@ -976,6 +976,143 @@ export async function GET(request) {
           if (sec.fields.image_cost) sec.fields.image_cost.label = 'Feature 4 Image (Cost)';
           if (sec.fields.image_rapid) sec.fields.image_rapid.label = 'Feature 5 Image (Rapid)';
           if (sec.fields.image_security) sec.fields.image_security.label = 'Feature 6 Image (Security)';
+        } else if (sec.sectionId === 'networkingbanner') {
+          sec.sectionName = 'Hero Banner (Networking & Cabling)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Networking Solutions', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'Our networking team provides end-to-end services: network design, implementation, performance tuning, monitoring and 24/7 support to ensure high availability and secure connectivity for your organization.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+        } else if (sec.sectionId === 'networkempowering') {
+          sec.sectionName = 'Enterprise Networking & Infrastructure Solutions';
+          const netImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) netImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) netImgs[k] = { ...netImgs[k], ...v };
+          }
+          sec.fields = {
+            // Header Subsection
+            badge: getFld('badge', 'Enterprise Networking Solutions', 'Section Badge'),
+            heading: getFld('heading', 'Complete Network Infrastructure', 'Section Main Heading'),
+            paragraph: getFld('paragraph', 'From design to deployment, we provide end-to-end networking solutions that scale with your business and ensure seamless connectivity.', 'Section Subtitle', 'richtext'),
+
+            // 4 Core Services
+            service_1_title: getFld('service_1_title', 'Network Infrastructure Design', 'Service 1 Title'),
+            service_1_desc: getFld('service_1_desc', 'Complete network architecture planning with scalable solutions for enterprise growth.', 'Service 1 Description', 'richtext'),
+            service_1_feat_1: getFld('service_1_feat_1', 'LAN/WAN Setup', 'Service 1 Feature 1'),
+            service_1_feat_2: getFld('service_1_feat_2', 'Network Topology', 'Service 1 Feature 2'),
+            service_1_feat_3: getFld('service_1_feat_3', 'Bandwidth Planning', 'Service 1 Feature 3'),
+            service_1_feat_4: getFld('service_1_feat_4', 'Future Scaling', 'Service 1 Feature 4'),
+
+            service_2_title: getFld('service_2_title', 'Wireless Solutions', 'Service 2 Title'),
+            service_2_desc: getFld('service_2_desc', 'High-performance WiFi networks with seamless coverage and advanced security protocols.', 'Service 2 Description', 'richtext'),
+            service_2_feat_1: getFld('service_2_feat_1', 'WiFi 6 Technology', 'Service 2 Feature 1'),
+            service_2_feat_2: getFld('service_2_feat_2', 'Mesh Networks', 'Service 2 Feature 2'),
+            service_2_feat_3: getFld('service_2_feat_3', 'Guest Access', 'Service 2 Feature 3'),
+            service_2_feat_4: getFld('service_2_feat_4', 'Coverage Analysis', 'Service 2 Feature 4'),
+
+            service_3_title: getFld('service_3_title', 'Network Security', 'Service 3 Title'),
+            service_3_desc: getFld('service_3_desc', 'Comprehensive security framework to protect your network from cyber threats.', 'Service 3 Description', 'richtext'),
+            service_3_feat_1: getFld('service_3_feat_1', 'Firewall Setup', 'Service 3 Feature 1'),
+            service_3_feat_2: getFld('service_3_feat_2', 'VPN Solutions', 'Service 3 Feature 2'),
+            service_3_feat_3: getFld('service_3_feat_3', 'Threat Detection', 'Service 3 Feature 3'),
+            service_3_feat_4: getFld('service_3_feat_4', 'Access Control', 'Service 3 Feature 4'),
+
+            service_4_title: getFld('service_4_title', 'Network Monitoring', 'Service 4 Title'),
+            service_4_desc: getFld('service_4_desc', '24/7 network monitoring and maintenance to ensure optimal performance and uptime.', 'Service 4 Description', 'richtext'),
+            service_4_feat_1: getFld('service_4_feat_1', 'Real-time Monitoring', 'Service 4 Feature 1'),
+            service_4_feat_2: getFld('service_4_feat_2', 'Performance Analytics', 'Service 4 Feature 2'),
+            service_4_feat_3: getFld('service_4_feat_3', 'Fault Detection', 'Service 4 Feature 3'),
+            service_4_feat_4: getFld('service_4_feat_4', 'Remote Support', 'Service 4 Feature 4'),
+
+            // Why Choose Subsection
+            heading_2: getFld('heading_2', 'Why Choose Our Networking Solutions?', 'Why Choose Heading'),
+            paragraph_2: getFld('paragraph_2', 'Our comprehensive networking approach ensures your business stays connected, secure, and scalable. We combine cutting-edge technology with proven methodologies to deliver exceptional results.', 'Why Choose Description', 'richtext'),
+            benefit_1_title: getFld('benefit_1_title', 'Enterprise-Grade Security', 'Benefit 1 Title'),
+            benefit_1_desc: getFld('benefit_1_desc', 'Advanced security protocols and monitoring systems protect your network 24/7.', 'Benefit 1 Description', 'richtext'),
+            benefit_2_title: getFld('benefit_2_title', 'Scalable Architecture', 'Benefit 2 Title'),
+            benefit_2_desc: getFld('benefit_2_desc', 'Future-ready infrastructure that grows with your business needs.', 'Benefit 2 Description', 'richtext'),
+            benefit_3_title: getFld('benefit_3_title', 'Expert Support Team', 'Benefit 3 Title'),
+            benefit_3_desc: getFld('benefit_3_desc', 'Dedicated network engineers available round-the-clock for support.', 'Benefit 3 Description', 'richtext'),
+            button_text: getFld('button_text', 'Schedule Network Consultation', 'Consultation Button Label'),
+            button_link: getFld('button_link', '/contact-us', 'Consultation Button Link', 'url'),
+
+            // Cutting-Edge Network Technologies
+            heading_3: getFld('heading_3', 'Cutting-Edge Network Technologies', 'Technologies Heading'),
+            paragraph_3: getFld('paragraph_3', 'We leverage the latest networking technologies to deliver superior performance and reliability', 'Technologies Subtitle', 'richtext'),
+            tech_1_title: getFld('tech_1_title', '5G Integration', 'Tech 1 Title'),
+            tech_1_desc: getFld('tech_1_desc', 'Ultra-fast connectivity with low latency for mission-critical applications', 'Tech 1 Description', 'richtext'),
+            tech_2_title: getFld('tech_2_title', 'Cloud Networking', 'Tech 2 Title'),
+            tech_2_desc: getFld('tech_2_desc', 'Hybrid cloud solutions for seamless on-premise and cloud integration', 'Tech 2 Description', 'richtext'),
+            tech_3_title: getFld('tech_3_title', 'AI-Powered Analytics', 'Tech 3 Title'),
+            tech_3_desc: getFld('tech_3_desc', 'Intelligent network optimization with predictive maintenance capabilities', 'Tech 3 Description', 'richtext'),
+
+            // Industry-Specific Network Solutions
+            heading_4: getFld('heading_4', 'Industry-Specific Network Solutions', 'Industries Heading'),
+            paragraph_4: getFld('paragraph_4', 'Tailored networking solutions designed for your industry\'s unique requirements', 'Industries Subtitle', 'richtext'),
+            ind_1_title: getFld('ind_1_title', 'Healthcare', 'Industry 1 Title'),
+            ind_1_desc: getFld('ind_1_desc', 'Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.', 'Industry 1 Description', 'richtext'),
+            ind_2_title: getFld('ind_2_title', 'Education', 'Industry 2 Title'),
+            ind_2_desc: getFld('ind_2_desc', 'Crown Excel empowers educational institutions across the UAE with cutting-edge networking, IT hardware, and software solutions designed to support modern learning environments and academic excellence.', 'Industry 2 Description', 'richtext'),
+            ind_3_title: getFld('ind_3_title', 'Manufacturing', 'Industry 3 Title'),
+            ind_3_desc: getFld('ind_3_desc', 'Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.', 'Industry 3 Description', 'richtext'),
+            ind_4_title: getFld('ind_4_title', 'Retail', 'Industry 4 Title'),
+            ind_4_desc: getFld('ind_4_desc', 'Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.', 'Industry 4 Description', 'richtext'),
+
+            // Implementation Process
+            heading_5: getFld('heading_5', 'Our Proven Implementation Process', 'Process Heading'),
+            paragraph_5: getFld('paragraph_5', 'A systematic approach ensuring successful network deployment from planning to optimization', 'Process Subtitle', 'richtext'),
+            step_1_number: getFld('step_1_number', '1', 'Step 1 Number'),
+            step_1_title: getFld('step_1_title', 'Assessment', 'Step 1 Title'),
+            step_1_desc: getFld('step_1_desc', 'Comprehensive analysis of current infrastructure and future requirements', 'Step 1 Description', 'richtext'),
+            step_2_number: getFld('step_2_number', '2', 'Step 2 Number'),
+            step_2_title: getFld('step_2_title', 'Design', 'Step 2 Title'),
+            step_2_desc: getFld('step_2_desc', 'Custom network architecture tailored to your specific business needs', 'Step 2 Description', 'richtext'),
+            step_3_number: getFld('step_3_number', '3', 'Step 3 Number'),
+            step_3_title: getFld('step_3_title', 'Deployment', 'Step 3 Title'),
+            step_3_desc: getFld('step_3_desc', 'Professional installation with minimal disruption to operations', 'Step 3 Description', 'richtext'),
+            step_4_number: getFld('step_4_number', '4', 'Step 4 Number'),
+            step_4_title: getFld('step_4_title', 'Optimization', 'Step 4 Title'),
+            step_4_desc: getFld('step_4_desc', 'Continuous monitoring and performance tuning for optimal results', 'Step 4 Description', 'richtext'),
+
+            // Performance Metrics
+            heading_6: getFld('heading_6', 'Network Performance Metrics', 'Metrics Heading'),
+            paragraph_6: getFld('paragraph_6', 'Proven results across enterprise deployments', 'Metrics Subtitle', 'richtext'),
+            stat_1_value: getFld('stat_1_value', '99.9%', 'Stat 1 Value'),
+            stat_1_label: getFld('stat_1_label', 'Network Uptime', 'Stat 1 Label'),
+            stat_2_value: getFld('stat_2_value', '24/7', 'Stat 2 Value'),
+            stat_2_label: getFld('stat_2_label', 'Technical Support', 'Stat 2 Label'),
+            stat_3_value: getFld('stat_3_value', '500+', 'Stat 3 Value'),
+            stat_3_label: getFld('stat_3_label', 'Networks Deployed', 'Stat 3 Label'),
+            stat_4_value: getFld('stat_4_value', '10Gb', 'Stat 4 Value'),
+            stat_4_label: getFld('stat_4_label', 'Maximum Speed', 'Stat 4 Label'),
+
+            ...netImgs,
+          };
+          if (sec.fields.image_networkit) sec.fields.image_networkit.label = 'Showcase Image (Networking Solutions)';
+          if (sec.fields.image_infraicon) sec.fields.image_infraicon.label = 'Service 1 Icon (Infrastructure)';
+          if (sec.fields.image_wirelessicon) sec.fields.image_wirelessicon.label = 'Service 2 Icon (Wireless)';
+          if (sec.fields.image_securityicon) sec.fields.image_securityicon.label = 'Service 3 Icon (Security)';
+          if (sec.fields.image_monitoringicon) sec.fields.image_monitoringicon.label = 'Service 4 Icon (Monitoring)';
+          if (sec.fields.image_icon5g) sec.fields.image_icon5g.label = 'Tech 1 Icon (5G)';
+          if (sec.fields.image_iconcloud) sec.fields.image_iconcloud.label = 'Tech 2 Icon (Cloud)';
+          if (sec.fields.image_iconai) sec.fields.image_iconai.label = 'Tech 3 Icon (AI)';
+          if (sec.fields.image_iconhealthcare) sec.fields.image_iconhealthcare.label = 'Industry 1 Icon (Healthcare)';
+          if (sec.fields.image_iconeducation) sec.fields.image_iconeducation.label = 'Industry 2 Icon (Education)';
+          if (sec.fields.image_iconmanufacturing) sec.fields.image_iconmanufacturing.label = 'Industry 3 Icon (Manufacturing)';
+          if (sec.fields.image_iconretail) sec.fields.image_iconretail.label = 'Industry 4 Icon (Retail)';
+          if (sec.fields.image_iconcheck) sec.fields.image_iconcheck.label = 'Checkmark Icon';
         }
 
         return sec;
@@ -1073,6 +1210,7 @@ export async function POST(request) {
       finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
       finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
       finalPath === '/our-services/long/short-term-amc' || path === '/our-services/long/short-term-amc' || routeId === '6a2016aba0608271b7524ea3' ||
+      finalPath === '/our-services/networking' || path === '/our-services/networking' || routeId === '6a2016aba0608271b7524ea4' ||
       finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)

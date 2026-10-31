@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import NetworkIT from '../../../../../Components/Images/NetworkingSolutions.jpg';
 import InfraIcon from '../../../../../Components/Images/network-infra.png';
 import WirelessIcon from '../../../../../Components/Images/wireless.png';
@@ -13,48 +14,183 @@ import IconEducation from '../../../../../Components/Images/education.png';
 import IconManufacturing from '../../../../../Components/Images/manufacturing.png';
 import IconRetail from '../../../../../Components/Images/retail.png';
 import IconCheck from '../../../../../Components/Images/check.png';
-// import Step1 from '../../../../../Components/Images/step1.png';
-// import Step2 from '../../../../../Components/Images/step2.png';
-// import Step3 from '../../../../../Components/Images/step3.png';
-// import Step4 from '../../../../../Components/Images/step4.png';
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const NetworkEmpowering = () => {
+const NetworkEmpowering = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+
+  // Header Section
+  const headerBadge = safeRender(fields.badge, "Enterprise Networking Solutions");
+  const headerHeading = safeRender(fields.heading, <>Complete Network <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Infrastructure</span></>);
+  const headerDesc = safeRender(fields.paragraph, "From design to deployment, we provide end-to-end networking solutions that scale with your business and ensure seamless connectivity.");
+
+  // Services Grid
   const networkServices = [
     {
       id: 1,
-      title: "Network Infrastructure Design",
-      description: "Complete network architecture planning with scalable solutions for enterprise growth.",
-      features: ["LAN/WAN Setup", "Network Topology", "Bandwidth Planning", "Future Scaling"],
-  icon: InfraIcon
+      title: safeRender(fields.service_1_title, "Network Infrastructure Design"),
+      description: safeRender(fields.service_1_desc, "Complete network architecture planning with scalable solutions for enterprise growth."),
+      features: [
+        safeRender(fields.service_1_feat_1, "LAN/WAN Setup"),
+        safeRender(fields.service_1_feat_2, "Network Topology"),
+        safeRender(fields.service_1_feat_3, "Bandwidth Planning"),
+        safeRender(fields.service_1_feat_4, "Future Scaling")
+      ],
+      icon: safeImage(fields.image_infraicon, InfraIcon)
     },
     {
       id: 2,
-      title: "Wireless Solutions",
-      description: "High-performance WiFi networks with seamless coverage and advanced security protocols.",
-      features: ["WiFi 6 Technology", "Mesh Networks", "Guest Access", "Coverage Analysis"],
-  icon: WirelessIcon
+      title: safeRender(fields.service_2_title, "Wireless Solutions"),
+      description: safeRender(fields.service_2_desc, "High-performance WiFi networks with seamless coverage and advanced security protocols."),
+      features: [
+        safeRender(fields.service_2_feat_1, "WiFi 6 Technology"),
+        safeRender(fields.service_2_feat_2, "Mesh Networks"),
+        safeRender(fields.service_2_feat_3, "Guest Access"),
+        safeRender(fields.service_2_feat_4, "Coverage Analysis")
+      ],
+      icon: safeImage(fields.image_wirelessicon, WirelessIcon)
     },
     {
       id: 3,
-      title: "Network Security",
-      description: "Comprehensive security framework to protect your network from cyber threats.",
-      features: ["Firewall Setup", "VPN Solutions", "Threat Detection", "Access Control"],
-  icon: SecurityIcon
+      title: safeRender(fields.service_3_title, "Network Security"),
+      description: safeRender(fields.service_3_desc, "Comprehensive security framework to protect your network from cyber threats."),
+      features: [
+        safeRender(fields.service_3_feat_1, "Firewall Setup"),
+        safeRender(fields.service_3_feat_2, "VPN Solutions"),
+        safeRender(fields.service_3_feat_3, "Threat Detection"),
+        safeRender(fields.service_3_feat_4, "Access Control")
+      ],
+      icon: safeImage(fields.image_securityicon, SecurityIcon)
     },
     {
       id: 4,
-      title: "Network Monitoring",
-      description: "24/7 network monitoring and maintenance to ensure optimal performance and uptime.",
-      features: ["Real-time Monitoring", "Performance Analytics", "Fault Detection", "Remote Support"],
-  icon: MonitoringIcon
+      title: safeRender(fields.service_4_title, "Network Monitoring"),
+      description: safeRender(fields.service_4_desc, "24/7 network monitoring and maintenance to ensure optimal performance and uptime."),
+      features: [
+        safeRender(fields.service_4_feat_1, "Real-time Monitoring"),
+        safeRender(fields.service_4_feat_2, "Performance Analytics"),
+        safeRender(fields.service_4_feat_3, "Fault Detection"),
+        safeRender(fields.service_4_feat_4, "Remote Support")
+      ],
+      icon: safeImage(fields.image_monitoringicon, MonitoringIcon)
     }
   ];
 
+  // Why Choose Section
+  const whyHeading = safeRender(fields.heading_2, "Why Choose Our Networking Solutions?");
+  const whyDesc = safeRender(fields.paragraph_2, "Our comprehensive networking approach ensures your business stays connected, secure, and scalable. We combine cutting-edge technology with proven methodologies to deliver exceptional results.");
+
+  const benefits = [
+    {
+      title: safeRender(fields.benefit_1_title, "Enterprise-Grade Security"),
+      desc: safeRender(fields.benefit_1_desc, "Advanced security protocols and monitoring systems protect your network 24/7."),
+      useIcon: true
+    },
+    {
+      title: safeRender(fields.benefit_2_title, "Scalable Architecture"),
+      desc: safeRender(fields.benefit_2_desc, "Future-ready infrastructure that grows with your business needs."),
+      useIcon: false
+    },
+    {
+      title: safeRender(fields.benefit_3_title, "Expert Support Team"),
+      desc: safeRender(fields.benefit_3_desc, "Dedicated network engineers available round-the-clock for support."),
+      useIcon: false
+    }
+  ];
+
+  const buttonText = safeRender(fields.button_text, "Schedule Network Consultation");
+  const buttonLink = fields.button_link || "/contact-us";
+  const networkItImg = safeImage(fields.image_networkit, NetworkIT);
+  const checkIcon = safeImage(fields.image_iconcheck, IconCheck);
+
+  // Network Technologies
+  const techHeading = safeRender(fields.heading_3, <>Cutting-Edge <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Technologies</span></>);
+  const techDesc = safeRender(fields.paragraph_3, "We leverage the latest networking technologies to deliver superior performance and reliability");
+
+  const techItems = [
+    {
+      title: safeRender(fields.tech_1_title, "5G Integration"),
+      desc: safeRender(fields.tech_1_desc, "Ultra-fast connectivity with low latency for mission-critical applications"),
+      icon: safeImage(fields.image_icon5g, Icon5G),
+      style: {}
+    },
+    {
+      title: safeRender(fields.tech_2_title, "Cloud Networking"),
+      desc: safeRender(fields.tech_2_desc, "Hybrid cloud solutions for seamless on-premise and cloud integration"),
+      icon: safeImage(fields.image_iconcloud, IconCloud),
+      style: { filter: 'brightness(1) invert(1)' }
+    },
+    {
+      title: safeRender(fields.tech_3_title, "AI-Powered Analytics"),
+      desc: safeRender(fields.tech_3_desc, "Intelligent network optimization with predictive maintenance capabilities"),
+      icon: safeImage(fields.image_iconai, IconAI),
+      style: { filter: 'brightness(1) invert(1)' }
+    }
+  ];
+
+  // Industry Solutions
+  const industryHeading = safeRender(fields.heading_4, <>Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Solutions</span></>);
+  const industryDesc = safeRender(fields.paragraph_4, "Tailored networking solutions designed for your industry's unique requirements");
+
+  const industries = [
+    {
+      title: safeRender(fields.ind_1_title, "Healthcare"),
+      desc: safeRender(fields.ind_1_desc, "Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards."),
+      icon: safeImage(fields.image_iconhealthcare, IconHealthcare)
+    },
+    {
+      title: safeRender(fields.ind_2_title, "Education"),
+      desc: safeRender(fields.ind_2_desc, "Crown Excel empowers educational institutions across the UAE with cutting-edge networking, IT hardware, and software solutions designed to support modern learning environments and academic excellence."),
+      icon: safeImage(fields.image_iconeducation, IconEducation)
+    },
+    {
+      title: safeRender(fields.ind_3_title, "Manufacturing"),
+      desc: safeRender(fields.ind_3_desc, "Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation."),
+      icon: safeImage(fields.image_iconmanufacturing, IconManufacturing)
+    },
+    {
+      title: safeRender(fields.ind_4_title, "Retail"),
+      desc: safeRender(fields.ind_4_desc, "Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint."),
+      icon: safeImage(fields.image_iconretail, IconRetail)
+    }
+  ];
+
+  // Implementation Process
+  const processHeading = safeRender(fields.heading_5, <>Our Proven <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Implementation Process</span></>);
+  const processDesc = safeRender(fields.paragraph_5, "A systematic approach ensuring successful network deployment from planning to optimization");
+
+  const processSteps = [
+    {
+      number: safeRender(fields.step_1_number, "1"),
+      title: safeRender(fields.step_1_title, "Assessment"),
+      desc: safeRender(fields.step_1_desc, "Comprehensive analysis of current infrastructure and future requirements")
+    },
+    {
+      number: safeRender(fields.step_2_number, "2"),
+      title: safeRender(fields.step_2_title, "Design"),
+      desc: safeRender(fields.step_2_desc, "Custom network architecture tailored to your specific business needs")
+    },
+    {
+      number: safeRender(fields.step_3_number, "3"),
+      title: safeRender(fields.step_3_title, "Deployment"),
+      desc: safeRender(fields.step_3_desc, "Professional installation with minimal disruption to operations")
+    },
+    {
+      number: safeRender(fields.step_4_number, "4"),
+      title: safeRender(fields.step_4_title, "Optimization"),
+      desc: safeRender(fields.step_4_desc, "Continuous monitoring and performance tuning for optimal results")
+    }
+  ];
+
+  // Network Performance Metrics
+  const metricsHeading = safeRender(fields.heading_6, "Network Performance Metrics");
+  const metricsDesc = safeRender(fields.paragraph_6, "Proven results across enterprise deployments");
+
   const networkStats = [
-    { value: "99.9%", label: "Network Uptime" },
-    { value: "24/7", label: "Technical Support" },
-    { value: "500+", label: "Networks Deployed" },
-    { value: "10Gb", label: "Maximum Speed" }
+    { value: safeRender(fields.stat_1_value, "99.9%"), label: safeRender(fields.stat_1_label, "Network Uptime") },
+    { value: safeRender(fields.stat_2_value, "24/7"), label: safeRender(fields.stat_2_label, "Technical Support") },
+    { value: safeRender(fields.stat_3_value, "500+"), label: safeRender(fields.stat_3_label, "Networks Deployed") },
+    { value: safeRender(fields.stat_4_value, "10Gb"), label: safeRender(fields.stat_4_label, "Maximum Speed") }
   ];
 
   return (
@@ -70,19 +206,19 @@ const NetworkEmpowering = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-semibold rounded-full mb-6">
-            <span className="text-sm">Enterprise Networking Solutions</span>
+            <span className="text-sm">{headerBadge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-montserrat">
-            Complete Network <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Infrastructure</span>
+            {headerHeading}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From design to deployment, we provide end-to-end networking solutions that scale with your business and ensure seamless connectivity.
+            {headerDesc}
           </p>
         </div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {networkServices.map((service, index) => (
+          {networkServices.map((service) => (
             <div 
               key={service.id}
               className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-[#16CA9A] group"
@@ -114,63 +250,48 @@ const NetworkEmpowering = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-3xl font-bold text-gray-800 mb-4 font-montserrat">
-                Why Choose Our Networking Solutions?
+                {whyHeading}
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Our comprehensive networking approach ensures your business stays connected, secure, and scalable. 
-                We combine cutting-edge technology with proven methodologies to deliver exceptional results.
+                {whyDesc}
               </p>
             </div>
 
             {/* Benefits List */}
             <div className="space-y-4">
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center">
-                  <Image src={IconCheck} alt="Check" width={20} height={20} />
+              {benefits.map((benefit, idx) => (
+                <div key={idx} className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                  <div className="w-8 h-8 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center flex-shrink-0">
+                    {benefit.useIcon ? (
+                      <Image src={checkIcon} alt="Check" width={20} height={20} />
+                    ) : (
+                      <span className="text-white font-bold text-sm">✓</span>
+                    )}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-1">{benefit.title}</h4>
+                    <p className="text-gray-600 text-sm">{benefit.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1">Enterprise-Grade Security</h4>
-                  <p className="text-gray-600 text-sm">Advanced security protocols and monitoring systems protect your network 24/7.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">✓</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1">Scalable Architecture</h4>
-                  <p className="text-gray-600 text-sm">Future-ready infrastructure that grows with your business needs.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">✓</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-1">Expert Support Team</h4>
-                  <p className="text-gray-600 text-sm">Dedicated network engineers available round-the-clock for support.</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* CTA Button */}
             <div className="pt-4">
-              <a 
-                href="/contact-us"
+              <Link 
+                href={buttonLink}
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#16CA9A] to-[#084032] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group"
               >
                 <span className="flex items-center">
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  Schedule Network Consultation
+                  {buttonText}
                   <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -178,7 +299,7 @@ const NetworkEmpowering = () => {
           <div className="relative">
             <div className="relative z-10">
               <Image
-                src={NetworkIT}
+                src={networkItImg}
                 width={800}
                 height={350}
                 alt="Network Infrastructure"
@@ -193,38 +314,23 @@ const NetworkEmpowering = () => {
         <div className="bg-white rounded-2xl p-8 shadow-lg border mb-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-800 mb-4 font-montserrat">
-              Cutting-Edge <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Technologies</span>
+              {techHeading}
             </h3>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              We leverage the latest networking technologies to deliver superior performance and reliability
+              {techDesc}
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                {/* FIX: Use imported Icon5G instead of require() */}
-                <Image src={Icon5G} alt="5G" width={40} height={40} />
+            {techItems.map((tech, idx) => (
+              <div key={idx} className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Image src={tech.icon} alt={tech.title} width={40} height={40} style={tech.style} />
+                </div>
+                <h4 className="text-xl font-bold text-gray-800 mb-2">{tech.title}</h4>
+                <p className="text-gray-600 text-sm">{tech.desc}</p>
               </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">5G Integration</h4>
-              <p className="text-gray-600 text-sm">Ultra-fast connectivity with low latency for mission-critical applications</p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Image src={IconCloud} alt="Cloud" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Cloud Networking</h4>
-              <p className="text-gray-600 text-sm">Hybrid cloud solutions for seamless on-premise and cloud integration</p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Image src={IconAI} alt="AI" width={40} height={40} style={{ filter: 'brightness(1) invert(1)' }} />
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-2">AI-Powered Analytics</h4>
-              <p className="text-gray-600 text-sm">Intelligent network optimization with predictive maintenance capabilities</p>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -232,41 +338,21 @@ const NetworkEmpowering = () => {
         <div className="mb-16">
           <div className="text-center mb-12 ">
             <h3 className="text-3xl font-bold text-gray-800 mb-4 font-montserrat">
-              Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Network Solutions</span>
+              {industryHeading}
             </h3>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Tailored networking solutions designed for your industry&apos;s unique requirements
+              {industryDesc}
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              {/* <div className="text-3xl mb-3">🏥</div> */}
-              <Image src={IconHealthcare} alt="Healthcare" width={32} height={32} style={{ filter: 'brightness(0)' }} />
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Healthcare</h4>
-              <p className="text-gray-600 text-sm">Crown Excel is one of the leading providers in the UAE, delivering high-class networking, IT hardware, and software solutions tailored to healthcare industry standards.</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              {/* <div className="text-3xl mb-3">🏫</div> */}
-              <Image src={IconEducation} alt="Education" width={32} height={32} style={{ filter: 'brightness(0)' }} />
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Education</h4>
-              <p className="text-gray-600 text-sm">Crown Excel empowers educational institutions across the UAE with cutting-edge networking, IT hardware, and software solutions designed to support modern learning environments and academic excellence.</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              {/* <div className="text-3xl mb-3">🏭</div> */}
-              <Image src={IconManufacturing} alt="Manufacturing" width={32} height={32} style={{ filter: 'brightness(0)' }} />
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Manufacturing</h4>
-              <p className="text-gray-600 text-sm">Crown Excel delivers robust and reliable IT infrastructure, networking, and software solutions tailored to meet the dynamic needs of the manufacturing sector in the UAE, driving efficiency, productivity, and innovation.</p>
-            </div>
-            
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
-              {/* <div className="text-3xl mb-3">🏪</div> */}
-              <Image src={IconRetail} alt="Retail" width={32} height={32} style={{ filter: 'brightness(0)' }} />
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Retail</h4>
-              <p className="text-gray-600 text-sm">Crown Excel equips retail businesses in the UAE with smart IT hardware, seamless networking, and customized software solutions that enhance operational performance and customer engagement across every touchpoint.</p>
-            </div>
+            {industries.map((ind, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-[#16CA9A]">
+                <Image src={ind.icon} alt={ind.title} width={32} height={32} style={{ filter: 'brightness(0)' }} />
+                <h4 className="text-lg font-bold text-gray-800 mb-2 mt-3">{ind.title}</h4>
+                <p className="text-gray-600 text-sm">{ind.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -274,53 +360,31 @@ const NetworkEmpowering = () => {
         <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg mb-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-800 mb-4 font-montserrat">
-              Our Proven <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#16CA9A] to-[#084032]">Implementation Process</span>
+              {processHeading}
             </h3>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              A systematic approach ensuring successful network deployment from planning to optimization
+              {processDesc}
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">1</span>
+            {processSteps.map((step, idx) => (
+              <div key={idx} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">{step.number}</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-800 mb-2">{step.title}</h4>
+                <p className="text-gray-600 text-sm">{step.desc}</p>
               </div>
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Assessment</h4>
-              <p className="text-gray-600 text-sm">Comprehensive analysis of current infrastructure and future requirements</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">2</span>
-              </div>
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Design</h4>
-              <p className="text-gray-600 text-sm">Custom network architecture tailored to your specific business needs</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">3</span>
-              </div>
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Deployment</h4>
-              <p className="text-gray-600 text-sm">Professional installation with minimal disruption to operations</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">4</span>
-              </div>
-              <h4 className="text-lg font-bold text-gray-800 mb-2">Optimization</h4>
-              <p className="text-gray-600 text-sm">Continuous monitoring and performance tuning for optimal results</p>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Statistics Section */}
         <div className="bg-gradient-to-r from-[#16CA9A] to-[#084032] rounded-2xl p-8 shadow-xl">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">Network Performance Metrics</h3>
-            <p className="text-white/80">Proven results across enterprise deployments</p>
+            <h3 className="text-2xl font-bold text-white mb-2">{metricsHeading}</h3>
+            <p className="text-white/80">{metricsDesc}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {networkStats.map((stat, index) => (

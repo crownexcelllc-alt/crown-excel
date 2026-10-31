@@ -2,8 +2,11 @@ import ContactUsForm from '@/app/_components/ContactUsPage/ContactUsForm/Contact
 import NetworkCoreAreas from '@/app/_components/OurServicesPages/Networking/NetworkCoreAreas/NetworkCoreAreas'
 import NetworkEmpowering from '@/app/_components/OurServicesPages/Networking/NetworkEmpowering/NetworkEmpowering_new'
 import NetworkingBanner from '@/app/_components/OurServicesPages/Networking/NetworkingBanner/NetworkingBanner'
-import React from 'react'
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import React from 'react';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/our-services/networking', {
@@ -12,12 +15,15 @@ export async function generateMetadata() {
   });
 }
 
-const Networking = () => {
+const Networking = async () => {
+  const { content: cmsContent } = await getCmsData('/our-services/networking');
+  const sections = cmsContent?.sections || {};
+
   return (
     <div>
-      <NetworkingBanner/>
+      <NetworkingBanner cmsData={sections.networkingbanner} />
       {/* <NetworkingSmart/> */}
-      <NetworkEmpowering/>
+      <NetworkEmpowering cmsData={sections.networkempowering} />
         {/* <div className="header text-center">
         <h1 className='text-[32px] text-black -mb-10 lg:text-[32px] font-montserrat font-[600]'>Get a Quote</h1> */}
         {/* <p className='text-[14px] lg:text-[24px] font-roboto'>Reach out to us, and we’ll be happy to assist you.</p> */}
@@ -29,7 +35,7 @@ const Networking = () => {
       <NetworkingFirewall/>
       <NetworkingFAQ/> */}
     </div>
-  )
-}
+  );
+};
 
-export default Networking
+export default Networking;
