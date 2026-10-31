@@ -51,6 +51,10 @@ export default function ProductCatalogCardsClient() {
         categories.forEach((cat) => {
           if (Array.isArray(saved[cat.slug]) && saved[cat.slug].length > 0) {
             resolved[cat.slug] = saved[cat.slug].slice(0, 4);
+          } else if ((cat.slug === 'phones' || cat.slug === 'cctv') && Array.isArray(saved['phones-cctv']) && saved['phones-cctv'].length > 0) {
+            const prods = productsByCategory[cat.slug] || [];
+            const matched = saved['phones-cctv'].filter((title) => prods.some((p) => p.title === title));
+            resolved[cat.slug] = matched.length > 0 ? matched.slice(0, 4) : prods.slice(0, 4).map((p) => p.title);
           } else {
             const prods = productsByCategory[cat.slug] || [];
             resolved[cat.slug] = prods.slice(0, 4).map((p) => p.title);

@@ -22,6 +22,10 @@ export default function ProductCatalogSelector({ value = {}, onChange, disabled 
     if (Array.isArray(currentMap[activeCategory]) && currentMap[activeCategory].length > 0) {
       return currentMap[activeCategory].slice(0, 4);
     }
+    if ((activeCategory === 'phones' || activeCategory === 'cctv') && Array.isArray(currentMap['phones-cctv']) && currentMap['phones-cctv'].length > 0) {
+      const matched = currentMap['phones-cctv'].filter((title) => rawActiveProducts.some((p) => p.title === title));
+      if (matched.length > 0) return matched.slice(0, 4);
+    }
     return rawActiveProducts.slice(0, 4).map((p) => p.title);
   }, [currentMap, activeCategory, rawActiveProducts]);
 
