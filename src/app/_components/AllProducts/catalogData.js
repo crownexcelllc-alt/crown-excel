@@ -118,9 +118,9 @@ export const categoryPages = {
     'keyboards-mouse': '/products/keyboard-mouse',
     'accessories': '/products/accessories',
     'biometrics': '/products/biometrics',
-    'phones': '/products/phones-cctv',
-    'cctv': '/products/phones-cctv',
-    'phones-cctv': '/products/phones-cctv',
+    'phones': '/products/phones',
+    'cctv': '/products/cctv',
+    'phones-cctv': '/products/phones',
 };
 
 export const productsByCategory = {

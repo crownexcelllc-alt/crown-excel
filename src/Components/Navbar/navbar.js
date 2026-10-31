@@ -57,7 +57,8 @@ function Navbar() {
         { label: 'Keyboard & Mouse', href: '/products/keyboard-mouse' },
         { label: 'Accessories', href: '/products/accessories' },
         { label: 'Biometric', href: '/products/biometrics' },
-        { label: 'Phones and CCTV', href: '/products/phones-cctv' },
+        { label: 'Phones', href: '/products/phones' },
+        { label: 'CCTV', href: '/products/cctv' },
       ],
     },
 
