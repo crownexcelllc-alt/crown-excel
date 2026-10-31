@@ -33,8 +33,8 @@ const PhonesBanner = () => {
           </p>
         </div>
         {/* Right Phone Graphic */}
-        <div className="laptop-banner-right flex-1 flex justify-end items-end">
-          <Image src={LaptopImage2} width={264} height={450} alt="Wholesale Mobile Phones" className="object-contain drop-shadow-2xl -mb-4 md:-mb-8" priority />
+        <div className="laptop-banner-right flex-1 flex justify-end items-end pr-2 md:pr-4 lg:pr-6">
+          <Image src={LaptopImage2} width={315} height={450} alt="Wholesale Mobile Phones" className="object-contain drop-shadow-2xl -mb-4 md:-mb-8" priority />
         </div>
       </div>
 
