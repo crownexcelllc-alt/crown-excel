@@ -9,17 +9,22 @@ import Asus from '@/Components/Images/Asus2.png';
 import Hp from '@/Components/Images/HP2.png';
 import Dell from '@/Components/Images/Dell2.png';
 import Microsft from '@/Components/Images/Microsoft.png';
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const PhonesBrand = () => {
+const PhonesBrand = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+  const heading = safeRender(fields.heading, 'PHONE BRANDS WE DEAL');
+  const bgImage = safeImage(fields.image_background, Background);
+
   const BrandIcons = [
-    { Image: Apple, alt: 'Apple iPhone' },
-    { Image: Samsung, alt: 'Samsung Galaxy' },
-    { Image: Xiomi, alt: 'Xiaomi' },
-    { Image: Lenovo, alt: 'Lenovo' },
-    { Image: Asus, alt: 'Asus' },
-    { Image: Hp, alt: 'HP' },
-    { Image: Dell, alt: 'Dell' },
-    { Image: Microsft, alt: 'Microsoft' },
+    { Image: safeImage(fields.image_apple, Apple), alt: 'Apple iPhone' },
+    { Image: safeImage(fields.image_samsung, Samsung), alt: 'Samsung Galaxy' },
+    { Image: safeImage(fields.image_xiomi, Xiomi), alt: 'Xiaomi' },
+    { Image: safeImage(fields.image_lenovo, Lenovo), alt: 'Lenovo' },
+    { Image: safeImage(fields.image_asus, Asus), alt: 'Asus' },
+    { Image: safeImage(fields.image_hp, Hp), alt: 'HP' },
+    { Image: safeImage(fields.image_dell, Dell), alt: 'Dell' },
+    { Image: safeImage(fields.image_microsft, Microsft), alt: 'Microsoft' },
   ];
 
   return (
@@ -30,12 +35,12 @@ const PhonesBrand = () => {
       }}
     >
       <div className="absolute z-0 right-0 top-0 w-full h-full pointer-events-none select-none" style={{ mixBlendMode: 'screen', opacity: 0.7 }}>
-        <Image alt='' src={Background} fill style={{ objectFit: 'cover', objectPosition: 'right' }} />
+        <Image alt='' src={bgImage} fill style={{ objectFit: 'cover', objectPosition: 'right' }} />
       </div>
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] px-4 md:px-20 py-8 md:py-0 gap-8 md:gap-20">
         <div className="flex-1 flex items-center md:items-start justify-center md:justify-start w-full">
           <h2 className="text-[2.2rem] md:text-[2rem] text-[#ffd900] font-bold uppercase tracking-wide text-center md:text-left leading-tight drop-shadow-lg font-montserrat">
-            PHONE BRANDS WE DEAL
+            {heading}
           </h2>
         </div>
         <div className="flex-1 flex items-center justify-center w-full">

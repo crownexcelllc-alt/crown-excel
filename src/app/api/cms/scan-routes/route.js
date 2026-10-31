@@ -18,6 +18,13 @@ export async function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
 }
 
+export const EXCLUDED_CMS_ROUTES = [
+  '/products/phones-cctv',
+  '/appointments',
+  '/blogs/[...slug]',
+  '/blogs/[slug]',
+];
+
 /**
  * Recursively scan the src/app directory for page.js/page.tsx files
  * and convert them to route paths.
@@ -33,19 +40,25 @@ function scanAppDirectory(dir, basePath = '') {
       
       const folderName = entry.name;
       
-      // Skip special directories
+      // Skip special directories and deprecated/removed routes
       if (
         folderName.startsWith('_') ||   // _components, _lib, etc.
         folderName.startsWith('.') ||    // .git, etc.
         folderName === 'api' ||          // API routes
         folderName === 'admin' ||        // Admin panel itself
-        folderName === 'node_modules'
+        folderName === 'node_modules' ||
+        folderName === 'phones-cctv' ||  // Deprecated route
+        folderName === 'appointments'    // Excluded from Pages & Routes
       ) {
         continue;
       }
       
       const fullPath = path.join(dir, folderName);
       const routePath = `${basePath}/${folderName}`;
+
+      if (EXCLUDED_CMS_ROUTES.includes(routePath)) {
+        continue;
+      }
       
       // Check if this directory has a page.js or page.tsx
       const hasPage = existsSync(path.join(fullPath, 'page.js')) ||
@@ -175,6 +188,9 @@ export async function POST(request) {
     const db = await getDb();
     const collection = db.collection('cms_routes');
     const now = new Date().toISOString();
+
+    // Ensure deprecated / excluded routes are purged from cms_routes
+    await collection.deleteMany({ path: { $in: EXCLUDED_CMS_ROUTES } });
     
     let created = 0;
     let updated = 0;

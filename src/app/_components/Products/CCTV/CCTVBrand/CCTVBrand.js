@@ -9,17 +9,22 @@ import Lenovo from '@/Components/Images/Lenovo.png';
 import Asus from '@/Components/Images/Asus2.png';
 import Hp from '@/Components/Images/HP2.png';
 import Microsoft from '@/Components/Images/Microsoft.png';
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const CCTVBrand = () => {
+const CCTVBrand = ({ cmsData }) => {
+  const fields = cmsData?.fields || cmsData || {};
+  const heading = safeRender(fields.heading, 'SURVEILLANCE BRANDS WE DEAL');
+  const bgImage = safeImage(fields.image_background, Background);
+
   const BrandIcons = [
-    { Image: Dahua, alt: 'Dahua Security' },
-    { Image: TpLink, alt: 'TP-Link Tapo' },
-    { Image: Intel, alt: 'Intel AI Surveillance' },
-    { Image: Dell, alt: 'Dell Enterprise Surveillance' },
-    { Image: Lenovo, alt: 'Lenovo Security Solutions' },
-    { Image: Asus, alt: 'Asus IoT' },
-    { Image: Hp, alt: 'HP Enterprise' },
-    { Image: Microsoft, alt: 'Microsoft Azure IoT' },
+    { Image: safeImage(fields.image_dahua, Dahua), alt: 'Dahua Security' },
+    { Image: safeImage(fields.image_tplink, TpLink), alt: 'TP-Link Tapo' },
+    { Image: safeImage(fields.image_intel, Intel), alt: 'Intel AI Surveillance' },
+    { Image: safeImage(fields.image_dell, Dell), alt: 'Dell Enterprise Surveillance' },
+    { Image: safeImage(fields.image_lenovo, Lenovo), alt: 'Lenovo Security Solutions' },
+    { Image: safeImage(fields.image_asus, Asus), alt: 'Asus IoT' },
+    { Image: safeImage(fields.image_hp, Hp), alt: 'HP Enterprise' },
+    { Image: safeImage(fields.image_microsoft, Microsoft), alt: 'Microsoft Azure IoT' },
   ];
 
   return (
@@ -30,12 +35,12 @@ const CCTVBrand = () => {
       }}
     >
       <div className="absolute z-0 right-0 top-0 w-full h-full pointer-events-none select-none" style={{ mixBlendMode: 'screen', opacity: 0.7 }}>
-        <Image alt='' src={Background} fill style={{ objectFit: 'cover', objectPosition: 'right' }} />
+        <Image alt='' src={bgImage} fill style={{ objectFit: 'cover', objectPosition: 'right' }} />
       </div>
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] px-4 md:px-20 py-8 md:py-0 gap-8 md:gap-20">
         <div className="flex-1 flex items-center md:items-start justify-center md:justify-start w-full">
           <h2 className="text-[2.2rem] md:text-[2rem] text-[#ffd900] font-bold uppercase tracking-wide text-center md:text-left leading-tight drop-shadow-lg font-montserrat">
-            SURVEILLANCE BRANDS WE DEAL
+            {heading || 'SURVEILLANCE BRANDS WE DEAL'}
           </h2>
         </div>
         <div className="flex-1 flex items-center justify-center w-full">

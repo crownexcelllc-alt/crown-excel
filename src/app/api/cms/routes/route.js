@@ -53,10 +53,22 @@ export async function GET(request) {
     const db = await getDb();
     const collection = db.collection('cms_routes');
 
+    const EXCLUDED_CMS_ROUTES = [
+      '/products/phones-cctv',
+      '/appointments',
+      '/blogs/[...slug]',
+      '/blogs/[slug]',
+    ];
+
     const filter = { websiteId };
     if (status) filter.status = status;
     if (search) {
-      filter.path = { $regex: search, $options: 'i' };
+      filter.$and = [
+        { path: { $regex: search, $options: 'i' } },
+        { path: { $nin: EXCLUDED_CMS_ROUTES } }
+      ];
+    } else {
+      filter.path = { $nin: EXCLUDED_CMS_ROUTES };
     }
 
     const routes = await collection

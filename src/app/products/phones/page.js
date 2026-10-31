@@ -5,7 +5,10 @@ import UltimatePhones from '@/app/_components/Products/Phones/UltimatePhones/Ult
 import AllinOnePhones from '@/app/_components/Products/Phones/AllinOnePhones/AllinOnePhones';
 import PhonesBrand from '@/app/_components/Products/Phones/PhonesBrand/PhonesBrand';
 import PhonesWhyFromUs from '@/app/_components/Products/Phones/PhonesWhyFromUs/PhonesWhyFromUs';
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/products/phones', {
@@ -22,15 +25,18 @@ export async function generateMetadata() {
   });
 }
 
-const PhonesPage = () => {
+const PhonesPage = async () => {
+  const { content: cmsContent } = await getCmsData('/products/phones');
+  const sections = cmsContent?.sections || {};
+
   return (
     <main>
-      <PhonesBanner />
-      <BestSellingPhones />
-      <UltimatePhones />
-      <AllinOnePhones />
-      <PhonesBrand />
-      <PhonesWhyFromUs />
+      <PhonesBanner cmsData={sections.phonesbanner} />
+      <BestSellingPhones cmsData={sections.bestsellingphones} />
+      <UltimatePhones cmsData={sections.ultimatephones} />
+      <AllinOnePhones cmsData={sections.allinonephones} />
+      <PhonesBrand cmsData={sections.phonesbrand} />
+      <PhonesWhyFromUs cmsData={sections.phoneswhyfromus} />
     </main>
   );
 };

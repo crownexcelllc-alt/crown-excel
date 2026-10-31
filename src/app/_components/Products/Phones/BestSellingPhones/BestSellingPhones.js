@@ -10,30 +10,46 @@ import BestPhone1 from '@/Components/Images/bestsellingphone2.png';
 import BestPhone2 from '@/Components/Images/allinonephones6.png';
 import BestPhone3 from '@/Components/Images/allinonephones1.png';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const carouselData = [
-    {
-        title: 'Apple iPhone 16 (128GB)',
-        description: 'A18 Bionic chip, New 6-core CPU with 2 performance and 4 efficiency cores, Camera Control, and 48MP Fusion camera.',
-        image: BestPhone1,
-    },
-    {
-        title: 'Samsung Galaxy S24 Ultra',
-        description: 'Flagship smartphone featuring Snapdragon 8 Gen 3, titanium frame, quad-telephoto camera, Galaxy AI, and built-in S Pen.',
-        image: BestPhone2,
-    },
-    {
-        title: 'Apple iPhone 16 Standard',
-        description: 'Advanced dual-camera system, Action button, vibrant Super Retina XDR display, and all-day battery life for business and daily use.',
-        image: BestPhone3,
-    },
-];
+const BestSellingPhones = ({ cmsData }) => {
+    const fields = cmsData?.fields || cmsData || {};
+    const heading = safeRender(fields.heading, 'OUR BEST-SELLING PHONES');
 
-const BestSellingPhones = () => {
+    const slide1Title = safeRender(fields.slide1_title, 'Apple iPhone 16 (128GB)');
+    const slide1Desc = safeRender(fields.slide1_desc, 'A18 Bionic chip, New 6-core CPU with 2 performance and 4 efficiency cores, Camera Control, and 48MP Fusion camera.');
+    const slide1Img = safeImage(fields.image_bestphone1, BestPhone1);
+
+    const slide2Title = safeRender(fields.slide2_title, 'Samsung Galaxy S24 Ultra');
+    const slide2Desc = safeRender(fields.slide2_desc, 'Flagship smartphone featuring Snapdragon 8 Gen 3, titanium frame, quad-telephoto camera, Galaxy AI, and built-in S Pen.');
+    const slide2Img = safeImage(fields.image_bestphone2, BestPhone2);
+
+    const slide3Title = safeRender(fields.slide3_title, 'Apple iPhone 16 Standard');
+    const slide3Desc = safeRender(fields.slide3_desc, 'Advanced dual-camera system, Action button, vibrant Super Retina XDR display, and all-day battery life for business and daily use.');
+    const slide3Img = safeImage(fields.image_bestphone3, BestPhone3);
+
+    const carouselData = [
+        {
+            title: slide1Title,
+            description: slide1Desc,
+            image: slide1Img,
+        },
+        {
+            title: slide2Title,
+            description: slide2Desc,
+            image: slide2Img,
+        },
+        {
+            title: slide3Title,
+            description: slide3Desc,
+            image: slide3Img,
+        },
+    ];
+
     return (
         <div className="w-full py-8 relative lg:mt-10">
             <h2 className="text-center text-3xl md:text-[40px] lg:text-[60px] lg:leading-[60px] lg:font-[800] font-[800] text-[#16795e] mb-8 font-montserrat">
-                OUR BEST-SELLING PHONES
+                {heading}
             </h2>
 
             {/* Desktop Swiper */}

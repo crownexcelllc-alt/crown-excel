@@ -11,35 +11,55 @@ import CCTVProduct2 from '@/Components/Images/allinonephones2.png';
 import CCTVProduct3 from '@/Components/Images/allinonephones3.png';
 import CCTVProduct4 from '@/Components/Images/allinonephones4.png';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { safeRender, safeImage } from '@/lib/safe-html';
 
-const carouselData = [
-    {
-        title: 'Hikvision 4MP IP Security Camera',
-        description: 'Model: DS-2CD1043G0-I. Weather and dust resistant (IP67), 4MP resolution, intelligent IR night vision up to 30 meters, PoE support.',
-        image: CCTVProduct1,
-    },
-    {
-        title: 'HIKVISION Outdoor Bullet Camera',
-        description: 'Rugged weatherproof outdoor bullet surveillance camera with smart EXIR illumination for 24/7 crystal-clear perimeter security.',
-        image: CCTVProduct2,
-    },
-    {
-        title: 'XVIM 8CH 1080P Wired CCTV System',
-        description: 'Complete multi-channel surveillance DVR kit with weatherproof night-vision cameras, remote smartphone monitoring, and motion alert detection.',
-        image: CCTVProduct3,
-    },
-    {
-        title: 'Hikvision PTZ Dome Security Camera',
-        description: 'Pan-tilt-zoom network dome security camera with optical zoom, intelligent auto-tracking, and 360-degree high-definition coverage for large facilities.',
-        image: CCTVProduct4,
-    },
-];
+const BestSellingCCTV = ({ cmsData }) => {
+    const fields = cmsData?.fields || cmsData || {};
+    const heading = safeRender(fields.heading, 'OUR BEST-SELLING CCTV & SURVEILLANCE');
 
-const BestSellingCCTV = () => {
+    const slide1Title = safeRender(fields.slide1_title, 'Hikvision 4MP IP Security Camera');
+    const slide1Desc = safeRender(fields.slide1_desc, 'Model: DS-2CD1043G0-I. Weather and dust resistant (IP67), 4MP resolution, intelligent IR night vision up to 30 meters, PoE support.');
+    const slide1Img = safeImage(fields.image_cctvproduct1, CCTVProduct1);
+
+    const slide2Title = safeRender(fields.slide2_title, 'HIKVISION Outdoor Bullet Camera');
+    const slide2Desc = safeRender(fields.slide2_desc, 'Rugged weatherproof outdoor bullet surveillance camera with smart EXIR illumination for 24/7 crystal-clear perimeter security.');
+    const slide2Img = safeImage(fields.image_cctvproduct2, CCTVProduct2);
+
+    const slide3Title = safeRender(fields.slide3_title, 'XVIM 8CH 1080P Wired CCTV System');
+    const slide3Desc = safeRender(fields.slide3_desc, 'Complete multi-channel surveillance DVR kit with weatherproof night-vision cameras, remote smartphone monitoring, and motion alert detection.');
+    const slide3Img = safeImage(fields.image_cctvproduct3, CCTVProduct3);
+
+    const slide4Title = safeRender(fields.slide4_title, 'Hikvision PTZ Dome Security Camera');
+    const slide4Desc = safeRender(fields.slide4_desc, 'Pan-tilt-zoom network dome security camera with optical zoom, intelligent auto-tracking, and 360-degree high-definition coverage for large facilities.');
+    const slide4Img = safeImage(fields.image_cctvproduct4, CCTVProduct4);
+
+    const carouselData = [
+        {
+            title: slide1Title,
+            description: slide1Desc,
+            image: slide1Img,
+        },
+        {
+            title: slide2Title,
+            description: slide2Desc,
+            image: slide2Img,
+        },
+        {
+            title: slide3Title,
+            description: slide3Desc,
+            image: slide3Img,
+        },
+        {
+            title: slide4Title,
+            description: slide4Desc,
+            image: slide4Img,
+        },
+    ];
+
     return (
         <div className="w-full py-8 relative lg:mt-10">
             <h2 className="text-center text-[22px] sm:text-[26px] md:text-[32px] lg:text-[38px] xl:text-[42px] leading-tight md:leading-snug lg:leading-[50px] font-[800] text-[#16795e] mb-8 font-montserrat px-4">
-                OUR BEST-SELLING CCTV & SURVEILLANCE
+                {heading || 'OUR BEST-SELLING CCTV & SURVEILLANCE'}
             </h2>
 
             {/* Desktop Swiper */}
