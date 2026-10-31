@@ -1196,6 +1196,136 @@ export async function GET(request) {
           };
           if (sec.fields.image_empoweringimage) sec.fields.image_empoweringimage.label = 'Hero Feature Hex Image';
           if (sec.fields.image_networkit) sec.fields.image_networkit.label = 'Bottom CTA Feature Image (Stay Secure)';
+        } else if (sec.sectionId === 'phonesbanner') {
+          sec.sectionName = 'Hero Banner (Wholesale Smartphones)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'DISCOVER TOP', 'Banner Top Line'),
+            heading_highlight: getFld('heading_highlight', 'PHONE BRANDS', 'Banner Highlighted Line'),
+            heading_end: getFld('heading_end', 'FOR EVERY NEED', 'Banner Bottom Line'),
+            paragraph: getFld('paragraph', 'Crown Excel is a premier phones wholesale supplier in Dubai. We offer brand-new smartphones, business VoIP phones, and mobile communication devices from global market leaders including Apple, Samsung, Xiaomi, and more.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_laptopimage1) sec.fields.image_laptopimage1.label = 'Left Smartphone Image (iPhone)';
+          if (sec.fields.image_laptopimage2) sec.fields.image_laptopimage2.label = 'Right Smartphone Image (Galaxy S24 Ultra)';
+          if (sec.fields.image_stars) sec.fields.image_stars.label = 'Decorative Sparkles Graphic';
+        } else if (sec.sectionId === 'bestsellingphones') {
+          sec.sectionName = 'Best-Selling Phones Carousel';
+          const bestImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = { ...bestImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'OUR BEST-SELLING PHONES', 'Section Heading'),
+            slide1_title: getFld('slide1_title', 'Apple iPhone 16 (128GB)', 'Slide 1 Product Title'),
+            slide1_desc: getFld('slide1_desc', 'A18 Bionic chip, New 6-core CPU with 2 performance and 4 efficiency cores, Camera Control, and 48MP Fusion camera.', 'Slide 1 Description', 'richtext'),
+            slide2_title: getFld('slide2_title', 'Samsung Galaxy S24 Ultra', 'Slide 2 Product Title'),
+            slide2_desc: getFld('slide2_desc', 'Flagship smartphone featuring Snapdragon 8 Gen 3, titanium frame, quad-telephoto camera, Galaxy AI, and built-in S Pen.', 'Slide 2 Description', 'richtext'),
+            slide3_title: getFld('slide3_title', 'Apple iPhone 16 Standard', 'Slide 3 Product Title'),
+            slide3_desc: getFld('slide3_desc', 'Advanced dual-camera system, Action button, vibrant Super Retina XDR display, and all-day battery life for business and daily use.', 'Slide 3 Description', 'richtext'),
+            ...bestImgs,
+          };
+          if (sec.fields.image_bestphone1) sec.fields.image_bestphone1.label = 'Slide 1 Image (iPhone 16 Colors)';
+          if (sec.fields.image_bestphone2) sec.fields.image_bestphone2.label = 'Slide 2 Image (Galaxy S24 Ultra)';
+          if (sec.fields.image_bestphone3) sec.fields.image_bestphone3.label = 'Slide 3 Image (iPhone 16 White)';
+        } else if (sec.sectionId === 'ultimatephones') {
+          sec.sectionName = 'The Ultimate Phone Solutions';
+          const ultImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) ultImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) ultImgs[k] = { ...ultImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'THE ULTIMATE SOLUTION FOR', 'Section Heading'),
+            heading_highlight: getFld('heading_highlight', 'SMARTPHONES & BUSINESS PHONES', 'Highlighted Badge Heading'),
+            card1_title: getFld('card1_title', 'Enterprise Reliability & Speed', 'Card 1 Title'),
+            card1_desc: getFld('card1_desc', 'Empower your workforce with top-tier smartphones and corporate communication devices. Featuring the latest iOS and Android operating systems, enterprise encryption, and dependable battery life to ensure seamless productivity anywhere.', 'Card 1 Description', 'richtext'),
+            card2_title: getFld('card2_title', 'Global Compatibility', 'Card 2 Title'),
+            card2_desc: getFld('card2_desc', 'All our phones are factory unlocked with multi-band 5G and international carrier compatibility. Ideal for international businesses, UAE corporations, and retail traders requiring versatile, high-demand devices.', 'Card 2 Description', 'richtext'),
+            card3_title: getFld('card3_title', 'Wholesale Volume & Bulk Supply', 'Card 3 Title'),
+            card3_desc: getFld('card3_desc', 'Crown Excel specializes in wholesale smartphone distribution with competitive pricing on large volumes. Whether purchasing for corporate fleets or retail resale, we guarantee reliable inventory and fast fulfillment.', 'Card 3 Description', 'richtext'),
+            card4_title: getFld('card4_title', 'Authenticity & Warranty Support', 'Card 4 Title'),
+            card4_desc: getFld('card4_desc', 'Every device is 100% brand new, authentic, and supported with official manufacturer warranty. Our technical team ensures hassle-free procurement and dedicated support for every client.', 'Card 4 Description', 'richtext'),
+            ...ultImgs,
+          };
+          if (sec.fields.image_computingimage) sec.fields.image_computingimage.label = 'Center Showcase Image';
+        } else if (sec.sectionId === 'allinonephones') {
+          sec.sectionName = 'All-in-One Phone Solutions';
+          const allImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) allImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) allImgs[k] = { ...allImgs[k], ...v };
+          }
+          sec.fields = {
+            banner_heading: getFld('banner_heading', 'ALL-IN-ONE PHONE SOLUTIONS', 'Banner Heading Ribbon'),
+            biz_heading: getFld('biz_heading', 'For Businesses:', 'Businesses Subsection Heading'),
+            biz_btn_text: getFld('biz_btn_text', 'Visit Our Store', 'Business Button Label'),
+            biz_btn_link: getFld('biz_btn_link', 'https://www.grabatoz.ae/ae-en', 'Business Button URL', 'url'),
+            biz_item1_title: getFld('biz_item1_title', 'Apple iPhone 16 128GB', 'Business Product 1 Title'),
+            biz_item2_title: getFld('biz_item2_title', 'Samsung Galaxy S24 Ultra', 'Business Product 2 Title'),
+            biz_item3_title: getFld('biz_item3_title', 'Apple iPhone 16 Pro', 'Business Product 3 Title'),
+            reseller_heading: getFld('reseller_heading', 'For Retailers & Resellers:', 'Resellers Subsection Heading'),
+            reseller_btn_text: getFld('reseller_btn_text', 'Get Wholesale Price', 'Reseller Button Label'),
+            reseller_btn_link: getFld('reseller_btn_link', '/contact-us', 'Reseller Button URL', 'url'),
+            reseller_item1_title: getFld('reseller_item1_title', 'Samsung Galaxy S24 Ultra', 'Reseller Product 1 Title'),
+            reseller_item2_title: getFld('reseller_item2_title', 'Apple iPhone 16', 'Reseller Product 2 Title'),
+            reseller_item3_title: getFld('reseller_item3_title', 'Apple iPhone 16 Dual-SIM', 'Reseller Product 3 Title'),
+            ...allImgs,
+          };
+          if (sec.fields.image_phone1) sec.fields.image_phone1.label = 'Product Image 1 (Apple iPhone 16)';
+          if (sec.fields.image_phone2) sec.fields.image_phone2.label = 'Product Image 2 (Galaxy S24 Ultra)';
+          if (sec.fields.image_phone3) sec.fields.image_phone3.label = 'Product Image 3 (iPhone 16 Pro / Lineup)';
+        } else if (sec.sectionId === 'phonesbrand') {
+          sec.sectionName = 'Phone Brands We Deal';
+          const brandImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = { ...brandImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'PHONE BRANDS WE DEAL', 'Section Heading'),
+            ...brandImgs,
+          };
+          if (sec.fields.image_background) sec.fields.image_background.label = 'Background Pattern Graphic';
+          if (sec.fields.image_apple) sec.fields.image_apple.label = 'Brand Logo 1 (Apple)';
+          if (sec.fields.image_samsung) sec.fields.image_samsung.label = 'Brand Logo 2 (Samsung)';
+          if (sec.fields.image_xiomi) sec.fields.image_xiomi.label = 'Brand Logo 3 (Xiaomi)';
+          if (sec.fields.image_lenovo) sec.fields.image_lenovo.label = 'Brand Logo 4 (Lenovo)';
+          if (sec.fields.image_asus) sec.fields.image_asus.label = 'Brand Logo 5 (Asus)';
+          if (sec.fields.image_hp) sec.fields.image_hp.label = 'Brand Logo 6 (HP)';
+          if (sec.fields.image_dell) sec.fields.image_dell.label = 'Brand Logo 7 (Dell)';
+          if (sec.fields.image_microsft) sec.fields.image_microsft.label = 'Brand Logo 8 (Microsoft)';
+        } else if (sec.sectionId === 'phoneswhyfromus') {
+          sec.sectionName = 'Why Buy Wholesale Phones From Us';
+          sec.fields = {
+            heading: getFld('heading', 'Why Buy', 'Heading Prefix'),
+            heading_highlight: getFld('heading_highlight', 'Phones in Wholesale', 'Heading Highlighted (Yellow)'),
+            heading_end: getFld('heading_end', 'From Us?', 'Heading Suffix'),
+            paragraph: getFld('paragraph', 'Crown Excel is Dubai’s reputable supplier for wholesale smartphones and enterprise mobile communications. Here is why corporations, retailers, and traders partner with us:', 'Overview Description', 'richtext'),
+            feature1_title: getFld('feature1_title', '100% Original & Brand New', 'Feature 1 Title'),
+            feature1_desc: getFld('feature1_desc', 'All mobile phones and accessories are factory sealed, genuine, and sourced directly from official global supply chains.', 'Feature 1 Description', 'richtext'),
+            feature2_title: getFld('feature2_title', 'Aggressive Wholesale Pricing', 'Feature 2 Title'),
+            feature2_desc: getFld('feature2_desc', 'Maximize your profit margins with highly competitive wholesale tier rates on top-demand Apple and Samsung smartphones.', 'Feature 2 Description', 'richtext'),
+            feature3_title: getFld('feature3_title', 'Local Warranty & Support', 'Feature 3 Title'),
+            feature3_desc: getFld('feature3_desc', 'Enjoy peace of mind with manufacturer-backed warranties and dedicated account managers to handle post-sales support.', 'Feature 3 Description', 'richtext'),
+            feature4_title: getFld('feature4_title', 'Fast UAE & GCC Fulfillment', 'Feature 4 Title'),
+            feature4_desc: getFld('feature4_desc', 'Rapid dispatch from our Dubai warehouse with same-day local UAE deliveries and efficient international GCC export logistics.', 'Feature 4 Description', 'richtext'),
+          };
         }
 
         return sec;
@@ -1289,6 +1419,7 @@ export async function POST(request) {
 
     const isDynamicPage = 
       finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94' ||
+      finalPath === '/products/phones' || path === '/products/phones' || routeId === '6ae5c9a66688da764d5abb87' ||
       finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
       finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
       finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
