@@ -33,19 +33,24 @@ function scanAppDirectory(dir, basePath = '') {
       
       const folderName = entry.name;
       
-      // Skip special directories
+      // Skip special directories and deprecated/removed routes
       if (
         folderName.startsWith('_') ||   // _components, _lib, etc.
         folderName.startsWith('.') ||    // .git, etc.
         folderName === 'api' ||          // API routes
         folderName === 'admin' ||        // Admin panel itself
-        folderName === 'node_modules'
+        folderName === 'node_modules' ||
+        folderName === 'phones-cctv'     // Deprecated route
       ) {
         continue;
       }
       
       const fullPath = path.join(dir, folderName);
       const routePath = `${basePath}/${folderName}`;
+
+      if (routePath === '/products/phones-cctv') {
+        continue;
+      }
       
       // Check if this directory has a page.js or page.tsx
       const hasPage = existsSync(path.join(fullPath, 'page.js')) ||
@@ -175,6 +180,9 @@ export async function POST(request) {
     const db = await getDb();
     const collection = db.collection('cms_routes');
     const now = new Date().toISOString();
+
+    // Ensure deprecated routes like /products/phones-cctv are purged
+    await collection.deleteMany({ path: '/products/phones-cctv' });
     
     let created = 0;
     let updated = 0;

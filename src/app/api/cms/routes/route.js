@@ -56,7 +56,12 @@ export async function GET(request) {
     const filter = { websiteId };
     if (status) filter.status = status;
     if (search) {
-      filter.path = { $regex: search, $options: 'i' };
+      filter.$and = [
+        { path: { $regex: search, $options: 'i' } },
+        { path: { $ne: '/products/phones-cctv' } }
+      ];
+    } else {
+      filter.path = { $ne: '/products/phones-cctv' };
     }
 
     const routes = await collection
