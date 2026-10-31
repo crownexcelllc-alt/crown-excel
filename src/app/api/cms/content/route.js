@@ -1326,6 +1326,141 @@ export async function GET(request) {
             feature4_title: getFld('feature4_title', 'Fast UAE & GCC Fulfillment', 'Feature 4 Title'),
             feature4_desc: getFld('feature4_desc', 'Rapid dispatch from our Dubai warehouse with same-day local UAE deliveries and efficient international GCC export logistics.', 'Feature 4 Description', 'richtext'),
           };
+        } else if (sec.sectionId === 'cctvbanner') {
+          sec.sectionName = 'Hero Banner (Wholesale CCTV & Surveillance)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'ADVANCED CCTV &', 'Banner Top Line'),
+            heading_highlight: getFld('heading_highlight', 'SECURITY CAMERAS', 'Banner Highlighted Line'),
+            heading_end: getFld('heading_end', 'FOR TOTAL SECURITY', 'Banner Bottom Line'),
+            paragraph: getFld('paragraph', 'Crown Excel is Dubai’s premier CCTV wholesale supplier. We supply high-resolution IP security cameras, night-vision outdoor bullet cameras, PTZ domes, and complete DVR/NVR surveillance packages from Hikvision, Dahua, and leading global security brands.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_cctvimage1) sec.fields.image_cctvimage1.label = 'Left Security Camera Image (Hikvision IP)';
+          if (sec.fields.image_cctvimage2) sec.fields.image_cctvimage2.label = 'Right Security Camera Image (Outdoor Bullet)';
+          if (sec.fields.image_stars) sec.fields.image_stars.label = 'Decorative Sparkles Graphic';
+        } else if (sec.sectionId === 'bestsellingcctv') {
+          sec.sectionName = 'Best-Selling CCTV & Surveillance Carousel';
+          const bestImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bestImgs[k] = { ...bestImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'OUR BEST-SELLING CCTV & SURVEILLANCE', 'Section Heading'),
+            slide1_title: getFld('slide1_title', 'Hikvision 4MP IP Security Camera', 'Slide 1 Product Title'),
+            slide1_desc: getFld('slide1_desc', 'Model: DS-2CD1043G0-I. Weather and dust resistant (IP67), 4MP resolution, intelligent IR night vision up to 30 meters, PoE support.', 'Slide 1 Description', 'richtext'),
+            slide2_title: getFld('slide2_title', 'HIKVISION Outdoor Bullet Camera', 'Slide 2 Product Title'),
+            slide2_desc: getFld('slide2_desc', 'Rugged weatherproof outdoor bullet surveillance camera with smart EXIR illumination for 24/7 crystal-clear perimeter security.', 'Slide 2 Description', 'richtext'),
+            slide3_title: getFld('slide3_title', 'XVIM 8CH 1080P Wired CCTV System', 'Slide 3 Product Title'),
+            slide3_desc: getFld('slide3_desc', 'Complete multi-channel surveillance DVR kit with weatherproof night-vision cameras, remote smartphone monitoring, and motion alert detection.', 'Slide 3 Description', 'richtext'),
+            slide4_title: getFld('slide4_title', 'Hikvision PTZ Dome Security Camera', 'Slide 4 Product Title'),
+            slide4_desc: getFld('slide4_desc', 'Pan-tilt-zoom network dome security camera with optical zoom, intelligent auto-tracking, and 360-degree high-definition coverage for large facilities.', 'Slide 4 Description', 'richtext'),
+            ...bestImgs,
+          };
+          if (sec.fields.image_cctvproduct1) sec.fields.image_cctvproduct1.label = 'Slide 1 Image (4MP IP Camera)';
+          if (sec.fields.image_cctvproduct2) sec.fields.image_cctvproduct2.label = 'Slide 2 Image (Outdoor Bullet Camera)';
+          if (sec.fields.image_cctvproduct3) sec.fields.image_cctvproduct3.label = 'Slide 3 Image (8CH CCTV Kit)';
+          if (sec.fields.image_cctvproduct4) sec.fields.image_cctvproduct4.label = 'Slide 4 Image (PTZ Dome Camera)';
+        } else if (sec.sectionId === 'ultimatecctv') {
+          sec.sectionName = 'The Ultimate CCTV & Surveillance Solutions';
+          const ultImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) ultImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) ultImgs[k] = { ...ultImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'THE ULTIMATE SOLUTION FOR', 'Section Heading'),
+            heading_highlight: getFld('heading_highlight', 'CCTV & SURVEILLANCE SYSTEMS', 'Highlighted Ribbon Heading'),
+            card1_title: getFld('card1_title', 'High-Definition Clarity & Night Vision', 'Card 1 Title'),
+            card1_desc: getFld('card1_desc', 'Safeguard your commercial properties, offices, and warehouses with industry-leading CCTV security cameras. Featuring 4K resolution, ultra-low-light night vision, smart motion detection, and wide-angle surveillance.', 'Card 1 Description', 'richtext'),
+            card2_title: getFld('card2_title', 'IP67 Weatherproof Durability', 'Card 2 Title'),
+            card2_desc: getFld('card2_desc', 'Engineered specifically to endure extreme desert heat, humidity, and outdoor dust in Dubai and across the UAE. Rugged metal housing guarantees 24/7 continuous operation in challenging environments.', 'Card 2 Description', 'richtext'),
+            card3_title: getFld('card3_title', 'Scalable NVR & Cloud Integration', 'Card 3 Title'),
+            card3_desc: getFld('card3_desc', 'Easily expand your security infrastructure from standalone cameras to 32-channel enterprise NVR systems with remote cloud viewing, secure local backup, and encrypted mobile access.', 'Card 3 Description', 'richtext'),
+            card4_title: getFld('card4_title', 'Wholesale Supply & SIRA-Compliant Tech', 'Card 4 Title'),
+            card4_desc: getFld('card4_desc', 'We provide wholesale bulk pricing for security integrators, contractors, and businesses seeking approved, certified CCTV hardware with complete manufacturer guarantees.', 'Card 4 Description', 'richtext'),
+            ...ultImgs,
+          };
+          if (sec.fields.image_cctvproductimg) sec.fields.image_cctvproductimg.label = 'Center Showcase Image (Surveillance System Kit)';
+        } else if (sec.sectionId === 'allinonecctv') {
+          sec.sectionName = 'All-in-One CCTV & Security Solutions';
+          const allImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) allImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) allImgs[k] = { ...allImgs[k], ...v };
+          }
+          sec.fields = {
+            banner_heading: getFld('banner_heading', 'ALL-IN-ONE CCTV & SECURITY SOLUTIONS', 'Banner Heading Ribbon'),
+            commercial_heading: getFld('commercial_heading', 'For Commercial & Enterprise:', 'Commercial Subsection Heading'),
+            commercial_btn_text: getFld('commercial_btn_text', 'Inquire Bulk Orders', 'Commercial Button Label'),
+            commercial_btn_link: getFld('commercial_btn_link', '/contact-us', 'Commercial Button URL', 'url'),
+            commercial_item1_title: getFld('commercial_item1_title', 'Hikvision 4MP IP Network Camera', 'Commercial Product 1 Title'),
+            commercial_item2_title: getFld('commercial_item2_title', 'Hikvision Outdoor Bullet Camera', 'Commercial Product 2 Title'),
+            commercial_item3_title: getFld('commercial_item3_title', 'XVIM 8CH 1080P DVR Surveillance Kit', 'Commercial Product 3 Title'),
+            residential_heading: getFld('residential_heading', 'For Residential & Small Business:', 'Residential Subsection Heading'),
+            residential_btn_text: getFld('residential_btn_text', 'Get Wholesale Price', 'Residential Button Label'),
+            residential_btn_link: getFld('residential_btn_link', '/contact-us', 'Residential Button URL', 'url'),
+            residential_item1_title: getFld('residential_item1_title', 'Hikvision PTZ Dome Security Camera', 'Residential Product 1 Title'),
+            residential_item2_title: getFld('residential_item2_title', 'Hikvision Outdoor Night Vision', 'Residential Product 2 Title'),
+            residential_item3_title: getFld('residential_item3_title', 'Hikvision Weatherproof Security Bullet', 'Residential Product 3 Title'),
+            ...allImgs,
+          };
+          if (sec.fields.image_popular1) sec.fields.image_popular1.label = 'Product Image 1 (Hikvision 4MP IP Network Camera)';
+          if (sec.fields.image_popular2) sec.fields.image_popular2.label = 'Product Image 2 (Hikvision Outdoor Bullet Camera)';
+          if (sec.fields.image_popular3) sec.fields.image_popular3.label = 'Product Image 3 (XVIM 8CH 1080P DVR Kit)';
+          if (sec.fields.image_popular4) sec.fields.image_popular4.label = 'Product Image 4 (Hikvision PTZ Dome Camera)';
+          if (sec.fields.image_popular5) sec.fields.image_popular5.label = 'Product Image 5 (Hikvision Outdoor Night Vision)';
+        } else if (sec.sectionId === 'cctvbrand') {
+          sec.sectionName = 'Surveillance Brands We Deal';
+          const brandImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) brandImgs[k] = { ...brandImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'SURVEILLANCE BRANDS WE DEAL', 'Section Heading'),
+            ...brandImgs,
+          };
+          if (sec.fields.image_background) sec.fields.image_background.label = 'Background Pattern Graphic';
+          if (sec.fields.image_dahua) sec.fields.image_dahua.label = 'Brand Logo 1 (Dahua)';
+          if (sec.fields.image_tplink) sec.fields.image_tplink.label = 'Brand Logo 2 (TP-Link Tapo)';
+          if (sec.fields.image_intel) sec.fields.image_intel.label = 'Brand Logo 3 (Intel AI Surveillance)';
+          if (sec.fields.image_dell) sec.fields.image_dell.label = 'Brand Logo 4 (Dell Enterprise Surveillance)';
+          if (sec.fields.image_lenovo) sec.fields.image_lenovo.label = 'Brand Logo 5 (Lenovo Security Solutions)';
+          if (sec.fields.image_asus) sec.fields.image_asus.label = 'Brand Logo 6 (Asus IoT)';
+          if (sec.fields.image_hp) sec.fields.image_hp.label = 'Brand Logo 7 (HP Enterprise)';
+          if (sec.fields.image_microsoft) sec.fields.image_microsoft.label = 'Brand Logo 8 (Microsoft Azure IoT)';
+        } else if (sec.sectionId === 'cctvwhyfromus') {
+          sec.sectionName = 'Why Buy Wholesale CCTV From Us';
+          sec.fields = {
+            heading: getFld('heading', 'Why Buy', 'Heading Prefix'),
+            heading_highlight: getFld('heading_highlight', 'CCTV Systems in Wholesale', 'Heading Highlighted (Yellow)'),
+            heading_end: getFld('heading_end', 'From Us?', 'Heading Suffix'),
+            paragraph: getFld('paragraph', 'Crown Excel is a leading supplier of professional video surveillance equipment in Dubai. We supply security contractors, system integrators, and businesses across the UAE:', 'Overview Description', 'richtext'),
+            feature1_title: getFld('feature1_title', 'High-Definition IP Security', 'Feature 1 Title'),
+            feature1_desc: getFld('feature1_desc', 'Access crystal-clear 2MP, 4MP, and 4K cameras with advanced night vision, wide dynamic range, and smart AI tracking.', 'Feature 1 Description', 'richtext'),
+            feature2_title: getFld('feature2_title', 'Official Brand Warranty', 'Feature 2 Title'),
+            feature2_desc: getFld('feature2_desc', 'All surveillance cameras, NVRs, and accessories are backed by direct manufacturer warranty and local technical assistance.', 'Feature 2 Description', 'richtext'),
+            feature3_title: getFld('feature3_title', 'Bulk Wholesale Pricing', 'Feature 3 Title'),
+            feature3_desc: getFld('feature3_desc', 'Get unmatched tiered distributor pricing on bulk orders for Hikvision and Dahua security equipment in Dubai and the UAE.', 'Feature 3 Description', 'richtext'),
+            feature4_title: getFld('feature4_title', 'Pre-Sales Technical Consultation', 'Feature 4 Title'),
+            feature4_desc: getFld('feature4_desc', 'Our certified CCTV engineers assist you in specifying cameras, lenses, storage calculations, and network requirements for any project.', 'Feature 4 Description', 'richtext'),
+          };
         }
 
         return sec;
@@ -1420,6 +1555,7 @@ export async function POST(request) {
     const isDynamicPage = 
       finalPath === '/' || path === '/' || routeId === '6a2016a8a0608271b7524e94' ||
       finalPath === '/products/phones' || path === '/products/phones' || routeId === '6ae5c9a66688da764d5abb87' ||
+      finalPath === '/products/cctv' || path === '/products/cctv' || routeId === '6ae5c9a56688da764d5abb86' ||
       finalPath === '/products/laptops' || path === '/products/laptops' || routeId === '6a2016aca0608271b7524ead' ||
       finalPath === '/products/pc' || path === '/products/pc' || routeId === '6a2016aca0608271b7524eae' ||
       finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||

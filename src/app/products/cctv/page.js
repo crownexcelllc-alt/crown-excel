@@ -5,7 +5,10 @@ import UltimateCCTV from '@/app/_components/Products/CCTV/UltimateCCTV/UltimateC
 import AllinOneCCTV from '@/app/_components/Products/CCTV/AllinOneCCTV/AllinOneCCTV';
 import CCTVBrand from '@/app/_components/Products/CCTV/CCTVBrand/CCTVBrand';
 import CCTVWhyFromUs from '@/app/_components/Products/CCTV/CCTVWhyFromUs/CCTVWhyFromUs';
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/products/cctv', {
@@ -22,15 +25,18 @@ export async function generateMetadata() {
   });
 }
 
-const CCTVPage = () => {
+const CCTVPage = async () => {
+  const { content: cmsContent } = await getCmsData('/products/cctv');
+  const sections = cmsContent?.sections || {};
+
   return (
     <main>
-      <CCTVBanner />
-      <BestSellingCCTV />
-      <UltimateCCTV />
-      <AllinOneCCTV />
-      <CCTVBrand />
-      <CCTVWhyFromUs />
+      <CCTVBanner cmsData={sections.cctvbanner} />
+      <BestSellingCCTV cmsData={sections.bestsellingcctv} />
+      <UltimateCCTV cmsData={sections.ultimatecctv} />
+      <AllinOneCCTV cmsData={sections.allinonecctv} />
+      <CCTVBrand cmsData={sections.cctvbrand} />
+      <CCTVWhyFromUs cmsData={sections.cctvwhyfromus} />
     </main>
   );
 };
