@@ -100,6 +100,11 @@ const nextConfig = {
         destination: '/our-services/long/short-term-amc',
         permanent: true,
       },
+      {
+        source: '/products/phones-cctv',
+        destination: '/products/phones',
+        permanent: true,
+      },
     ];
   },
   turbopack: {

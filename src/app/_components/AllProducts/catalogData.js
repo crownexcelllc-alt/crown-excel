@@ -103,7 +103,8 @@ export const categories = [
     { name: 'Keyboards & Mouse', slug: 'keyboards-mouse' },
     { name: 'Accessories', slug: 'accessories' },
     { name: 'Biometrics', slug: 'biometrics' },
-    { name: 'Phones & CCTV', slug: 'phones-cctv' },
+    { name: 'Phones', slug: 'phones' },
+    { name: 'CCTV', slug: 'cctv' },
 ];
 
 export const categoryPages = {
@@ -117,7 +118,9 @@ export const categoryPages = {
     'keyboards-mouse': '/products/keyboard-mouse',
     'accessories': '/products/accessories',
     'biometrics': '/products/biometrics',
-    'phones-cctv': '/products/phones-cctv',
+    'phones': '/products/phones',
+    'cctv': '/products/cctv',
+    'phones-cctv': '/products/phones',
 };
 
 export const productsByCategory = {
@@ -523,6 +526,46 @@ export const productsByCategory = {
             brand: 'Biometric',
             description: 'High-sensitivity CMOS sensor scanner capable of reading digital screens and paper codes easily.',
             image: BiometricAllinone5,
+        },
+    ],
+    phones: [
+        {
+            title: 'Apple iPhone 16 (128GB)',
+            brand: 'Apple',
+            description: 'A18 Bionic chip with advanced dual-camera system, Action Button, and Ceramic Shield durability.',
+            image: BestSellingPhone2,
+        },
+        {
+            title: 'Samsung Galaxy S24 Ultra',
+            brand: 'Samsung',
+            description: 'Flagship smartphone featuring Snapdragon 8 Gen 3, quad-camera system, and built-in S Pen.',
+            image: AllinonePhones6,
+        },
+    ],
+    cctv: [
+        {
+            title: 'Hikvision 4MP IP Security Camera',
+            brand: 'Hikvision',
+            description: 'Water and dust resistant IP67 outdoor network surveillance camera with high-clarity night vision.',
+            image: BestSellingPhone1,
+        },
+        {
+            title: 'HIKVISION Outdoor Bullet Camera',
+            brand: 'Hikvision',
+            description: 'High-definition weatherproof bullet surveillance camera with smart IR illumination for 24/7 security.',
+            image: AllinonePhones2,
+        },
+        {
+            title: 'XVIM 8CH 1080P Wired CCTV System',
+            brand: 'XVIM',
+            description: 'Complete multi-channel security DVR system with night vision cameras and remote mobile monitoring.',
+            image: AllinonePhones3,
+        },
+        {
+            title: 'Hikvision PTZ Dome Security Camera',
+            brand: 'Hikvision',
+            description: 'Pan-tilt-zoom network dome camera with optical zoom and auto-tracking for wide area monitoring.',
+            image: AllinonePhones4,
         },
     ],
     'phones-cctv': [

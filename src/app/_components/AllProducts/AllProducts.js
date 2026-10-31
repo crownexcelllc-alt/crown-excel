@@ -24,18 +24,20 @@ const AllProducts = ({ cmsCatalog, cmsData }) => {
     const selectedProductsMap = catalog?.fields?.selected_products?.value || 
                                 catalog?.fields?.selected_products || {};
 
-    const selectedTitles = selectedProductsMap[active];
+    const categoryProducts = productsByCategory[active] || [];
+    const selectedTitles = selectedProductsMap[active] || 
+        ((active === 'phones' || active === 'cctv') ? selectedProductsMap['phones-cctv'] : null);
+
     let activeProducts = [];
     if (Array.isArray(selectedTitles) && selectedTitles.length > 0) {
-        const categoryProducts = productsByCategory[active] || [];
         // Preserve admin's chosen selection and order, max 4 cards
         const matched = selectedTitles
             .map(title => categoryProducts.find(p => p.title === title))
             .filter(Boolean);
-        activeProducts = matched.slice(0, 4);
+        activeProducts = matched.length > 0 ? matched.slice(0, 4) : categoryProducts.slice(0, 4);
     } else {
         // Fall back to default first 4 products when no custom selection
-        activeProducts = (productsByCategory[active] || []).slice(0, 4);
+        activeProducts = categoryProducts.slice(0, 4);
     }
 
     const activeCategory = categories.find((c) => c.slug === active);

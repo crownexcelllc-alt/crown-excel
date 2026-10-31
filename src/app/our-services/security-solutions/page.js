@@ -1,13 +1,10 @@
 import HardwareRepairBanner from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairBanner/HardwareRepairBanner'
 import SecuritySolutionsEmpowering from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairEmpowering/HardwareRepairEmpowering'
-import HardwareRepairEmpowering from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairEmpowering/HardwareRepairEmpowering'
-import HardwareRepairFaq from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairFaq/HardwareRepairFaq'
-import HardwareRepairServices from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairServices/HardwareRepairServices'
-import HardwareRepairSmart from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairSmart/HardwareRepairSmart'
-import HardwareRepairWeAreBest from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairWeAreBest/HardwareRepairWeAreBest'
-import HardwareRepairWhyChooseUs from '@/app/_components/OurServicesPages/HardwareRepair/HardwareRepairWhyChooseUs/HardwareRepairWhyChooseUs'
 import React from 'react'
-import { generateCmsMetadata } from '@/lib/cms-fetch';
+import { generateCmsMetadata, getCmsData } from '@/lib/cms-fetch';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata() {
   return await generateCmsMetadata('/our-services/security-solutions', {
@@ -16,18 +13,16 @@ export async function generateMetadata() {
   });
 }
 
-const HardwareRepair = () => {
+const HardwareRepair = async () => {
+  const { content: cmsContent } = await getCmsData('/our-services/security-solutions');
+  const sections = cmsContent?.sections || {};
+
   return (
     <div>
-      <HardwareRepairBanner/>
-      {/* <HardwareRepairSmart/> */}
-      <SecuritySolutionsEmpowering/>
-      {/* <HardwareRepairWhyChooseUs/>
-      <HardwareRepairServices/>
-      <HardwareRepairWeAreBest/>
-      <HardwareRepairFaq/> */}
+      <HardwareRepairBanner cmsData={sections.hardwarerepairbanner} />
+      <SecuritySolutionsEmpowering cmsData={sections.securitysolutionsempowering} />
     </div>
-  )
-}
+  );
+};
 
-export default HardwareRepair
+export default HardwareRepair;
