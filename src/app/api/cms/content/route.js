@@ -1113,6 +1113,89 @@ export async function GET(request) {
           if (sec.fields.image_iconmanufacturing) sec.fields.image_iconmanufacturing.label = 'Industry 3 Icon (Manufacturing)';
           if (sec.fields.image_iconretail) sec.fields.image_iconretail.label = 'Industry 4 Icon (Retail)';
           if (sec.fields.image_iconcheck) sec.fields.image_iconcheck.label = 'Checkmark Icon';
+        } else if (sec.sectionId === 'hardwarerepairbanner') {
+          sec.sectionName = 'Hero Banner (Security Solutions)';
+          const bannerImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) bannerImgs[k] = { ...bannerImgs[k], ...v };
+          }
+          sec.fields = {
+            heading: getFld('heading', 'Security Solutions', 'Banner Main Heading'),
+            paragraph: getFld('paragraph', 'Security is built into every repair — malware and ransomware cleanup, firmware/BIOS hardening, secure configuration baselines, vulnerability patching, and replacement of compromised components — restoring reliability while strengthening your endpoint protection.', 'Banner Description', 'richtext'),
+            ...bannerImgs,
+          };
+          if (sec.fields.image_bannerimage) sec.fields.image_bannerimage.label = 'Hero Banner Background Image';
+          if (sec.fields.image_icon2) sec.fields.image_icon2.label = 'Banner Floating Icon';
+        } else if (sec.sectionId === 'securitysolutionsempowering') {
+          sec.sectionName = 'Cybersecurity & Protection Overview';
+          const empImgs = {};
+          for (const [k, v] of Object.entries(sec.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = v;
+          }
+          for (const [k, v] of Object.entries(dbSec?.fields || {})) {
+            if (k.startsWith('image')) empImgs[k] = { ...empImgs[k], ...v };
+          }
+          sec.fields = {
+            // Hero Subsection
+            badge: getFld('badge', 'SECURITY SOLUTIONS', 'Hero Badge'),
+            heading: getFld('heading', 'Complete Security,', 'Hero Main Title (Part 1)'),
+            heading_2: getFld('heading_2', 'Protecting Your Business', 'Hero Highlighted Title (Part 2)'),
+            heading_3: getFld('heading_3', 'Peace of Mind, 24/7 Protection', 'Hero Subtitle (Part 3)'),
+            paragraph: getFld('paragraph', 'Crown Excel delivers advanced security solutions for your business. From network security, endpoint protection, firewalls, and surveillance to compliance and risk management—our experts keep your data, devices, and people safe. Focus on growth, knowing your business is protected by the latest technology and proactive support.', 'Hero Overview Description', 'richtext'),
+            bullet_1: getFld('bullet_1', 'Network security & firewalls', 'Hero Feature Bullet 1'),
+            bullet_2: getFld('bullet_2', 'Endpoint protection & antivirus', 'Hero Feature Bullet 2'),
+            bullet_3: getFld('bullet_3', 'Surveillance & access control', 'Hero Feature Bullet 3'),
+            bullet_4: getFld('bullet_4', 'Data privacy & compliance', 'Hero Feature Bullet 4'),
+            bullet_5: getFld('bullet_5', 'Threat monitoring & response', 'Hero Feature Bullet 5'),
+            bullet_6: getFld('bullet_6', 'Security consulting & audits', 'Hero Feature Bullet 6'),
+            button_1_text: getFld('button_1_text', 'Get Free Security Audit', 'Primary CTA Button Label'),
+            button_1_link: getFld('button_1_link', '/contact-us', 'Primary CTA Button Link', 'url'),
+            button_2_text: getFld('button_2_text', 'Request Solution', 'Secondary Modal Button Label'),
+
+            // Why Choose Section
+            heading_4: getFld('heading_4', 'WHY CHOOSE CROWN EXCEL?', 'Why Choose Section Heading'),
+            paragraph_2: getFld('paragraph_2', 'We secure your business with the latest technology and expert support.', 'Why Choose Subtitle', 'richtext'),
+            card_1_title: getFld('card_1_title', 'Advanced Protection', 'Card 1 Title'),
+            card_1_desc: getFld('card_1_desc', 'Multi-layered security for networks, devices, and data.', 'Card 1 Description', 'richtext'),
+            card_2_title: getFld('card_2_title', 'Surveillance & Access', 'Card 2 Title'),
+            card_2_desc: getFld('card_2_desc', 'CCTV, access control, and monitoring for total safety.', 'Card 2 Description', 'richtext'),
+            card_3_title: getFld('card_3_title', 'Expert Team', 'Card 3 Title'),
+            card_3_desc: getFld('card_3_desc', 'Certified security professionals and rapid response.', 'Card 3 Description', 'richtext'),
+            card_4_title: getFld('card_4_title', 'Compliance & Audits', 'Card 4 Title'),
+            card_4_desc: getFld('card_4_desc', 'Stay compliant with regular audits and reporting.', 'Card 4 Description', 'richtext'),
+
+            // We Secure Everything Section
+            heading_5: getFld('heading_5', 'WE SECURE EVERYTHING', 'Security Scope Section Heading'),
+            paragraph_3: getFld('paragraph_3', 'Networks, devices, data, people, and more', 'Security Scope Subtitle', 'richtext'),
+            tag_1: getFld('tag_1', 'Firewalls', 'Security Tag 1'),
+            tag_2: getFld('tag_2', 'Antivirus', 'Security Tag 2'),
+            tag_3: getFld('tag_3', 'CCTV', 'Security Tag 3'),
+            tag_4: getFld('tag_4', 'Access Control', 'Security Tag 4'),
+            tag_5: getFld('tag_5', 'Data Encryption', 'Security Tag 5'),
+            tag_6: getFld('tag_6', 'Threat Monitoring', 'Security Tag 6'),
+            tag_7: getFld('tag_7', 'Compliance', 'Security Tag 7'),
+            tag_8: getFld('tag_8', 'Security Consulting', 'Security Tag 8'),
+            tag_9: getFld('tag_9', 'Risk Management', 'Security Tag 9'),
+            tag_10: getFld('tag_10', 'Incident Response', 'Security Tag 10'),
+
+            // Bottom CTA Section
+            heading_6: getFld('heading_6', 'Stay Secure—Let Us Protect Your Business!', 'Bottom CTA Heading'),
+            paragraph_4: getFld('paragraph_4', 'Don’t leave your business vulnerable. Crown Excel provides complete security solutions, so you can focus on success while we keep you protected. Call us for a free security audit!', 'Bottom CTA Description', 'richtext'),
+            cta_bullet_1: getFld('cta_bullet_1', 'Network & endpoint security', 'CTA Bullet 1'),
+            cta_bullet_2: getFld('cta_bullet_2', 'Surveillance & access control', 'CTA Bullet 2'),
+            cta_bullet_3: getFld('cta_bullet_3', 'Compliance & risk management', 'CTA Bullet 3'),
+            cta_button_1_text: getFld('cta_button_1_text', 'Call Now For Free Security Audit', 'CTA Primary Button Label'),
+            cta_button_1_link: getFld('cta_button_1_link', '/contact-us', 'CTA Primary Button Link', 'url'),
+            cta_button_2_text: getFld('cta_button_2_text', 'Request Solution', 'CTA Secondary Button Label'),
+            cta_badge: getFld('cta_badge', 'SECURED', 'CTA Overlay Badge Text'),
+
+            ...empImgs,
+          };
+          if (sec.fields.image_empoweringimage) sec.fields.image_empoweringimage.label = 'Hero Feature Hex Image';
+          if (sec.fields.image_networkit) sec.fields.image_networkit.label = 'Bottom CTA Feature Image (Stay Secure)';
         }
 
         return sec;
@@ -1211,6 +1294,7 @@ export async function POST(request) {
       finalPath === '/our-services/it-infrastructure' || path === '/our-services/it-infrastructure' || routeId === '6a2016aaa0608271b7524ea2' ||
       finalPath === '/our-services/long/short-term-amc' || path === '/our-services/long/short-term-amc' || routeId === '6a2016aba0608271b7524ea3' ||
       finalPath === '/our-services/networking' || path === '/our-services/networking' || routeId === '6a2016aba0608271b7524ea4' ||
+      finalPath === '/our-services/security-solutions' || path === '/our-services/security-solutions' || routeId === '6a2016aba0608271b7524ea5' ||
       finalPath === '/company/director-message' || path === '/company/director-message';
 
     // Update JSX files on disk with the new values (never for dynamic pages like homepage and laptops, which are rendered from DB)
