@@ -266,9 +266,8 @@ const ALL_PRODUCTS = [
     category: 'Print & Scan',
     name: 'HP Printers',
     series: 'HP Printers',
-    textLine: 'Explore HP printing solutions for home, office, and professional environments.',
     description: 'DeskJet | Smart Tank | OfficeJet | LaserJet',
-    particular: 'HP Printers - Explore HP printing solutions for home, office, and professional environments. (DeskJet | Smart Tank | OfficeJet | LaserJet)',
+    particular: 'HP Printers (DeskJet | Smart Tank | OfficeJet | LaserJet)',
     barcode: 'HP-Printers',
     image: ImgPrintHp,
     imageClassName: 'scale-[1.05]'
@@ -278,9 +277,8 @@ const ALL_PRODUCTS = [
     category: 'Print & Scan',
     name: 'Canon Printers',
     series: 'Canon Printers',
-    textLine: 'Discover Canon printers designed for quality printing and everyday productivity.',
     description: 'PIXMA | MAXIFY | imageCLASS',
-    particular: 'Canon Printers - Discover Canon printers designed for quality printing and everyday productivity. (PIXMA | MAXIFY | imageCLASS)',
+    particular: 'Canon Printers (PIXMA | MAXIFY | imageCLASS)',
     barcode: 'Canon-Printers',
     image: ImgPrintCanon,
     imageClassName: 'scale-[1.05]'
@@ -290,9 +288,8 @@ const ALL_PRODUCTS = [
     category: 'Print & Scan',
     name: 'Epson Printers',
     series: 'Epson Printers',
-    textLine: 'Explore Epson printing solutions offering reliable performance and efficient printing.',
     description: 'EcoTank | WorkForce | Expression',
-    particular: 'Epson Printers - Explore Epson printing solutions offering reliable performance and efficient printing. (EcoTank | WorkForce | Expression)',
+    particular: 'Epson Printers (EcoTank | WorkForce | Expression)',
     barcode: 'Epson-Printers',
     image: ImgPrintEpson,
     imageClassName: 'scale-[1.05]'
@@ -302,9 +299,8 @@ const ALL_PRODUCTS = [
     category: 'Print & Scan',
     name: 'Brother Printers',
     series: 'Brother Printers',
-    textLine: 'Discover Brother printing and scanning solutions for home and business use.',
     description: 'DCP | MFC | HL | ADS',
-    particular: 'Brother Printers - Discover Brother printing and scanning solutions for home and business use. (DCP | MFC | HL | ADS)',
+    particular: 'Brother Printers (DCP | MFC | HL | ADS)',
     barcode: 'Brother-Printers',
     image: ImgPrintBrother,
     imageClassName: 'scale-[1.05]'
@@ -350,9 +346,8 @@ const ALL_PRODUCTS = [
     category: 'Accessories (Crownyx)',
     name: 'Power Adapters & Cables',
     series: 'Power Adapters & Cables',
-    textLine: 'Explore charging solutions and connectivity accessories for your everyday devices.',
     description: 'USB-C | USB-A | Lightning | HDMI | 35W | 65W | 100W | USB-C PD | Multi-Port Chargers',
-    particular: 'CROWNYX Power Adapters & Cables - Explore charging solutions and connectivity accessories for your everyday devices. (USB-C | USB-A | Lightning | HDMI | 35W | 65W | 100W | USB-C PD | Multi-Port Chargers) - Latest Model: CAC-200',
+    particular: 'CROWNYX Power Adapters & Cables (USB-C | USB-A | Lightning | HDMI | 35W | 65W | 100W | USB-C PD | Multi-Port Chargers) - Latest Model: CAC-200',
     barcode: 'CAC-200',
     image: ImgAccessoriesAdaptersCables,
     imageClassName: 'scale-[1.05]'
@@ -362,9 +357,8 @@ const ALL_PRODUCTS = [
     category: 'Accessories (Crownyx)',
     name: 'Power Banks',
     series: 'Power Banks',
-    textLine: 'Stay powered on the go with portable, wireless, and fast-charging solutions.',
     description: 'Magnetic | 5,000mAh | 10,000mAh | 30,000mAh | Wireless | Fast Charging',
-    particular: 'CROWNYX Power Banks - Stay powered on the go with portable, wireless, and fast-charging solutions. (Magnetic | 5,000mAh | 10,000mAh | 30,000mAh | Wireless | Fast Charging) - Latest Model: CPB5K',
+    particular: 'CROWNYX Power Banks (Magnetic | 5,000mAh | 10,000mAh | 30,000mAh | Wireless | Fast Charging) - Latest Model: CPB5K',
     barcode: 'CPB5K',
     image: ImgAccessoriesPowerBanks,
     imageClassName: 'scale-[1.05]'
@@ -374,9 +368,8 @@ const ALL_PRODUCTS = [
     category: 'Accessories (Crownyx)',
     name: 'Car Accessories',
     series: 'Car Accessories',
-    textLine: 'Discover convenient charging and hands-free solutions for your driving experience.',
     description: 'Magnetic Phone Mounts | Wireless Charging Holders | Fast Car Chargers',
-    particular: 'CROWNYX Car Accessories - Discover convenient charging and hands-free solutions for your driving experience. (Magnetic Phone Mounts | Wireless Charging Holders | Fast Car Chargers) - Latest Model: CAC-200',
+    particular: 'CROWNYX Car Accessories (Magnetic Phone Mounts | Wireless Charging Holders | Fast Car Chargers) - Latest Model: CAC-200',
     barcode: 'CAC-200',
     image: ImgAccessoriesCarAccessories,
     imageClassName: 'scale-[1.05]'
@@ -386,9 +379,8 @@ const ALL_PRODUCTS = [
     category: 'Accessories (Crownyx)',
     name: 'PC Accessories',
     series: 'PC Accessories',
-    textLine: 'Enhance your computing and gaming experience with essential PC accessories.',
     description: 'Gaming Mice | Wireless Mice | HDMI Cables | USB Hubs',
-    particular: 'CROWNYX PC Accessories - Enhance your computing and gaming experience with essential PC accessories. (Gaming Mice | Wireless Mice | HDMI Cables | USB Hubs) - Latest Model: CGM440',
+    particular: 'CROWNYX PC Accessories (Gaming Mice | Wireless Mice | HDMI Cables | USB Hubs) - Latest Model: CGM440',
     barcode: 'CGM440',
     image: ImgAccessoriesPCAccessories,
     imageClassName: 'scale-[1.05]'
@@ -448,7 +440,15 @@ export default function WholesaleProductsSection({
   handleWhatsAppRedirect,
   telegramChannelUrl,
   defaultWhatsAppMessage,
+  wholesaleProducts = [],
 }) {
+  const productsSource = React.useMemo(() => {
+    if (Array.isArray(wholesaleProducts) && wholesaleProducts.length > 0) {
+      return wholesaleProducts;
+    }
+    return ALL_PRODUCTS;
+  }, [wholesaleProducts]);
+
   return (
     <section className="py-10 sm:py-14 bg-[#F8FAFC] border-t border-b border-gray-200" id="product-line">
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
@@ -456,7 +456,14 @@ export default function WholesaleProductsSection({
         <div className="space-y-12 sm:space-y-16">
           {SEVEN_CATEGORIES.map((catName) => {
             // Strictly cap each category to exactly 4 product cards
-            const catProducts = ALL_PRODUCTS.filter((p) => p.category === catName).slice(0, 4);
+            const dbCategoryProducts = productsSource.filter(
+              (p) => p.category === catName && p.isActive !== false
+            );
+            const catProducts = (
+              dbCategoryProducts.length > 0
+                ? dbCategoryProducts
+                : ALL_PRODUCTS.filter((p) => p.category === catName)
+            ).slice(0, 4);
             const categoryIndex = SEVEN_CATEGORIES.indexOf(catName) + 1;
             const categoryAnchorId = catName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
@@ -494,6 +501,7 @@ export default function WholesaleProductsSection({
                               src={product.image}
                               alt={product.name}
                               fill
+                              unoptimized={typeof product.image === 'string'}
                               priority={categoryIndex <= 4 && index < 4}
                               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                               className={`object-contain ${
