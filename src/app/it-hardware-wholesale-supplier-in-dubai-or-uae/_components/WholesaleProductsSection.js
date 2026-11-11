@@ -48,18 +48,20 @@ import ImgAllinoneLatestProduct1 from '@/Components/Images/AllinoneLatestProduct
 import ImgOneinall1 from '@/Components/Images/oneinall1.png';
 import ImgOneinall4 from '@/Components/Images/oneinall4.png';
 import ImgOneinall6 from '@/Components/Images/oneinall6.png';
-import ImgBestSellingPrinter2 from '@/Components/Images/bestsellingprinter2.png';
-import ImgAllinonePrinters1 from '@/Components/Images/allinoneprinters1.png';
-import ImgAllinonePrinters2 from '@/Components/Images/allinoneprinters2.png';
-import ImgScannerPopular1 from '@/Components/Images/scannerpopular1.png';
+// Print & Scan Updated Images
+import ImgPrintHp from '@/Components/Images/PR145430ch.webp';
+import ImgPrintCanon from '@/Components/Images/456793ch.webp';
+import ImgPrintEpson from '@/Components/Images/456790ch.webp';
+import ImgPrintBrother from '@/Components/Images/PR145346ch.webp';
 import ImgServerWorkstation1 from '@/Components/Images/servers-workstation-1.webp';
 import ImgServerWorkstation2 from '@/Components/Images/servers-workstation-2.webp';
 import ImgServerWorkstation3 from '@/Components/Images/servers-workstation-3.webp';
 import ImgServerWorkstation4 from '@/Components/Images/servers-workstation-4.webp';
-import ImgWorkstation4 from '@/Components/Images/workstation4.png';
-import ImgWorkstationpc3 from '@/Components/Images/workstationpc3.png';
-import ImgWorkstationpc1 from '@/Components/Images/workstationpc1.png';
-import ImgWorkstationpc from '@/Components/Images/workstationpc.jpg';
+// Accessories (Crownyx) Updated Images
+import ImgAccessoriesAdaptersCables from '@/Components/Images/CAC-200ch.webp';
+import ImgAccessoriesPowerBanks from '@/Components/Images/CPB5Kch.webp';
+import ImgAccessoriesCarAccessories from '@/Components/Images/CAC-200ch01.webp';
+import ImgAccessoriesPCAccessories from '@/Components/Images/CGM440ch.webp';
 
 // Seven Product Categories in Exact Required Sequence (1 to 7)
 const SEVEN_CATEGORIES = [
@@ -262,34 +264,50 @@ const ALL_PRODUCTS = [
   {
     brand: 'HP',
     category: 'Print & Scan',
-    barcode: 'J7Z98A',
-    name: 'HP Color LaserJet Enterprise M652n',
-    particular: 'HP Color LaserJet Enterprise M652n Laser Printer, Up to 50 ppm, 1200 x 1200 dpi, Gigabit Ethernet, 550-Sheet Input Tray',
-    image: ImgBestSellingPrinter2
-  },
-  {
-    brand: 'HP',
-    category: 'Print & Scan',
-    barcode: '7MD72A',
-    name: 'HP LaserJet MFP M141a Monochrome',
-    particular: 'HP LaserJet MFP M141a 3-in-1 Multifunction Monochrome Laser Printer, Print, Copy & Scan, 20 ppm, Compact Small Office Design',
-    image: ImgAllinonePrinters1
+    name: 'HP Printers',
+    series: 'HP Printers',
+    textLine: 'Explore HP printing solutions for home, office, and professional environments.',
+    description: 'DeskJet | Smart Tank | OfficeJet | LaserJet',
+    particular: 'HP Printers - Explore HP printing solutions for home, office, and professional environments. (DeskJet | Smart Tank | OfficeJet | LaserJet)',
+    barcode: 'HP-Printers',
+    image: ImgPrintHp,
+    imageClassName: 'scale-[1.05]'
   },
   {
     brand: 'CANON',
     category: 'Print & Scan',
-    barcode: '2315C009AA',
-    name: 'Canon PIXMA G3410 MegaTank 3-in-1',
-    particular: 'Canon PIXMA G3410 Wireless Refillable MegaTank Color All-in-One Printer, Print, Copy & Scan, High-Yield Ink Bottles, Wi-Fi',
-    image: ImgAllinonePrinters2
+    name: 'Canon Printers',
+    series: 'Canon Printers',
+    textLine: 'Discover Canon printers designed for quality printing and everyday productivity.',
+    description: 'PIXMA | MAXIFY | imageCLASS',
+    particular: 'Canon Printers - Discover Canon printers designed for quality printing and everyday productivity. (PIXMA | MAXIFY | imageCLASS)',
+    barcode: 'Canon-Printers',
+    image: ImgPrintCanon,
+    imageClassName: 'scale-[1.05]'
   },
   {
-    brand: 'CANON',
+    brand: 'EPSON',
     category: 'Print & Scan',
-    barcode: '2995C010AA',
-    name: 'Canon CanoScan LiDE 300 Flatbed',
-    particular: 'Canon CanoScan LiDE 300 Compact Flatbed Document & Photo Scanner, 2400 x 2400 dpi, 4 EZ Buttons, USB Powered, Advanced Z-lid',
-    image: ImgScannerPopular1
+    name: 'Epson Printers',
+    series: 'Epson Printers',
+    textLine: 'Explore Epson printing solutions offering reliable performance and efficient printing.',
+    description: 'EcoTank | WorkForce | Expression',
+    particular: 'Epson Printers - Explore Epson printing solutions offering reliable performance and efficient printing. (EcoTank | WorkForce | Expression)',
+    barcode: 'Epson-Printers',
+    image: ImgPrintEpson,
+    imageClassName: 'scale-[1.05]'
+  },
+  {
+    brand: 'BROTHER',
+    category: 'Print & Scan',
+    name: 'Brother Printers',
+    series: 'Brother Printers',
+    textLine: 'Discover Brother printing and scanning solutions for home and business use.',
+    description: 'DCP | MFC | HL | ADS',
+    particular: 'Brother Printers - Discover Brother printing and scanning solutions for home and business use. (DCP | MFC | HL | ADS)',
+    barcode: 'Brother-Printers',
+    image: ImgPrintBrother,
+    imageClassName: 'scale-[1.05]'
   },
 
   // 6. Servers & Workstation (Exactly 4 Products)
@@ -330,34 +348,50 @@ const ALL_PRODUCTS = [
   {
     brand: 'CROWNYX',
     category: 'Accessories (Crownyx)',
-    barcode: 'CMH-180',
-    name: 'CROWNYX CMH-180 8-in-1 USB-C Hub, 4K HDMI, Ethernet, 37W PD, 3× USB 3.0, SD/TF Reader, Compatible with MacBook, iPad and Laptops',
-    particular: 'CROWNYX CMH-180 8-in-1 USB-C Hub, 4K HDMI, Ethernet, 37W PD, 3× USB 3.0, SD/TF Reader, Compatible with MacBook, iPad and Laptops',
-    image: ImgWorkstation4
+    name: 'Power Adapters & Cables',
+    series: 'Power Adapters & Cables',
+    textLine: 'Explore charging solutions and connectivity accessories for your everyday devices.',
+    description: 'USB-C | USB-A | Lightning | HDMI | 35W | 65W | 100W | USB-C PD | Multi-Port Chargers',
+    particular: 'CROWNYX Power Adapters & Cables - Explore charging solutions and connectivity accessories for your everyday devices. (USB-C | USB-A | Lightning | HDMI | 35W | 65W | 100W | USB-C PD | Multi-Port Chargers) - Latest Model: CAC-200',
+    barcode: 'CAC-200',
+    image: ImgAccessoriesAdaptersCables,
+    imageClassName: 'scale-[1.05]'
   },
   {
     brand: 'CROWNYX',
     category: 'Accessories (Crownyx)',
-    barcode: 'CCC130',
-    name: 'CROWNYX CCC130 USB-A to USB-C 3.0 Cable 1M, 5Gbps, Compatible with Samsung Galaxy S25 Ultra, iPhone 17-15, Huawei P70 Pro and iPad Mini 7',
-    particular: 'CROWNYX CCC130 USB-A to USB-C 3.0 Cable 1M, 5Gbps, Compatible with Samsung Galaxy S25 Ultra, iPhone 17-15, Huawei P70 Pro and iPad Mini 7',
-    image: ImgWorkstationpc3
+    name: 'Power Banks',
+    series: 'Power Banks',
+    textLine: 'Stay powered on the go with portable, wireless, and fast-charging solutions.',
+    description: 'Magnetic | 5,000mAh | 10,000mAh | 30,000mAh | Wireless | Fast Charging',
+    particular: 'CROWNYX Power Banks - Stay powered on the go with portable, wireless, and fast-charging solutions. (Magnetic | 5,000mAh | 10,000mAh | 30,000mAh | Wireless | Fast Charging) - Latest Model: CPB5K',
+    barcode: 'CPB5K',
+    image: ImgAccessoriesPowerBanks,
+    imageClassName: 'scale-[1.05]'
   },
   {
     brand: 'CROWNYX',
     category: 'Accessories (Crownyx)',
-    barcode: 'CMC135',
-    name: 'CROWNYX CMC135 35W GaN USB-C Fast Charger, PD and PPS Wall Adapter, Compatible with MacBook Air, iPad Pro, iPhone 16/15 and Galaxy S24',
-    particular: 'CROWNYX CMC135 35W GaN USB-C Fast Charger, PD and PPS Wall Adapter, Compatible with MacBook Air, iPad Pro, iPhone 16/15 and Galaxy S24',
-    image: ImgWorkstationpc1
+    name: 'Car Accessories',
+    series: 'Car Accessories',
+    textLine: 'Discover convenient charging and hands-free solutions for your driving experience.',
+    description: 'Magnetic Phone Mounts | Wireless Charging Holders | Fast Car Chargers',
+    particular: 'CROWNYX Car Accessories - Discover convenient charging and hands-free solutions for your driving experience. (Magnetic Phone Mounts | Wireless Charging Holders | Fast Car Chargers) - Latest Model: CAC-200',
+    barcode: 'CAC-200',
+    image: ImgAccessoriesCarAccessories,
+    imageClassName: 'scale-[1.05]'
   },
   {
     brand: 'CROWNYX',
     category: 'Accessories (Crownyx)',
-    barcode: 'CMC-365',
-    name: 'CROWNYX CMC-365 65W GaN Fast Charger | Dual USB-C & USB-A Power Delivery Wall Adapter | Compact, Safe & Intelligent Charging for Laptops & Devices',
-    particular: 'CROWNYX CMC-365 65W GaN Fast Charger | Dual USB-C & USB-A Power Delivery Wall Adapter | Compact, Safe & Intelligent Charging for Laptops & Devices',
-    image: ImgWorkstationpc
+    name: 'PC Accessories',
+    series: 'PC Accessories',
+    textLine: 'Enhance your computing and gaming experience with essential PC accessories.',
+    description: 'Gaming Mice | Wireless Mice | HDMI Cables | USB Hubs',
+    particular: 'CROWNYX PC Accessories - Enhance your computing and gaming experience with essential PC accessories. (Gaming Mice | Wireless Mice | HDMI Cables | USB Hubs) - Latest Model: CGM440',
+    barcode: 'CGM440',
+    image: ImgAccessoriesPCAccessories,
+    imageClassName: 'scale-[1.05]'
   }
 ];
 
@@ -451,7 +485,7 @@ export default function WholesaleProductsSection({
                       const { line1, line2 } = getTwoLineTitle(product.name);
                       return (
                         <div
-                          key={product.barcode || product.name || index}
+                          key={`${catName}-${product.name}-${index}`}
                           className="group relative bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-[#147A5F] hover:border-[#0c4e3c] shadow-md transition-colors duration-200 flex flex-col justify-between overflow-hidden min-h-[260px] sm:min-h-[325px] lg:min-h-[345px]"
                         >
                           {/* Product Image Showcase on Pure White Background */}
@@ -479,12 +513,17 @@ export default function WholesaleProductsSection({
                                 >
                                   {product.name}
                                 </h4>
+                                {product.textLine && (
+                                  <p className="w-full font-jakarta text-[10px] xs:text-[10.5px] sm:text-[11.5px] text-gray-500 leading-normal text-left mb-1">
+                                    {product.textLine}
+                                  </p>
+                                )}
                                 <p className="w-full font-jakarta text-[10px] xs:text-[10.5px] sm:text-[11.5px] text-gray-500 leading-normal text-left">
                                   {product.description}
                                 </p>
                               </div>
                             ) : (
-                              /* Clean Left-aligned Product Name (No SKU) for Print & Scan, Servers & Workstation, and Accessories */
+                              /* Clean Left-aligned Product Name (No SKU) for Servers & Workstation */
                               <div className="w-full text-left mb-1.5 sm:mb-2">
                                 <h4
                                   className="w-full font-montserrat font-bold text-[12px] xs:text-[13px] sm:text-[14px] lg:text-[15px] text-[#171717] leading-[1.3] sm:leading-[1.35] text-left"
